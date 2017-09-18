@@ -1,7 +1,4 @@
-﻿using System;
-using NUnit.Framework;
-using Xero.Api.Core.Model;
-using Xero.Api.Core.Model.Status;
+﻿using NUnit.Framework;
 
 namespace CoreTests.Integration.TrackingCategories
 {

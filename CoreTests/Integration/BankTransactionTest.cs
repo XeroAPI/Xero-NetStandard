@@ -4,7 +4,7 @@ using System.Linq;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
 
-namespace Tests.Integration.BankTransactions
+namespace CoreTests.Integration
 {
     public class BankTransactionTest : ApiWrapperTest
     {

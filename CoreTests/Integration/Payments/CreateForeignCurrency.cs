@@ -11,7 +11,7 @@ namespace CoreTests.Integration.Payments
     {
         private Account Foreign { get; set; }
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         [Ignore("The user needs to have foreign currency subscription on their account")]
         public void SetUpForeignCurrency()
         {

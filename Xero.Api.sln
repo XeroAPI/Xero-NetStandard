@@ -1,31 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{9EA20544-22EA-4E60-8D7B-6A9CCFCF0AEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.Api", "Xero.Api\Xero.Api.csproj", "{2EB9F8BA-CCFF-4B43-99A0-5130D368C78F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api", "Xero.Api\Xero.Api.csproj", "{2EB9F8BA-CCFF-4B43-99A0-5130D368C78F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.Api.Example.TokenStores", "Xero.Api.Example.TokenStores\Xero.Api.Example.TokenStores.csproj", "{75B77F26-C2AE-41D9-A34A-A71262C4A926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api.Example.TokenStores", "Xero.Api.Example.TokenStores\Xero.Api.Example.TokenStores.csproj", "{75B77F26-C2AE-41D9-A34A-A71262C4A926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.Api.Example.Creation", "Xero.Api.Example.Creation\Xero.Api.Example.Creation.csproj", "{557D6222-DF69-4134-A31A-E762EAF3DE21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api.Example.Creation", "Xero.Api.Example.Creation\Xero.Api.Example.Creation.csproj", "{557D6222-DF69-4134-A31A-E762EAF3DE21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B2DF83D4-97EB-46C3-8511-6EFF7D6D7D38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollTests.US", "PayrollTests.US\PayrollTests.US.csproj", "{92FA4885-5E34-4C28-9573-5FBA9AE91EC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayrollTests.US", "PayrollTests.US\PayrollTests.US.csproj", "{92FA4885-5E34-4C28-9573-5FBA9AE91EC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollTests.AU", "PayrollTests.AU\PayrollTests.AU.csproj", "{BBB7EFCE-99DF-4531-95C8-0D029FBDF974}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayrollTests.AU", "PayrollTests.AU\PayrollTests.AU.csproj", "{BBB7EFCE-99DF-4531-95C8-0D029FBDF974}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.Api.Example.Counts", "Xero.Api.Example.Counts\Xero.Api.Example.Counts.csproj", "{55C40EA3-0583-4C49-855D-6EAB0083D615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api.Example.Counts", "Xero.Api.Example.Counts\Xero.Api.Example.Counts.csproj", "{55C40EA3-0583-4C49-855D-6EAB0083D615}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.Api.Example.Applications", "Xero.Api.Example.Applications\Xero.Api.Example.Applications.csproj", "{D799E8CC-0917-465D-80DF-F8355201D13F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api.Example.Applications", "Xero.Api.Example.Applications\Xero.Api.Example.Applications.csproj", "{D799E8CC-0917-465D-80DF-F8355201D13F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreTests", "CoreTests\CoreTests.csproj", "{6E24F214-40CC-4891-8028-A068CD7CD4BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.Api.Example.MVC", "Xero.Api.Example.MVC\Xero.Api.Example.MVC.csproj", "{617E7D53-BB1B-4112-A630-52218FD1352A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTests", "CoreTests\CoreTests.csproj", "{6E24F214-40CC-4891-8028-A068CD7CD4BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.Api.Example.Mocks", "Xero.Api.Example.Mocks\Xero.Api.Example.Mocks.csproj", "{106797DD-3184-40F5-A68E-9258D904E169}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api.Example.MVC", "Xero.Api.Example.MVC\Xero.Api.Example.MVC.csproj", "{7DCB3D92-2481-4D52-967D-61E35A2578F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,14 +65,14 @@ Global
 		{6E24F214-40CC-4891-8028-A068CD7CD4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E24F214-40CC-4891-8028-A068CD7CD4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E24F214-40CC-4891-8028-A068CD7CD4BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{617E7D53-BB1B-4112-A630-52218FD1352A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{617E7D53-BB1B-4112-A630-52218FD1352A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{617E7D53-BB1B-4112-A630-52218FD1352A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{617E7D53-BB1B-4112-A630-52218FD1352A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{106797DD-3184-40F5-A68E-9258D904E169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{106797DD-3184-40F5-A68E-9258D904E169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{106797DD-3184-40F5-A68E-9258D904E169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{106797DD-3184-40F5-A68E-9258D904E169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DCB3D92-2481-4D52-967D-61E35A2578F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DCB3D92-2481-4D52-967D-61E35A2578F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DCB3D92-2481-4D52-967D-61E35A2578F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DCB3D92-2481-4D52-967D-61E35A2578F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,7 +85,10 @@ Global
 		{55C40EA3-0583-4C49-855D-6EAB0083D615} = {9EA20544-22EA-4E60-8D7B-6A9CCFCF0AEA}
 		{D799E8CC-0917-465D-80DF-F8355201D13F} = {9EA20544-22EA-4E60-8D7B-6A9CCFCF0AEA}
 		{6E24F214-40CC-4891-8028-A068CD7CD4BD} = {B2DF83D4-97EB-46C3-8511-6EFF7D6D7D38}
-		{617E7D53-BB1B-4112-A630-52218FD1352A} = {9EA20544-22EA-4E60-8D7B-6A9CCFCF0AEA}
 		{106797DD-3184-40F5-A68E-9258D904E169} = {9EA20544-22EA-4E60-8D7B-6A9CCFCF0AEA}
+		{7DCB3D92-2481-4D52-967D-61E35A2578F6} = {9EA20544-22EA-4E60-8D7B-6A9CCFCF0AEA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DCC1466-154C-49C6-93E3-88670776246B}
 	EndGlobalSection
 EndGlobal

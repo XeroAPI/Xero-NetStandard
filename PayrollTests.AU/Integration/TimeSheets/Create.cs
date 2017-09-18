@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Xero.Api.Payroll.Australia.Model.Status;
 using Xero.Api.Payroll.Australia.Model;
@@ -10,7 +9,7 @@ namespace PayrollTests.AU.Integration.TimeSheets
     [TestFixture]
     public class Create : TimesheetTest
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void CreateSetUp()
         {
             

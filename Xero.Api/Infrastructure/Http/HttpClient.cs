@@ -104,7 +104,7 @@ namespace Xero.Api.Infrastructure.Http
             try
             {
                 var request = CreateRequest(endpoint, "GET", query: query);
-                return new Response((HttpWebResponse)request.GetResponse());
+                return new Response((HttpWebResponse)request.GetResponseAsync().Result);
             }
             catch (WebException we)
             {

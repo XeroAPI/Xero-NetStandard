@@ -1,9 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Xero.Api.Example.Applications.Public;
 using Xero.Api.Example.MVC.Helpers;
 using Xero.Api.Infrastructure.OAuth;
 
-namespace Xero.Api.Example.MVC
+namespace Xero.Api.Example.MVC.Controllers
 {
     public class HomeController : Controller
     {
@@ -17,7 +17,7 @@ namespace Xero.Api.Example.MVC
             _authenticator = XeroApiHelper.MvcAuthenticator();
         }
 
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
@@ -30,10 +30,10 @@ namespace Xero.Api.Example.MVC
         }
 
         public ActionResult Authorize(string oauth_token, string oauth_verifier, string org)
-        {          
+        {
             var accessToken = _authenticator.RetrieveAndStoreAccessToken(_user.Name, oauth_token, oauth_verifier, org);
             if (accessToken == null)
-                return View("NoAuthorized");            
+                return View("NoAuthorized");
 
             return View(accessToken);
         }

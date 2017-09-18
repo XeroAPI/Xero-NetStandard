@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.OAuth.Signing;
@@ -11,25 +10,25 @@ namespace Xero.Api.Example.Applications.Partner
         private readonly X509Certificate2 _signingCertificate;
         private string _scope;
 
-        private PartnerAuthenticator(string baseUri, string authorizeUri, string callBackUri, ITokenStore store, string scope = null)
-            : base(baseUri, authorizeUri, callBackUri, store)
+        private PartnerAuthenticator(string baseUri, string callBackUri, ITokenStore store, string scope = null)
+            : base(baseUri, callBackUri, store)
         {
             _scope = scope;
         }
 
-        public PartnerAuthenticator(string baseUri, string authorizeUri, string callBackUri, ITokenStore store, string signingCertificatePath, string scope = null)
-            : this(baseUri, authorizeUri, callBackUri, store, signingCertificatePath, "", scope)
+        public PartnerAuthenticator(string baseUri, string callBackUri, ITokenStore store, string signingCertificatePath, string scope = null)
+            : this(baseUri, callBackUri, store, signingCertificatePath, "", scope)
         {
         }
 
-        public PartnerAuthenticator(string baseUri, string authorizeUri, string callBackUri, ITokenStore store, string signingCertificatePath, string signingCertPassword, string scope = null)
-            : this(baseUri, authorizeUri, callBackUri, store, scope)
+        public PartnerAuthenticator(string baseUri, string callBackUri, ITokenStore store, string signingCertificatePath, string signingCertPassword, string scope = null)
+            : this(baseUri, callBackUri, store, scope)
         {
             _signingCertificate = new X509Certificate2(signingCertificatePath, signingCertPassword, X509KeyStorageFlags.MachineKeySet);
         }
 
-        public PartnerAuthenticator(string baseUri, string authorizeUri, string callBackUri, ITokenStore store, X509Certificate2 signingCertificate, string scope = null)
-            : this(baseUri, authorizeUri, callBackUri, store, scope)
+        public PartnerAuthenticator(string baseUri, string callBackUri, ITokenStore store, X509Certificate2 signingCertificate, string scope = null)
+            : this(baseUri, callBackUri, store, scope)
         {
             _signingCertificate = signingCertificate;
         }
@@ -38,7 +37,7 @@ namespace Xero.Api.Example.Applications.Partner
         {
             var authorizeUrl = GetAuthorizeUrl(token, _scope);
 
-            Process.Start(authorizeUrl);
+            ProcessHelper.OpenBrowser(authorizeUrl);
 
             Console.WriteLine("Enter the PIN given on the web page");
 

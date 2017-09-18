@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Xero.Api.Payroll.Australia.Model;
-using Xero.Api.Payroll.Australia.Model.Types;
 
 namespace PayrollTests.AU.Integration.Employees
 {

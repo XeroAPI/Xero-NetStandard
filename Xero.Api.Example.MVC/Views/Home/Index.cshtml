@@ -3,5 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.ActionLink("Connect to xero", "Connect", "Home", new { id = "btnConnect" })    
+
+
+<a id="btnConnect" href="@Url.Action("Connect", "Home")">Connect to Xero</a>
 

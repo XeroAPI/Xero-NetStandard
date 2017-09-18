@@ -7,7 +7,7 @@ namespace CoreTests.Integration.ManualJournals
     [TestFixture]
     public class Find : ManualJournalsTest
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void UpdateSet()
         {
             ManualJournalsSetUp();

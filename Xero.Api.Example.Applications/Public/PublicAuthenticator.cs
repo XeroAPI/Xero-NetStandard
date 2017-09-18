@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.OAuth.Signing;
 
@@ -9,8 +8,8 @@ namespace Xero.Api.Example.Applications.Public
     {
         private readonly string _scope;
 
-        public PublicAuthenticator(string baseUri, string tokenUri, string callBackUrl, ITokenStore store, string scope = null) 
-            : base(baseUri, tokenUri, callBackUrl, store)
+        public PublicAuthenticator(string baseUri, string callBackUrl, ITokenStore store, string scope = null) 
+            : base(baseUri, callBackUrl, store)
         {
             _scope = scope;
         }
@@ -19,7 +18,7 @@ namespace Xero.Api.Example.Applications.Public
         {
             var authorizeUrl = GetAuthorizeUrl(token, _scope);
 
-            Process.Start(authorizeUrl);
+            ProcessHelper.OpenBrowser(authorizeUrl);
 
             Console.WriteLine("Enter the PIN given on the web page");
 

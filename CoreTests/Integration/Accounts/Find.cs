@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.Hosting;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -54,7 +53,7 @@ namespace CoreTests.Integration.Accounts
          [Test]
         public void find_accounts_ifmodifiedsince()
         {
-            var newNonSystemAccount = Api.Create(new Account
+            Api.Create(new Account
             {
                 Code = Random.GetRandomString(10),
                 Type = AccountType.OtherIncome,

@@ -12,11 +12,10 @@ namespace Xero.Api.Example.Applications.Partner
         private static readonly Settings ApplicationSettings = new Settings();
 
         public Core(ITokenStore store, IUser user, bool includeRateLimiter = false) :
-            base(ApplicationSettings.Uri,
+            base(ApplicationSettings.BaseUrl,
                 new PartnerAuthenticator(
-                    ApplicationSettings.Uri,
-                    ApplicationSettings.AuthorizeUri,
-                    ApplicationSettings.CallBackUri,
+                    ApplicationSettings.BaseUrl,
+                    ApplicationSettings.CallbackUrl,
                     store,
                     ApplicationSettings.SigningCertificatePath,
                     ApplicationSettings.SigningCertificatePassword),

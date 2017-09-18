@@ -9,7 +9,7 @@ namespace CoreTests.Integration.Payments
     [TestFixture]
     public class Create : PaymentsTest
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void CreatePaymentsSetUp()
         {
             SetUp();

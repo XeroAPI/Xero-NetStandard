@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Xero.Api.Common;
-using Xero.Api.Core.Endpoints;
 using Xero.Api.Core.Model;
 
 namespace Xero.Api.Core.Response

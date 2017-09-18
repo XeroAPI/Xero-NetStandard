@@ -9,7 +9,7 @@ namespace CoreTests.Integration.ManualJournals
     [TestFixture]
     public class Create : ManualJournalsTest
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void CreateSetUp()
         {
             ManualJournalsSetUp();

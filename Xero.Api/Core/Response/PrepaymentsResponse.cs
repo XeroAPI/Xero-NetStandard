@@ -2,7 +2,7 @@
 using Xero.Api.Common;
 using Xero.Api.Core.Model;
 
-namespace Xero.Api.Core.Endpoints
+namespace Xero.Api.Core.Response
 {
     public class PrepaymentsResponse : XeroResponse<Prepayment>
     {

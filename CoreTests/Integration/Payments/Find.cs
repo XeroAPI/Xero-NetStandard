@@ -6,7 +6,7 @@ namespace CoreTests.Integration.Payments
 {
     public class Find : PaymentsTest
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void PaymentsSetUp()
         {
             SetUp();

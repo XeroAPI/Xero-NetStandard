@@ -11,11 +11,10 @@ namespace Xero.Api.Example.Applications.Public
         private static readonly Settings ApplicationSettings = new Settings();
 
         public AmericanPayroll(ITokenStore store, IUser user, bool includeRateLimiter = false, string scope = null) :
-            base(ApplicationSettings.Uri,
+            base(ApplicationSettings.BaseUrl,
                 new PublicAuthenticator(
-                    ApplicationSettings.Uri,
-                    ApplicationSettings.Uri,
-                    ApplicationSettings.CallBackUri,
+                    ApplicationSettings.BaseUrl,
+                    ApplicationSettings.CallbackUrl,
                     store,
                     scope),
                 new Consumer(

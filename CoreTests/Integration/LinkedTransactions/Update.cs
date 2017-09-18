@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CoreTests.Integration.LinkedTransactions
 {

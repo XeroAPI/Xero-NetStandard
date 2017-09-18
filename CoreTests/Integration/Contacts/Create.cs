@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
-using Xero.Api.Core.Model.Status;
 
 namespace CoreTests.Integration.Contacts
 {

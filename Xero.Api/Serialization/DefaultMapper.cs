@@ -1,10 +1,11 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
+using ServiceStack.Text;
 using Xero.Api.Core.Model.Status;
 using Xero.Api.Core.Model.Types;
 using Xero.Api.Infrastructure.Interfaces;
-using Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text;
 using Xero.Api.Payroll.America.Model.Types;
 using Xero.Api.Payroll.Australia.Model.Status;
 using Xero.Api.Payroll.Australia.Model.Types;
@@ -169,7 +170,7 @@ namespace Xero.Api.Serialization
                 return t;
 
             // get the EnumMember attribute and see if the Value attribute matches the string
-            foreach (var p in t.GetType().GetMembers())
+            foreach (var p in t.GetType().GetTypeInfo().GetMembers())
             {
                 var attributes = p.GetCustomAttributes(typeof(EnumMemberAttribute), false).Cast<EnumMemberAttribute>();
                 if (attributes.All(a => String.Compare(a.Value, s, StringComparison.OrdinalIgnoreCase) != 0))

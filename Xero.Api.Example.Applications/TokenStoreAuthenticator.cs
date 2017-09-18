@@ -6,10 +6,8 @@ namespace Xero.Api.Example.Applications
 {
     public abstract class TokenStoreAuthenticator : IAuthenticator
     {
-        private readonly string _tokenUri;
-        protected string CallBackUri { get; set; }
         protected string BaseUri { get; set; }
-        protected string VerifierUri { get; set; }
+        protected string CallBackUri { get; set; }
         protected ITokenStore Store { get; set; }
 
         private OAuthTokens _tokens;
@@ -20,15 +18,14 @@ namespace Xero.Api.Example.Applications
             {
                 if (_tokens == null)
                 {
-                    _tokens = new OAuthTokens(_tokenUri, BaseUri);      
+                    _tokens = new OAuthTokens(BaseUri);      
                 }
                 return _tokens;
             } 
         }
 
-        protected TokenStoreAuthenticator(string baseUri, string tokenUri, string callBackUri, ITokenStore store)
+        protected TokenStoreAuthenticator(string baseUri, string callBackUri, ITokenStore store)
         {
-            _tokenUri = tokenUri;
             CallBackUri = callBackUri;
             BaseUri = baseUri;
             Store = store;                      

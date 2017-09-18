@@ -3,7 +3,6 @@ using System.Linq;
 using Xero.Api.Payroll.Australia.Model;
 using Xero.Api.Payroll.Australia.Model.Status;
 using Xero.Api.Payroll.Australia.Model.Types;
-using Xero.Api.Payroll.Common.Model;
 using PayRun = Xero.Api.Payroll.Australia.Model.PayRun;
 
 namespace PayrollTests.AU.Integration.TimeSheets

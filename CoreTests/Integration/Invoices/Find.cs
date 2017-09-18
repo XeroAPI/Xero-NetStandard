@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using NUnit.Framework;
 using Xero.Api.Core.Model.Types;

@@ -10,7 +10,7 @@ namespace CoreTests.Unit
     {
         private IJsonObjectMapper _mapper;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             _mapper = new DefaultMapper();

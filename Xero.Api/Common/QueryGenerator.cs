@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Linq;
-using HttpUtility = Xero.Api.Infrastructure.ThirdParty.HttpUtility.HttpUtility;
+using System.Net;
 
 namespace Xero.Api.Common
 {
@@ -32,7 +32,7 @@ namespace Xero.Api.Common
             get
             {
                 var collection = BuildCollection();
-                return String.Join("&", collection.AllKeys.Select(a => a + "=" + HttpUtility.UrlEncode(collection[a])).ToArray());
+                return String.Join("&", collection.AllKeys.Select(a => a + "=" + WebUtility.UrlEncode(collection[a])).ToArray());
             }
         }
 

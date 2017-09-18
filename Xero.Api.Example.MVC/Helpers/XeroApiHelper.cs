@@ -1,8 +1,9 @@
 ﻿using System;
+using Microsoft.Extensions.Configuration;
 using Xero.Api.Core;
 using Xero.Api.Example.Applications.Partner;
 using Xero.Api.Example.Applications.Public;
-using Xero.Api.Example.MVC.Stores;
+using Xero.Api.Example.TokenStores;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.OAuth;
 using Xero.Api.Serialization;
@@ -22,57 +23,73 @@ namespace Xero.Api.Example.MVC.Helpers
 
         static XeroApiHelper()
         {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            var apiSettings = config.GetSection("XeroApi");
+
+            //Are you using a partner app?
+            var isPartnerApp = bool.Parse(apiSettings["IsPartnerApp"]);
+
+            //Base url for the api you are hitting - allows you to target your own mocked API
+            var baseUrl = apiSettings["BaseUrl"];
+
             // Refer to README.md for details
-            var callbackUrl = "http://mywebsite.url/Home/Authorize";
-            var memoryStore = new MemoryAccessTokenStore();
-            var requestTokenStore = new MemoryRequestTokenStore();
-            var baseApiUrl = "https://api.xero.com";
+            var callbackUrl = apiSettings["CallbackUrl"];
 
             // Consumer details for Application
-            var consumerKey = "your-consumer-key";
-            var consumerSecret = "your-consumer-secret";
+            var consumerKey = apiSettings["ConsumerKey"];
+            var consumerSecret = apiSettings["ConsumerSecret"];
 
+            
             // Signing certificate details for Partner Applications
-            var signingCertificatePath = @"C:\Dev\your_public_privatekey.pfx";
-            var signingCertificatePassword = "Your_signing_cert_password - leave empty if you didn't set one when creating the cert";
+            var signingCertificatePath = apiSettings["SigningCertPath"];
+            var signingCertificatePassword = apiSettings["SigningCertPassword"];
+            
+            // Set up some token stores to hold request and access tokens
+            var accessTokenStore = new MemoryTokenStore();
+            var requestTokenStore = new MemoryTokenStore();
 
-            // Public Application Settings
-            var publicConsumer = new Consumer(consumerKey, consumerSecret);
+            // Set the application settings with an authenticator relevant to your app type 
+            if (isPartnerApp)
+            {
+                var partnerConsumer = new Consumer(consumerKey, consumerSecret);
 
-            var publicAuthenticator = new PublicMvcAuthenticator(baseApiUrl, baseApiUrl, callbackUrl, memoryStore, 
-                publicConsumer, requestTokenStore);
+                var partnerAuthenticator = new PartnerMvcAuthenticator(baseUrl, callbackUrl,
+                        accessTokenStore, signingCertificatePath,
+                        partnerConsumer, requestTokenStore, signingCertificatePassword);
 
-            var publicApplicationSettings = new ApplicationSettings
+                var partnerApplicationSettings = new ApplicationSettings
                 {
-                    BaseApiUrl = baseApiUrl,
+                    BaseApiUrl = baseUrl,
+                    Consumer = partnerConsumer,
+                    Authenticator = partnerAuthenticator
+                };
+
+                _applicationSettings = partnerApplicationSettings;
+            }
+            else
+            {
+                var publicConsumer = new Consumer(consumerKey, consumerSecret);
+
+                var publicAuthenticator = new PublicMvcAuthenticator(baseUrl, callbackUrl, accessTokenStore,
+                    publicConsumer, requestTokenStore);
+
+                var publicApplicationSettings = new ApplicationSettings
+                {
+                    BaseApiUrl = baseUrl,
                     Consumer = publicConsumer,
                     Authenticator = publicAuthenticator
                 };
 
-            // Partner Application Settings
-            var partnerConsumer = new Consumer(consumerKey, consumerSecret);
-
-            var partnerAuthenticator = new PartnerMvcAuthenticator(baseApiUrl, baseApiUrl, callbackUrl,
-                    memoryStore, signingCertificatePath, 
-                    partnerConsumer, requestTokenStore, signingCertificatePassword);
-
-            var partnerApplicationSettings = new ApplicationSettings
-            {
-                BaseApiUrl = baseApiUrl,
-                Consumer = partnerConsumer,
-                Authenticator = partnerAuthenticator
-            };
-
-            // Pick one
-            // Choose what sort of application is appropriate. Comment out the above code (Partner Application Settings/Public Application Settings) that are not used.
-
-            //_applicationSettings = publicApplicationSettings;
-            _applicationSettings = partnerApplicationSettings;
+                _applicationSettings = publicApplicationSettings;
+            }
         }
 
         public static ApiUser User()
         {
-            return new ApiUser { Name = Environment.MachineName };    
+            return new ApiUser { Name = Environment.MachineName };
         }
 
         public static IConsumer Consumer()
@@ -92,7 +109,7 @@ namespace Xero.Api.Example.MVC.Helpers
                 return new XeroCoreApi(_applicationSettings.BaseApiUrl, _applicationSettings.Authenticator as IAuthenticator,
                     _applicationSettings.Consumer, User(), new DefaultMapper(), new DefaultMapper());
             }
-           
+
             return null;
         }
     }

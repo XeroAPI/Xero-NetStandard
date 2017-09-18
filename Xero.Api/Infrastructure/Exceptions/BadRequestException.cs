@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using Xero.Api.Infrastructure.Model;
 
 namespace Xero.Api.Infrastructure.Exceptions
 {

@@ -10,7 +10,7 @@ namespace Xero.Api.Example.Applications.Private
         private static readonly Settings ApplicationSettings = new Settings();
 
         public AustralianPayroll(bool includeRateLimiter = false) :
-            base(ApplicationSettings.Uri,
+            base(ApplicationSettings.BaseUrl,
                 new PrivateAuthenticator(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword),
                 new Consumer(ApplicationSettings.Key, ApplicationSettings.Secret),
                 null,

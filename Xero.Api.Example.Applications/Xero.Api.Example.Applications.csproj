@@ -1,80 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D799E8CC-0917-465D-80DF-F8355201D13F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xero.Api.Example.Applications</RootNamespace>
-    <AssemblyName>Xero.Api.Example.Applications</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Partner\AmericanPayroll.cs" />
-    <Compile Include="Partner\AustralianPayroll.cs" />
-    <Compile Include="Partner\Core.cs" />
-    <Compile Include="Partner\PartnerMvcAuthenticator.cs" />
-    <Compile Include="Partner\PartnerAuthenticator.cs" />
-    <Compile Include="Partner\Settings.cs" />
-    <Compile Include="Private\AmericanPayroll.cs" />
-    <Compile Include="Private\AustralianPayroll.cs" />
-    <Compile Include="Private\Core.cs" />
-    <Compile Include="Private\PrivateAuthenticator.cs" />
-    <Compile Include="Private\Settings.cs" />
-    <Compile Include="Public\AmericanPayroll.cs" />
-    <Compile Include="Public\AustralianPayroll.cs" />
-    <Compile Include="Public\Core.cs" />
-    <Compile Include="Public\IMvcAuthenticator.cs" />
-    <Compile Include="Public\PublicMvcAuthenticator.cs" />
-    <Compile Include="Public\PublicAuthenticator.cs" />
-    <Compile Include="Public\RenewTokenException.cs" />
-    <Compile Include="Public\Settings.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TokenStoreAuthenticator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Xero.Api\Xero.Api.csproj">
-      <Project>{2EB9F8BA-CCFF-4B43-99A0-5130D368C78F}</Project>
-      <Name>Xero.Api</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Title>Xero.Api.Example.Applications</Title>
+        <Company>Xero</Company>
+        <Copyright>Copyright © Xero 2017</Copyright>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <FileVersion>2.0.0.0</FileVersion>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+      <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Xero.Api\Xero.Api.csproj" />
+    </ItemGroup>
 </Project>

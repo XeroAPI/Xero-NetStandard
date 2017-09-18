@@ -1,6 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
 
 namespace CoreTests.Integration.Payments
@@ -8,7 +7,7 @@ namespace CoreTests.Integration.Payments
     [TestFixture]
     public class Delete : PaymentsTest
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void CreatePaymentsSetUp()
         {
             SetUp();

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Runtime.Serialization;
 using Xero.Api.Common;
 using Xero.Api.Core.Model;
 using Xero.Api.Infrastructure.Http;

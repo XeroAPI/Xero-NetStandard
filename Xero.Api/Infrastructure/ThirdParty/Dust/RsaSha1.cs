@@ -1,9 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Xero.Api.Infrastructure.ThirdParty.Dust.Lang;
 
 namespace Xero.Api.Infrastructure.ThirdParty.Dust
 {
@@ -18,42 +16,16 @@ namespace Xero.Api.Infrastructure.ThirdParty.Dust
 
         public string Sign(string signatureBaseString)
         {
-            return SignCore(signatureBaseString);
-        }
-
-        string SignCore(string baseString)
-        {
-            using (var hash = Hash(baseString))
+            using (var sha1 = SHA1.Create())
             {
-                return Base64Encode(Sign(hash));
+                var bytes = Encoding.ASCII.GetBytes(signatureBaseString);
+
+                var hash = sha1.ComputeHash(bytes);
+
+                var sig = _certificate.GetRSAPrivateKey().SignHash(hash, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
+
+                return Convert.ToBase64String(sig);
             }
-        }
-
-        private static string Base64Encode(byte[] signature)
-        {
-            return Convert.ToBase64String(signature);
-        }
-
-        private byte[] Sign(SHA1CryptoServiceProvider hash)
-        {
-            var formatter = new RSAPKCS1SignatureFormatter(_certificate.PrivateKey).
-                Tap(it => it.SetHashAlgorithm("MD5"));
-
-            return formatter.CreateSignature(hash);
-        }
-
-        SHA1CryptoServiceProvider Hash(string signatureBaseString)
-        {
-            var sha1 = new SHA1CryptoServiceProvider();
-
-            var bytes = Encoding.ASCII.GetBytes(signatureBaseString);
-
-            using (var crypto = new CryptoStream(Stream.Null, sha1, CryptoStreamMode.Write))
-            {
-                crypto.Write(bytes, 0, bytes.Length);
-            }
-
-            return sha1;
         }
     }
 }

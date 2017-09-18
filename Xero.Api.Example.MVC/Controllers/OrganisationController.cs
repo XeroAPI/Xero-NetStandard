@@ -1,4 +1,4 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Xero.Api.Example.Applications.Public;
 using Xero.Api.Example.MVC.Helpers;
 
@@ -19,7 +19,7 @@ namespace Xero.Api.Example.MVC.Controllers
             catch (RenewTokenException e)
             {
                 return RedirectToAction("Connect", "Home");
-            }   
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using Xero.Api.Common;
+﻿using Xero.Api.Common;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Request;

@@ -10,30 +10,30 @@ namespace Xero.Api.Example.Applications.Partner
     {       
         private readonly X509Certificate2 _signingCertificate;
 
-        private PartnerMvcAuthenticator(string baseUri, string authorizeUri, string callBackUri,
+        private PartnerMvcAuthenticator(string baseUri, string callBackUri,
             ITokenStore store, IConsumer consumer, ITokenStore requestTokenStore)
-            : base(baseUri, authorizeUri, callBackUri, store, consumer, requestTokenStore)
+            : base(baseUri, callBackUri, store, consumer, requestTokenStore)
         {            
         }
 
-        public PartnerMvcAuthenticator(string baseUri, string authorizeUri, string callBackUri, 
+        public PartnerMvcAuthenticator(string baseUri, string callBackUri, 
             ITokenStore store, string signingCertificatePath, IConsumer consumer, ITokenStore requestTokenStore)
-            : this(baseUri, authorizeUri, callBackUri, store, signingCertificatePath, consumer, requestTokenStore, "")
+            : this(baseUri, callBackUri, store, signingCertificatePath, consumer, requestTokenStore, "")
         {
         }
 
-        public PartnerMvcAuthenticator(string baseUri, string authorizeUri, string callBackUri, 
+        public PartnerMvcAuthenticator(string baseUri, string callBackUri, 
             ITokenStore store, string signingCertificatePath, 
             IConsumer consumer, ITokenStore requestTokenStore, string signingCertPassword)
-            : this(baseUri, authorizeUri, callBackUri, store, consumer, requestTokenStore)
+            : this(baseUri, callBackUri, store, consumer, requestTokenStore)
         {
             _signingCertificate = new X509Certificate2(signingCertificatePath, signingCertPassword, X509KeyStorageFlags.MachineKeySet);
         }
 
-        public PartnerMvcAuthenticator(string baseUri, string authorizeUri, string callBackUri, 
+        public PartnerMvcAuthenticator(string baseUri, string callBackUri, 
             ITokenStore store, X509Certificate2 signingCertificate,
             IConsumer consumer, ITokenStore requestTokenStore)
-            : this(baseUri, authorizeUri, callBackUri, store, consumer, requestTokenStore)
+            : this(baseUri, callBackUri, store, consumer, requestTokenStore)
         {
             _signingCertificate = signingCertificate;
         }

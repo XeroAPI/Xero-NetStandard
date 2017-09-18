@@ -9,9 +9,9 @@ namespace Xero.Api.Example.Applications.Public
         private readonly IConsumer _consumer;
         private readonly ITokenStore _requestTokenStore;
 
-        public PublicMvcAuthenticator(string baseUri, string tokenUri, string callBackUrl,
+        public PublicMvcAuthenticator(string baseUri, string callBackUrl,
             ITokenStore store, IConsumer consumer, ITokenStore requestTokenStore)
-            : base(baseUri, tokenUri, callBackUrl, store)
+            : base(baseUri, callBackUrl, store)
         {
             _consumer = consumer;
             _requestTokenStore = requestTokenStore;

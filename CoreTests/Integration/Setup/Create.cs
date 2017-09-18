@@ -6,7 +6,7 @@ using Xero.Api.Infrastructure.Exceptions;
 
 namespace CoreTests.Integration.Setup
 {
-    [TestFixture(Ignore = true, Description = "These test will remove all accounts! You have been warned.")]
+    [TestFixture(Ignore = "These test will remove all accounts! You have been warned.")]
     public class Create : ApiWrapperTest
     {
         [Test]

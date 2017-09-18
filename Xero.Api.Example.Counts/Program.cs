@@ -1,5 +1,4 @@
 ﻿using System;
-using Xero.Api.Core;
 using Xero.Api.Example.TokenStores;
 using Xero.Api.Infrastructure.OAuth;
 
@@ -9,9 +8,9 @@ namespace Xero.Api.Example.Counts
     {
         static void Main(string[] args)
         {
+            var tokenStore = new MemoryTokenStore();
             var user = new ApiUser { Name = Environment.MachineName };
-            var tokenStore = new SqliteTokenStore();
-
+            
             var api = new Applications.Public.Core(tokenStore, user)
             {
                 UserAgent = "Xero Api - Listing example"

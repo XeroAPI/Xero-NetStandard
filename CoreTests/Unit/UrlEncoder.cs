@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Net;
+using NUnit.Framework;
 
 namespace CoreTests.Unit
 {
@@ -11,7 +12,7 @@ namespace CoreTests.Unit
             const string text = "-_.!~*'()";
             const string expected = "-_.%21~%2A%27%28%29";
 
-            Assert.AreEqual(expected, Xero.Api.Infrastructure.ThirdParty.HttpUtility.UrlEncoder.UrlEncode(text));
+            Assert.AreEqual(expected, WebUtility.UrlEncode(text));
         }
     }
 }

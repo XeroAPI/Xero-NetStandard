@@ -18,8 +18,7 @@ namespace Xero.Api.Example.Applications.Private
 
         public PrivateAuthenticator(string certificatePath, string certificatePassword = "")
         {
-            _certificate = new X509Certificate2();
-            _certificate.Import(certificatePath, certificatePassword, X509KeyStorageFlags.MachineKeySet);
+            _certificate = new X509Certificate2(certificatePath, certificatePassword, X509KeyStorageFlags.MachineKeySet);
         }
 
         public PrivateAuthenticator(X509Certificate2 certificate)

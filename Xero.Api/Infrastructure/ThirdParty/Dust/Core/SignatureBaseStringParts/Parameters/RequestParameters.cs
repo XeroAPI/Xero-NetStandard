@@ -1,25 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using HttpUtility = Xero.Api.Infrastructure.ThirdParty.HttpUtility.HttpUtility;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Primitives;
 
 namespace Xero.Api.Infrastructure.ThirdParty.Dust.Core.SignatureBaseStringParts.Parameters
 {
     internal class RequestParameters : IEnumerable<Parameter>
     {
-        private readonly NameValueCollection _values;
+        
     	private readonly Parameters _parameters;
+        private Dictionary<string, StringValues> _values;
 
-    	public RequestParameters(Request request)
+        public RequestParameters(Request request)
         {
-            _values = HttpUtility.HttpUtility.ParseQueryString(request.Url.Query);
+            _values = QueryHelpers.ParseQuery(request.Url.Query);
 
         	_parameters = new Parameters(MapAll());
         }
 
     	private Parameter[] MapAll() {
-    		return _values.AllKeys.SelectMany(Map).ToArray();
+    		return _values.Keys.SelectMany(Map).ToArray();
     	}
 
     	private IEnumerable<Parameter> Map(string key)
@@ -27,9 +28,10 @@ namespace Xero.Api.Infrastructure.ThirdParty.Dust.Core.SignatureBaseStringParts.
     		return ValuesFor(key).Select(v => new Parameter(key, v));
         }
 
-    	private string[] ValuesFor(string key) {
-    		return _values.GetValues(key);
-    	}
+    	private string[] ValuesFor(string key)
+	    {
+	        return _values[key].ToArray();
+	    }
 
     	#region Implementation of IEnumerable
 
