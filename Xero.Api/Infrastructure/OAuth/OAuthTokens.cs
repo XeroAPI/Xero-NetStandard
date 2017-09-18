@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Microsoft.AspNetCore.WebUtilities;
 using Xero.Api.Infrastructure.Http;
 using Xero.Api.Infrastructure.Interfaces;
@@ -8,89 +10,69 @@ namespace Xero.Api.Infrastructure.OAuth
 {
     public class OAuthTokens
     {
-        private readonly string _baseUri;
-        private const string XeroRequestUri = "oauth/RequestToken";
-        private const string XeroAccessTokenUri = "oauth/AccessToken";
-        private const string XeroAuthorizeUri = "oauth/Authorize";
+        public string RequestTokenEndpoint => "oauth/RequestToken";
+        public string AccessTokenEndpoint => "oauth/AccessToken";
+        public string AuthoriseEndpoint => "oauth/Authorize";
+
+        private static HttpClient _httpClient;
 
         public OAuthTokens(string baseUri)
         {
-            _baseUri = baseUri;
-        }
 
-        public string AuthorizeUri
-        {
-            get
+            if (_httpClient == null)
             {
-                var uri = new UriBuilder(_baseUri)
+                _httpClient = new HttpClient
                 {
-                    Path = XeroAuthorizeUri
+                    BaseAddress = new Uri(baseUri)
                 };
-
-                return uri.ToString();
-            }
-        }
-
-        public string RequestUri
-        {
-            get
-            {
-                return XeroRequestUri;
-            }
-        }
-
-        public string AccessUri
-        {
-            get
-            {
-                return XeroAccessTokenUri;
             }
         }
 
         public IToken GetRequestToken(IConsumer consumer, string header)
         {
-            return GetToken(_baseUri,  new Token { ConsumerKey = consumer.ConsumerKey, ConsumerSecret = consumer.ConsumerSecret }, XeroRequestUri, header);
+            return GetToken(new Token { ConsumerKey = consumer.ConsumerKey, ConsumerSecret = consumer.ConsumerSecret }, RequestTokenEndpoint, header);
         }
 
         public IToken GetAccessToken(IToken token, string header)
         {
-            return GetToken(_baseUri, token, XeroAccessTokenUri, header);
+            return GetToken(token, AccessTokenEndpoint, header);
         }
 
         public IToken RenewAccessToken(IToken token, string header)
         {
-            return GetToken(_baseUri, token, XeroAccessTokenUri, header);
+            return GetToken(token, AccessTokenEndpoint, header);
         }
 
-        public IToken GetToken(string baseUri, IToken consumer, string endPoint, string header)
+        public IToken GetToken(IToken consumer, string endpoint, string header)
         {
-            var req = new HttpClient(baseUri)
-            {
-                UserAgent = "Xero Api wrapper - " + consumer.ConsumerKey
-            };
-            
-            req.AddHeader("Authorization", header);
+            var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
 
-            var response = req.Post(endPoint, string.Empty);
+            request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(WebUtility.UrlEncode("Xero Api wrapper - " + consumer.ConsumerKey))));
+
+            request.Headers.Add("Authorization", header);
+
+            var response = _httpClient.SendAsync(request).Result;
+            var body = response.Content.ReadAsStringAsync().Result;
+
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                if (response.Body.Contains("oauth_problem"))
+                if (body.Contains("oauth_problem"))
                 {
-                    throw new OAuthException(response.Body);
+                    throw new OAuthException(body);
                 }
 
-                throw new UnexpectedOauthResponseException(response.StatusCode, response.Body);
+                throw new UnexpectedOauthResponseException(response.StatusCode, body);
             }
 
-            var qs = QueryHelpers.ParseQuery(response.Body);
-
+            var qs = QueryHelpers.ParseQuery(body);
             qs.TryGetValue("oauth_expires_in", out var expires);
-            qs.TryGetValue("auth_session_handle", out var session);
+            qs.TryGetValue("oauth_session_handle", out var session);
             qs.TryGetValue("oauth_token", out var tokenKey);
             qs.TryGetValue("oauth_token_secret", out var tokenSecret);
             qs.TryGetValue("xero_org_muid", out var organisationId);
-            
+            qs.TryGetValue("oauth_authorization_expires_in", out var authExpiresIn);
+
 
             var token = new Token(consumer.ConsumerKey, consumer.ConsumerSecret)
             {
@@ -107,7 +89,7 @@ namespace Xero.Api.Infrastructure.OAuth
             if (!string.IsNullOrWhiteSpace(session))
             {
                 token.Session = session;
-                token.SessionExpiresAt = DateTime.UtcNow.AddSeconds(int.Parse(qs["oauth_authorization_expires_in"]));
+                token.SessionExpiresAt = DateTime.UtcNow.AddSeconds(int.Parse(authExpiresIn));
             }
 
             return token;

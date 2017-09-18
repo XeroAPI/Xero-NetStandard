@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Net.Http;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Request;
@@ -25,15 +26,16 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/Items/{0}", itemToDelete.Id);
 
             HandleResponse(Client
-                .Client
                 .Delete(endpoint));
         }
 
-        private ItemsResponse HandleResponse(Infrastructure.Http.Response response)
+        private ItemsResponse HandleResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = Client.JsonMapper.From<ItemsResponse>(response.Body);
+                var body = response.Content.ReadAsStringAsync().Result;
+
+                var result = Client.JsonMapper.From<ItemsResponse>(body);
                 return result;
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using Xero.Api.Common;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
@@ -31,7 +32,6 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/LinkedTransactions/{0}", linkedTransaction.Id);
 
             HandleResponse(Client
-                .Client
                 .Delete(endpoint));
         }
 
@@ -65,11 +65,13 @@ namespace Xero.Api.Core.Endpoints
             Page(1);
         }
 
-        private LinkedTransactionsResponse HandleResponse(Infrastructure.Http.Response response)
+        private LinkedTransactionsResponse HandleResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = Client.JsonMapper.From<LinkedTransactionsResponse>(response.Body);
+                var body = response.Content.ReadAsStringAsync().Result;
+
+                var result = Client.JsonMapper.From<LinkedTransactionsResponse>(body);
                 return result;
             }
 

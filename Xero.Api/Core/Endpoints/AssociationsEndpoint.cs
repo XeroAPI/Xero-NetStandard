@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using Xero.Api.Core.Model;
 using Xero.Api.Infrastructure.Http;
 
@@ -31,25 +32,25 @@ namespace Xero.Api.Core.Endpoints
         public Association Find(Guid fileId, Guid objectId)
         {
             var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations/{1}", fileId, objectId);
-            return HandleAssociationResponse(Client.Client.Get(endpoint, null));
+            return HandleAssociationResponse(Client.Get(endpoint, null));
         }
 
         public IEnumerable<Association> Find(Guid fileId)
         {
             var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations", fileId);
-            return HandleAssociationsResponse(Client.Client.Get(endpoint, null));
+            return HandleAssociationsResponse(Client.Get(endpoint, null));
         }
 
         public IEnumerable<Association> FindForObject(Guid objectId)
         {
             var endpoint = string.Format("files.xro/1.0/Associations/{0}", objectId);
-            return HandleAssociationsResponse(Client.Client.Get(endpoint, null));
+            return HandleAssociationsResponse(Client.Get(endpoint, null));
         }
 
         public Association Create(Association association)
         {
             var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations", association.FileId);
-            var resp = Client.Client.Post(endpoint, Client.JsonMapper.To(association), "application/json");
+            var resp = Client.Post(endpoint, association, true);
             return HandleAssociationResponse(resp);
         }
 
@@ -57,28 +58,32 @@ namespace Xero.Api.Core.Endpoints
         {
             var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations/{1}", association.FileId,
                 association.ObjectId);
-            HandleAssociationResponse(Client.Client.Delete(endpoint));
+            HandleAssociationResponse(Client.Delete(endpoint));
         }
 
-        private IEnumerable<Association> HandleAssociationsResponse(Infrastructure.Http.Response response)
+        private IEnumerable<Association> HandleAssociationsResponse(HttpResponseMessage response)
         {
+            var body = response.Content.ReadAsStringAsync().Result;
+
             if (response.StatusCode == HttpStatusCode.OK
                 || response.StatusCode == HttpStatusCode.Created
                 || response.StatusCode == HttpStatusCode.Accepted)
             {
-                return Client.JsonMapper.From<IEnumerable<Association>>(response.Body);
+                return Client.JsonMapper.From<IEnumerable<Association>>(body);
             }
             Client.HandleErrors(response);
             return null;
         }
 
-        private Association HandleAssociationResponse(Infrastructure.Http.Response response)
+        private Association HandleAssociationResponse(HttpResponseMessage response)
         {
+            var body = response.Content.ReadAsStringAsync().Result;
+
             if (response.StatusCode == HttpStatusCode.OK
                 || response.StatusCode == HttpStatusCode.Created
                 || response.StatusCode == HttpStatusCode.Accepted)
             {
-                return Client.JsonMapper.From<Association>(response.Body);
+                return Client.JsonMapper.From<Association>(body);
             }
             Client.HandleErrors(response);
             return null;

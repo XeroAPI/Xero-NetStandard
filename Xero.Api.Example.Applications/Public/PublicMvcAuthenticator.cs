@@ -69,7 +69,7 @@ namespace Xero.Api.Example.Applications.Public
                 throw new ApplicationException("Request token key does not match");
 
             var accessToken = Tokens.GetAccessToken(requestToken,
-                GetAuthorization(requestToken, "POST", Tokens.AccessUri, null, verfier));
+                GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verfier));
 
             accessToken.UserId = userId;
 

@@ -85,13 +85,14 @@ namespace Xero.Api.Example.Applications
             var verifier = AuthorizeUser(requestToken);
 
             return Tokens.GetAccessToken(requestToken,
-                GetAuthorization(requestToken, "POST", Tokens.AccessUri, null, verifier));
+                GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verifier));
         }
 
         protected string GetAuthorizeUrl(IToken token, string scope = null)
         {
-            return new UriBuilder(Tokens.AuthorizeUri)
+            return new UriBuilder(BaseUri)
             {
+                Path = Tokens.AuthoriseEndpoint,
                 Query = "oauth_token=" + token.TokenKey + "&scope=" + scope
             }.Uri.ToString();
         }
@@ -104,7 +105,7 @@ namespace Xero.Api.Example.Applications
                 ConsumerSecret = consumer.ConsumerSecret
             };
             
-            var requestTokenOAuthHeader = GetAuthorization(token, "POST", Tokens.RequestUri, callback: CallBackUri);
+            var requestTokenOAuthHeader = GetAuthorization(token, "POST", Tokens.RequestTokenEndpoint, callback: CallBackUri);
 
             return Tokens.GetRequestToken(consumer, requestTokenOAuthHeader);
         }

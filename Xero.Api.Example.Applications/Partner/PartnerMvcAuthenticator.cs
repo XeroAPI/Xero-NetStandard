@@ -46,7 +46,7 @@ namespace Xero.Api.Example.Applications.Partner
 
         protected override IToken RenewToken(IToken sessionToken, IConsumer consumer)
         {
-            var authHeader = GetAuthorization(sessionToken, "POST", Tokens.AccessUri, null, null, true);
+            var authHeader = GetAuthorization(sessionToken, "POST", Tokens.AccessTokenEndpoint, null, null, true);
 
             return Tokens.GetAccessToken(sessionToken, authHeader);
         }

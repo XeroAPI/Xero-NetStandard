@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Request;
@@ -33,7 +34,6 @@ namespace Xero.Api.Core.Endpoints
                 var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}",guid);
 
                 var group = HandleResponse(Client
-                    .Client
                     .Get(endpoint,null))
                     .ContactGroups.SingleOrDefault();
 
@@ -48,18 +48,19 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/ContactGroups");
 
             var groups = HandleResponse(Client
-                .Client
                 .Put(endpoint, Client.XmlMapper.To(new List<ContactGroup> { contactGroup })))
                 .ContactGroups;
 
             return groups.FirstOrDefault();
         }
         
-        private ContactGroupsResponse HandleResponse(Infrastructure.Http.Response response)
+        private ContactGroupsResponse HandleResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = Client.JsonMapper.From<ContactGroupsResponse>(response.Body);
+                var body = response.Content.ReadAsStringAsync().Result;
+
+                var result = Client.JsonMapper.From<ContactGroupsResponse>(body);
                 return result;
             }
 
@@ -96,7 +97,6 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts", _group.Id);
 
             var groups = HandleResponse(Client
-                .Client
                 .Delete(endpoint));
         }
 
@@ -125,7 +125,6 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts/{1}", contactGroup.Id, contactId);
 
             var groups = HandleResponse(Client
-                .Client
                 .Delete(endpoint));
 
         }
@@ -135,16 +134,17 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts", contactGroup.Id);
 
             var groups = HandleResponse(_client
-                .Client
-                .Put(endpoint, _client.XmlMapper.To(contacts)))
+                .Put(endpoint, contacts))
                 .ContactGroups;
         }
 
-        private ContactGroupsResponse HandleResponse(Infrastructure.Http.Response response)
+        private ContactGroupsResponse HandleResponse(HttpResponseMessage response)
         {
+            var body = response.Content.ReadAsStringAsync().Result;
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = Client.JsonMapper.From<ContactGroupsResponse>(response.Body);
+                var result = Client.JsonMapper.From<ContactGroupsResponse>(body);
                 return result;
             }
 

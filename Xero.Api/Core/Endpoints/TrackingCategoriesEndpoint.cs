@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Request;
@@ -44,7 +45,7 @@ namespace Xero.Api.Core.Endpoints
             {
                 var endpoint = string.Format("/api.xro/2.0/TrackingCategories/{0}", id);
 
-                var trackingCat = HandleResponse(Client.Client.Get(endpoint, null)).TrackingCategories.FirstOrDefault();
+                var trackingCat = HandleResponse(Client.Get(endpoint, null)).TrackingCategories.FirstOrDefault();
 
                 var collection = new OptionCollection(Client, trackingCat);
 
@@ -56,7 +57,7 @@ namespace Xero.Api.Core.Endpoints
         {
             var endpoint = string.Format("/api.xro/2.0/TrackingCategories/{0}", id);
 
-            var trackingCat = HandleResponse(Client.Client.Get(endpoint, null)).TrackingCategories.FirstOrDefault();
+            var trackingCat = HandleResponse(Client.Get(endpoint, null)).TrackingCategories.FirstOrDefault();
 
             return trackingCat;
         }
@@ -65,7 +66,7 @@ namespace Xero.Api.Core.Endpoints
         {
             var endpoint = string.Format("/api.xro/2.0/TrackingCategories");
 
-            List<TrackingCategory> trackingCats = HandleResponse(Client.Client.Get(endpoint, QueryString)).TrackingCategories.ToList();
+            List<TrackingCategory> trackingCats = HandleResponse(Client.Get(endpoint, QueryString)).TrackingCategories.ToList();
 
             return trackingCats;
         } 
@@ -75,8 +76,7 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/TrackingCategories");
 
             var groups = HandleResponse(Client
-                .Client
-                .Put(endpoint, Client.XmlMapper.To(new List<TrackingCategory> { trackingCategory })))
+                .Put(endpoint, new List<TrackingCategory> { trackingCategory }))
                 .Values;
 
             return groups.FirstOrDefault();
@@ -89,8 +89,7 @@ namespace Xero.Api.Core.Endpoints
             trackingCategory.Options = null;
 
             var groups = HandleResponse(Client
-                .Client
-                .Post(endpoint, Client.XmlMapper.To(new List<TrackingCategory> { trackingCategory })))
+                .Post(endpoint, new List<TrackingCategory> { trackingCategory }))
                 .Values;
 
             return groups.FirstOrDefault();
@@ -101,7 +100,6 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/TrackingCategories/{0}", trackingCategory.Id);
 
             var track = HandleResponse(Client
-                .Client
                 .Delete(endpoint));
 
             return track.Values.FirstOrDefault();
@@ -112,17 +110,18 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/TrackingCategories/{0}/Options/{1}", trackingCategory.Id, option.Id);
 
             var track = HandleOptionResponse(Client
-                .Client
                 .Delete(endpoint));
 
             return track.Values.FirstOrDefault();
         }
 
-        private TrackingCategoriesResponse HandleResponse(Infrastructure.Http.Response response)
+        private TrackingCategoriesResponse HandleResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = Client.JsonMapper.From<TrackingCategoriesResponse>(response.Body);
+                var body = response.Content.ReadAsStringAsync().Result;
+
+                var result = Client.JsonMapper.From<TrackingCategoriesResponse>(body);
                 return result;
             }
 
@@ -131,11 +130,13 @@ namespace Xero.Api.Core.Endpoints
             return null;
         }
 
-        private OptionsResponse HandleOptionResponse(Infrastructure.Http.Response response)
+        private OptionsResponse HandleOptionResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = Client.JsonMapper.From<OptionsResponse>(response.Body);
+                var body = response.Content.ReadAsStringAsync().Result;
+
+                var result = Client.JsonMapper.From<OptionsResponse>(body);
                 return result;
             }
 
@@ -186,17 +187,18 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/trackingcategories/{0}/options", category.Id);
 
             var result = HandleResponse(_client
-                 .Client
                  .Put(endpoint, _client.XmlMapper.To(options))).Values.ToList();
 
             return result;
         }
 
-        private OptionsResponse HandleResponse(Infrastructure.Http.Response response)
+        private OptionsResponse HandleResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = Client.JsonMapper.From<OptionsResponse>(response.Body);
+                var body = response.Content.ReadAsStringAsync().Result;
+
+                var result = Client.JsonMapper.From<OptionsResponse>(body);
                 return result;
             }
 
@@ -214,8 +216,7 @@ namespace Xero.Api.Core.Endpoints
             Options.Add(option);
             
             var result = HandleResponse(_client
-                 .Client
-                 .Post(endpoint, _client.XmlMapper.To(Options))).Options.FirstOrDefault();
+                 .Post(endpoint, Options)).Options.FirstOrDefault();
 
             return result;
         }

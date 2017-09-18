@@ -28,14 +28,16 @@ namespace Xero.Api.Core.Endpoints
         {
 
             var mimeType = MimeTypes.GetMimeType(fileName);
-            var data = Client.Get(string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), fileName), mimeType);
+            var response = Client.Get(string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), fileName), mimeType);
 
-            if (data.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                return new Attachment(data.Stream, fileName, data.ContentType, data.ContentLength);
+                var stream = response.Content.ReadAsStreamAsync().Result;
+
+                return new Attachment(stream, fileName, response.Content.Headers.ContentType.ToString(), (int)stream.Length);
             }
 
-            Client.HandleErrors(data);
+            Client.HandleErrors(response);
             return null;
         }
 

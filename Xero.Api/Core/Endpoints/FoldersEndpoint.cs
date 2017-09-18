@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using Xero.Api.Common;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
@@ -33,7 +34,6 @@ namespace Xero.Api.Core.Endpoints
         var endpoint = string.Format("files.xro/1.0/Folders");
 
         var folder = HandleFoldersResponse(Client
-            .Client
             .Get(endpoint, null));
 
         return folder;
@@ -45,8 +45,7 @@ namespace Xero.Api.Core.Endpoints
       var endpoint = string.Format("files.xro/1.0/Folders");
 
       var result = HandleFolderResponse(Client
-          .Client
-          .Post(endpoint, Client.JsonMapper.To(new Folder() { Name = folderName }), contentType: "application/json"));
+          .Post(endpoint, Client.JsonMapper.To(new Folder() { Name = folderName }), true));
 
       return result;
     }
@@ -54,7 +53,7 @@ namespace Xero.Api.Core.Endpoints
     public IList<Model.Folder> Find()
     {
       var response = HandleFoldersResponse(Client
-          .Client.Get("files.xro/1.0/Folders", ""));
+          .Get("files.xro/1.0/Folders", ""));
 
 
       var resultingFolders = from i in response
@@ -66,23 +65,22 @@ namespace Xero.Api.Core.Endpoints
     public void Remove(Guid id)
     {
       var response = HandleFolderResponse(Client
-          .Client
           .Delete("files.xro/1.0/Folders/" + id.ToString()));
     }
 
     public FoldersResponse Rename(Guid id, string name)
     {
-      var response = HandleFoldersResponse(Client.Client.Put("files.xro/1.0/Folders/" + id, "{\"Name\":\"" + name + "\"}", "application/json"));
+      var response = HandleFoldersResponse(Client.Put("files.xro/1.0/Folders/" + id, "{\"Name\":\"" + name + "\"}", true));
       return (response != null) ? response[0] : null;
     }
 
-    private FilePageResponse HandleFolderResponse(Infrastructure.Http.Response response)
+    private FilePageResponse HandleFolderResponse(HttpResponseMessage response)
     {
       if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
       {
-        var json = response.Body;
+        var body = response.Content.ReadAsStringAsync().Result;
 
-        var result = Client.JsonMapper.From<FilePageResponse>(json);
+        var result = Client.JsonMapper.From<FilePageResponse>(body);
 
         return result;
       }
@@ -92,13 +90,13 @@ namespace Xero.Api.Core.Endpoints
       return null;
     }
 
-    private FoldersResponse[] HandleFoldersResponse(Infrastructure.Http.Response response)
+    private FoldersResponse[] HandleFoldersResponse(HttpResponseMessage response)
     {
       if (response.StatusCode == HttpStatusCode.OK)
       {
-        var json = response.Body;
+        var body = response.Content.ReadAsStringAsync().Result;
 
-        var result = Client.JsonMapper.From<FoldersResponse[]>(json);
+        var result = Client.JsonMapper.From<FoldersResponse[]>(body);
 
         return result;
       }

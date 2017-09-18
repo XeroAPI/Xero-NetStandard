@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using Xero.Api.Common;
 using Xero.Api.Core.Model;
 using Xero.Api.Infrastructure.Http;
@@ -44,12 +45,14 @@ namespace Xero.Api.Core.Endpoints
             return (OverpaymentAllocation)Add(allocation, endpoint);
         }
 
-        private AllocationsResponse<T> HandleResponse<T>(Infrastructure.Http.Response response)
+        private AllocationsResponse<T> HandleResponse<T>(HttpResponseMessage response)
             where T : AllocationBase
         {
+            var body = response.Content.ReadAsStringAsync().Result;
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var result = _client.JsonMapper.From<AllocationsResponse<T>>(response.Body);
+                var result = _client.JsonMapper.From<AllocationsResponse<T>>(body);
                 return result;
             }
 
@@ -62,7 +65,6 @@ namespace Xero.Api.Core.Endpoints
             where T : AllocationBase
         {
             var allocations = HandleResponse<T>(_client
-                .Client
                 .Put(endpoint, _client.XmlMapper.To(new List<T> { allocation })))
                 .Allocations;
 

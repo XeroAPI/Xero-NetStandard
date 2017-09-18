@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Request;
 using Xero.Api.Core.Response;
@@ -41,7 +42,7 @@ namespace Xero.Api.Core.Endpoints
         public override IEnumerable<Model.File> Find()
         {
             var response = HandleFilesResponse(Client
-                .Client.Get("files.xro/1.0/Files", ""));
+                .Get("files.xro/1.0/Files", ""));
 
             return response.Items;
         }
@@ -49,7 +50,7 @@ namespace Xero.Api.Core.Endpoints
         public override Model.File Find(Guid fileId)
         {
             var response = HandleFilesResponse(Client
-                .Client.Get("files.xro/1.0/Files", ""));
+                .Get("files.xro/1.0/Files", ""));
 
             return response.Items.SingleOrDefault(i => i.Id == fileId);
         }
@@ -57,7 +58,7 @@ namespace Xero.Api.Core.Endpoints
         public Model.File Rename(Guid id, string name)
         {
             var response = HandleFileResponse(Client
-                .Client.Put("files.xro/1.0/Files/" + id, "{\"Name\":\"" + name + "\"}", "application/json"));
+                .Put("files.xro/1.0/Files/" + id, "{\"Name\":\"" + name + "\"}", true));
 
 
             return response;
@@ -66,7 +67,7 @@ namespace Xero.Api.Core.Endpoints
         public Model.File Move(Guid id, Guid newFolder)
         {
             var response = HandleFileResponse(Client
-                .Client.Put("files.xro/1.0/Files/" + id, "{\"FolderId\":\"" + newFolder + "\"}", "application/json"));
+                .Put("files.xro/1.0/Files/" + id, "{\"FolderId\":\"" + newFolder + "\"}", true));
 
 
             return response;
@@ -76,7 +77,6 @@ namespace Xero.Api.Core.Endpoints
         {
 
             var response = HandleFileResponse(Client
-                .Client
                 .PostMultipartForm("files.xro/1.0/Files/" + folderId, file.Mimetype, file.Name, file.FileName, data));
 
             return response;
@@ -85,7 +85,6 @@ namespace Xero.Api.Core.Endpoints
         public Model.File Remove(Guid fileid)
         {
             var response = HandleFileResponse(Client
-                .Client
                 .Delete("files.xro/1.0/Files/" + fileid.ToString()));
 
             return response;
@@ -93,22 +92,22 @@ namespace Xero.Api.Core.Endpoints
 
         public byte[] GetContent(Guid id, string contentType)
         {
-            var response = Client.Client.GetRaw("files.xro/1.0/Files/" + id + "/Content", contentType, "");
+            var response = Client.GetRaw("files.xro/1.0/Files/" + id + "/Content", contentType);
 
             using (MemoryStream ms = new MemoryStream())
             {
-                response.Stream.CopyTo(ms);
+                response.Content.ReadAsStreamAsync().Result.CopyTo(ms);
 
                 return ms.ToArray();
             }
 
         }
 
-        private Model.File HandleFileResponse(Infrastructure.Http.Response response)
+        private Model.File HandleFileResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
             {
-                var body = response.Body;
+                var body = response.Content.ReadAsStringAsync().Result;
 
                 var result = Client.JsonMapper.From<Model.File>(body);
                 return result;
@@ -119,11 +118,11 @@ namespace Xero.Api.Core.Endpoints
             return null;
         }
 
-        private FilesResponse HandleFilesResponse(Infrastructure.Http.Response response)
+        private FilesResponse HandleFilesResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
             {
-                var body = response.Body;
+                var body = response.Content.ReadAsStringAsync().Result;
 
                 var result = Client.JsonMapper.From<FilesResponse>(body);
                 return result;

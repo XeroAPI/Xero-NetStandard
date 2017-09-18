@@ -17,14 +17,16 @@ namespace Xero.Api.Core.Endpoints
 
         public BinaryFile Get(PdfEndpointType type, Guid parent)
         {
-            var data = Client.Client.GetRaw(string.Format("/api.xro/2.0/{0}/{1}", type, parent.ToString("D")), "application/pdf");
+            var response = Client.GetRaw(string.Format("/api.xro/2.0/{0}/{1}", type, parent.ToString("D")), "application/pdf");
 
-            if (data.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                return new BinaryFile(data.Stream, parent.ToString("D") + ".pdf", data.ContentType, data.ContentLength);
+                var stream = response.Content.ReadAsStreamAsync().Result;
+
+                return new BinaryFile(stream, parent.ToString("D") + ".pdf", response.Content.Headers.ContentType.ToString(), (int)stream.Length);
             }
 
-            Client.HandleErrors(data);
+            Client.HandleErrors(response);
 
             return null;
         }

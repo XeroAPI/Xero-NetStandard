@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using Newtonsoft.Json.Linq;
 using Xero.Api.Common;
 using Xero.Api.Infrastructure.Exceptions;
@@ -16,9 +19,16 @@ namespace Xero.Api.Infrastructure.Http
     // This knows nothing about the types being passed to and fro. (Except for the constraint in the generic type)
     public class XeroHttpClient
     {
+        static readonly TimeSpan DefaultTimeout = TimeSpan.FromMinutes(5.5);
+
         internal readonly IJsonObjectMapper JsonMapper;
         internal readonly IXmlObjectMapper XmlMapper;
-        internal readonly HttpClient Client;
+        internal static System.Net.Http.HttpClient HttpClient;
+
+        private IAuthenticator _auth;
+        private IConsumer _consumer;
+        private IUser _user;
+        private IRateLimiter _rateLimiter;
 
         private XeroHttpClient(IJsonObjectMapper jsonMapper, IXmlObjectMapper xmlMapper)
         {
@@ -35,76 +45,241 @@ namespace Xero.Api.Infrastructure.Http
         public XeroHttpClient(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IJsonObjectMapper jsonMapper, IXmlObjectMapper xmlMapper, IRateLimiter rateLimiter)
             : this(jsonMapper, xmlMapper)
         {
-            Client = new HttpClient(baseUri, auth, consumer, user, rateLimiter);
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+
+            };
+
+            _auth = auth;
+            _consumer = consumer;
+            _user = user;
+            _rateLimiter = rateLimiter;
+
+            HttpClient = new System.Net.Http.HttpClient(handler)
+            {
+                Timeout = DefaultTimeout,
+                BaseAddress = new Uri(baseUri)
+            };
         }
 
         public DateTime? ModifiedSince { get; set; }
         public string Where { get; set; }
         public string Order { get; set; }
         public NameValueCollection Parameters { get; set; }
-
-        public string UserAgent
-        {
-            get { return Client.UserAgent; }
-            set { Client.UserAgent = value; }
-        }
+        public string UserAgent { get; set; }
 
         public IEnumerable<TResult> Get<TResult, TResponse>(string endPoint)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            Client.ModifiedSince = ModifiedSince;
+            var queryString = CreateQueryString(true);
 
-            return Read<TResult, TResponse>(Client.Get(endPoint, new QueryGenerator(Where, Order, Parameters).UrlEncodedQueryString));
+            var request = CreateRequest(endPoint, HttpMethod.Get, query: queryString);
+
+            var response = SendRequest(request);
+
+            return Read<TResult, TResponse>(response);
         }
 
         internal IEnumerable<TResult> Post<TResult, TResponse>(string endpoint, byte[] data, string mimeType)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            return Read<TResult, TResponse>(Client.Post(endpoint, data, mimeType, new QueryGenerator(null, null, Parameters).UrlEncodedQueryString));
+            var queryString = CreateQueryString(null, null, Parameters, true);
+
+            HttpContent content = new ByteArrayContent(data);
+            content.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
+
+            var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
+
+            var response = SendRequest(request);
+
+            return Read<TResult, TResponse>(response);
         }
 
-        public IEnumerable<TResult> Post<TResult, TResponse>(string endPoint, object data)
+        public IEnumerable<TResult> Post<TResult, TResponse>(string endpoint, object data)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            return Read<TResult, TResponse>(Client.Post(endPoint, XmlMapper.To(data), query: new QueryGenerator(null, null, Parameters).UrlEncodedQueryString));
+            var queryString = CreateQueryString(null, null, Parameters, true);
+
+            HttpContent content = new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
+
+            var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
+
+            var response = SendRequest(request);
+
+            return Read<TResult, TResponse>(response);
         }
 
-        public IEnumerable<TResult> Put<TResult, TResponse>(string endPoint, object data)
+        public IEnumerable<TResult> Put<TResult, TResponse>(string endpoint, object data)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            return Read<TResult, TResponse>(Client.Put(endPoint, XmlMapper.To(data), query: new QueryGenerator(null, null, Parameters).UrlEncodedQueryString));
+            var queryString = CreateQueryString(null, null, Parameters, true);
+
+            HttpContent content = new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
+
+            var request = CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString);
+
+            var response = SendRequest(request);
+
+            return Read<TResult, TResponse>(response);
         }
 
-        public IEnumerable<TResult> Delete<TResult, TResponse>(string endPoint)
+        public IEnumerable<TResult> Delete<TResult, TResponse>(string endpoint)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            return Read<TResult, TResponse>(Client.Delete(endPoint));
+            var request = CreateRequest(endpoint, HttpMethod.Delete);
+
+            var response = SendRequest(request);
+
+            return Read<TResult, TResponse>(response);
         }
 
-        internal Response Get(string endpoint, string mimeType)
+        internal HttpResponseMessage Get(string endpoint)
         {
-            return Client.Get(endpoint, null);
+            return Get(endpoint, null);
         }
 
-        internal IEnumerable<TResult> Read<TResult, TResponse>(Response response)
+        internal HttpResponseMessage Get(string endpoint, string query)
+        {
+            var request = CreateRequest(endpoint, HttpMethod.Get, query: query);
+
+            return SendRequest(request);
+        }
+
+        internal HttpResponseMessage GetRaw(string endpoint, string mimetype)
+        {
+            var request = CreateRequest(endpoint, HttpMethod.Get, accept: mimetype);
+
+            return SendRequest(request);
+        }
+
+        internal HttpResponseMessage Put(string endpoint, object data, bool json = false)
+        {
+            var queryString = CreateQueryString(null, null, Parameters, true);
+
+            HttpContent content = json
+                ? new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml)
+                : new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson);
+
+            var request = CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString);
+
+            return SendRequest(request);
+        }
+
+        internal HttpResponseMessage Post(string endpoint, object data, bool json = false)
+        {
+            var queryString = CreateQueryString(null, null, Parameters, true);
+
+            HttpContent content = json
+                ? new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml)
+                : new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson);
+
+            var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
+
+            return SendRequest(request);
+        }
+
+        internal HttpResponseMessage Delete(string endpoint)
+        {
+            var request = CreateRequest(endpoint, HttpMethod.Delete);
+
+            return SendRequest(request);
+        }
+
+        public HttpResponseMessage PostMultipartForm(string endpoint, string contentType, string name, string filename, byte[] payload)
+        {
+            var request = CreateRequest(endpoint, HttpMethod.Post);
+
+            request.Content = CreateMultipartData(payload, contentType, filename);
+
+            return HttpClient.SendAsync(request).Result;
+        }
+
+        private HttpRequestMessage CreateRequest(string endPoint, HttpMethod method, string accept = "application/json", HttpContent content = null, string query = null)
+        {
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                endPoint = string.Format("{0}?{1}", endPoint, query);
+            }
+
+            var request = new HttpRequestMessage(method, endPoint)
+            {
+                Content = content
+            };
+
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(accept));
+
+            if (ModifiedSince.HasValue)
+            {
+                request.Headers.IfModifiedSince = ModifiedSince;
+            }
+
+            if (_auth != null)
+            {
+                var oauthSignature = _auth.GetSignature(_consumer, _user, new Uri(HttpClient.BaseAddress, request.RequestUri), method.Method, _consumer);
+
+                request.Headers.Add("Authorization", oauthSignature);
+            }
+
+            var escapedUserAgent = WebUtility.UrlEncode(!string.IsNullOrWhiteSpace(UserAgent) ? UserAgent : "Xero Api wrapper - " + _consumer.ConsumerKey);
+
+            request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(escapedUserAgent)));
+
+            if (_rateLimiter != null)
+                _rateLimiter.WaitUntilLimit();
+
+            return request;
+        }
+
+        private HttpResponseMessage SendRequest(HttpRequestMessage request)
+        {
+            return HttpClient.SendAsync(request).Result;
+        }
+
+        private string CreateQueryString(bool encoded)
+        {
+            return CreateQueryString(Where, Order, Parameters, encoded);
+        }
+
+        private string CreateQueryString(string where, string order, NameValueCollection paramters, bool encoded)
+        {
+            var generator = new QueryGenerator(where, order, paramters);
+
+            return encoded ? generator.UrlEncodedQueryString : generator.QueryString;
+        }
+
+        private MultipartFormDataContent CreateMultipartData(byte[] bytes, string contentType, string filename)
+        {
+            var mp = new MultipartFormDataContent(Guid.NewGuid().ToString());
+            mp.Headers.Add("Content-Type", contentType);
+            mp.Headers.Add("FileName", filename);
+            mp.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
+            mp.Add(new ByteArrayContent(bytes));
+
+            return mp;
+        }
+
+        internal IEnumerable<TResult> Read<TResult, TResponse>(HttpResponseMessage response)
             where TResponse : IXeroResponse<TResult>, new()
         {
             // this is the 'happy path'
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                return JsonMapper.From<TResponse>(response.Body).Values;
+                return JsonMapper.From<TResponse>(response.Content.ReadAsStringAsync().Result).Values;
             }
 
             HandleErrors(response);
-            
+
             return null;
         }
 
-        internal void HandleErrors(Response response)
+        internal void HandleErrors(HttpResponseMessage response)
         {
+            var body = response.Content.ReadAsStringAsync().Result;
+
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {
-                var data = JsonMapper.From<ApiException>(response.Body);
+                var data = JsonMapper.From<ApiException>(body);
 
                 if (data.Elements != null && data.Elements.Any())
                 {
@@ -112,12 +287,12 @@ namespace Xero.Api.Infrastructure.Http
                 }
 
                 //CHeck for inline errors
-                var jsonObject = JObject.Parse(response.Body);
+                var jsonObject = JObject.Parse(body);
                 var inlineValidationErrors = jsonObject.SelectTokens("$..ValidationErrors..Message").Select(p => new ValidationError { Message = p.ToString() }).ToList();
 
                 if (inlineValidationErrors.Any())
                 {
-                    data.Elements = new List<DataContractBase> { new DataContractBase {ValidationErrors = inlineValidationErrors } };
+                    data.Elements = new List<DataContractBase> { new DataContractBase { ValidationErrors = inlineValidationErrors } };
                     throw new ValidationException(data);
                 }
 
@@ -126,22 +301,21 @@ namespace Xero.Api.Infrastructure.Http
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                throw new UnauthorizedException(response.Body);
+                throw new UnauthorizedException(body);
             }
 
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                throw new NotFoundException(response.Body);
+                throw new NotFoundException(body);
             }
 
             if (response.StatusCode == HttpStatusCode.InternalServerError)
             {
-                throw new XeroApiException(response.StatusCode, response.Body);
+                throw new XeroApiException(response.StatusCode, body);
             }
 
             if (response.StatusCode == HttpStatusCode.ServiceUnavailable)
             {
-                var body = response.Body;
                 if (body.Contains("oauth_problem"))
                 {
                     throw new RateExceededException(body);
@@ -155,8 +329,8 @@ namespace Xero.Api.Infrastructure.Http
                 return;
             }
 
-            
-            throw new XeroApiException(response.StatusCode, response.Body);
+
+            throw new XeroApiException(response.StatusCode, body);
         }
     }
 }

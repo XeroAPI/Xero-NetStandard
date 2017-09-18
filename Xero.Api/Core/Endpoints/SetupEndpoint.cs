@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Net.Http;
 using Xero.Api.Core.Model.Setup;
 using Xero.Api.Core.Response;
 using Xero.Api.Infrastructure.Http;
@@ -30,22 +31,22 @@ namespace Xero.Api.Core.Endpoints
         public ImportSummary Update(Setup setup)
         {
             return HandleResponse(_client
-                .Client
-                .Post(_apiEndpointUrl, _client.XmlMapper.To(setup)));
+                .Post(_apiEndpointUrl, setup));
         }
 
         public ImportSummary Create(Setup setup)
         {
             return HandleResponse(_client
-                .Client
-                .Put(_apiEndpointUrl, _client.XmlMapper.To(setup)));
+                .Put(_apiEndpointUrl, setup));
         }
 
-        private ImportSummary HandleResponse(Infrastructure.Http.Response response)
+        private ImportSummary HandleResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                return _client.JsonMapper.From<SetupResponse>(response.Body).ImportSummary;                
+                var body = response.Content.ReadAsStringAsync().Result;
+
+                return _client.JsonMapper.From<SetupResponse>(body).ImportSummary;                
             }
 
             _client.HandleErrors(response);
