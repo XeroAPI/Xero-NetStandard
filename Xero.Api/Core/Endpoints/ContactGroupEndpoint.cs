@@ -48,7 +48,7 @@ namespace Xero.Api.Core.Endpoints
             var endpoint = string.Format("/api.xro/2.0/ContactGroups");
 
             var groups = HandleResponse(Client
-                .Put(endpoint, Client.XmlMapper.To(new List<ContactGroup> { contactGroup })))
+                .Put(endpoint, new List<ContactGroup> { contactGroup }))
                 .ContactGroups;
 
             return groups.FirstOrDefault();

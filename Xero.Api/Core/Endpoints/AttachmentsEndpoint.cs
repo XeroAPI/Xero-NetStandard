@@ -26,9 +26,7 @@ namespace Xero.Api.Core.Endpoints
 
         public Attachment Get(AttachmentEndpointType type, Guid parent, string fileName)
         {
-
-            var mimeType = MimeTypes.GetMimeType(fileName);
-            var response = Client.Get(string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), fileName), mimeType);
+            var response = Client.Get(string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), fileName));
 
             if (response.StatusCode == HttpStatusCode.OK)
             {

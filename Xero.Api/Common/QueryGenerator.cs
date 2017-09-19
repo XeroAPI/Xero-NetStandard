@@ -32,7 +32,7 @@ namespace Xero.Api.Common
             get
             {
                 var collection = BuildCollection();
-                return String.Join("&", collection.AllKeys.Select(a => a + "=" + WebUtility.UrlEncode(collection[a])).ToArray());
+                return String.Join("&", collection.AllKeys.Select(a => a + "=" + Uri.EscapeDataString(collection[a])).ToArray());
             }
         }
 

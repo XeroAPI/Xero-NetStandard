@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xero.Api.Core.Model;
@@ -20,7 +21,7 @@ namespace CoreTests.Integration.ManualJournals
         private Account Given_an_account(AccountType type = AccountType.Sales)
         {
             return Api.Accounts
-                .Where(string.Format("Type == \"{0}\"", type.ToString().ToUpper()))
+                .Where(string.Format("Type == \"{0}\" AND Status == \"ACTIVE\"", type.ToString().ToUpper()))
                 .Find()
                 .FirstOrDefault() ??
 
@@ -36,6 +37,7 @@ namespace CoreTests.Integration.ManualJournals
         {
             return Api.Create(new ManualJournal
             {
+                Date = DateTime.UtcNow.Date,
                 Narration = narration,
                 Lines = new List<Line>
                 {

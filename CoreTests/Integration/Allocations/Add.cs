@@ -72,7 +72,7 @@ namespace CoreTests.Integration.Allocations
         [Test]
         public void allocation_on_prepayment()
         {
-            var transaction = new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment);
+            var transaction = new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment, "310");
             var invoice = new Create().Given_an_authorised_invoice();
             var expected = Math.Min(transaction.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
@@ -133,7 +133,7 @@ namespace CoreTests.Integration.Allocations
         [Test]
         public void Prepayments_show_on_invoices()
         {
-            var transaction = new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment);
+            var transaction = new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment, "310");
             var invoice = new Create().Given_an_authorised_invoice();
             var expected = Math.Min(transaction.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 

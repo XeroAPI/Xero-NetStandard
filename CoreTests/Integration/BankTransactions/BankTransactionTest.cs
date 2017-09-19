@@ -13,7 +13,7 @@ namespace CoreTests.Integration.BankTransactions
             return Given_a_bank_transaction(BankTransactionType.Spend);
         }
 
-        public BankTransaction Given_a_bank_transaction(BankTransactionType type)
+        public BankTransaction Given_a_bank_transaction(BankTransactionType type, string accountCode = "404")
         {
             return Api.Create(new BankTransaction
             {
@@ -26,7 +26,7 @@ namespace CoreTests.Integration.BankTransactions
                         Description = "Yearly Bank Account Fee",
                         Quantity = 1m,
                         UnitAmount = 20.00m,
-                        AccountCode = "404"
+                        AccountCode = accountCode
                     }
                 },
                 BankAccount = new Account { Id = FindBankAccountGuid() }

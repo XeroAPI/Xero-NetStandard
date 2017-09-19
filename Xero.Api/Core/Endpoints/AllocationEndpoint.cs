@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using Xero.Api.Common;
 using Xero.Api.Core.Model;
+using Xero.Api.Core.Response;
 using Xero.Api.Infrastructure.Http;
 
 namespace Xero.Api.Core.Endpoints
@@ -65,20 +65,10 @@ namespace Xero.Api.Core.Endpoints
             where T : AllocationBase
         {
             var allocations = HandleResponse<T>(_client
-                .Put(endpoint, _client.XmlMapper.To(new List<T> { allocation })))
+                .Put(endpoint, new List<T> { allocation }))
                 .Allocations;
 
             return allocations.FirstOrDefault();
         }
     }
-
-    public class AllocationsResponse<T> : XeroResponse<T>
-    {
-        public List<T> Allocations { get; set; }
-
-        public override IList<T> Values
-        {
-            get { return Allocations; }
-        }
-    }     
 }

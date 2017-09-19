@@ -14,4 +14,9 @@
       <ProjectReference Include="..\Xero.Api.Example.Applications\Xero.Api.Example.Applications.csproj" />
       <ProjectReference Include="..\Xero.Api\Xero.Api.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>

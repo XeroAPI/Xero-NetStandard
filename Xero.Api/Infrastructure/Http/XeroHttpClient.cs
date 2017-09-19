@@ -158,8 +158,8 @@ namespace Xero.Api.Infrastructure.Http
             var queryString = CreateQueryString(null, null, Parameters, true);
 
             HttpContent content = json
-                ? new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml)
-                : new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson);
+                ? new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson)
+                : new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
             var request = CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString);
 
@@ -221,7 +221,7 @@ namespace Xero.Api.Infrastructure.Http
                 request.Headers.Add("Authorization", oauthSignature);
             }
 
-            var escapedUserAgent = WebUtility.UrlEncode(!string.IsNullOrWhiteSpace(UserAgent) ? UserAgent : "Xero Api wrapper - " + _consumer.ConsumerKey);
+            var escapedUserAgent = Uri.EscapeDataString(!string.IsNullOrWhiteSpace(UserAgent) ? UserAgent : "Xero Api wrapper - " + _consumer.ConsumerKey);
 
             request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(escapedUserAgent)));
 
