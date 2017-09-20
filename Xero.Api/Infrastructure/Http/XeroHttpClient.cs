@@ -27,6 +27,7 @@ namespace Xero.Api.Infrastructure.Http
         internal readonly IXmlObjectMapper XmlMapper = new DefaultMapper();
         internal static HttpClient HttpClient;
 
+        private readonly Uri _baseUri;
         private readonly IAuthenticator _auth;
         private readonly IConsumer _consumer;
         private readonly IUser _user;
@@ -34,6 +35,7 @@ namespace Xero.Api.Infrastructure.Http
 
         public XeroHttpClient(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IRateLimiter rateLimiter)
         {
+            _baseUri = new Uri(baseUri);
             _auth = auth;
             _consumer = consumer;
             _user = user;
@@ -47,8 +49,7 @@ namespace Xero.Api.Infrastructure.Http
 
             HttpClient = new HttpClient(handler)
             {
-                Timeout = DefaultTimeout,
-                BaseAddress = new Uri(baseUri)
+                Timeout = DefaultTimeout
             };
         }
 
@@ -191,7 +192,9 @@ namespace Xero.Api.Infrastructure.Http
                 endPoint = string.Format("{0}?{1}", endPoint, query);
             }
 
-            var request = new HttpRequestMessage(method, endPoint)
+            var uri = new Uri(_baseUri, endPoint);
+
+            var request = new HttpRequestMessage(method, uri)
             {
                 Content = content
             };
@@ -205,7 +208,7 @@ namespace Xero.Api.Infrastructure.Http
 
             if (_auth != null)
             {
-                var oauthSignature = _auth.GetSignature(_consumer, _user, new Uri(HttpClient.BaseAddress, request.RequestUri), method.Method, _consumer);
+                var oauthSignature = _auth.GetSignature(_consumer, _user, new Uri(_baseUri, request.RequestUri), method.Method, _consumer);
 
                 request.Headers.Add("Authorization", oauthSignature);
             }

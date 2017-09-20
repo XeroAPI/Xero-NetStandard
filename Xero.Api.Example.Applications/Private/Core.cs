@@ -1,18 +1,20 @@
 ﻿using Xero.Api.Core;
 using Xero.Api.Infrastructure.Interfaces;
-using Xero.Api.Infrastructure.OAuth;
 using Xero.Api.Infrastructure.RateLimiter;
-using Xero.Api.Serialization;
 
 namespace Xero.Api.Example.Applications.Private
 {
     public class Core : XeroCoreApi
     {
-        private static ApplicationSettings _applicationSettings = new ApplicationSettings();
-        private static IAuthenticator _privateAuthenticator = new PrivateAuthenticator(_applicationSettings.SigningCertificatePath, _applicationSettings.SigningCertificatePassword);
+        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
 
         public Core(bool includeRateLimiter = false) :
-            base(_privateAuthenticator, rateLimiter: includeRateLimiter ? new RateLimiter() : null)
+            this(new PrivateAuthenticator(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword), includeRateLimiter)
+        {
+        }
+
+        public Core(IAuthenticator authenticator, bool includeRateLimiter = false)
+            : base(authenticator, rateLimiter: includeRateLimiter ? new RateLimiter() : null)
         {
         }
     }

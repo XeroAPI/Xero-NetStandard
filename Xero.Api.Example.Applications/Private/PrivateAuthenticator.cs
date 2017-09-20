@@ -13,7 +13,6 @@ namespace Xero.Api.Example.Applications.Private
         public PrivateAuthenticator(string certificatePath)
             :this(certificatePath, "")
         {
-            
         }
 
         public PrivateAuthenticator(string certificatePath, string certificatePassword = "")
