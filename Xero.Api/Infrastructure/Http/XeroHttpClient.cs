@@ -13,6 +13,7 @@ using Xero.Api.Infrastructure.Exceptions;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.Model;
 using Xero.Api.Infrastructure.RateLimiter;
+using Xero.Api.Serialization;
 
 namespace Xero.Api.Infrastructure.Http
 {
@@ -22,42 +23,29 @@ namespace Xero.Api.Infrastructure.Http
     {
         static readonly TimeSpan DefaultTimeout = TimeSpan.FromMinutes(5.5);
 
-        internal readonly IJsonObjectMapper JsonMapper;
-        internal readonly IXmlObjectMapper XmlMapper;
-        internal static System.Net.Http.HttpClient HttpClient;
+        internal readonly IJsonObjectMapper JsonMapper = new DefaultMapper();
+        internal readonly IXmlObjectMapper XmlMapper = new DefaultMapper();
+        internal static HttpClient HttpClient;
 
-        private IAuthenticator _auth;
-        private IConsumer _consumer;
-        private IUser _user;
-        private IRateLimiter _rateLimiter;
+        private readonly IAuthenticator _auth;
+        private readonly IConsumer _consumer;
+        private readonly IUser _user;
+        private readonly IRateLimiter _rateLimiter;
 
-        private XeroHttpClient(IJsonObjectMapper jsonMapper, IXmlObjectMapper xmlMapper)
+        public XeroHttpClient(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IRateLimiter rateLimiter)
         {
-            JsonMapper = jsonMapper;
-            XmlMapper = xmlMapper;
-        }
+            _auth = auth;
+            _consumer = consumer;
+            _user = user;
+            _rateLimiter = rateLimiter;
 
-        public XeroHttpClient(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user,
-            IJsonObjectMapper jsonMapper, IXmlObjectMapper xmlMapper)
-            : this(baseUri, auth, consumer, user, jsonMapper, xmlMapper, null)
-        {
-        }
-
-        public XeroHttpClient(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IJsonObjectMapper jsonMapper, IXmlObjectMapper xmlMapper, IRateLimiter rateLimiter)
-            : this(jsonMapper, xmlMapper)
-        {
             var handler = new HttpClientHandler
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
 
             };
 
-            _auth = auth;
-            _consumer = consumer;
-            _user = user;
-            _rateLimiter = rateLimiter;
-
-            HttpClient = new System.Net.Http.HttpClient(handler)
+            HttpClient = new HttpClient(handler)
             {
                 Timeout = DefaultTimeout,
                 BaseAddress = new Uri(baseUri)

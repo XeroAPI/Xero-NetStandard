@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Xero.Api.Example.Applications
+namespace Xero.Api
 {
-    public class Settings
+    public class ApplicationSettings
     {
         public IConfigurationSection ApiSettings { get; set; }
 
-        public Settings()
+        public ApplicationSettings()
         {
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")

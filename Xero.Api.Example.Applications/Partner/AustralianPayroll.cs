@@ -7,24 +7,17 @@ namespace Xero.Api.Example.Applications.Partner
 {
     public class AustralianPayroll : Payroll.AustralianPayroll
     {
-        private static readonly DefaultMapper Mapper = new DefaultMapper();
-        private static readonly Settings ApplicationSettings = new Settings();
+        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
 
         public AustralianPayroll(ITokenStore store, IUser user, bool includeRateLimiter = false, string scope = null) :
-            base(ApplicationSettings.BaseUrl,
-                new PartnerAuthenticator(
+            base(new PartnerAuthenticator(
                     ApplicationSettings.BaseUrl,
                     ApplicationSettings.CallbackUrl,
                     store,
                     ApplicationSettings.SigningCertificatePath,
                     ApplicationSettings.SigningCertificatePassword,
                     scope),
-                new Consumer(
-                    ApplicationSettings.Key,
-                    ApplicationSettings.Secret),
                 user,
-                Mapper,
-                Mapper,
                 includeRateLimiter ? new RateLimiter() : null)
         {
         }

@@ -11,14 +11,8 @@ namespace Xero.Api.Payroll
 {
     public class AmericanPayroll : PayrollApi
     {
-        public AmericanPayroll(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user,
-            IJsonObjectMapper readMapper, IXmlObjectMapper writeMapper)
-            : this(baseUri, auth, consumer, user, readMapper, writeMapper, null)
-        {
-        }
-
-        public AmericanPayroll(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IJsonObjectMapper readMapper, IXmlObjectMapper writeMapper, IRateLimiter rateLimiter)
-            : base(baseUri, auth, consumer, user, readMapper, writeMapper, rateLimiter)
+        public AmericanPayroll(IAuthenticator auth, IUser user = null, IRateLimiter rateLimiter = null)
+            : base(auth, user, rateLimiter)
         {
             Connect();
         }

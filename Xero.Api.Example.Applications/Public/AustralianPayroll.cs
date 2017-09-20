@@ -8,20 +8,14 @@ namespace Xero.Api.Example.Applications.Public
     public class AustralianPayroll : Payroll.AustralianPayroll
     {
         private static readonly DefaultMapper Mapper = new DefaultMapper();
-        private static readonly Settings ApplicationSettings = new Settings();
+        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
 
         public AustralianPayroll(ITokenStore store, IUser user, bool includeRateLimiter = false, string scope = null) :
-            base(ApplicationSettings.BaseUrl,
-                new PublicAuthenticator(
+            base(new PublicAuthenticator(
                     ApplicationSettings.BaseUrl,
                     ApplicationSettings.CallbackUrl,
                     store, scope),
-                new Consumer(
-                    ApplicationSettings.Key,
-                    ApplicationSettings.Secret),
                 user,
-                Mapper,
-                Mapper,
                 includeRateLimiter ? new RateLimiter() : null)
         {
         }

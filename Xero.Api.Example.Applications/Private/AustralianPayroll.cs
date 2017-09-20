@@ -6,16 +6,11 @@ namespace Xero.Api.Example.Applications.Private
 {
     public class AustralianPayroll : Payroll.AustralianPayroll
     {
-        private static readonly DefaultMapper Mapper = new DefaultMapper();
-        private static readonly Settings ApplicationSettings = new Settings();
+        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
 
         public AustralianPayroll(bool includeRateLimiter = false) :
-            base(ApplicationSettings.BaseUrl,
-                new PrivateAuthenticator(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword),
-                new Consumer(ApplicationSettings.Key, ApplicationSettings.Secret),
+            base(new PrivateAuthenticator(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword),
                 null,
-                Mapper,
-                Mapper,
                 includeRateLimiter ? new RateLimiter() : null)
         {
         }

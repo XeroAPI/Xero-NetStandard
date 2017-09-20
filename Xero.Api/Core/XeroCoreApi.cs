@@ -6,36 +6,22 @@ using Xero.Api.Core.Endpoints;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Setup;
 using Xero.Api.Infrastructure.Interfaces;
+using Xero.Api.Infrastructure.OAuth;
 using Xero.Api.Infrastructure.RateLimiter;
-using Xero.Api.Serialization;
 using Organisation = Xero.Api.Core.Model.Organisation;
 
 namespace Xero.Api.Core
 {
     public class XeroCoreApi : XeroApi, IXeroCoreApi
     {
+        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
+        
         private IOrganisationEndpoint OrganisationEndpoint { get; set; }
-
-        public XeroCoreApi(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user,
-            IJsonObjectMapper readMapper, IXmlObjectMapper writeMapper)
-            : this(baseUri, auth, consumer, user, readMapper, writeMapper, null)
-        {
-        }
-
-        public XeroCoreApi(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IJsonObjectMapper readMapper, IXmlObjectMapper writeMapper, IRateLimiter rateLimiter)
-            : base(baseUri, auth, consumer, user, readMapper, writeMapper, rateLimiter)
+        
+        public XeroCoreApi(IAuthenticator auth, IUser user = null, IRateLimiter rateLimiter = null)
+            : base(ApplicationSettings.BaseUrl, auth, new Consumer(ApplicationSettings.Key, ApplicationSettings.Secret), user, rateLimiter)
         {
             Connect();
-        }
-        
-        public XeroCoreApi(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user)
-            : this(baseUri, auth, consumer, user, null)
-        {
-        }
-
-        public XeroCoreApi(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IRateLimiter rateLimiter)
-            : this(baseUri, auth, consumer, user, new DefaultMapper(), new DefaultMapper(), rateLimiter)
-        {
         }
 
         public IAccountsEndpoint Accounts { get; private set; }

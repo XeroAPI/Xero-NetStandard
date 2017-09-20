@@ -11,27 +11,17 @@ namespace Xero.Api.Common
 
         protected XeroHttpClient Client { get; private set; }
 
-        private XeroApi(string baseUri)
+        protected XeroApi(string baseUrl, IAuthenticator auth, IConsumer consumer, IUser user, IRateLimiter rateLimiter)
         {
-            BaseUri = baseUri;
-        }
+            BaseUri = baseUrl;
 
-        protected XeroApi(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IJsonObjectMapper readMapper, IXmlObjectMapper writeMapper, IRateLimiter rateLimiter)
-            : this(baseUri)
-        {
-            Client = new XeroHttpClient(baseUri, auth, consumer, user, readMapper, writeMapper, rateLimiter);
+            Client = new XeroHttpClient(baseUrl, auth, consumer, user, rateLimiter);
         }
 
         public string UserAgent
         {
-            get
-            {
-                return Client.UserAgent;
-            }
-            set
-            {
-                Client.UserAgent = value;
-            }
+            get => Client.UserAgent;
+            set => Client.UserAgent = value;
         }        
     }
 }

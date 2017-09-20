@@ -106,8 +106,10 @@ namespace Xero.Api.Example.MVC.Helpers
         {
             if (_applicationSettings.Authenticator is IAuthenticator)
             {
-                return new XeroCoreApi(_applicationSettings.BaseApiUrl, _applicationSettings.Authenticator as IAuthenticator,
-                    _applicationSettings.Consumer, User(), new DefaultMapper(), new DefaultMapper());
+                return new XeroCoreApi(
+                    _applicationSettings.Authenticator as IAuthenticator, 
+                    User()
+                );
             }
 
             return null;
