@@ -9,7 +9,7 @@ namespace Xero.Api.Example.Counts
         static void Main(string[] args)
         {
             var tokenStore = new MemoryTokenStore();
-            var user = new ApiUser { Name = Environment.MachineName };
+            var user = new ApiUser { Identifier = Environment.MachineName };
             
             var api = new Applications.Public.Core(tokenStore, user)
             {

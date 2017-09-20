@@ -89,7 +89,7 @@ namespace Xero.Api.Example.MVC.Helpers
 
         public static ApiUser User()
         {
-            return new ApiUser { Name = Environment.MachineName };
+            return new ApiUser { Identifier = Environment.MachineName };
         }
 
         public static IConsumer Consumer()

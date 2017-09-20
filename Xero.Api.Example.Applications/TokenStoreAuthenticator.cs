@@ -41,12 +41,12 @@ namespace Xero.Api.Example.Applications
             if (!HasStore)
                 return GetToken(consumer);
 
-            var token = Store.Find(user.Name);
+            var token = Store.Find(user.Identifier);
 
             if (token == null)
             {
                 token = GetToken(consumer);
-                token.UserId = user.Name;
+                token.UserId = user.Identifier;
 
                 Store.Add(token);
 
@@ -57,7 +57,7 @@ namespace Xero.Api.Example.Applications
                 return token;
             
             var newToken = RenewToken(token, consumer);
-            newToken.UserId = user.Name;
+            newToken.UserId = user.Identifier;
 
             Store.Delete(token);
             Store.Add(newToken);

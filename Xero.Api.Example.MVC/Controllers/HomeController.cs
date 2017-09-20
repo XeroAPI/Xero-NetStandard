@@ -24,14 +24,14 @@ namespace Xero.Api.Example.MVC.Controllers
 
         public ActionResult Connect()
         {
-            var authorizeUrl = _authenticator.GetRequestTokenAuthorizeUrl(_user.Name);
+            var authorizeUrl = _authenticator.GetRequestTokenAuthorizeUrl(_user.Identifier);
 
             return Redirect(authorizeUrl);
         }
 
         public ActionResult Authorize(string oauth_token, string oauth_verifier, string org)
         {
-            var accessToken = _authenticator.RetrieveAndStoreAccessToken(_user.Name, oauth_token, oauth_verifier, org);
+            var accessToken = _authenticator.RetrieveAndStoreAccessToken(_user.Identifier, oauth_token, oauth_verifier, org);
             if (accessToken == null)
                 return View("NoAuthorized");
 
