@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Payroll.Australia.Model;
 using Xero.Api.Payroll.Australia.Model.Status;
 using Xero.Api.Payroll.Australia.Model.Types;
@@ -10,13 +11,13 @@ namespace PayrollTests.AU.Integration.TimeSheets
     public abstract class TimesheetTest : ApiWrapperTest
     {
 
-        public Timesheet Given_a_timesheet()
+        public async Task<Timesheet> Given_a_timesheet()
         {
-            return Api.Create(new Timesheet
+            return await Api.CreateAsync(new Timesheet
             {
-                EmployeeId = the_employee_id(),
-                StartDate = timesheet_start_date(),
-                EndDate = timesheet_start_date().AddDays(6),
+                EmployeeId = await the_employee_id(),
+                StartDate = await timesheet_start_date(),
+                EndDate = (await timesheet_start_date()).AddDays(6),
                 Status = TimesheetStatus.Draft
             });
         }
@@ -24,58 +25,61 @@ namespace PayrollTests.AU.Integration.TimeSheets
 
 
 
-        public Guid the_employee_id()
+        public async Task<Guid> the_employee_id()
         {
-            var emp = Api.Create(new Employee
+            var emp = await Api.CreateAsync(new Employee
             {
                 FirstName = "Jack",
                 LastName = "Gray",
-                PayrollCalendarID = employee_payroll_calendar_id(),
-                OrdinaryEarningsRateID = earning_rates_id()
+                PayrollCalendarID = await employee_payroll_calendar_id(),
+                OrdinaryEarningsRateID = await earning_rates_id()
             });
             return emp.Id;
         }
 
 
 
-        public Guid employee_payroll_calendar_id()
+        public async Task<Guid> employee_payroll_calendar_id()
         {
-            var payruns = Api.PayRuns.Where("PayRunStatus == \"DRAFT\"").Find();
+            var payruns = await Api.PayRuns.Where("PayRunStatus == \"DRAFT\"").FindAsync();
             if (payruns.Any())
             {
                 return payruns.FirstOrDefault().PayrollCalendarId;
             }
             else
             {
-                var payroll_calendar_id = Api.Create(new PayrollCalendar
+                var payroll_calendar_id = (await Api.CreateAsync(new PayrollCalendar
                 {
                     Name = "New Calendar",
                     CalendarType = CalendarType.Weekly,
                     StartDate = DateTime.Today,
                     PaymentDate = DateTime.Today.AddDays(14)
-                }).Id;
+                })).Id;
 
-                Api.Create(new PayRun
-                  {
-                      PayrollCalendarId = payroll_calendar_id
-                  });
+                await Api.CreateAsync(new PayRun
+                {
+                    PayrollCalendarId = payroll_calendar_id
+                });
+
                 return payroll_calendar_id;
             }
         }
 
 
 
-        public Guid earning_rates_id()
+        public async Task<Guid> earning_rates_id()
         {
-            var er = Api.PayItems.Find();
+            var er = await Api.PayItems.FindAsync();
             return er.FirstOrDefault().EarningsRates.FirstOrDefault().Id;
         }
 
 
 
-        public DateTime timesheet_start_date()
+        public async Task<DateTime> timesheet_start_date()
         {
-            return Api.PayrollCalendars.Find(employee_payroll_calendar_id()).StartDate.GetValueOrDefault();
+            var calendarId = await employee_payroll_calendar_id();
+
+            return (await Api.PayrollCalendars.FindAsync(calendarId)).StartDate.GetValueOrDefault();
         }
 
 

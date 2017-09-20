@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
 
@@ -9,7 +10,7 @@ namespace CoreTests.Integration
     public class BankTransactionTest : ApiWrapperTest
     {
 
-        public BankTransaction NewBankTransaction()
+        public async Task<BankTransaction> NewBankTransaction()
         {
             var newBankTransaction = new BankTransaction
             {
@@ -25,7 +26,7 @@ namespace CoreTests.Integration
                             AccountCode = "404"
                         }
                     },
-                BankAccount = new Account { Id = FindBankAccountGuid() }
+                BankAccount = new Account { Id = await FindBankAccountGuid() }
             };
 
             return newBankTransaction;
@@ -33,9 +34,9 @@ namespace CoreTests.Integration
 
 
 
-        public Guid FindBankAccountGuid()
+        public async Task<Guid> FindBankAccountGuid()
         {
-            var bankAccount = Api.Accounts.Where("Type == \"BANK\"").Find().FirstOrDefault();
+            var bankAccount = (await Api.Accounts.Where("Type == \"BANK\"").FindAsync()).FirstOrDefault();
 
             if (bankAccount != null)
             {

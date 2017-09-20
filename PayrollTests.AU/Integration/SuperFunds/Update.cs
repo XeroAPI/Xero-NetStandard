@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using Xero.Api.Payroll.Australia.Model;
 using Xero.Api.Payroll.Australia.Model.Types;
 
@@ -8,9 +9,9 @@ namespace PayrollTests.AU.Integration.SuperFunds
     public class Update : ApiWrapperTest
     {
         [Test]
-        public void update_superfund()
+        public async Task update_superfund()
         {
-            var sf = Api.Create(new SuperFund
+            var sf = await Api.CreateAsync(new SuperFund
             {
                 Type = SuperfundType.SelfManaged,
                 Abn = "01001032511",
@@ -20,8 +21,7 @@ namespace PayrollTests.AU.Integration.SuperFunds
                 AccountNumber = "111222333",
             });
 
-
-            var updated_superfund = Api.Update(new SuperFund
+            Assert.DoesNotThrowAsync(() => Api.UpdateAsync(new SuperFund
             {
                 Id = sf.Id,
                 Type = SuperfundType.SelfManaged,
@@ -30,7 +30,7 @@ namespace PayrollTests.AU.Integration.SuperFunds
                 BankStateBranch = "059357",
                 AccountName = "Test",
                 AccountNumber = "654645645",
-            });
+            }));
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Payroll.Australia.Model;
 using Xero.Api.Payroll.Australia.Model.Status;
@@ -10,12 +11,12 @@ namespace PayrollTests.AU.Integration.LeaveApplications
     public class Create : LeaveApplicationTest
     {
         [Test]
-        public void create_leave_application()
+        public async Task create_leave_application()
         {
-            var la = Api.Create(new LeaveApplication
+            var la = await Api.CreateAsync(new LeaveApplication
             {
-                EmployeeId = Given_an_employee().Id,
-                LeaveTypeId = the_leavetype_id(),
+                EmployeeId = (await Given_an_employee()).Id,
+                LeaveTypeId = await the_leavetype_id(),
                 Title = "Annual",
                 StartDate = DateTime.Today.AddDays(2),
                 EndDate = DateTime.Today.AddDays(4),

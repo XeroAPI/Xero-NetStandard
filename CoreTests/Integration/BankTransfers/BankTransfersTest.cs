@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 
 namespace CoreTests.Integration.BankTransfers
@@ -8,9 +9,9 @@ namespace CoreTests.Integration.BankTransfers
     public abstract class BankTransfersTest : ApiWrapperTest
     {
 
-        public BankTransfer Given_a_bank_transfer(Decimal amount)
+        public async Task<BankTransfer> Given_a_bank_transfer(Decimal amount)
         {
-            var accountIds = get_bankaccount_ids();
+            var accountIds = await get_bankaccount_ids();
    
             var newBankTransfer = new BankTransfer
             {
@@ -19,14 +20,14 @@ namespace CoreTests.Integration.BankTransfers
                 Amount = amount
             };
             
-            return Api.Create(newBankTransfer);
+            return await Api.CreateAsync(newBankTransfer);
         }
 
 
-        public IList<Guid> get_bankaccount_ids()
+        public async Task<IList<Guid>> get_bankaccount_ids()
         {
-            return Api.Accounts.Where("Type == \"BANK\"")
-                .Find()
+            return (await Api.Accounts.Where("Type == \"BANK\"")
+                .FindAsync())
                 .Select(p => p.Id)
                 .ToList();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
@@ -9,43 +10,43 @@ namespace CoreTests.Integration.Accounts
     public class Update : ApiWrapperTest
     {
         [Test]
-        public void Update_account()
+        public async Task Update_account()
         {
             var expectedDescription = "Updated Account" + Guid.NewGuid();
 
-            var account = CreateAccount();
+            var account = await CreateAccount();
 
             account.Description = expectedDescription;
 
-            Api.Accounts.Update(account);
+            await Api.Accounts.UpdateAsync(account);
 
-            var updated = Api.Accounts.Find(account.Id);
+            var updated = await Api.Accounts.FindAsync(account.Id);
 
             Assert.True(updated.Description == expectedDescription);
         }
 
 
         [Test]
-        public void Archive_account()
+        public async Task Archive_account()
         {
-            var account = CreateAccount();
+            var account = await CreateAccount();
 
-            Api.Accounts.Update(new Account
+            await Api.Accounts.UpdateAsync(new Account
             {
                 Id = account.Id,
                 Status = AccountStatus.Archived
             });
 
-            var updated = Api.Accounts.Find(account.Id);
+            var updated = await Api.Accounts.FindAsync(account.Id);
 
             Assert.True(updated.Status == AccountStatus.Archived);
         }
 
-        private Account CreateAccount()
+        private async Task<Account> CreateAccount()
         {
             var code = "1234" + Guid.NewGuid();
 
-            return Api.Accounts.Create(new Account
+            return await Api.Accounts.CreateAsync(new Account
             {
                 Code = code.Substring(0, 10),
                 Name = "New Account " + Guid.NewGuid(),

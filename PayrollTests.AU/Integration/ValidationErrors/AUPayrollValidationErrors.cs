@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Infrastructure.Exceptions;
 using Xero.Api.Payroll.Australia.Model;
@@ -8,13 +9,13 @@ namespace PayrollTests.AU.Integration.ValidationErrors
     public class AUPayrollValidationErrors : ApiWrapperTest
     {
         [Test]
-        public void Validation_errors_are_returned_from_the_AU_payroll_api()
+        public async Task Validation_errors_are_returned_from_the_AU_payroll_api()
         {
             var employee = new Employee() {FirstName = "Jimmy"};
 
             try
             {
-                Api.Employees.Create(employee);
+                await Api.Employees.CreateAsync(employee);
             }
             catch (ValidationException e)
             {

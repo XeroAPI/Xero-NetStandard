@@ -10,28 +10,28 @@ namespace CoreTests.Integration.Reports
         [Test]
         public void find_all()
         {
-            var reports = Api.Reports.Find();
+            var reports = Api.Reports.FindAsync();
             Assert.IsNotNull(reports);
         }
 
         [Test]
         public void find_gst_report()
         {
-            var reports = Api.Reports.Find("BalanceSheet");
+            var reports = Api.Reports.FindAsync("BalanceSheet");
             Assert.IsNotNull(reports);
         }
 
         [Test]
         public void find_PL_report()
         {
-            var reports = Api.Reports.ProfitAndLoss(DateTime.Now.AddDays(-50));
+            var reports = Api.Reports.ProfitAndLossAsync(DateTime.Now.AddDays(-50));
             Assert.IsNotNull(reports);
         }
 
         [Test]
         public void find_BudgetSummary_report()
         {
-            var reports = Api.Reports.BudgetSummary(DateTime.Now.AddDays(-50));
+            var reports = Api.Reports.BudgetSummaryAsync(DateTime.Now.AddDays(-50));
             Assert.IsNotNull(reports);
         }
     }

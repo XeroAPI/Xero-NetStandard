@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -15,46 +16,46 @@ namespace CoreTests.Integration.Attachments
         private const string ImageWithSpacesPath = @"resources\images\connect_xero_button_blue - Copy.png";
 
         [Test]
-        public void adding_attachment_to_invoice()
+        public async Task adding_attachment_to_invoice()
         {
-            var attachment = Given_attachment_on_invoice();
+            var attachment = await Given_attachment_on_invoice();
             
             Assert.IsTrue(attachment.Id != Guid.Empty);
         }
 
         [Test]
-        public void listing_attachments()
+        public async Task listing_attachments()
         {
-            var id = Given_invoice_with_no_attachments();
-            CreateAttachment(id, AttachmentEndpointType.Invoices);
+            var id = await Given_invoice_with_no_attachments();
+            await CreateAttachment(id, AttachmentEndpointType.Invoices);
 
-            var attachments = Api.Attachments.List(AttachmentEndpointType.Invoices, id).ToList();
+            var attachments = (await Api.Attachments.ListAsync(AttachmentEndpointType.Invoices, id)).ToList();
 
             Assert.IsTrue(attachments.Any());
             Assert.IsTrue(attachments.First().Id != Guid.Empty);
         }
 
         [Test]
-        public void getting_attachment()
+        public async Task getting_attachment()
         {
-            var id = Given_invoice_with_no_attachments();
+            var id = await Given_invoice_with_no_attachments();
             var sourceFile = new FileInfo(ImagePath);
 
-            var attachment = CreateAttachment(id, AttachmentEndpointType.Invoices, sourceFile);
+            var attachment = await CreateAttachment(id, AttachmentEndpointType.Invoices, sourceFile);
 
             Assert.AreEqual(attachment.ContentLength, sourceFile.Length);
             Assert.AreEqual(attachment.FileName, sourceFile.Name);
         }
 
         [Test]
-        public void saving_attachments()
+        public async Task saving_attachments()
         {
             var sourceFile = new FileInfo(ImagePath);
 
-            var id = Given_invoice_with_no_attachments();
-            var attachment = CreateAttachment(id, AttachmentEndpointType.Invoices);
+            var id = await Given_invoice_with_no_attachments();
+            var attachment = await CreateAttachment(id, AttachmentEndpointType.Invoices);
 
-            attachment = GetAttachment(id, AttachmentEndpointType.Invoices, attachment.FileName);
+            attachment = await GetAttachment(id, AttachmentEndpointType.Invoices, attachment.FileName);
             
             var path = Path.GetTempFileName();
             attachment.Save(path);
@@ -68,79 +69,84 @@ namespace CoreTests.Integration.Attachments
         }
 
         [Test]
-        public void saving_attachment_online_invoice_accrec()
+        public async Task saving_attachment_online_invoice_accrec()
         {
-            var attachment = Given_attachment_on_invoice(true);
+            var attachment = await Given_attachment_on_invoice(true);
             
             Assert.AreEqual(true, attachment.IncludeOnline);
         }
 
         [Test]
-        public void saving_attachment_online_invoice_accpay()
+        public async Task saving_attachment_online_invoice_accpay()
         {
-            var attachment = Given_attachment_on_invoice();
+            var attachment = await Given_attachment_on_invoice();
 
             Assert.AreEqual(false, attachment.IncludeOnline);
         }
 
         [Test]
-        public void saving_attachment_online_credit_note()
+        public async Task saving_attachment_online_credit_note()
         {
-            var attachment = Given_attachment_on_credit_note(true);
+            var attachment = await Given_attachment_on_credit_note(true);
 
             Assert.AreEqual(true, attachment.IncludeOnline);
         }
 
         [Test]
-        public void saving_attachment_credit_note()
+        public async Task saving_attachment_credit_note()
         {
-            var attachment = Given_attachment_on_credit_note();
+            var attachment = await Given_attachment_on_credit_note();
 
             Assert.AreEqual(false, attachment.IncludeOnline);
         }
 
         [Test]
-        public void can_save_attachments_with_spaces_in_the_name()
+        public async Task can_save_attachments_with_spaces_in_the_name()
         {
-            var attachment = Given_an_attachment_with_a_space_in_the_name_on_an_invoice();
+            var attachment = await Given_an_attachment_with_a_space_in_the_name_on_an_invoice();
 
             Assert.AreEqual(false, attachment.IncludeOnline);
         }
 
-        private Attachment Given_attachment_on_invoice(bool includeOnline = false)
+        private async Task<Attachment> Given_attachment_on_invoice(bool includeOnline = false)
         {
-            return CreateAttachment(Given_invoice_with_no_attachments(includeOnline), AttachmentEndpointType.Invoices, includeOnline);
+            var invoice = await Given_invoice_with_no_attachments(includeOnline);
+
+            return await CreateAttachment(invoice, AttachmentEndpointType.Invoices, includeOnline);
         }
 
-        private Attachment Given_an_attachment_with_a_space_in_the_name_on_an_invoice(bool includeOnline = false)
+        private async Task<Attachment> Given_an_attachment_with_a_space_in_the_name_on_an_invoice(bool includeOnline = false)
         {
-            return CreateAttachment(Given_invoice_with_no_attachments(includeOnline), AttachmentEndpointType.Invoices, new FileInfo(ImageWithSpacesPath), includeOnline);
+            var invoice = await Given_invoice_with_no_attachments(includeOnline);
+
+            return await CreateAttachment(invoice, AttachmentEndpointType.Invoices, new FileInfo(ImageWithSpacesPath), includeOnline);
         }
 
-        private Attachment Given_attachment_on_credit_note(bool includeOnline = false)
+        private async Task<Attachment> Given_attachment_on_credit_note(bool includeOnline = false)
         {
-            return CreateAttachment(Given_credit_note_with_no_attachments(), AttachmentEndpointType.CreditNotes, includeOnline);
+            var invoice = await Given_credit_note_with_no_attachments();
+            return await CreateAttachment(invoice, AttachmentEndpointType.CreditNotes, includeOnline);
         }
 
 
-        private Attachment CreateAttachment(Guid id, AttachmentEndpointType type, bool includeOnline = false)
+        private async Task<Attachment> CreateAttachment(Guid id, AttachmentEndpointType type, bool includeOnline = false)
         {
-            return CreateAttachment(id, type, new FileInfo(ImagePath), includeOnline);
+            return await CreateAttachment(id, type, new FileInfo(ImagePath), includeOnline);
         }
 
-        private Attachment CreateAttachment(Guid id, AttachmentEndpointType type, FileInfo sourceFile, bool includeOnline = false)
+        private async Task<Attachment> CreateAttachment(Guid id, AttachmentEndpointType type, FileInfo sourceFile, bool includeOnline = false)
         {
-            return Api.Attachments.AddOrReplace(new Attachment(sourceFile), type, id, includeOnline);            
+            return await Api.Attachments.AddOrReplaceAsync(new Attachment(sourceFile), type, id, includeOnline);            
         }
 
-        private Attachment GetAttachment(Guid id, AttachmentEndpointType type, string fileName)
+        private async Task<Attachment> GetAttachment(Guid id, AttachmentEndpointType type, string fileName)
         {
-            return Api.Attachments.Get(type, id, fileName);
+            return await Api.Attachments.GetAsync(type, id, fileName);
         }
 
-        private Guid Given_invoice_with_no_attachments(bool accRec = false)
+        private async Task<Guid> Given_invoice_with_no_attachments(bool accRec = false)
         {
-            return Api.Create(new Invoice
+            return (await Api.CreateAsync(new Invoice
             {
                 Contact = new Contact { Name = "Richard" },
                 Type = accRec ? InvoiceType.AccountsReceivable : InvoiceType.AccountsPayable,
@@ -152,12 +158,12 @@ namespace CoreTests.Integration.Attachments
                         LineAmount = 100.0m
                     }
                 }
-            }).Id;
+            })).Id;
         }
 
-        private Guid Given_credit_note_with_no_attachments()
+        private async Task<Guid> Given_credit_note_with_no_attachments()
         {
-            return Api.CreditNotes.Create(new CreditNote
+            return (await Api.CreditNotes.CreateAsync(new CreditNote
             {
                 Contact = new Contact {Name = "Apple Computers Ltd"},
                 Type = CreditNoteType.AccountsReceivable,
@@ -171,7 +177,7 @@ namespace CoreTests.Integration.Attachments
                         UnitAmount = 1995.00m
                     }
                 }
-            }).Id;
+            })).Id;
         }
     }
 }

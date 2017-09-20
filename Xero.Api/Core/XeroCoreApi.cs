@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Common;
 using Xero.Api.Core.Endpoints;
 using Xero.Api.Core.Model;
@@ -111,422 +112,419 @@ namespace Xero.Api.Core
             Users = new UsersEndpoint(Client);
         }
 
-        public Organisation Organisation
+        public async Task<Organisation> FindOrganisationAsync()
         {
-            get
-            {
-                return OrganisationEndpoint.Find().FirstOrDefault();
-            }
+            return (await OrganisationEndpoint.FindAsync()).FirstOrDefault();
         }
 
         #region Accounts
 
-        public IEnumerable<Account> Create(IEnumerable<Account> items)
+        public async Task<IEnumerable<Account>> CreateAsync(IEnumerable<Account> items)
         {
-            return Accounts.Create(items);
+            return await Accounts.CreateAsync(items);
         }
 
-        public IEnumerable<Account> Update(IEnumerable<Account> items)
+        public async Task<IEnumerable<Account>> UpdateAsync(IEnumerable<Account> items)
         {
-            return Accounts.Update(items);
+            return await Accounts.UpdateAsync(items);
         }
 
-        public Account Create(Account item)
+        public async Task<Account> CreateAsync(Account item)
         {
-            return Accounts.Create(item);
+            return await Accounts.CreateAsync(item);
         }
 
-        public Account Update(Account item)
+        public async Task<Account> UpdateAsync(Account item)
         {
-            return Accounts.Update(item);
+            return await Accounts.UpdateAsync(item);
         }
 
         #endregion
 
         #region BankTransactions
 
-        public IEnumerable<BankTransaction> Create(IEnumerable<BankTransaction> items)
+        public async Task<IEnumerable<BankTransaction>> CreateAsync(IEnumerable<BankTransaction> items)
         {
-            return BankTransactions.Create(items);
+            return await BankTransactions.CreateAsync(items);
         }
 
-        public IEnumerable<BankTransaction> Update(IEnumerable<BankTransaction> items)
+        public async Task<IEnumerable<BankTransaction>> UpdateAsync(IEnumerable<BankTransaction> items)
         {
-            return BankTransactions.Update(items);
+            return await BankTransactions.UpdateAsync(items);
         }
 
-        public BankTransaction Create(BankTransaction item)
+        public async Task<BankTransaction> CreateAsync(BankTransaction item)
         {
-            return BankTransactions.Create(item);
+            return await BankTransactions.CreateAsync(item);
         }
 
-        public BankTransaction Update(BankTransaction item)
+        public async Task<BankTransaction> UpdateAsync(BankTransaction item)
         {
-            return BankTransactions.Update(item);
+            return await BankTransactions.UpdateAsync(item);
         }
 
         #endregion
 
         #region BankTransfers
 
-        public IEnumerable<BankTransfer> Create(IEnumerable<BankTransfer> items)
+        public async Task<IEnumerable<BankTransfer>> CreateAsync(IEnumerable<BankTransfer> items)
         {
-            return BankTransfers.Create(items);
+            return await BankTransfers.CreateAsync(items);
         }
 
-        public BankTransfer Create(BankTransfer item)
+        public async Task<BankTransfer> CreateAsync(BankTransfer item)
         {
-            return BankTransfers.Create(item);
+            return await BankTransfers.CreateAsync(item);
         }
 
         #endregion
 
         #region Contacts
 
-        public IEnumerable<Contact> Create(IEnumerable<Contact> items)
+        public async Task<IEnumerable<Contact>> CreateAsync(IEnumerable<Contact> items)
         {
-            return Contacts.Create(items);
+            return await Contacts.CreateAsync(items);
         }
 
-        public IEnumerable<Contact> Update(IEnumerable<Contact> items)
+        public async Task<IEnumerable<Contact>> UpdateAsync(IEnumerable<Contact> items)
         {
-            return Contacts.Update(items);
+            return await Contacts.UpdateAsync(items);
         }
 
-        public Contact Create(Contact item)
+        public async Task<Contact> CreateAsync(Contact item)
         {
-            return Contacts.Create(item);
+            return await Contacts.CreateAsync(item);
         }
 
-        public Contact Update(Contact item)
+        public async Task<Contact> UpdateAsync(Contact item)
         {
-            return Contacts.Update(item);
+            return await Contacts.UpdateAsync(item);
         }
 
         #endregion
         
         #region ContactGroups
 
-        public IEnumerable<ContactGroup> Create(IEnumerable<ContactGroup> items)
+        public async Task<IEnumerable<ContactGroup>> CreateAsync(IEnumerable<ContactGroup> items)
         {
-            return ContactGroups.Create(items);
+            return await ContactGroups.CreateAsync(items);
         }
 
-        public IEnumerable<ContactGroup> Update(IEnumerable<ContactGroup> items)
+        public async Task<IEnumerable<ContactGroup>> UpdateAsync(IEnumerable<ContactGroup> items)
         {
-            return ContactGroups.Update(items);
+            return await ContactGroups.UpdateAsync(items);
         }
 
-        public ContactGroup Create(ContactGroup item)
+        public async Task<ContactGroup> CreateAsync(ContactGroup item)
         {
-            return ContactGroups.Create(item);
+            return await ContactGroups.CreateAsync(item);
         }
 
-        public ContactGroup Update(ContactGroup item)
+        public async Task<ContactGroup> UpdateAsync(ContactGroup item)
         {
-            return ContactGroups.Update(item);
+            return await ContactGroups.UpdateAsync(item);
         }
 
         #endregion
 
         #region CreditNotes
 
-        public IEnumerable<CreditNote> Create(IEnumerable<CreditNote> items)
+        public async Task<IEnumerable<CreditNote>> CreateAsync(IEnumerable<CreditNote> items)
         {
-            return CreditNotes.Create(items);
+            return await CreditNotes.CreateAsync(items);
         }
 
-        public IEnumerable<CreditNote> Update(IEnumerable<CreditNote> items)
+        public async Task<IEnumerable<CreditNote>> UpdateAsync(IEnumerable<CreditNote> items)
         {
-            return CreditNotes.Update(items);
+            return await CreditNotes.UpdateAsync(items);
         }
 
-        public CreditNote Create(CreditNote item)
+        public async Task<CreditNote> CreateAsync(CreditNote item)
         {
-            return CreditNotes.Create(item);
+            return await CreditNotes.CreateAsync(item);
         }
 
-        public CreditNote Update(CreditNote item)
+        public async Task<CreditNote> UpdateAsync(CreditNote item)
         {
-            return CreditNotes.Update(item);
+            return await CreditNotes.UpdateAsync(item);
         }
 
         #endregion
 
         #region Employees
 
-        public IEnumerable<Employee> Create(IEnumerable<Employee> items)
+        public async Task<IEnumerable<Employee>> CreateAsync(IEnumerable<Employee> items)
         {
-            return Employees.Create(items);
+            return await Employees.CreateAsync(items);
         }
 
-        public IEnumerable<Employee> Update(IEnumerable<Employee> items)
+        public async Task<IEnumerable<Employee>> UpdateAsync(IEnumerable<Employee> items)
         {
-            return Employees.Update(items);
+            return await Employees.UpdateAsync(items);
         }
 
-        public Employee Create(Employee item)
+        public async Task<Employee> CreateAsync(Employee item)
         {
-            return Employees.Create(item);
+            return await Employees.CreateAsync(item);
         }
 
-        public Employee Update(Employee item)
+        public async Task<Employee> UpdateAsync(Employee item)
         {
-            return Employees.Update(item);
+            return await Employees.UpdateAsync(item);
         }
 
         #endregion
 
         #region ExpenseClaims
 
-        public IEnumerable<ExpenseClaim> Create(IEnumerable<ExpenseClaim> items)
+        public async Task<IEnumerable<ExpenseClaim>> CreateAsync(IEnumerable<ExpenseClaim> items)
         {
-            return ExpenseClaims.Create(items);
+            return await ExpenseClaims.CreateAsync(items);
         }
 
-        public IEnumerable<ExpenseClaim> Update(IEnumerable<ExpenseClaim> items)
+        public async Task<IEnumerable<ExpenseClaim>> UpdateAsync(IEnumerable<ExpenseClaim> items)
         {
-            return ExpenseClaims.Update(items);
+            return await ExpenseClaims.UpdateAsync(items);
         }
 
-        public ExpenseClaim Create(ExpenseClaim item)
+        public async Task<ExpenseClaim> CreateAsync(ExpenseClaim item)
         {
-            return ExpenseClaims.Create(item);
+            return await ExpenseClaims.CreateAsync(item);
         }
 
-        public ExpenseClaim Update(ExpenseClaim item)
+        public async Task<ExpenseClaim> UpdateAsync(ExpenseClaim item)
         {
-            return ExpenseClaims.Update(item);
+            return await ExpenseClaims.UpdateAsync(item);
         }
 
         #endregion
 
         #region Invoices
 
-        public IEnumerable<Invoice> Create(IEnumerable<Invoice> items)
+        public async Task<IEnumerable<Invoice>> CreateAsync(IEnumerable<Invoice> items)
         {
-            return Invoices.Create(items);
+            return await Invoices.CreateAsync(items);
         }
 
-        public IEnumerable<Invoice> Update(IEnumerable<Invoice> items)
+        public async Task<IEnumerable<Invoice>> UpdateAsync(IEnumerable<Invoice> items)
         {
-            return Invoices.Update(items);
+            return await Invoices.UpdateAsync(items);
         }
 
-        public Invoice Create(Invoice item)
+        public async Task<Invoice> CreateAsync(Invoice item)
         {
-            return Invoices.Create(item);
+            return await Invoices.CreateAsync(item);
         }
 
-        public Invoice Update(Invoice item)
+        public async Task<Invoice> UpdateAsync(Invoice item)
         {
-            return Invoices.Update(item);
+            return await Invoices.UpdateAsync(item);
         }
 
         #endregion
 
         #region Items
 
-        public IEnumerable<Item> Create(IEnumerable<Item> items)
+        public async Task<IEnumerable<Item>> CreateAsync(IEnumerable<Item> items)
         {
-            return Items.Create(items);
+            return await Items.CreateAsync(items);
         }
 
-        public IEnumerable<Item> Update(IEnumerable<Item> items)
+        public async Task<IEnumerable<Item>> UpdateAsync(IEnumerable<Item> items)
         {
-            return Items.Update(items);
+            return await Items.UpdateAsync(items);
         }
 
-        public Item Create(Item item)
+        public async Task<Item> CreateAsync(Item item)
         {
-            return Items.Create(item);
+            return await Items.CreateAsync(item);
         }
 
-        public Item Update(Item item)
+        public async Task<Item> UpdateAsync(Item item)
         {
-            return Items.Update(item);
+            return await Items.UpdateAsync(item);
         }
 
         #endregion
 
         #region LinkedTransactions
 
-        public IEnumerable<LinkedTransaction> Create(IEnumerable<LinkedTransaction> items)
+        public async Task<IEnumerable<LinkedTransaction>> CreateAsync(IEnumerable<LinkedTransaction> items)
         {
-            return LinkedTransactions.Create(items);
+            return await LinkedTransactions.CreateAsync(items);
         }
 
-        public IEnumerable<LinkedTransaction> Update(IEnumerable<LinkedTransaction> items)
+        public async Task<IEnumerable<LinkedTransaction>> UpdateAsync(IEnumerable<LinkedTransaction> items)
         {
-            return LinkedTransactions.Update(items);
+            return await LinkedTransactions.UpdateAsync(items);
         }
 
-        public LinkedTransaction Create(LinkedTransaction item)
+        public async Task<LinkedTransaction> CreateAsync(LinkedTransaction item)
         {
-            return LinkedTransactions.Create(item);
+            return await LinkedTransactions.CreateAsync(item);
         }
 
-        public LinkedTransaction Update(LinkedTransaction item)
+        public async Task<LinkedTransaction> UpdateAsync(LinkedTransaction item)
         {
-            return LinkedTransactions.Update(item);
+            return await LinkedTransactions.UpdateAsync(item);
         }
 
         #endregion
 
         #region ManualJournals
 
-        public IEnumerable<ManualJournal> Create(IEnumerable<ManualJournal> items)
+        public async Task<IEnumerable<ManualJournal>> CreateAsync(IEnumerable<ManualJournal> items)
         {
-            return ManualJournals.Create(items);
+            return await ManualJournals.CreateAsync(items);
         }
 
-        public IEnumerable<ManualJournal> Update(IEnumerable<ManualJournal> items)
+        public async Task<IEnumerable<ManualJournal>> UpdateAsync(IEnumerable<ManualJournal> items)
         {
-            return ManualJournals.Update(items);
+            return await ManualJournals.UpdateAsync(items);
         }
 
-        public ManualJournal Create(ManualJournal item)
+        public async Task<ManualJournal> CreateAsync(ManualJournal item)
         {
-            return ManualJournals.Create(item);
+            return await ManualJournals.CreateAsync(item);
         }
 
-        public ManualJournal Update(ManualJournal item)
+        public async Task<ManualJournal> UpdateAsync(ManualJournal item)
         {
-            return ManualJournals.Update(item);
+            return await ManualJournals.UpdateAsync(item);
         }
 
         #endregion
 
         #region Payments
 
-        public IEnumerable<Payment> Create(IEnumerable<Payment> items)
+        public async Task<IEnumerable<Payment>> CreateAsync(IEnumerable<Payment> items)
         {
-            return Payments.Create(items);
+            return await Payments.CreateAsync(items);
         }
 
-        public IEnumerable<Payment> Update(IEnumerable<Payment> items)
+        public async Task<IEnumerable<Payment>> UpdateAsync(IEnumerable<Payment> items)
         {
-            return Payments.Update(items);
+            return await Payments.UpdateAsync(items);
         }
 
-        public Payment Create(Payment item)
+        public async Task<Payment> CreateAsync(Payment item)
         {
-            return Payments.Create(item);
+            return await Payments.CreateAsync(item);
         }
 
-        public Payment Update(Payment item)
+        public async Task<Payment> UpdateAsync(Payment item)
         {
-            return Payments.Update(item);
+            return await Payments.UpdateAsync(item);
         }
 
         #endregion
 
         #region PurchaseOrders
 
-        public IEnumerable<PurchaseOrder> Create(IEnumerable<PurchaseOrder> items)
+        public async Task<IEnumerable<PurchaseOrder>> CreateAsync(IEnumerable<PurchaseOrder> items)
         {
-            return PurchaseOrders.Create(items);
+            return await PurchaseOrders.CreateAsync(items);
         }
 
-        public IEnumerable<PurchaseOrder> Update(IEnumerable<PurchaseOrder> items)
+        public async Task<IEnumerable<PurchaseOrder>> UpdateAsync(IEnumerable<PurchaseOrder> items)
         {
-            return PurchaseOrders.Update(items);
+            return await PurchaseOrders.UpdateAsync(items);
         }
 
-        public PurchaseOrder Create(PurchaseOrder item)
+        public async Task<PurchaseOrder> CreateAsync(PurchaseOrder item)
         {
-            return PurchaseOrders.Create(item);
+            return await PurchaseOrders.CreateAsync(item);
         }
 
-        public PurchaseOrder Update(PurchaseOrder item)
+        public async Task<PurchaseOrder> UpdateAsync(PurchaseOrder item)
         {
-            return PurchaseOrders.Update(item);
+            return await PurchaseOrders.UpdateAsync(item);
         }
 
         #endregion
 
         #region Receipts
 
-        public IEnumerable<Receipt> Create(IEnumerable<Receipt> items)
+        public async Task<IEnumerable<Receipt>> CreateAsync(IEnumerable<Receipt> items)
         {
-            return Receipts.Create(items);
+            return await Receipts.CreateAsync(items);
         }
 
-        public IEnumerable<Receipt> Update(IEnumerable<Receipt> items)
+        public async Task<IEnumerable<Receipt>> UpdateAsync(IEnumerable<Receipt> items)
         {
-            return Receipts.Update(items);
+            return await Receipts.UpdateAsync(items);
         }
 
-        public Receipt Create(Receipt item)
+        public async Task<Receipt> CreateAsync(Receipt item)
         {
-            return Receipts.Create(item);
+            return await Receipts.CreateAsync(item);
         }
 
-        public Receipt Update(Receipt item)
+        public async Task<Receipt> UpdateAsync(Receipt item)
         {
-            return Receipts.Update(item);
+            return await Receipts.UpdateAsync(item);
         }
 
         #endregion
 
         #region Setups
 
-        public ImportSummary Create(Setup item)
+        public async Task<ImportSummary> CreateAsync(Setup item)
         {
-            return Setup.Create(item);
+            return await Setup.CreateAsync(item);
         }
 
-        public ImportSummary Update(Setup item)
+        public async Task<ImportSummary> UpdateAsync(Setup item)
         {
-            return Setup.Update(item);
+            return await Setup.UpdateAsync(item);
         }
 
         #endregion
 
         #region TaxRates
 
-        public IEnumerable<TaxRate> Create(IEnumerable<TaxRate> items)
+        public async Task<IEnumerable<TaxRate>> CreateAsync(IEnumerable<TaxRate> items)
         {
-            return TaxRates.Create(items);
+            return await TaxRates.CreateAsync(items);
         }
 
-        public IEnumerable<TaxRate> Update(IEnumerable<TaxRate> items)
+        public async Task<IEnumerable<TaxRate>> UpdateAsync(IEnumerable<TaxRate> items)
         {
-            return TaxRates.Update(items);
+            return await TaxRates.UpdateAsync(items);
         }
 
-        public TaxRate Create(TaxRate item)
+        public async Task<TaxRate> CreateAsync(TaxRate item)
         {
-            return TaxRates.Create(item);
+            return await TaxRates.CreateAsync(item);
         }
 
-        public TaxRate Update(TaxRate item)
+        public async Task<TaxRate> UpdateAsync(TaxRate item)
         {
-            return TaxRates.Update(item);
+            return await TaxRates.UpdateAsync(item);
         }
 
         #endregion
 
         #region TrackingCategories
 
-        public IEnumerable<TrackingCategory> Create(IEnumerable<TrackingCategory> items)
+        public async Task<IEnumerable<TrackingCategory>> CreateAsync(IEnumerable<TrackingCategory> items)
         {
-            return TrackingCategories.Create(items);
+            return await TrackingCategories.CreateAsync(items);
         }
 
-        public IEnumerable<TrackingCategory> Update(IEnumerable<TrackingCategory> items)
+        public async Task<IEnumerable<TrackingCategory>> UpdateAsync(IEnumerable<TrackingCategory> items)
         {
-            return TrackingCategories.Update(items);
+            return await TrackingCategories.UpdateAsync(items);
         }
 
-        public TrackingCategory Create(TrackingCategory item)
+        public async Task<TrackingCategory> CreateAsync(TrackingCategory item)
         {
-            return TrackingCategories.Create(item);
+            return await TrackingCategories.CreateAsync(item);
         }
 
-        public TrackingCategory Update(TrackingCategory item)
+        public async Task<TrackingCategory> UpdateAsync(TrackingCategory item)
         {
-            return TrackingCategories.Update(item);
+            return await TrackingCategories.UpdateAsync(item);
         }
 
         #endregion

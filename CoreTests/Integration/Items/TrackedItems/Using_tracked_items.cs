@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using Xero.Api.Core.Model;
 
 namespace CoreTests.Integration.Items.TrackedItems
@@ -7,72 +8,72 @@ namespace CoreTests.Integration.Items.TrackedItems
     {
         //Purchase inventory like this
         [Test]
-        public void Purchase_some_inventory_with_an_ACCPAY_invoice()
+        public async Task Purchase_some_inventory_with_an_ACCPAY_invoice()
         {
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
             Then_the_quantity_of_the_tracked_item_is_zero(CreatedItem);
 
-            Given_an_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
+            await Given_an_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
 
-            var item = Api.Items.Find(CreatedItem.Id);
+            var item = await Api.Items.FindAsync(CreatedItem.Id);
 
             Then_the_quantity_of_the_tracked_item_is_more_than_zero(item);
         }
 
         //Sell inventory like this
         [Test]
-        public void Sell_inventory_with_an_ACCREC_invoice()
+        public async Task Sell_inventory_with_an_ACCREC_invoice()
         {
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
             Then_the_quantity_of_the_tracked_item_is_zero(CreatedItem);
 
-            Given_an_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
+            await Given_an_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
 
-            var item = Api.Items.Find(CreatedItem.Id);
+            var item = await Api.Items.FindAsync(CreatedItem.Id);
 
             Then_the_quantity_of_the_tracked_item_is_more_than_zero(item);
 
-            Given_an_ACCREC_invoice_using_the_item_with_code(item.Code);
+            await Given_an_ACCREC_invoice_using_the_item_with_code(item.Code);
 
-            item = Api.Items.Find(item.Id);
+            item = await Api.Items.FindAsync(item.Id);
 
             Then_the_quantity_of_the_tracked_item_is_zero(item);
         }
 
         //Make 'increase' adjustments like this
         [Test]
-        public void Creating_a_zero_total_ACCPAY_invoice_increases_a_tracked_items_quantity_as_an_adjustment()
+        public async Task Creating_a_zero_total_ACCPAY_invoice_increases_a_tracked_items_quantity_as_an_adjustment()
         {
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
             Then_the_quantity_of_the_tracked_item_is_zero(CreatedItem);
 
-            Given_a_zero_total_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
+            await Given_a_zero_total_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
 
-            var item = Api.Items.Find(CreatedItem.Id);
+            var item = await Api.Items.FindAsync(CreatedItem.Id);
             Then_the_quantity_of_the_tracked_item_is_more_than_zero(item);
         }
 
         //Make 'decrease' adjustments like this
         [Test]
-        public void Creating_a_zero_total_ACCREC_invoice_decreases_a_tracked_items_quantity()
+        public async Task Creating_a_zero_total_ACCREC_invoice_decreases_a_tracked_items_quantity()
         {
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
             Then_the_quantity_of_the_tracked_item_is_zero(CreatedItem);
 
-            Given_a_zero_total_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
+            await Given_a_zero_total_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
 
-            var item = Api.Items.Find(CreatedItem.Id);
+            var item = await Api.Items.FindAsync(CreatedItem.Id);
             Then_the_quantity_of_the_tracked_item_is_more_than_zero(item);
  
-            Given_a_zero_total_ACCREC_invoice_using_the_item_with_code(CreatedItem.Code);
+            await Given_a_zero_total_ACCREC_invoice_using_the_item_with_code(CreatedItem.Code);
 
-            item = Api.Items.Find(CreatedItem.Id);
+            item = await Api.Items.FindAsync(CreatedItem.Id);
 
             Then_the_quantity_of_the_tracked_item_is_zero(item);
         }
@@ -80,12 +81,12 @@ namespace CoreTests.Integration.Items.TrackedItems
 
         //Find quantity and cost details of an item like this
         [Test]
-        public void Finding_a_tracked_item_gives_you_quantity_on_hand_and_total_cost_pool()
+        public async Task Finding_a_tracked_item_gives_you_quantity_on_hand_and_total_cost_pool()
         {
             //Create a tracked item with no quantity, and therefore no total cost pool
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
-            var item = Api.Items.Find(CreatedItem.Id);
+            var item = await Api.Items.FindAsync(CreatedItem.Id);
 
             var quantity = item.QuantityOnHand;
             Assert.True(quantity == 0, "Expected the quanity on hand of a new inventory item to be 0");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
@@ -10,9 +11,9 @@ namespace CoreTests.Integration.PurchaseOrders
     public class Update : ApiWrapperTest
     {
         [Test]
-        public void Can_update_a_PurchaseOrder_like_this()
+        public async Task Can_update_a_PurchaseOrder_like_this()
         {
-            var purchaseOrder = Given_a_PurchaseOrder();
+            var purchaseOrder = await Given_a_PurchaseOrder();
 
             purchaseOrder.LineItems.Add(new LineItem
             {
@@ -21,20 +22,20 @@ namespace CoreTests.Integration.PurchaseOrders
                 Quantity = 10
             });
 
-            var updatedPurchaseOrder = Api.PurchaseOrders.Update(purchaseOrder);
+            var updatedPurchaseOrder = await Api.PurchaseOrders.UpdateAsync(purchaseOrder);
 
             Assert.AreEqual(2, updatedPurchaseOrder.LineItems.Count);
         }
 
 
-        public PurchaseOrder Given_a_PurchaseOrder()
+        public async Task<PurchaseOrder> Given_a_PurchaseOrder()
         {
-            return Api.PurchaseOrders.Create(
+            return await Api.PurchaseOrders.CreateAsync(
                 new PurchaseOrder
                 {
                     Status = PurchaseOrderStatus.Authorised,
                     Date = DateTime.Today,
-                    Contact = new Contact { Id = ContactId },
+                    Contact = new Contact { Id = await ContactId() },
                     LineItems = new List<LineItem>()
                     {
                         new LineItem
@@ -49,12 +50,9 @@ namespace CoreTests.Integration.PurchaseOrders
             );
         }
 
-        private Guid ContactId
+        private async Task<Guid> ContactId()
         {
-            get
-            {
-                return Api.Contacts.Find().First().Id;
-            }
+            return (await Api.Contacts.FindAsync()).First().Id;
         }
     }
 }

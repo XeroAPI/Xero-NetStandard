@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using CoreTests.Integration.Items.TrackedItems;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
@@ -10,21 +11,21 @@ namespace CoreTests.Integration.Items
     public class Delete : TrackedInventoryTest
     {
         [Test]
-        public void you_can_delete_an_item()
+        public async Task you_can_delete_an_item()
         {
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
-            Api.Items.Delete(CreatedItem);
+            await Api.Items.DeleteAsync(CreatedItem);
 
             Its_not_there_when_I_try_to_find_it(CreatedItem);
         }
 
         [Test]
-        public void but_not_if_its_involved_in_a_transaction()
+        public async Task but_not_if_its_involved_in_a_transaction()
         {
-            Given_a_tracked_item();
+            await Given_a_tracked_item();
 
-            Given_an_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
+            await Given_an_ACCPAY_invoice_using_the_item_with_code(CreatedItem.Code);
 
             When_I_try_to_Delete_it_400s();
         }
@@ -43,17 +44,17 @@ namespace CoreTests.Integration.Items
 
         private void When_I_try_to_Delete_it_404s()
         {
-            Assert.Throws<NotFoundException>(() => Api.Items.Delete(CreatedItem));
+            Assert.ThrowsAsync<NotFoundException>(() => Api.Items.DeleteAsync(CreatedItem));
         }
 
         private void When_I_try_to_Delete_it_400s()
         {
-            Assert.Throws<ValidationException>(() => Api.Items.Delete(CreatedItem));
+            Assert.ThrowsAsync<ValidationException>(() => Api.Items.DeleteAsync(CreatedItem));
         }
 
         private void Its_not_there_when_I_try_to_find_it(Item theItem)
         {
-            Assert.Throws<NotFoundException>(() => Api.Items.Find(theItem.Id));
+            Assert.ThrowsAsync<NotFoundException>(() => Api.Items.FindAsync(theItem.Id));
         }
     }
 }

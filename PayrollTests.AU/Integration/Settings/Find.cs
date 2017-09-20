@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace PayrollTests.AU.Integration.Settings
@@ -8,9 +9,9 @@ namespace PayrollTests.AU.Integration.Settings
     public class Find : ApiWrapperTest
     {
         [Test]
-        public void find_all()
+        public async Task find_all()
         {
-            var settings = Api.Settings.Find();
+            var settings = await Api.Settings.FindAsync();
             Assert.IsNotNull(settings);
 
             foreach (var s in settings)

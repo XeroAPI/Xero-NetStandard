@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 using Xero.Api.Infrastructure.Http;
 
@@ -9,15 +10,15 @@ namespace Xero.Api.Core.Endpoints
 {
     public interface IAssociationsEndpoint
     {
-        Association Find(Guid fileId, Guid objectId);
+        Task<Association> FindAsync(Guid fileId, Guid objectId);
 
-        IEnumerable<Association> Find(Guid fileId);
+        Task<IEnumerable<Association>> FindAsync(Guid fileId);
 
-        IEnumerable<Association> FindForObject(Guid objectId);
+        Task<IEnumerable<Association>> FindForObjectAsync(Guid objectId);
 
-        Association Create(Association association);
+        Task<Association> CreateAsync(Association association);
 
-        void Delete(Association association);
+        Task DeleteAsync(Association association);
     }
 
     public class AssociationsEndpoint : IAssociationsEndpoint
@@ -29,41 +30,50 @@ namespace Xero.Api.Core.Endpoints
             Client = client;
         }
 
-        public Association Find(Guid fileId, Guid objectId)
+        public async Task<Association> FindAsync(Guid fileId, Guid objectId)
         {
             var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations/{1}", fileId, objectId);
-            return HandleAssociationResponse(Client.Get(endpoint, null));
+
+            var response = await Client.GetAsync(endpoint, null);
+
+            return await HandleAssociationResponseAsync(response);
         }
 
-        public IEnumerable<Association> Find(Guid fileId)
+        public async Task<IEnumerable<Association>> FindAsync(Guid fileId)
         {
             var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations", fileId);
-            return HandleAssociationsResponse(Client.Get(endpoint, null));
+            var response = await Client.GetAsync(endpoint, null);
+
+            return await HandleAssociationsResponseAsync(response);
         }
 
-        public IEnumerable<Association> FindForObject(Guid objectId)
+        public async Task<IEnumerable<Association>> FindForObjectAsync(Guid objectId)
         {
             var endpoint = string.Format("files.xro/1.0/Associations/{0}", objectId);
-            return HandleAssociationsResponse(Client.Get(endpoint, null));
+            var response = await Client.GetAsync(endpoint, null);
+
+            return await HandleAssociationsResponseAsync(response);
         }
 
-        public Association Create(Association association)
+        public async Task<Association> CreateAsync(Association association)
         {
             var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations", association.FileId);
-            var resp = Client.Post(endpoint, association, true);
-            return HandleAssociationResponse(resp);
+            var response = await Client.PostAsync(endpoint, association, true);
+
+            return await HandleAssociationResponseAsync(response);
         }
 
-        public void Delete(Association association)
+        public async Task DeleteAsync(Association association)
         {
-            var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations/{1}", association.FileId,
-                association.ObjectId);
-            HandleAssociationResponse(Client.Delete(endpoint));
+            var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations/{1}", association.FileId, association.ObjectId);
+            var response = await Client.DeleteAsync(endpoint);
+
+            await HandleAssociationResponseAsync(response);
         }
 
-        private IEnumerable<Association> HandleAssociationsResponse(HttpResponseMessage response)
+        private async Task<IEnumerable<Association>> HandleAssociationsResponseAsync(HttpResponseMessage response)
         {
-            var body = response.Content.ReadAsStringAsync().Result;
+            var body = await response.Content.ReadAsStringAsync();
 
             if (response.StatusCode == HttpStatusCode.OK
                 || response.StatusCode == HttpStatusCode.Created
@@ -71,13 +81,13 @@ namespace Xero.Api.Core.Endpoints
             {
                 return Client.JsonMapper.From<IEnumerable<Association>>(body);
             }
-            Client.HandleErrors(response);
+            await Client.HandleErrorsAsync(response);
             return null;
         }
 
-        private Association HandleAssociationResponse(HttpResponseMessage response)
+        private async Task<Association> HandleAssociationResponseAsync(HttpResponseMessage response)
         {
-            var body = response.Content.ReadAsStringAsync().Result;
+            var body = await response.Content.ReadAsStringAsync();
 
             if (response.StatusCode == HttpStatusCode.OK
                 || response.StatusCode == HttpStatusCode.Created
@@ -85,7 +95,7 @@ namespace Xero.Api.Core.Endpoints
             {
                 return Client.JsonMapper.From<Association>(body);
             }
-            Client.HandleErrors(response);
+            await Client.HandleErrorsAsync(response);
             return null;
         }
     }

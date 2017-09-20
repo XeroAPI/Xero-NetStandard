@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -13,24 +14,24 @@ namespace CoreTests.Integration.Payments
 
         [OneTimeSetUp]
         [Ignore("The user needs to have foreign currency subscription on their account")]
-        public void SetUpForeignCurrency()
+        public async Task SetUpForeignCurrency()
         {
-            SetUp();
+            await SetUp();
         }
 
         [Test]
         [Ignore("The user needs to have foreign currency subscription on their account")]
-        public void create_refund_on_credit_note_with_foreign_currency()
+        public async Task create_refund_on_credit_note_with_foreign_currency()
         {
-            Foreign = Given_a_foreign_currency_account();
+            Foreign = await Given_a_foreign_currency_account();
 
             const int amount = 50;
             var accountCode = Account.Code;
-            var note = Given_an_credit_note(amount, accountCode);
+            var note = await Given_an_credit_note(amount, accountCode);
             var date = DateTime.UtcNow;
             const string reference = "Full refund as we couldn't replace item";
 
-            var payment = Api.Create(new Payment
+            var payment = await Api.CreateAsync(new Payment
             {
                 CreditNote = new CreditNote { Number = note.Number },
                 Account = new Account { Code = Foreign.Code },
@@ -44,18 +45,20 @@ namespace CoreTests.Integration.Payments
             Assert.AreEqual(amount, payment.Amount);
         }
 
-        private Account Given_a_foreign_currency_account()
+        private async Task<Account> Given_a_foreign_currency_account()
         {
-            return Api.Accounts
+            return (await Api.Accounts
                 .Where("Type == \"BANK\"")
                 .And("CurrencyCode != \"NZD\"")
-                .Find().FirstOrDefault() ??
-                   Create_foreign_currency_account();
+                .FindAsync())
+                .FirstOrDefault() 
+                ??
+                await Create_foreign_currency_account();
         }
 
-        private Account Create_foreign_currency_account()
+        private async Task<Account> Create_foreign_currency_account()
         {
-            return Api.Create(new Account
+            return await Api.CreateAsync(new Account
             {
                 Code = Random.GetRandomString(10),
                 Name = "Foreign Currency",

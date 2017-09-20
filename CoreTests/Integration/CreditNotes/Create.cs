@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using Xero.Api.Core.Model.Types;
 
 namespace CoreTests.Integration.CreditNotes
@@ -7,11 +8,11 @@ namespace CoreTests.Integration.CreditNotes
     public class Create : CreditNotesTest
     {
         [Test]
-        public void create_creditnote()
+        public async Task create_creditnote()
         {
             const CreditNoteType expected = CreditNoteType.AccountsReceivable;
 
-            var type = Given_a_creditnote(type: expected).Type;
+            var type = (await Given_a_creditnote(type: expected)).Type;
 
             Assert.AreEqual(expected, type);
         }

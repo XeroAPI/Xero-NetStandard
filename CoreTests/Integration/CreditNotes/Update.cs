@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
@@ -9,36 +10,36 @@ namespace CoreTests.Integration.CreditNotes
     public class Update : CreditNotesTest
     {
         [Test]
-        public void delete_draft_creditnote()
+        public async Task delete_draft_creditnote()
         {
             const InvoiceStatus expected = InvoiceStatus.Deleted;
-            var creditnote = Given_a_creditnote();
+            var creditnote = await Given_a_creditnote();
 
             creditnote.Status = expected;
 
-            var status = Api.Update(creditnote).Status;
+            var status = (await Api.UpdateAsync(creditnote)).Status;
 
             Assert.AreEqual(expected, status);
         }
 
         [Test]
-        public void update_creditnote_lineitems()
+        public async Task update_creditnote_lineitems()
         {
-            var creditnote = Given_a_creditnote();
+            var creditnote = await Given_a_creditnote();
 
-            var updatedCreditnote = Api.Update(new CreditNote
+            var updatedCreditnote = await Api.UpdateAsync(new CreditNote
             {
                 Id = creditnote.Id,
                 LineItems = new List<LineItem>
+                {
+                    new LineItem
                     {
-                        new LineItem
-                        {
-                            Description = creditnote.LineItems[0].Description,
-                            Quantity = 2m,
-                            UnitAmount = 100m,
-                            AccountCode = creditnote.LineItems[0].AccountCode
-                        }
+                        Description = creditnote.LineItems[0].Description,
+                        Quantity = 2m,
+                        UnitAmount = 100m,
+                        AccountCode = creditnote.LineItems[0].AccountCode
                     }
+                }
             });
 
             Assert.AreEqual(100m, updatedCreditnote.LineItems[0].UnitAmount);

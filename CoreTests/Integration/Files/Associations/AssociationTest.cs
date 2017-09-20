@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -10,77 +11,61 @@ namespace CoreTests.Integration.Files.Associations
     [TestFixture]
     public class AssociationTest : ApiWrapperTest
     {
-        private Guid FindAFileId()
+        private async Task<Guid> FindAFileId()
         {
-            var file = Api.Files.Find().FirstOrDefault();
-            return file == null ? Guid.Empty : file.Id;
+            var file = (await Api.Files.FindAsync()).FirstOrDefault();
+            return file?.Id ?? Guid.Empty;
         }
 
-        private Guid FindAnInvoiceId()
+        private async Task<Guid> FindAnInvoiceId()
         {
-            var invoice = Api.Invoices.Find().FirstOrDefault();
-            return invoice == null ? Guid.Empty : invoice.Id;
-        }
-
-        [Test]
-        public void AssociationsForFile()
-        {
-            Assert.DoesNotThrow(() =>
-            {
-                var fileId = FindAFileId();
-                var list = Api.Associations.Find(fileId);
-                Debug.WriteLine("Found {0} associations for file {1}.", list.Count(), fileId);
-            });
+            var invoice = (await Api.Invoices.FindAsync()).FirstOrDefault();
+            return invoice?.Id ?? Guid.Empty;
         }
 
         [Test]
-        public void AssociationsForObject()
+        public async Task AssociationsForFile()
         {
-            Assert.DoesNotThrow(() =>
-            {
-                var objectId = FindAnInvoiceId();
-                var list = Api.Associations.FindForObject(objectId);
-                Debug.WriteLine("Found {0} associations for object {0}.", list.Count(), objectId);
-            });
+            var fileId = await FindAFileId();
+
+            Assert.DoesNotThrowAsync(() => Api.Associations.FindAsync(fileId));
+        }
+
+        [Test]
+        public async Task AssociationsForObject()
+        {
+            var objectId = await FindAnInvoiceId();
+
+            Assert.DoesNotThrowAsync(() => Api.Associations.FindForObjectAsync(objectId));
         }
 
         // This is not a great test - but it needs to run in sequence and clean up after itself
         // (if it happens to be working with an association that should already exist, then we have a problem...)
         [Test]
-        public void AssociationCreateFindAndDelete()
+        public async Task AssociationCreateFindAndDelete()
         {
-            var fileId = FindAFileId();
-            var objectId = FindAnInvoiceId();
+            var fileId = await FindAFileId();
+            var objectId = await FindAnInvoiceId();
 
-            Assert.DoesNotThrow(() =>
+            var toCreate = new Association
             {
-                var toCreate = new Association
-                {
-                    FileId = fileId,
-                    ObjectId = objectId,
-                    ObjectGroup = ObjectGroupType.Invoice
-                };
-                var created = Api.Associations.Create(toCreate);
-                Debug.WriteLine("Created {0}", created);
-            });
+                FileId = fileId,
+                ObjectId = objectId,
+                ObjectGroup = ObjectGroupType.Invoice
+            };
 
-            Assert.DoesNotThrow(() =>
-            {
-                var found = Api.Associations.Find(fileId, objectId);
-                Debug.WriteLine("Found {0}", found);
-            });
+            Assert.DoesNotThrowAsync(() => Api.Associations.CreateAsync(toCreate));
 
-            Assert.DoesNotThrow(() =>
+            Assert.DoesNotThrowAsync(() => Api.Associations.FindAsync(fileId, objectId));
+
+            var toDelete = new Association
             {
-                var toDelete = new Association
-                {
-                    FileId = fileId,
-                    ObjectId = objectId,
-                    ObjectGroup = ObjectGroupType.Invoice
-                };
-                Api.Associations.Delete(toDelete);
-                Debug.WriteLine("Deleted {0}", toDelete);
-            });
+                FileId = fileId,
+                ObjectId = objectId,
+                ObjectGroup = ObjectGroupType.Invoice
+            };
+
+            Assert.DoesNotThrowAsync(() => Api.Associations.DeleteAsync(toDelete));
         }
     }
 }

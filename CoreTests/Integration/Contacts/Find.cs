@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model.Status;
 
@@ -9,74 +10,74 @@ namespace CoreTests.Integration.Contacts
     public class Find : ContactsTest
     {
         [Test]
-        public void find_by_page()
+        public async Task find_by_page()
         {
-            Given_a_contact();
+            await Given_a_contact();
 
-            Assert.True(Api.Contacts.Page(1).Find().Any());
+            Assert.True((await Api.Contacts.Page(1).FindAsync()).Any());
         }
 
         [Test]
-        public void find_by_id()
+        public async Task find_by_id()
         {
-            var expected = Given_a_contact().Id;
+            var expected = (await Given_a_contact()).Id;
             
-            var id = Api.Contacts
-                .Find(expected)
+            var id = (await Api.Contacts
+                .FindAsync(expected))
                 .Id;
 
             Assert.AreEqual(expected, id);
         }
 
         [Test]
-        public void find_by_value()
+        public async Task find_by_value()
         {
-            var expected = Given_a_contact().Name;
+            var expected = (await Given_a_contact()).Name;
 
-            var name = Api.Contacts
+            var name = (await Api.Contacts
                 .Where(string.Format("Name == \"{0}\"", expected))
-                .Find()
+                .FindAsync())
                 .Select(p => p.Name);                
 
             Assert.True(name.All(p => p == expected));
         }
 
         [Test]
-        public void find_by_contains_value()
+        public async Task find_by_contains_value()
         {
-            var expected = Given_a_contact().Name;
+            var expected = (await Given_a_contact()).Name;
 
-            var contacts = Api.Contacts
+            var contacts = (await Api.Contacts
                 .Where(string.Format("Name.Contains(\"{0}\")", expected))
-                .Find()
+                .FindAsync())
                 .Select(p => p.Name);
 
             Assert.True(contacts.All(p => p.Contains(expected)));            
         }
 
         [Test]
-        public void find_by_status()
+        public async Task find_by_status()
         {
-            Given_a_contact();
+            await Given_a_contact();
 
-            var status = Api.Contacts
+            var status = (await Api.Contacts
                 .Where("ContactStatus == \"ACTIVE\"")
-                .Find()
+                .FindAsync())
                 .Select(p => p.ContactStatus);                
 
             Assert.True(status.All(p => p == ContactStatus.Active));
         }
 
         [Test]
-        public void find_by_updated_date()
+        public async Task find_by_updated_date()
         {
-            var expected = Given_a_contact().Id;
+            var expected = (await Given_a_contact()).Id;
             var date = DateTime.Today.AddDays(-5);
 
-            var contacts = Api.Contacts
+            var contacts = (await Api.Contacts
                 .ModifiedSince(date)
                 .OrderByDescending("UpdatedDateUTC")                
-                .Find()
+                .FindAsync())
                 .Select(p => p.Id)
                 .ToList();
 
@@ -85,17 +86,17 @@ namespace CoreTests.Integration.Contacts
         }
         
         [Test]
-        public void find_by_dateRange()
+        public async Task find_by_dateRange()
         {
-            var expected = Given_a_contact().Id;
+            var expected = (await Given_a_contact()).Id;
             var fromDate = DateTime.Today.AddDays(-1);
             var toDate = DateTime.Today.AddDays(1);
 
-            var contacts = Api.Contacts
+            var contacts = (await Api.Contacts
                 .Where(string.Format("UpdatedDateUTC >= DateTime.Parse(\"{0}\")", fromDate.ToString("yyyy-MM-dd")))
                 .And(string.Format("UpdatedDateUTC <= DateTime.Parse(\"{0}\")", toDate.ToString("yyyy-MM-dd")))
                 .OrderByDescending("UpdatedDateUTC")
-                .Find()
+                .FindAsync())
                 .Select(p => p.Id)
                 .ToList();
 

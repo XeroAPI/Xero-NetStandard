@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xero.Api.Common;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
@@ -12,7 +13,7 @@ namespace Xero.Api.Core.Endpoints
 {
     public interface ILinkedTransactionsEndpoint : IXeroUpdateEndpoint<LinkedTransactionsEndpoint, LinkedTransaction, LinkedTransactionsRequest, LinkedTransactionsResponse>, IPageableEndpoint<ILinkedTransactionsEndpoint>
     {
-        void Delete(LinkedTransaction linkedTransaction);
+        Task DeleteAsync(LinkedTransaction linkedTransaction);
         LinkedTransactionsEndpoint WhereSourceId(Guid sourceId);
         LinkedTransactionsEndpoint WhereContactId(Guid contactId);
         LinkedTransactionsEndpoint WhereTargetId(Guid targetId);
@@ -27,12 +28,13 @@ namespace Xero.Api.Core.Endpoints
             Page(1);
         }
 
-        public void Delete(LinkedTransaction linkedTransaction)
+        public async Task DeleteAsync(LinkedTransaction linkedTransaction)
         {
             var endpoint = string.Format("/api.xro/2.0/LinkedTransactions/{0}", linkedTransaction.Id);
 
-            HandleResponse(Client
-                .Delete(endpoint));
+            var response = await Client.DeleteAsync(endpoint);
+
+            await HandleResponseAsync(response);
         }
 
         public ILinkedTransactionsEndpoint Page(int page)
@@ -65,17 +67,17 @@ namespace Xero.Api.Core.Endpoints
             Page(1);
         }
 
-        private LinkedTransactionsResponse HandleResponse(HttpResponseMessage response)
+        private async Task<LinkedTransactionsResponse> HandleResponseAsync(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var body = response.Content.ReadAsStringAsync().Result;
+                var body = await response.Content.ReadAsStringAsync();
 
                 var result = Client.JsonMapper.From<LinkedTransactionsResponse>(body);
                 return result;
             }
 
-            Client.HandleErrors(response);
+            await Client.HandleErrorsAsync(response);
 
             return null;
         }

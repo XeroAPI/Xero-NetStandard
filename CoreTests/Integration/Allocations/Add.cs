@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using CoreTests.Integration.Invoices;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
@@ -11,13 +12,13 @@ namespace CoreTests.Integration.Allocations
     public class Add : ApiWrapperTest
     {
         [Test]
-        public void allocation_to_invoice()
+        public async Task allocation_to_invoice()
         {
-            var creditNote = new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote(CreditNoteType.AccountsReceivable);
-            var invoice = new Create().Given_an_authorised_invoice(InvoiceType.AccountsReceivable);
+            var creditNote = await new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote(CreditNoteType.AccountsReceivable);
+            var invoice = await new Create().Given_an_authorised_invoice(InvoiceType.AccountsReceivable);
             var expected = Math.Min(creditNote.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            var result = Api.Allocations.Add(new Allocation
+            var result = await Api.Allocations.AddAsync(new CreditNoteAllocation
                 {
                     AppliedAmount = expected,
                     CreditNote = creditNote,
@@ -30,13 +31,13 @@ namespace CoreTests.Integration.Allocations
         }
 
         [Test]
-        public void allocation_to_invoice_minimal()
+        public async Task allocation_to_invoice_minimal()
         {            
-            var creditNote = new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote();
-            var invoice = new Create().Given_an_authorised_invoice();
+            var creditNote = await new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote();
+            var invoice = await new Create().Given_an_authorised_invoice();
             var expected = Math.Min(creditNote.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            var result = Api.Allocations.Add(new Allocation
+            var result = await Api.Allocations.AddAsync(new CreditNoteAllocation
             {
                 AppliedAmount = expected,
                 CreditNote = new CreditNote { Id = creditNote.Id },
@@ -50,80 +51,80 @@ namespace CoreTests.Integration.Allocations
 
 
         [Test]
-        public void allocation_on_creditnote()
+        public async Task allocation_on_creditnote()
         {
-            var creditNote = new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote();
-            var invoice = new Create().Given_an_authorised_invoice();
+            var creditNote = await new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote();
+            var invoice = await new Create().Given_an_authorised_invoice();
             var expected = Math.Min(creditNote.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            Api.Allocations.Add(new Allocation
+            await Api.Allocations.AddAsync(new CreditNoteAllocation
             {
                 AppliedAmount = expected,
                 CreditNote = new CreditNote { Id = creditNote.Id },
                 Invoice = new Invoice { Id = invoice.Id }
             });
 
-            creditNote = Api.CreditNotes.Find(creditNote.Id);
+            creditNote = await Api.CreditNotes.FindAsync(creditNote.Id);
             
             Assert.AreEqual(1, creditNote.Allocations.Count);
             Assert.AreEqual(expected, creditNote.Allocations.First().Amount);
         }
 
         [Test]
-        public void allocation_on_prepayment()
+        public async Task allocation_on_prepayment()
         {
-            var transaction = new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment, "310");
-            var invoice = new Create().Given_an_authorised_invoice();
+            var transaction = await new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment, "310");
+            var invoice = await new Create().Given_an_authorised_invoice();
             var expected = Math.Min(transaction.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            Api.Allocations.Add(new PrepaymentAllocation
+            await Api.Allocations.AddAsync(new PrepaymentAllocation
             {
                 AppliedAmount = expected,
                 Prepayment = new Prepayment { Id = transaction.PrepaymentID.GetValueOrDefault() },
                 Invoice = new Invoice { Id = invoice.Id }
             });
 
-            var prepayment = Api.Prepayments.Find(transaction.PrepaymentID.GetValueOrDefault());
+            var prepayment = await Api.Prepayments.FindAsync(transaction.PrepaymentID.GetValueOrDefault());
 
             Assert.AreEqual(1, prepayment.Allocations.Count);
             Assert.AreEqual(expected, prepayment.Allocations.First().Amount);
         }
 
         [Test]
-        public void allocation_on_overpayment()
+        public async Task allocation_on_overpayment()
         {
-            var transaction = new BankTransactions.BankTransactionTest().Given_an_overpayment(BankTransactionType.SpendOverpayment);
-            var invoice = new Create().Given_an_authorised_invoice();
+            var transaction = await new BankTransactions.BankTransactionTest().Given_an_overpayment(BankTransactionType.SpendOverpayment);
+            var invoice = await new Create().Given_an_authorised_invoice();
             var expected = Math.Min(transaction.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            Api.Allocations.Add(new OverpaymentAllocation
+            await Api.Allocations.AddAsync(new OverpaymentAllocation
             {
                 AppliedAmount = expected,
                 Overpayment = new Overpayment { Id = transaction.OverpaymentID.GetValueOrDefault() },
                 Invoice = new Invoice { Id = invoice.Id }
             });
 
-            var overpayment = Api.Overpayments.Find(transaction.OverpaymentID.GetValueOrDefault());
+            var overpayment = await Api.Overpayments.FindAsync(transaction.OverpaymentID.GetValueOrDefault());
 
             Assert.AreEqual(1, overpayment.Allocations.Count);
             Assert.AreEqual(expected, overpayment.Allocations.First().Amount);
         }
 
         [Test]
-        public void Credit_notes_show_up_on_invoices()
+        public async Task Credit_notes_show_up_on_invoices()
         {
-            var creditNote = new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote();
-            var invoice = new Create().Given_an_authorised_invoice();
+            var creditNote = await new CreditNotes.CreditNotesTest().Given_an_authorised_creditnote();
+            var invoice = await new Create().Given_an_authorised_invoice();
             var amount = Math.Min(creditNote.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            Api.Allocations.Add(new Allocation
+            await Api.Allocations.AddAsync(new CreditNoteAllocation
             {
                 AppliedAmount = amount,
                 CreditNote = new CreditNote { Id = creditNote.Id },
                 Invoice = new Invoice { Id = invoice.Id }
             });
 
-            invoice = Api.Invoices.Find(invoice.Id);
+            invoice = await Api.Invoices.FindAsync(invoice.Id);
 
             Assert.AreEqual(1, invoice.CreditNotes.Count);
             Assert.AreEqual(creditNote.Id, invoice.CreditNotes.First().Id);
@@ -131,40 +132,40 @@ namespace CoreTests.Integration.Allocations
         }
 
         [Test]
-        public void Prepayments_show_on_invoices()
+        public async Task Prepayments_show_on_invoices()
         {
-            var transaction = new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment, "310");
-            var invoice = new Create().Given_an_authorised_invoice();
+            var transaction = await new BankTransactions.BankTransactionTest().Given_a_bank_transaction(BankTransactionType.SpendPrepayment, "310");
+            var invoice = await new Create().Given_an_authorised_invoice();
             var expected = Math.Min(transaction.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            Api.Allocations.Add(new PrepaymentAllocation
+            await Api.Allocations.AddAsync(new PrepaymentAllocation
             {
                 AppliedAmount = expected,
                 Prepayment = new Prepayment { Id = transaction.PrepaymentID.GetValueOrDefault() },
                 Invoice = new Invoice { Id = invoice.Id }
             });
 
-            invoice = Api.Invoices.Find(invoice.Id);
+            invoice = await Api.Invoices.FindAsync(invoice.Id);
 
             Assert.AreEqual(1, invoice.Prepayments.Count);
             Assert.AreEqual(transaction.PrepaymentID.GetValueOrDefault(), invoice.Prepayments.First().Id);
         }
 
         [Test]
-        public void Overpayments_show_on_invoices()
+        public async Task Overpayments_show_on_invoices()
         {
-            var transaction = new BankTransactions.BankTransactionTest().Given_an_overpayment(BankTransactionType.SpendOverpayment);
-            var invoice = new Create().Given_an_authorised_invoice();
+            var transaction = await new BankTransactions.BankTransactionTest().Given_an_overpayment(BankTransactionType.SpendOverpayment);
+            var invoice = await new Create().Given_an_authorised_invoice();
             var expected = Math.Min(transaction.Total.GetValueOrDefault(), invoice.Total.GetValueOrDefault());
 
-            Api.Allocations.Add(new OverpaymentAllocation
+            await Api.Allocations.AddAsync(new OverpaymentAllocation
             {
                 AppliedAmount = expected,
                 Overpayment = new Overpayment { Id = transaction.OverpaymentID.GetValueOrDefault() },
                 Invoice = new Invoice { Id = invoice.Id }
             });
 
-            invoice = Api.Invoices.Find(invoice.Id);
+            invoice = await Api.Invoices.FindAsync(invoice.Id);
 
             Assert.AreEqual(1, invoice.Overpayments.Count);
             Assert.AreEqual(transaction.OverpaymentID.GetValueOrDefault(), invoice.Overpayments.First().Id);

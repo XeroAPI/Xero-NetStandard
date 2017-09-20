@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Xero.Api.Common;
 using Xero.Api.Infrastructure.Exceptions;
@@ -69,19 +70,19 @@ namespace Xero.Api.Infrastructure.Http
         public NameValueCollection Parameters { get; set; }
         public string UserAgent { get; set; }
 
-        public IEnumerable<TResult> Get<TResult, TResponse>(string endPoint)
+        public async Task<IEnumerable<TResult>> GetAsync<TResult, TResponse>(string endPoint)
             where TResponse : IXeroResponse<TResult>, new()
         {
             var queryString = CreateQueryString(true);
 
             var request = CreateRequest(endPoint, HttpMethod.Get, query: queryString);
 
-            var response = SendRequest(request);
+            var response = await SendRequestAsync(request);
 
-            return Read<TResult, TResponse>(response);
+            return await ReadAsync<TResult, TResponse>(response);
         }
 
-        internal IEnumerable<TResult> Post<TResult, TResponse>(string endpoint, byte[] data, string mimeType)
+        internal async Task<IEnumerable<TResult>> PostAsync<TResult, TResponse>(string endpoint, byte[] data, string mimeType)
             where TResponse : IXeroResponse<TResult>, new()
         {
             var queryString = CreateQueryString(null, null, Parameters, true);
@@ -91,12 +92,12 @@ namespace Xero.Api.Infrastructure.Http
 
             var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
 
-            var response = SendRequest(request);
+            var response = await SendRequestAsync(request);
 
-            return Read<TResult, TResponse>(response);
+            return await ReadAsync<TResult, TResponse>(response);
         }
 
-        public IEnumerable<TResult> Post<TResult, TResponse>(string endpoint, object data)
+        public async Task<IEnumerable<TResult>> PostAsync<TResult, TResponse>(string endpoint, object data)
             where TResponse : IXeroResponse<TResult>, new()
         {
             var queryString = CreateQueryString(null, null, Parameters, true);
@@ -105,12 +106,12 @@ namespace Xero.Api.Infrastructure.Http
 
             var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
 
-            var response = SendRequest(request);
+            var response = await SendRequestAsync(request);
 
-            return Read<TResult, TResponse>(response);
+            return await ReadAsync<TResult, TResponse>(response);
         }
 
-        public IEnumerable<TResult> Put<TResult, TResponse>(string endpoint, object data)
+        public async Task<IEnumerable<TResult>> PutAsync<TResult, TResponse>(string endpoint, object data)
             where TResponse : IXeroResponse<TResult>, new()
         {
             var queryString = CreateQueryString(null, null, Parameters, true);
@@ -119,41 +120,41 @@ namespace Xero.Api.Infrastructure.Http
 
             var request = CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString);
 
-            var response = SendRequest(request);
+            var response = await SendRequestAsync(request);
 
-            return Read<TResult, TResponse>(response);
+            return await ReadAsync<TResult, TResponse>(response);
         }
 
-        public IEnumerable<TResult> Delete<TResult, TResponse>(string endpoint)
+        public async Task<IEnumerable<TResult>> DeleteAsync<TResult, TResponse>(string endpoint)
             where TResponse : IXeroResponse<TResult>, new()
         {
             var request = CreateRequest(endpoint, HttpMethod.Delete);
 
-            var response = SendRequest(request);
+            var response = await SendRequestAsync(request);
 
-            return Read<TResult, TResponse>(response);
+            return await ReadAsync<TResult, TResponse>(response);
         }
 
-        internal HttpResponseMessage Get(string endpoint)
+        internal async Task<HttpResponseMessage> GetAsync(string endpoint)
         {
-            return Get(endpoint, null);
+            return await GetAsync(endpoint, null);
         }
 
-        internal HttpResponseMessage Get(string endpoint, string query)
+        internal async Task<HttpResponseMessage> GetAsync(string endpoint, string query)
         {
             var request = CreateRequest(endpoint, HttpMethod.Get, query: query);
 
-            return SendRequest(request);
+            return await SendRequestAsync(request);
         }
 
-        internal HttpResponseMessage GetRaw(string endpoint, string mimetype)
+        internal async Task<HttpResponseMessage> GetRawAsync(string endpoint, string mimetype)
         {
             var request = CreateRequest(endpoint, HttpMethod.Get, accept: mimetype);
 
-            return SendRequest(request);
+            return await SendRequestAsync(request);
         }
 
-        internal HttpResponseMessage Put(string endpoint, object data, bool json = false)
+        internal async Task<HttpResponseMessage> PutAsync(string endpoint, object data, bool json = false)
         {
             var queryString = CreateQueryString(null, null, Parameters, true);
 
@@ -163,36 +164,36 @@ namespace Xero.Api.Infrastructure.Http
 
             var request = CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString);
 
-            return SendRequest(request);
+            return await SendRequestAsync(request);
         }
 
-        internal HttpResponseMessage Post(string endpoint, object data, bool json = false)
+        internal async Task<HttpResponseMessage> PostAsync(string endpoint, object data, bool json = false)
         {
             var queryString = CreateQueryString(null, null, Parameters, true);
 
             HttpContent content = json
-                ? new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml)
-                : new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson);
+                ? new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson)
+                : new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
             var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
 
-            return SendRequest(request);
+            return await SendRequestAsync(request);
         }
 
-        internal HttpResponseMessage Delete(string endpoint)
+        internal async Task<HttpResponseMessage> DeleteAsync(string endpoint)
         {
             var request = CreateRequest(endpoint, HttpMethod.Delete);
 
-            return SendRequest(request);
+            return await SendRequestAsync(request);
         }
 
-        public HttpResponseMessage PostMultipartForm(string endpoint, string contentType, string name, string filename, byte[] payload)
+        public async Task<HttpResponseMessage> PostMultipartFormAsync(string endpoint, string contentType, string name, string filename, byte[] payload)
         {
             var request = CreateRequest(endpoint, HttpMethod.Post);
 
-            request.Content = CreateMultipartData(payload, contentType, filename);
+            request.Content = CreateMultipartData(payload, name, filename);
 
-            return HttpClient.SendAsync(request).Result;
+            return await SendRequestAsync(request);
         }
 
         private HttpRequestMessage CreateRequest(string endPoint, HttpMethod method, string accept = "application/json", HttpContent content = null, string query = null)
@@ -225,15 +226,15 @@ namespace Xero.Api.Infrastructure.Http
 
             request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(escapedUserAgent)));
 
-            if (_rateLimiter != null)
-                _rateLimiter.WaitUntilLimit();
-
             return request;
         }
 
-        private HttpResponseMessage SendRequest(HttpRequestMessage request)
+        private async Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage request)
         {
-            return HttpClient.SendAsync(request).Result;
+            if (_rateLimiter != null)
+                _rateLimiter.WaitUntilLimit();
+
+            return await HttpClient.SendAsync(request);
         }
 
         private string CreateQueryString(bool encoded)
@@ -248,34 +249,33 @@ namespace Xero.Api.Infrastructure.Http
             return encoded ? generator.UrlEncodedQueryString : generator.QueryString;
         }
 
-        private MultipartFormDataContent CreateMultipartData(byte[] bytes, string contentType, string filename)
+        private MultipartFormDataContent CreateMultipartData(byte[] bytes, string name, string filename)
         {
-            var mp = new MultipartFormDataContent(Guid.NewGuid().ToString());
-            mp.Headers.Add("Content-Type", contentType);
-            mp.Headers.Add("FileName", filename);
-            mp.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data");
-            mp.Add(new ByteArrayContent(bytes));
+            var content = new MultipartFormDataContent(); 
+            content.Add(new ByteArrayContent(bytes), name, filename);
 
-            return mp;
+            return content;
         }
 
-        internal IEnumerable<TResult> Read<TResult, TResponse>(HttpResponseMessage response)
+        internal async Task<IEnumerable<TResult>> ReadAsync<TResult, TResponse>(HttpResponseMessage response)
             where TResponse : IXeroResponse<TResult>, new()
         {
             // this is the 'happy path'
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                return JsonMapper.From<TResponse>(response.Content.ReadAsStringAsync().Result).Values;
+                var content = await response.Content.ReadAsStringAsync();
+
+                return JsonMapper.From<TResponse>(content).Values;
             }
 
-            HandleErrors(response);
+            await HandleErrorsAsync(response);
 
             return null;
         }
 
-        internal void HandleErrors(HttpResponseMessage response)
+        internal async Task HandleErrorsAsync(HttpResponseMessage response)
         {
-            var body = response.Content.ReadAsStringAsync().Result;
+            var body = await response.Content.ReadAsStringAsync();
 
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {

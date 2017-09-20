@@ -54,7 +54,7 @@ namespace Xero.Api.Example.Applications.Partner
         {
             var authHeader = GetAuthorization(sessionToken, "POST", Tokens.AccessTokenEndpoint, null, null, true);
 
-            return Tokens.GetAccessToken(sessionToken, authHeader);
+            return Tokens.GetAccessTokenAsync(sessionToken, authHeader).Result;
         }
     }
 }

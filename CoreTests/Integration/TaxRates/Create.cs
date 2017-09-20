@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -9,7 +10,7 @@ namespace CoreTests.Integration.TaxRates
     public class Create : TaxRateTest
     {
         [Test]
-        public void create_tax_rate()
+        public async Task create_tax_rate()
         {
             var name = Random.GetRandomString(10);
             var state = Random.GetRandomString(5);
@@ -19,7 +20,7 @@ namespace CoreTests.Integration.TaxRates
             const decimal localRate = 0.625m;
             const ReportTaxType taxType = ReportTaxType.Input;
 
-            var taxRate = Given_a_tax_rate(name, taxType, state, stateRate, local, localRate);
+            var taxRate = await Given_a_tax_rate(name, taxType, state, stateRate, local, localRate);
 
             Assert.That(name == taxRate.Name);
             Assert.That(taxType == taxRate.ReportTaxType);

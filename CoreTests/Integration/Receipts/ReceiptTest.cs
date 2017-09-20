@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
 
@@ -7,9 +8,9 @@ namespace CoreTests.Integration.Receipts
 {
     public abstract class ReceiptTest : ApiWrapperTest
     {
-        public Receipt Given_a_receipt(Guid userId, string contactName, string description, decimal amount, string account)
+        public async Task<Receipt> Given_a_receipt(Guid userId, string contactName, string description, decimal amount, string account)
         {
-            return Api.Create(new Receipt
+            return await Api.CreateAsync(new Receipt
             {
                 Date = DateTime.UtcNow.Date,
                 Contact = new Contact { Name = contactName },

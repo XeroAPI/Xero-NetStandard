@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
@@ -10,58 +11,57 @@ namespace CoreTests.Integration.TrackingCategories
 {
     public class TrackingCategoriesTest : ApiWrapperTest
     {
-        private Invoice invoice_;
-        public TrackingCategory category1_;
-        public TrackingCategory category2_;
-        private Option option_;
-        private List<TrackingCategory> listresult_;
+        private Invoice _invoice;
+        public TrackingCategory Category1;
+        public TrackingCategory Category2;
+        private List<TrackingCategory> _listresult;
 
-        public void Given_a_TrackingCategory_with_Options()
+        public async Task Given_a_TrackingCategory_with_Options()
         {
-            Given_a_TrackingCategory();
+            await Given_a_TrackingCategory();
 
             var option1 = Given_a_tracking_option();
             var option2 = Given_a_tracking_option();
 
-            Api.TrackingCategories[category1_.Id].Add(option1);
-            Api.TrackingCategories[category1_.Id].Add(option2);
+            await Api.TrackingCategories.AddOptionAsync(Category1, option1);
+            await Api.TrackingCategories.AddOptionAsync(Category1, option2);
 
-            category1_ = Api.TrackingCategories.GetByID(category1_.Id);
+            Category1 = await Api.TrackingCategories.FindAsync(Category1.Id);
         }
 
-        public void Given_a_TrackingCategory_with_Option()
+        public async Task Given_a_TrackingCategory_with_Option()
         {
-            Given_a_TrackingCategory();
+            await Given_a_TrackingCategory();
 
             var option1 = Given_a_tracking_option();
 
-            Api.TrackingCategories[category1_.Id].Add(option1);
+            await Api.TrackingCategories.AddOptionAsync(Category1, option1);
 
-            category1_ = Api.TrackingCategories.GetByID(category1_.Id);
+            Category1 = await Api.TrackingCategories.FindAsync(Category1.Id);
         }
 
-        public void Given_a_TrackingCategory()
+        public async Task Given_a_TrackingCategory()
         {
-            category1_ = Api.TrackingCategories.Add(new TrackingCategory
+            Category1 = await Api.TrackingCategories.CreateAsync(new TrackingCategory
             {
                 Name = "TheJoker " + Guid.NewGuid(),
                 Status = TrackingCategoryStatus.Active
             });
 
-            Assert.IsTrue(category1_.Name.StartsWith("TheJoker"));
+            Assert.IsTrue(Category1.Name.StartsWith("TheJoker"));
 
-            Assert.IsTrue(category1_.Status == TrackingCategoryStatus.Active);
+            Assert.IsTrue(Category1.Status == TrackingCategoryStatus.Active);
         }
 
-        public void Given_two_TrackingCategorys()
+        public async Task Given_two_TrackingCategorys()
         {
-            category1_ = Api.TrackingCategories.Add(new TrackingCategory
+            Category1 = await Api.TrackingCategories.CreateAsync(new TrackingCategory
             {
                 Name = "TheJoker " + Guid.NewGuid(),
                 Status = TrackingCategoryStatus.Active
             });
 
-            category2_ = Api.TrackingCategories.Add(new TrackingCategory
+            Category2 = await Api.TrackingCategories.CreateAsync(new TrackingCategory
             {
                 Name = "HarleyQuinn " + Guid.NewGuid(),
                 Status = TrackingCategoryStatus.Active
@@ -88,22 +88,22 @@ namespace CoreTests.Integration.TrackingCategories
             return options;
         }
 
-        public void Given_name_change_to_categorie()
+        public async Task Given_name_change_to_categorie()
         {
-            category1_.Name = "The Joker";
+            Category1.Name = "The Joker";
 
-            var result = Api.Update(category1_);
+            var result = await Api.UpdateAsync(Category1);
 
             Assert.True(result.Name == "The Joker");
         }
 
-        public void Given_approved_invoice_with_tracking_option(InvoiceType type = InvoiceType.AccountsPayable, InvoiceStatus status = InvoiceStatus.Draft)
+        public async Task Given_approved_invoice_with_tracking_option(InvoiceType type = InvoiceType.AccountsPayable, InvoiceStatus status = InvoiceStatus.Draft)
         {
-            Guid category = category1_.Id;
-            string name = category1_.Name;
-            string option = category1_.Options.FirstOrDefault().Name;
+            Guid category = Category1.Id;
+            string name = Category1.Name;
+            string option = Category1.Options.FirstOrDefault().Name;
 
-            var inv = Api.Create(new Invoice
+            var inv = await Api.CreateAsync(new Invoice
             {
                 Contact = new Contact { Name = "Wayne Enterprises" },
                 Type = type,
@@ -111,7 +111,7 @@ namespace CoreTests.Integration.TrackingCategories
                 DueDate = DateTime.UtcNow.AddDays(90),
                 LineAmountTypes = LineAmountType.Inclusive,
                 Status = status,
-				LineItems = new List<LineItem>
+                LineItems = new List<LineItem>
                 {
                     new LineItem
                     {
@@ -119,84 +119,79 @@ namespace CoreTests.Integration.TrackingCategories
                         Description = "Good value item",
                         LineAmount = 100m,
                         Tracking = new ItemTracking
+                        {
+                            new ItemTrackingCategory
                             {
-                                new ItemTrackingCategory
-                                {
-                                    Id = category,
-                                    Name = name,
-                                    Option = option
-                                }
+                                Id = category,
+                                Name = name,
+                                Option = option
                             }
+                        }
                     }
                 }
 
             });
 
             inv.Status = InvoiceStatus.Authorised;
-            invoice_ = Api.Update(inv);
+            _invoice = await Api.UpdateAsync(inv);
         }
 
-        public Invoice Given_Invoice_is_voided()
+        public async Task<Invoice> Given_Invoice_is_voided()
         {
-            invoice_.Status = InvoiceStatus.Voided;
-            return Api.Update(invoice_);
+            _invoice.Status = InvoiceStatus.Voided;
+            return await Api.UpdateAsync(_invoice);
         }
 
-        public void Given_Tracking_Category_is_deleted()
+        public async Task Given_Tracking_Category_is_deleted()
         {
-            category1_ = Api.TrackingCategories.Delete(category1_);
-
-            Assert.True(category1_.Status == TrackingCategoryStatus.Deleted);
+            await Api.TrackingCategories.DeleteAsync(Category1);
         }
 
-        public void Given_both_Tracking_Category_is_deleted()
+        public async Task Given_both_Tracking_Category_is_deleted()
         {
-            Given_Tracking_Category_is_deleted();
+            await Given_Tracking_Category_is_deleted();
 
-            category2_ = Api.TrackingCategories.Delete(category2_);
-
-            Assert.True(category2_.Status == TrackingCategoryStatus.Deleted);
+            await Api.TrackingCategories.DeleteAsync(Category2);
+            
         }
 
-        public void Given_Tracking_CategoryOption_is_deleted()
+        public async Task Given_Tracking_CategoryOption_is_deleted()
         {
-            var result = Api.TrackingCategories.DeleteTrackingOption(category1_, category1_.Options.FirstOrDefault());
-
-            Assert.IsTrue(result.Status == TrackingOptionStatus.Deleted);
+            await Api.TrackingCategories.DeleteTrackingOptionAsync(Category1, Category1.Options.FirstOrDefault());
         }
 
-        public void Given_first_Option_is_Archived()
+        public async Task Given_first_Option_is_Archived()
         {
-            category1_.Options.FirstOrDefault().Status = TrackingOptionStatus.Archived;
+            Category1.Options.FirstOrDefault().Status = TrackingOptionStatus.Archived;
 
-            var result = Api.TrackingCategories[category1_.Id].UpdateOption(category1_.Options.FirstOrDefault());
+            var result = await Api.TrackingCategories.UpdateOptionAsync(Category1, Category1.Options.FirstOrDefault());
 
-            Assert.True(result.Status == TrackingOptionStatus.Archived);
+            Assert.True(result.FirstOrDefault().Status == TrackingOptionStatus.Archived);
         }
 
-        public void Given_Tracking_Category_is_Archived()
+        public async Task Given_Tracking_Category_is_Archived()
         {
-            category1_.Status = TrackingCategoryStatus.Archived;
+            Category1.Status = TrackingCategoryStatus.Archived;
 
-            category1_ = Api.TrackingCategories.Update(category1_);
+            Category1 = await Api.TrackingCategories.UpdateAsync(Category1);
 
-            Assert.True(category1_.Status == TrackingCategoryStatus.Archived);
+            Assert.True(Category1.Status == TrackingCategoryStatus.Archived);
         }
 
-        public void Given_first_Option_Name_change()
+        public async Task Given_first_Option_Name_change()
         {
-            var option = category1_.Options.FirstOrDefault();
+            var option = Category1.Options.FirstOrDefault();
 
             option.Name = "Mr Freeze";
 
-            option = Api.TrackingCategories[category1_.Id].UpdateOption(option);
+            option = (await Api.TrackingCategories.UpdateOptionAsync(Category1, option)).FirstOrDefault();
 
             Assert.True(option.Name == "Mr Freeze");
         }
 
-        public void Then_Category_Has_Option()
+        public async Task Then_Category_Has_Option()
         {
-            var result = Api.TrackingCategories[category1_.Id];
+            var result = await Api.TrackingCategories.FindAsync(Category1.Id);
 
             Assert.True(result != null);
 
@@ -204,9 +199,9 @@ namespace CoreTests.Integration.TrackingCategories
             //            Assert.True(result._trackingCat.Options.Any(i => i.Name == options.Last().Name));
         }
 
-        public void Then_Category_Has_Options()
+        public async Task Then_Category_Has_Options()
         {
-            var result = Api.TrackingCategories.GetByID(category1_.Id);
+            var result = await Api.TrackingCategories.FindAsync(Category1.Id);
 
             Assert.True(result != null);
             Assert.True(result.Options.Count() == 2);
@@ -215,29 +210,29 @@ namespace CoreTests.Integration.TrackingCategories
             //            Assert.True(result._trackingCat.Options.Any(i => i.Name == options.Last().Name));
         }
 
-        public void Given_GetAll()
+        public async Task Given_GetAll()
         {
-            listresult_ = Api.TrackingCategories.GetAll();
+            _listresult = (await Api.TrackingCategories.FindAsync()).ToList();
         }
 
-        public void Given_GetAll_with_Archived()
+        public async Task Given_GetAll_with_Archived()
         {
             var api = Api.TrackingCategories.IncludeArchived(true);
 
-            listresult_ = api.GetAll();
+            _listresult = (await api.FindAsync()).ToList();
         }
 
         public void Then_Archieved_Tracking_Category_is_in_list()
         {
-            var actualTracking = listresult_.SingleOrDefault(i => i.Id == category1_.Id);
+            var actualTracking = _listresult.SingleOrDefault(i => i.Id == Category1.Id);
 
             Assert.IsTrue(actualTracking != null);
         }
 
         public void List_contains_the_two_Tracking_Category()
         {
-            Assert.IsTrue(listresult_.First().Name == category1_.Name);
-            Assert.IsTrue(listresult_.Last().Name == category2_.Name);
+            Assert.IsTrue(_listresult.First().Name == Category1.Name);
+            Assert.IsTrue(_listresult.Last().Name == Category2.Name);
         }
     }
 }

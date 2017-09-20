@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xero.Api.Common;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
@@ -11,15 +12,15 @@ using Xero.Api.Infrastructure.Http;
 
 namespace Xero.Api.Core.Endpoints
 {
-    public interface IFoldersEndpoint : IXeroUpdateEndpoint<FoldersEndpoint, Model.Folder, FolderRequest, FolderResponse>
+    public interface IFoldersEndpoint : IXeroUpdateEndpoint<FoldersEndpoint, Folder, FolderRequest, FolderResponse>
     {
-        FoldersResponse[] Folders { get; }
-        FilePageResponse Add(string folderName);
-        void Remove(Guid id);
-        FoldersResponse Rename(Guid id, string name);
+        new Task<IEnumerable<Folder>> FindAsync();
+        Task<FilePageResponse> AddAsync(string folderName);
+        Task RemoveAsync(Guid id);
+        Task<FoldersResponse> RenameAsync(Guid id, string name);
     }
 
-    public class FoldersEndpoint : XeroUpdateEndpoint<FoldersEndpoint, Model.Folder, FolderRequest, FolderResponse>, IFoldersEndpoint
+    public class FoldersEndpoint : XeroUpdateEndpoint<FoldersEndpoint, Folder, FolderRequest, FolderResponse>, IFoldersEndpoint
   {
     internal FoldersEndpoint(XeroHttpClient client)
         : base(client, "files.xro/1.0/Folders")
@@ -27,95 +28,87 @@ namespace Xero.Api.Core.Endpoints
 
     }
 
-    public FoldersResponse[] Folders
+    public async Task<FilePageResponse> AddAsync(string folderName)
     {
-      get
-      {
-        var endpoint = string.Format("files.xro/1.0/Folders");
+        var endpoint = "files.xro/1.0/Folders";
 
-        var folder = HandleFoldersResponse(Client
-            .Get(endpoint, null));
+        var response = await Client.PostAsync(endpoint, new Folder{Name = folderName}, true);
 
-        return folder;
-      }
+        return await HandleFolderResponseAsync(response);
     }
 
-    public FilePageResponse Add(string folderName)
+    public new async Task<IEnumerable<Folder>> FindAsync()
     {
-      var endpoint = string.Format("files.xro/1.0/Folders");
-
-      var result = HandleFolderResponse(Client
-          .Post(endpoint, Client.JsonMapper.To(new Folder() { Name = folderName }), true));
-
-      return result;
-    }
-
-    public IList<Model.Folder> Find()
-    {
-      var response = HandleFoldersResponse(Client
-          .Get("files.xro/1.0/Folders", ""));
+        var response = await Client.GetAsync("files.xro/1.0/Folders", "");
+        var result = await HandleFoldersResponseAsync(response);
 
 
-      var resultingFolders = from i in response
+      var resultingFolders = from i in result
                              select new Folder() { Id = i.Id, Name = i.Name, IsInbox = i.IsInbox, FileCount = i.FileCount };
 
       return resultingFolders.ToList();
     }
 
-    public void Remove(Guid id)
+    public async Task RemoveAsync(Guid id)
     {
-      var response = HandleFolderResponse(Client
-          .Delete("files.xro/1.0/Folders/" + id.ToString()));
+        var response = await Client.DeleteAsync("files.xro/1.0/Folders/" + id);
+        await HandleFolderResponseAsync(response);
     }
 
-    public FoldersResponse Rename(Guid id, string name)
+    public async Task<FoldersResponse> RenameAsync(Guid id, string name)
     {
-      var response = HandleFoldersResponse(Client.Put("files.xro/1.0/Folders/" + id, "{\"Name\":\"" + name + "\"}", true));
-      return (response != null) ? response[0] : null;
+       var folder = new Folder
+       {
+           Name = name
+       };
+
+        var response = await Client.PutAsync("files.xro/1.0/Folders/" + id, folder, true);
+        var result =  await HandleFoldersResponseAsync(response);
+        return result?[0];
     }
 
-    private FilePageResponse HandleFolderResponse(HttpResponseMessage response)
+    private async Task<FilePageResponse> HandleFolderResponseAsync(HttpResponseMessage response)
     {
       if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
       {
-        var body = response.Content.ReadAsStringAsync().Result;
+        var body = await response.Content.ReadAsStringAsync();
 
         var result = Client.JsonMapper.From<FilePageResponse>(body);
 
         return result;
       }
 
-      Client.HandleErrors(response);
+      await Client.HandleErrorsAsync(response);
 
       return null;
     }
 
-    private FoldersResponse[] HandleFoldersResponse(HttpResponseMessage response)
+    private async Task<FoldersResponse[]> HandleFoldersResponseAsync(HttpResponseMessage response)
     {
       if (response.StatusCode == HttpStatusCode.OK)
       {
-        var body = response.Content.ReadAsStringAsync().Result;
+        var body = await response.Content.ReadAsStringAsync();
 
         var result = Client.JsonMapper.From<FoldersResponse[]>(body);
 
         return result;
       }
 
-      Client.HandleErrors(response);
+      await Client.HandleErrorsAsync(response);
 
       return null;
     }
   }
 
-  public class FolderResponse : XeroResponse<Model.Folder>
+  public class FolderResponse : XeroResponse<Folder>
   {
     public override IList<Folder> Values
     {
-      get { throw new System.NotImplementedException(); }
+      get { throw new NotImplementedException(); }
     }
   }
 
-  public class FolderRequest : XeroRequest<Model.Folder>
+  public class FolderRequest : XeroRequest<Folder>
   {
   }
 }

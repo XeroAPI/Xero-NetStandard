@@ -8,14 +8,14 @@ namespace PayrollTests.AU.Integration.PayItems
         [Test]
         public void find_all()
         {
-            var items = Api.PayItems.Find();
+            var items = Api.PayItems.FindAsync();
             Assert.IsNotNull(items);
         }
 
         [Test]
         public void find_paged()
         {
-            var items = Api.PayItems.Page(1).Find();
+            var items = Api.PayItems.Page(1).FindAsync();
             Assert.IsNotNull(items);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Payroll.Australia.Model.Status;
 using Xero.Api.Payroll.Australia.Model;
@@ -16,38 +17,42 @@ namespace PayrollTests.AU.Integration.TimeSheets
         }
 
         [Test]
-        public void create_timesheet()
+        public async Task create_timesheet()
         {
-            var timesheet = Api.Create(new Timesheet
+            var timesheet = await Api.CreateAsync(new Timesheet
             {
-                EmployeeId = the_employee_id(),
-                StartDate = timesheet_start_date(),
-                EndDate = timesheet_start_date().AddDays(6),
+                EmployeeId = await the_employee_id(),
+                StartDate = await timesheet_start_date(),
+                EndDate = (await timesheet_start_date()).AddDays(6),
                 Status = TimesheetStatus.Draft
             });
         }
 
         [Test]
-        public void timesheet_with_lines()
+        public async Task timesheet_with_lines()
         {
-            var timesheet = Api.Create(new Timesheet
+            var employeeId = await the_employee_id();
+            var timesheetStartDate = await timesheet_start_date();
+            var earningsRateId = await earning_rates_id();
+
+            Assert.DoesNotThrowAsync(() => Api.CreateAsync(new Timesheet
             {
-                EmployeeId = the_employee_id(),
-                StartDate = timesheet_start_date(),
-                EndDate = timesheet_start_date().AddDays(6),
+                EmployeeId = employeeId,
+                StartDate = timesheetStartDate,
+                EndDate = timesheetStartDate.AddDays(6),
                 Status = TimesheetStatus.Draft,
                 TimesheetLines = new List<TimesheetLine>
                 {
                     new TimesheetLine
                     {
-                        EarningsRateId = earning_rates_id(),
+                        EarningsRateId = earningsRateId,
                         NumberOfUnits = new NumberOfUnits
                         {
                             7.5m, 7.5m, 7.5m, 7.5m, 7.5m, 0, 0
                         }
                     }
                 }
-            });
+            }));
         }
     }
 }

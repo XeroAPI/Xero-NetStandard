@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 
 namespace CoreTests.Integration.Files.Support
@@ -31,24 +32,24 @@ namespace CoreTests.Integration.Files.Support
             };
         }
 
-        protected Guid Given_a_file_in(Guid folderId, string filename)
+        protected async Task<Guid> Given_a_file_in(Guid folderId, string filename)
         {
             var file = create_file_with_name(filename);
 
-            return Given_a_file_in(folderId, file);
+            return await Given_a_file_in(folderId, file);
 
         }
 
-        protected Guid Given_a_file_in(Guid folderId)
+        protected async Task<Guid> Given_a_file_in(Guid folderId)
         {
             var filename = "Test" + Guid.NewGuid() + ".png";
 
-            return Given_a_file_in(folderId, create_file_with_name(filename));    
+            return await Given_a_file_in(folderId, create_file_with_name(filename));    
         }
 
-        protected Guid Given_a_file_in(Guid folderId,Xero.Api.Core.Model.File file )
+        protected async Task<Guid> Given_a_file_in(Guid folderId,Xero.Api.Core.Model.File file )
         {
-            var result = Api.Files.Add(folderId, file, exampleFile);
+            var result = await Api.Files.AddAsync(folderId, file, exampleFile);
 
             return result.Id ;
         }

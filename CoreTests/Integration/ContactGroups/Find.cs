@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CoreTests.Integration.ContactGroups
@@ -7,25 +8,25 @@ namespace CoreTests.Integration.ContactGroups
     public class Find : ContactGroupsTest
     {
         [Test]
-        public void Can_Find_Contact_Group()
+        public async Task Can_Find_Contact_Group()
         {
-            var contactGroup = Given_a_contactgroup();
+            var contactGroup = await Given_a_contactgroup();
 
-            var foundContactGroup = Api.ContactGroups.Find(contactGroup.Id);
+            var foundContactGroup = await Api.ContactGroups.FindAsync(contactGroup.Id);
 
             Assert.IsTrue(foundContactGroup.Name.StartsWith("Nice People"));
         }
 
         [Test]
-        public void Can_Find_Contacts_in_Contact_Group()
+        public async Task Can_Find_Contacts_in_Contact_Group()
         {
-            var contactGroup = Given_a_contactgroup();
+            var contactGroup = await Given_a_contactgroup();
 
-            var contact = Given_a_contact();
+            var contact = await Given_a_contact();
 
-            Api.ContactGroups[contactGroup.Id].Add(contact);
+            await Api.ContactGroups.AddContactAsync(contactGroup, contact);
 
-            var foundContactGroup = Api.ContactGroups.Find(contactGroup.Id);
+            var foundContactGroup = await Api.ContactGroups.FindAsync(contactGroup.Id);
 
             Assert.IsTrue(foundContactGroup.Name.StartsWith("Nice People"));
             Assert.IsTrue(foundContactGroup.Contacts.FirstOrDefault().Name.StartsWith("Peter"));

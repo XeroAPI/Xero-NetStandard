@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CoreTests.Integration.ManualJournals
@@ -7,21 +8,21 @@ namespace CoreTests.Integration.ManualJournals
     public class Update : ManualJournalsTest
     {
         [OneTimeSetUp]
-        public void UpdateSet()
+        public async Task UpdateSet()
         {
-            ManualJournalsSetUp();
+            await ManualJournalsSetUp();
         }
 
         [Test]
-        public void create_manual_journal()
+        public async Task create_manual_journal()
         {
             const string expected = "We got that wrong";
 
-            var manual = Given_a_manual_journal("We know what we want to do", 50);
+            var manual = await Given_a_manual_journal("We know what we want to do", 50);
 
             manual.Narration = expected;
 
-            var updated = Api.Update(manual);
+            var updated = await Api.UpdateAsync(manual);
 
             Assert.AreEqual(DateTime.Now.Date, updated.Date);
             Assert.AreEqual(expected, updated.Narration);            

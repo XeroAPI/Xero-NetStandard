@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 
@@ -8,15 +9,15 @@ namespace CoreTests.Integration.Items
     public class Update : ApiWrapperTest
     {
         [Test]
-        public void update_an_item()
+        public async Task update_an_item()
         {
             var code = "Woo-hoo " + Random.GetRandomString(10);
-            var the_item = Api.Create(new Item
+            var the_item = await Api.CreateAsync(new Item
             {
                 Code = code
             });
 
-            var updated_item = Api.Update(new Item
+            var updated_item = await Api.UpdateAsync(new Item
             {
                 Id = the_item.Id,
                 Code = code,

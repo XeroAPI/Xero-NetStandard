@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace PayrollTests.AU.Integration.PayrollCalendars
@@ -8,17 +9,17 @@ namespace PayrollTests.AU.Integration.PayrollCalendars
     public class Find : ApiWrapperTest
     {
         [Test]
-        public void find_all()
+        public async Task find_all()
         {
-            var prc = Api.PayrollCalendars.Find();
+            var prc = await Api.PayrollCalendars.FindAsync();
             Assert.True(prc.Any());
             Assert.True(prc.FirstOrDefault().Id != Guid.Empty);
         }
 
         [Test]
-        public void find_paged()
+        public async Task find_paged()
         {
-            var prc = Api.PayrollCalendars.Page(1).Find();
+            var prc = await Api.PayrollCalendars.Page(1).FindAsync();
             Assert.True(prc.Any());
             Assert.True(prc.FirstOrDefault().Id != Guid.Empty);
         }

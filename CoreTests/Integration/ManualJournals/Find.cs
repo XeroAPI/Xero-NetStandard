@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CoreTests.Integration.ManualJournals
@@ -8,45 +9,45 @@ namespace CoreTests.Integration.ManualJournals
     public class Find : ManualJournalsTest
     {
         [OneTimeSetUp]
-        public void UpdateSet()
+        public async Task UpdateSet()
         {
-            ManualJournalsSetUp();
+            await ManualJournalsSetUp();
         }
 
         [Test]
-        public void find_by_id()
+        public async Task find_by_id()
         {
             const string expected = "We know what we want to do";
-            var manual = Given_a_manual_journal(expected, 50);
+            var manual = await Given_a_manual_journal(expected, 50);
 
-            var found = Api.ManualJournals.Find(manual.Id);
+            var found = await Api.ManualJournals.FindAsync(manual.Id);
 
             Assert.AreEqual(DateTime.Now.Date, found.Date);
             Assert.AreEqual(expected, found.Narration);
         }
 
         [Test]
-        public void find_by_value()
+        public async Task find_by_value()
         {
             const string expected = "We know what we want to do";
             
-            Given_a_manual_journal(expected, 50);
+            await Given_a_manual_journal(expected, 50);
 
-            var found = Api.ManualJournals
+            var found = await Api.ManualJournals
                 .Where(string.Format("Narration == \"{0}\"", expected))
-                .Find();
+                .FindAsync();
 
             Assert.True(found.All(p => p.Narration == expected));
         }
 
         [Test]
-        public void find_by_page()
+        public async Task find_by_page()
         {
             const string expected = "We know what we want to do";
 
-            Given_a_manual_journal(expected, 50);
+            await Given_a_manual_journal(expected, 50);
 
-            var manualJournals = Api.ManualJournals.Page(1).Find();
+            var manualJournals = await Api.ManualJournals.Page(1).FindAsync();
 
             Assert.Greater(manualJournals.Count(), 0);
         }

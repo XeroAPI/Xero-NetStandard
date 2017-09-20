@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
 using Xero.Api.Core.Model.Types;
@@ -8,19 +9,19 @@ namespace CoreTests.Integration.Invoices
 {
     public abstract class InvoicesTest : ApiWrapperTest
     {
-        public Invoice Given_an_draft_invoice(InvoiceType type = InvoiceType.AccountsPayable)
+        public async Task<Invoice> Given_an_draft_invoice(InvoiceType type = InvoiceType.AccountsPayable)
         {
-            return Given_an_invoice(type);
+            return await Given_an_invoice(type);
         }
 
-        public Invoice Given_an_authorised_invoice(InvoiceType type = InvoiceType.AccountsPayable)
+        public async Task<Invoice> Given_an_authorised_invoice(InvoiceType type = InvoiceType.AccountsPayable)
         {
-            return Given_an_invoice(type, InvoiceStatus.Authorised);
+            return await Given_an_invoice(type, InvoiceStatus.Authorised);
         }
 
-        public Invoice Given_an_invoice(InvoiceType type = InvoiceType.AccountsPayable, InvoiceStatus status = InvoiceStatus.Draft, string invoiceNumber = null)
+        public async Task<Invoice> Given_an_invoice(InvoiceType type = InvoiceType.AccountsPayable, InvoiceStatus status = InvoiceStatus.Draft, string invoiceNumber = null)
         {
-            return Api.Create(new Invoice
+            return await Api.CreateAsync(new Invoice
             {
                 Contact = new Contact { Name = "ABC Bank" },
                 Type = type,
@@ -29,7 +30,7 @@ namespace CoreTests.Integration.Invoices
                 LineAmountTypes = LineAmountType.Inclusive,
                 Status = status,
                 Number = invoiceNumber,
-				LineItems = new List<LineItem>
+                LineItems = new List<LineItem>
                 {
                     new LineItem
                     {
@@ -42,13 +43,13 @@ namespace CoreTests.Integration.Invoices
             });
         }
 
-        public Invoice Given_a_description_only_invoice(InvoiceType type = InvoiceType.AccountsPayable)
+        public async Task<Invoice> Given_a_description_only_invoice(InvoiceType type = InvoiceType.AccountsPayable)
         {
-            return Api.Create(new Invoice
+            return await Api.CreateAsync(new Invoice
             {
                 Contact = new Contact { Name = "Richard" },
                 Type = type,
-				LineItems = new List<LineItem>
+                LineItems = new List<LineItem>
                 {
                     new LineItem
                     {

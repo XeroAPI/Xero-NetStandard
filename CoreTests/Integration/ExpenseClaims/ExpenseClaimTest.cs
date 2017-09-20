@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
 using Xero.Api.Core.Model.Types;
@@ -8,9 +9,9 @@ namespace CoreTests.Integration.ExpenseClaims
 {
     public abstract class ExpenseClaimTest : ApiWrapperTest
     {
-        public Receipt Given_a_receipt(Guid userId, string contactName, string description, decimal amount, string account)
+        public async Task<Receipt> Given_a_receipt(Guid userId, string contactName, string description, decimal amount, string account)
         {
-            return Api.Create(new Receipt
+            return await Api.CreateAsync(new Receipt
             {
                 Date = DateTime.UtcNow.Date,
                 Contact = new Contact { Name = contactName },
@@ -33,9 +34,9 @@ namespace CoreTests.Integration.ExpenseClaims
             });
         }
 
-        public ExpenseClaim Given_an_expense_claim(Guid userId, Guid receiptId1, Guid receiptId2)
+        public async Task<ExpenseClaim> Given_an_expense_claim(Guid userId, Guid receiptId1, Guid receiptId2)
         {
-            return Api.Create(new ExpenseClaim
+            return await Api.CreateAsync(new ExpenseClaim
             {
                 User = new User
                 {

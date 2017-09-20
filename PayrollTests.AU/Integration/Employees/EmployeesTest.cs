@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Payroll.Australia.Model;
 using Xero.Api.Payroll.Australia.Model.Types;
 
@@ -7,9 +8,9 @@ namespace PayrollTests.AU.Integration.Employees
 {
     public abstract class EmployeesTest : ApiWrapperTest
     {
-        protected Employee Given_an_employee(bool terminated = false)
+        protected async Task<Employee> Given_an_employee(bool terminated = false)
         {
-            var employee = Api.Create(new Employee
+            var employee = await Api.CreateAsync(new Employee
             {
                 FirstName = "John " + Guid.NewGuid().ToString("N"),
                 LastName = "Smith",
@@ -19,37 +20,37 @@ namespace PayrollTests.AU.Integration.Employees
             return employee;
         }
 
-        protected Employee given_terminated_employee()
+        protected async Task<Employee> given_terminated_employee()
         {
-            return Given_an_employee(true);
+            return await Given_an_employee(true);
         }
 
-        protected Guid earnings_rate_id()
+        protected async Task<Guid> earnings_rate_id()
         {
-            return Api.PayItems.Find().FirstOrDefault().EarningsRates.FirstOrDefault().Id;
-        }
-
-
-        protected Guid deduction_type_id()
-        {
-            return Api.PayItems.Find().FirstOrDefault().DeductionTypes.FirstOrDefault().Id;
-        }
-
-        protected Guid reimbersment_type_id()
-        {
-            return Api.PayItems.Find().FirstOrDefault().ReimbursementTypes.FirstOrDefault().Id;
+            return (await Api.PayItems.FindAsync()).FirstOrDefault().EarningsRates.FirstOrDefault().Id;
         }
 
 
-        protected Guid leave_type_id()
+        protected async Task<Guid> deduction_type_id()
         {
-            return Api.PayItems.Find().FirstOrDefault().LeaveTypes.FirstOrDefault().Id;
+            return (await Api.PayItems.FindAsync()).FirstOrDefault().DeductionTypes.FirstOrDefault().Id;
+        }
+
+        protected async Task<Guid> reimbersment_type_id()
+        {
+            return (await Api.PayItems.FindAsync()).FirstOrDefault().ReimbursementTypes.FirstOrDefault().Id;
         }
 
 
-        protected Guid super_fund_id()
+        protected async Task<Guid> leave_type_id()
         {
-            var sf = Api.SuperFunds.Find();
+            return (await Api.PayItems.FindAsync()).FirstOrDefault().LeaveTypes.FirstOrDefault().Id;
+        }
+
+
+        protected async Task<Guid> super_fund_id()
+        {
+            var sf = await Api.SuperFunds.FindAsync();
             
             if (sf.FirstOrDefault().Id != Guid.Empty)
             {
@@ -57,11 +58,11 @@ namespace PayrollTests.AU.Integration.Employees
             }
             else
             {
-                return Api.Create(new SuperFund
+                return (await Api.CreateAsync(new SuperFund
                 {
                     Type = SuperfundType.Regulated,
                     Abn = "78984178687",
-                }).Id;
+                })).Id;
             }
         }
 

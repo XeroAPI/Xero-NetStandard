@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CoreTests.Integration.BankTransactions
@@ -10,39 +11,39 @@ namespace CoreTests.Integration.BankTransactions
         [Test]
         public void find_bank_transactions_where_filter()
         {
-            Assert.DoesNotThrow(() => Api.BankTransactions
+            Assert.DoesNotThrowAsync(() => Api.BankTransactions
                 .Where("Type == \"SPEND\"")
                 .And("Status == \"AUTHORISED\"")
-                .Find());
+                .FindAsync());
         }
 
         [Test]
-        public void find_bank_transactions_ifmodifiedsince()
+        public async Task find_bank_transactions_ifmodifiedsince()
         {
-            Given_a_bank_transaction();
+            await Given_a_bank_transaction();
 
-            var bankTransaction = Api.BankTransactions
+            var bankTransaction = await Api.BankTransactions
                 .ModifiedSince(DateTime.Today.AddDays(-1).Date)
-                .Find();
+                .FindAsync();
 
             Assert.IsNotNull(bankTransaction);
         }
 
         [Test]
-        public void find_bank_transactions_individual()
+        public async Task find_bank_transactions_individual()
         {
-            var expected = Given_a_bank_transaction().Id;
+            var expected = (await Given_a_bank_transaction()).Id;
 
-            var id = Api.BankTransactions.Find(expected).Id;
+            var id = (await Api.BankTransactions.FindAsync(expected)).Id;
 
             Assert.AreEqual(expected, id);
         }
 
         [Test]
-        public void find_by_page()
+        public async Task find_by_page()
         {
-            Given_a_bank_transaction();
-            var bankTrans = Api.BankTransactions.Page(1).Find();
+            await Given_a_bank_transaction();
+            var bankTrans = await Api.BankTransactions.Page(1).FindAsync();
 
             Assert.Greater(bankTrans.Count(), 0);
         }

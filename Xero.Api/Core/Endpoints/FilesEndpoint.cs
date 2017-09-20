@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Request;
@@ -14,12 +14,11 @@ namespace Xero.Api.Core.Endpoints
 {
     public interface IFilesEndpoint : IXeroUpdateEndpoint<FilesEndpoint, Model.File, FilesRequest, FilesResponse>
     {
-        Model.File Rename(Guid id, string name);
-        Model.File Move(Guid id, Guid newFolder);
-        Model.File Add(Guid folderId, Model.File file, byte[] data);
-        Model.File Remove(Guid fileid);
-        byte[] GetContent(Guid id, string contentType);
-        Model.File this[Guid id] { get; }
+        Task<Model.File> RenameAsync(Guid id, string name);
+        Task<Model.File> MoveAsync(Guid id, Guid newFolder);
+        Task<Model.File> AddAsync(Guid folderId, Model.File file, byte[] data);
+        Task<Model.File> RemoveAsync(Guid fileid);
+        Task<byte[]> GetContentAsync(Guid id, string contentType);
     }
 
     public class FilesEndpoint : XeroUpdateEndpoint<FilesEndpoint, Model.File, FilesRequest, FilesResponse>, IFilesEndpoint
@@ -30,106 +29,92 @@ namespace Xero.Api.Core.Endpoints
         {
 
         }
-
-        public Model.File this[Guid id]
+        
+        public override async Task<IEnumerable<Model.File>> FindAsync()
         {
-            get
+            var response = await Client.GetAsync("files.xro/1.0/Files", "");
+
+            var result = await HandleFilesResponseAsync(response);
+
+            return result.Items;
+        }
+
+        public override async Task<Model.File> FindAsync(Guid fileId)
+        {
+            var response = await Client.GetAsync("files.xro/1.0/Files", "");
+            var result = await HandleFilesResponseAsync(response);
+
+            return result.Items.SingleOrDefault(i => i.Id == fileId);
+        }
+
+        public async Task<Model.File> RenameAsync(Guid id, string name)
+        {
+            var file = new Model.File
             {
-                var result = Find(id);
-                return result;
-            }
+                Name = name
+            };
+
+            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true);
+            return await HandleFileResponseAsync(response);
         }
 
-        public override IEnumerable<Model.File> Find()
+        public async Task<Model.File> MoveAsync(Guid id, Guid newFolder)
         {
-            var response = HandleFilesResponse(Client
-                .Get("files.xro/1.0/Files", ""));
-
-            return response.Items;
-        }
-
-        public override Model.File Find(Guid fileId)
-        {
-            var response = HandleFilesResponse(Client
-                .Get("files.xro/1.0/Files", ""));
-
-            return response.Items.SingleOrDefault(i => i.Id == fileId);
-        }
-
-        public Model.File Rename(Guid id, string name)
-        {
-            var response = HandleFileResponse(Client
-                .Put("files.xro/1.0/Files/" + id, "{\"Name\":\"" + name + "\"}", true));
-
-
-            return response;
-        }
-
-        public Model.File Move(Guid id, Guid newFolder)
-        {
-            var response = HandleFileResponse(Client
-                .Put("files.xro/1.0/Files/" + id, "{\"FolderId\":\"" + newFolder + "\"}", true));
-
-
-            return response;
-        }
-
-        public Model.File Add(Guid folderId, Model.File file, byte[] data)
-        {
-
-            var response = HandleFileResponse(Client
-                .PostMultipartForm("files.xro/1.0/Files/" + folderId, file.Mimetype, file.Name, file.FileName, data));
-
-            return response;
-        }
-
-        public Model.File Remove(Guid fileid)
-        {
-            var response = HandleFileResponse(Client
-                .Delete("files.xro/1.0/Files/" + fileid.ToString()));
-
-            return response;
-        }
-
-        public byte[] GetContent(Guid id, string contentType)
-        {
-            var response = Client.GetRaw("files.xro/1.0/Files/" + id + "/Content", contentType);
-
-            using (MemoryStream ms = new MemoryStream())
+            var file = new Model.File
             {
-                response.Content.ReadAsStreamAsync().Result.CopyTo(ms);
+                FolderId = newFolder
+            };
 
-                return ms.ToArray();
-            }
+            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true); 
+            return await HandleFileResponseAsync(response);
+        }
+
+        public async Task<Model.File> AddAsync(Guid folderId, Model.File file, byte[] data)
+        {
+            var response = await Client.PostMultipartFormAsync("files.xro/1.0/Files/" + folderId, file.Mimetype, file.Name, file.FileName, data);
+            return await HandleFileResponseAsync(response);
+        }
+
+        public async Task<Model.File> RemoveAsync(Guid fileid)
+        {
+            var response = await Client.DeleteAsync("files.xro/1.0/Files/" + fileid);
+            return await HandleFileResponseAsync(response);
+        }
+
+        public async Task<byte[]> GetContentAsync(Guid id, string contentType)
+        {
+            var response = await Client.GetRawAsync("files.xro/1.0/Files/" + id + "/Content", contentType);
+
+            return await response.Content.ReadAsByteArrayAsync();
 
         }
 
-        private Model.File HandleFileResponse(HttpResponseMessage response)
+        private async Task<Model.File> HandleFileResponseAsync(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
             {
-                var body = response.Content.ReadAsStringAsync().Result;
+                var body = await response.Content.ReadAsStringAsync();
 
                 var result = Client.JsonMapper.From<Model.File>(body);
                 return result;
             }
 
-            Client.HandleErrors(response);
+            await Client.HandleErrorsAsync(response);
 
             return null;
         }
 
-        private FilesResponse HandleFilesResponse(HttpResponseMessage response)
+        private async Task<FilesResponse> HandleFilesResponseAsync(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
             {
-                var body = response.Content.ReadAsStringAsync().Result;
+                var body = await response.Content.ReadAsStringAsync();
 
                 var result = Client.JsonMapper.From<FilesResponse>(body);
                 return result;
             }
 
-            Client.HandleErrors(response);
+            await Client.HandleErrorsAsync(response);
 
             return null;
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.RateLimiter;
 using Xero.Api.Payroll.America.Endpoints;
@@ -41,124 +42,124 @@ namespace Xero.Api.Payroll
             Timesheets = new TimesheetsEndpoint(Client);            
         }
 
-        public IEnumerable<PaySchedule> Create(IEnumerable<PaySchedule> items)
+        public async Task<IEnumerable<PaySchedule>> CreateAsync(IEnumerable<PaySchedule> items)
         {
-            return PaySchedules.Create(items);
+            return await PaySchedules.CreateAsync(items);
         }
 
-        public IEnumerable<WorkLocation> Create(IEnumerable<WorkLocation> items)
+        public async Task<IEnumerable<WorkLocation>> CreateAsync(IEnumerable<WorkLocation> items)
         {
-            return WorkLocations.Create(items);
+            return await WorkLocations.CreateAsync(items);
         }
 
-        public IEnumerable<PayStub> Create(IEnumerable<PayStub> items)
+        public async Task<IEnumerable<PayStub>> CreateAsync(IEnumerable<PayStub> items)
         {
-            return PayStubs.Create(items);
+            return await PayStubs.CreateAsync(items);
         }
 
-        public IEnumerable<Employee> Create(IEnumerable<Employee> items)
+        public async Task<IEnumerable<Employee>> CreateAsync(IEnumerable<Employee> items)
         {
-            return Employees.Create(items);
+            return await Employees.CreateAsync(items);
         }
 
-        public IEnumerable<PayRun> Create(IEnumerable<PayRun> items)
+        public async Task<IEnumerable<PayRun>> CreateAsync(IEnumerable<PayRun> items)
         {
-            return PayRuns.Create(items);
+            return await PayRuns.CreateAsync(items);
         }
 
-        public IEnumerable<Timesheet> Create(IEnumerable<Timesheet> items)
+        public async Task<IEnumerable<Timesheet>> CreateAsync(IEnumerable<Timesheet> items)
         {
-            return Timesheets.Create(items);
+            return await Timesheets.CreateAsync(items);
         }
 
-        public PaySchedule Create(PaySchedule item)
+        public async Task<PaySchedule> CreateAsync(PaySchedule item)
         {
-            return PaySchedules.Create(item);
+            return await PaySchedules.CreateAsync(item);
         }
 
-        public WorkLocation Create(WorkLocation item)
+        public async Task<WorkLocation> CreateAsync(WorkLocation item)
         {
-            return WorkLocations.Create(item);
+            return await WorkLocations.CreateAsync(item);
         }
 
-        public PayStub Create(PayStub item)
+        public async Task<PayStub> CreateAsync(PayStub item)
         {
-            return PayStubs.Create(item);
+            return await PayStubs.CreateAsync(item);
         }
 
-        public Employee Create(Employee item)
+        public async Task<Employee> CreateAsync(Employee item)
         {
-            return Employees.Create(item);
+            return await Employees.CreateAsync(item);
         }
 
-        public PayRun Create(PayRun item)
+        public async Task<PayRun> CreateAsync(PayRun item)
         {
-            return PayRuns.Create(item);
+            return await PayRuns.CreateAsync(item);
         }
 
-        public Timesheet Create(Timesheet item)
+        public async Task<Timesheet> CreateAsync(Timesheet item)
         {
-            return Timesheets.Create(item);
+            return await Timesheets.CreateAsync(item);
         }
 
-        public IEnumerable<PaySchedule> Update(IEnumerable<PaySchedule> items)
+        public async Task<IEnumerable<PaySchedule>> UpdateAsync(IEnumerable<PaySchedule> items)
         {
-            return PaySchedules.Update(items);
+            return await PaySchedules.UpdateAsync(items);
         }
 
-        public IEnumerable<WorkLocation> Update(IEnumerable<WorkLocation> items)
+        public async Task<IEnumerable<WorkLocation>> UpdateAsync(IEnumerable<WorkLocation> items)
         {
-            return WorkLocations.Update(items);
+            return await WorkLocations.UpdateAsync(items);
         }
 
-        public IEnumerable<PayStub> Update(IEnumerable<PayStub> items)
+        public async Task<IEnumerable<PayStub>> UpdateAsync(IEnumerable<PayStub> items)
         {
-            return PayStubs.Update(items);
+            return await PayStubs.UpdateAsync(items);
         }
 
-        public IEnumerable<Employee> Update(IEnumerable<Employee> items)
+        public async Task<IEnumerable<Employee>> UpdateAsync(IEnumerable<Employee> items)
         {
-            return Employees.Update(items);
+            return await Employees.UpdateAsync(items);
         }
 
-        public IEnumerable<PayRun> Update(IEnumerable<PayRun> items)
+        public async Task<IEnumerable<PayRun>> UpdateAsync(IEnumerable<PayRun> items)
         {
-            return PayRuns.Update(items);
+            return await PayRuns.UpdateAsync(items);
         }
 
-        public IEnumerable<Timesheet> Update(IEnumerable<Timesheet> items)
+        public async Task<IEnumerable<Timesheet>> UpdateAsync(IEnumerable<Timesheet> items)
         {
-            return Timesheets.Update(items);
+            return await Timesheets.UpdateAsync(items);
         }
 
-        public PaySchedule Update(PaySchedule item)
+        public async Task<PaySchedule> UpdateAsync(PaySchedule item)
         {
-            return PaySchedules.Update(item);
+            return await PaySchedules.UpdateAsync(item);
         }
 
-        public WorkLocation Update(WorkLocation item)
+        public async Task<WorkLocation> UpdateAsync(WorkLocation item)
         {
-            return WorkLocations.Update(item);
+            return await WorkLocations.UpdateAsync(item);
         }
 
-        public PayStub Update(PayStub item)
+        public async Task<PayStub> UpdateAsync(PayStub item)
         {
-            return PayStubs.Update(item);
+            return await PayStubs.UpdateAsync(item);
         }
 
-        public Employee Update(Employee item)
+        public async Task<Employee> UpdateAsync(Employee item)
         {
-            return Employees.Update(item);
+            return await Employees.UpdateAsync(item);
         }
 
-        public PayRun Update(PayRun item)
+        public async Task<PayRun> UpdateAsync(PayRun item)
         {
-            return PayRuns.Update(item);
+            return await PayRuns.UpdateAsync(item);
         }
 
-        public Timesheet Update(Timesheet item)
+        public async Task<Timesheet> UpdateAsync(Timesheet item)
         {
-            return Timesheets.Update(item);
+            return await Timesheets.UpdateAsync(item);
         }
     }
 }

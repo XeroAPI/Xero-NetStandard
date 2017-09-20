@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 
@@ -8,11 +9,11 @@ namespace CoreTests.Integration.Items
     public class Create : ApiWrapperTest
     {
         [Test]
-        public void create_simple_item()
+        public async Task create_simple_item()
         {
             var code = "Woo-hoo " + Random.GetRandomString(10);
 
-            var item = Api.Create(new Item
+            var item = await Api.CreateAsync(new Item
             {
                 Code = code
             });
@@ -22,11 +23,11 @@ namespace CoreTests.Integration.Items
         }
 
         [Test]
-        public void create_full_item()
+        public async Task create_full_item()
         {
             var code = "Woo-hoo " + Random.GetRandomString(10);
 
-            var item = Api.Create(new Item
+            var item = await Api.CreateAsync(new Item
             {
                 Code = code,
                 Description = "Buy cheap sell high",
@@ -41,6 +42,9 @@ namespace CoreTests.Integration.Items
                     UnitPrice = 15.0m
                 }
             });
+
+            Assert.IsTrue(Guid.Empty != item.Id);
+            Assert.AreEqual(code, item.Code);
         }
     }
 }

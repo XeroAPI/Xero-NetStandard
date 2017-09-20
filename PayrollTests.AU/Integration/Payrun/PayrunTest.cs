@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Payroll.Australia.Model;
 using Xero.Api.Payroll.Australia.Model.Types;
 
@@ -8,34 +9,32 @@ namespace PayrollTests.AU.Integration.Payrun
     public abstract class PayrunTest : ApiWrapperTest
     {
 
-        public PayRun Given_a_payrun()
+        public async Task<PayRun> Given_a_payrun()
         {
-            var payrun = Api.Create(new PayRun
+            return await Api.CreateAsync(new PayRun
             {
-                PayrollCalendarId = the_payroll_calendar_id(),
+                PayrollCalendarId = await the_payroll_calendar_id(),
             });
-
-            return payrun;
         }
 
 
 
-        public Guid the_payroll_calendar_id()
+        public async Task<Guid> the_payroll_calendar_id()
         {
-            var pc = Api.PayrollCalendars.Find();
+            var pc = await Api.PayrollCalendars.FindAsync();
             if (pc.FirstOrDefault().Id != Guid.Empty)
             {
                 return pc.FirstOrDefault().Id;
             }
             else
             {
-                return Api.Create(new PayrollCalendar
+                return (await Api.CreateAsync(new PayrollCalendar
                 {
                     Name = "New Calendar",
                     CalendarType = CalendarType.Weekly,
                     StartDate = DateTime.Today,
                     PaymentDate = DateTime.Today.AddDays(7)
-                }).Id;
+                })).Id;
             }
         }
 

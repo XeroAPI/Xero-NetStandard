@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -10,9 +11,9 @@ namespace CoreTests.Integration.Setup
     public class Create : ApiWrapperTest
     {
         [Test]
-        public void create_a_valid_setup()
+        public async Task create_a_valid_setup()
         {
-            var import = Api.Setup.Create(new Xero.Api.Core.Model.Setup.Setup
+            var import = await Api.Setup.CreateAsync(new Xero.Api.Core.Model.Setup.Setup
             {
                 Accounts = new List<Account>(new[] {
                     new Account
@@ -31,7 +32,7 @@ namespace CoreTests.Integration.Setup
         [Test]
         public void missing_account_code_will_error()
         {
-            Assert.Throws<ValidationException>(() => Api.Setup.Create(new Xero.Api.Core.Model.Setup.Setup
+            Assert.ThrowsAsync<ValidationException>(() => Api.Setup.CreateAsync(new Xero.Api.Core.Model.Setup.Setup
             {
                 Accounts = new List<Account>(new[]
                 {
@@ -45,9 +46,9 @@ namespace CoreTests.Integration.Setup
         }
 
         [Test]
-        public void providing_nothing_is_not_an_error()
+        public async Task providing_nothing_is_not_an_error()
         {
-            var import = Api.Setup.Create(new Xero.Api.Core.Model.Setup.Setup());
+            var import = await Api.Setup.CreateAsync(new Xero.Api.Core.Model.Setup.Setup());
 
             Assert.False(import.Accounts.Present);
             Assert.False(import.Organisation.Present);

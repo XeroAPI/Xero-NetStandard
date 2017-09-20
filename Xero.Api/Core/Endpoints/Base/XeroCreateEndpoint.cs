@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Common;
 using Xero.Api.Infrastructure.Http;
 using Xero.Api.Infrastructure.Interfaces;
@@ -17,17 +18,17 @@ namespace Xero.Api.Core.Endpoints.Base
         {
         }
 
-        public IEnumerable<TResult> Create(IEnumerable<TResult> items)
+        public async Task<IEnumerable<TResult>> CreateAsync(IEnumerable<TResult> items)
         {
             var request = new TRequest();
             request.AddRange(items);
 
-            return Put(request);
+            return await PutAsync(request);
         }
 
-        public TResult Create(TResult item)
+        public async Task<TResult> CreateAsync(TResult item)
         {
-            return Create(new[] { item }).First();
+            return (await CreateAsync(new[] { item })).First();
         }
 
         public IXeroCreateEndpoint<T, TResult, TRequest, TResponse> SummarizeErrors(bool summarize)
@@ -36,12 +37,12 @@ namespace Xero.Api.Core.Endpoints.Base
             return this;
         }
 
-        protected IEnumerable<TResult> Put(TRequest data)
+        protected async Task<IEnumerable<TResult>> PutAsync(TRequest data)
         {
             try
             {
                 Client.Parameters = Parameters;
-                return Client.Put<TResult, TResponse>(ApiEndpointUrl, data);
+                return await Client.PutAsync<TResult, TResponse>(ApiEndpointUrl, data);
             }
             finally
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
 
@@ -8,14 +9,14 @@ namespace CoreTests.Integration.BankTransactions
 {
     public class BankTransactionTest : ApiWrapperTest
     {
-        public BankTransaction Given_a_bank_transaction()
+        public async Task<BankTransaction> Given_a_bank_transaction()
         {
-            return Given_a_bank_transaction(BankTransactionType.Spend);
+            return await Given_a_bank_transaction(BankTransactionType.Spend);
         }
 
-        public BankTransaction Given_a_bank_transaction(BankTransactionType type, string accountCode = "404")
+        public async Task<BankTransaction> Given_a_bank_transaction(BankTransactionType type, string accountCode = "404")
         {
-            return Api.Create(new BankTransaction
+            return await Api.CreateAsync(new BankTransaction
             {
                 Type = type,
                 Contact = new Contact { Name = "ABC Bank" },
@@ -29,13 +30,13 @@ namespace CoreTests.Integration.BankTransactions
                         AccountCode = accountCode
                     }
                 },
-                BankAccount = new Account { Id = FindBankAccountGuid() }
+                BankAccount = new Account { Id = await FindBankAccountGuid() }
             });
         }
 
-        public BankTransaction Given_an_overpayment(BankTransactionType type)
+        public async Task<BankTransaction> Given_an_overpayment(BankTransactionType type)
         {
-            return Api.Create(new BankTransaction
+            return await Api.CreateAsync(new BankTransaction
             {
                 Type = type,
                 Contact = new Contact { Name = "ABC Bank" },
@@ -49,13 +50,13 @@ namespace CoreTests.Integration.BankTransactions
                         AccountCode = "800"
                     }
                 },
-                BankAccount = new Account { Id = FindBankAccountGuid() }
+                BankAccount = new Account { Id = await FindBankAccountGuid() }
             });
         }
 
-        public Guid FindBankAccountGuid()
+        public async Task<Guid> FindBankAccountGuid()
         {
-            var bankAccount = Api.Accounts.Where("Type == \"BANK\"").Find().FirstOrDefault();
+            var bankAccount = (await Api.Accounts.Where("Type == \"BANK\"").FindAsync()).FirstOrDefault();
 
             if (bankAccount != null)
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -10,9 +11,9 @@ namespace CoreTests.Integration.Contacts
     public class Update : ContactsTest
     {
         [Test]
-        public void update_contact()
+        public async Task update_contact()
         {
-            var id = Given_a_contact().Id;
+            var id = (await Given_a_contact()).Id;
 
             var changes = new Contact
             {
@@ -40,7 +41,7 @@ namespace CoreTests.Integration.Contacts
                     }
             };
 
-            var updated = Api.Update(changes);
+            var updated = await Api.UpdateAsync(changes);
 
             Assert.IsTrue(updated.Name.StartsWith("ABC"));
             Assert.IsTrue(updated.ContactNumber.StartsWith("ID001"));

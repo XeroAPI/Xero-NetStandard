@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Request;
@@ -10,7 +11,7 @@ namespace Xero.Api.Core.Endpoints
 {
     public interface IItemsEndpoint : IXeroUpdateEndpoint<ItemsEndpoint, Item, ItemsRequest, ItemsResponse>
     {
-        void Delete(Item itemToDelete);
+        Task DeleteAsync(Item itemToDelete);
     }
 
     public class ItemsEndpoint
@@ -21,25 +22,26 @@ namespace Xero.Api.Core.Endpoints
         {
         }
 
-        public void Delete(Item itemToDelete)
+        public async Task DeleteAsync(Item itemToDelete)
         {
             var endpoint = string.Format("/api.xro/2.0/Items/{0}", itemToDelete.Id);
 
-            HandleResponse(Client
-                .Delete(endpoint));
+            var response = await Client.DeleteAsync(endpoint);
+
+            await HandleResponseAsync(response);
         }
 
-        private ItemsResponse HandleResponse(HttpResponseMessage response)
+        private async Task<ItemsResponse> HandleResponseAsync(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var body = response.Content.ReadAsStringAsync().Result;
+                var body = await response.Content.ReadAsStringAsync();
 
                 var result = Client.JsonMapper.From<ItemsResponse>(body);
                 return result;
             }
 
-            Client.HandleErrors(response);
+            await Client.HandleErrorsAsync(response);
 
             return null;
         }

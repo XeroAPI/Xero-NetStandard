@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.WebUtilities;
 using Xero.Api.Infrastructure.Http;
 using Xero.Api.Infrastructure.Interfaces;
@@ -28,22 +29,22 @@ namespace Xero.Api.Infrastructure.OAuth
             }
         }
 
-        public IToken GetRequestToken(IConsumer consumer, string header)
+        public async Task<IToken> GetRequestTokenAsync(IConsumer consumer, string header)
         {
-            return GetToken(new Token { ConsumerKey = consumer.ConsumerKey, ConsumerSecret = consumer.ConsumerSecret }, RequestTokenEndpoint, header);
+            return await GetTokenAsync(new Token { ConsumerKey = consumer.ConsumerKey, ConsumerSecret = consumer.ConsumerSecret }, RequestTokenEndpoint, header);
         }
 
-        public IToken GetAccessToken(IToken token, string header)
+        public async Task<IToken> GetAccessTokenAsync(IToken token, string header)
         {
-            return GetToken(token, AccessTokenEndpoint, header);
+            return await GetTokenAsync(token, AccessTokenEndpoint, header);
         }
 
-        public IToken RenewAccessToken(IToken token, string header)
+        public async Task<IToken> RenewAccessTokenAsync(IToken token, string header)
         {
-            return GetToken(token, AccessTokenEndpoint, header);
+            return await GetTokenAsync(token, AccessTokenEndpoint, header);
         }
 
-        public IToken GetToken(IToken consumer, string endpoint, string header)
+        public async Task<IToken> GetTokenAsync(IToken consumer, string endpoint, string header)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
 
@@ -51,8 +52,8 @@ namespace Xero.Api.Infrastructure.OAuth
 
             request.Headers.Add("Authorization", header);
 
-            var response = _httpClient.SendAsync(request).Result;
-            var body = response.Content.ReadAsStringAsync().Result;
+            var response = await _httpClient.SendAsync(request);
+            var body = await response.Content.ReadAsStringAsync();
 
 
             if (response.StatusCode != HttpStatusCode.OK)

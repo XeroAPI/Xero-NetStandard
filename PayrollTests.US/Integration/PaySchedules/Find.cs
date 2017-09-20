@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace PayrollTests.US.Integration.PaySchedules
@@ -8,26 +9,26 @@ namespace PayrollTests.US.Integration.PaySchedules
     public class Find : PaySchedulesTest
     {
         [Test]
-        public void find_all()
+        public async Task find_all()
         {
-            Given_a_payschedule();
-            var ps = Api.PaySchedules.Find();
+            await Given_a_payschedule();
+            var ps = await Api.PaySchedules.FindAsync();
             Assert.IsTrue(ps.FirstOrDefault().Id != Guid.Empty);
         }
 
         [Test]
-        public void find_by_page()
+        public async Task find_by_page()
         {
-            Given_a_payschedule();
-            var ps = Api.PaySchedules.Page(1).Find();
+            await Given_a_payschedule();
+            var ps = await Api.PaySchedules.Page(1).FindAsync();
             Assert.IsTrue(ps.FirstOrDefault().Id != Guid.Empty);
         }
 
         [Test]
-        public void find_by_id()
+        public async Task find_by_id()
         {
-            var ps_id = Given_a_payschedule().Id;
-            var ps = Api.PaySchedules.Find(ps_id);
+            var ps_id = (await Given_a_payschedule()).Id;
+            var ps = Api.PaySchedules.FindAsync(ps_id);
             Assert.AreEqual(ps_id, ps.Id);
         }
     }

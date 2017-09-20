@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace CoreTests.Integration.TrackingCategories
 {
@@ -6,23 +7,23 @@ namespace CoreTests.Integration.TrackingCategories
     public class UpdateTrackingCategory : TrackingCategoriesTest
     {
         [Test]
-        public void Can_update_tracking_category_name()
+        public async Task Can_update_tracking_category_name()
         {
-            Given_a_TrackingCategory();
+            await Given_a_TrackingCategory();
 
-            Given_name_change_to_categorie();
+            await Given_name_change_to_categorie();
 
-            Given_Tracking_Category_is_deleted();
+            await Given_Tracking_Category_is_deleted();
         }
 
         [Test]
-        public void Can_update_tracking_category_with_Options_name()
+        public async Task Can_update_tracking_category_with_Options_name()
         {
-            Given_a_TrackingCategory_with_Options();
+            await Given_a_TrackingCategory_with_Options();
 
-            Given_name_change_to_categorie();
+            await Given_name_change_to_categorie();
 
-            Given_Tracking_Category_is_deleted();
+            await Given_Tracking_Category_is_deleted();
         }
     }
 }

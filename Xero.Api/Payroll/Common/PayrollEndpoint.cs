@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Common;
 using Xero.Api.Infrastructure.Http;
 using Xero.Api.Infrastructure.Interfaces;
@@ -17,32 +18,32 @@ namespace Xero.Api.Payroll.Common
         {
         }
 
-        public IEnumerable<TResult> Create(IEnumerable<TResult> items)
+        public async Task<IEnumerable<TResult>> CreateAsync(IEnumerable<TResult> items)
         {
             var request = new TRequest();
             request.AddRange(items);
 
-            return Post(request);
+            return await PostAsync(request);
         }
 
-        public TResult Create(TResult item)
+        public async Task<TResult> CreateAsync(TResult item)
         {
-            return Create(new [] { item }).First();
+            return (await CreateAsync(new [] { item })).First();
         }
 
-        public IEnumerable<TResult> Update(IEnumerable<TResult> items)
+        public async Task<IEnumerable<TResult>> UpdateAsync(IEnumerable<TResult> items)
         {
-            return Create(items);
+            return await CreateAsync(items);
         }
 
-        public TResult Update(TResult item)
+        public async Task<TResult> UpdateAsync(TResult item)
         {
-            return Update(new[] { item }).First();
+            return (await UpdateAsync(new[] { item })).First();
         }
 
-        protected IEnumerable<TResult> Post(TRequest data)
+        protected async Task<IEnumerable<TResult>> PostAsync(TRequest data)
         {
-            return Client.Post<TResult, TResponse>(ApiEndpointUrl, data);
+            return await Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data);
         }
 
         public PayrollEndpoint<T, TResult, TRequest, TResponse> Page(int page)

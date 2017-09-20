@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Payroll.Australia.Model;
 using Xero.Api.Payroll.Australia.Model.Types;
@@ -9,9 +10,9 @@ namespace PayrollTests.AU.Integration.PayrollCalendars
     public class Create : ApiWrapperTest
     {
         [Test]
-        public void create_payroll_calendar()
+        public async Task create_payroll_calendar()
         {
-            var pc = Api.Create(new PayrollCalendar
+            var pc = await Api.CreateAsync(new PayrollCalendar
             {
                 Name = "New Calendar",
                 CalendarType = CalendarType.Weekly,

@@ -13,9 +13,7 @@ namespace Xero.Api.Example.TokenStores
             if (string.IsNullOrWhiteSpace(userId))
                 return null;
 
-            IToken token;
-
-            _tokens.TryGetValue(userId, out token);
+            _tokens.TryGetValue(userId, out var token);
             return token;
         }
 

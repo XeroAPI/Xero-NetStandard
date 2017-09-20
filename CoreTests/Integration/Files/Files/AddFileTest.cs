@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Net;
+using System.Threading.Tasks;
 using CoreTests.Integration.Files.Support;
 using NUnit.Framework;
+using Xero.Api.Core.Endpoints;
 using Xero.Api.Core.Model;
 using File = Xero.Api.Core.Model.File;
 
@@ -11,90 +13,72 @@ namespace CoreTests.Integration.Files.Files
     [TestFixture]
     public class AddFileTest : FilesTest
     {
-      
-        
         [Test]
-        public void can_get_all_files_like_this()
+        public async Task can_get_all_files_like_this()
         {
-            var result = Api.Files.Find();
+            var result = await Api.Files.FindAsync();
 
             Assert.True(result != null);
         }
 
         [Test]
-        public void can_get_the_content_of_a_file_like_this()
+        public async Task can_get_the_content_of_a_file_like_this()
         {
             var filename = "My Test File " + Guid.NewGuid() + ".png";
 
-            var inboxId = Api.Inbox.InboxFolder.Id;
+            var inboxId = (await Api.Inbox.FindInboxFolderAsync()).Id;
 
-            var id = Given_a_file_in(inboxId, filename);
+            var id = await Given_a_file_in(inboxId, filename);
 
-            var content = Api.Files.GetContent(id,"image/png");
+            var content = await Api.Files.GetContentAsync(id,"image/png");
             
             Assert.IsTrue(StructuralComparisons.StructuralEqualityComparer.Equals(content,exampleFile));
         }
         
-       [Test]
-        public void can_remove_a_file_like_this()
+        [Test]
+        public async Task can_remove_a_file_like_this()
         {
-            var inboxId = Api.Inbox.InboxFolder.Id;
+            var inboxId = (await Api.Inbox.FindInboxFolderAsync()).Id;
 
-            var result = Given_a_file_in(inboxId, "Test " + Guid.NewGuid()  + ".png");
+            var result = await Given_a_file_in(inboxId, "Test " + Guid.NewGuid()  + ".png");
 
-            Api.Files.Remove(result);
+            await Api.Files.RemoveAsync(result);
 
-            var notfound= Api.Files[result];  
+            var notfound = await Api.Files.FindAsync(result);
 
             Assert.IsNull(notfound);
 
         }
 
        [Test]
-       public void can_rename_a_file_like_this()
+       public async Task can_rename_a_file_like_this()
        {
-           var inboxId = Api.Inbox.InboxFolder.Id;
+           var inboxId = (await Api.Inbox.FindInboxFolderAsync()).Id;
 
-           var result = Given_a_file_in(inboxId, "Test " + Guid.NewGuid()  + ".png");
+           var result = await Given_a_file_in(inboxId, "Test " + Guid.NewGuid()  + ".png");
 
-           var copy = Api.Files[result];
+           var copy = await Api.Files.FindAsync(result);
 
-           var NewName = "someother name";
+           var NewName = "someother name.png";
 
-           var updateResult = Api.Files.Rename(copy.Id, NewName);
+           var updateResult = await Api.Files.RenameAsync(copy.Id, NewName);
 
            Assert.IsTrue(updateResult.Name == NewName);
 
        }
 
        [Test]
-       public void can_move_a_file_like_this()
+       public async Task can_move_a_file_like_this()
        {
-           var inboxId = Api.Inbox.InboxFolder.Id;
+           var inboxId = (await Api.Inbox.FindInboxFolderAsync()).Id;
 
-           var result = Given_a_file_in(inboxId, "Test " + Guid.NewGuid() + ".png");
+           var result = await Given_a_file_in(inboxId, "Test " + Guid.NewGuid() + ".png");
 
-           var newFolder = Api.Folders.Add("stuff");
+           var newFolder = await Api.Folders.AddAsync("stuff");
 
-           var updateResult = Api.Files.Move(result, newFolder.Id);
+           var updateResult = await Api.Files.MoveAsync(result, newFolder.Id);
 
            Assert.IsTrue(updateResult.FolderId == newFolder.Id);
-
-       }
-        
-       [Test]
-       public void cannot_add_a_file_with_bad_filename_charactors()
-       {
-           var inboxId = Api.Inbox.InboxFolder.Id;
-
-           char[] badchar = System.IO.Path.GetInvalidFileNameChars();
-
-           var filename = "Inbox file " + badchar[0] + badchar[3] + badchar[2] + ".png"; ;
-
-           Assert.Throws<WebException>(() =>
-           {
-               Api.Files.Add( inboxId, create_file_with_name(filename), exampleFile);
-           });
        }
 
        private File create_file_with_name(string filename)

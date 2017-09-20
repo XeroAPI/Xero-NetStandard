@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Common;
 using Xero.Api.Core.Endpoints.Base;
 using Xero.Api.Core.Model;
@@ -13,7 +14,7 @@ namespace Xero.Api.Core.Endpoints
 {
     public interface IInvoicesEndpoint : IXeroUpdateEndpoint<InvoicesEndpoint, Invoice, InvoicesRequest, InvoicesResponse>, IPageableEndpoint<IInvoicesEndpoint>
     {
-        OnlineInvoice RetrieveOnlineInvoiceUrl(Guid invoiceId);
+        Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId);
         IInvoicesEndpoint Ids(IEnumerable<Guid> ids);
         IInvoicesEndpoint ContactIds(IEnumerable<Guid> contactIds);
         IInvoicesEndpoint Statuses(IEnumerable<InvoiceStatus> statuses);
@@ -65,9 +66,9 @@ namespace Xero.Api.Core.Endpoints
             Page(1);
         }
 
-        public OnlineInvoice RetrieveOnlineInvoiceUrl(Guid invoiceId)
+        public async Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId)
         {
-            return Client.Get<OnlineInvoice, OnlineInvoicesResponse>(string.Format("/api.xro/2.0/Invoices/{0}/OnlineInvoice", invoiceId)).FirstOrDefault();
+            return (await Client.GetAsync<OnlineInvoice, OnlineInvoicesResponse>(string.Format("/api.xro/2.0/Invoices/{0}/OnlineInvoice", invoiceId))).FirstOrDefault();
         }
     }
 }

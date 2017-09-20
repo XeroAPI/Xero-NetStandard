@@ -8,14 +8,14 @@ namespace PayrollTests.AU.Integration.SuperFundProducts
         [Test]
         public void find_all()
         {
-            var sfp = Api.SuperFundProducts.Find();
+            var sfp = Api.SuperFundProducts.FindAsync();
             Assert.IsNotNull(sfp);
         }
 
         [Test]
         public void find_by_page()
         {
-            var sfp = Api.SuperFundProducts.Find();
+            var sfp = Api.SuperFundProducts.FindAsync();
             Assert.IsNotNull(sfp);
         }
     }

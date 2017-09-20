@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Xero.Api.Example.Applications.Public;
 using Xero.Api.Example.MVC.Helpers;
 
@@ -12,12 +13,13 @@ namespace Xero.Api.Example.MVC.Controllers
 
             try
             {
-                var organisation = api.Organisation;
+                var organisation = api.FindOrganisationAsync().Result;
 
                 return View(organisation);
             }
             catch (RenewTokenException e)
             {
+                Console.WriteLine(e);
                 return RedirectToAction("Connect", "Home");
             }
         }

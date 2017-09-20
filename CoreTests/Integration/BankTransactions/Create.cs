@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace CoreTests.Integration.BankTransactions
 {
@@ -6,9 +7,9 @@ namespace CoreTests.Integration.BankTransactions
     public class Create : BankTransactionTest
     {
         [Test]
-        public void create_bank_transactions()
+        public async Task create_bank_transactions()
         {
-            var name = Given_a_bank_transaction()
+            var name = (await Given_a_bank_transaction())
                 .Contact
                 .Name;
 

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Xero.Api.Core;
 using Xero.Api.Core.Model;
 
@@ -24,20 +25,20 @@ namespace CoreTests
             };
         }
 
-        protected void SetUp()
+        protected async Task SetUp()
         {
-            BankAccount = Given_a_bank_account();
-            Account = Given_an_account();
+            BankAccount = await Given_a_bank_account();
+            Account = await Given_an_account();
         }
 
-        protected Account Given_a_bank_account()
+        protected async Task<Account> Given_a_bank_account()
         {
-            return Api.Accounts.Where("Type == \"BANK\"").Find().First();
+            return (await Api.Accounts.Where("Type == \"BANK\"").FindAsync()).First();
         }
 
-        protected Account Given_an_account()
+        protected async Task<Account> Given_an_account()
         {
-            return Api.Accounts.Where("Type != \"BANK\"").Find().First();
+            return (await Api.Accounts.Where("Type != \"BANK\"").FindAsync()).First();
         }
     }
 }

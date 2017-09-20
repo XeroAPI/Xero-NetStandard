@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Payroll.Australia.Model;
 
@@ -9,9 +10,9 @@ namespace PayrollTests.AU.Integration.Employees
     public class Create : EmployeesTest
     {
         [Test]
-        public void create_employee()
+        public async Task create_employee()
         {
-            var emp = Api.Create(new Employee
+            var emp = await Api.CreateAsync(new Employee
             {
                 FirstName = "John",
                 MiddleNames = "James",
@@ -51,9 +52,9 @@ namespace PayrollTests.AU.Integration.Employees
         }
 
         [Test]
-        public void create_employee_with_taxdeclarations()
+        public async Task create_employee_with_taxdeclarations()
         {
-            var emp = Api.Create(new Employee
+            var emp = await Api.CreateAsync(new Employee
             {
                 FirstName = "John",
                 MiddleNames = "James",
@@ -74,9 +75,14 @@ namespace PayrollTests.AU.Integration.Employees
         }
 
         [Test]
-        public void create_employee_with_opening_balances()
+        public async Task create_employee_with_opening_balances()
         {
-            Assert.DoesNotThrow(() => Api.Create(new Employee
+            var earningsRateId = await earnings_rate_id();
+            var deductionTypeId = await deduction_type_id();
+            var reimbersmentId = await reimbersment_type_id();
+            var leaveTypeId = await leave_type_id();
+
+            Assert.DoesNotThrowAsync(() => Api.CreateAsync(new Employee
             {
                 FirstName = "John",
                 MiddleNames = "James",
@@ -88,7 +94,7 @@ namespace PayrollTests.AU.Integration.Employees
                     {
                         new EarningsLine
                         {
-                            EarningsRateId = earnings_rate_id(),
+                            EarningsRateId = earningsRateId,
                             Amount = 200m,
                         }
                     },
@@ -96,7 +102,7 @@ namespace PayrollTests.AU.Integration.Employees
                     {
                         new DeductionLine
                         {
-                            DeductionTypeId = deduction_type_id(),
+                            DeductionTypeId = deductionTypeId,
                             Amount = 10m,
                         }
                     },
@@ -104,7 +110,7 @@ namespace PayrollTests.AU.Integration.Employees
                     {
                         new ReimbursementLine
                         {
-                            Id = reimbersment_type_id(),
+                            Id = reimbersmentId,
                             Amount = 12.50m
                         }
                     },
@@ -112,7 +118,7 @@ namespace PayrollTests.AU.Integration.Employees
                     {
                         new LeaveLine
                         {
-                            LeaveTypeId = leave_type_id(),
+                            LeaveTypeId = leaveTypeId,
                             NumberOfUnits = 2
                         }
                     },

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using Xero.Api.Core.Model;
 
 namespace CoreTests.Integration.LinkedTransactions
@@ -6,11 +7,11 @@ namespace CoreTests.Integration.LinkedTransactions
     public class Create : LinkedTransactionTest
     {
         [Test]
-        public void can_create_a_linked_transaction_with_just_source_details()
+        public async Task can_create_a_linked_transaction_with_just_source_details()
         {
-            Given_a_source_invoice();
+            await Given_a_source_invoice();
             
-            var linkedTransaction = Api.LinkedTransactions.Create(new LinkedTransaction
+            var linkedTransaction = await Api.LinkedTransactions.CreateAsync(new LinkedTransaction
             {
                 SourceTransactionID = SourceId,
                 SourceLineItemID = SourceLineItemId
@@ -23,12 +24,12 @@ namespace CoreTests.Integration.LinkedTransactions
         
 
         [Test]
-        public void can_create_a_linked_transaction_with_source_details_assigned_to_a_Contact()
+        public async Task can_create_a_linked_transaction_with_source_details_assigned_to_a_Contact()
         {
-            Given_a_contact();
-            Given_a_source_invoice();
+            await Given_a_contact();
+            await Given_a_source_invoice();
 
-            var linkedTransaction = Api.LinkedTransactions.Create(new LinkedTransaction
+            var linkedTransaction = await Api.LinkedTransactions.CreateAsync(new LinkedTransaction
             {
                 SourceTransactionID = SourceId,
                 SourceLineItemID = SourceLineItemId,
@@ -41,16 +42,16 @@ namespace CoreTests.Integration.LinkedTransactions
         }
 
         [Test]
-        public void can_create_a_fully_allocated_linkedTransaction()
+        public async Task can_create_a_fully_allocated_linkedTransaction()
         {
-            Given_a_contact();
+            await Given_a_contact();
 
-            Given_a_source_invoice();
+            await Given_a_source_invoice();
 
-            Given_a_target_invoice(Contact);
+            await Given_a_target_invoice(Contact);
 
 
-            var linkedTransaction = Api.LinkedTransactions.Create(new LinkedTransaction
+            var linkedTransaction = await Api.LinkedTransactions.CreateAsync(new LinkedTransaction
             {
                 SourceTransactionID = SourceId,
                 SourceLineItemID = SourceLineItemId,

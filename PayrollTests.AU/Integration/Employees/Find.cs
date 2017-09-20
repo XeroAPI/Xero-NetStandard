@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace PayrollTests.AU.Integration.Employees
@@ -7,37 +8,37 @@ namespace PayrollTests.AU.Integration.Employees
     public class Find : EmployeesTest
     {
         [Test]
-        public void find_all_employees()
+        public async Task find_all_employees()
         {
-            var emp = Api.Employees.Find();
+            var emp = await Api.Employees.FindAsync();
             Assert.Greater(emp.Count(), 0);
         }
 
         [Test]
-        public void find_by_id()
+        public async Task find_by_id()
         {
-            var expected = Given_an_employee().Id;
-            var employee = Api.Employees.Find(expected);
+            var expected = (await Given_an_employee()).Id;
+            var employee = await Api.Employees.FindAsync(expected);
 
             Assert.AreEqual(expected, employee.Id);
         }
 
         [Test]
-        public void find_by_status()
+        public async Task find_by_status()
         {
-            var terminated = given_terminated_employee();
+            var terminated = await given_terminated_employee();
 
-            Assert.True(Api.Employees
+            Assert.True((await Api.Employees
                 .Where("Status == \"TERMINATED\"")
-                .Find()
+                .FindAsync())
                 .Select(p => p.Id)
                 .Any(p => p == terminated.Id));            
         }
 
         [Test]
-        public void find_all_employees_paged()
+        public async Task find_all_employees_paged()
         {
-            var emp = Api.Employees.Page(1).Find();
+            var emp = await Api.Employees.Page(1).FindAsync();
             Assert.Greater(emp.Count(), 0);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xero.Api.Common;
 using Xero.Api.Infrastructure.Interfaces;
 
@@ -10,8 +11,8 @@ namespace Xero.Api.Core.Endpoints.Base
         where TResponse : IXeroResponse<TResult>, new()
         where TRequest : IXeroRequest<TResult>, new()
     {
-        IEnumerable<TResult> Create(IEnumerable<TResult> items);
-        TResult Create(TResult item);
+        Task<IEnumerable<TResult>> CreateAsync(IEnumerable<TResult> items);
+        Task<TResult> CreateAsync(TResult item);
         IXeroCreateEndpoint<T, TResult, TRequest, TResponse> SummarizeErrors(bool summarize);
     }
 }

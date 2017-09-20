@@ -26,22 +26,22 @@ namespace Xero.Api.Example.Creation
             PopulateInvoices(invoices);
 
             Console.WriteLine("There are {0} contacts", GetTotalContactCount());
-            Console.WriteLine("Created {0} contacts in last 24 hours", _api.Contacts.ModifiedSince(DateTime.UtcNow.AddDays(-1)).Find().Count());
+            Console.WriteLine("Created {0} contacts in last 24 hours", _api.Contacts.ModifiedSince(DateTime.UtcNow.AddDays(-1)).FindAsync().Result.Count());
             Console.WriteLine("There are {0} invoicess", GetTotalInvoiceCount());
-            Console.WriteLine("Created {0} invoices in last 24 hours", _api.Invoices.ModifiedSince(DateTime.UtcNow.AddDays(-1)).Find().Count());            
+            Console.WriteLine("Created {0} invoices in last 24 hours", _api.Invoices.ModifiedSince(DateTime.UtcNow.AddDays(-1)).FindAsync().Result.Count());            
             Console.WriteLine("Done!");
             Console.ReadLine();
         }
 
         private int GetTotalContactCount()
         {
-            int count = _api.Contacts.Find().Count();
+            int count = _api.Contacts.FindAsync().Result.Count();
             int total = count;
             int page = 2;
 
             while (count == 100)
             {
-                count = _api.Contacts.Page(page++).Find().Count();
+                count = _api.Contacts.Page(page++).FindAsync().Result.Count();
                 total += count;
             }
 
@@ -50,13 +50,13 @@ namespace Xero.Api.Example.Creation
 
         private int GetTotalInvoiceCount()
         {
-            int count = _api.Invoices.Find().Count();
+            int count = _api.Invoices.FindAsync().Result.Count();
             int total = count;
             int page = 2;
 
             while (count == 100)
             {
-                count = _api.Invoices.Page(page++).Find().Count();
+                count = _api.Invoices.Page(page++).FindAsync().Result.Count();
                 total += count;
             }
 
@@ -73,7 +73,7 @@ namespace Xero.Api.Example.Creation
             Console.WriteLine("Creating invoices");
             for (var i = 0; i < pages; i++)
             {
-                var items = _api.Create(invoices.Skip(i * pageSize).Take(pageSize));
+                var items = _api.CreateAsync(invoices.Skip(i * pageSize).Take(pageSize)).Result;
                 Console.WriteLine("Created {0} invoices", items.Count());
             }
 
@@ -89,7 +89,7 @@ namespace Xero.Api.Example.Creation
             Console.WriteLine("Creating contacts");
             for (var i = 0; i < pages; i++)
             {
-                var items = _api.Create(contacts.Skip(i * pageSize).Take(pageSize));
+                var items = _api.CreateAsync(contacts.Skip(i * pageSize).Take(pageSize)).Result;
                 Console.WriteLine("Created {0} contacts", items.Count());
             }
 

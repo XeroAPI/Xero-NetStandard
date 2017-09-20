@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace CoreTests.Integration.BankTransfers
 {
@@ -6,12 +7,12 @@ namespace CoreTests.Integration.BankTransfers
     public class Create : BankTransfersTest
     {
         [Test]
-        public void create_bank_transfer()
+        public async Task create_bank_transfer()
         {
             const decimal expected = 10m;
-            var accounts = get_bankaccount_ids();
+            var accounts = await get_bankaccount_ids();
 
-            var bankTransfer = Given_a_bank_transfer(expected);
+            var bankTransfer = await Given_a_bank_transfer(expected);
             
             Assert.AreEqual(expected, bankTransfer.Amount);
             Assert.AreEqual(accounts[0], bankTransfer.FromBankAccount.Id);

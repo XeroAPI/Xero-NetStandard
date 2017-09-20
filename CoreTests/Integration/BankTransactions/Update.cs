@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 
@@ -8,14 +9,14 @@ namespace CoreTests.Integration.BankTransactions
     public class Update : BankTransactionTest
     {
         [Test]
-        public void update_bank_transaction()
+        public async Task update_bank_transaction()
         {
-            var bt = Given_a_bank_transaction();
+            var bt = await Given_a_bank_transaction();
 
-            var updatedTransaction = Api.Update(new BankTransaction
+            var updatedTransaction = await Api.UpdateAsync(new BankTransaction
             {
                 Id = bt.Id,
-                BankAccount = new Account { Id = FindBankAccountGuid() },
+                BankAccount = new Account { Id = await FindBankAccountGuid() },
                 LineItems = new List<LineItem>
                     {
                         new LineItem

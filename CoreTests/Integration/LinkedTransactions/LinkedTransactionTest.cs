@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Status;
@@ -24,23 +25,23 @@ namespace CoreTests.Integration.LinkedTransactions
         protected LinkedTransaction LinkedTransaction { get; set; }
         protected Guid LinkedTransactionId { get { return LinkedTransaction.Id; } }
 
-        protected void Given_a_basic_linked_transaction()
+        protected async Task Given_a_basic_linked_transaction()
         {
-            Given_a_source_invoice();
+            await Given_a_source_invoice();
 
-            LinkedTransaction = Api.LinkedTransactions.Create(new LinkedTransaction
+            LinkedTransaction = await Api.LinkedTransactions.CreateAsync(new LinkedTransaction
             {
                 SourceTransactionID = SourceId,
                 SourceLineItemID = SourceLineItemId
             });
         }
 
-        protected void Given_a_linked_transaction_assigned_to_a_contact()
+        protected async Task Given_a_linked_transaction_assigned_to_a_contact()
         {
-            Given_a_source_invoice();
-            Given_a_contact();
+            await Given_a_source_invoice();
+            await Given_a_contact();
 
-            LinkedTransaction = Api.LinkedTransactions.Create(new LinkedTransaction
+            LinkedTransaction = await Api.LinkedTransactions.CreateAsync(new LinkedTransaction
             {
                 SourceTransactionID = SourceId,
                 SourceLineItemID = SourceLineItemId,
@@ -48,13 +49,13 @@ namespace CoreTests.Integration.LinkedTransactions
             });
         }
 
-        protected void Given_a_fully_allocated_linked_transaction()
+        protected async Task Given_a_fully_allocated_linked_transaction()
         {
-            Given_a_source_invoice();
-            Given_a_contact();
-            Given_a_target_invoice(Contact);
+            await Given_a_source_invoice();
+            await Given_a_contact();
+            await Given_a_target_invoice(Contact);
 
-            LinkedTransaction = Api.LinkedTransactions.Create(new LinkedTransaction
+            LinkedTransaction = await Api.LinkedTransactions.CreateAsync(new LinkedTransaction
             {
                 SourceTransactionID = SourceId,
                 SourceLineItemID = SourceLineItemId,
@@ -64,22 +65,22 @@ namespace CoreTests.Integration.LinkedTransactions
             });
         }
 
-        protected void Given_a_source_invoice()
+        protected async Task Given_a_source_invoice()
         {
-            SourceInvoice = Given_an_invoice();
+            SourceInvoice = await Given_an_invoice();
         }
 
-        protected void Given_a_target_invoice(Contact contact = null)
+        protected async Task Given_a_target_invoice(Contact contact = null)
         {
-            TargetInvoice = Given_an_invoice(InvoiceType.AccountsReceivable, contact: contact);
+            TargetInvoice = await Given_an_invoice(InvoiceType.AccountsReceivable, contact: contact);
         }
 
-        private Invoice Given_an_invoice(InvoiceType type = InvoiceType.AccountsPayable, InvoiceStatus status = InvoiceStatus.Authorised, decimal amount = 100m, string accountCode = "100", Contact contact = null)
+        private async Task<Invoice> Given_an_invoice(InvoiceType type = InvoiceType.AccountsPayable, InvoiceStatus status = InvoiceStatus.Authorised, decimal amount = 100m, string accountCode = "100", Contact contact = null)
         {
             if (contact == null)
                 contact = new Contact {Name = "ABC Bank"};
 
-            return Api.Create(new Invoice
+            return await Api.CreateAsync(new Invoice
             {
                 Contact = contact,
                 Type = type,
@@ -106,16 +107,16 @@ namespace CoreTests.Integration.LinkedTransactions
             });
         }
 
-        protected void Given_a_contact()
+        protected async Task Given_a_contact()
         {
-            var contacts = Api.Contacts.Find().ToList();
+            var contacts = (await Api.Contacts.FindAsync()).ToList();
 
             if (contacts.Any())
             {
                 Contact = contacts.First();
             }
 
-            Contact = Api.Contacts.Create(new Contact
+            Contact = await Api.Contacts.CreateAsync(new Contact
             {
                 Name = "Phil" + Guid.NewGuid().ToString("N")
             });

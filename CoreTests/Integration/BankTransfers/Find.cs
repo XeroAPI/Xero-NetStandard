@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace CoreTests.Integration.BankTransfers
@@ -8,32 +9,32 @@ namespace CoreTests.Integration.BankTransfers
     public class Find : BankTransfersTest
     {
         [Test]
-        public void find_bank_transfers()
+        public async Task find_bank_transfers()
         {
-            Given_a_bank_transfer(10m);
+            await Given_a_bank_transfer(10m);
 
-            var allTransfers = Api.BankTransfers.Find();
+            var allTransfers = await Api.BankTransfers.FindAsync();
 
             Assert.Greater(allTransfers.Count(), 0);
         }
 
         [Test]
-        public void find_bank_transfers_individual()
+        public async Task find_bank_transfers_individual()
         {
-            var expected = Given_a_bank_transfer(25m).Id;
+            var expected = (await Given_a_bank_transfer(25m)).Id;
 
-            var id = Api.BankTransfers.Find(expected).Id;
+            var id = (await Api.BankTransfers.FindAsync(expected)).Id;
 
             Assert.AreEqual(expected, id);
         }
 
         [Test]
-        public void find_bank_transfers_ifmodifiedsince()
+        public async Task find_bank_transfers_ifmodifiedsince()
         {
-            Given_a_bank_transfer(25m);
+            await Given_a_bank_transfer(25m);
 
             var date = DateTime.Today.AddDays(-4);
-            var bankTransfers = Api.BankTransfers.ModifiedSince(date).Find();
+            var bankTransfers = await Api.BankTransfers.ModifiedSince(date).FindAsync();
 
             Assert.Greater(bankTransfers.Count(), 0);
         }
