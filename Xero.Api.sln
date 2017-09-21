@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayrollTests.US", "PayrollT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayrollTests.AU", "PayrollTests.AU\PayrollTests.AU.csproj", "{BBB7EFCE-99DF-4531-95C8-0D029FBDF974}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api.Example.Counts", "Xero.Api.Example.Counts\Xero.Api.Example.Counts.csproj", "{55C40EA3-0583-4C49-855D-6EAB0083D615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.Api.Example.Console", "Xero.Api.Example.Console\Xero.Api.Example.Console.csproj", "{55C40EA3-0583-4C49-855D-6EAB0083D615}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTests", "CoreTests\CoreTests.csproj", "{6E24F214-40CC-4891-8028-A068CD7CD4BD}"
 EndProject

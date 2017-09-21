@@ -1,9 +1,9 @@
 ﻿using System;
-using Xero.Api.Example.Counts.Authenticators;
+using Xero.Api.Example.Console.Authenticators;
 using Xero.Api.Infrastructure.OAuth;
-using MemoryTokenStore = Xero.Api.Example.Counts.TokenStores.MemoryTokenStore;
+using MemoryTokenStore = Xero.Api.Example.Console.TokenStores.MemoryTokenStore;
 
-namespace Xero.Api.Example.Counts
+namespace Xero.Api.Example.Console
 {
     class Program
     {

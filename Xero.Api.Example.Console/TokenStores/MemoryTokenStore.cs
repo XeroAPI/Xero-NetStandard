@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xero.Api.Infrastructure.Interfaces;
 
-namespace Xero.Api.Example.Counts.TokenStores
+namespace Xero.Api.Example.Console.TokenStores
 {
     public class MemoryTokenStore : ITokenStore
     {

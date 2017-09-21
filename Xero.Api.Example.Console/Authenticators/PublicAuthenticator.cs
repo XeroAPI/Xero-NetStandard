@@ -1,14 +1,12 @@
-﻿using System;
-using Xero.Api.Example.Counts.Helpers;
+﻿using Xero.Api.Example.Console.Helpers;
 using Xero.Api.Infrastructure.Authenticators;
 using Xero.Api.Infrastructure.Interfaces;
 
-namespace Xero.Api.Example.Counts.Authenticators
+namespace Xero.Api.Example.Console.Authenticators
 {
-    public class PartnerAuthenticator : PartnerAuthenticatorBase
+    public class PublicAuthenticator : PublicAuthenticatorBase
     {
-
-        public PartnerAuthenticator(ITokenStore store) 
+        public PublicAuthenticator(ITokenStore store) 
             : base(store)
         {
         }
@@ -19,9 +17,9 @@ namespace Xero.Api.Example.Counts.Authenticators
 
             ProcessHelper.OpenBrowser(authorizeUrl);
 
-            Console.WriteLine("Enter the PIN given on the web page");
+            System.Console.WriteLine("Enter the PIN given on the web page");
 
-            return Console.ReadLine();
+            return System.Console.ReadLine();
         }
     }
 }
