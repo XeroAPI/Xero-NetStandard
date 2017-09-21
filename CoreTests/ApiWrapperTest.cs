@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Xero.Api.Core;
 using Xero.Api.Core.Model;
+using Xero.Api.Infrastructure.Applications.Private;
 
 namespace CoreTests
 {
@@ -19,7 +20,7 @@ namespace CoreTests
 
         private static IXeroCoreApi CreateCoreApi()
         {
-            return new Xero.Api.Example.Applications.Private.Core
+            return new Core
             {
                 UserAgent = "Xero Api - Integration tests"
             };

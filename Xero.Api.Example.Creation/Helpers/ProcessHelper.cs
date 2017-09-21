@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Xero.Api.Example.Applications
+namespace Xero.Api.Example.Creation.Helpers
 {
     public class ProcessHelper
     {

@@ -1,31 +1,26 @@
 ﻿using System;
+using Xero.Api.Infrastructure.Authenticators;
+using Xero.Api.Infrastructure.Exceptions;
 using Xero.Api.Infrastructure.Interfaces;
-using Xero.Api.Infrastructure.OAuth.Signing;
+using Xero.Api.Infrastructure.OAuth;
 
-namespace Xero.Api.Example.Applications.Public
+namespace Xero.Api.Example.MVC.Authenticators
 {
-    public class PublicMvcAuthenticator : TokenStoreAuthenticator, IMvcAuthenticator
+    public class PublicMvcAuthenticator : PublicAuthenticatorBase, IMvcAuthenticator
     {
         private readonly IConsumer _consumer;
         private readonly ITokenStore _requestTokenStore;
 
-        public PublicMvcAuthenticator(string baseUri, string callBackUrl,
-            ITokenStore store, IConsumer consumer, ITokenStore requestTokenStore)
-            : base(baseUri, callBackUrl, store)
+        public PublicMvcAuthenticator(ITokenStore requestTokenStore, ITokenStore accessTokenStore)
+            : base(accessTokenStore)
         {
-            _consumer = consumer;
+            _consumer = new Consumer(ApplicationSettings.Key, ApplicationSettings.Secret);
             _requestTokenStore = requestTokenStore;
         }
 
-        protected override string AuthorizeUser(IToken token)
+        protected override string AuthorizeUser(IToken token, string scope = null, bool redirectOnError = false)
         {
             throw new NotSupportedException();
-        }
-
-        protected override string CreateSignature(IToken token, string verb, Uri uri, string verifier,
-            bool renewToken = false, string callback = null)
-        {
-            return new HmacSha1Signer().CreateSignature(token, uri, verb, verifier, callback);
         }
 
         protected override IToken RenewToken(IToken sessionToken, IConsumer consumer)
@@ -47,7 +42,7 @@ namespace Xero.Api.Example.Applications.Public
             return GetAuthorizeUrl(requestToken);
         }
 
-        public IToken RetrieveAndStoreAccessToken(string userId, string tokenKey, string verfier, string organisationShortCode)
+        public IToken RetrieveAndStoreAccessToken(string userId, string tokenKey, string verfier)
         {
             var existingAccessToken = Store.Find(userId);
             if (existingAccessToken != null)

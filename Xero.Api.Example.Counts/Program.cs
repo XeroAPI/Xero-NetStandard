@@ -1,6 +1,7 @@
 ﻿using System;
-using Xero.Api.Example.TokenStores;
+using Xero.Api.Example.Counts.Authenticators;
 using Xero.Api.Infrastructure.OAuth;
+using MemoryTokenStore = Xero.Api.Example.Counts.TokenStores.MemoryTokenStore;
 
 namespace Xero.Api.Example.Counts
 {
@@ -10,13 +11,36 @@ namespace Xero.Api.Example.Counts
         {
             var tokenStore = new MemoryTokenStore();
             var user = new ApiUser { Identifier = Environment.MachineName };
-            
-            var api = new Applications.Public.Core(tokenStore, user)
+
+            //////// Private
+            var privateApi = new Infrastructure.Applications.Private.Core
             {
                 UserAgent = "Xero Api - Listing example"
             };
 
-            new Lister(api).List();            
+            new Lister(privateApi).List();
+
+            //////// Public
+
+            var publicAuth = new PublicAuthenticator(tokenStore);
+
+            var publicApi = new Infrastructure.Applications.Public.Core(publicAuth, user)
+            {
+                UserAgent = "Xero Api - Listing example"
+            };
+
+            new Lister(publicApi).List();
+
+            ////////// Partner
+
+            var partnerAuth = new PartnerAuthenticator(tokenStore);
+
+            var partnerApi = new Infrastructure.Applications.Partner.Core(partnerAuth, user)
+            {
+                UserAgent = "Xero Api - Listing example"
+            };
+
+            new Lister(partnerApi).List();
         }
     }
 }

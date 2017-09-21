@@ -1,7 +1,7 @@
-﻿using Xero.Api.Infrastructure.Interfaces;
-using Xero.Api.Infrastructure.RateLimiter;
+﻿using Xero.Api.Infrastructure.Authenticators;
+using Xero.Api.Infrastructure.Interfaces;
 
-namespace Xero.Api.Example.Applications.Private
+namespace Xero.Api.Infrastructure.Applications.Private
 {
     public class AustralianPayroll : Payroll.AustralianPayroll
     {
@@ -13,7 +13,7 @@ namespace Xero.Api.Example.Applications.Private
         }
 
         public AustralianPayroll(IAuthenticator authenticator, bool includeRateLimiter = false)
-            : base(authenticator, rateLimiter: includeRateLimiter ? new RateLimiter() : null)
+            : base(authenticator, rateLimiter: includeRateLimiter ? new RateLimiter.RateLimiter() : null)
         {
         }
     }

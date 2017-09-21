@@ -13,7 +13,6 @@
       <PackageReference Include="NUnit3TestAdapter" Version="3.8.0" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Xero.Api.Example.Applications\Xero.Api.Example.Applications.csproj" />
       <ProjectReference Include="..\Xero.Api\Xero.Api.csproj" />
     </ItemGroup>
     <ItemGroup>

@@ -206,12 +206,7 @@ namespace Xero.Api.Infrastructure.Http
                 request.Headers.IfModifiedSince = ModifiedSince;
             }
 
-            if (_auth != null)
-            {
-                var oauthSignature = _auth.GetSignature(_consumer, _user, new Uri(_baseUri, request.RequestUri), method.Method, _consumer);
-
-                request.Headers.Add("Authorization", oauthSignature);
-            }
+            _auth?.Authenticate(request, _consumer, _user);
 
             var escapedUserAgent = Uri.EscapeDataString(!string.IsNullOrWhiteSpace(UserAgent) ? UserAgent : "Xero Api wrapper - " + _consumer.ConsumerKey);
 

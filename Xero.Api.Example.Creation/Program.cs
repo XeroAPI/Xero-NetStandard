@@ -1,5 +1,6 @@
 ﻿using System;
-using Xero.Api.Example.TokenStores;
+using Xero.Api.Example.Creation.Authenticators;
+using Xero.Api.Example.Creation.TokenStores;
 using Xero.Api.Infrastructure.OAuth;
 
 namespace Xero.Api.Example.Creation
@@ -8,10 +9,12 @@ namespace Xero.Api.Example.Creation
     {
         static void Main(string[] args)
         {
-            var user = new ApiUser { Identifier = Environment.MachineName }; // ApiUser is used when retrieving tokens from the token store - See TokenStoreAuthenticator GetToken(IConsumer consumer, IUser user). This is primarily for Partner Applications
             var tokenStore = new MemoryTokenStore();
+            var user = new ApiUser { Identifier = Environment.MachineName };
 
-            var api = new Applications.Public.Core(tokenStore, user)
+            var authenticator = new PublicAuthenticator(tokenStore);
+
+            var api = new Infrastructure.Applications.Public.Core(authenticator, user)
             {
                 UserAgent = "Xero Api - Creating example"
             };

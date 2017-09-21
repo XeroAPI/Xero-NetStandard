@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xero.Api.Example.Applications.Public
+namespace Xero.Api.Infrastructure.Exceptions
 {
     public class RenewTokenException : Exception
     {

@@ -11,8 +11,6 @@
         <StartupObject>Xero.Api.Example.Creation.Program</StartupObject>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Xero.Api.Example.Applications\Xero.Api.Example.Applications.csproj" />
-      <ProjectReference Include="..\Xero.Api.Example.TokenStores\Xero.Api.Example.TokenStores.csproj" />
       <ProjectReference Include="..\Xero.Api\Xero.Api.csproj" />
     </ItemGroup>
     <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using Xero.Api.Core;
+using Xero.Api.Infrastructure.Authenticators;
 using Xero.Api.Infrastructure.Interfaces;
-using Xero.Api.Infrastructure.RateLimiter;
 
-namespace Xero.Api.Example.Applications.Private
+namespace Xero.Api.Infrastructure.Applications.Private
 {
     public class Core : XeroCoreApi
     {
@@ -14,7 +14,7 @@ namespace Xero.Api.Example.Applications.Private
         }
 
         public Core(IAuthenticator authenticator, bool includeRateLimiter = false)
-            : base(authenticator, rateLimiter: includeRateLimiter ? new RateLimiter() : null)
+            : base(authenticator, rateLimiter: includeRateLimiter ? new RateLimiter.RateLimiter() : null)
         {
         }
     }

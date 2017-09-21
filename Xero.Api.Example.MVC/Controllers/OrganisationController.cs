@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Xero.Api.Example.Applications.Public;
 using Xero.Api.Example.MVC.Helpers;
+using Xero.Api.Infrastructure.Exceptions;
 
 namespace Xero.Api.Example.MVC.Controllers
 {

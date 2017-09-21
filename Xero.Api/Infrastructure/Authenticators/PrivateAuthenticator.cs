@@ -1,11 +1,10 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.OAuth;
 using Xero.Api.Infrastructure.OAuth.Signing;
 
-namespace Xero.Api.Example.Applications.Private
+namespace Xero.Api.Infrastructure.Authenticators
 {
     public class PrivateAuthenticator : IAuthenticator
     {

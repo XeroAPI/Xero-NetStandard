@@ -21,8 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Xero.Api.Example.Applications\Xero.Api.Example.Applications.csproj" />
-    <ProjectReference Include="..\Xero.Api.Example.TokenStores\Xero.Api.Example.TokenStores.csproj" />
     <ProjectReference Include="..\Xero.Api\Xero.Api.csproj" />
   </ItemGroup>
 
@@ -31,5 +29,11 @@
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
