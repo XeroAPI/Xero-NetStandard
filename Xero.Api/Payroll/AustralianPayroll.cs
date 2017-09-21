@@ -45,6 +45,8 @@ namespace Xero.Api.Payroll
             Settings = new SettingsEndpoint(Client);
         }
 
+        // Note: Due to the immutability of endpoints, If you want to use filtering etc you will need to make requests via the endpoints themselves, not using the sugar methods below
+
         public async Task<IEnumerable<LeaveApplication>> CreateAsync(IEnumerable<LeaveApplication> items)
         {
             return await LeaveApplications.CreateAsync(items);

@@ -36,6 +36,8 @@ namespace Xero.Api.Payroll
             Timesheets = new TimesheetsEndpoint(Client);            
         }
 
+        // Note: Due to the immutability of endpoints, If you want to use filtering etc you will need to make requests via the endpoints themselves, not using the sugar methods below
+
         public async Task<IEnumerable<PaySchedule>> CreateAsync(IEnumerable<PaySchedule> items)
         {
             return await PaySchedules.CreateAsync(items);
