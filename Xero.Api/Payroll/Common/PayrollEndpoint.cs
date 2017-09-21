@@ -46,10 +46,9 @@ namespace Xero.Api.Payroll.Common
             return await Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data);
         }
 
-        public PayrollEndpoint<T, TResult, TRequest, TResponse> Page(int page)
+        public T Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
         }
 
     }

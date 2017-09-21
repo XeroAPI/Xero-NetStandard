@@ -19,18 +19,18 @@ namespace Xero.Api.Core.Endpoints
         public CreditNotesEndpoint(XeroHttpClient client) :
             base(client, "/api.xro/2.0/CreditNotes")
         {
+            AddParameter("page", 1, false);
         }
 
         public ICreditNotesEndpoint Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
         }
 
         public override void ClearQueryString()
         {
             base.ClearQueryString();
-            Page(1);
+            AddParameter("page", 1, false);
         }
     }
 }

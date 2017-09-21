@@ -29,45 +29,49 @@ namespace Xero.Api.Common
 
         public T ModifiedSince(DateTime modified)
         {
-            _modifiedSince = modified;
-            return (T)this;
+            var endpoint = (T)Clone();
+            endpoint._modifiedSince = modified;
+            return endpoint;
         }
 
         public T Where(string query)
         {
-            _query = query;
-            return (T)this;
+            var endpoint = (T)Clone();
+            endpoint._query = query;
+            return endpoint;
         }
 
         public T Or(string query)
         {
-            _query = string.Concat(_query, " OR ", query);
-            return (T)this;
+            var endpoint = (T)Clone();
+            endpoint._query = string.Concat(_query, " OR ", query);
+            return endpoint;
         }
 
         public T And(string query)
         {
-            _query = string.Concat(_query, " AND ", query);
-            return (T)this;
+            var endpoint = (T) Clone();
+            endpoint._query = string.Concat(_query, " AND ", query);
+            return endpoint;
         }
 
         public T OrderBy(string query)
         {
-            _orderBy = query;
-            return (T)this;
+            var endpoint = (T) Clone();
+            endpoint._orderBy = query;
+            return endpoint;
         }
 
         public T OrderByDescending(string query)
         {
-            _orderBy = query + " DESC";
-            return (T)this;
+            var endpoint = (T) Clone();
+            endpoint._orderBy = query + " DESC";
+            return endpoint;
         }
 
         public T UseFourDecimalPlaces(bool use4Dp)
         {
-            Apply4Dp(use4Dp);
-
-            return (T)this;
+            return Apply4Dp(use4Dp);
         }
 
         public virtual async Task<IEnumerable<TResult>> FindAsync()
@@ -95,18 +99,11 @@ namespace Xero.Api.Common
             Parameters = null;
         }
 
-        protected void Apply4Dp(bool use4Dp)
+        protected T Apply4Dp(bool use4Dp, bool clone = true)
         {
             const string name = "unitdp";
 
-            if (use4Dp)
-            {
-                AddParameter(name, 4);
-            }
-            else
-            {
-                RemoveParameter(name);
-            }
+            return use4Dp ? AddParameter(name, 4, clone) : RemoveParameter(name, clone);
         }
 
         public string QueryString
@@ -117,70 +114,82 @@ namespace Xero.Api.Common
             }
         }
 
-        internal protected T AddParameter(string name, int value)
+        internal protected T AddParameter(string name, int value, bool clone = true)
         {
-            return AddParameter(name, value.ToString("D"));
+            return AddParameter(name, value.ToString("D"), clone);
         }
 
-        internal protected T AddParameter(string name, bool value)
+
+        internal protected T AddParameter(string name, bool value, bool clone = true)
         {
-            return AddParameter(name, value.ToString().ToLower());
+            return AddParameter(name, value.ToString().ToLower(), clone);
         }
 
-        internal void RemoveParameter(string name)
+        // Note: Use clone = false when adding parameters from a constructor to ensure that the parameter 'sticks'
+        internal protected T AddParameter(string name, string value, bool clone = true)
         {
-            if (Parameters != null)
+            var endpoint = (T) (clone ? Clone() : this);
+
+            if (endpoint.Parameters == null)
             {
-                Parameters.Remove(name);
-            }
-        }
-
-        internal protected T AddParameter(string name, string value)
-        {
-            if (Parameters == null)
-            {
-                Parameters = new NameValueCollection();
+                endpoint.Parameters = new NameValueCollection();
             }
 
-            Parameters[name] = value;
+            endpoint.Parameters[name] = value;
 
-            return (T)this;
+            return endpoint;
         }
 
-        internal protected T AddParameters(NameValueCollection parameters)
+        internal protected T AddParameters(NameValueCollection parameters, bool clone = true)
         {
-            if (Parameters == null)
+            var endpoint = clone ? (T) Clone() : (T)this;
+            
+            if (endpoint.Parameters == null)
             {
-                Parameters = parameters;
+                endpoint.Parameters = parameters;
             }
             else
             {
-                Parameters.Add(parameters);
+                endpoint.Parameters.Add(parameters);
             }
 
-            return (T)this;
+            return endpoint;
+        }
+
+        internal T RemoveParameter(string name, bool clone = true)
+        {
+            var endpoint = (T) (clone ? Clone() : this);
+
+            endpoint.Parameters?.Remove(name);
+
+            return endpoint;
         }
 
         private async Task<IEnumerable<TResult>> GetAsync(string endpoint, string child)
         {
             try
             {
-                if (Parameters == null)
-                {
-                    Parameters = new NameValueCollection();
-                }
-
-                Client.Where = _query;
-                Client.Order = _orderBy;
-                Client.ModifiedSince = _modifiedSince;
-                Client.Parameters = Parameters;
-
-                return await Client.GetAsync<TResult, TResponse>(endpoint + (child ?? string.Empty));
+                endpoint = endpoint + (child ?? string.Empty);
+                return await Client.GetAsync<TResult, TResponse>(endpoint, Parameters, _query, _orderBy, _modifiedSince);
             }
             finally
             {
                 ClearQueryString();
             }
+        }
+
+        public object Clone()
+        {
+            var clone = (T) MemberwiseClone();
+
+            clone.Client = Client;
+
+            if (Parameters != null)
+            {
+                clone.Parameters = new NameValueCollection(Parameters);
+            }
+
+            return clone;
         }
     }
 }

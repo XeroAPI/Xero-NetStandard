@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -46,12 +47,14 @@ namespace Xero.Api.Core.Endpoints
 
             var url = string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), attachment.FileName);
 
+            var parameters = new NameValueCollection();
+
             if (SupportsOnline(type) && includeOnline)
             {
-                Client.Parameters.Add("IncludeOnline", true);
+                parameters.Add("IncludeOnline", true);
             }
 
-            var result = await Client.PostAsync<Attachment, AttachmentsResponse>(url, attachment.Content, mimeType);
+            var result = await Client.PostAsync<Attachment, AttachmentsResponse>(url, attachment.Content, mimeType, parameters);
 
             return result.FirstOrDefault();
         }

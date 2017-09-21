@@ -13,6 +13,6 @@ namespace Xero.Api.Core.Endpoints.Base
     {
         Task<IEnumerable<TResult>> CreateAsync(IEnumerable<TResult> items);
         Task<TResult> CreateAsync(TResult item);
-        IXeroCreateEndpoint<T, TResult, TRequest, TResponse> SummarizeErrors(bool summarize);
+        T SummarizeErrors(bool summarize);
     }
 }

@@ -27,48 +27,43 @@ namespace Xero.Api.Core.Endpoints
         internal InvoicesEndpoint(XeroHttpClient client)
             : base(client, "/api.xro/2.0/Invoices")
         {
-            Page(1);
+            AddParameter("page", 1, false);
         }
 
         public IInvoicesEndpoint Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
         }
 
         public IInvoicesEndpoint Ids(IEnumerable<Guid> ids)
         {
-            AddParameter("ids", string.Join(",", ids));
-            return this;
+            return AddParameter("ids", string.Join(",", ids));
         }
 
         public IInvoicesEndpoint ContactIds(IEnumerable<Guid> contactIds)
         {
-            AddParameter("contactids", string.Join(",", contactIds));
-            return this;
+            return AddParameter("contactids", string.Join(",", contactIds));
         }
 
         public IInvoicesEndpoint Statuses(IEnumerable<InvoiceStatus> statuses)
         {
-            AddParameter("statuses", string.Join(",", statuses.Select(it => it.GetEnumMemberValue())));
-            return this;
+            return AddParameter("statuses", string.Join(",", statuses.Select(it => it.GetEnumMemberValue())));
         }
 
         public IInvoicesEndpoint InvoiceNumbers(IEnumerable<string> invoiceNumbers)
         {
-            AddParameter("invoicenumbers", string.Join(",", invoiceNumbers));
-            return this;
-        }
-
-        public override void ClearQueryString()
-        {
-            base.ClearQueryString();
-            Page(1);
+            return AddParameter("invoicenumbers", string.Join(",", invoiceNumbers));
         }
 
         public async Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId)
         {
             return (await Client.GetAsync<OnlineInvoice, OnlineInvoicesResponse>(string.Format("/api.xro/2.0/Invoices/{0}/OnlineInvoice", invoiceId))).FirstOrDefault();
+        }
+
+        public override void ClearQueryString()
+        {
+            base.ClearQueryString();
+            AddParameter("page", 1, false);
         }
     }
 }

@@ -13,6 +13,5 @@ namespace Xero.Api.Core.Endpoints.Base
     {
         Task<IEnumerable<TResult>> UpdateAsync(IEnumerable<TResult> items);
         Task<TResult> UpdateAsync(TResult item);
-        new IXeroUpdateEndpoint<T, TResult, TRequest, TResponse> SummarizeErrors(bool summarize);
     }
 }

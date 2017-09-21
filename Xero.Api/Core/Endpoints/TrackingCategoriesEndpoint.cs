@@ -29,12 +29,7 @@ namespace Xero.Api.Core.Endpoints
 
         public TrackingCategoriesEndpoint IncludeArchived(bool include)
         {
-            if (include)
-            {
-                AddParameter("includeArchived", true);
-            }
-
-            return this;
+            return include ? AddParameter("includeArchived", true) : this;
         }
 
         public async Task<List<Option>> AddOptionAsync(TrackingCategory trackingCategory, Option option)

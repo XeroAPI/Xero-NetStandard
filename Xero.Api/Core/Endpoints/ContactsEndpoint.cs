@@ -20,29 +20,23 @@ namespace Xero.Api.Core.Endpoints
         internal ContactsEndpoint(XeroHttpClient client)
             : base(client, "/api.xro/2.0/Contacts")
         {
-            Page(1);
+            AddParameter("page", 1, false);
         }
 
         public IContactsEndpoint Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
+        }
+
+        public IContactsEndpoint IncludeArchived(bool include)
+        {
+            return include ? AddParameter("includeArchived", true) : this;
         }
 
         public override void ClearQueryString()
         {
             base.ClearQueryString();
-            Page(1);
-        }
-
-        public IContactsEndpoint IncludeArchived(bool include)
-        {
-            if (include)
-            {
-                AddParameter("includeArchived", true);
-            }
-
-            return this;
+            AddParameter("page", 1, false);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Xero.Api.Core.Endpoints
         internal LinkedTransactionsEndpoint(XeroHttpClient client) 
             : base(client, "/api.xro/2.0/LinkedTransactions")
         {
-            Page(1);
+            AddParameter("page", 1, false);
         }
 
         public async Task DeleteAsync(LinkedTransaction linkedTransaction)
@@ -39,32 +39,28 @@ namespace Xero.Api.Core.Endpoints
 
         public ILinkedTransactionsEndpoint Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
         }
 
         public LinkedTransactionsEndpoint WhereSourceId(Guid sourceId)
         {
-            AddParameter("SourceTransactionID", sourceId.ToString());
-            return this;
+            return AddParameter("SourceTransactionID", sourceId.ToString());
         }
 
         public LinkedTransactionsEndpoint WhereContactId(Guid contactId)
         {
-            AddParameter("ContactID", contactId.ToString());
-            return this;
+            return AddParameter("ContactID", contactId.ToString());
         }
 
         public LinkedTransactionsEndpoint WhereTargetId(Guid targetId)
         {
-            AddParameter("TargetTransactionID", targetId.ToString());
-            return this;
+            return AddParameter("TargetTransactionID", targetId.ToString());
         }
 
         public override void ClearQueryString()
         {
             base.ClearQueryString();
-            Page(1);
+            AddParameter("page", 1, false);
         }
 
         private async Task<LinkedTransactionsResponse> HandleResponseAsync(HttpResponseMessage response)

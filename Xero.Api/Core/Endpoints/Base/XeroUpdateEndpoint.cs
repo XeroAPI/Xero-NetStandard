@@ -31,18 +31,11 @@ namespace Xero.Api.Core.Endpoints.Base
             return (await UpdateAsync(new[] { item })).First();
         }
 
-        public new IXeroUpdateEndpoint<T, TResult, TRequest, TResponse> SummarizeErrors(bool summarize)
-        {
-            AddParameter("summarizeErrors", summarize);
-            return this;
-        }
-
         protected async Task<IEnumerable<TResult>> PostAsync(TRequest data)
         {
             try
             {
-                Client.Parameters = Parameters;
-                return await Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data);
+                return await Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data, Parameters);
             }
             finally
             {

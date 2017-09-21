@@ -18,12 +18,18 @@ namespace Xero.Api.Core.Endpoints
         public BankTransactionsEndpoint(XeroHttpClient client)
             : base(client, "/api.xro/2.0/BankTransactions")
         {
+            AddParameter("page", 1, false);
         }
 
         public IBankTransactionsEndpoint Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
+        }
+
+        public override void ClearQueryString()
+        {
+            base.ClearQueryString();
+            AddParameter("page", 1, false);
         }
     }
 }

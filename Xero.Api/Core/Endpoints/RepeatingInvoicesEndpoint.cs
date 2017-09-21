@@ -15,13 +15,13 @@ namespace Xero.Api.Core.Endpoints
         public RepeatingInvoicesEndpoint(XeroHttpClient client) :
             base(client, "/api.xro/2.0/RepeatingInvoices")
         {
-            UseFourDecimalPlaces(true);
+            Apply4Dp(true, false);
         }
 
         public override void ClearQueryString()
         {
             base.ClearQueryString();
-            UseFourDecimalPlaces(true);
+            Apply4Dp(true, false);
         }
     }
 }

@@ -12,13 +12,13 @@ namespace Xero.Api.Core.Endpoints.Base
     {
         protected FourDecimalPlacesEndpoint(XeroHttpClient client, string apiEndpointUrl) : base(client, apiEndpointUrl)
         {
-            UseFourDecimalPlaces(true);
+            Apply4Dp(true, false);
         }
 
         public override void ClearQueryString()
         {
             base.ClearQueryString();
-            UseFourDecimalPlaces(true);
+            Apply4Dp(true, false);
         }
     }
 }

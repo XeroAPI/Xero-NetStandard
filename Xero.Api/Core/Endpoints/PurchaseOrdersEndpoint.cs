@@ -22,37 +22,33 @@ namespace Xero.Api.Core.Endpoints
         public PurchaseOrdersEndpoint(XeroHttpClient client) :
             base(client, "/api.xro/2.0/PurchaseOrders")
         {
-            Page(1);
+            AddParameter("page", 1, false);
         }
 
         public IPurchaseOrdersEndpoint Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
         }
 
         public PurchaseOrdersEndpoint Status(PurchaseOrderStatus status)
         {
-            AddParameter("status", status.ToString().ToUpper());
-            return this;
+            return AddParameter("status", status.ToString().ToUpper());
         }
 
         public PurchaseOrdersEndpoint DateFrom(DateTime dateFrom)
         {
-            AddParameter("dateFrom", dateFrom.ToString("yyyy-MM-dd"));
-            return this;
+            return AddParameter("dateFrom", dateFrom.ToString("yyyy-MM-dd"));
         }
 
         public PurchaseOrdersEndpoint DateTo(DateTime dateTo)
         {
-            AddParameter("dateTo", dateTo.ToString("yyyy-MM-dd"));
-            return this;
+            return AddParameter("dateTo", dateTo.ToString("yyyy-MM-dd"));
         }
 
         public override void ClearQueryString()
         {
             base.ClearQueryString();
-            Page(1);
+            AddParameter("page", 1, false);
         }
     }
 }

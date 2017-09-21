@@ -152,7 +152,5 @@ namespace Xero.Api.Core
         Task<IEnumerable<TrackingCategory>> UpdateAsync(IEnumerable<TrackingCategory> items);
         Task<TrackingCategory> CreateAsync(TrackingCategory item);
         Task<TrackingCategory> UpdateAsync(TrackingCategory item);
-
-        void SummarizeErrors(bool summarize);
     }
 }

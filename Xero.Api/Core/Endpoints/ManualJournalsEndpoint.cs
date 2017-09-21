@@ -18,12 +18,12 @@ namespace Xero.Api.Core.Endpoints
         public ManualJournalsEndpoint(XeroHttpClient client) :
             base(client, "/api.xro/2.0/ManualJournals")
         {
+            AddParameter("page", 1, false);
         }
 
         public IManualJournalsEndpoint Page(int page)
         {
-            AddParameter("page", page);
-            return this;
+            return AddParameter("page", page);
         }
     }
 }

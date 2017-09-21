@@ -31,29 +31,5 @@ namespace CoreTests.Unit
 
             Assert.AreEqual(expected, query);
         }
-        
-        [Test]
-        public void all_summarize_errors_off()
-        {
-            const string expected = "unitdp=4&page=1&summarizeErrors=false";
-
-            Api.SummarizeErrors(false);
-
-            var query = Api.Invoices.QueryString;
-
-            Assert.AreEqual(expected, query);
-        }
-
-        [Test]
-        public void all_summarize_errors_on()
-        {
-            const string expected = "unitdp=4&page=1&summarizeErrors=true";
-
-            Api.SummarizeErrors(true);
-
-            var query = Api.Invoices.QueryString;
-
-            Assert.AreEqual(expected, query);
-        }
     }
 }

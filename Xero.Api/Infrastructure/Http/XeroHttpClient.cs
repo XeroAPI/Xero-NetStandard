@@ -53,28 +53,24 @@ namespace Xero.Api.Infrastructure.Http
             };
         }
 
-        public DateTime? ModifiedSince { get; set; }
-        public string Where { get; set; }
-        public string Order { get; set; }
-        public NameValueCollection Parameters { get; set; }
         public string UserAgent { get; set; }
 
-        public async Task<IEnumerable<TResult>> GetAsync<TResult, TResponse>(string endPoint)
+        public async Task<IEnumerable<TResult>> GetAsync<TResult, TResponse>(string endPoint, NameValueCollection parameters = null, string where = "", string order = "", DateTime? modifiedSince = null)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            var queryString = CreateQueryString(true);
+            var queryString = CreateQueryString(where, order, parameters, true);
 
-            var request = CreateRequest(endPoint, HttpMethod.Get, query: queryString);
+            var request = CreateRequest(endPoint, HttpMethod.Get, modifiedSince, query: queryString);
 
             var response = await SendRequestAsync(request);
 
             return await ReadAsync<TResult, TResponse>(response);
         }
 
-        internal async Task<IEnumerable<TResult>> PostAsync<TResult, TResponse>(string endpoint, byte[] data, string mimeType)
+        internal async Task<IEnumerable<TResult>> PostAsync<TResult, TResponse>(string endpoint, byte[] data, string mimeType, NameValueCollection parameters = null)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            var queryString = CreateQueryString(null, null, Parameters, true);
+            var queryString = CreateQueryString(null, null, parameters, true);
 
             HttpContent content = new ByteArrayContent(data);
             content.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
@@ -86,10 +82,10 @@ namespace Xero.Api.Infrastructure.Http
             return await ReadAsync<TResult, TResponse>(response);
         }
 
-        public async Task<IEnumerable<TResult>> PostAsync<TResult, TResponse>(string endpoint, object data)
+        public async Task<IEnumerable<TResult>> PostAsync<TResult, TResponse>(string endpoint, object data, NameValueCollection parameters = null)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            var queryString = CreateQueryString(null, null, Parameters, true);
+            var queryString = CreateQueryString(null, null, parameters, true);
 
             HttpContent content = new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
@@ -100,10 +96,10 @@ namespace Xero.Api.Infrastructure.Http
             return await ReadAsync<TResult, TResponse>(response);
         }
 
-        public async Task<IEnumerable<TResult>> PutAsync<TResult, TResponse>(string endpoint, object data)
+        public async Task<IEnumerable<TResult>> PutAsync<TResult, TResponse>(string endpoint, object data, NameValueCollection parameters = null)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            var queryString = CreateQueryString(null, null, Parameters, true);
+            var queryString = CreateQueryString(null, null, parameters, true);
 
             HttpContent content = new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
@@ -143,9 +139,9 @@ namespace Xero.Api.Infrastructure.Http
             return await SendRequestAsync(request);
         }
 
-        internal async Task<HttpResponseMessage> PutAsync(string endpoint, object data, bool json = false)
+        internal async Task<HttpResponseMessage> PutAsync(string endpoint, object data, bool json = false, NameValueCollection parameters = null)
         {
-            var queryString = CreateQueryString(null, null, Parameters, true);
+            var queryString = CreateQueryString(null, null, parameters, true);
 
             HttpContent content = json
                 ? new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson)
@@ -156,9 +152,9 @@ namespace Xero.Api.Infrastructure.Http
             return await SendRequestAsync(request);
         }
 
-        internal async Task<HttpResponseMessage> PostAsync(string endpoint, object data, bool json = false)
+        internal async Task<HttpResponseMessage> PostAsync(string endpoint, object data, bool json = false, NameValueCollection parameters = null)
         {
-            var queryString = CreateQueryString(null, null, Parameters, true);
+            var queryString = CreateQueryString(null, null, parameters, true);
 
             HttpContent content = json
                 ? new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson)
@@ -185,7 +181,7 @@ namespace Xero.Api.Infrastructure.Http
             return await SendRequestAsync(request);
         }
 
-        private HttpRequestMessage CreateRequest(string endPoint, HttpMethod method, string accept = "application/json", HttpContent content = null, string query = null)
+        private HttpRequestMessage CreateRequest(string endPoint, HttpMethod method, DateTime? modifiedSince = null, string accept = "application/json", HttpContent content = null, string query = null)
         {
             if (!string.IsNullOrWhiteSpace(query))
             {
@@ -201,9 +197,9 @@ namespace Xero.Api.Infrastructure.Http
 
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(accept));
 
-            if (ModifiedSince.HasValue)
+            if (modifiedSince.HasValue)
             {
-                request.Headers.IfModifiedSince = ModifiedSince;
+                request.Headers.IfModifiedSince = modifiedSince;
             }
 
             _auth?.Authenticate(request, _consumer, _user);
@@ -221,11 +217,6 @@ namespace Xero.Api.Infrastructure.Http
                 _rateLimiter.WaitUntilLimit();
 
             return await HttpClient.SendAsync(request);
-        }
-
-        private string CreateQueryString(bool encoded)
-        {
-            return CreateQueryString(Where, Order, Parameters, encoded);
         }
 
         private string CreateQueryString(string where, string order, NameValueCollection paramters, bool encoded)

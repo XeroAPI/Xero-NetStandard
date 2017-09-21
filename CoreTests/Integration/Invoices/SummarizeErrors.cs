@@ -30,9 +30,7 @@ namespace CoreTests.Integration.Invoices
 
         private async Task<IEnumerable<Invoice>> Given_a_bad_invoice(InvoiceType type = InvoiceType.AccountsPayable, InvoiceStatus status = InvoiceStatus.Draft, bool summariseErrors = true)
         {
-            Api.Invoices.SummarizeErrors(summariseErrors);
-
-            return await Api.CreateAsync(new[]
+            return await Api.Invoices.SummarizeErrors(summariseErrors).CreateAsync(new[]
             {
                 new Invoice
                 {
