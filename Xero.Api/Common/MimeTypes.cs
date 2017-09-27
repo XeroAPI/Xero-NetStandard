@@ -5,6 +5,8 @@ namespace Xero.Api.Common
 {
     public static class MimeTypes
     {
+        //Credit: https://github.com/visualeyes/Xero-NetStandard/blob/master/Xero.Api/Common/MimeTypes.cs
+
         public const string TextXml = "text/xml";
         public const string TextCsv = "text/csv";
 
