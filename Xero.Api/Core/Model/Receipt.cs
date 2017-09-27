@@ -13,8 +13,8 @@ namespace Xero.Api.Core.Model
         [DataMember(Name = "ReceiptID", EmitDefaultValue = false)]
         public Guid Id { get; set; }
         
-        [DataMember]
-        public DateTime Date { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? Date { get; set; }
 
         [DataMember]
         public Contact Contact { get; set; }

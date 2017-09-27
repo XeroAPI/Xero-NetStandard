@@ -7,7 +7,7 @@ using Xero.Api.Core.Model.Types;
 namespace Xero.Api.Core.Model
 {
     [DataContract(Namespace = "")]
-    public class Account : CoreData, IHasId, IHasAttachment
+    public class Account : HasUpdatedDate, IHasId, IHasAttachment
     {
         [DataMember(Name = "AccountID", EmitDefaultValue = false)]
         public Guid Id { get; set; }
@@ -59,9 +59,5 @@ namespace Xero.Api.Core.Model
 
         [DataMember(EmitDefaultValue = false)]
         public bool? HasAttachments { get; set; }
-
-        [DataMember(EmitDefaultValue = false)]
-        public DateTime UpdatedDateUTC { get; set; }
-
     }
 }

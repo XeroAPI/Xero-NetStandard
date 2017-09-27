@@ -68,7 +68,7 @@ namespace Xero.Api.Core.Model
         public bool? HasAttachments { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime FullyPaidOnDate { get; set; }
+        public DateTime? FullyPaidOnDate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }

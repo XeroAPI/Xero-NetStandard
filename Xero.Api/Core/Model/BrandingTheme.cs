@@ -11,7 +11,7 @@ namespace Xero.Api.Core.Model
         public Guid BrandingThemeId { get; set; }
 
         [DataMember(Name = "CreatedDateUTC")]
-        public DateTime CreatedDateUtc { get; set; }
+        public DateTime? CreatedDateUtc { get; set; }
 
         [DataMember]
         public string Name { get; set; }

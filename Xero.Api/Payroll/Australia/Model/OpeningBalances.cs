@@ -7,8 +7,8 @@ namespace Xero.Api.Payroll.Australia.Model
     [DataContract(Namespace = "")]
     public class OpeningBalances
     {
-        [DataMember]
-        public DateTime OpeningBalanceDate { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? OpeningBalanceDate { get; set; }
 
         [DataMember]
         public decimal? Tax { get; set; }

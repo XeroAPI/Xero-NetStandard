@@ -14,11 +14,11 @@ namespace Xero.Api.Payroll.America.Model
         [DataMember(Name = "EmployeeID")]
         public Guid EmployeeId { get; set; }
 
-        [DataMember]
-        public DateTime StartDate { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? StartDate { get; set; }
 
-        [DataMember]
-        public DateTime EndDate { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? EndDate { get; set; }
 
         [DataMember]
         public TimesheetStatus Status { get; set; }

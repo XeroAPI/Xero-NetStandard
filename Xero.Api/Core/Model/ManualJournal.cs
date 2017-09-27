@@ -14,7 +14,7 @@ namespace Xero.Api.Core.Model
         public Guid Id { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public ManualJournalStatus? Status { get; set; }

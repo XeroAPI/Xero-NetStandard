@@ -25,7 +25,7 @@ namespace Xero.Api.Payroll.America.Model
         [DataMember]
         public decimal? StandardHoursPerWeek { get; set; }
 
-        [DataMember]
-        public DateTime EffectiveDate { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? EffectiveDate { get; set; }
     }
 }

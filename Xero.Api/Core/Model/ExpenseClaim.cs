@@ -25,10 +25,10 @@ namespace Xero.Api.Core.Model
         public double AmountPaid { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime PaymentDueDate { get; set; }
+        public DateTime? PaymentDueDate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime ReportingDate { get; set; }
+        public DateTime? ReportingDate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public User User { get; set; }

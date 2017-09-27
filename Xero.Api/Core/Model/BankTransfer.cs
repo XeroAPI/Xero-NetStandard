@@ -29,7 +29,7 @@ namespace Xero.Api.Core.Model
         public decimal? Amount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public bool? HasAttachments { get; set; }

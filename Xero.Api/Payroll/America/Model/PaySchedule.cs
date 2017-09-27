@@ -14,11 +14,11 @@ namespace Xero.Api.Payroll.America.Model
         [DataMember(Name = "PayScheduleName")]
         public string Name { get; set; }
         
-        [DataMember]
-        public DateTime PaymentDate { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? PaymentDate { get; set; }
 
-        [DataMember]
-        public DateTime StartDate { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? StartDate { get; set; }
 
         [DataMember]
         public ScheduleType ScheduleType { get; set; }

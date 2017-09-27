@@ -11,7 +11,7 @@ namespace Xero.Api.Core.Model
         public decimal? AppliedAmount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public Invoice Invoice { get; set; }

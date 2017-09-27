@@ -25,10 +25,10 @@ namespace Xero.Api.Core.Model
         public long Size { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime CreatedDateUtc { get; set; }
+        public DateTime? CreatedDateUtc { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public DateTime UpdatedDateUtc { get; set; }
+        public DateTime? UpdatedDateUtc { get; set; }
 
         public FilesUser User { get; set; }
 

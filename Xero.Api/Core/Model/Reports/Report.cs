@@ -24,8 +24,8 @@ namespace Xero.Api.Core.Model.Reports
         public string ReportDate { get; set; }
 
         // ReSharper disable InconsistentNaming
-        [DataMember]
-        public DateTime UpdatedDateUTC { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? UpdatedDateUTC { get; set; }
         // ReSharper restore InconsistentNaming
 
         [DataMember]

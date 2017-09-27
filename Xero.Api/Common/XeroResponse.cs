@@ -22,8 +22,8 @@ namespace Xero.Api.Common
         [DataMember]
         public string ProviderName { get; set; }
 
-        [DataMember(Name = "DateTimeUTC")]
-        public DateTime DateTime { get; set; }
+        [DataMember(Name = "DateTimeUTC", EmitDefaultValue = false)]
+        public DateTime? DateTime { get; set; }
        
 
     }

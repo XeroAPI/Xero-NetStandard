@@ -18,8 +18,8 @@ namespace Xero.Api.Core.Model
         [DataMember(EmitDefaultValue = false)]
         public PaymentStatus Status { get; set; }
         
-        [DataMember]
-        public DateTime Date { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public DateTime? Date { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
