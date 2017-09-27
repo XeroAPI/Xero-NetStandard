@@ -16,6 +16,6 @@ namespace Xero.Api.Payroll.America.Model
         public decimal? RatePerUnit { get; set; }        
 
         [DataMember]
-        public decimal UnitsOrHours { get; set; }
+        public decimal? UnitsOrHours { get; set; }
     } 
 }

@@ -7,9 +7,9 @@ namespace Xero.Api.Core.Model
     public class Balance : CoreData
     {
         [DataMember(EmitDefaultValue = false)]
-        public decimal Outstanding { get; set; }
+        public decimal? Outstanding { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal Overdue { get; set; }
+        public decimal? Overdue { get; set; }
     }
 }

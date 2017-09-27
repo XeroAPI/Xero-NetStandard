@@ -17,15 +17,15 @@ namespace Xero.Api.Payroll.Common.Model
         public string LastName { get; set; }
 
         [DataMember]
-        public decimal Deductions { get; set; }
+        public decimal? Deductions { get; set; }
 
         [DataMember]
-        public decimal Tax { get; set; }
+        public decimal? Tax { get; set; }
 
         [DataMember]
-        public decimal Reimbursements { get; set; }
+        public decimal? Reimbursements { get; set; }
 
         [DataMember]
-        public decimal NetPay { get; set; }
+        public decimal? NetPay { get; set; }
     }
 }

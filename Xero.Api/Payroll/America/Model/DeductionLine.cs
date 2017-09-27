@@ -14,12 +14,12 @@ namespace Xero.Api.Payroll.America.Model
         public CalculationType CalculationType { get; set; }
 
         [DataMember]
-        public decimal EmployeeMax { get; set; }
+        public decimal? EmployeeMax { get; set; }
 
         [DataMember]
-        public decimal Percentage { get; set; }
+        public decimal? Percentage { get; set; }
 
         [DataMember]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
     }
 }

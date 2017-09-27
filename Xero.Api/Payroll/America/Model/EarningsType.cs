@@ -27,7 +27,7 @@ namespace Xero.Api.Payroll.America.Model
         public UnitType TypeOfUnits { get; set; }
 
         [DataMember]
-        public decimal Multiple { get; set; }
+        public decimal? Multiple { get; set; }
 
         [DataMember]
         public bool DoNotAccureTimeOff { get; set; }
@@ -36,6 +36,6 @@ namespace Xero.Api.Payroll.America.Model
         public bool IsSupplemental { get; set; }
 
         [DataMember]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
     }
 }

@@ -17,13 +17,13 @@ namespace Xero.Api.Payroll.America.Model
         public SalaryWagesType SalaryWagesType { get; set; }
 
         [DataMember]
-        public decimal HourlyRate { get; set; }
+        public decimal? HourlyRate { get; set; }
 
         [DataMember]
-        public decimal AnnualSalary { get; set; }
+        public decimal? AnnualSalary { get; set; }
 
         [DataMember]
-        public decimal StandardHoursPerWeek { get; set; }
+        public decimal? StandardHoursPerWeek { get; set; }
 
         [DataMember]
         public DateTime EffectiveDate { get; set; }

@@ -24,7 +24,7 @@ namespace Xero.Api.Payroll.Australia.Model
         public TimesheetStatus Status { get; set; }
 
         [DataMember]
-        public decimal Hours { get; set; }
+        public decimal? Hours { get; set; }
 
         [DataMember]
         public List<TimesheetLine> TimesheetLines { get; set; }

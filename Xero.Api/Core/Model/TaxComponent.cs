@@ -10,7 +10,7 @@ namespace Xero.Api.Core.Model
         public string Name { get; set; }
 
         [DataMember]
-        public decimal Rate { get; set; }
+        public decimal? Rate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public bool? IsCompound { get; set; }

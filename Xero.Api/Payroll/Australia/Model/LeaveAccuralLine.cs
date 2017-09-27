@@ -10,7 +10,7 @@ namespace Xero.Api.Payroll.Australia.Model
         public Guid LeaveTypeID { get; set; }
 
         [DataMember]
-        public decimal NumberOfUnits { get; set; }
+        public decimal? NumberOfUnits { get; set; }
 
         [DataMember]
         public bool AutoCalculate { get; set; }

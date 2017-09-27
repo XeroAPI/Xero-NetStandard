@@ -14,6 +14,6 @@ namespace Xero.Api.Payroll.America.Model
         public CalculationType CalculationType { get; set; }
 
         [DataMember]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
     }
 }

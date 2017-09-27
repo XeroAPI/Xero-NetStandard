@@ -26,7 +26,7 @@ namespace CoreTests.Integration.ManualJournals
 
             Assert.AreEqual(DateTime.Now.Date, manual.Date);
             Assert.AreEqual(narration, manual.Narration);
-            Assert.True(manual.Lines.All(p => amount == Math.Abs(p.Amount)));
+            Assert.True(manual.Lines.All(p => amount == Math.Abs(p.Amount.GetValueOrDefault())));
             Assert.NotNull(manual.Lines.Single(p => Revenue.Code == p.AccountCode));
             Assert.NotNull(manual.Lines.Single(p => Sales.Code == p.AccountCode));
         }

@@ -18,10 +18,10 @@ namespace Xero.Api.Payroll.Australia.Model
         public DateTime? LastEdited { get; set; }
 
         [DataMember]
-        public decimal Super { get; set; }
+        public decimal? Super { get; set; }
 
         [DataMember]
-        public decimal Wages { get; set; }
+        public decimal? Wages { get; set; }
 
         [DataMember]
         public List<PayslipEarningsLine> EarningsLines { get; set; }

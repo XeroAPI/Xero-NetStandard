@@ -38,7 +38,7 @@ namespace Xero.Api.Core.Model
         public string Reference { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal CurrencyRate { get; set; }
+        public decimal? CurrencyRate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public string CurrencyCode { get; set; }

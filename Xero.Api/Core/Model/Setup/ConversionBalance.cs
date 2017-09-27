@@ -6,7 +6,7 @@ namespace Xero.Api.Core.Model.Setup
     public class ConversionBalance
     {
         [DataMember]
-        public decimal Balance { get; set; }
+        public decimal? Balance { get; set; }
 
         [DataMember]
         public string AccountCode { get; set; }

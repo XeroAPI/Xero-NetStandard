@@ -17,10 +17,10 @@ namespace Xero.Api.Payroll.Australia.Model
         public bool Unscheduled { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal Wages { get; set; }
+        public decimal? Wages { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal Super { get; set; }
+        public decimal? Super { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public List<Payslip> Payslips { get; set; }        

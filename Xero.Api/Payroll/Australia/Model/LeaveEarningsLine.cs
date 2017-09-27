@@ -10,9 +10,9 @@ namespace Xero.Api.Payroll.Australia.Model
         public Guid Id { get; set; }
 
         [DataMember]
-        public decimal RatePerUnit { get; set; }
+        public decimal? RatePerUnit { get; set; }
 
         [DataMember]
-        public decimal NumberOfUnits { get; set; }
+        public decimal? NumberOfUnits { get; set; }
     }
 }

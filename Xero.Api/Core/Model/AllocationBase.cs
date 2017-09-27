@@ -8,7 +8,7 @@ namespace Xero.Api.Core.Model
     public abstract class AllocationBase : CoreData
     {
         [DataMember(EmitDefaultValue = false)]
-        public decimal AppliedAmount { get; set; }
+        public decimal? AppliedAmount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public DateTime Date { get; set; }
@@ -17,6 +17,6 @@ namespace Xero.Api.Core.Model
         public Invoice Invoice { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
     }
 }

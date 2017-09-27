@@ -22,7 +22,7 @@ namespace Xero.Api.Core.Model
         public DateTime Date { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal CurrencyRate { get; set; }
+        public decimal? CurrencyRate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public decimal? BankAmount { get; set; }

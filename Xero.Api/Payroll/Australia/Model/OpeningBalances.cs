@@ -11,7 +11,7 @@ namespace Xero.Api.Payroll.Australia.Model
         public DateTime OpeningBalanceDate { get; set; }
 
         [DataMember]
-        public decimal Tax { get; set; }
+        public decimal? Tax { get; set; }
 
         [DataMember]
         public List<EarningsLine> EarningsLines { get; set; }

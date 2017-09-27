@@ -24,13 +24,13 @@ namespace Xero.Api.Core.Model
         public string AccountName { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal NetAmount { get; set; }
+        public decimal? NetAmount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal GrossAmount { get; set; }
+        public decimal? GrossAmount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal TaxAmount { get; set; }
+        public decimal? TaxAmount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public string TaxType { get; set; }
@@ -48,7 +48,7 @@ namespace Xero.Api.Core.Model
         public ItemTracking Tracking { get; set; }
 
         [DataMember(Name = "LineAmount", EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public string Description { get; set; }

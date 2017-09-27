@@ -24,15 +24,15 @@ namespace Xero.Api.Payroll.Common.Model
         public DateTime? PaymentDate { get; set; }
 
         [DataMember]
-        public decimal Deductions { get; set; }
+        public decimal? Deductions { get; set; }
 
         [DataMember]
-        public decimal Tax { get; set; }
+        public decimal? Tax { get; set; }
 
         [DataMember]
-        public decimal Reimbursement { get; set; }
+        public decimal? Reimbursement { get; set; }
 
         [DataMember]
-        public decimal NetPay { get; set; }
+        public decimal? NetPay { get; set; }
     }
 }

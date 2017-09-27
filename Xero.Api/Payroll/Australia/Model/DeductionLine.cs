@@ -17,9 +17,9 @@ namespace Xero.Api.Payroll.Australia.Model
         public DeductionCalculationType? CalculationType { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal NumberOfUnits { get; set; }
+        public decimal? NumberOfUnits { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal Percentage { get; set; }
+        public decimal? Percentage { get; set; }
     }    
 }

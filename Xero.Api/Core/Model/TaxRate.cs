@@ -40,9 +40,9 @@ namespace Xero.Api.Core.Model
         public bool? CanApplyToRevenue { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal DisplayTaxRate { get; set; }
+        public decimal? DisplayTaxRate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal EffectiveRate { get; set; }
+        public decimal? EffectiveRate { get; set; }
     }
 }

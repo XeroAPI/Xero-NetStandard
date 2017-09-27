@@ -17,7 +17,7 @@ namespace Xero.Api.Payroll.Australia.Model
         public SuperannuationCalculationType? CalculationType { get; set; }
 
         [DataMember]
-        public decimal MinimumMonthlyEarnings { get; set; }
+        public decimal? MinimumMonthlyEarnings { get; set; }
 
         [DataMember]
         public string ExpenseAccountCode { get; set; }

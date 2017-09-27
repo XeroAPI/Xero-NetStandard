@@ -14,12 +14,12 @@ namespace Xero.Api.Payroll.Australia.Model
         public decimal? NumberOfUnits { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal AnnualNumberOfUnits { get; set; }
+        public decimal? AnnualNumberOfUnits { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public LeaveCalculationType CalculationType { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal FullTimeNumberOfUnitsPerPeriod { get; set; }
+        public decimal? FullTimeNumberOfUnitsPerPeriod { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Xero.Api.Payroll.America.Model
         public Guid PayScheduleId { get; set; }
 
         [DataMember]
-        public decimal Earnings { get; set; }
+        public decimal? Earnings { get; set; }
 
         [DataMember]
         public List<PayStub> Paystubs { get; set; }        

@@ -24,13 +24,13 @@ namespace Xero.Api.Payroll.America.Model
         public string ExpenseAccountCode { get; set; }
 
         [DataMember]
-        public decimal StandardAmount { get; set; }
+        public decimal? StandardAmount { get; set; }
 
         [DataMember]
-        public decimal CompanyMax { get; set; }
+        public decimal? CompanyMax { get; set; }
 
         [DataMember]
-        public decimal Percentage { get; set; }
+        public decimal? Percentage { get; set; }
 
         [DataMember]
         public bool ShowBalanceOnPaystub { get; set; }

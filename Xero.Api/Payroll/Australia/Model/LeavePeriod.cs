@@ -17,6 +17,6 @@ namespace Xero.Api.Payroll.Australia.Model
         public LeavePeriodStatus LeavePeriodStatus { get; set; }
 
         [DataMember]
-        public decimal NumberOfUnits { get; set; }
+        public decimal? NumberOfUnits { get; set; }
     }
 }

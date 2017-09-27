@@ -24,9 +24,9 @@ namespace Xero.Api.Payroll.America.Model
         public string LiabilityAccountCode { get; set; }
 
         [DataMember]
-        public decimal StandardAmount { get; set; }
+        public decimal? StandardAmount { get; set; }
 
         [DataMember]
-        public decimal CompanyMax { get; set; }
+        public decimal? CompanyMax { get; set; }
     }
 }

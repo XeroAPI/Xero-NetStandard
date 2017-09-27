@@ -19,9 +19,9 @@ namespace Xero.Api.Payroll.America.Model
         public int ZipCode { get; set; }
 
         [DataMember]
-        public decimal Latitude { get; set; }
+        public decimal? Latitude { get; set; }
 
         [DataMember]
-        public decimal Longitude { get; set; }
+        public decimal? Longitude { get; set; }
     }
 }

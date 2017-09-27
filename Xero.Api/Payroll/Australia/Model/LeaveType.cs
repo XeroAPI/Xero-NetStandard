@@ -17,10 +17,10 @@ namespace Xero.Api.Payroll.Australia.Model
         public string TypeOfUnits { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal NormalEntitlement { get; set; }
+        public decimal? NormalEntitlement { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal LeaveLoadingRate { get; set; }
+        public decimal? LeaveLoadingRate { get; set; }
 
         [DataMember]
         public bool IsPaidLeave { get; set; }

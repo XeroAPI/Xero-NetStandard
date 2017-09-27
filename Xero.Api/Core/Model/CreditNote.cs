@@ -26,13 +26,13 @@ namespace Xero.Api.Core.Model
         public bool? SentToContact { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal AppliedAmount { get; set; }
+        public decimal? AppliedAmount { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal RemainingCredit { get; set; }
+        public decimal? RemainingCredit { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public decimal CurrencyRate { get; set; }
+        public decimal? CurrencyRate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public Contact Contact { get; set; }
