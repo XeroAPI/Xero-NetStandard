@@ -7,7 +7,7 @@ namespace Xero.Api.Payroll.America.Model
     [DataContract(Namespace = "")]
     public class SalaryAndWage
     {
-        [DataMember(Name = "SalaryAndWagesID")]
+        [DataMember(Name = "SalaryAndWagesID", EmitDefaultValue = false)]
         public Guid Id { get; set; }
 
         [DataMember(Name = "EarningsTypeID")]

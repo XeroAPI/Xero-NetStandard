@@ -16,10 +16,10 @@ namespace Xero.Api.Payroll.America.Model
         public AccountType AccountType { get; set; }
 
         [DataMember]
-        public int RoutingNumber { get; set; }
+        public string RoutingNumber { get; set; }
 
         [DataMember]
-        public int AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
 
         [DataMember]
         public decimal? Amount { get; set; }

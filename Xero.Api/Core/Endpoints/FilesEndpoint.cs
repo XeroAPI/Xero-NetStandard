@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Xero.Api.Common;
 using Xero.Api.Core.Endpoints.Base;
-using Xero.Api.Core.Model;
 using Xero.Api.Core.Request;
 using Xero.Api.Core.Response;
 using Xero.Api.Infrastructure.Http;
@@ -20,19 +20,24 @@ namespace Xero.Api.Core.Endpoints
         Task<Model.File> RemoveAsync(Guid fileid);
         Task<byte[]> GetContentAsync(Guid id, string contentType);
     }
-
-    public class FilesEndpoint : XeroUpdateEndpoint<FilesEndpoint, Model.File, FilesRequest, FilesResponse>, IFilesEndpoint
+    
+    public class FilesEndpoint : XeroUpdateEndpoint<FilesEndpoint, Model.File, FilesRequest, FilesResponse>, IFilesEndpoint, IPageableEndpoint<IFilesEndpoint>
     {
 
         internal FilesEndpoint(XeroHttpClient client)
             : base(client, "files.xro/1.0/Files")
         {
-
+            AddParameter("page", 1, false);
         }
-        
+
+        public IFilesEndpoint Page(int page)
+        {
+            return AddParameter("page", page);
+        }
+
         public override async Task<IEnumerable<Model.File>> FindAsync()
         {
-            var response = await Client.GetAsync("files.xro/1.0/Files", "");
+            var response = await Client.GetAsync("files.xro/1.0/Files", QueryString);
 
             var result = await HandleFilesResponseAsync(response);
 

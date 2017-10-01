@@ -6,7 +6,7 @@ namespace Xero.Api.Payroll.Australia.Model
     [DataContract(Namespace = "")]
     public class PayItems
     {
-        [DataMember(EmitDefaultValue = false)]
+        [DataMember(Name = "EarningsTypes")]
         public List<EarningsRate> EarningsRates { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

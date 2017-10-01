@@ -58,7 +58,7 @@ namespace Xero.Api.Core.Model.Types
         ExpenseClaimPayment,
         [EnumMember(Value = "FIXEDASSET")]
         FixedAsset,
-        [EnumMember(Value = "MANUALJOURNAL")]
+        [EnumMember(Value = "MANJOURNAL")]
         ManualJournal,
         [EnumMember(Value = "PAYRUN")]
         Payrun,
