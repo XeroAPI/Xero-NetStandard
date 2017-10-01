@@ -6,6 +6,8 @@ namespace Xero.Api.Payroll.America.Model.Types
     [DataContract(Namespace = "", Name = "TimeOffCategory")]
     public enum TimeOffCategoryType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "UNPAIDTIMEOFF")]
         Unpaid,
         [EnumMember(Value = "PAIDTIMEOFF")]

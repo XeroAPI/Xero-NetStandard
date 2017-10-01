@@ -5,6 +5,8 @@ namespace Xero.Api.Core.Model.Types
     [DataContract(Namespace = "")]
     public enum PhoneType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value="DEFAULT")]
         Default,
         [EnumMember(Value = "DDI")]

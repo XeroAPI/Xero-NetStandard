@@ -5,6 +5,8 @@ namespace Xero.Api.Core.Model.Types
     [DataContract(Namespace = "")]
     public enum AccountClassType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "ASSET")]
         Asset,
         [EnumMember(Value = "EQUITY")]

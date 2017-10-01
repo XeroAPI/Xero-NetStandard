@@ -5,6 +5,8 @@ namespace Xero.Api.Core.Model.Status
     [DataContract(Namespace = "")]
     public enum PurchaseOrderStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "DRAFT")]
         Draft,
         [EnumMember(Value = "SUBMITTED")]

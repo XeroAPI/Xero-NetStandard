@@ -5,6 +5,8 @@ namespace Xero.Api.Payroll.America.Model.Types
     [DataContract(Namespace = "")]
     public enum State
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "AL")]
         Alabama,
         [EnumMember(Value = "AK")]

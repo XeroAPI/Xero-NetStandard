@@ -5,6 +5,8 @@ namespace Xero.Api.Core.Model.Types
     [DataContract(Namespace = "")]
     public enum OrganisationVersion
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "AU")]
         Australia,
         [EnumMember(Value = "NZ")]

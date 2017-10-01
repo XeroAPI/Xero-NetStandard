@@ -6,6 +6,8 @@ namespace Xero.Api.Payroll.America.Model.Types
     [DataContract(Namespace = "", Name = "BenefitCategory")]    
     public enum BenefitCategoryType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "SECTION125PLAN")]
         Section125Plan
     }

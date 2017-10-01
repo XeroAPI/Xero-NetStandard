@@ -5,6 +5,8 @@ namespace Xero.Api.Core.Model.Types
     [DataContract(Namespace = "")]
     public enum OrganisationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "COMPANY")]
         Company,
         [EnumMember(Value = "CHARITY")]

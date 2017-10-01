@@ -5,6 +5,8 @@ namespace Xero.Api.Core.Model.Status
     [DataContract(Namespace = "")]
     public enum LinkedTransactionStatus
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "DRAFT")]
         Draft,
         [EnumMember(Value = "APPROVED")]

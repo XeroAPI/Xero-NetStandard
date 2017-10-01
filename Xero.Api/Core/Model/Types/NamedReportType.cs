@@ -2,6 +2,7 @@
 {
     public enum NamedReportType
     {
+        Unkown = 0,
         AgedPayablesByContact,
         AgedReceivablesByContact,
         BalanceSheet,

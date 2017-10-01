@@ -6,6 +6,8 @@ namespace Xero.Api.Payroll.America.Model.Types
     [DataContract(Namespace = "", Name = "DeductionCategory")]
     public enum DeductionCategoryType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "AFTERTAXDEDUCTION")]
         AfterTaxDeduction,
         [EnumMember(Value = "DEPENDENTCARE")]

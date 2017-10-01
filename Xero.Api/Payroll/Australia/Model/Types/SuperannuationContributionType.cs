@@ -5,6 +5,8 @@ namespace Xero.Api.Payroll.Australia.Model.Types
     [DataContract(Namespace = "")]
     public enum SuperannuationContributionType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value="SGC")]
         SuperannuationGuaranteeCharge,
         [EnumMember(Value = "SALARYSACRIFICE")]

@@ -4,6 +4,8 @@ namespace Xero.Api.Core.Model.Types
 {
     public enum PaymentType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "ACCPAYPAYMENT")]
         AccountsPayable,
         [EnumMember(Value = "ACCRECPAYMENT")]

@@ -5,6 +5,8 @@ namespace Xero.Api.Payroll.Australia.Model.Types
     [DataContract(Namespace = "")]
     public enum EarningsType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "FIXED")]
         Fixed,
         [EnumMember(Value = "ORDINARYTIMEEARNINGS")]

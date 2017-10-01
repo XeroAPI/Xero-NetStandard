@@ -6,6 +6,8 @@ namespace Xero.Api.Core.Model.Types
     public enum LineAmountType
     {
         [EnumMember]
+        Unkown = 0,
+        [EnumMember]
         Exclusive,
         [EnumMember]
         Inclusive,

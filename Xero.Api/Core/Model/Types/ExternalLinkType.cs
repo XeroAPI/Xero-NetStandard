@@ -6,6 +6,8 @@ namespace Xero.Api.Core.Model.Types
     public enum ExternalLinkType
     {
         [EnumMember]
+        Unkown = 0,
+        [EnumMember]
         Website,
         [EnumMember]
         Facebook,

@@ -5,6 +5,8 @@ namespace Xero.Api.Core.Model.Types
     [DataContract]
     public enum SalesTaxBasisType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "NONE")]
         None,
         [EnumMember(Value = "ACCRUAL")]

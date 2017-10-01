@@ -6,6 +6,8 @@ namespace Xero.Api.Payroll.America.Model.Types
     [DataContract(Namespace = "")]
     public enum CalculationType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "STANDARDAMOUNT")]
         StandardAmount,
         [EnumMember(Value = "PERCENTAGEOFGROSS")]

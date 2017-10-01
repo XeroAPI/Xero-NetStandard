@@ -6,6 +6,8 @@ namespace Xero.Api.Payroll.America.Model.Types
     [DataContract(Namespace = "", Name = "EarningsCategory")]
     public enum EarningsCategoryType
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "REGULAREARNINGS")]
         RegularEarnings,
         [EnumMember(Value = "OVERTIMEEARNINGS")]

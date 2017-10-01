@@ -4,6 +4,8 @@ namespace Xero.Api.Core.Model.Types
 {
     public enum ObjectType 
     {
+        [EnumMember(Value = "UNKNOWN")]
+        Unkown = 0,
         [EnumMember(Value = "ACCOUNT")]
         Account,
         [EnumMember(Value = "ACCPAY")]
