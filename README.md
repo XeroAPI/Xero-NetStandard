@@ -1,3 +1,5 @@
+# Note: This readme is still a direct copy from the one at XeroAPI/Xero-Net and so some of the information will be out of date and irrelevent. Please see release notes and runnable examples to get going.
+
 Xero-Net
 ========
 [![xero-api-sdk MyGet Build Status](https://www.myget.org/BuildSource/Badge/xero-api-sdk?identifier=045754d8-de3f-4f0c-960a-ae6e16608e24)](https://www.myget.org/)
