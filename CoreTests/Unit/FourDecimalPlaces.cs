@@ -33,37 +33,37 @@ namespace CoreTests.Unit
         [Test]
         public void no_four_decimal_places_bank_transactions()
         {
-            ExplicitNotUse4Dp((FourDecimalPlacesEndpoint<BankTransactionsEndpoint, BankTransaction, BankTransactionsRequest, BankTransactionsResponse>)Api.BankTransactions);
+            ExplicitNotUse4Dp((FourDecimalPlacesEndpoint<BankTransactionsEndpoint, BankTransaction, BankTransactionsRequest, BankTransactionsResponse>)Api.BankTransactions, "page=1");
         }
 
         [Test]
         public void explict_four_decimal_places_bank_transactions()
         {
-            ExplictUse4Dp((FourDecimalPlacesEndpoint<BankTransactionsEndpoint, BankTransaction, BankTransactionsRequest, BankTransactionsResponse>)Api.BankTransactions);
+            ExplictUse4Dp((FourDecimalPlacesEndpoint<BankTransactionsEndpoint, BankTransaction, BankTransactionsRequest, BankTransactionsResponse>)Api.BankTransactions, "unitdp=4&page=1");
         }
 
         [Test]
         public void implict_four_decimal_places_bank_transactions()
         {
-            ImplicitUse4Dp((FourDecimalPlacesEndpoint<BankTransactionsEndpoint, BankTransaction, BankTransactionsRequest, BankTransactionsResponse>)Api.BankTransactions);
+            ImplicitUse4Dp((FourDecimalPlacesEndpoint<BankTransactionsEndpoint, BankTransaction, BankTransactionsRequest, BankTransactionsResponse>)Api.BankTransactions, "unitdp=4&page=1");
         }
 
         [Test]
         public void no_four_decimal_places_credit_notes()
         {
-            ExplicitNotUse4Dp((FourDecimalPlacesEndpoint<CreditNotesEndpoint, CreditNote, CreditNotesRequest, CreditNotesResponse>)Api.CreditNotes);
+            ExplicitNotUse4Dp((FourDecimalPlacesEndpoint<CreditNotesEndpoint, CreditNote, CreditNotesRequest, CreditNotesResponse>)Api.CreditNotes, "page=1");
         }
 
         [Test]
         public void explict_four_decimal_places_credit_notes()
         {
-            ExplictUse4Dp((FourDecimalPlacesEndpoint<CreditNotesEndpoint, CreditNote, CreditNotesRequest, CreditNotesResponse>)Api.CreditNotes);
+            ExplictUse4Dp((FourDecimalPlacesEndpoint<CreditNotesEndpoint, CreditNote, CreditNotesRequest, CreditNotesResponse>)Api.CreditNotes, "unitdp=4&page=1");
         }
 
         [Test]
         public void implict_four_decimal_places_credit_notes()
         {
-            ImplicitUse4Dp((FourDecimalPlacesEndpoint<CreditNotesEndpoint, CreditNote, CreditNotesRequest, CreditNotesResponse>)Api.CreditNotes);
+            ImplicitUse4Dp((FourDecimalPlacesEndpoint<CreditNotesEndpoint, CreditNote, CreditNotesRequest, CreditNotesResponse>)Api.CreditNotes, "unitdp=4&page=1");
         }
 
         [Test]
@@ -143,7 +143,8 @@ namespace CoreTests.Unit
             where TResponse : IXeroResponse<TResult>, new()
             where TRequest : IXeroRequest<TResult>, new()
         {
-            Assert.AreEqual(expected, endpoint.UseFourDecimalPlaces(true).QueryString);
+            var e = endpoint.UseFourDecimalPlaces(true);
+            Assert.AreEqual(expected, e.QueryString);
         }
 
         private void ImplicitUse4Dp<T, TResult, TRequest, TResponse>(FourDecimalPlacesEndpoint<T, TResult, TRequest, TResponse> endpoint, string expected = "unitdp=4")
@@ -159,7 +160,8 @@ namespace CoreTests.Unit
             where TResponse : IXeroResponse<TResult>, new()
             where TRequest : IXeroRequest<TResult>, new()
         {
-            Assert.AreEqual(expected, endpoint.UseFourDecimalPlaces(false).QueryString);
+            var e = endpoint.UseFourDecimalPlaces(false);
+            Assert.AreEqual(expected, e.QueryString);
         }
     }
 }
