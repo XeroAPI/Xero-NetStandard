@@ -1,5 +1,5 @@
 ## Tests for the Core API
-These are really code snippets in the form of runnable tests. The examples for each of the endpoints in [Developer](http://developer.xero.com/documentation/api/api-overview/) have been turned into individual tests.
+These are really code snippets in the form of runnable tests. The examples for each of the endpoints in the [API documentation](http://developer.xero.com/documentation/api/api-overview/) have been turned into individual tests.
 
 
 ## Getting the tests working
