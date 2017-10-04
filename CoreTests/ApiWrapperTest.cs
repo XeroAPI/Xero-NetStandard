@@ -20,10 +20,7 @@ namespace CoreTests
 
         private static IXeroCoreApi CreateCoreApi()
         {
-            return new Core
-            {
-                UserAgent = "Xero Api - Integration tests"
-            };
+            return new Core();
         }
 
         protected async Task SetUp()

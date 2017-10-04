@@ -16,12 +16,6 @@ namespace Xero.Api.Common
             BaseUri = baseUrl;
 
             Client = new XeroHttpClient(baseUrl, auth, consumer, user, rateLimiter);
-        }
-
-        public string UserAgent
-        {
-            get => Client.UserAgent;
-            set => Client.UserAgent = value;
-        }        
+        }   
     }
 }

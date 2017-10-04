@@ -1,22 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <Title>Xero.Api</Title>
-        <Company>Xero</Company>
-        <Copyright>Copyright © Xero 2017</Copyright>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <FileVersion>2.0.0.0</FileVersion>
-    </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.0.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-      <PackageReference Include="ServiceStack.Text.Core" Version="1.0.44" />
-      <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-      <PackageReference Include="System.Net.Requests" Version="4.3.0" />
-      <PackageReference Include="System.Runtime" Version="4.3.0" />
-      <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
-      <PackageReference Include="System.Security.Permissions" Version="4.4.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
-    </ItemGroup>
+  <PropertyGroup>
+    <Title>Xero AP SDK - NetStandard</Title>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Xero.Api.SDK.Core</PackageId>
+    <Authors>Xero</Authors>
+    <Owners>Xero</Owners>
+    <Copyright>Copyright © Xero 2017</Copyright>
+    <Version>0.0.1</Version>
+    <Description>This is a .NETStandard SDK library, used to communicate with the Xero API. See https://github.com/XeroAPI/Xero-NetStandard for more information</Description>
+    <PackageTags>xero;api;sdk</PackageTags>
+    <PackageReleaseNotes>Up to date with https://github.com/XeroAPI/Xero-NetStandard/releases/tag/v0.0.1</PackageReleaseNotes>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="ServiceStack.Text.Core" Version="1.0.44" />
+    <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
+    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Security.Permissions" Version="4.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+  </ItemGroup>
 </Project>

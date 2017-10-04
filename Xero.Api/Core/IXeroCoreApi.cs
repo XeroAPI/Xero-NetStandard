@@ -43,7 +43,6 @@ namespace Xero.Api.Core
         ITrackingCategoriesEndpoint TrackingCategories { get; }
         IUsersEndpoint Users { get; }
         string BaseUri { get; }
-        string UserAgent { get; set; }
 
         Task<Organisation> FindOrganisationAsync();
 
