@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Title>Xero AP SDK - NetStandard</Title>
+    <Title>Xero API SDK - NetStandard</Title>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xero.Api.SDK.Core</PackageId>
     <Authors>Xero</Authors>
