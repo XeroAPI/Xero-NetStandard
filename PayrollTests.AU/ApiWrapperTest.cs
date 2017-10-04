@@ -13,10 +13,7 @@ namespace PayrollTests.AU
 
         private static AustralianPayroll CreateApi()
         {
-            return new Xero.Api.Infrastructure.Applications.Private.AustralianPayroll()
-            {
-                UserAgent = "Xero Api Console example (AU Payroll)"
-            };
+            return new Xero.Api.Infrastructure.Applications.Private.AustralianPayroll();
         }
     }
 }

@@ -111,10 +111,7 @@ For a public application you would use
 	var user = new ApiUser { Name = "The users name" };
     var tokenStore = new SqliteTokenStore();
 
-    var api = new Applications.Public.Core(tokenStore, user)
-    {
-        UserAgent = "Something to show your application"
-    };
+    var api = new Applications.Public.Core(tokenStore, user);
 	
 The config file will look like this
 	

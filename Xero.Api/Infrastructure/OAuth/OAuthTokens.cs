@@ -48,7 +48,7 @@ namespace Xero.Api.Infrastructure.OAuth
         {
             var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
 
-            request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(Uri.EscapeDataString("Xero Api wrapper - " + consumer.ConsumerKey))));
+            request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(Uri.EscapeDataString("Xero-NetStandard - " + consumer.ConsumerKey))));
 
             request.Headers.Add("Authorization", header);
 

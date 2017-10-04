@@ -53,8 +53,6 @@ namespace Xero.Api.Infrastructure.Http
             };
         }
 
-        public string UserAgent { get; set; }
-
         public async Task<IEnumerable<TResult>> GetAsync<TResult, TResponse>(string endPoint, NameValueCollection parameters = null, string where = "", string order = "", DateTime? modifiedSince = null)
             where TResponse : IXeroResponse<TResult>, new()
         {
@@ -204,7 +202,7 @@ namespace Xero.Api.Infrastructure.Http
 
             _auth?.Authenticate(request, _consumer, _user);
 
-            var escapedUserAgent = Uri.EscapeDataString(!string.IsNullOrWhiteSpace(UserAgent) ? UserAgent : "Xero Api wrapper - " + _consumer.ConsumerKey);
+            var escapedUserAgent = Uri.EscapeDataString("Xero-NetStandard - " + _consumer.ConsumerKey);
 
             request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(escapedUserAgent)));
 
