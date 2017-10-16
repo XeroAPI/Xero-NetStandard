@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 
 namespace Xero.Api
 {
@@ -26,6 +27,7 @@ namespace Xero.Api
         public string SigningCertificatePath => ApiSettings["SigningCertPath"];
 
         public string SigningCertificatePassword => ApiSettings["SigningCertPassword"];
+        public bool IsPartnerApp => Convert.ToBoolean(ApiSettings["IsPartnerApp"]);
 
 
     }
