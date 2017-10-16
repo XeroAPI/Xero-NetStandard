@@ -12,7 +12,7 @@ namespace Xero.Api.Example.MVC.Helpers
 {
     public static class XeroApiHelper
     {
-        private static readonly IMvcAuthenticator Authenticator;
+        private static IMvcAuthenticator Authenticator;
 
         static XeroApiHelper()
         {
@@ -50,9 +50,33 @@ namespace Xero.Api.Example.MVC.Helpers
             return Authenticator;
         }
 
+        public static IMvcAuthenticator MvcAuthenticator(ApplicationSettings applicationSettings)
+        {
+            
+            // Set up some token stores to hold request and access tokens
+            var accessTokenStore = new MemoryTokenStore();
+            var requestTokenStore = new MemoryTokenStore();
+
+            // Set the application settings with an authenticator relevant to your app type 
+            if (applicationSettings.IsPartnerApp)
+            {
+                Authenticator = new PartnerMvcAuthenticator(requestTokenStore, accessTokenStore);
+            }
+            else
+            {
+                Authenticator = new PublicMvcAuthenticator(requestTokenStore, accessTokenStore);
+            }
+            return Authenticator;
+        }
+
         public static IXeroCoreApi CoreApi()
         {
             return new XeroCoreApi(Authenticator as IAuthenticator, User());
+        }
+
+        public static IXeroCoreApi CoreApi(ApplicationSettings applicationSettings)
+        {
+            return new XeroCoreApi(Authenticator as IAuthenticator,applicationSettings, User());
         }
     }
 }

@@ -10,6 +10,7 @@
     <Company>Xero</Company>
     <Description />
     <Copyright>Copyright © Xero 2017</Copyright>
+    <UserSecretsId>aspnet-XeroExampleWeb-5552706e-c69d-4ec8-8105-6a953e7a0971</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

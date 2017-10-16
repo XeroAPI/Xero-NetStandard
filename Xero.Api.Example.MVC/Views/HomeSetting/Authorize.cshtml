@@ -1,0 +1,19 @@
+﻿@model Xero.Api.Infrastructure.Interfaces.IToken
+
+@{
+    ViewBag.Title = "Authorize";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Authorized</h2>
+<h3>Token Key: @Model.TokenKey</h3>
+<h3>Token Secret: @Model.TokenSecret</h3>
+<h3>Expires At: @Model.ExpiresAt</h3>
+
+@if (!string.IsNullOrEmpty(@Model.Session))
+{
+    <h3>Session: @Model.Session</h3>
+}
+
+
+@Html.ActionLink("Organisation Details", "Index", "Organisation")
