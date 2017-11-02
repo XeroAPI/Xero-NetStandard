@@ -17,7 +17,10 @@ namespace Xero.Api.Example.Console
 
         private static IXeroCoreApi PrivateApp()
         {
-            return new Infrastructure.Applications.Private.Core();
+            return new Infrastructure.Applications.Private.Core()
+            {
+                UserAgent = "Xero API - Listing example"
+            };
         }
 
         private static IXeroCoreApi PublicApp()
@@ -27,7 +30,10 @@ namespace Xero.Api.Example.Console
 
             var publicAuth = new PublicAuthenticator(tokenStore);
 
-            return new Infrastructure.Applications.Public.Core(publicAuth, user);
+            return new Infrastructure.Applications.Public.Core(publicAuth, user)
+            {
+                UserAgent = "Xero API - Listing example"
+            };
         }
 
         private IXeroCoreApi PartnerApp()
@@ -36,7 +42,10 @@ namespace Xero.Api.Example.Console
             var user = new ApiUser { Identifier = Environment.MachineName };
             var partnerAuth = new PartnerAuthenticator(tokenStore);
 
-            return new Infrastructure.Applications.Partner.Core(partnerAuth, user);
+            return new Infrastructure.Applications.Partner.Core(partnerAuth, user)
+            {
+                UserAgent = "Xero API - Listing example"
+            };
         }
     }
 }

@@ -33,6 +33,7 @@ namespace Xero.Api.Infrastructure.Http
         private readonly IUser _user;
         private readonly IRateLimiter _rateLimiter;
 
+        public string UserAgent { get; set; }
         public XeroHttpClient(string baseUri, IAuthenticator auth, IConsumer consumer, IUser user, IRateLimiter rateLimiter)
         {
             _baseUri = new Uri(baseUri);
@@ -202,7 +203,7 @@ namespace Xero.Api.Infrastructure.Http
 
             _auth?.Authenticate(request, _consumer, _user);
 
-            var escapedUserAgent = Uri.EscapeDataString("Xero-NetStandard - " + _consumer.ConsumerKey);
+            var escapedUserAgent = Uri.EscapeDataString(!string.IsNullOrWhiteSpace(UserAgent) ? "X-NS -" + UserAgent : "Xero-NetStandard - " + _consumer.ConsumerKey);
 
             request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(escapedUserAgent)));
 
