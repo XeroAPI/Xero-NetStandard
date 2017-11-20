@@ -8,7 +8,10 @@ namespace Xero.Api.Payroll.Australia.Model
     {
         [DataMember(Name = "PayslipTaxLineID")]
         public Guid PayslipTaxLineId { get; set; }
-        
+
+        [DataMember]
+        public string TaxTypeName { get; set; }
+
         [DataMember]
         public string Description { get; set; }
 
