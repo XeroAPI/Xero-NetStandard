@@ -301,6 +301,13 @@ namespace Xero.Api.Infrastructure.Http
             {
                 if (body.Contains("oauth_problem"))
                 {
+                    if (response.Headers.Contains("X-Rate-Limit-Problem"))
+                    {
+                        var problem = response.Headers.GetValues("X-Rate-Limit-Problem").First();
+
+                       throw new RateExceededException(body, problem);
+                    }
+
                     throw new RateExceededException(body);
                 }
 
