@@ -21,14 +21,15 @@ namespace Xero.Api.Core.Endpoints
         Task<Report> AgedReceivablesAsync(Guid contact, DateTime? date = null, DateTime? from = null, DateTime? to = null);
         Task<Report> TenNinetyNineAsync(DateTime? year);
         Task<Report> BalanceSheetAsync(DateTime date, Guid? tracking1 = null, Guid? tracking2 = null,
-            bool standardLayout = false);
+            bool standardLayout = false, bool? paymentsOnly = null, string timeframe = null, int? periods = null);
         Task<Report> BankStatementAsync(Guid account, DateTime? from = null, DateTime? to = null);
         Task<Report> BankSummaryAsync(DateTime? from = null, DateTime? to = null);
         Task<Report> BudgetSummaryAsync(DateTime? date = null, int? periods = null, BudgetSummaryTimeframeType? timeFrame = null);
         Task<Report> ExecutiveSummaryAsync(DateTime? date = null);
-        Task<Report> ProfitAndLossAsync(DateTime? date, DateTime? from = null, DateTime? to = null,
+        Task<Report> ProfitAndLossAsync(DateTime? date = null, DateTime? from = null, DateTime? to = null,
             Guid? trackingCategory = null, Guid? trackingOption = null, Guid? trackingCategory2 = null,
-            Guid? trackingOption2 = null, bool? standardLayout = null);
+            Guid? trackingOption2 = null, bool? standardLayout = null,
+            bool? paymentsOnly = null, string timeframe = null, int? periods = null);
         Task<Report> TrailBalanceAsync(DateTime? date = null, bool? paymentsOnly = null);
     }
 
@@ -89,7 +90,7 @@ namespace Xero.Api.Core.Endpoints
         }
 
         public async Task<Report> BalanceSheetAsync(DateTime date, Guid? tracking1 = null, Guid? tracking2 = null,
-            bool standardLayout = false)
+            bool standardLayout = false, bool? paymentsOnly = null, string timeframe = null, int? periods = null)
         {
             var parameters = new NameValueCollection();
 
@@ -97,7 +98,10 @@ namespace Xero.Api.Core.Endpoints
             parameters.Add("trackingOptionID1", tracking1);
             parameters.Add("trackingOptionID2", tracking2);
             parameters.Add("standardLayout", standardLayout);
-
+            parameters.Add("paymentsOnly", paymentsOnly);
+            parameters.Add("timeframe", timeframe);
+            parameters.Add("periods", periods);
+            
             var endpoint = AddParameters(parameters);
 
             return await endpoint.FindAsync(NamedReportType.BalanceSheet.ToString());
@@ -154,7 +158,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<Report> ProfitAndLossAsync(DateTime? date, DateTime? from = null, DateTime? to = null,
             Guid? trackingCategory = null, Guid? trackingOption = null, Guid? trackingCategory2 = null,
-            Guid? trackingOption2 = null, bool? standardLayout = null)
+            Guid? trackingOption2 = null, bool? standardLayout = null, bool? paymentsOnly = null, string timeframe = null, int? periods = null)
         {
             var parameters = new NameValueCollection();
 
@@ -166,6 +170,9 @@ namespace Xero.Api.Core.Endpoints
             parameters.Add("trackingCategoryID2", trackingCategory2);
             parameters.Add("trackingOptionID2", trackingOption2);
             parameters.Add("standardLayout", standardLayout);
+            parameters.Add("paymentsOnly", paymentsOnly);
+            parameters.Add("timeframe", timeframe);
+            parameters.Add("periods", periods);
 
             var endpoint = AddParameters(parameters);
 
