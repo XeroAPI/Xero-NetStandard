@@ -30,6 +30,12 @@ namespace Xero.Api.Core
             Connect();
         }
 
+        public XeroCoreApi(string baseUrl, IAuthenticator auth, IConsumer consumer, IUser user = null, IRateLimiter rateLimiter = null)
+            : base(baseUrl, auth, consumer, user, rateLimiter)
+        {
+            Connect();
+        }
+
         public IAccountsEndpoint Accounts { get; private set; }
         public AllocationsEndpoint Allocations { get; private set; }
         public AttachmentsEndpoint Attachments { get; private set; }
