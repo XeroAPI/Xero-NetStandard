@@ -14,5 +14,8 @@ namespace Xero.Api.Core.Model
 
         [DataMember(EmitDefaultValue = false)]
         public bool? IsCompound { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public bool? IsNonRecoverable { get; set; }
     }
 }
