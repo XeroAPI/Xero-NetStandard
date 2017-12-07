@@ -1,11 +1,8 @@
-# Note: This readme is still a direct copy from the one at XeroAPI/Xero-Net and so some of the information will be out of date and irrelevent. Please see release notes and runnable examples to get going.
-
-Xero-Net
+Xero-NetStandard
 ========
-[![xero-api-sdk MyGet Build Status](https://www.myget.org/BuildSource/Badge/xero-api-sdk?identifier=045754d8-de3f-4f0c-960a-ae6e16608e24)](https://www.myget.org/)
-[![Build status](https://ci.appveyor.com/api/projects/status/087ia0i385l506bn/branch/master?svg=true)](https://ci.appveyor.com/project/XeroAPI/xero-net/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/2251yfjmkmkvb1v8/branch/master?svg=true)](https://ci.appveyor.com/project/XeroAPI/xero-netstandard/branch/master)
 
-A skinny wrapper of the Xero API. Supports Payroll. All third party libraries are included as source code.
+A wrapper of the Xero API in the .NetStandard 2.0 framework. Supports Accounting, Payroll AU/US, and Files
 
 * [Installation](#installation)
 * [What is supported?](#what-is-supported)
@@ -22,30 +19,35 @@ A skinny wrapper of the Xero API. Supports Payroll. All third party libraries ar
 
 ## Installation
 
-There are different way to install this library:
+There are different ways to install this library:
 
-1. Download the source code from github and compile yourself: **https://github.com/XeroAPI/Xero-Net**
-2. Download directly into Visual Studio using the NuGet powershell command **PM&gt; Install-Package Xero.API.SDK.Minimal** to get a minimal installation.
-3. Download directly into Visual Studio using the NuGet powershell command: **PM&gt; Install-Package Xero.API.SDK** to get a larger installation with sample token store using [SQLite](http://system.data.sqlite.org/).
+1. Download the source code from github and compile yourself: **https://github.com/XeroAPI/Xero-NetStandard**
+2. Download directly into Visual Studio using the NuGet powershell command: **PM&gt; Install-Package Xero.Api.SDK.Core**
+3. Add the package using the .NET CLI: **dotnet add Xero.Api.SDK.Core**
 
 ## What is supported?
 ### Core
 * Accounts - Create, Find and Update
+* Allocations - Create Credit Note/Prepayment/Overpayment Allocations
 * Attachments - Add, Get and List
-* Bank Transactions - Create, Find and Update
+* Bank Transactions - Create, Find and Update. Create Prepayments/Overpayments
 * Bank Transfers - Create and Find
 * Branding Themes - Find
 * Contacts - Create, Find and Update
+* Contact Groups - Add/Remove contacts
 * Credit Notes - Create, Find and Update
-* Currencies - Find
+* Currencies - Create and Find
 * Employees - Create, Find and Update
 * Expense Claims - Create, Find and Update
-* Invoices - Create, Find and Update
+* Invoices - Create, Find, Update and Online Invoice URL
 * Items - Create, Find and Update
 * Journals - Find
+* Linked Transactions - Create, Find, Update and Delete
 * Manual Journals - Create, Find and Update
 * Organisation - Find
+* Overpayments - Find, Create and Update (via Bank Transactions)
 * Payments - Create, Find and Update
+* Prepayments - Find, Create and Update (via Bank Transactions)
 * Purchase Orders - Create, Find and Update
 * Receipts - Create, Find and Update
 * Repeating Invoices - Find
@@ -77,22 +79,23 @@ There are different way to install this library:
 * Work Locations - Create and Find
 
 ### Files API
+* Associations - Find, Create and Delete
 * Files - Find, Add, Rename, Move, Remove and Get Content
 * Folders - Find, Add, Rename and Remove
 * Inbox - Find
 
 ## Things to note
-* The library tries to do as little as possible and provides a basis to be extended. There are examples of TokenStores, Authenticators and Application types. These examples provide enough to get you going, but are not a complete solution to all your needs. You will need to adapt them for your own use and situation. Private application will work out of the box, as they do not have to deal with tokens and OAuth.
-* The HTTP verbs are not used in the public part of the API. Create, Update and Find are used instead. This seperates the implementation from the the intent.
-* Some accounting endpoints support pagination. In the RESTful API these are off by default. For the wrapper, they are always on and default to page 1. See the Counts or Creation code examples for how to use the Page method to get all items.
+* Some accounting endpoints support pagination. In the RESTful API these are off by default. For this SDK, they are always on and default to page 1. You'll neeed to make use of the .Page() methods on pageable to endpoints to get more 
 * Contacts support including archived contacts. Like the RESTful API, this if off by default. Use IncludeArchived(true) to include them.
 * Payroll supports paging on all endpoints.
 * Four decimal places are supported and are always on.
-* You will need an instance of the API per organisation / connection. The connection is stored as part of the API instance.
+* You will need an instance of the API per organisation/connection. The connection is stored as part of the API instance.
 * Query parameters are cleared after each operation on an endpoint. If you use Invoices.Where("Type == \"ACCREC\"").Find() when querying invoices for example, the next Invoices.Find() will not retain the where clause query parameter.
+* Requests from this SDK to Xero's API are asynchronous. Asynchronous methods have been named appropriately.
+* The Endpoints are immutable. Changing query paramaters will return a new endpoint object with the changes applied only to it. This allows you to make concurrent requests to the same endpoint (or different endpoints) on Xero's API with varying query parameters.
 
 ## Samples
-There are samples for each of the API endpoints. These have been done as console application and also a collection of NUnit tests. See the README for each of the executable and test assemblies. The test projects contain lots of useful examples of how to use this library to interact with the Xero API.
+There are samples for each of the API endpoints which can be found in the collections of NUnit tests for the different API types. The test projects contain lots of useful examples of how to use this library to interact with the Xero API. There is also an example console application and example MVC application. Look at the specific readmes for the test/example projects for how to get each up and running.
 
 ## Querying
 There are simple filters on different endpoints.
@@ -114,7 +117,7 @@ var invoices = xeroApi.Invoices
 	.And("Total < 10000.0")  
 	.Page(2)  
 	.OrderByDescending("DueDate")  
-	.Find();
+	.FindAsync();
 ```
 The following gives the same query string to the API as the example above.
 ```csharp
@@ -124,61 +127,39 @@ var invoices = xeroApi.Invoices
 	.Where("Total > 3500.0")   
 	.And("Total < 10000.0")  
 	.ModifiedSince(new DateTime(2014, 1, 31))  
-	.Find();
+	.FindAsync();
 ```		
 ## Application types
 
-There are specific classes for each of the application types. If these are used, you will need to have the app.config file settings for your organisation.
+There are [specific classes for each of the application types](https://github.com/XeroAPI/Xero-NetStandard/tree/master/Xero.Api/Infrastructure/Applications). If these are used, you will need to have some details of your application stored in an appsettings.json file.
 
-For a public application you would use
-```csharp
-var user = new ApiUser { Name = "The users name" };
-var tokenStore = new SqliteTokenStore();
-
-var api = new Applications.Public.Core(tokenStore, user)
-{
-    UserAgent = "Something to show your application"
-};
-```
 The config file will look like this
-```xml
-<add key="BaseUrl" value="https://api.xero.com"/>
-<add key="ConsumerKey" value="Your Key"/>
-<add key="ConsumerSecret" value="Your secret"/>
-<add key="CallbackUrl" value="Your callback"/>
+```json
+{
+  "XeroApi": {
+    "BaseUrl": "https://api.xero.com",
+    "CallbackUrl": "oob",
+    "ConsumerKey": "Key",
+    "ConsumerSecret": "Secret",
+    "SigningCertPath": "path-to-signing-cert.pfx",
+    "SigningCertPassword": "leave blank if your signing cert was created without a password"
+  }
+}
 ```
-There are classes for Private, Public and Partner applications for the Core Xero API and Australian and American Payrolls.
 
-A private application will need to also populate
-```xml
-<add key="SigningCertificate" value="Path to .pfx file"/>
-```
-A partner application will need to also populate
-```xml
-<add key="SigningCertificate" value="Path to .pfx file"/>
-```
+About the settings:
+- BaseUrl, ConsumerKey, and ConsumerSecret are rerquired by all application types.
+- CallbackUrl must be set to oob or your callback url when using public/partner applications
+- SigningCertPath and SigningCertPassword must be set when using private/partner applications. Note if you created your signning certificate with no password you must include a blank value for SigningCertPassword
+
 ## Authenticators
 
-The application classes all use implementations of IAuthenticator. See [PrivateAuthenticator](https://github.com/XeroAPI/Xero-Net/blob/master/Xero.Api.Example.Applications/Private/PrivateAuthenticator.cs) for an example. The authenticators are used by the base infrastructure to do the heavy lifting of the Xero API authentication.
-
-### PrivateAuthenticator
-Uses RSA-SHA1 and a public/private certificate. There are no tokens and each request has to be signed.
-
-### PublicAuthenticator
-Uses HMAC-SHA1 and the standard 3-legged [OAuth](http://tools.ietf.org/html/rfc6749) process. Tokens last for 30 minutes and cannot be renewed.
-
-### PartnerAuthenticator
-Uses RSA-SHA1 and then the standard 3-legged [OAuth](http://tools.ietf.org/html/rfc6749) process with an additional signing certificate. Tokens last for 30 minutes and be renewed. Token renewal is supported by this provider.
-
-Examples for renewing your access tokens can be seen in the RenewToken method overrides in the PartnerAuthenticator.cs and PartnerMVCAuthenticator.cs classes.
-
+The application classes all use [implementations of IAuthenticator](https://github.com/XeroAPI/Xero-NetStandard/tree/master/Xero.Api/Infrastructure/Authenticators). The authenticators are used by the base infrastructure to do the heavy lifting of the Xero API authentication. As public and partner integrations require user interaction to authorise the use of your application, they are abstract, and you will need to implement the retrieval of the authorization code from the user when not using a callbackUrl. See [here for a command line example](https://github.com/XeroAPI/Xero-NetStandard/blob/master/Xero.Api.Example.Console/Authenticators/PublicAuthenticator.cs) and [here for an authenticator used in an MVC application](https://github.com/XeroAPI/Xero-NetStandard/blob/master/Xero.Api.Example.MVC/Authenticators/PublicMvcAuthenticator.cs)
 
 ### OAuth signing
-All the signing is done by a slightly modified version of the Dust library provided by [Ben Biddington](https://github.com/ben-biddington/dust). Source is included.
+All the signing is done by a modified version of the Dust library provided by [Ben Biddington](https://github.com/ben-biddington/dust). Source is included.
 
 ## Token Stores
-The token store implementations are separate and optional. (It is recommended that you do have a store.)
-
 The interface ITokenStore has three methods.
 ```csharp
 public interface ITokenStore
@@ -188,12 +169,7 @@ public interface ITokenStore
 	void Delete(IToken token);
 }
 ```
-You can provide your own implementation to suit the database you are using for your product. Ensure the dates on the token are stored in UTC.
-
-The examples are
-
-* MemoryTokenStore - Dictionary of token in RAM keyed on UserId
-* SqliteTokenStore - A database of tokens (file on local disk). This does not support multiple add-ons in the same database. The tokens are only for the application the database was created by.
+The example projects use a [very simple MemoryTokenStore](https://github.com/XeroAPI/Xero-NetStandard/blob/master/Xero.Api.Example.Console/TokenStores/MemoryTokenStore.cs). It is not recommended that you use a datastore this simplified and so you should create your own implementation to suit the datastore you are using for your product. Ensure the dates on the token are stored in UTC.
 
 ## Serialization
 
@@ -203,56 +179,22 @@ All communication with the [Xero API](http://developer.xero.com) is compressed a
 To get going quickly:
 
 1. Follow this getting started guide: http://developer.xero.com/documentation/getting-started/getting-started-guide/
-2. Create a console project and download the following package using the NuGet powershell command: PM> Install-Package Xero.API.SDK
-3. Use the snippets below depending on the type of application, modifying keys and certificate paths.
+2. Create a console project in VS2017 and download the following package using the NuGet powershell command: PM> Install-Package Xero.Api.SDK.Core
+3. Use and modify the snippets found in the [console application](https://github.com/XeroAPI/Xero-NetStandard/tree/master/Xero.Api.Example.Console) for your application type. It may also be useful to inspect some of the classes that you may need to implement if using a public/partner application.
 
-Note, remember to implement your own custom token store before going live. The examples provided in the library Xero.Api.Example.TokenStores.dll
-are for development only.
-```csharp
-static void Main(string[] args)
-{
-	// Private Application Sample
-	var private_app_api = new XeroCoreApi("https://api.xero.com", new PrivateAuthenticator(@"C:\Dev\your_public_privatekey.pfx"),
-        new Consumer("your-consumer-key", "your-consumer-secret"), null,
-        new DefaultMapper(), new DefaultMapper());
-
-	var org = private_app_api.Organisation;
-
-	var user = new ApiUser { Name = Environment.MachineName };
-
-	// Public Application Sample
-    var public_app_api = new XeroCoreApi("https://api.xero.com", new PublicAuthenticator("https://api.xero.com", "https://api.xero.com", "oob",
-		new MemoryTokenStore()),
-        new Consumer("your-consumer-key", "your-consumer-secret"), user,
-        new DefaultMapper(), new DefaultMapper());
-
-    var public_contacts = public_app_api.Contacts.Find().ToList();
-
-	// Partner Application Sample
-	var partner_app_api = new XeroCoreApi("https://api-partner.network.xero.com", new PartnerAuthenticator("https://api-partner.network.xero.com",
-        "https://api.xero.com", "oob", new MemoryTokenStore(),
-        @"C:\Dev\your_public_privatekey.pfx"),
-         new Consumer("your-consumer-key", "your-consumer-secret"), user,
-         new DefaultMapper(), new DefaultMapper());
-
-	var partner_contacts = partner_app_api.Contacts.Find().ToList();			
-}
-```
 ## Acknowledgements
 
 Thanks for the following Open Source libraries for making the wrapper and samples easier
 
 * [Dust](https://github.com/ben-biddington/dust) - OAuth
-* [Dapper](https://code.google.com/p/dapper-dot-net/) - database access
 * [NUnit](http://www.nunit.org/) - unit tests
 * [ServiceStack.Text](https://github.com/ServiceStack/ServiceStack.Text/tree/v3) - serialization
-* [SQLite](http://http://system.data.sqlite.org/) - file based database
 
 ## License
 
 This software is published under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
 
-	Copyright (c) 2016 Xero Limited
+	Copyright (c) 2017 Xero Limited
 
 	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
