@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Xero.Api.Common;
+using Xero.Api.Payroll.Australia.Model.Status;
 using Xero.Api.Payroll.Australia.Model.Types;
 
 namespace Xero.Api.Payroll.Australia.Model
@@ -55,5 +56,8 @@ namespace Xero.Api.Payroll.Australia.Model
 
         [DataMember(Name = "TFNExemptionType", EmitDefaultValue = false)]
         public TaxFileNumberExemptionType? TaxFileNumberExemption { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public ResidencyStatus? ResidencyStatus { get; set; }
     }
 }
