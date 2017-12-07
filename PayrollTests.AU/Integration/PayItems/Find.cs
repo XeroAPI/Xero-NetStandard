@@ -6,17 +6,28 @@ namespace PayrollTests.AU.Integration.PayItems
     public class Find : ApiWrapperTest
     {
         [Test]
-        public void find_all()
+        public async void find_all()
         {
-            var items = Api.PayItems.FindAsync();
+            var items = await Api.PayItems.FindAsync();
             Assert.IsNotNull(items);
         }
 
         [Test]
-        public void find_paged()
+        public async void find_paged()
         {
-            var items = Api.PayItems.Page(1).FindAsync();
+            var items = await Api.PayItems.Page(1).FindAsync();
             Assert.IsNotNull(items);
+        }
+
+        [Test]
+        public async void Find_EarningRates()
+        {
+            var items = await Api.PayItems.FindAsync();
+
+            foreach (var payItem in items)
+            {
+                Assert.IsNotNull(payItem.EarningsRates);
+            }
         }
     }
 }
