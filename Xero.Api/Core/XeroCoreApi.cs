@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xero.Api.Common;
@@ -14,7 +14,7 @@ namespace Xero.Api.Core
 {
     public class XeroCoreApi : XeroApi, IXeroCoreApi
     {
-        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
+        protected static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
         
         private IOrganisationEndpoint OrganisationEndpoint { get; set; }
         
