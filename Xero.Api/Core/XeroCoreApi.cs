@@ -23,7 +23,7 @@ namespace Xero.Api.Core
         }
 
         public XeroCoreApi(IAuthenticator auth, IUser user = null, IRateLimiter rateLimiter = null)
-            : base(auth, new ApplicationSettings(), user, rateLimiter)
+            : this(auth, new ApplicationSettings(), user, rateLimiter)
         {
             Connect();
         }
