@@ -7,13 +7,16 @@ namespace Xero.Api
     {
         public IConfigurationSection ApiSettings { get; set; }
 
-        public ApplicationSettings(string path = "appsettings.json")
+        public ApplicationSettings(string path)
         {
             var builder = new ConfigurationBuilder()
                 .AddJsonFile(path)
                 .Build();
 
             ApiSettings = builder.GetSection("XeroApi");
+        }
+        public ApplicationSettings() : this("appsettings.json")
+        {
         }
 
         public string BaseUrl => ApiSettings["BaseUrl"];
