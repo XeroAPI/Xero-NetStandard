@@ -36,7 +36,7 @@ namespace Xero.Api.Example.Console
             };
         }
 
-        private IXeroCoreApi PartnerApp()
+        private static IXeroCoreApi PartnerApp()
         {
             var tokenStore = new MemoryTokenStore();
             var user = new ApiUser { Identifier = Environment.MachineName };
