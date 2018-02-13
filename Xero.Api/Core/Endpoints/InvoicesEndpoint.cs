@@ -14,6 +14,7 @@ namespace Xero.Api.Core.Endpoints
 {
     public interface IInvoicesEndpoint : IXeroUpdateEndpoint<InvoicesEndpoint, Invoice, InvoicesRequest, InvoicesResponse>, IPageableEndpoint<IInvoicesEndpoint>
     {
+        Task<IEnumerable<X>> EmailInvoiceAsync(Guid id);
         Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId);
         IInvoicesEndpoint Ids(IEnumerable<Guid> ids);
         IInvoicesEndpoint ContactIds(IEnumerable<Guid> contactIds);
@@ -58,6 +59,11 @@ namespace Xero.Api.Core.Endpoints
         public async Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId)
         {
             return (await Client.GetAsync<OnlineInvoice, OnlineInvoicesResponse>(string.Format("/api.xro/2.0/Invoices/{0}/OnlineInvoice", invoiceId))).FirstOrDefault();
+        }
+
+        public async Task<IEnumerable<X>> EmailInvoiceAsync(Guid id)
+        {
+            return await Client.PostAsync<X, XsResponse>($"/api.xro/2.0/invoice/{id}/email", new byte[]{}, MimeTypes.ApplicationJson);
         }
 
         public override void ClearQueryString()
