@@ -64,7 +64,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task EmailInvoiceAsync(Guid id)
         {
-            var response =  await Client.PostAsync($"/api.xro/2.0/invoice/{id}/email", new byte[]{});
+            var response =  await Client.PostAsync($"/api.xro/2.0/invoices/{id}/emails", new byte[]{});
 
             if (response.StatusCode == HttpStatusCode.NoContent)
             {
