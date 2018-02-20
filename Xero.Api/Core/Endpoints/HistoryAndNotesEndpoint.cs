@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
@@ -31,6 +32,11 @@ namespace Xero.Api.Core.Endpoints
         public async Task CreateNoteAsync(HistoryAndNotesEndpointCreateType type, Guid parent, HistoryRecord note)
         {
             var response = await Client.PutAsync($"api.xro/2.0/{type}/{parent:D}/history", note);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                await Client.HandleErrorsAsync(response);
+            }
         }
     }
 }
