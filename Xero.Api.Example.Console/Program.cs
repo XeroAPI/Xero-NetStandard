@@ -28,7 +28,7 @@ namespace Xero.Api.Example.Console
             var tokenStore = new MemoryTokenStore();
             var user = new ApiUser { Identifier = Environment.MachineName };
 
-            var publicAuth = new PublicAuthenticator(tokenStore);
+            var publicAuth = new PublicAuthenticator(tokenStore, new XeroApiSettings());
             
             return new Infrastructure.Applications.Public.Core(publicAuth, user)
             {

@@ -6,7 +6,7 @@ namespace Xero.Api.Infrastructure.Applications.Private
 {
     public class Core : XeroCoreApi
     {
-        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
+        private static readonly XeroApiSettings ApplicationSettings = new XeroApiSettings();
 
         public Core(bool includeRateLimiter = false) :
             this(new PrivateAuthenticator(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword), includeRateLimiter)

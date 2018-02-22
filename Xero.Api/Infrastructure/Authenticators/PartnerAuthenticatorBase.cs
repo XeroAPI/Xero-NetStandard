@@ -9,8 +9,8 @@ namespace Xero.Api.Infrastructure.Authenticators
     {       
         private readonly X509Certificate2 _signingCertificate;
 
-        protected  PartnerAuthenticatorBase(ITokenStore store)
-            : base(store)
+        protected  PartnerAuthenticatorBase(ITokenStore store, IXeroApiSettings applicationSettings)
+            : base(store, applicationSettings)
         {
             _signingCertificate = new X509Certificate2(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword, X509KeyStorageFlags.MachineKeySet);
         }

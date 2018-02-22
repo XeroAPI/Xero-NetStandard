@@ -5,7 +5,7 @@ namespace Xero.Api.Infrastructure.Applications.Private
 {
     public class AustralianPayroll : Payroll.AustralianPayroll
     {
-        private static readonly ApplicationSettings ApplicationSettings = new ApplicationSettings();
+        private static readonly XeroApiSettings ApplicationSettings = new XeroApiSettings();
 
         public AustralianPayroll(bool includeRateLimiter = false) :
             this(new PrivateAuthenticator(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword), includeRateLimiter)

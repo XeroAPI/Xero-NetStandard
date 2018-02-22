@@ -6,8 +6,8 @@ namespace Xero.Api.Infrastructure.Authenticators
 {
     public abstract class PublicAuthenticatorBase : TokenStoreAuthenticatorBase
     {
-        protected PublicAuthenticatorBase(ITokenStore store) 
-            : base(store)
+        protected PublicAuthenticatorBase(ITokenStore store, IXeroApiSettings applicationSettings) 
+            : base(store, applicationSettings)
         {
         }
 
