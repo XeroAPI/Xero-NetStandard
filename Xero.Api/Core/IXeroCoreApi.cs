@@ -31,6 +31,7 @@ namespace Xero.Api.Core
         IJournalsEndpoint Journals { get; }
         ILinkedTransactionsEndpoint LinkedTransactions { get; }
         IManualJournalsEndpoint ManualJournals { get; }
+        IOrganisationEndpoint Organisations { get; }
         IOverpaymentsEndpoint Overpayments { get; }
         IPaymentsEndpoint Payments { get; }
         PdfEndpoint PdfFiles { get; }
