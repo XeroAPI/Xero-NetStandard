@@ -6,10 +6,10 @@
     <Authors>Xero</Authors>
     <Owners>Xero</Owners>
     <Copyright>Copyright © Xero 2017</Copyright>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Description>This is a .NETStandard SDK library, used to communicate with the Xero API. See https://github.com/XeroAPI/Xero-NetStandard for more information</Description>
     <PackageTags>xero;api;sdk</PackageTags>
-    <PackageReleaseNotes>Up to date with https://github.com/XeroAPI/Xero-NetStandard/releases/tag/v1.0.2</PackageReleaseNotes>
+    <PackageReleaseNotes>Up to date with https://github.com/XeroAPI/Xero-NetStandard/releases/tag/v1.0.3</PackageReleaseNotes>
     <PackageIconUrl>https://secure.gravatar.com/avatar/7fff030fb8040a5157c3fd463858167f.png?s=128</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
