@@ -16,7 +16,7 @@ namespace Xero.Api.Core.Endpoints
         IPageableEndpoint<IContactsEndpoint>
     {
         IContactsEndpoint IncludeArchived(bool include);
-        Task<ContactCisSetting> GetCisSettings(Guid id);
+        Task<ContactCisSetting> GetCisSettingsAsync(Guid id);
     }
 
     public class ContactsEndpoint
@@ -38,7 +38,7 @@ namespace Xero.Api.Core.Endpoints
             return include ? AddParameter("includeArchived", true) : this;
         }
 
-        public async Task<ContactCisSetting> GetCisSettings(Guid id)
+        public async Task<ContactCisSetting> GetCisSettingsAsync(Guid id)
         {
             var contactCisSettings = await Client.GetAsync<ContactCisSetting, ContactCisSettingsResponse>($"/api.xro/2.0/contacts/{id}/cissettings");
 
