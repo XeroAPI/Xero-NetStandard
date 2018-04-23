@@ -27,11 +27,18 @@ namespace Xero.Api
 
         public string ConsumerSecret => ApiSettings["ConsumerSecret"];
 
-        public string SigningCertificatePath => ApiSettings["SigningCertificatePath"];
+        public string SigningCertificatePath => ApiSettings["SigningCertPath"];
 
-        public string SigningCertificatePassword => ApiSettings["SigningCertificatePassword"];
-        public bool IsPartnerApp => Convert.ToBoolean(ApiSettings["IsPartnerApp"]);
+        public string SigningCertificatePassword => ApiSettings["SigningCertPassword"];
 
-
+        public bool IsPartnerApp
+        {
+            get
+            {
+                bool isPartnerApp = false;
+                bool.TryParse(ApiSettings["IsPartnerApp"], out isPartnerApp);
+                return isPartnerApp;
+            }
+        }
     }
 }
