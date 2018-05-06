@@ -21,6 +21,7 @@ namespace Xero.Api.Core.Endpoints
         IInvoicesEndpoint ContactIds(IEnumerable<Guid> contactIds);
         IInvoicesEndpoint Statuses(IEnumerable<InvoiceStatus> statuses);
         IInvoicesEndpoint InvoiceNumbers(IEnumerable<string> invoiceNumbers);
+        IInvoicesEndpoint CreatedByMyApp();
     }
 
     public class InvoicesEndpoint
@@ -55,6 +56,11 @@ namespace Xero.Api.Core.Endpoints
         public IInvoicesEndpoint InvoiceNumbers(IEnumerable<string> invoiceNumbers)
         {
             return AddParameter("invoicenumbers", string.Join(",", invoiceNumbers));
+        }
+
+        public IInvoicesEndpoint CreatedByMyApp()
+        {
+            return AddParameter("createdByMyApp", true);
         }
 
         public async Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId)
