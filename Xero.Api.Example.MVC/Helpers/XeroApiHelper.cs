@@ -20,11 +20,16 @@ namespace Xero.Api.Example.MVC.Helpers
 
         public static IMvcAuthenticator MvcAuthenticator()
         {
-            return _authenticator;
+            return MvcAuthenticator(new XeroApiSettings());
         }
 
         public static IMvcAuthenticator MvcAuthenticator(XeroApiSettings applicationSettings)
         {
+            if (_authenticator != null)
+            {
+                return _authenticator;
+            }
+
             // Set up some token stores to hold request and access tokens
             var accessTokenStore = new MemoryTokenStore();
             var requestTokenStore = new MemoryTokenStore();
