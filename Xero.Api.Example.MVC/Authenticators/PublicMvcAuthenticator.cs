@@ -11,15 +11,13 @@ namespace Xero.Api.Example.MVC.Authenticators
         private readonly IConsumer _consumer;
         private readonly ITokenStore _requestTokenStore;
 
-        public PublicMvcAuthenticator(ITokenStore requestTokenStore, ITokenStore accessTokenStore, IXeroApiSettings xeroApiSettings)
-            : base(accessTokenStore, xeroApiSettings)
+        public PublicMvcAuthenticator(ITokenStore requestTokenStore, ITokenStore accessTokenStore)
+            : this(requestTokenStore, accessTokenStore, new XeroApiSettings())
         {
-            _consumer = new Consumer(ApplicationSettings.ConsumerKey, ApplicationSettings.ConsumerSecret);
-            _requestTokenStore = requestTokenStore;
         }
 
-        public PublicMvcAuthenticator(ITokenStore requestTokenStore, ITokenStore accessTokenStore)
-            : base(accessTokenStore, new XeroApiSettings())
+        public PublicMvcAuthenticator(ITokenStore requestTokenStore, ITokenStore accessTokenStore, IXeroApiSettings xeroApiSettings)
+            : base(accessTokenStore, xeroApiSettings)
         {
             _consumer = new Consumer(ApplicationSettings.ConsumerKey, ApplicationSettings.ConsumerSecret);
             _requestTokenStore = requestTokenStore;

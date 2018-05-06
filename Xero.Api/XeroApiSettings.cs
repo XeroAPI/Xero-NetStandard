@@ -31,14 +31,8 @@ namespace Xero.Api
 
         public string SigningCertificatePassword => ApiSettings["SigningCertPassword"];
 
-        public bool IsPartnerApp
-        {
-            get
-            {
-                bool isPartnerApp = false;
-                bool.TryParse(ApiSettings["IsPartnerApp"], out isPartnerApp);
-                return isPartnerApp;
-            }
-        }
+        public string AppType => ApiSettings["AppType"];
+
+        public bool IsPartnerApp => AppType?.Equals("partner", StringComparison.OrdinalIgnoreCase) ?? false;
     }
 }

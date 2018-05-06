@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Xero.Api
+﻿namespace Xero.Api
 {
     public interface IXeroApiSettings
     {
@@ -17,6 +13,8 @@ namespace Xero.Api
         string SigningCertificatePath { get; }
 
         string SigningCertificatePassword { get; }
+
+        string AppType { get; }
 
         bool IsPartnerApp { get; }
     }

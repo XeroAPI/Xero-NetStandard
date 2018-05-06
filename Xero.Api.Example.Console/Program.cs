@@ -10,9 +10,25 @@ namespace Xero.Api.Example.Console
     {
         static void Main(string[] args)
         {
-            var api = PrivateApp();
-
+            var api = Initialise();
+            
             new Lister(api).List();
+        }
+
+        private static IXeroCoreApi Initialise()
+        {
+            var settings = new XeroApiSettings();
+
+            switch (settings.AppType.ToLower())
+            {
+                case "private":
+                    return PrivateApp();
+                case "public":
+                    return PublicApp();
+                case "partner":
+                    return PartnerApp();
+                default: throw new ApplicationException("AppType did not match one of: private, public, partner");
+            }
         }
 
         private static IXeroCoreApi PrivateApp()
@@ -28,7 +44,7 @@ namespace Xero.Api.Example.Console
             var tokenStore = new MemoryTokenStore();
             var user = new ApiUser { Identifier = Environment.MachineName };
 
-            var publicAuth = new PublicAuthenticator(tokenStore, new XeroApiSettings());
+            var publicAuth = new PublicAuthenticator(tokenStore);
             
             return new Infrastructure.Applications.Public.Core(publicAuth, user)
             {
