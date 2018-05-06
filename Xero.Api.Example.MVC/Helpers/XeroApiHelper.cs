@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Extensions.Configuration;
 using Xero.Api.Core;
 using Xero.Api.Example.MVC.TokenStores;
 using Xero.Api.Infrastructure.Interfaces;
@@ -12,33 +11,7 @@ namespace Xero.Api.Example.MVC.Helpers
 {
     public static class XeroApiHelper
     {
-        private static IMvcAuthenticator Authenticator;
-
-        static XeroApiHelper()
-        {
-            var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            var apiSettings = config.GetSection("XeroApi");
-
-            //Are you using a partner app?
-            var isPartnerApp = bool.Parse(apiSettings["IsPartnerApp"]);
-           
-            // Set up some token stores to hold request and access tokens
-            var accessTokenStore = new MemoryTokenStore();
-            var requestTokenStore = new MemoryTokenStore();
-
-            // Set the application settings with an authenticator relevant to your app type 
-            if (isPartnerApp)
-            {
-                Authenticator = new PartnerMvcAuthenticator(requestTokenStore, accessTokenStore);
-            }
-            else
-            {
-                Authenticator = new PublicMvcAuthenticator(requestTokenStore, accessTokenStore);
-            }
-        }
+        private static IMvcAuthenticator _authenticator;
 
         public static ApiUser User()
         {
@@ -47,36 +20,41 @@ namespace Xero.Api.Example.MVC.Helpers
 
         public static IMvcAuthenticator MvcAuthenticator()
         {
-            return Authenticator;
+            return MvcAuthenticator(new XeroApiSettings());
         }
 
-        public static IMvcAuthenticator MvcAuthenticator(ApplicationSettings applicationSettings)
+        public static IMvcAuthenticator MvcAuthenticator(XeroApiSettings applicationSettings)
         {
-            
+            if (_authenticator != null)
+            {
+                return _authenticator;
+            }
+
             // Set up some token stores to hold request and access tokens
             var accessTokenStore = new MemoryTokenStore();
             var requestTokenStore = new MemoryTokenStore();
 
             // Set the application settings with an authenticator relevant to your app type 
-            if (applicationSettings.IsPartnerApp)
+            switch (applicationSettings.AppType.ToLower())
             {
-                Authenticator = new PartnerMvcAuthenticator(requestTokenStore, accessTokenStore);
+                case "public":
+                    _authenticator = new PublicMvcAuthenticator(requestTokenStore, accessTokenStore);
+                    break;
+                case "partner":
+                    _authenticator = new PartnerMvcAuthenticator(requestTokenStore, accessTokenStore);
+                    break;
+                case "private":
+                    throw new ApplicationException("MVC cannot be used with private applications");
+                case "default":
+                    throw new ApplicationException("AppType did not match one of: public, partner");
             }
-            else
-            {
-                Authenticator = new PublicMvcAuthenticator(requestTokenStore, accessTokenStore);
-            }
-            return Authenticator;
+
+            return _authenticator;
         }
 
         public static IXeroCoreApi CoreApi()
         {
-            return new XeroCoreApi(Authenticator as IAuthenticator, User());
-        }
-
-        public static IXeroCoreApi CoreApi(ApplicationSettings applicationSettings)
-        {
-            return new XeroCoreApi(Authenticator as IAuthenticator,applicationSettings, User());
+            return new XeroCoreApi(_authenticator as IAuthenticator, User());
         }
     }
 }

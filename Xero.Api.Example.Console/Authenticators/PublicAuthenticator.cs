@@ -6,8 +6,13 @@ namespace Xero.Api.Example.Console.Authenticators
 {
     public class PublicAuthenticator : PublicAuthenticatorBase
     {
-        public PublicAuthenticator(ITokenStore store) 
-            : base(store)
+        public PublicAuthenticator(ITokenStore store)
+            : this(store, new XeroApiSettings())
+        {
+        }
+
+        public PublicAuthenticator(ITokenStore store, IXeroApiSettings xeroApiSettings) 
+            : base(store, xeroApiSettings)
         {
         }
 

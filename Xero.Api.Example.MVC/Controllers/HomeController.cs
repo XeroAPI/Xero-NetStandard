@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Xero.Api.Example.MVC.Helpers;
 using Xero.Api.Infrastructure.OAuth;
 using IMvcAuthenticator = Xero.Api.Example.MVC.Authenticators.IMvcAuthenticator;
@@ -7,14 +8,14 @@ namespace Xero.Api.Example.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private IMvcAuthenticator _authenticator;
-        private ApiUser _user;
+        private readonly IMvcAuthenticator _authenticator;
+        private readonly ApiUser _user;
 
-        public HomeController()
+        public HomeController(IOptions<XeroApiSettings> settings)
         {
             _user = XeroApiHelper.User();
 
-            _authenticator = XeroApiHelper.MvcAuthenticator();
+            _authenticator = XeroApiHelper.MvcAuthenticator(settings.Value);
         }
 
         public IActionResult Index()

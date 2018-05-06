@@ -3,11 +3,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace Xero.Api
 {
-    public class ApplicationSettings
+    public class XeroApiSettings : IXeroApiSettings
     {
         public IConfigurationSection ApiSettings { get; set; }
 
-        public ApplicationSettings(string path)
+        public XeroApiSettings(string path)
         {
             var builder = new ConfigurationBuilder()
                 .AddJsonFile(path)
@@ -15,7 +15,7 @@ namespace Xero.Api
 
             ApiSettings = builder.GetSection("XeroApi");
         }
-        public ApplicationSettings() : this("appsettings.json")
+        public XeroApiSettings() : this("appsettings.json")
         {
         }
 
@@ -23,15 +23,16 @@ namespace Xero.Api
 
         public string CallbackUrl => ApiSettings["CallbackUrl"];
 
-        public string Key => ApiSettings["ConsumerKey"];
+        public string ConsumerKey => ApiSettings["ConsumerKey"];
 
-        public string Secret => ApiSettings["ConsumerSecret"];
+        public string ConsumerSecret => ApiSettings["ConsumerSecret"];
 
         public string SigningCertificatePath => ApiSettings["SigningCertPath"];
 
         public string SigningCertificatePassword => ApiSettings["SigningCertPassword"];
-        public bool IsPartnerApp => Convert.ToBoolean(ApiSettings["IsPartnerApp"]);
 
+        public string AppType => ApiSettings["AppType"];
 
+        public bool IsPartnerApp => AppType?.Equals("partner", StringComparison.OrdinalIgnoreCase) ?? false;
     }
 }

@@ -16,14 +16,14 @@ namespace Xero.Api.Core
     {
         
 
-        public XeroCoreApi(IAuthenticator auth,ApplicationSettings applicationSettings, IUser user = null, IRateLimiter rateLimiter = null)
-            : base(applicationSettings.BaseUrl, auth, new Consumer(applicationSettings.Key, applicationSettings.Secret), user, rateLimiter)
+        public XeroCoreApi(IAuthenticator auth, IXeroApiSettings applicationSettings, IUser user = null, IRateLimiter rateLimiter = null)
+            : base(applicationSettings.BaseUrl, auth, new Consumer(applicationSettings.ConsumerKey, applicationSettings.ConsumerSecret), user, rateLimiter)
         {
             Connect();
         }
 
         public XeroCoreApi(IAuthenticator auth, IUser user = null, IRateLimiter rateLimiter = null)
-            : this(auth, new ApplicationSettings(), user, rateLimiter)
+            : this(auth, new XeroApiSettings(), user, rateLimiter)
         {
             Connect();
         }
