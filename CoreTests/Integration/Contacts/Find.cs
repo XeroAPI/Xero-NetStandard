@@ -103,5 +103,15 @@ namespace CoreTests.Integration.Contacts
             Assert.Greater(contacts.Count(), 0);
             Assert.Contains(expected, contacts);
         }
+
+        [Test]
+        public async Task find_by_id_list()
+        {
+            var contact = await Given_a_contact();
+            var contacts = (await Api.Contacts.Ids(new[] { contact.Id }).FindAsync()).ToList();
+
+            Assert.AreEqual(1, contacts.Count());
+            Assert.AreEqual(contact.Id, contacts.First().Id);
+        }
     }
 }
