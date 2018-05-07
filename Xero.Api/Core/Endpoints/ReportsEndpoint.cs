@@ -99,7 +99,7 @@ namespace Xero.Api.Core.Endpoints
             parameters.AddIfNotNull("trackingOptionID2", tracking2);
             parameters.AddIfNotNull("standardLayout", standardLayout);
             parameters.AddIfNotNull("paymentsOnly", paymentsOnly);
-            parameters.Add("timeframe", timeframe);
+            parameters.AddIfNotNull("timeframe", timeframe);
             parameters.AddIfNotNull("periods", periods);
             
             var endpoint = AddParameters(parameters);
@@ -171,7 +171,7 @@ namespace Xero.Api.Core.Endpoints
             parameters.AddIfNotNull("trackingOptionID2", trackingOption2);
             parameters.AddIfNotNull("standardLayout", standardLayout);
             parameters.AddIfNotNull("paymentsOnly", paymentsOnly);
-            parameters.Add("timeframe", timeframe);
+            parameters.AddIfNotNull("timeframe", timeframe);
             parameters.AddIfNotNull("periods", periods);
 
             var endpoint = AddParameters(parameters);

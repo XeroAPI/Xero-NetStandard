@@ -36,5 +36,13 @@ namespace Xero.Api.Common
                 collection.Add(name, value.Value.ToString("yyyy-MM-dd"));
             }
         }
+
+        public static void AddIfNotNull(this NameValueCollection collection, string name, string value)
+        {
+            if (value != null)
+            {
+                collection.Add(name, value.ToLower());
+            }
+        }
     }
 }
