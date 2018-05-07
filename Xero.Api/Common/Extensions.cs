@@ -3,9 +3,9 @@ using System.Collections.Specialized;
 
 namespace Xero.Api.Common
 {
-    public static class Extensions
+    internal static class Extensions
     {
-        public static void Add(this NameValueCollection collection, string name, Guid? value)
+        public static void AddIfNotNull(this NameValueCollection collection, string name, Guid? value)
         {
             if (value.HasValue)
             {
@@ -13,7 +13,7 @@ namespace Xero.Api.Common
             }
         }
 
-        public static void Add(this NameValueCollection collection, string name, int? value)
+        public static void AddIfNotNull(this NameValueCollection collection, string name, int? value)
         {
             if (value.HasValue)
             {
@@ -21,11 +21,19 @@ namespace Xero.Api.Common
             }
         }
 
-        public static void Add(this NameValueCollection collection, string name, bool? value)
+        public static void AddIfNotNull(this NameValueCollection collection, string name, bool? value)
         {
             if (value.HasValue)
             {
                 collection.Add(name, value.Value.ToString().ToLower());
+            }
+        }
+
+        public static void AddIfNotNull(this NameValueCollection collection, string name, DateTime? value)
+        {
+            if (value.HasValue)
+            {
+                collection.Add(name, value.Value.ToString("yyyy-MM-dd"));
             }
         }
     }

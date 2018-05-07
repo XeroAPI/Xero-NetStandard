@@ -64,7 +64,7 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.AddYear("reportYear", year);
+            parameters.AddIfNotNull("reportYear", year?.Year);
 
             var endpoint = AddParameters(parameters);
 
@@ -94,13 +94,13 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.Add("date", date);
-            parameters.Add("trackingOptionID1", tracking1);
-            parameters.Add("trackingOptionID2", tracking2);
-            parameters.Add("standardLayout", standardLayout);
-            parameters.Add("paymentsOnly", paymentsOnly);
+            parameters.AddIfNotNull("date", date);
+            parameters.AddIfNotNull("trackingOptionID1", tracking1);
+            parameters.AddIfNotNull("trackingOptionID2", tracking2);
+            parameters.AddIfNotNull("standardLayout", standardLayout);
+            parameters.AddIfNotNull("paymentsOnly", paymentsOnly);
             parameters.Add("timeframe", timeframe);
-            parameters.Add("periods", periods);
+            parameters.AddIfNotNull("periods", periods);
             
             var endpoint = AddParameters(parameters);
 
@@ -111,9 +111,9 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.Add("bankAccountID", account);
-            parameters.Add("fromDate", from);
-            parameters.Add("toDate", to);
+            parameters.AddIfNotNull("bankAccountID", account);
+            parameters.AddIfNotNull("fromDate", from);
+            parameters.AddIfNotNull("toDate", to);
 
             var endpoint = AddParameters(parameters);
 
@@ -124,8 +124,8 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.Add("fromDate", from);
-            parameters.Add("toDate", to);
+            parameters.AddIfNotNull("fromDate", from);
+            parameters.AddIfNotNull("toDate", to);
 
             var endpoint = AddParameters(parameters);
 
@@ -136,9 +136,9 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.Add("date", date);
-            parameters.Add("periods", periods);
-            parameters.Add("timeframe", (int?)timeFrame);
+            parameters.AddIfNotNull("date", date);
+            parameters.AddIfNotNull("periods", periods);
+            parameters.AddIfNotNull("timeframe", (int?)timeFrame);
 
             var endpoint = AddParameters(parameters);
 
@@ -149,7 +149,7 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.Add("date", date);
+            parameters.AddIfNotNull("date", date);
 
             var endpoint = AddParameters(parameters);
 
@@ -162,17 +162,17 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.Add("date", date);
-            parameters.Add("fromDate", from);
-            parameters.Add("toDate", to);
-            parameters.Add("trackingCategoryID", trackingCategory);
-            parameters.Add("trackingOptionID", trackingOption);
-            parameters.Add("trackingCategoryID2", trackingCategory2);
-            parameters.Add("trackingOptionID2", trackingOption2);
-            parameters.Add("standardLayout", standardLayout);
-            parameters.Add("paymentsOnly", paymentsOnly);
+            parameters.AddIfNotNull("date", date);
+            parameters.AddIfNotNull("fromDate", from);
+            parameters.AddIfNotNull("toDate", to);
+            parameters.AddIfNotNull("trackingCategoryID", trackingCategory);
+            parameters.AddIfNotNull("trackingOptionID", trackingOption);
+            parameters.AddIfNotNull("trackingCategoryID2", trackingCategory2);
+            parameters.AddIfNotNull("trackingOptionID2", trackingOption2);
+            parameters.AddIfNotNull("standardLayout", standardLayout);
+            parameters.AddIfNotNull("paymentsOnly", paymentsOnly);
             parameters.Add("timeframe", timeframe);
-            parameters.Add("periods", periods);
+            parameters.AddIfNotNull("periods", periods);
 
             var endpoint = AddParameters(parameters);
 
@@ -183,8 +183,8 @@ namespace Xero.Api.Core.Endpoints
         {
             var parameters = new NameValueCollection();
 
-            parameters.Add("date", date);
-            parameters.Add("paymentsOnly", paymentsOnly);
+            parameters.AddIfNotNull("date", date);
+            parameters.AddIfNotNull("paymentsOnly", paymentsOnly);
 
             var endpoint = AddParameters(parameters);
 
@@ -193,42 +193,14 @@ namespace Xero.Api.Core.Endpoints
 
         private NameValueCollection GetAgedParameters(Guid contact, DateTime? date, DateTime? from, DateTime? to)
         {
-            var parameters = new NameValueCollection
-            {
-                {
-                    "contactID", contact.ToString("D")
-                }
-            };
+            var parameters = new NameValueCollection();
 
-            parameters.Add("date", date);
-            parameters.Add("fromDate", from);
-            parameters.Add("toDate", to);
+            parameters.AddIfNotNull("contactID", contact);
+            parameters.AddIfNotNull("date", date);
+            parameters.AddIfNotNull("fromDate", from);
+            parameters.AddIfNotNull("toDate", to);
 
             return parameters;
-        }
-    }
-
-    internal static class Extensions
-    {
-        public static string ToReportDate(this DateTime dt)
-        {
-            return dt.ToString("yyyy-MM-dd");
-        }
-
-        public static void AddYear(this NameValueCollection collection, string name, DateTime? value)
-        {
-            if (value.HasValue)
-            {
-                collection.Add(name, value.Value.Year);
-            }
-        }
-
-        public static void Add(this NameValueCollection collection, string name, DateTime? value)
-        {
-            if (value.HasValue)
-            {
-                collection.Add(name, value.Value.ToReportDate());
-            }
         }
     }
 }
