@@ -51,7 +51,7 @@ namespace Xero.Api.Core.Endpoints
 
             if (SupportsOnline(type) && includeOnline)
             {
-                parameters.Add("IncludeOnline", true);
+                parameters.AddIfNotNull("IncludeOnline", true);
             }
 
             var result = await Client.PostAsync<Attachment, AttachmentsResponse>(url, attachment.Content, mimeType, parameters);
