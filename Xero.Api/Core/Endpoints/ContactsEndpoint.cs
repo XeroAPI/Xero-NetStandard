@@ -41,7 +41,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<ContactCisSetting> GetCisSettingsAsync(Guid id)
         {
-            var contactCisSettings = await Client.GetAsync<ContactCisSetting, ContactCisSettingsResponse>($"/api.xro/2.0/contacts/{id}/cissettings");
+            var contactCisSettings = await Client.GetAsync<ContactCisSetting, ContactCisSettingsResponse>($"/api.xro/2.0/contacts/{id}/cissettings").ConfigureAwait(false);
 
             return contactCisSettings.FirstOrDefault();
         }

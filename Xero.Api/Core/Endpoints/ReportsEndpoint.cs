@@ -42,17 +42,17 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<Report> GetPublishedReportAsync(string id)
         {
-            return await FindAsync(id);
+            return await FindAsync(id).ConfigureAwait(false);
         }
 
         public async Task<Report> GetPublishedReportAsync(Guid id)
         {
-            return await FindAsync(id);
+            return await FindAsync(id).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<string>> PublishedAsync()
         {
-            return (await FindAsync()).Select(r => r.ReportID);
+            return (await FindAsync().ConfigureAwait(false)).Select(r => r.ReportID);
         }
 
         public IEnumerable<string> Named()
@@ -68,7 +68,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.TenNinetyNine.ToString());
+            return await endpoint.FindAsync(NamedReportType.TenNinetyNine.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> AgedPayablesAsync(Guid contact, DateTime? date = null, DateTime? from = null, DateTime? to = null)
@@ -77,7 +77,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.AgedPayablesByContact.ToString());
+            return await endpoint.FindAsync(NamedReportType.AgedPayablesByContact.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> AgedReceivablesAsync(Guid contact, DateTime? date = null, DateTime? from = null, DateTime? to = null)
@@ -86,7 +86,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.AgedReceivablesByContact.ToString());
+            return await endpoint.FindAsync(NamedReportType.AgedReceivablesByContact.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> BalanceSheetAsync(DateTime date, Guid? tracking1 = null, Guid? tracking2 = null,
@@ -104,7 +104,7 @@ namespace Xero.Api.Core.Endpoints
             
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.BalanceSheet.ToString());
+            return await endpoint.FindAsync(NamedReportType.BalanceSheet.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> BankStatementAsync(Guid account, DateTime? from = null, DateTime? to = null)
@@ -117,7 +117,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.BankStatement.ToString());
+            return await endpoint.FindAsync(NamedReportType.BankStatement.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> BankSummaryAsync(DateTime? from = null, DateTime? to = null)
@@ -129,7 +129,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.BankSummary.ToString());
+            return await endpoint.FindAsync(NamedReportType.BankSummary.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> BudgetSummaryAsync(DateTime? date = null, int? periods = null, BudgetSummaryTimeframeType? timeFrame = null)
@@ -142,7 +142,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.BudgetSummary.ToString());
+            return await endpoint.FindAsync(NamedReportType.BudgetSummary.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> ExecutiveSummaryAsync(DateTime? date = null)
@@ -153,7 +153,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.ExecutiveSummary.ToString());
+            return await endpoint.FindAsync(NamedReportType.ExecutiveSummary.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> ProfitAndLossAsync(DateTime? date, DateTime? from = null, DateTime? to = null,
@@ -176,7 +176,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.ProfitAndLoss.ToString());
+            return await endpoint.FindAsync(NamedReportType.ProfitAndLoss.ToString()).ConfigureAwait(false);
         }
 
         public async Task<Report> TrailBalanceAsync(DateTime? date = null, bool? paymentsOnly = null)
@@ -188,7 +188,7 @@ namespace Xero.Api.Core.Endpoints
 
             var endpoint = AddParameters(parameters);
 
-            return await endpoint.FindAsync(NamedReportType.TrialBalance.ToString());
+            return await endpoint.FindAsync(NamedReportType.TrialBalance.ToString()).ConfigureAwait(false);
         }
 
         private NameValueCollection GetAgedParameters(Guid contact, DateTime? date, DateTime? from, DateTime? to)

@@ -23,21 +23,21 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<IEnumerable<Attachment>> ListAsync(AttachmentEndpointType type, Guid parent)
         {
-            return await Client.GetAsync<Attachment, AttachmentsResponse>(string.Format("/api.xro/2.0/{0}/{1}/Attachments", type, parent.ToString("D")));
+            return await Client.GetAsync<Attachment, AttachmentsResponse>(string.Format("/api.xro/2.0/{0}/{1}/Attachments", type, parent.ToString("D"))).ConfigureAwait(false);
         }
 
         public async Task<Attachment> GetAsync(AttachmentEndpointType type, Guid parent, string fileName)
         {
-            var response = await Client.GetAsync(string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), fileName));
+            var response = await Client.GetAsync(string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), fileName)).ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var stream = await response.Content.ReadAsStreamAsync();
+                var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
 
                 return new Attachment(stream, fileName, response.Content.Headers.ContentType.ToString(), (int)stream.Length);
             }
 
-            await Client.HandleErrorsAsync(response);
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
             return null;
         }
 
@@ -54,7 +54,7 @@ namespace Xero.Api.Core.Endpoints
                 parameters.AddIfNotNull("IncludeOnline", true);
             }
 
-            var result = await Client.PostAsync<Attachment, AttachmentsResponse>(url, attachment.Content, mimeType, parameters);
+            var result = await Client.PostAsync<Attachment, AttachmentsResponse>(url, attachment.Content, mimeType, parameters).ConfigureAwait(false);
 
             return result.FirstOrDefault();
         }

@@ -65,19 +65,19 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId)
         {
-            return (await Client.GetAsync<OnlineInvoice, OnlineInvoicesResponse>(string.Format("/api.xro/2.0/Invoices/{0}/OnlineInvoice", invoiceId))).FirstOrDefault();
+            return (await Client.GetAsync<OnlineInvoice, OnlineInvoicesResponse>(string.Format("/api.xro/2.0/Invoices/{0}/OnlineInvoice", invoiceId)).ConfigureAwait(false)).FirstOrDefault();
         }
 
         public async Task EmailInvoiceAsync(Guid id)
         {
-            var response =  await Client.PostAsync($"/api.xro/2.0/invoices/{id}/emails", new byte[]{});
+            var response =  await Client.PostAsync($"/api.xro/2.0/invoices/{id}/emails", new byte[]{}).ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.NoContent)
             {
                 return;
             }
 
-            await Client.HandleErrorsAsync(response);
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
         }
 
         public override void ClearQueryString()

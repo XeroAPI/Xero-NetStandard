@@ -37,17 +37,17 @@ namespace Xero.Api.Core.Endpoints
 
         public override async Task<IEnumerable<Model.File>> FindAsync()
         {
-            var response = await Client.GetAsync("files.xro/1.0/Files", QueryString);
+            var response = await Client.GetAsync("files.xro/1.0/Files", QueryString).ConfigureAwait(false);
 
-            var result = await HandleFilesResponseAsync(response);
+            var result = await HandleFilesResponseAsync(response).ConfigureAwait(false);
 
             return result.Items;
         }
 
         public override async Task<Model.File> FindAsync(Guid fileId)
         {
-            var response = await Client.GetAsync("files.xro/1.0/Files", "");
-            var result = await HandleFilesResponseAsync(response);
+            var response = await Client.GetAsync("files.xro/1.0/Files", "").ConfigureAwait(false);
+            var result = await HandleFilesResponseAsync(response).ConfigureAwait(false);
 
             return result.Items.SingleOrDefault(i => i.Id == fileId);
         }
@@ -59,8 +59,8 @@ namespace Xero.Api.Core.Endpoints
                 Name = name
             };
 
-            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true);
-            return await HandleFileResponseAsync(response);
+            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true).ConfigureAwait(false);
+            return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<Model.File> MoveAsync(Guid id, Guid newFolder)
@@ -70,27 +70,27 @@ namespace Xero.Api.Core.Endpoints
                 FolderId = newFolder
             };
 
-            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true); 
-            return await HandleFileResponseAsync(response);
+            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true).ConfigureAwait(false); 
+            return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<Model.File> AddAsync(Guid folderId, Model.File file, byte[] data)
         {
-            var response = await Client.PostMultipartFormAsync("files.xro/1.0/Files/" + folderId, file.Mimetype, file.Name, file.FileName, data);
-            return await HandleFileResponseAsync(response);
+            var response = await Client.PostMultipartFormAsync("files.xro/1.0/Files/" + folderId, file.Mimetype, file.Name, file.FileName, data).ConfigureAwait(false);
+            return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<Model.File> RemoveAsync(Guid fileid)
         {
-            var response = await Client.DeleteAsync("files.xro/1.0/Files/" + fileid);
-            return await HandleFileResponseAsync(response);
+            var response = await Client.DeleteAsync("files.xro/1.0/Files/" + fileid).ConfigureAwait(false);
+            return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<byte[]> GetContentAsync(Guid id, string contentType)
         {
-            var response = await Client.GetRawAsync("files.xro/1.0/Files/" + id + "/Content", contentType);
+            var response = await Client.GetRawAsync("files.xro/1.0/Files/" + id + "/Content", contentType).ConfigureAwait(false);
 
-            return await response.Content.ReadAsByteArrayAsync();
+            return await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
 
         }
 
@@ -98,13 +98,13 @@ namespace Xero.Api.Core.Endpoints
         {
             if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
             {
-                var body = await response.Content.ReadAsStringAsync();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 var result = Client.JsonMapper.From<Model.File>(body);
                 return result;
             }
 
-            await Client.HandleErrorsAsync(response);
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
 
             return null;
         }
@@ -113,13 +113,13 @@ namespace Xero.Api.Core.Endpoints
         {
             if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
             {
-                var body = await response.Content.ReadAsStringAsync();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 var result = Client.JsonMapper.From<FilesResponse>(body);
                 return result;
             }
 
-            await Client.HandleErrorsAsync(response);
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
 
             return null;
         }

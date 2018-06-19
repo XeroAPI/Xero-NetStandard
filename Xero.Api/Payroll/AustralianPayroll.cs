@@ -49,152 +49,152 @@ namespace Xero.Api.Payroll
 
         public async Task<IEnumerable<LeaveApplication>> CreateAsync(IEnumerable<LeaveApplication> items)
         {
-            return await LeaveApplications.CreateAsync(items);
+            return await LeaveApplications.CreateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Payslip>> CreateAsync(IEnumerable<Payslip> items)
         {
-            return await Payslips.CreateAsync(items);
+            return await Payslips.CreateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<SuperFund>> CreateAsync(IEnumerable<SuperFund> items)
         {
-            return await SuperFunds.CreateAsync(items);
+            return await SuperFunds.CreateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Employee>> CreateAsync(IEnumerable<Employee> items)
         {
-            return await Employees.CreateAsync(items);
+            return await Employees.CreateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<PayRun>> CreateAsync(IEnumerable<PayRun> items)
         {
-            return await PayRuns.CreateAsync(items);
+            return await PayRuns.CreateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Timesheet>> CreateAsync(IEnumerable<Timesheet> items)
         {
-            return await Timesheets.CreateAsync(items);
+            return await Timesheets.CreateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<PayrollCalendar>> CreateAsync(IEnumerable<PayrollCalendar> items)
         {
-            return await PayrollCalendars.CreateAsync(items);
+            return await PayrollCalendars.CreateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<LeaveApplication> CreateAsync(LeaveApplication item)
         {
-            return await LeaveApplications.CreateAsync(item);
+            return await LeaveApplications.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<Payslip> CreateAsync(Payslip item)
         {
-            return await Payslips.CreateAsync(item);
+            return await Payslips.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<SuperFund> CreateAsync(SuperFund item)
         {
-            return await SuperFunds.CreateAsync(item);
+            return await SuperFunds.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<Employee> CreateAsync(Employee item)
         {
-            return await Employees.CreateAsync(item);
+            return await Employees.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<PayRun> CreateAsync(PayRun item)
         {
-            return await PayRuns.CreateAsync(item);
+            return await PayRuns.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<Timesheet> CreateAsync(Timesheet item)
         {
-            return await Timesheets.CreateAsync(item);
+            return await Timesheets.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<PayItems> CreateAsync(PayItems item)
         {
-            return await PayItems.CreateAsync(item);
+            return await PayItems.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<PayrollCalendar> CreateAsync(PayrollCalendar item)
         {
-            return await PayrollCalendars.CreateAsync(item);
+            return await PayrollCalendars.CreateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<LeaveApplication>> UpdateAsync(IEnumerable<LeaveApplication> items)
         {
-            return await LeaveApplications.UpdateAsync(items);
+            return await LeaveApplications.UpdateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Payslip>> UpdateAsync(IEnumerable<Payslip> items)
         {
-            return await Payslips.UpdateAsync(items);
+            return await Payslips.UpdateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<SuperFund>> UpdateAsync(IEnumerable<SuperFund> items)
         {
-            return await SuperFunds.UpdateAsync(items);
+            return await SuperFunds.UpdateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Employee>> UpdateAsync(IEnumerable<Employee> items)
         {
-            return await Employees.UpdateAsync(items);
+            return await Employees.UpdateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<PayRun>> UpdateAsync(IEnumerable<PayRun> items)
         {
-            return await PayRuns.UpdateAsync(items);
+            return await PayRuns.UpdateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Timesheet>> UpdateAsync(IEnumerable<Timesheet> items)
         {
-            return await Timesheets.UpdateAsync(items);
+            return await Timesheets.UpdateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<PayrollCalendar>> UpdateAsync(IEnumerable<PayrollCalendar> items)
         {
-            return await PayrollCalendars.UpdateAsync(items);
+            return await PayrollCalendars.UpdateAsync(items).ConfigureAwait(false);
         }
 
         public async Task<LeaveApplication> UpdateAsync(LeaveApplication item)
         {
-            return await LeaveApplications.UpdateAsync(item);
+            return await LeaveApplications.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<Payslip> UpdateAsync(Payslip item)
         {
-            return await Payslips.UpdateAsync(item);
+            return await Payslips.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<SuperFund> UpdateAsync(SuperFund item)
         {
-            return await SuperFunds.UpdateAsync(item);
+            return await SuperFunds.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<Employee> UpdateAsync(Employee item)
         {
-            return await Employees.UpdateAsync(item);
+            return await Employees.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<PayRun> UpdateAsync(PayRun item)
         {
-            return await PayRuns.UpdateAsync(item);
+            return await PayRuns.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<Timesheet> UpdateAsync(Timesheet item)
         {
-            return await Timesheets.UpdateAsync(item);
+            return await Timesheets.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<PayItems> UpdateAsync(PayItems item)
         {
-            return await PayItems.UpdateAsync(item);
+            return await PayItems.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task<PayrollCalendar> UpdateAsync(PayrollCalendar item)
         {
-            return await PayrollCalendars.UpdateAsync(item);
+            return await PayrollCalendars.UpdateAsync(item).ConfigureAwait(false);
         }
     }
 }

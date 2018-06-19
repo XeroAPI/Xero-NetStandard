@@ -31,28 +31,28 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<ImportSummary> UpdateAsync(Setup setup)
         {
-            var response = await _client.PostAsync(_apiEndpointUrl, setup);
+            var response = await _client.PostAsync(_apiEndpointUrl, setup).ConfigureAwait(false);
 
-            return await HandleResponseAsync(response);
+            return await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<ImportSummary> CreateAsync(Setup setup)
         {
-            var response = await _client.PutAsync(_apiEndpointUrl, setup);
+            var response = await _client.PutAsync(_apiEndpointUrl, setup).ConfigureAwait(false);
 
-            return await HandleResponseAsync(response);
+            return await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
         private async Task<ImportSummary> HandleResponseAsync(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var body = await response.Content.ReadAsStringAsync();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                return _client.JsonMapper.From<SetupResponse>(body).ImportSummary;                
+                return _client.JsonMapper.From<SetupResponse>(body).ImportSummary;
             }
 
-            await _client.HandleErrorsAsync(response);
+            await _client.HandleErrorsAsync(response).ConfigureAwait(false);
 
             return null;
         }

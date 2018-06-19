@@ -30,37 +30,37 @@ namespace Xero.Api.Core.Endpoints
         {
             var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts", contactGroup.Id);
 
-            var response = await Client.DeleteAsync(endpoint);
+            var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
-            await HandleResponseAsync(response);
+            await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task AddContactAsync(ContactGroup contactGroup, Contact contact)
         {
-            await AddContactsAsync(contactGroup, new List<Contact>{contact});
+            await AddContactsAsync(contactGroup, new List<Contact>{contact}).ConfigureAwait(false);
         }
 
         public async Task AddContactsAsync(ContactGroup contactGroup, List<Contact> contacts)
         {
             var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts", contactGroup.Id);
 
-            var response = await Client.PutAsync(endpoint, contacts);
+            var response = await Client.PutAsync(endpoint, contacts).ConfigureAwait(false);
 
-            await HandleResponseAsync(response);
+            await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task RemoveContactAsync(ContactGroup contactGroup, Contact contact)
         {
             var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts/{1}", contactGroup.Id, contact.Id);
 
-            var response = await Client.DeleteAsync(endpoint);
+            var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
-            await HandleResponseAsync(response);
+            await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
         private async Task<ContactGroupsResponse> HandleResponseAsync(HttpResponseMessage response)
         {
-            var body = await response.Content.ReadAsStringAsync();
+            var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -68,7 +68,7 @@ namespace Xero.Api.Core.Endpoints
                 return result;
             }
 
-            await Client.HandleErrorsAsync(response);
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
 
             return null;
         }

@@ -34,25 +34,25 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<List<Option>> AddOptionAsync(TrackingCategory trackingCategory, Option option)
         {
-            return await AddOptionsAsync(trackingCategory, new List<Option> {option});
+            return await AddOptionsAsync(trackingCategory, new List<Option> {option}).ConfigureAwait(false);
         }
 
         public async Task DeleteAsync(TrackingCategory trackingCategory)
         {
             var endpoint = string.Format("/api.xro/2.0/trackingcategories/{0}/", trackingCategory.Id);
 
-            var response = await Client.DeleteAsync(endpoint);
+            var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
-            await HandleOptionsResponseAsync(response);
+            await HandleOptionsResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<List<Option>> AddOptionsAsync(TrackingCategory trackingCategory, List<Option> options)
         {
             var endpoint = string.Format("/api.xro/2.0/trackingcategories/{0}/options", trackingCategory.Id);
 
-            var response = await Client.PutAsync(endpoint, options);
+            var response = await Client.PutAsync(endpoint, options).ConfigureAwait(false);
 
-            var result = await HandleOptionsResponseAsync(response);
+            var result = await HandleOptionsResponseAsync(response).ConfigureAwait(false);
             
             return result.Values.ToList();
         }
@@ -61,9 +61,9 @@ namespace Xero.Api.Core.Endpoints
         {
             var endpoint = string.Format("/api.xro/2.0/trackingcategories/{0}/options/{1}", trackingCategory.Id, option.Id);
 
-            var response = await Client.PostAsync(endpoint, new List<Option> {option});
+            var response = await Client.PostAsync(endpoint, new List<Option> {option}).ConfigureAwait(false);
 
-            var result = await HandleOptionsResponseAsync(response);
+            var result = await HandleOptionsResponseAsync(response).ConfigureAwait(false);
 
             return result.Values.ToList();
         }
@@ -72,9 +72,9 @@ namespace Xero.Api.Core.Endpoints
         {
             var endpoint = string.Format("/api.xro/2.0/TrackingCategories/{0}/Options/{1}", trackingCategory.Id, option.Id);
 
-            var response = await Client.DeleteAsync(endpoint);
+            var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
-            var track = await HandleOptionsResponseAsync(response);
+            var track = await HandleOptionsResponseAsync(response).ConfigureAwait(false);
 
             return track.Values.FirstOrDefault();
         }
@@ -83,13 +83,13 @@ namespace Xero.Api.Core.Endpoints
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var body = await response.Content.ReadAsStringAsync();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 var result = Client.JsonMapper.From<OptionsResponse>(body);
                 return result;
             }
 
-            await Client.HandleErrorsAsync(response);
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
 
             return null;
         }

@@ -15,7 +15,7 @@ namespace Xero.Api.Core.Endpoints.Base
     {
         protected XeroUpdateEndpoint(XeroHttpClient client, string apiEndpointUrl)
             : base(client, apiEndpointUrl)
-        {            
+        {
         }
 
         public async Task<IEnumerable<TResult>> UpdateAsync(IEnumerable<TResult> items)
@@ -23,19 +23,19 @@ namespace Xero.Api.Core.Endpoints.Base
             var request = new TRequest();
             request.AddRange(items);
 
-            return await PostAsync(request);
+            return await PostAsync(request).ConfigureAwait(false);
         }
 
         public virtual async Task<TResult> UpdateAsync(TResult item)
         {
-            return (await UpdateAsync(new[] { item })).First();
+            return (await UpdateAsync(new[] { item }).ConfigureAwait(false)).First();
         }
 
         protected async Task<IEnumerable<TResult>> PostAsync(TRequest data)
         {
             try
             {
-                return await Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data, Parameters);
+                return await Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data, Parameters).ConfigureAwait(false);
             }
             finally
             {
