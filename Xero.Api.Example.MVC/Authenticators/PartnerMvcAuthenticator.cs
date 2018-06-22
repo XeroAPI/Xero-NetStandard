@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xero.Api.Infrastructure.Authenticators;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.OAuth;
@@ -27,9 +28,9 @@ namespace Xero.Api.Example.MVC.Authenticators
             throw new NotImplementedException();
         }
 
-        public string GetRequestTokenAuthorizeUrl(string userId)
+        public async Task<string> GetRequestTokenAuthorizeUrlAsync(string userId)
         {
-            var requestToken = GetRequestToken(_consumer);
+            var requestToken = await GetRequestTokenAsync(_consumer).ConfigureAwait(false);
             requestToken.UserId = userId;
 
             var existingToken = _requestTokenStore.Find(userId);
@@ -41,7 +42,7 @@ namespace Xero.Api.Example.MVC.Authenticators
             return GetAuthorizeUrl(requestToken);
         }
 
-        public IToken RetrieveAndStoreAccessToken(string userId, string tokenKey, string verfier)
+        public async Task<IToken> RetrieveAndStoreAccessTokenAsync(string userId, string tokenKey, string verfier)
         {
             var existingAccessToken = Store.Find(userId);
             if (existingAccessToken != null)
@@ -62,7 +63,7 @@ namespace Xero.Api.Example.MVC.Authenticators
             if (requestToken.TokenKey != tokenKey)
                 throw new ApplicationException("Request token key does not match");
 
-            var accessToken = Tokens.GetAccessTokenAsync(requestToken, GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verfier)).Result;
+            var accessToken = await Tokens.GetAccessTokenAsync(requestToken, GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verfier)).ConfigureAwait(false);
 
             accessToken.UserId = userId;
 

@@ -6,11 +6,11 @@ using Xero.Api.Infrastructure.OAuth.Signing;
 
 namespace Xero.Api.Infrastructure.Authenticators
 {
-    public abstract class PartnerAuthenticatorBase : TokenStoreAuthenticatorBase
+    public abstract class PartnerAuthenticatorAsyncStoreBase : TokenStoreAsyncAuthenticatorBase
     {
         private readonly X509Certificate2 _signingCertificate;
 
-        protected  PartnerAuthenticatorBase(ITokenStore store, IXeroApiSettings applicationSettings)
+        protected PartnerAuthenticatorAsyncStoreBase(ITokenStoreAsync store, IXeroApiSettings applicationSettings)
             : base(store, applicationSettings)
         {
             _signingCertificate = new X509Certificate2(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword, X509KeyStorageFlags.MachineKeySet);

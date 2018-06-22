@@ -61,7 +61,7 @@ namespace Xero.Api.Infrastructure.Http
         {
             var queryString = CreateQueryString(where, order, parameters, true);
 
-            var request = CreateRequest(endPoint, HttpMethod.Get, modifiedSince, query: queryString);
+            var request = await CreateRequest(endPoint, HttpMethod.Get, modifiedSince, query: queryString).ConfigureAwait(false);
 
             var response = await SendRequestAsync(request);
 
@@ -76,7 +76,7 @@ namespace Xero.Api.Infrastructure.Http
             HttpContent content = new ByteArrayContent(data);
             content.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
 
-            var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
+            var request = await CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString).ConfigureAwait(false);
 
             var response = await SendRequestAsync(request);
 
@@ -90,7 +90,7 @@ namespace Xero.Api.Infrastructure.Http
 
             HttpContent content = new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
-            var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
+            var request = await CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString).ConfigureAwait(false);
 
             var response = await SendRequestAsync(request);
 
@@ -104,7 +104,7 @@ namespace Xero.Api.Infrastructure.Http
 
             HttpContent content = new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
-            var request = CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString);
+            var request = await CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString).ConfigureAwait(false);
 
             var response = await SendRequestAsync(request);
 
@@ -114,7 +114,7 @@ namespace Xero.Api.Infrastructure.Http
         public async Task<IEnumerable<TResult>> DeleteAsync<TResult, TResponse>(string endpoint)
             where TResponse : IXeroResponse<TResult>, new()
         {
-            var request = CreateRequest(endpoint, HttpMethod.Delete);
+            var request = await CreateRequest(endpoint, HttpMethod.Delete).ConfigureAwait(false);
 
             var response = await SendRequestAsync(request);
 
@@ -128,14 +128,14 @@ namespace Xero.Api.Infrastructure.Http
 
         internal async Task<HttpResponseMessage> GetAsync(string endpoint, string query)
         {
-            var request = CreateRequest(endpoint, HttpMethod.Get, query: query);
+            var request = await CreateRequest(endpoint, HttpMethod.Get, query: query).ConfigureAwait(false);
 
             return await SendRequestAsync(request);
         }
 
         internal async Task<HttpResponseMessage> GetRawAsync(string endpoint, string mimetype)
         {
-            var request = CreateRequest(endpoint, HttpMethod.Get, accept: mimetype);
+            var request = await CreateRequest(endpoint, HttpMethod.Get, accept: mimetype).ConfigureAwait(false);
 
             return await SendRequestAsync(request);
         }
@@ -148,7 +148,7 @@ namespace Xero.Api.Infrastructure.Http
                 ? new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson)
                 : new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
-            var request = CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString);
+            var request = await CreateRequest(endpoint, HttpMethod.Put, content: content, query: queryString).ConfigureAwait(false);
 
             return await SendRequestAsync(request);
         }
@@ -161,28 +161,28 @@ namespace Xero.Api.Infrastructure.Http
                 ? new StringContent(JsonMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationJson)
                 : new StringContent(XmlMapper.To(data), Encoding.UTF8, MimeTypes.ApplicationXml);
 
-            var request = CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString);
+            var request = await CreateRequest(endpoint, HttpMethod.Post, content: content, query: queryString).ConfigureAwait(false);
 
             return await SendRequestAsync(request);
         }
 
         internal async Task<HttpResponseMessage> DeleteAsync(string endpoint)
         {
-            var request = CreateRequest(endpoint, HttpMethod.Delete);
+            var request = await CreateRequest(endpoint, HttpMethod.Delete).ConfigureAwait(false);
 
             return await SendRequestAsync(request);
         }
 
         public async Task<HttpResponseMessage> PostMultipartFormAsync(string endpoint, string contentType, string name, string filename, byte[] payload)
         {
-            var request = CreateRequest(endpoint, HttpMethod.Post);
+            var request = await CreateRequest(endpoint, HttpMethod.Post).ConfigureAwait(false);
 
             request.Content = CreateMultipartData(payload, name, filename);
 
             return await SendRequestAsync(request);
         }
 
-        private HttpRequestMessage CreateRequest(string endPoint, HttpMethod method, DateTime? modifiedSince = null, string accept = "application/json", HttpContent content = null, string query = null)
+        private async Task<HttpRequestMessage> CreateRequest(string endPoint, HttpMethod method, DateTime? modifiedSince = null, string accept = "application/json", HttpContent content = null, string query = null)
         {
             if (!string.IsNullOrWhiteSpace(query))
             {
@@ -203,7 +203,10 @@ namespace Xero.Api.Infrastructure.Http
                 request.Headers.IfModifiedSince = modifiedSince;
             }
 
-            _auth?.Authenticate(request, _consumer, _user);
+            if (_auth != null)
+            {
+                await _auth.AuthenticateAsync(request, _consumer, _user).ConfigureAwait(false);
+            }
 
             var escapedUserAgent = Uri.EscapeDataString("Xero-NetStandard - " + _consumer.ConsumerKey);
             request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue(escapedUserAgent)));

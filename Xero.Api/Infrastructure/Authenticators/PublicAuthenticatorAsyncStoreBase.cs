@@ -5,9 +5,9 @@ using Xero.Api.Infrastructure.OAuth.Signing;
 
 namespace Xero.Api.Infrastructure.Authenticators
 {
-    public abstract class PublicAuthenticatorBase : TokenStoreAuthenticatorBase
+    public abstract class PublicAuthenticatorAsyncStoreBase : TokenStoreAsyncAuthenticatorBase
     {
-        protected PublicAuthenticatorBase(ITokenStore store, IXeroApiSettings applicationSettings) 
+        protected PublicAuthenticatorAsyncStoreBase(ITokenStoreAsync store, IXeroApiSettings applicationSettings) 
             : base(store, applicationSettings)
         {
         }
