@@ -17,6 +17,13 @@ namespace Xero.Api.Payroll
             Connect();
         }
 
+        public AmericanPayroll(IAuthenticator auth, IUser user = null, IConsumer consumer = null, IRateLimiter rateLimiter = null)
+            : base(auth, user, consumer, rateLimiter)
+        {
+            Connect();
+        }
+
+
         public WorkLocationsEndpoint WorkLocations { get; private set; }
         public PayItemsEndpoint PayItems { get; private set; }
         public PayStubsEndpoint PayStubs { get; private set; }
@@ -35,7 +42,7 @@ namespace Xero.Api.Payroll
             Employees = new EmployeesEndpoint(Client);
             PayRuns = new PayRunsEndpoint(Client);
             Settings = new SettingsEndpoint(Client);
-            Timesheets = new TimesheetsEndpoint(Client);            
+            Timesheets = new TimesheetsEndpoint(Client);
         }
 
         // Note: Due to the immutability of endpoints, If you want to use filtering etc you will need to make requests via the endpoints themselves, not using the sugar methods below

@@ -13,5 +13,10 @@ namespace Xero.Api.Payroll.Common
             : base(ApplicationSettings.BaseUrl, auth, new Consumer(ApplicationSettings.ConsumerKey, ApplicationSettings.ConsumerSecret), user, rateLimiter)
         {
         }
+
+        protected PayrollApi(IAuthenticator auth, IUser user = null, IConsumer consumer = null, IRateLimiter rateLimiter = null)
+            : base(ApplicationSettings.BaseUrl, auth, consumer, user, rateLimiter)
+        {
+        }
     }
 }

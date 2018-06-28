@@ -17,6 +17,12 @@ namespace Xero.Api.Payroll
             Connect();
         }
 
+        public AustralianPayroll(IAuthenticator auth, IUser user = null, IConsumer consumer = null, IRateLimiter rateLimiter = null)
+            : base(auth, user, consumer, rateLimiter)
+        {
+            Connect();
+        }
+
         public SuperFundsEndpoint SuperFunds { get; set; }
         public SuperFundProductsEndpoint SuperFundProducts { get; set; }
         public LeaveApplicationsEndpoint LeaveApplications { get; set; }
