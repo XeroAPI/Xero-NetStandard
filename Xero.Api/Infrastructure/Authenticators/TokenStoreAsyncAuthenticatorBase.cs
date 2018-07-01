@@ -3,13 +3,13 @@ using Xero.Api.Infrastructure.Interfaces;
 
 namespace Xero.Api.Infrastructure.Authenticators
 {
-    public abstract class TokenStoreAuthenticatorBase : AuthenticatorBase
+    public abstract class TokenStoreAsyncAuthenticatorBase : AuthenticatorBase
     {
-        protected ITokenStore Store { get; set; }
+        protected ITokenStoreAsync Store { get; set; }
 
         public bool HasStore => Store != null;
-        
-        protected TokenStoreAuthenticatorBase(ITokenStore store, IXeroApiSettings applicationSettings)
+
+        protected TokenStoreAsyncAuthenticatorBase(ITokenStoreAsync store, IXeroApiSettings applicationSettings)
             : base(applicationSettings)
         {
             Store = store;
@@ -20,26 +20,26 @@ namespace Xero.Api.Infrastructure.Authenticators
             if (!HasStore)
                 return await GetTokenAsync(consumer).ConfigureAwait(false);
 
-            var token = Store.Find(user.Identifier);
+            var token = await Store.FindAsync(user.Identifier).ConfigureAwait(false);
 
             if (token == null)
             {
                 token = await GetTokenAsync(consumer).ConfigureAwait(false);
                 token.UserId = user.Identifier;
 
-                Store.Add(token);
+                await Store.AddAsync(token).ConfigureAwait(false);
 
                 return token;
             }
 
             if (!token.HasExpired)
                 return token;
-            
+
             var newToken = await RenewTokenAsync(token, consumer).ConfigureAwait(false);
             newToken.UserId = user.Identifier;
 
-            Store.Delete(token);
-            Store.Add(newToken);
+            await Store.DeleteAsync(token).ConfigureAwait(false);
+            await Store.AddAsync(newToken).ConfigureAwait(false);
 
             return newToken;
         }

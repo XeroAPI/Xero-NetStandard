@@ -1,10 +1,10 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Xero.Api.Infrastructure.Interfaces
 {
     public interface IAuthenticator
     {
-        void Authenticate(HttpRequestMessage request, IConsumer consumer, IUser user);
+        Task AuthenticateAsync(HttpRequestMessage request, IConsumer consumer, IUser user);
     }
 }
