@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.OAuth;
 
@@ -11,15 +12,14 @@ namespace Xero.Api.Infrastructure.Authenticators
 
         protected string BaseUri => ApplicationSettings.BaseUrl;
         protected string CallBackUri => ApplicationSettings.CallbackUrl;
-        protected ITokenStore Store { get; set; }
+        protected ITokenStoreAsync Store { get; set; }
 
         private OAuthTokens _tokens;
 
         protected OAuthTokens Tokens => _tokens ?? (_tokens = new OAuthTokens(BaseUri));
         public bool HasStore => Store != null;
 
-
-        protected TokenStoreAuthenticatorBase(ITokenStore store, IXeroApiSettings applicationSettings)
+        protected TokenStoreAuthenticatorBase(ITokenStoreAsync store, IXeroApiSettings applicationSettings)
         {
             Store = store;
             ApplicationSettings = applicationSettings;
@@ -29,66 +29,66 @@ namespace Xero.Api.Infrastructure.Authenticators
 
         protected abstract string CreateSignature(IToken token, string verb, Uri uri, string verifier, bool renewToken = false, string callback = null);
 
-        protected abstract IToken RenewToken(IToken sessionToken, IConsumer consumer);
+        protected abstract Task<IToken> RenewTokenAsync(IToken sessionToken, IConsumer consumer);
 
-        public void Authenticate(HttpRequestMessage request, IConsumer consumer, IUser user)
+        public async Task AuthenticateAsync(HttpRequestMessage request, IConsumer consumer, IUser user)
         {
-            var token = GetToken(consumer, user);
+            var token = await GetTokenAsync(consumer, user).ConfigureAwait(false);
 
             var authString = GetAuthorization(token, request.Method.Method, request.RequestUri.AbsolutePath, request.RequestUri.Query);
 
             request.Headers.Add("Authorization", authString);
         }
 
-        private IToken GetToken(IConsumer consumer, IUser user)
+        protected async Task<IToken> GetTokenAsync(IConsumer consumer, IUser user)
         {
             if (!HasStore)
-                return GetToken(consumer);
+                return await GetTokenAsync(consumer).ConfigureAwait(false);
 
-            var token = Store.Find(user.Identifier);
+            var token = await Store.FindAsync(user.Identifier).ConfigureAwait(false);
 
             if (token == null)
             {
-                token = GetToken(consumer);
+                token = await GetTokenAsync(consumer).ConfigureAwait(false);
                 token.UserId = user.Identifier;
 
-                Store.Add(token);
+                await Store.AddAsync(token).ConfigureAwait(false);
 
                 return token;
             }
 
             if (!token.HasExpired)
                 return token;
-            
-            var newToken = RenewToken(token, consumer);
+
+            var newToken = await RenewTokenAsync(token, consumer).ConfigureAwait(false);
             newToken.UserId = user.Identifier;
 
-            Store.Delete(token);
-            Store.Add(newToken);
+            await Store.DeleteAsync(token).ConfigureAwait(false);
+            await Store.AddAsync(newToken).ConfigureAwait(false);
 
             return newToken;
         }
 
-        protected virtual IToken GetToken(IConsumer consumer)
+        protected virtual async Task<IToken> GetTokenAsync(IConsumer consumer)
         {
-            var requestToken = GetRequestToken(consumer);
-   
+            var requestToken = await GetRequestTokenAsync(consumer).ConfigureAwait(false);
+
             var verifier = AuthorizeUser(requestToken);
 
-            return Tokens.GetAccessTokenAsync(requestToken, GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verifier)).Result;
+            return await Tokens.GetAccessTokenAsync(requestToken, GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verifier)).ConfigureAwait(false);
         }
 
-        protected IToken GetRequestToken(IConsumer consumer)
+        protected async Task<IToken> GetRequestTokenAsync(IConsumer consumer)
         {
             var token = new Token
             {
                 ConsumerKey = consumer.ConsumerKey,
                 ConsumerSecret = consumer.ConsumerSecret
             };
-            
+
             var requestTokenOAuthHeader = GetAuthorization(token, "POST", Tokens.RequestTokenEndpoint, callback: CallBackUri);
 
-            return Tokens.GetRequestTokenAsync(consumer, requestTokenOAuthHeader).Result;
+            return await Tokens.GetRequestTokenAsync(consumer, requestTokenOAuthHeader).ConfigureAwait(false);
         }
 
         protected string GetAuthorization(IToken token, string verb, string endpoint, string query = null,

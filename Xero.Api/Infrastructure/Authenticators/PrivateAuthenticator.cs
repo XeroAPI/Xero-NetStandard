@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using Xero.Api.Infrastructure.Interfaces;
 using Xero.Api.Infrastructure.OAuth;
 using Xero.Api.Infrastructure.OAuth.Signing;
@@ -27,11 +28,13 @@ namespace Xero.Api.Infrastructure.Authenticators
             _certificate = certificate;
         }
 
-        public void Authenticate(HttpRequestMessage request, IConsumer consumer, IUser user)
+        public Task AuthenticateAsync(HttpRequestMessage request, IConsumer consumer, IUser user)
         {
             var signature = GetSignature(request, consumer);
 
             request.Headers.Add("Authorization", signature);
+
+            return Task.CompletedTask;
         }
 
 
