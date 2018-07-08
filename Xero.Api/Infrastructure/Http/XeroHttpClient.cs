@@ -121,9 +121,9 @@ namespace Xero.Api.Infrastructure.Http
             return await ReadAsync<TResult, TResponse>(response).ConfigureAwait(false);
         }
 
-        internal async Task<HttpResponseMessage> GetAsync(string endpoint)
+        internal Task<HttpResponseMessage> GetAsync(string endpoint)
         {
-            return await GetAsync(endpoint, null).ConfigureAwait(false);
+            return GetAsync(endpoint, null);
         }
 
         internal async Task<HttpResponseMessage> GetAsync(string endpoint, string query)
@@ -220,12 +220,12 @@ namespace Xero.Api.Infrastructure.Http
             return request;
         }
 
-        private async Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage request)
+        private Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage request)
         {
             if (_rateLimiter != null)
                 _rateLimiter.WaitUntilLimit();
 
-            return await HttpClient.SendAsync(request).ConfigureAwait(false);
+            return HttpClient.SendAsync(request);
         }
 
         private string CreateQueryString(string where, string order, NameValueCollection paramters, bool encoded)

@@ -21,9 +21,9 @@ namespace Xero.Api.Core.Endpoints
             Client = client;
         }
 
-        public async Task<IEnumerable<Attachment>> ListAsync(AttachmentEndpointType type, Guid parent)
+        public Task<IEnumerable<Attachment>> ListAsync(AttachmentEndpointType type, Guid parent)
         {
-            return await Client.GetAsync<Attachment, AttachmentsResponse>(string.Format("/api.xro/2.0/{0}/{1}/Attachments", type, parent.ToString("D"))).ConfigureAwait(false);
+            return Client.GetAsync<Attachment, AttachmentsResponse>(string.Format("/api.xro/2.0/{0}/{1}/Attachments", type, parent.ToString("D")));
         }
 
         public async Task<Attachment> GetAsync(AttachmentEndpointType type, Guid parent, string fileName)

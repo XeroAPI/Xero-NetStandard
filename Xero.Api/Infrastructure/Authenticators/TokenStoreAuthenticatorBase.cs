@@ -78,7 +78,7 @@ namespace Xero.Api.Infrastructure.Authenticators
             return await Tokens.GetAccessTokenAsync(requestToken, GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verifier)).ConfigureAwait(false);
         }
 
-        protected async Task<IToken> GetRequestTokenAsync(IConsumer consumer)
+        protected Task<IToken> GetRequestTokenAsync(IConsumer consumer)
         {
             var token = new Token
             {
@@ -88,7 +88,7 @@ namespace Xero.Api.Infrastructure.Authenticators
 
             var requestTokenOAuthHeader = GetAuthorization(token, "POST", Tokens.RequestTokenEndpoint, callback: CallBackUri);
 
-            return await Tokens.GetRequestTokenAsync(consumer, requestTokenOAuthHeader).ConfigureAwait(false);
+            return Tokens.GetRequestTokenAsync(consumer, requestTokenOAuthHeader);
         }
 
         protected string GetAuthorization(IToken token, string verb, string endpoint, string query = null,

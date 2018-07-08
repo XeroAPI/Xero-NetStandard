@@ -70,7 +70,7 @@ namespace Xero.Api.Core.Endpoints
                 FolderId = newFolder
             };
 
-            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true).ConfigureAwait(false); 
+            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true).ConfigureAwait(false);
             return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
@@ -91,7 +91,6 @@ namespace Xero.Api.Core.Endpoints
             var response = await Client.GetRawAsync("files.xro/1.0/Files/" + id + "/Content", contentType).ConfigureAwait(false);
 
             return await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
-
         }
 
         private async Task<Model.File> HandleFileResponseAsync(HttpResponseMessage response)

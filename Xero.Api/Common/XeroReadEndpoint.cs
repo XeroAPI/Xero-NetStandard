@@ -74,14 +74,14 @@ namespace Xero.Api.Common
             return Apply4Dp(use4Dp);
         }
 
-        public virtual async Task<IEnumerable<TResult>> FindAsync()
+        public virtual Task<IEnumerable<TResult>> FindAsync()
         {
-            return await GetAsync(ApiEndpointUrl, null).ConfigureAwait(false);
+            return GetAsync(ApiEndpointUrl, null);
         }
 
-        public virtual async Task<TResult> FindAsync(Guid child)
+        public virtual Task<TResult> FindAsync(Guid child)
         {
-            return await FindAsync(child.ToString("D")).ConfigureAwait(false);
+            return FindAsync(child.ToString("D"));
         }
 
         public async Task<TResult> FindAsync(string child)

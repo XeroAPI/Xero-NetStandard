@@ -18,12 +18,12 @@ namespace Xero.Api.Core.Endpoints.Base
         {
         }
 
-        public async Task<IEnumerable<TResult>> UpdateAsync(IEnumerable<TResult> items)
+        public Task<IEnumerable<TResult>> UpdateAsync(IEnumerable<TResult> items)
         {
             var request = new TRequest();
             request.AddRange(items);
 
-            return await PostAsync(request).ConfigureAwait(false);
+            return PostAsync(request);
         }
 
         public virtual async Task<TResult> UpdateAsync(TResult item)

@@ -21,11 +21,11 @@ namespace Xero.Api.Infrastructure.Authenticators
             return new RsaSha1Signer().CreateSignature(_signingCertificate, token, uri, verb, verifier, renewToken, callback);
         }
 
-        protected override async Task<IToken> RenewTokenAsync(IToken sessionToken, IConsumer consumer)
+        protected override Task<IToken> RenewTokenAsync(IToken sessionToken, IConsumer consumer)
         {
             var authHeader = GetAuthorization(sessionToken, "POST", Tokens.AccessTokenEndpoint, null, null, true);
 
-            return await Tokens.GetAccessTokenAsync(sessionToken, authHeader).ConfigureAwait(false);
+            return Tokens.GetAccessTokenAsync(sessionToken, authHeader);
         }
     }
 }

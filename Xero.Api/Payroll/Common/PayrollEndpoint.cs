@@ -18,12 +18,12 @@ namespace Xero.Api.Payroll.Common
         {
         }
 
-        public async Task<IEnumerable<TResult>> CreateAsync(IEnumerable<TResult> items)
+        public Task<IEnumerable<TResult>> CreateAsync(IEnumerable<TResult> items)
         {
             var request = new TRequest();
             request.AddRange(items);
 
-            return await PostAsync(request).ConfigureAwait(false);
+            return PostAsync(request);
         }
 
         public async Task<TResult> CreateAsync(TResult item)
@@ -31,9 +31,9 @@ namespace Xero.Api.Payroll.Common
             return (await CreateAsync(new [] { item }).ConfigureAwait(false)).First();
         }
 
-        public async Task<IEnumerable<TResult>> UpdateAsync(IEnumerable<TResult> items)
+        public Task<IEnumerable<TResult>> UpdateAsync(IEnumerable<TResult> items)
         {
-            return await CreateAsync(items).ConfigureAwait(false);
+            return CreateAsync(items);
         }
 
         public async Task<TResult> UpdateAsync(TResult item)
@@ -41,9 +41,9 @@ namespace Xero.Api.Payroll.Common
             return (await UpdateAsync(new[] { item }).ConfigureAwait(false)).First();
         }
 
-        protected async Task<IEnumerable<TResult>> PostAsync(TRequest data)
+        protected Task<IEnumerable<TResult>> PostAsync(TRequest data)
         {
-            return await Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data).ConfigureAwait(false);
+            return Client.PostAsync<TResult, TResponse>(ApiEndpointUrl, data);
         }
 
         public T Page(int page)

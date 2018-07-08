@@ -17,9 +17,9 @@ namespace Xero.Api.Infrastructure.Authenticators
             return new HmacSha1Signer().CreateSignature(token, uri, verb, verifier, callback);
         }
 
-        protected override async Task<IToken> RenewTokenAsync(IToken sessionToken, IConsumer consumer)
+        protected override Task<IToken> RenewTokenAsync(IToken sessionToken, IConsumer consumer)
         {
-            return await GetTokenAsync(consumer).ConfigureAwait(false);
+            return GetTokenAsync(consumer);
         }
     }
 }
