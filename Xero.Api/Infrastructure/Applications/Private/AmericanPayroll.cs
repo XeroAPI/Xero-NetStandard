@@ -13,7 +13,7 @@ namespace Xero.Api.Infrastructure.Applications.Private
         }
 
         public AmericanPayroll(IAuthenticator authenticator, bool includeRateLimiter = false)
-            : base(authenticator, rateLimiter: includeRateLimiter ? new RateLimiter.RateLimiter() : null)
+            : base(authenticator, null, rateLimiter: includeRateLimiter ? new RateLimiter.RateLimiter() : null)
         {
         }
     }

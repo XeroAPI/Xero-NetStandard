@@ -17,6 +17,13 @@ namespace Xero.Api.Payroll
             Connect();
         }
 
+        public AmericanPayroll(string baseUrl, IAuthenticator auth, IUser user = null, IConsumer consumer = null, IRateLimiter rateLimiter = null)
+            : base(baseUrl, auth, user, consumer, rateLimiter)
+        {
+            Connect();
+        }
+
+
         public WorkLocationsEndpoint WorkLocations { get; private set; }
         public PayItemsEndpoint PayItems { get; private set; }
         public PayStubsEndpoint PayStubs { get; private set; }
