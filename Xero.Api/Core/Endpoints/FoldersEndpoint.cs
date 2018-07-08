@@ -32,15 +32,15 @@ namespace Xero.Api.Core.Endpoints
     {
         var endpoint = "files.xro/1.0/Folders";
 
-        var response = await Client.PostAsync(endpoint, new Folder{Name = folderName}, true);
+        var response = await Client.PostAsync(endpoint, new Folder{Name = folderName}, true).ConfigureAwait(false);
 
-        return await HandleFolderResponseAsync(response);
+        return await HandleFolderResponseAsync(response).ConfigureAwait(false);
     }
 
     public new async Task<IEnumerable<Folder>> FindAsync()
     {
-        var response = await Client.GetAsync("files.xro/1.0/Folders", "");
-        var result = await HandleFoldersResponseAsync(response);
+        var response = await Client.GetAsync("files.xro/1.0/Folders", "").ConfigureAwait(false);
+        var result = await HandleFoldersResponseAsync(response).ConfigureAwait(false);
 
 
       var resultingFolders = from i in result
@@ -51,8 +51,8 @@ namespace Xero.Api.Core.Endpoints
 
     public async Task RemoveAsync(Guid id)
     {
-        var response = await Client.DeleteAsync("files.xro/1.0/Folders/" + id);
-        await HandleFolderResponseAsync(response);
+        var response = await Client.DeleteAsync("files.xro/1.0/Folders/" + id).ConfigureAwait(false);
+        await HandleFolderResponseAsync(response).ConfigureAwait(false);
     }
 
     public async Task<FoldersResponse> RenameAsync(Guid id, string name)
@@ -62,8 +62,8 @@ namespace Xero.Api.Core.Endpoints
            Name = name
        };
 
-        var response = await Client.PutAsync("files.xro/1.0/Folders/" + id, folder, true);
-        var result =  await HandleFoldersResponseAsync(response);
+        var response = await Client.PutAsync("files.xro/1.0/Folders/" + id, folder, true).ConfigureAwait(false);
+        var result =  await HandleFoldersResponseAsync(response).ConfigureAwait(false);
         return result?[0];
     }
 
@@ -71,14 +71,14 @@ namespace Xero.Api.Core.Endpoints
     {
       if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
       {
-        var body = await response.Content.ReadAsStringAsync();
+        var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
         var result = Client.JsonMapper.From<FilePageResponse>(body);
 
         return result;
       }
 
-      await Client.HandleErrorsAsync(response);
+      await Client.HandleErrorsAsync(response).ConfigureAwait(false);
 
       return null;
     }
@@ -87,14 +87,14 @@ namespace Xero.Api.Core.Endpoints
     {
       if (response.StatusCode == HttpStatusCode.OK)
       {
-        var body = await response.Content.ReadAsStringAsync();
+        var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
         var result = Client.JsonMapper.From<FoldersResponse[]>(body);
 
         return result;
       }
 
-      await Client.HandleErrorsAsync(response);
+      await Client.HandleErrorsAsync(response).ConfigureAwait(false);
 
       return null;
     }

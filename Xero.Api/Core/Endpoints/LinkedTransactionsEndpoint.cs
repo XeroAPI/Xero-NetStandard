@@ -32,9 +32,9 @@ namespace Xero.Api.Core.Endpoints
         {
             var endpoint = string.Format("/api.xro/2.0/LinkedTransactions/{0}", linkedTransaction.Id);
 
-            var response = await Client.DeleteAsync(endpoint);
+            var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
-            await HandleResponseAsync(response);
+            await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
         public ILinkedTransactionsEndpoint Page(int page)
@@ -67,13 +67,13 @@ namespace Xero.Api.Core.Endpoints
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var body = await response.Content.ReadAsStringAsync();
+                var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 var result = Client.JsonMapper.From<LinkedTransactionsResponse>(body);
                 return result;
             }
 
-            await Client.HandleErrorsAsync(response);
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
 
             return null;
         }

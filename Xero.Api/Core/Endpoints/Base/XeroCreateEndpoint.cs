@@ -23,12 +23,12 @@ namespace Xero.Api.Core.Endpoints.Base
             var request = new TRequest();
             request.AddRange(items);
 
-            return await PutAsync(request);
+            return await PutAsync(request).ConfigureAwait(false);
         }
 
         public async Task<TResult> CreateAsync(TResult item)
         {
-            return (await CreateAsync(new[] { item })).First();
+            return (await CreateAsync(new[] { item }).ConfigureAwait(false)).First();
         }
 
         public T SummarizeErrors(bool summarize)
@@ -40,12 +40,12 @@ namespace Xero.Api.Core.Endpoints.Base
         {
             try
             {
-                return await Client.PutAsync<TResult, TResponse>(ApiEndpointUrl, data, Parameters);
+                return await Client.PutAsync<TResult, TResponse>(ApiEndpointUrl, data, Parameters).ConfigureAwait(false);
             }
             finally
             {
-                ClearQueryString();            
+                ClearQueryString();
             }
-        }        
+        }
     }
 }

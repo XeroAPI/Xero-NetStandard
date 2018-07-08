@@ -22,7 +22,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<OrganisationCisSetting> GetCisSettingsAsync(Guid id)
         {
-            var organisationCisSettings = await Client.GetAsync<OrganisationCisSetting, OrganisationCisSettingsResponse>($"/api.xro/2.0/organisations/{id}/cissettings");
+            var organisationCisSettings = await Client.GetAsync<OrganisationCisSetting, OrganisationCisSettingsResponse>($"/api.xro/2.0/organisations/{id}/cissettings").ConfigureAwait(false);
 
             return organisationCisSettings.FirstOrDefault();
         }
