@@ -35,9 +35,9 @@ namespace Xero.Api.Core.Endpoints
             await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
-        public async Task AddContactAsync(ContactGroup contactGroup, Contact contact)
+        public Task AddContactAsync(ContactGroup contactGroup, Contact contact)
         {
-            await AddContactsAsync(contactGroup, new List<Contact>{contact}).ConfigureAwait(false);
+            return AddContactsAsync(contactGroup, new List<Contact> { contact });
         }
 
         public async Task AddContactsAsync(ContactGroup contactGroup, List<Contact> contacts)

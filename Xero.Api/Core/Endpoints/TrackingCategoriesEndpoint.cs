@@ -32,9 +32,9 @@ namespace Xero.Api.Core.Endpoints
             return include ? AddParameter("includeArchived", true) : this;
         }
 
-        public async Task<List<Option>> AddOptionAsync(TrackingCategory trackingCategory, Option option)
+        public Task<List<Option>> AddOptionAsync(TrackingCategory trackingCategory, Option option)
         {
-            return await AddOptionsAsync(trackingCategory, new List<Option> {option}).ConfigureAwait(false);
+            return AddOptionsAsync(trackingCategory, new List<Option> {option});
         }
 
         public async Task DeleteAsync(TrackingCategory trackingCategory)

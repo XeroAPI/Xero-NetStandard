@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace PayrollTests.AU.Integration.PayItems
 {
@@ -6,21 +7,21 @@ namespace PayrollTests.AU.Integration.PayItems
     public class Find : ApiWrapperTest
     {
         [Test]
-        public async void find_all()
+        public async Task find_all()
         {
             var items = await Api.PayItems.FindAsync();
             Assert.IsNotNull(items);
         }
 
         [Test]
-        public async void find_paged()
+        public async Task find_paged()
         {
             var items = await Api.PayItems.Page(1).FindAsync();
             Assert.IsNotNull(items);
         }
 
         [Test]
-        public async void Find_EarningRates()
+        public async Task Find_EarningRates()
         {
             var items = await Api.PayItems.FindAsync();
 

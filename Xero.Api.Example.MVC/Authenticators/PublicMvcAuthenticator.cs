@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xero.Api.Infrastructure.Authenticators;
 using Xero.Api.Infrastructure.Exceptions;
 using Xero.Api.Infrastructure.Interfaces;
@@ -9,14 +10,14 @@ namespace Xero.Api.Example.MVC.Authenticators
     public class PublicMvcAuthenticator : PublicAuthenticatorBase, IMvcAuthenticator
     {
         private readonly IConsumer _consumer;
-        private readonly ITokenStore _requestTokenStore;
+        private readonly ITokenStoreAsync _requestTokenStore;
 
-        public PublicMvcAuthenticator(ITokenStore requestTokenStore, ITokenStore accessTokenStore)
+        public PublicMvcAuthenticator(ITokenStoreAsync requestTokenStore, ITokenStoreAsync accessTokenStore)
             : this(requestTokenStore, accessTokenStore, new XeroApiSettings())
         {
         }
 
-        public PublicMvcAuthenticator(ITokenStore requestTokenStore, ITokenStore accessTokenStore, IXeroApiSettings xeroApiSettings)
+        public PublicMvcAuthenticator(ITokenStoreAsync requestTokenStore, ITokenStoreAsync accessTokenStore, IXeroApiSettings xeroApiSettings)
             : base(accessTokenStore, xeroApiSettings)
         {
             _consumer = new Consumer(ApplicationSettings.ConsumerKey, ApplicationSettings.ConsumerSecret);
@@ -28,51 +29,51 @@ namespace Xero.Api.Example.MVC.Authenticators
             throw new NotSupportedException();
         }
 
-        protected override IToken RenewToken(IToken sessionToken, IConsumer consumer)
+        protected override Task<IToken> RenewTokenAsync(IToken sessionToken, IConsumer consumer)
         {
             throw new RenewTokenException();
         }
 
-        public string GetRequestTokenAuthorizeUrl(string userId)
+        public async Task<string> GetRequestTokenAuthorizeUrlAsync(string userId)
         {
-            var requestToken = GetRequestToken(_consumer);
+            var requestToken = await GetRequestTokenAsync(_consumer);
             requestToken.UserId = userId;
 
-            var existingToken = _requestTokenStore.Find(userId);
+            var existingToken = await _requestTokenStore.FindAsync(userId);
             if (existingToken != null)
-                _requestTokenStore.Delete(requestToken);
+                await _requestTokenStore.DeleteAsync(requestToken);
 
-            _requestTokenStore.Add(requestToken);
+            await _requestTokenStore.AddAsync(requestToken);
 
             return GetAuthorizeUrl(requestToken);
         }
 
-        public IToken RetrieveAndStoreAccessToken(string userId, string tokenKey, string verfier)
+        public async Task<IToken> RetrieveAndStoreAccessTokenAsync(string userId, string tokenKey, string verifier)
         {
-            var existingAccessToken = Store.Find(userId);
+            var existingAccessToken = await Store.FindAsync(userId);
             if (existingAccessToken != null)
             {
                 if (!existingAccessToken.HasExpired)
                     return existingAccessToken;
                 else
-                    Store.Delete(existingAccessToken);
+                    await Store.DeleteAsync(existingAccessToken);
             }
 
-            var requestToken = _requestTokenStore.Find(userId);
+            var requestToken = await _requestTokenStore.FindAsync(userId);
             if (requestToken == null)
                 throw new ApplicationException("Failed to look up request token for user");
 
-			//Delete the request token from the _requestTokenStore as the next few lines will render it useless for the future.
-            _requestTokenStore.Delete(requestToken);
+            //Delete the request token from the _requestTokenStore as the next few lines will render it useless for the future.
+            await _requestTokenStore.DeleteAsync(requestToken);
 
             if (requestToken.TokenKey != tokenKey)
                 throw new ApplicationException("Request token key does not match");
 
-            var accessToken = Tokens.GetAccessTokenAsync(requestToken, GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verfier)).Result;
+            var accessToken = await Tokens.GetAccessTokenAsync(requestToken, GetAuthorization(requestToken, "POST", Tokens.AccessTokenEndpoint, null, verifier));
 
             accessToken.UserId = userId;
 
-            Store.Add(accessToken);
+            await Store.AddAsync(accessToken);
 
             return accessToken;
         }

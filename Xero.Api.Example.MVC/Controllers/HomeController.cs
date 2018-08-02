@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Xero.Api.Example.MVC.Helpers;
 using Xero.Api.Infrastructure.OAuth;
@@ -23,16 +24,16 @@ namespace Xero.Api.Example.MVC.Controllers
             return View();
         }
 
-        public ActionResult Connect()
+        public async Task<ActionResult> Connect()
         {
-            var authorizeUrl = _authenticator.GetRequestTokenAuthorizeUrl(_user.Identifier);
+            var authorizeUrl = await _authenticator.GetRequestTokenAuthorizeUrlAsync(_user.Identifier);
 
             return Redirect(authorizeUrl);
         }
 
-        public ActionResult Authorize(string oauth_token, string oauth_verifier, string org)
+        public async Task<ActionResult> Authorize(string oauth_token, string oauth_verifier, string org)
         {
-            var accessToken = _authenticator.RetrieveAndStoreAccessToken(_user.Identifier, oauth_token, oauth_verifier);
+            var accessToken = await _authenticator.RetrieveAndStoreAccessTokenAsync(_user.Identifier, oauth_token, oauth_verifier);
             if (accessToken == null)
                 return View("NoAuthorized");
 

@@ -25,9 +25,9 @@ namespace Xero.Api.Core.Endpoints
             Client = client;
         }
 
-        public async Task<IEnumerable<HistoryRecord>> FindAsync(HistoryAndNotesEndpointRetrieveType type, Guid parent)
+        public Task<IEnumerable<HistoryRecord>> FindAsync(HistoryAndNotesEndpointRetrieveType type, Guid parent)
         {
-            return await Client.GetAsync<HistoryRecord, HistoryRecordsResponse>($"api.xro/2.0/{type}/{parent:D}/history").ConfigureAwait(false);
+            return Client.GetAsync<HistoryRecord, HistoryRecordsResponse>($"api.xro/2.0/{type}/{parent:D}/history");
         }
 
         public async Task<HistoryRecord> CreateNoteAsync(HistoryAndNotesEndpointCreateType type, Guid parent, HistoryRecord note)
