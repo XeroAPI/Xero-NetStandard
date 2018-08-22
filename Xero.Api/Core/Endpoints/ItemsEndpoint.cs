@@ -17,14 +17,22 @@ namespace Xero.Api.Core.Endpoints
     public class ItemsEndpoint
         : FourDecimalPlacesEndpoint<ItemsEndpoint, Item, ItemsRequest, ItemsResponse>, IItemsEndpoint
     {
+        private readonly string _endpointBase;
+
         public ItemsEndpoint(XeroHttpClient client) :
-            base(client, "/api.xro/2.0/Items")
+            this(client, "/api.xro/2.0")
         {
+        }
+
+        public ItemsEndpoint(XeroHttpClient client, string endpointBase) :
+            base(client, $"{endpointBase}/Items")
+        {
+            _endpointBase = endpointBase;
         }
 
         public async Task DeleteAsync(Item itemToDelete)
         {
-            var endpoint = string.Format("/api.xro/2.0/Items/{0}", itemToDelete.Id);
+            var endpoint = $"{_endpointBase}/Items/{itemToDelete.Id}";
 
             var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 

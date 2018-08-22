@@ -11,8 +11,13 @@ namespace Xero.Api.Core.Endpoints
 
     public class UsersEndpoint : XeroReadEndpoint<UsersEndpoint, User, UsersResponse>, IUsersEndpoint
     {
-        internal UsersEndpoint(XeroHttpClient client)
-            : base(client, "/api.xro/2.0/Users")
+        public UsersEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
+        {
+        }
+
+        public UsersEndpoint(XeroHttpClient client, string endpointBase)
+            : base(client, $"{endpointBase}/Users")
         {
         }
     }

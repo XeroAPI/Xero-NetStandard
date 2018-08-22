@@ -27,9 +27,17 @@ namespace Xero.Api.Core.Endpoints
     public class InvoicesEndpoint
         : FourDecimalPlacesEndpoint<InvoicesEndpoint, Invoice, InvoicesRequest, InvoicesResponse>, IInvoicesEndpoint
     {
-        internal InvoicesEndpoint(XeroHttpClient client)
-            : base(client, "/api.xro/2.0/Invoices")
+        private readonly string _endpointBase;
+
+        public InvoicesEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
         {
+        }
+
+        public InvoicesEndpoint(XeroHttpClient client, string endpointBase)
+            : base(client, $"{endpointBase}/Invoices")
+        {
+            _endpointBase = endpointBase;
             AddParameter("page", 1, false);
         }
 
@@ -65,12 +73,12 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<OnlineInvoice> RetrieveOnlineInvoiceUrlAsync(Guid invoiceId)
         {
-            return (await Client.GetAsync<OnlineInvoice, OnlineInvoicesResponse>(string.Format("/api.xro/2.0/Invoices/{0}/OnlineInvoice", invoiceId)).ConfigureAwait(false)).FirstOrDefault();
+            return (await Client.GetAsync<OnlineInvoice, OnlineInvoicesResponse>($"{_endpointBase}/Invoices/{invoiceId}/OnlineInvoice").ConfigureAwait(false)).FirstOrDefault();
         }
 
         public async Task EmailInvoiceAsync(Guid id)
         {
-            var response =  await Client.PostAsync($"/api.xro/2.0/invoices/{id}/emails", new byte[]{}).ConfigureAwait(false);
+            var response =  await Client.PostAsync($"{_endpointBase}/invoices/{id}/emails", new byte[]{}).ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.NoContent)
             {

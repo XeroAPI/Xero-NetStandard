@@ -17,16 +17,22 @@ namespace Xero.Api.Core.Endpoints
 
     public class InboxEndpoint : XeroUpdateEndpoint<InboxEndpoint,Model.Folder,FolderRequest,FolderResponse>, IInboxEndpoint
     {
+        private readonly string _endpointBase;
 
-        internal InboxEndpoint(XeroHttpClient client)
-            : base(client, "files.xro/1.0/Inbox")
+        public InboxEndpoint(XeroHttpClient client)
+            : this(client, "files.xro/1.0")
         {
-            
+        }
+
+        public InboxEndpoint(XeroHttpClient client, string endpointBase)
+            : base(client, $"{endpointBase}/Inbox")
+        {
+            _endpointBase = endpointBase;
         }
 
         public async Task<Folder> FindInboxFolderAsync()
         {
-            var endpoint = "files.xro/1.0/Inbox";
+            var endpoint = $"{_endpointBase}/Inbox";
 
             var response = await Client.GetAsync(endpoint, null).ConfigureAwait(false);
 

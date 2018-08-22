@@ -9,16 +9,24 @@ namespace Xero.Api.Core.Endpoints
 {
     public class PdfEndpoint
     {
+        private readonly string _endpointBase;
         private XeroHttpClient Client { get; set; }
 
         public PdfEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
         {
+            Client = client;
+        }
+
+        public PdfEndpoint(XeroHttpClient client, string endpointBase)
+        {
+            _endpointBase = endpointBase;
             Client = client;
         }
 
         public async Task<BinaryFile> GetAsync(PdfEndpointType type, Guid parent)
         {
-            var response = await Client.GetRawAsync(string.Format("/api.xro/2.0/{0}/{1}", type, parent.ToString("D")), "application/pdf").ConfigureAwait(false);
+            var response = await Client.GetRawAsync($"{_endpointBase}/{type}/{parent:D}", "application/pdf").ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {

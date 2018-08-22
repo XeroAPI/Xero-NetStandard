@@ -22,15 +22,23 @@ namespace Xero.Api.Core.Endpoints
     public class LinkedTransactionsEndpoint
         : XeroUpdateEndpoint<LinkedTransactionsEndpoint, LinkedTransaction, LinkedTransactionsRequest, LinkedTransactionsResponse>, ILinkedTransactionsEndpoint
     {
-        internal LinkedTransactionsEndpoint(XeroHttpClient client) 
-            : base(client, "/api.xro/2.0/LinkedTransactions")
+        private readonly string _endpointBase;
+
+        public LinkedTransactionsEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
         {
+        }
+
+        public LinkedTransactionsEndpoint(XeroHttpClient client, string endpointBase) 
+            : base(client, $"{endpointBase}/LinkedTransactions")
+        {
+            _endpointBase = endpointBase;
             AddParameter("page", 1, false);
         }
 
         public async Task DeleteAsync(LinkedTransaction linkedTransaction)
         {
-            var endpoint = string.Format("/api.xro/2.0/LinkedTransactions/{0}", linkedTransaction.Id);
+            var endpoint = $"{_endpointBase}/LinkedTransactions/{linkedTransaction.Id}";
 
             var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 

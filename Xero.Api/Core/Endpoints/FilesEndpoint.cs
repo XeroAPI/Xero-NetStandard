@@ -23,10 +23,17 @@ namespace Xero.Api.Core.Endpoints
     
     public class FilesEndpoint : XeroUpdateEndpoint<FilesEndpoint, Model.File, FilesRequest, FilesResponse>, IFilesEndpoint, IPageableEndpoint<IFilesEndpoint>
     {
+        private readonly string _endpointBase;
 
-        internal FilesEndpoint(XeroHttpClient client)
-            : base(client, "files.xro/1.0/Files")
+        public FilesEndpoint(XeroHttpClient client)
+            : this(client, "/files.xro/1.0")
         {
+        }
+
+        public FilesEndpoint(XeroHttpClient client, string endpointBase)
+            : base(client, $"{endpointBase}/Files")
+        {
+            _endpointBase = endpointBase;
             AddParameter("page", 1, false);
         }
 
@@ -37,7 +44,7 @@ namespace Xero.Api.Core.Endpoints
 
         public override async Task<IEnumerable<Model.File>> FindAsync()
         {
-            var response = await Client.GetAsync("files.xro/1.0/Files", QueryString).ConfigureAwait(false);
+            var response = await Client.GetAsync($"{_endpointBase}/Files", QueryString).ConfigureAwait(false);
 
             var result = await HandleFilesResponseAsync(response).ConfigureAwait(false);
 
@@ -46,7 +53,7 @@ namespace Xero.Api.Core.Endpoints
 
         public override async Task<Model.File> FindAsync(Guid fileId)
         {
-            var response = await Client.GetAsync("files.xro/1.0/Files", "").ConfigureAwait(false);
+            var response = await Client.GetAsync($"{_endpointBase}/Files", "").ConfigureAwait(false);
             var result = await HandleFilesResponseAsync(response).ConfigureAwait(false);
 
             return result.Items.SingleOrDefault(i => i.Id == fileId);
@@ -59,7 +66,7 @@ namespace Xero.Api.Core.Endpoints
                 Name = name
             };
 
-            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true).ConfigureAwait(false);
+            var response = await Client.PutAsync($"{_endpointBase}/Files/{id}", file, true).ConfigureAwait(false);
             return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
@@ -70,25 +77,25 @@ namespace Xero.Api.Core.Endpoints
                 FolderId = newFolder
             };
 
-            var response = await Client.PutAsync("files.xro/1.0/Files/" + id, file, true).ConfigureAwait(false);
+            var response = await Client.PutAsync($"{_endpointBase}/Files/{id}", file, true).ConfigureAwait(false);
             return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<Model.File> AddAsync(Guid folderId, Model.File file, byte[] data)
         {
-            var response = await Client.PostMultipartFormAsync("files.xro/1.0/Files/" + folderId, file.Mimetype, file.Name, file.FileName, data).ConfigureAwait(false);
+            var response = await Client.PostMultipartFormAsync($"{_endpointBase}/Files/{folderId}", file.Mimetype, file.Name, file.FileName, data).ConfigureAwait(false);
             return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<Model.File> RemoveAsync(Guid fileid)
         {
-            var response = await Client.DeleteAsync("files.xro/1.0/Files/" + fileid).ConfigureAwait(false);
+            var response = await Client.DeleteAsync($"{_endpointBase}/Files/{fileid}").ConfigureAwait(false);
             return await HandleFileResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<byte[]> GetContentAsync(Guid id, string contentType)
         {
-            var response = await Client.GetRawAsync("files.xro/1.0/Files/" + id + "/Content", contentType).ConfigureAwait(false);
+            var response = await Client.GetRawAsync($"{_endpointBase}/Files/{id}/Content", contentType).ConfigureAwait(false);
 
             return await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
         }

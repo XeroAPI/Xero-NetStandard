@@ -16,29 +16,29 @@ namespace Xero.Api.Core.Endpoints
     public class SetupEndpoint : ISetupEndpoint
     {
         private readonly XeroHttpClient _client;
-        private readonly string _apiEndpointUrl;
+        private readonly string _endpointBase;
 
         public SetupEndpoint(XeroHttpClient client) :
-            this(client, "/api.xro/2.0/Setup")
+            this(client, "/api.xro/2.0")
         {
         }
 
-        protected SetupEndpoint(XeroHttpClient client, string apiEndpointUrl)
+        public SetupEndpoint(XeroHttpClient client, string endpointBase)
         {
             _client = client;
-            _apiEndpointUrl = apiEndpointUrl;
+            _endpointBase = endpointBase;
         }
 
         public async Task<ImportSummary> UpdateAsync(Setup setup)
         {
-            var response = await _client.PostAsync(_apiEndpointUrl, setup).ConfigureAwait(false);
+            var response = await _client.PostAsync($"{_endpointBase}/Setup", setup).ConfigureAwait(false);
 
             return await HandleResponseAsync(response).ConfigureAwait(false);
         }
 
         public async Task<ImportSummary> CreateAsync(Setup setup)
         {
-            var response = await _client.PutAsync(_apiEndpointUrl, setup).ConfigureAwait(false);
+            var response = await _client.PutAsync($"{_endpointBase}/Setup", setup).ConfigureAwait(false);
 
             return await HandleResponseAsync(response).ConfigureAwait(false);
         }

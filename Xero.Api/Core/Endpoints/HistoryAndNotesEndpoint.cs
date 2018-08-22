@@ -18,23 +18,30 @@ namespace Xero.Api.Core.Endpoints
 
     public class HistoryAndNotesEndpoint : IHistoryAndNotesEndpoint
     {
+        private readonly string _endpointBase;
         private XeroHttpClient Client { get; set; }
 
         public HistoryAndNotesEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
         {
+        }
+
+        public HistoryAndNotesEndpoint(XeroHttpClient client, string endpointBase)
+        {
+            _endpointBase = endpointBase;
             Client = client;
         }
 
         public Task<IEnumerable<HistoryRecord>> FindAsync(HistoryAndNotesEndpointRetrieveType type, Guid parent)
         {
-            return Client.GetAsync<HistoryRecord, HistoryRecordsResponse>($"api.xro/2.0/{type}/{parent:D}/history");
+            return Client.GetAsync<HistoryRecord, HistoryRecordsResponse>($"{_endpointBase}/{type}/{parent:D}/history");
         }
 
         public async Task<HistoryRecord> CreateNoteAsync(HistoryAndNotesEndpointCreateType type, Guid parent, HistoryRecord note)
         {
             var request = new HistoryRecordsRequest{note};
 
-            var historyRecords = await Client.PutAsync<HistoryRecord, HistoryRecordsResponse>($"api.xro/2.0/{type}/{parent:D}/history", request).ConfigureAwait(false);
+            var historyRecords = await Client.PutAsync<HistoryRecord, HistoryRecordsResponse>($"{_endpointBase}/{type}/{parent:D}/history", request).ConfigureAwait(false);
             return historyRecords.FirstOrDefault();
         }
     }

@@ -20,7 +20,12 @@ namespace Xero.Api.Core.Endpoints
     public class PurchaseOrdersEndpoint : XeroUpdateEndpoint<PurchaseOrdersEndpoint, PurchaseOrder, PurchaseOrdersRequest, PurchaseOrdersResponse>, IPurchaseOrdersEndpoint
     {
         public PurchaseOrdersEndpoint(XeroHttpClient client) :
-            base(client, "/api.xro/2.0/PurchaseOrders")
+            this(client, "/api.xro/2.0")
+        {
+        }
+
+        public PurchaseOrdersEndpoint(XeroHttpClient client, string endpointBase) :
+            base(client, $"{endpointBase}/PurchaseOrders")
         {
             AddParameter("page", 1, false);
         }

@@ -14,21 +14,28 @@ namespace Xero.Api.Core.Endpoints
 {
     public class AttachmentsEndpoint
     {
+        private readonly string _endpointBase;
         private XeroHttpClient Client { get; set; }
 
         public AttachmentsEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
         {
+        }
+
+        public AttachmentsEndpoint(XeroHttpClient client, string endpointBase)
+        {
+            _endpointBase = endpointBase;
             Client = client;
         }
 
         public Task<IEnumerable<Attachment>> ListAsync(AttachmentEndpointType type, Guid parent)
         {
-            return Client.GetAsync<Attachment, AttachmentsResponse>(string.Format("/api.xro/2.0/{0}/{1}/Attachments", type, parent.ToString("D")));
+            return Client.GetAsync<Attachment, AttachmentsResponse>($"{_endpointBase}/{type}/{parent:D}/Attachments");
         }
 
         public async Task<Attachment> GetAsync(AttachmentEndpointType type, Guid parent, string fileName)
         {
-            var response = await Client.GetAsync(string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), fileName)).ConfigureAwait(false);
+            var response = await Client.GetAsync($"{_endpointBase}/{type}/{parent:D}/Attachments/{fileName}").ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -45,7 +52,7 @@ namespace Xero.Api.Core.Endpoints
         {
             var mimeType = MimeTypes.GetMimeType(attachment.FileName);
 
-            var url = string.Format("/api.xro/2.0/{0}/{1}/Attachments/{2}", type, parent.ToString("D"), attachment.FileName);
+            var url = $"{_endpointBase}/{type}/{parent:D}/Attachments/{attachment.FileName}";
 
             var parameters = new NameValueCollection();
 

@@ -23,9 +23,17 @@ namespace Xero.Api.Core.Endpoints
     public class ContactsEndpoint
         : XeroUpdateEndpoint<ContactsEndpoint, Contact, ContactsRequest, ContactsResponse>, IContactsEndpoint
     {
-        internal ContactsEndpoint(XeroHttpClient client)
-            : base(client, "/api.xro/2.0/Contacts")
+        private readonly string _endpointBase;
+
+        public ContactsEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
         {
+        }
+
+        public ContactsEndpoint(XeroHttpClient client, string endpointBase)
+            : base(client, $"{endpointBase}/Contacts")
+        {
+            _endpointBase = endpointBase;
             AddParameter("page", 1, false);
         }
 
@@ -41,7 +49,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<ContactCisSetting> GetCisSettingsAsync(Guid id)
         {
-            var contactCisSettings = await Client.GetAsync<ContactCisSetting, ContactCisSettingsResponse>($"/api.xro/2.0/contacts/{id}/cissettings").ConfigureAwait(false);
+            var contactCisSettings = await Client.GetAsync<ContactCisSetting, ContactCisSettingsResponse>($"{_endpointBase}/contacts/{id}/cissettings").ConfigureAwait(false);
 
             return contactCisSettings.FirstOrDefault();
         }
