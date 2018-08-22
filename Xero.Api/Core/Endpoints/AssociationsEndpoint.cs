@@ -23,16 +23,23 @@ namespace Xero.Api.Core.Endpoints
 
     public class AssociationsEndpoint : IAssociationsEndpoint
     {
+        private readonly string _endpointBase;
         public XeroHttpClient Client { get; private set; }
 
-        internal AssociationsEndpoint(XeroHttpClient client)
+        public AssociationsEndpoint(XeroHttpClient client)
+            : this(client, "/files.xro/1.0")
         {
+        }
+
+        public AssociationsEndpoint(XeroHttpClient client, string endpointBase)
+        {
+            _endpointBase = endpointBase;
             Client = client;
         }
 
         public async Task<Association> FindAsync(Guid fileId, Guid objectId)
         {
-            var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations/{1}", fileId, objectId);
+            var endpoint = $"{_endpointBase}/Files/{fileId}/Associations/{objectId}";
 
             var response = await Client.GetAsync(endpoint, null).ConfigureAwait(false);
 
@@ -41,7 +48,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<IEnumerable<Association>> FindAsync(Guid fileId)
         {
-            var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations", fileId);
+            var endpoint = $"{_endpointBase}/Files/{fileId}/Associations";
             var response = await Client.GetAsync(endpoint, null).ConfigureAwait(false);
 
             return await HandleAssociationsResponseAsync(response).ConfigureAwait(false);
@@ -49,7 +56,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<IEnumerable<Association>> FindForObjectAsync(Guid objectId)
         {
-            var endpoint = string.Format("files.xro/1.0/Associations/{0}", objectId);
+            var endpoint = $"{_endpointBase}/Associations/{objectId}";
             var response = await Client.GetAsync(endpoint, null).ConfigureAwait(false);
 
             return await HandleAssociationsResponseAsync(response).ConfigureAwait(false);
@@ -57,7 +64,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<Association> CreateAsync(Association association)
         {
-            var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations", association.FileId);
+            var endpoint = $"{_endpointBase}/Files/{association.FileId}/Associations";
             var response = await Client.PostAsync(endpoint, association, true).ConfigureAwait(false);
 
             return await HandleAssociationResponseAsync(response).ConfigureAwait(false);
@@ -65,7 +72,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task DeleteAsync(Association association)
         {
-            var endpoint = string.Format("files.xro/1.0/Files/{0}/Associations/{1}", association.FileId, association.ObjectId);
+            var endpoint = $"{_endpointBase}/Files/{association.FileId}/Associations/{association.ObjectId}";
             var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
             await HandleAssociationResponseAsync(response).ConfigureAwait(false);

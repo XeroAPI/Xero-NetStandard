@@ -15,14 +15,22 @@ namespace Xero.Api.Core.Endpoints
 
     public class OrganisationEndpoint : XeroReadEndpoint<OrganisationEndpoint, Organisation, OrganisationResponse>, IOrganisationEndpoint
     {
-        internal OrganisationEndpoint(XeroHttpClient client)
-            : base(client, "/api.xro/2.0/Organisation")
+        private readonly string _endpointBase;
+
+        public OrganisationEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
         {
+        }
+
+        public OrganisationEndpoint(XeroHttpClient client, string endpointBase)
+            : base(client, $"{endpointBase}/Organisation")
+        {
+            _endpointBase = endpointBase;
         }
 
         public async Task<OrganisationCisSetting> GetCisSettingsAsync(Guid id)
         {
-            var organisationCisSettings = await Client.GetAsync<OrganisationCisSetting, OrganisationCisSettingsResponse>($"/api.xro/2.0/organisations/{id}/cissettings").ConfigureAwait(false);
+            var organisationCisSettings = await Client.GetAsync<OrganisationCisSetting, OrganisationCisSettingsResponse>($"{_endpointBase}/organisations/{id}/cissettings").ConfigureAwait(false);
 
             return organisationCisSettings.FirstOrDefault();
         }

@@ -22,15 +22,22 @@ namespace Xero.Api.Core.Endpoints
 
     public class FoldersEndpoint : XeroUpdateEndpoint<FoldersEndpoint, Folder, FolderRequest, FolderResponse>, IFoldersEndpoint
     {
-        internal FoldersEndpoint(XeroHttpClient client)
-            : base(client, "files.xro/1.0/Folders")
-        {
+        private readonly string _endpointBase;
 
+        public FoldersEndpoint(XeroHttpClient client)
+            : this(client, "/files.xro/1.0")
+        {
+        }
+
+        public FoldersEndpoint(XeroHttpClient client, string endpointBase)
+            : base(client, $"{endpointBase}/Folders")
+        {
+            _endpointBase = endpointBase;
         }
 
         public async Task<FilePageResponse> AddAsync(string folderName)
         {
-            var endpoint = "files.xro/1.0/Folders";
+            var endpoint = $"{_endpointBase}/Folders";
 
             var response = await Client.PostAsync(endpoint, new Folder { Name = folderName }, true).ConfigureAwait(false);
 
@@ -39,7 +46,7 @@ namespace Xero.Api.Core.Endpoints
 
         public new async Task<IEnumerable<Folder>> FindAsync()
         {
-            var response = await Client.GetAsync("files.xro/1.0/Folders", "").ConfigureAwait(false);
+            var response = await Client.GetAsync($"{_endpointBase}/Folders", "").ConfigureAwait(false);
             var result = await HandleFoldersResponseAsync(response).ConfigureAwait(false);
 
 
@@ -51,7 +58,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task RemoveAsync(Guid id)
         {
-            var response = await Client.DeleteAsync("files.xro/1.0/Folders/" + id).ConfigureAwait(false);
+            var response = await Client.DeleteAsync($"{_endpointBase}/Folders/{id}").ConfigureAwait(false);
             await HandleFolderResponseAsync(response).ConfigureAwait(false);
         }
 
@@ -62,7 +69,7 @@ namespace Xero.Api.Core.Endpoints
                 Name = name
             };
 
-            var response = await Client.PutAsync("files.xro/1.0/Folders/" + id, folder, true).ConfigureAwait(false);
+            var response = await Client.PutAsync($"{_endpointBase}/Folders/{id}", folder, true).ConfigureAwait(false);
             var result = await HandleFoldersResponseAsync(response).ConfigureAwait(false);
             return result?[0];
         }

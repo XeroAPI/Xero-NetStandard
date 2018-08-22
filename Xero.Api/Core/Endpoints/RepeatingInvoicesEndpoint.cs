@@ -13,7 +13,12 @@ namespace Xero.Api.Core.Endpoints
         : XeroReadEndpoint<RepeatingInvoicesEndpoint, RepeatingInvoice, RepeatingInvoicesResponse>, IRepeatingInvoicesEndpoint
     {
         public RepeatingInvoicesEndpoint(XeroHttpClient client) :
-            base(client, "/api.xro/2.0/RepeatingInvoices")
+            this(client, "/api.xro/2.0")
+        {
+        }
+
+        public RepeatingInvoicesEndpoint(XeroHttpClient client, string endpointBase) :
+            base(client, $"{endpointBase}/RepeatingInvoices")
         {
             Apply4Dp(true, false);
         }

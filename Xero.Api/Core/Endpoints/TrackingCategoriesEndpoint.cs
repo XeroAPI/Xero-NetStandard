@@ -22,9 +22,17 @@ namespace Xero.Api.Core.Endpoints
 
     public class TrackingCategoriesEndpoint : XeroUpdateEndpoint<TrackingCategoriesEndpoint, TrackingCategory, TrackingCategoriesRequest, TrackingCategoriesResponse>, ITrackingCategoriesEndpoint
     {
+        private readonly string _endpointBase;
+
         public TrackingCategoriesEndpoint(XeroHttpClient client) :
-            base(client, "/api.xro/2.0/TrackingCategories")
+            this(client, "/api.xro/2.0")
         {
+        }
+
+        public TrackingCategoriesEndpoint(XeroHttpClient client, string endpointBase) :
+            base(client, $"{endpointBase}/TrackingCategories")
+        {
+            _endpointBase = endpointBase;
         }
 
         public TrackingCategoriesEndpoint IncludeArchived(bool include)
@@ -39,7 +47,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task DeleteAsync(TrackingCategory trackingCategory)
         {
-            var endpoint = string.Format("/api.xro/2.0/trackingcategories/{0}/", trackingCategory.Id);
+            var endpoint = $"{_endpointBase}/trackingcategories/{trackingCategory.Id}/";
 
             var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
@@ -48,7 +56,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<List<Option>> AddOptionsAsync(TrackingCategory trackingCategory, List<Option> options)
         {
-            var endpoint = string.Format("/api.xro/2.0/trackingcategories/{0}/options", trackingCategory.Id);
+            var endpoint = $"{_endpointBase}/trackingcategories/{trackingCategory.Id}/options";
 
             var response = await Client.PutAsync(endpoint, options).ConfigureAwait(false);
 
@@ -59,7 +67,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<List<Option>> UpdateOptionAsync(TrackingCategory trackingCategory, Option option)
         {
-            var endpoint = string.Format("/api.xro/2.0/trackingcategories/{0}/options/{1}", trackingCategory.Id, option.Id);
+            var endpoint = $"{_endpointBase}/trackingcategories/{trackingCategory.Id}/options/{option.Id}";
 
             var response = await Client.PostAsync(endpoint, new List<Option> {option}).ConfigureAwait(false);
 
@@ -70,7 +78,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task<Option> DeleteTrackingOptionAsync(TrackingCategory trackingCategory, Option option)
         {
-            var endpoint = string.Format("/api.xro/2.0/TrackingCategories/{0}/Options/{1}", trackingCategory.Id, option.Id);
+            var endpoint = $"{_endpointBase}/TrackingCategories/{trackingCategory.Id}/Options/{option.Id}";
 
             var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 

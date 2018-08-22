@@ -12,29 +12,36 @@ namespace Xero.Api.Core.Endpoints
     public class AllocationsEndpoint
     {
         private readonly XeroHttpClient _client;
-        
+        private readonly string _endpointBase;
+
         public AllocationsEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
+        {
+        }
+
+        public AllocationsEndpoint(XeroHttpClient client, string endpointBase)
         {
             _client = client;
+            _endpointBase = endpointBase;
         }
 
         public async Task<CreditNoteAllocation> AddAsync(CreditNoteAllocation allocation)
         {
-            var endpoint = string.Format("/api.xro/2.0/CreditNotes/{0}/Allocations", allocation.CreditNote.Id);
+            var endpoint = $"{_endpointBase}/CreditNotes/{allocation.CreditNote.Id}/Allocations";
 
             return await AddAsync(allocation, endpoint).ConfigureAwait(false) as CreditNoteAllocation;
         }
 
         public async Task<PrepaymentAllocation> AddAsync(PrepaymentAllocation allocation)
         {
-            var endpoint = string.Format("/api.xro/2.0/Prepayments/{0}/Allocations", allocation.Prepayment.Id);
+            var endpoint = $"{_endpointBase}/Prepayments/{allocation.Prepayment.Id}/Allocations";
 
             return await AddAsync(allocation, endpoint).ConfigureAwait(false) as PrepaymentAllocation;
         }
 
         public async Task<OverpaymentAllocation> AddAsync(OverpaymentAllocation allocation)
         {
-            var endpoint = string.Format("/api.xro/2.0/Overpayments/{0}/Allocations", allocation.Overpayment.Id);
+            var endpoint = $"{_endpointBase}/Overpayments/{allocation.Overpayment.Id}/Allocations";
 
             return await AddAsync(allocation, endpoint).ConfigureAwait(false) as OverpaymentAllocation;
         }

@@ -22,13 +22,21 @@ namespace Xero.Api.Core.Endpoints
     public class ContactGroupsEndpoint : XeroUpdateEndpoint<ContactGroupsEndpoint,ContactGroup,ContactGroupsRequest,ContactGroupsResponse>,
         IContactGroupsEndpoint
     {
+        private readonly string _endpointBase;
 
-        public ContactGroupsEndpoint(XeroHttpClient client) : base(client,"/api.xro/2.0/ContactGroups")
-        {}
+        public ContactGroupsEndpoint(XeroHttpClient client)
+            : this(client, "/api.xro/2.0")
+        { }
+
+        public ContactGroupsEndpoint(XeroHttpClient client, string endpointBase) 
+            : base(client,$"{endpointBase}/ContactGroups")
+        {
+            _endpointBase = endpointBase;
+        }
 
         public async Task ClearContactsAsync(ContactGroup contactGroup)
         {
-            var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts", contactGroup.Id);
+            var endpoint = $"{_endpointBase}/ContactGroups/{contactGroup.Id}/Contacts";
 
             var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
@@ -42,7 +50,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task AddContactsAsync(ContactGroup contactGroup, List<Contact> contacts)
         {
-            var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts", contactGroup.Id);
+            var endpoint = $"{_endpointBase}/ContactGroups/{contactGroup.Id}/Contacts";
 
             var response = await Client.PutAsync(endpoint, contacts).ConfigureAwait(false);
 
@@ -51,7 +59,7 @@ namespace Xero.Api.Core.Endpoints
 
         public async Task RemoveContactAsync(ContactGroup contactGroup, Contact contact)
         {
-            var endpoint = string.Format("/api.xro/2.0/ContactGroups/{0}/Contacts/{1}", contactGroup.Id, contact.Id);
+            var endpoint = $"{_endpointBase}/ContactGroups/{contactGroup.Id}/Contacts/{contact.Id}";
 
             var response = await Client.DeleteAsync(endpoint).ConfigureAwait(false);
 
