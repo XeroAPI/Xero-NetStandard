@@ -14,8 +14,6 @@
 
         string SigningCertificatePassword { get; }
 
-        string AppType { get; }
-
-        bool IsPartnerApp { get; }
+        XeroApiAppType AppType { get; }
     }
 }

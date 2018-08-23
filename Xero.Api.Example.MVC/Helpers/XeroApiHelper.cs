@@ -35,18 +35,18 @@ namespace Xero.Api.Example.MVC.Helpers
             var requestTokenStore = new MemoryTokenStore();
 
             // Set the application settings with an authenticator relevant to your app type 
-            switch (applicationSettings.AppType.ToLower())
+            switch (applicationSettings.AppType)
             {
-                case "public":
+                case XeroApiAppType.Public:
                     _authenticator = new PublicMvcAuthenticator(requestTokenStore, accessTokenStore);
                     break;
-                case "partner":
+                case XeroApiAppType.Partner:
                     _authenticator = new PartnerMvcAuthenticator(requestTokenStore, accessTokenStore);
                     break;
-                case "private":
-                    throw new ApplicationException("MVC cannot be used with private applications");
-                case "default":
-                    throw new ApplicationException("AppType did not match one of: public, partner");
+                case XeroApiAppType.Private:
+                    throw new ApplicationException("MVC cannot be used with private applications.");
+                default:
+                    throw new ApplicationException("Unknown app type.");
             }
 
             return _authenticator;
