@@ -8,6 +8,7 @@ using Xero.Api.Common;
 using Xero.Api.Core.Model;
 using Xero.Api.Core.Model.Types;
 using Xero.Api.Core.Response;
+using Xero.Api.Infrastructure.Exceptions;
 using Xero.Api.Infrastructure.Http;
 
 namespace Xero.Api.Core.Endpoints
@@ -44,6 +45,32 @@ namespace Xero.Api.Core.Endpoints
                 return new Attachment(stream, fileName, response.Content.Headers.ContentType.ToString(), (int)stream.Length);
             }
 
+            await Client.HandleErrorsAsync(response).ConfigureAwait(false);
+            return null;
+        }
+
+        public async Task<Attachment> GetAsync(AttachmentEndpointType type, Guid parent, Guid attachmentId)
+        {
+            IEnumerable<Attachment> attachmentList = await Client.GetAsync<Attachment, AttachmentsResponse>($"{_endpointBase}/{type}/{parent:D}/Attachments").ConfigureAwait(false);
+
+            if (attachmentList.Count() == 0 || attachmentList.FirstOrDefault(a => a.Id == attachmentId) == null)
+            {
+                throw new NotFoundException();
+            }
+            string fileName = attachmentList.First(a => a.Id == attachmentId).FileName;
+            var response = await Client.GetAsync($"{_endpointBase}/{type}/{parent:D}/Attachments/{attachmentId.ToString()}").ConfigureAwait(false);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+
+                Attachment attachment = new Attachment(stream, fileName, response.Content.Headers.ContentType.ToString(), (int)stream.Length)
+                {
+                    Id = attachmentId
+                };
+
+                return attachment;
+            }
             await Client.HandleErrorsAsync(response).ConfigureAwait(false);
             return null;
         }
