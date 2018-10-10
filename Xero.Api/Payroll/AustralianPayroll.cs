@@ -17,6 +17,12 @@ namespace Xero.Api.Payroll
             Connect();
         }
 
+        public AustralianPayroll(IAuthenticator auth, IXeroApiSettings applicationSettings, IUser user = null, IRateLimiter rateLimiter = null)
+            : base(auth, applicationSettings, user, rateLimiter)
+        {
+            Connect();
+        }
+
         public AustralianPayroll(string baseUrl, IAuthenticator auth, IUser user = null, IConsumer consumer = null, IRateLimiter rateLimiter = null)
             : base(baseUrl, auth, user, consumer, rateLimiter)
         {
