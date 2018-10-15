@@ -92,7 +92,7 @@ There are different ways to install this library:
 * You will need an instance of the API per organisation/connection. The connection is stored as part of the API instance.
 * Query parameters are cleared after each operation on an endpoint. If you use Invoices.Where("Type == \"ACCREC\"").Find() when querying invoices for example, the next Invoices.Find() will not retain the where clause query parameter.
 * Requests from this SDK to Xero's API are asynchronous. Asynchronous methods have been named appropriately.
-* The Endpoints are immutable. Changing query paramaters will return a new endpoint object with the changes applied only to it. This allows you to make concurrent requests to the same endpoint (or different endpoints) on Xero's API with varying query parameters.
+* The Endpoints are immutable. Changing query parameters will return a new endpoint object with the changes applied only to it. This allows you to make concurrent requests to the same endpoint (or different endpoints) on Xero's API with varying query parameters.
 
 ## Samples
 There are samples for each of the API endpoints which can be found in the collections of NUnit tests for the different API types. The test projects contain lots of useful examples of how to use this library to interact with the Xero API. There is also an example console application and example MVC application. Look at the specific readmes for the test/example projects for how to get each up and running.
