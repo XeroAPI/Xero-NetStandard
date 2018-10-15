@@ -89,5 +89,11 @@ namespace Xero.Api.Core.Model
 
         [DataMember(EmitDefaultValue = false)]
         public List<ExternalLink> ExternalLinks { get; set; }
+
+        [DataMember]
+        public OrganisationClass Class { get; set; }
+
+        [DataMember]
+        public OrganisationEdition Edition { get; set; }
     }
 }
