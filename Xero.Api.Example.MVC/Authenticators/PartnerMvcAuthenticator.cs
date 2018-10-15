@@ -19,7 +19,7 @@ namespace Xero.Api.Example.MVC.Authenticators
         public PartnerMvcAuthenticator(ITokenStoreAsync requestTokenStore, ITokenStoreAsync accessTokenStore, IXeroApiSettings xeroApiSettings)
             : base(accessTokenStore, xeroApiSettings)
         {
-            _consumer = new Consumer(ApplicationSettings.ConsumerKey, ApplicationSettings.ConsumerSecret);
+            _consumer = new Consumer(xeroApiSettings.ConsumerKey, xeroApiSettings.ConsumerSecret);
             _requestTokenStore = requestTokenStore;
         }
 

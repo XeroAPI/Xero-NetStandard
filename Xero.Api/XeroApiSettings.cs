@@ -5,34 +5,44 @@ namespace Xero.Api
 {
     public class XeroApiSettings : IXeroApiSettings
     {
-        public IConfigurationSection ApiSettings { get; set; }
-
         public XeroApiSettings(string path)
         {
             var builder = new ConfigurationBuilder()
                 .AddJsonFile(path)
                 .Build();
 
-            ApiSettings = builder.GetSection("XeroApi");
+            var apiSettings = builder.GetSection("XeroApi");
+
+            BaseUrl = apiSettings["BaseUrl"];
+            CallbackUrl = apiSettings["CallbackUrl"];
+            ConsumerKey = apiSettings["ConsumerKey"];
+            ConsumerSecret = apiSettings["ConsumerSecret"];
+            SigningCertificatePath = apiSettings["SigningCertPath"];
+            SigningCertificatePassword = apiSettings["SigningCertPassword"];
+
+            if (!Enum.TryParse(apiSettings["AppType"], true, out XeroApiAppType appType))
+            {
+                throw new ArgumentOutOfRangeException(nameof(apiSettings), apiSettings["AppType"], "AppType did not match one of: private, public, partner");
+            }
+
+            AppType = appType;
         }
         public XeroApiSettings() : this("appsettings.json")
         {
         }
 
-        public string BaseUrl => ApiSettings["BaseUrl"];
+        public string BaseUrl { get; }
 
-        public string CallbackUrl => ApiSettings["CallbackUrl"];
+        public string CallbackUrl { get; }
 
-        public string ConsumerKey => ApiSettings["ConsumerKey"];
+        public string ConsumerKey { get; }
 
-        public string ConsumerSecret => ApiSettings["ConsumerSecret"];
+        public string ConsumerSecret { get; }
 
-        public string SigningCertificatePath => ApiSettings["SigningCertPath"];
+        public string SigningCertificatePath { get; }
 
-        public string SigningCertificatePassword => ApiSettings["SigningCertPassword"];
+        public string SigningCertificatePassword { get; }
 
-        public string AppType => ApiSettings["AppType"];
-
-        public bool IsPartnerApp => AppType?.Equals("partner", StringComparison.OrdinalIgnoreCase) ?? false;
+        public XeroApiAppType AppType { get; }
     }
 }

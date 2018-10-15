@@ -13,7 +13,7 @@ namespace Xero.Api.Infrastructure.Authenticators
         protected PartnerAuthenticatorBase(ITokenStoreAsync store, IXeroApiSettings applicationSettings)
             : base(store, applicationSettings)
         {
-            _signingCertificate = new X509Certificate2(ApplicationSettings.SigningCertificatePath, ApplicationSettings.SigningCertificatePassword, X509KeyStorageFlags.MachineKeySet);
+            _signingCertificate = new X509Certificate2(applicationSettings.SigningCertificatePath, applicationSettings.SigningCertificatePassword, X509KeyStorageFlags.MachineKeySet);
         }
 
         protected override string CreateSignature(IToken token, string verb, Uri uri, string verifier, bool renewToken = false, string callback = null)

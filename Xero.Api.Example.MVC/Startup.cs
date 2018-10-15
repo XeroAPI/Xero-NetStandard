@@ -12,7 +12,7 @@ namespace Xero.Api.Example.MVC
             Configuration = configuration;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             builder.AddEnvironmentVariables();
@@ -21,9 +21,8 @@ namespace Xero.Api.Example.MVC
             {
                 builder.AddUserSecrets<Startup>();
             }
-            Configuration = builder.Build();
 
-           
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -48,7 +47,6 @@ namespace Xero.Api.Example.MVC
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-           
 
             app.UseStaticFiles();
 
