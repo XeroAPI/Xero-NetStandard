@@ -82,7 +82,7 @@ namespace Xero.Api.Core.Model
         public BrandingTheme BrandingTheme { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public BatchPayments BatchPayments { get; set; }
+        public BatchPaymentContactDefaults BatchPayments { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public Balances Balances { get; set; }
