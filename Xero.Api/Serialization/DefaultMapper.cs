@@ -194,6 +194,7 @@ namespace Xero.Api.Serialization
             {
                 case "ACCURAL":
                 case "ACCURALS":
+                case "ACCRUALS":
                 {
                     return SalesTaxBasisType.Accural;
                 }

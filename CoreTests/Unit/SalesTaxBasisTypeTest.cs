@@ -33,6 +33,7 @@ namespace CoreTests.Unit
 
             Assert.True(expected == _mapper.From<SalesTaxBasisType>("ACCURAL"));
             Assert.True(expected == _mapper.From<SalesTaxBasisType>("ACCURALS"));
+            Assert.True(expected == _mapper.From<SalesTaxBasisType>("ACCRUALS"));
         }
 
         [Test]
