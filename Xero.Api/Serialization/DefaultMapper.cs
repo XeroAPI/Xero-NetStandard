@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -31,10 +32,21 @@ namespace Xero.Api.Serialization
             return item;
         }
 
+        T IJsonObjectMapper.From<T>(Stream result)
+        {
+            var item = JsonSerializer.DeserializeFromStream<T>(result);
+            return item;
+        }
+
         string IJsonObjectMapper.To<T>(T request)
         {
             var json = JsonSerializer.SerializeToString(request);
             return json;
+        }
+
+        void IJsonObjectMapper.To<T>(T request, Stream writeStream)
+        {
+            JsonSerializer.SerializeToStream(request, writeStream);
         }
 
         T IXmlObjectMapper.From<T>(string result)
