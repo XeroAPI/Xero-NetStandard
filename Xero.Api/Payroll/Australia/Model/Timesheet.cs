@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Xero.Api.Common;
 using Xero.Api.Payroll.Australia.Model.Status;
 
 namespace Xero.Api.Payroll.Australia.Model
 {
-    [DataContract(Namespace="")]
-    public class Timesheet
+    [DataContract(Namespace = "")]
+    public class Timesheet : HasUpdatedDate
     {
         [DataMember(Name = "TimesheetID", EmitDefaultValue = false)]
         public Guid Id { get; set; }
