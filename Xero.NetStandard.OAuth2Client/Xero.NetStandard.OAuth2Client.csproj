@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>XeroOAuth2Client</PackageId>
-    <Version>1.0.0</Version>
+    <PackageId>Xero.NetStandard.OAuth2Client</PackageId>
+    <Version>0.0.1-beta</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
   </PropertyGroup>
