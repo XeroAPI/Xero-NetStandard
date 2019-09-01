@@ -33,7 +33,14 @@ namespace Xero.Api
 
             if (!Enum.TryParse(apiSettings["AppType"], true, out XeroApiAppType appType))
             {
-                throw new ArgumentOutOfRangeException(nameof(apiSettings), apiSettings["AppType"], "AppType did not match one of: private, public, partner");
+                if (string.IsNullOrWhiteSpace(apiSettings["AppType"]))
+                {
+                    throw new ArgumentNullException(nameof(XeroApiAppType), $"XeroApi.AppType IsNullOrWhiteSpace, check appsettings.{environmentName}.json");
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(apiSettings), apiSettings["AppType"], "AppType did not match one of: private, public, partner");
+                }
             }
 
             AppType = appType;        
