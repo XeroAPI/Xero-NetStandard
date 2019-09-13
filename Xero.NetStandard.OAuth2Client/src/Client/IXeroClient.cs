@@ -1,13 +1,11 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Xero.NetStandard.OAuth2.Config;
+using Xero.NetStandard.OAuth2.Models;
+using Xero.NetStandard.OAuth2.Token;
 
 namespace Xero.NetStandard.OAuth2.Client
 {
-    using System.Collections.Generic;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using Xero.NetStandard.OAuth2.Config;
-    using Xero.NetStandard.OAuth2.Models;
-    using Xero.NetStandard.OAuth2.Token;
-
     public interface IXeroClient
     {
         XeroConfiguration xeroConfiguration { get; set; }

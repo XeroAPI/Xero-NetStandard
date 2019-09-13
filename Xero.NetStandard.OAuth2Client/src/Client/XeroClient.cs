@@ -1,16 +1,16 @@
+using System;
+using System.Collections.Generic;
+using Xero.NetStandard.OAuth2.Models;
+using IdentityModel.Client;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using Xero.NetStandard.OAuth2.Config;
+using Xero.NetStandard.OAuth2.Token;
+
 namespace Xero.NetStandard.OAuth2.Client
 {
-    using System;
-    using System.Collections.Generic;
-    using Xero.NetStandard.OAuth2.Models;
-    using IdentityModel.Client;
-    using System.Threading.Tasks;
-    using System.Net.Http;
-    using Newtonsoft.Json;
-    using System.Net.Http.Headers;
-    using Xero.NetStandard.OAuth2.Config;
-    using Xero.NetStandard.OAuth2.Token;
-
     public class XeroClient : IXeroClient
     {
         public XeroConfiguration xeroConfiguration { get; set; }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Xero.NetStandard.OAuth2.Models;
+
 namespace Xero.NetStandard.OAuth2.Token
 {
     public class XeroOAuth2Token : IXeroToken

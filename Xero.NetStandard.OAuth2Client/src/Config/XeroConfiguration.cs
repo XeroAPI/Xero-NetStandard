@@ -1,7 +1,7 @@
+using System;
+
 namespace Xero.NetStandard.OAuth2.Config
 {
-    using System;
-
     public class XeroConfiguration
     {
         public string AppName { get; set; }

@@ -1,4 +1,5 @@
 using System;
+
 namespace Xero.NetStandard.OAuth2.Models
 {
     public class Tenant
