@@ -155,7 +155,7 @@ The config file will look like this
 ```
 
 About the settings:
-- BaseUrl, ConsumerKey, and ConsumerSecret are rerquired by all application types.
+- BaseUrl, ConsumerKey, and ConsumerSecret are required by all application types.
 - CallbackUrl must be set to oob or your callback url when using public/partner applications
 - SigningCertPath and SigningCertPassword must be set when using private/partner applications. Note if you created your signning certificate with no password you must include a blank value for SigningCertPassword
 
