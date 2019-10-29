@@ -2,6 +2,8 @@ name: Pull Request on Branch Push
 on:
   push:
     branches-ignore:
+      - staging
+      - launchpad
       - production
 jobs:
   auto-pull-request:
@@ -12,5 +14,5 @@ jobs:
         uses: vsoch/pull-request-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_PREFIX: "openapi-"
+          BRANCH_PREFIX: "update/"
           PULL_REQUEST_BRANCH: "master"
