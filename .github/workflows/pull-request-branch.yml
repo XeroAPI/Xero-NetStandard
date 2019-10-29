@@ -1,10 +1,8 @@
 name: Pull Request on Branch Push
-on:
+on: 
   push:
-    branches-ignore:
-      - staging
-      - launchpad
-      - production
+    branches: 
+      -openapi
 jobs:
   auto-pull-request:
     name: PullRequestAction
