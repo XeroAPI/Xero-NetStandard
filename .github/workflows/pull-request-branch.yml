@@ -1,8 +1,8 @@
 name: Pull Request on Branch Push
 on:
-  create:
+  push:
     branches: 
-      - '*'
+      - '**'
 jobs:
   auto-pull-request:
     name: PullRequestAction
