@@ -1,8 +1,6 @@
 name: Pull Request on Branch Push
 on: 
-  push:
-    branches: 
-      -openapi
+  create
 jobs:
   auto-pull-request:
     name: PullRequestAction
