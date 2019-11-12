@@ -72,7 +72,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum CASHBOOKCLIENT for value: CASHBOOKCLIENT
             /// </summary>
             [EnumMember(Value = "CASHBOOKCLIENT")]
-            CASHBOOKCLIENT = 6
+            CASHBOOKCLIENT = 6,
+
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 7
 
         }
 

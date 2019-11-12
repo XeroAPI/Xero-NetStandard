@@ -116,7 +116,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum DELETED for value: DELETED
             /// </summary>
             [EnumMember(Value = "DELETED")]
-            DELETED = 2
+            DELETED = 2,
+
+            /// <summary>
+            /// Enum VOIDED for value: VOIDED
+            /// </summary>
+            [EnumMember(Value = "VOIDED")]
+            VOIDED = 3
 
         }
 

@@ -165,7 +165,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum GSTONIMPORTS for value: GSTONIMPORTS
             /// </summary>
             [EnumMember(Value = "GSTONIMPORTS")]
-            GSTONIMPORTS = 16
+            GSTONIMPORTS = 16,
+
+            /// <summary>
+            /// Enum AVALARA for value: AVALARA
+            /// </summary>
+            [EnumMember(Value = "AVALARA")]
+            AVALARA = 17
 
         }
 

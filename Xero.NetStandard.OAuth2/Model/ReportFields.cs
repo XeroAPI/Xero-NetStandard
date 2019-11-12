@@ -36,7 +36,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// Gets or Sets FieldID
         /// </summary>
         [DataMember(Name="FieldID", EmitDefaultValue=false)]
-        public string FieldID { get; set; }
+        public Guid FieldID { get; set; }
 
         /// <summary>
         /// Gets or Sets Description

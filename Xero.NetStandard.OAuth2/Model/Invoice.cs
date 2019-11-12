@@ -225,6 +225,13 @@ namespace Xero.NetStandard.OAuth2.Model
         public DateTime? PlannedPaymentDate { get; set; }
 
         /// <summary>
+        /// CIS deduction for UK contractors
+        /// </summary>
+        /// <value>CIS deduction for UK contractors</value>
+        [DataMember(Name="CISDeduction", EmitDefaultValue=false)]
+        public double? CISDeduction { get; private set; }
+
+        /// <summary>
         /// Total of invoice excluding taxes
         /// </summary>
         /// <value>Total of invoice excluding taxes</value>
@@ -389,6 +396,7 @@ namespace Xero.NetStandard.OAuth2.Model
             sb.Append("  SentToContact: ").Append(SentToContact).Append("\n");
             sb.Append("  ExpectedPaymentDate: ").Append(ExpectedPaymentDate).Append("\n");
             sb.Append("  PlannedPaymentDate: ").Append(PlannedPaymentDate).Append("\n");
+            sb.Append("  CISDeduction: ").Append(CISDeduction).Append("\n");
             sb.Append("  SubTotal: ").Append(SubTotal).Append("\n");
             sb.Append("  TotalTax: ").Append(TotalTax).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
@@ -517,6 +525,10 @@ namespace Xero.NetStandard.OAuth2.Model
                     this.PlannedPaymentDate == input.PlannedPaymentDate ||
                     (this.PlannedPaymentDate != null &&
                     this.PlannedPaymentDate.Equals(input.PlannedPaymentDate))
+                ) && 
+                (
+                    this.CISDeduction == input.CISDeduction ||
+                    this.CISDeduction.Equals(input.CISDeduction)
                 ) && 
                 (
                     this.SubTotal == input.SubTotal ||
@@ -651,6 +663,7 @@ namespace Xero.NetStandard.OAuth2.Model
                     hashCode = hashCode * 59 + this.ExpectedPaymentDate.GetHashCode();
                 if (this.PlannedPaymentDate != null)
                     hashCode = hashCode * 59 + this.PlannedPaymentDate.GetHashCode();
+                hashCode = hashCode * 59 + this.CISDeduction.GetHashCode();
                 hashCode = hashCode * 59 + this.SubTotal.GetHashCode();
                 hashCode = hashCode * 59 + this.TotalTax.GetHashCode();
                 hashCode = hashCode * 59 + this.Total.GetHashCode();
