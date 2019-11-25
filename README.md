@@ -19,7 +19,7 @@ Coming soon
 ### Installation
 Use Nuget to download the package
 ```
-dotnet add package Xero.NetStandard.OAuth2 --version 0.0.1-beta
+dotnet add package Xero.NetStandard.OAuth2 --version 0.0.2-beta
 dotnet add package Xero.NetStandard.OAuth2Client --version 0.0.1-beta
 ```
 or using the Package Manager Console inside Visual Studio
