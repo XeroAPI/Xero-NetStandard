@@ -32,7 +32,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "0.1.0";
+        public const string Version = "0.0.2";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -345,7 +345,7 @@ namespace Xero.NetStandard.OAuth2.Client
             String report = "C# SDK (Xero.NetStandard.OAuth2) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 2.0.0\n";
-            report += "    SDK Package Version: 0.1.0\n";
+            report += "    SDK Package Version: 0.0.2\n";
 
             return report;
         }

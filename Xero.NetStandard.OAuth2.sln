@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.NetStandard.OAuth2", "Xero.NetStandard.OAuth2\Xero.NetStandard.OAuth2.csproj", "{3B54D5D9-D0FC-4E2A-AFAD-9A04B378B07C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.NetStandard.OAuth2Client", "Xero.NetStandard.OAuth2Client\Xero.NetStandard.OAuth2Client.csproj", "{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B54D5D9-D0FC-4E2A-AFAD-9A04B378B07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B54D5D9-D0FC-4E2A-AFAD-9A04B378B07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B54D5D9-D0FC-4E2A-AFAD-9A04B378B07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B54D5D9-D0FC-4E2A-AFAD-9A04B378B07C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {114FB4EA-5F48-4851-B185-7C7639CA446D}
+	EndGlobalSection
+EndGlobal
