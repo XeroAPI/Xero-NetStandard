@@ -10,7 +10,7 @@ Contact: api@xero.com
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xero.NetStandard.OAuth2</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.0.2</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
