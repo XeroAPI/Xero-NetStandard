@@ -42,5 +42,10 @@ namespace Xero.Api.Core.Endpoints.Base
                 ClearQueryString();
             }
         }
+        
+        public IXeroUpdateEndpoint<T, TResult, TRequest, TResponse>  SummarizeErrors(bool summarize)
+        {
+            return (IXeroUpdateEndpoint<T, TResult, TRequest, TResponse>) AddParameter("summarizeErrors", summarize);
+        }
     }
 }

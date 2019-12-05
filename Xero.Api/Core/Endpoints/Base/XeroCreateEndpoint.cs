@@ -28,12 +28,7 @@ namespace Xero.Api.Core.Endpoints.Base
 
         public async Task<TResult> CreateAsync(TResult item)
         {
-            return (await CreateAsync(new[] { item }).ConfigureAwait(false)).First();
-        }
-
-        public T SummarizeErrors(bool summarize)
-        {
-            return AddParameter("summarizeErrors", summarize);
+            return (await CreateAsync(new[] {item}).ConfigureAwait(false)).First();
         }
 
         protected async Task<IEnumerable<TResult>> PutAsync(TRequest data)
