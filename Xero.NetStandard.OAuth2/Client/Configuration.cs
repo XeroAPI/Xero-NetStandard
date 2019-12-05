@@ -112,7 +112,7 @@ namespace Xero.NetStandard.OAuth2.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            UserAgent = "xero-netstandard-0.1.0";
+            UserAgent = "xero-netstandard-0.0.2";
             BasePath = "https://api.xero.com/api.xro/2.0";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
