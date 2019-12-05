@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xero.NetStandard.OAuth2Client</PackageId>
-    <Version>0.0.1-beta</Version>
+    <Version>0.0.1</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
   </PropertyGroup>
