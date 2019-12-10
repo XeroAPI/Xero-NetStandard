@@ -75,7 +75,7 @@ To setup the main API object see the snippet below
 //
 var AccountingApi = new AccountingApi();
 var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
-Console.WriteLine(AccountingApi.GetInvoices().ToJson();)
+Console.WriteLine(AccountingApi.GetInvoices().ToJson());
 
 ```
 
