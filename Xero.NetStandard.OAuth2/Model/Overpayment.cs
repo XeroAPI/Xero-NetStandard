@@ -162,7 +162,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier</value>
         [DataMember(Name="OverpaymentID", EmitDefaultValue=false)]
-        public Guid OverpaymentID { get; set; }
+        public Guid? OverpaymentID { get; set; }
 
         /// <summary>
         /// The currency rate for a multicurrency overpayment. If no rate is specified, the XE.com day rate is used

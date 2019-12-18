@@ -70,7 +70,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for an employee e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="EmployeeID", EmitDefaultValue=false)]
-        public Guid EmployeeID { get; set; }
+        public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// First name of an employee (max length &#x3D; 255)

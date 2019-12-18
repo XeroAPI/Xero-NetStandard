@@ -161,7 +161,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="bankTransactions"></param>
-        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to true)</param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of BankTransactions</returns>
         System.Threading.Tasks.Task<BankTransactions> CreateBankTransactionsAsync (string accessToken, string xeroTenantId, BankTransactions bankTransactions, bool? summarizeErrors = null);
 
@@ -174,7 +174,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="bankTransactions"></param>
-        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to true)</param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of ApiResponse (BankTransactions)</returns>
         System.Threading.Tasks.Task<ApiResponse<BankTransactions>> CreateBankTransactionsAsyncWithHttpInfo (string accessToken, string xeroTenantId, BankTransactions bankTransactions, bool? summarizeErrors = null);
         /// <summary>
@@ -326,7 +326,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <returns>Task of ApiResponse (PaymentServices)</returns>
         System.Threading.Tasks.Task<ApiResponse<PaymentServices>> CreateBrandingThemePaymentServicesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid brandingThemeID, PaymentService paymentService);
         /// <summary>
-        /// 
+        /// Allows you to create a single contact in a Xero organisation
         /// </summary>
         /// <remarks>
         /// 
@@ -338,7 +338,7 @@ namespace Xero.NetStandard.OAuth2.Api
         System.Threading.Tasks.Task<Contacts> CreateContactAsync (string accessToken, string xeroTenantId, Contact contact);
 
         /// <summary>
-        /// 
+        /// Allows you to create a single contact in a Xero organisation
         /// </summary>
         /// <remarks>
         /// 
@@ -449,7 +449,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <returns>Task of ApiResponse (HistoryRecords)</returns>
         System.Threading.Tasks.Task<ApiResponse<HistoryRecords>> CreateContactHistoryAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, HistoryRecords historyRecords);
         /// <summary>
-        /// 
+        /// Allows you to create a multiple contacts (bulk) in a Xero organisation
         /// </summary>
         /// <remarks>
         /// 
@@ -457,11 +457,12 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="contacts"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of Contacts</returns>
-        System.Threading.Tasks.Task<Contacts> CreateContactsAsync (string accessToken, string xeroTenantId, Contacts contacts);
+        System.Threading.Tasks.Task<Contacts> CreateContactsAsync (string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null);
 
         /// <summary>
-        /// 
+        /// Allows you to create a multiple contacts (bulk) in a Xero organisation
         /// </summary>
         /// <remarks>
         /// 
@@ -469,8 +470,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="contacts"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Contacts)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Contacts>> CreateContactsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Contacts contacts);
+        System.Threading.Tasks.Task<ApiResponse<Contacts>> CreateContactsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null);
         /// <summary>
         /// Allows you to create a credit note
         /// </summary>
@@ -580,7 +582,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNotes">an array of Credit Notes with a single CreditNote object.</param>
-        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to false)</param>
         /// <returns>Task of CreditNotes</returns>
         System.Threading.Tasks.Task<CreditNotes> CreateCreditNotesAsync (string accessToken, string xeroTenantId, CreditNotes creditNotes, bool? summarizeErrors = null);
 
@@ -593,7 +595,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNotes">an array of Credit Notes with a single CreditNote object.</param>
-        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to false)</param>
         /// <returns>Task of ApiResponse (CreditNotes)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreditNotes>> CreateCreditNotesAsyncWithHttpInfo (string accessToken, string xeroTenantId, CreditNotes creditNotes, bool? summarizeErrors = null);
         /// <summary>
@@ -797,7 +799,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoices"></param>
-        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to false)</param>
         /// <returns>Task of Invoices</returns>
         System.Threading.Tasks.Task<Invoices> CreateInvoicesAsync (string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null);
 
@@ -810,7 +812,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoices"></param>
-        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Invoices)</returns>
         System.Threading.Tasks.Task<ApiResponse<Invoices>> CreateInvoicesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null);
         /// <summary>
@@ -870,8 +872,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="items"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of Items</returns>
-        System.Threading.Tasks.Task<Items> CreateItemsAsync (string accessToken, string xeroTenantId, Items items);
+        System.Threading.Tasks.Task<Items> CreateItemsAsync (string accessToken, string xeroTenantId, Items items, bool? summarizeErrors = null);
 
         /// <summary>
         /// Allows you to create an item
@@ -882,8 +885,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="items"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Items)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Items>> CreateItemsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Items items);
+        System.Threading.Tasks.Task<ApiResponse<Items>> CreateItemsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Items items, bool? summarizeErrors = null);
         /// <summary>
         /// Allows you to create linked transactions (billable expenses)
         /// </summary>
@@ -1279,7 +1283,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrders"></param>
-        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to false)</param>
         /// <returns>Task of PurchaseOrders</returns>
         System.Threading.Tasks.Task<PurchaseOrders> CreatePurchaseOrdersAsync (string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null);
 
@@ -1292,7 +1296,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrders"></param>
-        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to false)</param>
         /// <returns>Task of ApiResponse (PurchaseOrders)</returns>
         System.Threading.Tasks.Task<ApiResponse<PurchaseOrders>> CreatePurchaseOrdersAsyncWithHttpInfo (string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null);
         /// <summary>
@@ -3748,6 +3752,68 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <returns>Task of ApiResponse (PurchaseOrders)</returns>
         System.Threading.Tasks.Task<ApiResponse<PurchaseOrders>> GetPurchaseOrdersAsyncWithHttpInfo (string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, string status = null, string dateFrom = null, string dateTo = null, string order = null, int? page = null);
         /// <summary>
+        /// Allows you to retrieve a specified quote
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="quoteID">Unique identifier for an Quote</param>
+        /// <returns>Task of Quotes</returns>
+        System.Threading.Tasks.Task<Quotes> GetQuoteAsync (string accessToken, string xeroTenantId, Guid quoteID);
+
+        /// <summary>
+        /// Allows you to retrieve a specified quote
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="quoteID">Unique identifier for an Quote</param>
+        /// <returns>Task of ApiResponse (Quotes)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Quotes>> GetQuoteAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID);
+        /// <summary>
+        /// Allows you to retrieve any sales quotes
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="ifModifiedSince">Only records created or modified since this timestamp will be returned (optional)</param>
+        /// <param name="dateFrom">Filter for quotes after a particular date (optional)</param>
+        /// <param name="dateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="expiryDateFrom">Filter for quotes expiring after a particular date (optional)</param>
+        /// <param name="expiryDateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="contactID">Filter for quotes belonging to a particular contact (optional)</param>
+        /// <param name="status">Filter for quotes of a particular Status (optional)</param>
+        /// <param name="page">e.g. page&#x3D;1 – Up to 100 Quotes will be returned in a single API call with line items shown for each quote (optional)</param>
+        /// <param name="order">Order by an any element (optional)</param>
+        /// <returns>Task of Quotes</returns>
+        System.Threading.Tasks.Task<Quotes> GetQuotesAsync (string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string status = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// Allows you to retrieve any sales quotes
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="ifModifiedSince">Only records created or modified since this timestamp will be returned (optional)</param>
+        /// <param name="dateFrom">Filter for quotes after a particular date (optional)</param>
+        /// <param name="dateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="expiryDateFrom">Filter for quotes expiring after a particular date (optional)</param>
+        /// <param name="expiryDateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="contactID">Filter for quotes belonging to a particular contact (optional)</param>
+        /// <param name="status">Filter for quotes of a particular Status (optional)</param>
+        /// <param name="page">e.g. page&#x3D;1 – Up to 100 Quotes will be returned in a single API call with line items shown for each quote (optional)</param>
+        /// <param name="order">Order by an any element (optional)</param>
+        /// <returns>Task of ApiResponse (Quotes)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Quotes>> GetQuotesAsyncWithHttpInfo (string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string status = null, int? page = null, string order = null);
+        /// <summary>
         /// Allows you to retrieve a specified draft expense claim receipts
         /// </summary>
         /// <remarks>
@@ -5284,7 +5350,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = account;
 
             // authentication (OAuth2) required
@@ -5375,7 +5441,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -5450,7 +5516,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = bankTransaction;
 
             // authentication (OAuth2) required
@@ -5541,7 +5607,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -5624,7 +5690,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransactionID != null)
                 requestOptions.PathParameters.Add("BankTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -5655,7 +5721,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="bankTransactions"></param>
-        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to true)</param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of BankTransactions</returns>
         public async System.Threading.Tasks.Task<BankTransactions> CreateBankTransactionsAsync (string accessToken, string xeroTenantId, BankTransactions bankTransactions, bool? summarizeErrors = null)
         {
@@ -5670,7 +5736,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="bankTransactions"></param>
-        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to true)</param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of ApiResponse (BankTransactions)</returns>
         public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BankTransactions>> CreateBankTransactionsAsyncWithHttpInfo (string accessToken, string xeroTenantId, BankTransactions bankTransactions, bool? summarizeErrors = null)
         {
@@ -5711,7 +5777,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = bankTransactions;
 
             // authentication (OAuth2) required
@@ -5786,7 +5852,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = bankTransfers;
 
             // authentication (OAuth2) required
@@ -5877,7 +5943,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -5960,7 +6026,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransferID != null)
                 requestOptions.PathParameters.Add("BankTransferID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransferID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -6035,7 +6101,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = batchPayments;
 
             // authentication (OAuth2) required
@@ -6118,7 +6184,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (batchPaymentID != null)
                 requestOptions.PathParameters.Add("BatchPaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(batchPaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -6201,7 +6267,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (brandingThemeID != null)
                 requestOptions.PathParameters.Add("BrandingThemeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(brandingThemeID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = paymentService;
 
             // authentication (OAuth2) required
@@ -6227,7 +6293,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
 
         /// <summary>
-        ///  
+        /// Allows you to create a single contact in a Xero organisation 
         /// </summary>
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
@@ -6241,7 +6307,7 @@ namespace Xero.NetStandard.OAuth2.Api
         }
 
         /// <summary>
-        ///  
+        /// Allows you to create a single contact in a Xero organisation 
         /// </summary>
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
@@ -6276,7 +6342,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = contact;
 
             // authentication (OAuth2) required
@@ -6367,7 +6433,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -6442,7 +6508,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = contactGroups;
 
             // authentication (OAuth2) required
@@ -6525,7 +6591,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactGroupID != null)
                 requestOptions.PathParameters.Add("ContactGroupID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactGroupID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = contacts;
 
             // authentication (OAuth2) required
@@ -6608,7 +6674,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactID != null)
                 requestOptions.PathParameters.Add("ContactID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -6634,27 +6700,29 @@ namespace Xero.NetStandard.OAuth2.Api
 
 
         /// <summary>
-        ///  
+        /// Allows you to create a multiple contacts (bulk) in a Xero organisation 
         /// </summary>
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="contacts"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of Contacts</returns>
-        public async System.Threading.Tasks.Task<Contacts> CreateContactsAsync (string accessToken, string xeroTenantId, Contacts contacts)
+        public async System.Threading.Tasks.Task<Contacts> CreateContactsAsync (string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Contacts> localVarResponse = await CreateContactsAsyncWithHttpInfo(accessToken, xeroTenantId, contacts);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<Contacts> localVarResponse = await CreateContactsAsyncWithHttpInfo(accessToken, xeroTenantId, contacts, summarizeErrors);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  
+        /// Allows you to create a multiple contacts (bulk) in a Xero organisation 
         /// </summary>
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="contacts"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Contacts)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Contacts>> CreateContactsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Contacts contacts)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Contacts>> CreateContactsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Contacts contacts, bool? summarizeErrors = null)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6682,8 +6750,18 @@ namespace Xero.NetStandard.OAuth2.Api
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
+            if (summarizeErrors != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "SummarizeErrors", summarizeErrors))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = contacts;
 
             // authentication (OAuth2) required
@@ -6758,7 +6836,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = creditNote;
 
             // authentication (OAuth2) required
@@ -6841,7 +6919,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (creditNoteID != null)
                 requestOptions.PathParameters.Add("CreditNoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(creditNoteID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = allocations;
 
             // authentication (OAuth2) required
@@ -6932,7 +7010,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -7015,7 +7093,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (creditNoteID != null)
                 requestOptions.PathParameters.Add("CreditNoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(creditNoteID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -7046,7 +7124,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNotes">an array of Credit Notes with a single CreditNote object.</param>
-        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to false)</param>
         /// <returns>Task of CreditNotes</returns>
         public async System.Threading.Tasks.Task<CreditNotes> CreateCreditNotesAsync (string accessToken, string xeroTenantId, CreditNotes creditNotes, bool? summarizeErrors = null)
         {
@@ -7061,7 +7139,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNotes">an array of Credit Notes with a single CreditNote object.</param>
-        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each credit note (optional, default to false)</param>
         /// <returns>Task of ApiResponse (CreditNotes)</returns>
         public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<CreditNotes>> CreateCreditNotesAsyncWithHttpInfo (string accessToken, string xeroTenantId, CreditNotes creditNotes, bool? summarizeErrors = null)
         {
@@ -7102,7 +7180,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = creditNotes;
 
             // authentication (OAuth2) required
@@ -7177,7 +7255,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = currency;
 
             // authentication (OAuth2) required
@@ -7252,7 +7330,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = employee;
 
             // authentication (OAuth2) required
@@ -7327,7 +7405,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = employees;
 
             // authentication (OAuth2) required
@@ -7410,7 +7488,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (expenseClaimID != null)
                 requestOptions.PathParameters.Add("ExpenseClaimID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(expenseClaimID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -7485,7 +7563,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = expenseClaims;
 
             // authentication (OAuth2) required
@@ -7560,7 +7638,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = invoice;
 
             // authentication (OAuth2) required
@@ -7651,7 +7729,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -7734,7 +7812,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -7765,7 +7843,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoices"></param>
-        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to false)</param>
         /// <returns>Task of Invoices</returns>
         public async System.Threading.Tasks.Task<Invoices> CreateInvoicesAsync (string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null)
         {
@@ -7780,7 +7858,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoices"></param>
-        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each invoice (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Invoices)</returns>
         public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Invoices>> CreateInvoicesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Invoices invoices, bool? summarizeErrors = null)
         {
@@ -7821,7 +7899,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = invoices;
 
             // authentication (OAuth2) required
@@ -7896,7 +7974,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = item;
 
             // authentication (OAuth2) required
@@ -7979,7 +8057,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (itemID != null)
                 requestOptions.PathParameters.Add("ItemID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(itemID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -8010,10 +8088,11 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="items"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of Items</returns>
-        public async System.Threading.Tasks.Task<Items> CreateItemsAsync (string accessToken, string xeroTenantId, Items items)
+        public async System.Threading.Tasks.Task<Items> CreateItemsAsync (string accessToken, string xeroTenantId, Items items, bool? summarizeErrors = null)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Items> localVarResponse = await CreateItemsAsyncWithHttpInfo(accessToken, xeroTenantId, items);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<Items> localVarResponse = await CreateItemsAsyncWithHttpInfo(accessToken, xeroTenantId, items, summarizeErrors);
              return localVarResponse.Data;
 
         }
@@ -8024,8 +8103,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="items"></param>
+        /// <param name="summarizeErrors">response format that shows validation errors for each bank transaction (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Items)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Items>> CreateItemsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Items items)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Items>> CreateItemsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Items items, bool? summarizeErrors = null)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -8053,8 +8133,18 @@ namespace Xero.NetStandard.OAuth2.Api
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
+            if (summarizeErrors != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "SummarizeErrors", summarizeErrors))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = items;
 
             // authentication (OAuth2) required
@@ -8129,7 +8219,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = linkedTransaction;
 
             // authentication (OAuth2) required
@@ -8204,7 +8294,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = linkedTransactions;
 
             // authentication (OAuth2) required
@@ -8279,7 +8369,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = manualJournal;
 
             // authentication (OAuth2) required
@@ -8370,7 +8460,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -8445,7 +8535,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = manualJournals;
 
             // authentication (OAuth2) required
@@ -8528,7 +8618,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (overpaymentID != null)
                 requestOptions.PathParameters.Add("OverpaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(overpaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = allocation;
 
             // authentication (OAuth2) required
@@ -8611,7 +8701,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (overpaymentID != null)
                 requestOptions.PathParameters.Add("OverpaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(overpaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = allocations;
 
             // authentication (OAuth2) required
@@ -8694,7 +8784,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (overpaymentID != null)
                 requestOptions.PathParameters.Add("OverpaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(overpaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -8769,7 +8859,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = payment;
 
             // authentication (OAuth2) required
@@ -8852,7 +8942,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (paymentID != null)
                 requestOptions.PathParameters.Add("PaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(paymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -8927,7 +9017,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = paymentServices;
 
             // authentication (OAuth2) required
@@ -9002,7 +9092,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = payments;
 
             // authentication (OAuth2) required
@@ -9085,7 +9175,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (prepaymentID != null)
                 requestOptions.PathParameters.Add("PrepaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(prepaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = allocations;
 
             // authentication (OAuth2) required
@@ -9168,7 +9258,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (prepaymentID != null)
                 requestOptions.PathParameters.Add("PrepaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(prepaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -9243,7 +9333,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = purchaseOrder;
 
             // authentication (OAuth2) required
@@ -9326,7 +9416,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (purchaseOrderID != null)
                 requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -9357,7 +9447,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrders"></param>
-        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to false)</param>
         /// <returns>Task of PurchaseOrders</returns>
         public async System.Threading.Tasks.Task<PurchaseOrders> CreatePurchaseOrdersAsync (string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null)
         {
@@ -9372,7 +9462,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrders"></param>
-        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to true)</param>
+        /// <param name="summarizeErrors">shows validation errors for each purchase order. (optional, default to false)</param>
         /// <returns>Task of ApiResponse (PurchaseOrders)</returns>
         public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PurchaseOrders>> CreatePurchaseOrdersAsyncWithHttpInfo (string accessToken, string xeroTenantId, PurchaseOrders purchaseOrders, bool? summarizeErrors = null)
         {
@@ -9413,7 +9503,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = purchaseOrders;
 
             // authentication (OAuth2) required
@@ -9488,7 +9578,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = receipts;
 
             // authentication (OAuth2) required
@@ -9579,7 +9669,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -9662,7 +9752,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (receiptID != null)
                 requestOptions.PathParameters.Add("ReceiptID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(receiptID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -9753,7 +9843,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -9836,7 +9926,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (repeatingInvoiceID != null)
                 requestOptions.PathParameters.Add("RepeatingInvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(repeatingInvoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = historyRecords;
 
             // authentication (OAuth2) required
@@ -9911,7 +10001,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = taxRate;
 
             // authentication (OAuth2) required
@@ -9986,7 +10076,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = taxRates;
 
             // authentication (OAuth2) required
@@ -10061,7 +10151,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = trackingCategory;
 
             // authentication (OAuth2) required
@@ -10144,7 +10234,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (trackingCategoryID != null)
                 requestOptions.PathParameters.Add("TrackingCategoryID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(trackingCategoryID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = trackingOption;
 
             // authentication (OAuth2) required
@@ -10220,7 +10310,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (accountID != null)
                 requestOptions.PathParameters.Add("AccountID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(accountID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -10302,7 +10392,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactID != null)
                 requestOptions.PathParameters.Add("ContactID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -10375,7 +10465,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactGroupID != null)
                 requestOptions.PathParameters.Add("ContactGroupID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactGroupID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -10449,7 +10539,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (itemID != null)
                 requestOptions.PathParameters.Add("ItemID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(itemID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -10523,7 +10613,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (linkedTransactionID != null)
                 requestOptions.PathParameters.Add("LinkedTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(linkedTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -10605,7 +10695,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (paymentID != null)
                 requestOptions.PathParameters.Add("PaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(paymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = payments;
 
             // authentication (OAuth2) required
@@ -10681,7 +10771,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (trackingCategoryID != null)
                 requestOptions.PathParameters.Add("TrackingCategoryID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(trackingCategoryID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -10764,7 +10854,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (trackingOptionID != null)
                 requestOptions.PathParameters.Add("TrackingOptionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(trackingOptionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -10845,7 +10935,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = requestEmpty;
 
             // authentication (OAuth2) required
@@ -10921,7 +11011,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (accountID != null)
                 requestOptions.PathParameters.Add("AccountID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(accountID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -11010,7 +11100,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -11101,7 +11191,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -11178,7 +11268,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (accountID != null)
                 requestOptions.PathParameters.Add("AccountID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(accountID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -11271,7 +11361,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -11348,7 +11438,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransactionID != null)
                 requestOptions.PathParameters.Add("BankTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -11437,7 +11527,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -11528,7 +11618,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -11605,7 +11695,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransactionID != null)
                 requestOptions.PathParameters.Add("BankTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -11722,7 +11812,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -11799,7 +11889,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransactionID != null)
                 requestOptions.PathParameters.Add("BankTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -11874,7 +11964,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransferID != null)
                 requestOptions.PathParameters.Add("BankTransferID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransferID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -11963,7 +12053,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -12054,7 +12144,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -12131,7 +12221,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransferID != null)
                 requestOptions.PathParameters.Add("BankTransferID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransferID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -12206,7 +12296,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransferID != null)
                 requestOptions.PathParameters.Add("BankTransferID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransferID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -12299,7 +12389,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -12376,7 +12466,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (batchPaymentID != null)
                 requestOptions.PathParameters.Add("BatchPaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(batchPaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -12469,7 +12559,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -12546,7 +12636,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (brandingThemeID != null)
                 requestOptions.PathParameters.Add("BrandingThemeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(brandingThemeID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -12621,7 +12711,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (brandingThemeID != null)
                 requestOptions.PathParameters.Add("BrandingThemeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(brandingThemeID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -12688,7 +12778,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -12763,7 +12853,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactID != null)
                 requestOptions.PathParameters.Add("ContactID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -12852,7 +12942,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -12943,7 +13033,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -13020,7 +13110,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactID != null)
                 requestOptions.PathParameters.Add("ContactID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -13095,7 +13185,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactID != null)
                 requestOptions.PathParameters.Add("ContactID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -13170,7 +13260,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactGroupID != null)
                 requestOptions.PathParameters.Add("ContactGroupID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactGroupID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -13261,7 +13351,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -13336,7 +13426,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactID != null)
                 requestOptions.PathParameters.Add("ContactID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -13465,7 +13555,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -13542,7 +13632,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (creditNoteID != null)
                 requestOptions.PathParameters.Add("CreditNoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(creditNoteID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -13623,7 +13713,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (creditNoteID != null)
                 requestOptions.PathParameters.Add("CreditNoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(creditNoteID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -13714,7 +13804,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -13805,7 +13895,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -13882,7 +13972,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (creditNoteID != null)
                 requestOptions.PathParameters.Add("CreditNoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(creditNoteID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -13957,7 +14047,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (creditNoteID != null)
                 requestOptions.PathParameters.Add("CreditNoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(creditNoteID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -14062,7 +14152,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -14155,7 +14245,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -14230,7 +14320,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -14323,7 +14413,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -14400,7 +14490,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (expenseClaimID != null)
                 requestOptions.PathParameters.Add("ExpenseClaimID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(expenseClaimID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -14475,7 +14565,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (expenseClaimID != null)
                 requestOptions.PathParameters.Add("ExpenseClaimID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(expenseClaimID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -14568,7 +14658,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -14645,7 +14735,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -14726,7 +14816,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -14817,7 +14907,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -14908,7 +14998,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -14985,7 +15075,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -15060,7 +15150,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -15127,7 +15217,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -15316,7 +15406,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -15393,7 +15483,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (itemID != null)
                 requestOptions.PathParameters.Add("ItemID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(itemID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -15468,7 +15558,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (itemID != null)
                 requestOptions.PathParameters.Add("ItemID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(itemID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -15573,7 +15663,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -15650,7 +15740,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (journalID != null)
                 requestOptions.PathParameters.Add("JournalID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(journalID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -15743,7 +15833,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -15820,7 +15910,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (linkedTransactionID != null)
                 requestOptions.PathParameters.Add("LinkedTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(linkedTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -15959,7 +16049,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16034,7 +16124,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (manualJournalID != null)
                 requestOptions.PathParameters.Add("ManualJournalID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(manualJournalID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16123,7 +16213,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -16214,7 +16304,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -16291,7 +16381,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (manualJournalID != null)
                 requestOptions.PathParameters.Add("ManualJournalID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(manualJournalID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16396,7 +16486,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -16473,7 +16563,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16548,7 +16638,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (organisationID != null)
                 requestOptions.PathParameters.Add("OrganisationID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(organisationID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16615,7 +16705,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16690,7 +16780,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (overpaymentID != null)
                 requestOptions.PathParameters.Add("OverpaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(overpaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16765,7 +16855,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (overpaymentID != null)
                 requestOptions.PathParameters.Add("OverpaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(overpaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -16882,7 +16972,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -16959,7 +17049,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (paymentID != null)
                 requestOptions.PathParameters.Add("PaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(paymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17034,7 +17124,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (paymentID != null)
                 requestOptions.PathParameters.Add("PaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(paymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17101,7 +17191,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17194,7 +17284,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -17271,7 +17361,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (prepaymentID != null)
                 requestOptions.PathParameters.Add("PrepaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(prepaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17346,7 +17436,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (prepaymentID != null)
                 requestOptions.PathParameters.Add("PrepaymentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(prepaymentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17463,7 +17553,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -17540,7 +17630,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (purchaseOrderID != null)
                 requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17615,7 +17705,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (purchaseOrderID != null)
                 requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17744,7 +17834,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -17763,6 +17853,232 @@ namespace Xero.NetStandard.OAuth2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception exception = this.ExceptionFactory("GetPurchaseOrders", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
+        /// Allows you to retrieve a specified quote 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="quoteID">Unique identifier for an Quote</param>
+        /// <returns>Task of Quotes</returns>
+        public async System.Threading.Tasks.Task<Quotes> GetQuoteAsync (string accessToken, string xeroTenantId, Guid quoteID)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<Quotes> localVarResponse = await GetQuoteAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Allows you to retrieve a specified quote 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="quoteID">Unique identifier for an Quote</param>
+        /// <returns>Task of ApiResponse (Quotes)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Quotes>> GetQuoteAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->GetQuote");
+
+            // verify the required parameter 'quoteID' is set
+            if (quoteID == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'quoteID' when calling AccountingApi->GetQuote");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (quoteID != null)
+                requestOptions.PathParameters.Add("QuoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(quoteID)); // path parameter
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+
+      
+
+            var response = await this.AsynchronousClient.GetAsync<Quotes>("/Quotes/{QuoteID}", requestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("GetQuote", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
+        /// Allows you to retrieve any sales quotes 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="ifModifiedSince">Only records created or modified since this timestamp will be returned (optional)</param>
+        /// <param name="dateFrom">Filter for quotes after a particular date (optional)</param>
+        /// <param name="dateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="expiryDateFrom">Filter for quotes expiring after a particular date (optional)</param>
+        /// <param name="expiryDateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="contactID">Filter for quotes belonging to a particular contact (optional)</param>
+        /// <param name="status">Filter for quotes of a particular Status (optional)</param>
+        /// <param name="page">e.g. page&#x3D;1 – Up to 100 Quotes will be returned in a single API call with line items shown for each quote (optional)</param>
+        /// <param name="order">Order by an any element (optional)</param>
+        /// <returns>Task of Quotes</returns>
+        public async System.Threading.Tasks.Task<Quotes> GetQuotesAsync (string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string status = null, int? page = null, string order = null)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<Quotes> localVarResponse = await GetQuotesAsyncWithHttpInfo(accessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Allows you to retrieve any sales quotes 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="ifModifiedSince">Only records created or modified since this timestamp will be returned (optional)</param>
+        /// <param name="dateFrom">Filter for quotes after a particular date (optional)</param>
+        /// <param name="dateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="expiryDateFrom">Filter for quotes expiring after a particular date (optional)</param>
+        /// <param name="expiryDateTo">Filter for quotes before a particular date (optional)</param>
+        /// <param name="contactID">Filter for quotes belonging to a particular contact (optional)</param>
+        /// <param name="status">Filter for quotes of a particular Status (optional)</param>
+        /// <param name="page">e.g. page&#x3D;1 – Up to 100 Quotes will be returned in a single API call with line items shown for each quote (optional)</param>
+        /// <param name="order">Order by an any element (optional)</param>
+        /// <returns>Task of ApiResponse (Quotes)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Quotes>> GetQuotesAsyncWithHttpInfo (string accessToken, string xeroTenantId, DateTime? ifModifiedSince = null, DateTime? dateFrom = null, DateTime? dateTo = null, DateTime? expiryDateFrom = null, DateTime? expiryDateTo = null, Guid? contactID = null, string status = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->GetQuotes");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (dateFrom != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "DateFrom", dateFrom))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (dateTo != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "DateTo", dateTo))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (expiryDateFrom != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "ExpiryDateFrom", expiryDateFrom))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (expiryDateTo != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "ExpiryDateTo", expiryDateTo))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (contactID != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "ContactID", contactID))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (status != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "Status", status))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (page != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "page", page))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (order != null)
+            {
+                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "order", order))
+                {
+                    foreach (var value in kvp.Value)
+                    {
+                        requestOptions.QueryParameters.Add(kvp.Key, value);
+                    }
+                }
+            }
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+            if (ifModifiedSince != null)
+                requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
+
+      
+
+            var response = await this.AsynchronousClient.GetAsync<Quotes>("/Quotes", requestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("GetQuotes", response);
                 if (exception != null) throw exception;
             }
 
@@ -17821,7 +18137,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (receiptID != null)
                 requestOptions.PathParameters.Add("ReceiptID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(receiptID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -17910,7 +18226,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -18001,7 +18317,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -18078,7 +18394,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (receiptID != null)
                 requestOptions.PathParameters.Add("ReceiptID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(receiptID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -18153,7 +18469,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (receiptID != null)
                 requestOptions.PathParameters.Add("ReceiptID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(receiptID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -18258,7 +18574,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -18335,7 +18651,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (repeatingInvoiceID != null)
                 requestOptions.PathParameters.Add("RepeatingInvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(repeatingInvoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -18424,7 +18740,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -18515,7 +18831,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (attachmentID != null)
                 requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (contentType != null)
                 requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
 
@@ -18592,7 +18908,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (repeatingInvoiceID != null)
                 requestOptions.PathParameters.Add("RepeatingInvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(repeatingInvoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -18667,7 +18983,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (repeatingInvoiceID != null)
                 requestOptions.PathParameters.Add("RepeatingInvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(repeatingInvoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -18758,7 +19074,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -18877,7 +19193,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -18996,7 +19312,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19071,7 +19387,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (reportID != null)
                 requestOptions.PathParameters.Add("ReportID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(reportID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19138,7 +19454,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19289,7 +19605,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19392,7 +19708,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19495,7 +19811,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19574,7 +19890,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19761,7 +20077,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19840,7 +20156,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -19931,7 +20247,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -20034,7 +20350,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -20137,7 +20453,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -20212,7 +20528,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (trackingCategoryID != null)
                 requestOptions.PathParameters.Add("TrackingCategoryID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(trackingCategoryID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -20287,7 +20603,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (userID != null)
                 requestOptions.PathParameters.Add("UserID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(userID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
             // authentication (OAuth2) required
             // oauth required
@@ -20380,7 +20696,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 }
             }
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (ifModifiedSince != null)
                 requestOptions.HeaderParameters.Add("If-Modified-Since", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(ifModifiedSince)); // header parameter
 
@@ -20464,7 +20780,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (accountID != null)
                 requestOptions.PathParameters.Add("AccountID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(accountID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = accounts;
 
             // authentication (OAuth2) required
@@ -20555,7 +20871,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -20638,7 +20954,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (bankTransactionID != null)
                 requestOptions.PathParameters.Add("BankTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(bankTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = bankTransactions;
 
             // authentication (OAuth2) required
@@ -20729,7 +21045,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -20820,7 +21136,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -20903,7 +21219,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactID != null)
                 requestOptions.PathParameters.Add("ContactID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = contacts;
 
             // authentication (OAuth2) required
@@ -20994,7 +21310,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -21077,7 +21393,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (contactGroupID != null)
                 requestOptions.PathParameters.Add("ContactGroupID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contactGroupID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = contactGroups;
 
             // authentication (OAuth2) required
@@ -21160,7 +21476,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (creditNoteID != null)
                 requestOptions.PathParameters.Add("CreditNoteID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(creditNoteID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = creditNotes;
 
             // authentication (OAuth2) required
@@ -21251,7 +21567,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -21334,7 +21650,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = employees;
 
             // authentication (OAuth2) required
@@ -21417,7 +21733,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (expenseClaimID != null)
                 requestOptions.PathParameters.Add("ExpenseClaimID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(expenseClaimID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = expenseClaims;
 
             // authentication (OAuth2) required
@@ -21500,7 +21816,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (invoiceID != null)
                 requestOptions.PathParameters.Add("InvoiceID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(invoiceID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = invoices;
 
             // authentication (OAuth2) required
@@ -21591,7 +21907,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -21674,7 +21990,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (itemID != null)
                 requestOptions.PathParameters.Add("ItemID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(itemID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = items;
 
             // authentication (OAuth2) required
@@ -21757,7 +22073,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (linkedTransactionID != null)
                 requestOptions.PathParameters.Add("LinkedTransactionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(linkedTransactionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = linkedTransactions;
 
             // authentication (OAuth2) required
@@ -21840,7 +22156,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (manualJournalID != null)
                 requestOptions.PathParameters.Add("ManualJournalID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(manualJournalID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = manualJournals;
 
             // authentication (OAuth2) required
@@ -21931,7 +22247,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -22014,7 +22330,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (purchaseOrderID != null)
                 requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = purchaseOrders;
 
             // authentication (OAuth2) required
@@ -22097,7 +22413,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (receiptID != null)
                 requestOptions.PathParameters.Add("ReceiptID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(receiptID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = receipts;
 
             // authentication (OAuth2) required
@@ -22188,7 +22504,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -22279,7 +22595,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (fileName != null)
                 requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = body;
 
             // authentication (OAuth2) required
@@ -22354,7 +22670,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = taxRates;
 
             // authentication (OAuth2) required
@@ -22437,7 +22753,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (trackingCategoryID != null)
                 requestOptions.PathParameters.Add("TrackingCategoryID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(trackingCategoryID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = trackingCategory;
 
             // authentication (OAuth2) required
@@ -22528,7 +22844,7 @@ namespace Xero.NetStandard.OAuth2.Api
             if (trackingOptionID != null)
                 requestOptions.PathParameters.Add("TrackingOptionID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(trackingOptionID)); // path parameter
             if (xeroTenantId != null)
-                requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             requestOptions.Data = trackingOption;
 
             // authentication (OAuth2) required

@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for a tracking category</value>
         [DataMember(Name="TrackingCategoryID", EmitDefaultValue=false)]
-        public Guid TrackingCategoryID { get; set; }
+        public Guid? TrackingCategoryID { get; set; }
 
         /// <summary>
         /// The name of the tracking category

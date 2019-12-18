@@ -136,7 +136,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for a Manual Journal</value>
         [DataMember(Name="ManualJournalID", EmitDefaultValue=false)]
-        public Guid ManualJournalID { get; set; }
+        public Guid? ManualJournalID { get; set; }
 
         /// <summary>
         /// Displays array of warning messages from the API

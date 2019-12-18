@@ -31,6 +31,33 @@ namespace Xero.NetStandard.OAuth2.Model
     [DataContract]
     public partial class BatchPayment :  IEquatable<BatchPayment>, IValidatableObject
     {
+        /// <summary>
+        /// PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)
+        /// </summary>
+        /// <value>PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum PAYBATCH for value: PAYBATCH
+            /// </summary>
+            [EnumMember(Value = "PAYBATCH")]
+            PAYBATCH = 1,
+
+            /// <summary>
+            /// Enum RECBATCH for value: RECBATCH
+            /// </summary>
+            [EnumMember(Value = "RECBATCH")]
+            RECBATCH = 2
+
+        }
+
+        /// <summary>
+        /// PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)
+        /// </summary>
+        /// <value>PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)</value>
+        [DataMember(Name="Type", EmitDefaultValue=false)]
+        public TypeEnum Type { get; set; }
         
         /// <summary>
         /// Gets or Sets Account
@@ -78,7 +105,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero generated unique identifier for the bank transaction (read-only)</value>
         [DataMember(Name="BatchPaymentID", EmitDefaultValue=false)]
-        public Guid BatchPaymentID { get; private set; }
+        public Guid? BatchPaymentID { get; private set; }
 
         /// <summary>
         /// Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06
@@ -107,13 +134,6 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         [DataMember(Name="Payments", EmitDefaultValue=false)]
         public List<Payment> Payments { get; set; }
-
-        /// <summary>
-        /// PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)
-        /// </summary>
-        /// <value>PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
-        public string Type { get; private set; }
 
         /// <summary>
         /// AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.
@@ -258,8 +278,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 ) && 
                 (
                     this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Type.Equals(input.Type)
                 ) && 
                 (
                     this.Status == input.Status ||
@@ -313,8 +332,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 hashCode = hashCode * 59 + this.Amount.GetHashCode();
                 if (this.Payments != null)
                     hashCode = hashCode * 59 + this.Payments.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.TotalAmount != null)

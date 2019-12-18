@@ -127,7 +127,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>See BrandingThemes</value>
         [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
-        public Guid BrandingThemeID { get; set; }
+        public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// Total of invoice excluding taxes
@@ -155,14 +155,14 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier for repeating invoice template</value>
         [DataMember(Name="RepeatingInvoiceID", EmitDefaultValue=false)]
-        public Guid RepeatingInvoiceID { get; set; }
+        public Guid? RepeatingInvoiceID { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for repeating invoice template
         /// </summary>
         /// <value>Xero generated unique identifier for repeating invoice template</value>
         [DataMember(Name="ID", EmitDefaultValue=false)]
-        public Guid ID { get; set; }
+        public Guid? ID { get; set; }
 
         /// <summary>
         /// boolean to indicate if an invoice has an attachment

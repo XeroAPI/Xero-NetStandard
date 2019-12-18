@@ -70,14 +70,14 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for a tracking category e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="TrackingCategoryID", EmitDefaultValue=false)]
-        public Guid TrackingCategoryID { get; set; }
+        public Guid? TrackingCategoryID { get; set; }
 
         /// <summary>
         /// The Xero identifier for a tracking option e.g. dc54c220-0140-495a-b925-3246adc0075f
         /// </summary>
         /// <value>The Xero identifier for a tracking option e.g. dc54c220-0140-495a-b925-3246adc0075f</value>
         [DataMember(Name="TrackingOptionID", EmitDefaultValue=false)]
-        public Guid TrackingOptionID { get; set; }
+        public Guid? TrackingOptionID { get; set; }
 
         /// <summary>
         /// The name of the tracking category e.g. Department, Region (max length &#x3D; 100)

@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero identifier</value>
         [DataMember(Name="PaymentServiceID", EmitDefaultValue=false)]
-        public Guid PaymentServiceID { get; set; }
+        public Guid? PaymentServiceID { get; set; }
 
         /// <summary>
         /// Name of payment service

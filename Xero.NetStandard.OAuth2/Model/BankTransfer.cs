@@ -69,7 +69,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The identifier of the Bank Transfer</value>
         [DataMember(Name="BankTransferID", EmitDefaultValue=false)]
-        public Guid BankTransferID { get; private set; }
+        public Guid? BankTransferID { get; private set; }
 
         /// <summary>
         /// The currency rate
@@ -83,14 +83,14 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Bank Transaction ID for the source account</value>
         [DataMember(Name="FromBankTransactionID", EmitDefaultValue=false)]
-        public Guid FromBankTransactionID { get; private set; }
+        public Guid? FromBankTransactionID { get; private set; }
 
         /// <summary>
         /// The Bank Transaction ID for the destination account
         /// </summary>
         /// <value>The Bank Transaction ID for the destination account</value>
         [DataMember(Name="ToBankTransactionID", EmitDefaultValue=false)]
-        public Guid ToBankTransactionID { get; private set; }
+        public Guid? ToBankTransactionID { get; private set; }
 
         /// <summary>
         /// Boolean to indicate if a Bank Transfer has an attachment

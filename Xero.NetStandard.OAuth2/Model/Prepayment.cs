@@ -168,7 +168,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier</value>
         [DataMember(Name="PrepaymentID", EmitDefaultValue=false)]
-        public Guid PrepaymentID { get; set; }
+        public Guid? PrepaymentID { get; set; }
 
         /// <summary>
         /// The currency rate for a multicurrency prepayment. If no rate is specified, the XE.com day rate is used

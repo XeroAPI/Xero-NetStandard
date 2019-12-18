@@ -26,31 +26,43 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model
 {
     /// <summary>
-    /// Line amounts are exclusive of tax by default if you don’t specify this element. See Line Amount Types
+    /// The status of the quote.
     /// </summary>
-    /// <value>Line amounts are exclusive of tax by default if you don’t specify this element. See Line Amount Types</value>
+    /// <value>The status of the quote.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum LineAmountTypes
+    public enum QuoteStatusCodes
     {
         /// <summary>
-        /// Enum Exclusive for value: Exclusive
+        /// Enum DRAFT for value: DRAFT
         /// </summary>
-        [EnumMember(Value = "Exclusive")]
-        Exclusive = 1,
+        [EnumMember(Value = "DRAFT")]
+        DRAFT = 1,
 
         /// <summary>
-        /// Enum Inclusive for value: Inclusive
+        /// Enum SENT for value: SENT
         /// </summary>
-        [EnumMember(Value = "Inclusive")]
-        Inclusive = 2,
+        [EnumMember(Value = "SENT")]
+        SENT = 2,
 
         /// <summary>
-        /// Enum NoTax for value: NoTax
+        /// Enum DECLINED for value: DECLINED
         /// </summary>
-        [EnumMember(Value = "NoTax")]
-        NoTax = 3
+        [EnumMember(Value = "DECLINED")]
+        DECLINED = 3,
+
+        /// <summary>
+        /// Enum ACCEPTED for value: ACCEPTED
+        /// </summary>
+        [EnumMember(Value = "ACCEPTED")]
+        ACCEPTED = 4,
+
+        /// <summary>
+        /// Enum INVOICED for value: INVOICED
+        /// </summary>
+        [EnumMember(Value = "INVOICED")]
+        INVOICED = 5
 
     }
 

@@ -131,7 +131,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for an Item</value>
         [DataMember(Name="ItemID", EmitDefaultValue=false)]
-        public Guid ItemID { get; set; }
+        public Guid? ItemID { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API

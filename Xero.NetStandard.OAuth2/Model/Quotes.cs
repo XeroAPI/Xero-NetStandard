@@ -26,17 +26,17 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model
 {
     /// <summary>
-    /// Prepayments
+    /// Quotes
     /// </summary>
     [DataContract]
-    public partial class Prepayments :  IEquatable<Prepayments>, IValidatableObject
+    public partial class Quotes :  IEquatable<Quotes>, IValidatableObject
     {
         
         /// <summary>
-        /// Gets or Sets _Prepayments
+        /// Gets or Sets _Quotes
         /// </summary>
-        [DataMember(Name="Prepayments", EmitDefaultValue=false)]
-        public List<Prepayment> _Prepayments { get; set; }
+        [DataMember(Name="Quotes", EmitDefaultValue=false)]
+        public List<Quote> _Quotes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -45,8 +45,8 @@ namespace Xero.NetStandard.OAuth2.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Prepayments {\n");
-            sb.Append("  _Prepayments: ").Append(_Prepayments).Append("\n");
+            sb.Append("class Quotes {\n");
+            sb.Append("  _Quotes: ").Append(_Quotes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -67,25 +67,25 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Prepayments);
+            return this.Equals(input as Quotes);
         }
 
         /// <summary>
-        /// Returns true if Prepayments instances are equal
+        /// Returns true if Quotes instances are equal
         /// </summary>
-        /// <param name="input">Instance of Prepayments to be compared</param>
+        /// <param name="input">Instance of Quotes to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Prepayments input)
+        public bool Equals(Quotes input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this._Prepayments == input._Prepayments ||
-                    this._Prepayments != null &&
-                    input._Prepayments != null &&
-                    this._Prepayments.SequenceEqual(input._Prepayments)
+                    this._Quotes == input._Quotes ||
+                    this._Quotes != null &&
+                    input._Quotes != null &&
+                    this._Quotes.SequenceEqual(input._Quotes)
                 );
         }
 
@@ -98,8 +98,8 @@ namespace Xero.NetStandard.OAuth2.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Prepayments != null)
-                    hashCode = hashCode * 59 + this._Prepayments.GetHashCode();
+                if (this._Quotes != null)
+                    hashCode = hashCode * 59 + this._Quotes.GetHashCode();
                 return hashCode;
             }
         }

@@ -60,7 +60,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum VOIDED for value: VOIDED
             /// </summary>
             [EnumMember(Value = "VOIDED")]
-            VOIDED = 4
+            VOIDED = 4,
+
+            /// <summary>
+            /// Enum DELETED for value: DELETED
+            /// </summary>
+            [EnumMember(Value = "DELETED")]
+            DELETED = 5
 
         }
 
@@ -76,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier for an expense claim</value>
         [DataMember(Name="ExpenseClaimID", EmitDefaultValue=false)]
-        public Guid ExpenseClaimID { get; set; }
+        public Guid? ExpenseClaimID { get; set; }
 
         /// <summary>
         /// See Payments
@@ -146,7 +152,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for the Receipt e.g.  e59a2c7f-1306-4078-a0f3-73537afcbba9</value>
         [DataMember(Name="ReceiptID", EmitDefaultValue=true)]
-        public Guid ReceiptID { get; set; }
+        public Guid? ReceiptID { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

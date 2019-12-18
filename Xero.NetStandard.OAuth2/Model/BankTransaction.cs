@@ -224,21 +224,21 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier for bank transaction</value>
         [DataMember(Name="BankTransactionID", EmitDefaultValue=false)]
-        public Guid BankTransactionID { get; set; }
+        public Guid? BankTransactionID { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for a Prepayment. This will be returned on BankTransactions with a Type of SPEND-PREPAYMENT or RECEIVE-PREPAYMENT
         /// </summary>
         /// <value>Xero generated unique identifier for a Prepayment. This will be returned on BankTransactions with a Type of SPEND-PREPAYMENT or RECEIVE-PREPAYMENT</value>
         [DataMember(Name="PrepaymentID", EmitDefaultValue=false)]
-        public Guid PrepaymentID { get; private set; }
+        public Guid? PrepaymentID { get; private set; }
 
         /// <summary>
         /// Xero generated unique identifier for an Overpayment. This will be returned on BankTransactions with a Type of SPEND-OVERPAYMENT or RECEIVE-OVERPAYMENT
         /// </summary>
         /// <value>Xero generated unique identifier for an Overpayment. This will be returned on BankTransactions with a Type of SPEND-OVERPAYMENT or RECEIVE-OVERPAYMENT</value>
         [DataMember(Name="OverpaymentID", EmitDefaultValue=false)]
-        public Guid OverpaymentID { get; private set; }
+        public Guid? OverpaymentID { get; private set; }
 
         /// <summary>
         /// Last modified date UTC format

@@ -140,7 +140,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>See BrandingThemes</value>
         [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
-        public Guid BrandingThemeID { get; set; }
+        public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// Boolean to set whether the purchase order should be marked as “sent”. This can be set only on purchase orders that have been approved or billed
@@ -190,14 +190,14 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier for purchase order</value>
         [DataMember(Name="PurchaseOrderID", EmitDefaultValue=false)]
-        public Guid PurchaseOrderID { get; set; }
+        public Guid? PurchaseOrderID { get; set; }
 
         /// <summary>
-        /// The currency rate for a multicurrency purchase order. As no rate can  be specified, the XE.com day rate is used.
+        /// The currency rate for a multicurrency purchase order. If no rate is specified, the XE.com day rate is used.
         /// </summary>
-        /// <value>The currency rate for a multicurrency purchase order. As no rate can  be specified, the XE.com day rate is used.</value>
+        /// <value>The currency rate for a multicurrency purchase order. If no rate is specified, the XE.com day rate is used.</value>
         [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
-        public double? CurrencyRate { get; private set; }
+        public double? CurrencyRate { get; set; }
 
         /// <summary>
         /// Total of purchase order excluding taxes

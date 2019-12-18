@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero identifier</value>
         [DataMember(Name="UserID", EmitDefaultValue=false)]
-        public Guid UserID { get; set; }
+        public Guid? UserID { get; set; }
 
         /// <summary>
         /// Email address of user

@@ -42,14 +42,14 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero identifier for Journal</value>
         [DataMember(Name="JournalLineID", EmitDefaultValue=false)]
-        public Guid JournalLineID { get; set; }
+        public Guid? JournalLineID { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
         [DataMember(Name="AccountID", EmitDefaultValue=false)]
-        public Guid AccountID { get; set; }
+        public Guid? AccountID { get; set; }
 
         /// <summary>
         /// See Accounts

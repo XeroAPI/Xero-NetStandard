@@ -114,70 +114,76 @@ namespace Xero.NetStandard.OAuth2.Model
         public enum OrganisationTypeEnum
         {
             /// <summary>
+            /// Enum ACCOUNTINGPRACTICE for value: ACCOUNTING_PRACTICE
+            /// </summary>
+            [EnumMember(Value = "ACCOUNTING_PRACTICE")]
+            ACCOUNTINGPRACTICE = 1,
+
+            /// <summary>
             /// Enum COMPANY for value: COMPANY
             /// </summary>
             [EnumMember(Value = "COMPANY")]
-            COMPANY = 1,
+            COMPANY = 2,
 
             /// <summary>
             /// Enum CHARITY for value: CHARITY
             /// </summary>
             [EnumMember(Value = "CHARITY")]
-            CHARITY = 2,
+            CHARITY = 3,
 
             /// <summary>
             /// Enum CLUBORSOCIETY for value: CLUB_OR_SOCIETY
             /// </summary>
             [EnumMember(Value = "CLUB_OR_SOCIETY")]
-            CLUBORSOCIETY = 3,
+            CLUBORSOCIETY = 4,
 
             /// <summary>
             /// Enum LOOKTHROUGHCOMPANY for value: LOOK_THROUGH_COMPANY
             /// </summary>
             [EnumMember(Value = "LOOK_THROUGH_COMPANY")]
-            LOOKTHROUGHCOMPANY = 4,
+            LOOKTHROUGHCOMPANY = 5,
 
             /// <summary>
             /// Enum NOTFORPROFIT for value: NOT_FOR_PROFIT
             /// </summary>
             [EnumMember(Value = "NOT_FOR_PROFIT")]
-            NOTFORPROFIT = 5,
+            NOTFORPROFIT = 6,
 
             /// <summary>
             /// Enum PARTNERSHIP for value: PARTNERSHIP
             /// </summary>
             [EnumMember(Value = "PARTNERSHIP")]
-            PARTNERSHIP = 6,
+            PARTNERSHIP = 7,
 
             /// <summary>
             /// Enum SCORPORATION for value: S_CORPORATION
             /// </summary>
             [EnumMember(Value = "S_CORPORATION")]
-            SCORPORATION = 7,
+            SCORPORATION = 8,
 
             /// <summary>
             /// Enum SELFMANAGEDSUPERANNUATIONFUND for value: SELF_MANAGED_SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SELF_MANAGED_SUPERANNUATION_FUND")]
-            SELFMANAGEDSUPERANNUATIONFUND = 8,
+            SELFMANAGEDSUPERANNUATIONFUND = 9,
 
             /// <summary>
             /// Enum SOLETRADER for value: SOLE_TRADER
             /// </summary>
             [EnumMember(Value = "SOLE_TRADER")]
-            SOLETRADER = 9,
+            SOLETRADER = 10,
 
             /// <summary>
             /// Enum SUPERANNUATIONFUND for value: SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SUPERANNUATION_FUND")]
-            SUPERANNUATIONFUND = 10,
+            SUPERANNUATIONFUND = 11,
 
             /// <summary>
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 11
+            TRUST = 12
 
         }
 
@@ -372,70 +378,76 @@ namespace Xero.NetStandard.OAuth2.Model
         public enum OrganisationEntityTypeEnum
         {
             /// <summary>
+            /// Enum ACCOUNTINGPRACTICE for value: ACCOUNTING_PRACTICE
+            /// </summary>
+            [EnumMember(Value = "ACCOUNTING_PRACTICE")]
+            ACCOUNTINGPRACTICE = 1,
+
+            /// <summary>
             /// Enum COMPANY for value: COMPANY
             /// </summary>
             [EnumMember(Value = "COMPANY")]
-            COMPANY = 1,
+            COMPANY = 2,
 
             /// <summary>
             /// Enum CHARITY for value: CHARITY
             /// </summary>
             [EnumMember(Value = "CHARITY")]
-            CHARITY = 2,
+            CHARITY = 3,
 
             /// <summary>
             /// Enum CLUBORSOCIETY for value: CLUB_OR_SOCIETY
             /// </summary>
             [EnumMember(Value = "CLUB_OR_SOCIETY")]
-            CLUBORSOCIETY = 3,
+            CLUBORSOCIETY = 4,
 
             /// <summary>
             /// Enum LOOKTHROUGHCOMPANY for value: LOOK_THROUGH_COMPANY
             /// </summary>
             [EnumMember(Value = "LOOK_THROUGH_COMPANY")]
-            LOOKTHROUGHCOMPANY = 4,
+            LOOKTHROUGHCOMPANY = 5,
 
             /// <summary>
             /// Enum NOTFORPROFIT for value: NOT_FOR_PROFIT
             /// </summary>
             [EnumMember(Value = "NOT_FOR_PROFIT")]
-            NOTFORPROFIT = 5,
+            NOTFORPROFIT = 6,
 
             /// <summary>
             /// Enum PARTNERSHIP for value: PARTNERSHIP
             /// </summary>
             [EnumMember(Value = "PARTNERSHIP")]
-            PARTNERSHIP = 6,
+            PARTNERSHIP = 7,
 
             /// <summary>
             /// Enum SCORPORATION for value: S_CORPORATION
             /// </summary>
             [EnumMember(Value = "S_CORPORATION")]
-            SCORPORATION = 7,
+            SCORPORATION = 8,
 
             /// <summary>
             /// Enum SELFMANAGEDSUPERANNUATIONFUND for value: SELF_MANAGED_SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SELF_MANAGED_SUPERANNUATION_FUND")]
-            SELFMANAGEDSUPERANNUATIONFUND = 8,
+            SELFMANAGEDSUPERANNUATIONFUND = 9,
 
             /// <summary>
             /// Enum SOLETRADER for value: SOLE_TRADER
             /// </summary>
             [EnumMember(Value = "SOLE_TRADER")]
-            SOLETRADER = 9,
+            SOLETRADER = 10,
 
             /// <summary>
             /// Enum SUPERANNUATIONFUND for value: SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SUPERANNUATION_FUND")]
-            SUPERANNUATIONFUND = 10,
+            SUPERANNUATIONFUND = 11,
 
             /// <summary>
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 11
+            TRUST = 12
 
         }
 
@@ -559,7 +571,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Unique Xero identifier</value>
         [DataMember(Name="OrganisationID", EmitDefaultValue=false)]
-        public Guid OrganisationID { get; set; }
+        public Guid? OrganisationID { get; set; }
 
         /// <summary>
         /// Display a unique key used for Xero-to-Xero transactions

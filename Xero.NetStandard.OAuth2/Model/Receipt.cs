@@ -140,7 +140,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier for receipt</value>
         [DataMember(Name="ReceiptID", EmitDefaultValue=false)]
-        public Guid ReceiptID { get; set; }
+        public Guid? ReceiptID { get; set; }
 
         /// <summary>
         /// Xero generated sequence number for receipt in current claim for a given user

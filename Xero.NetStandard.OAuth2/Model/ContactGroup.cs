@@ -71,7 +71,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for an contact group – specified as a string following the endpoint name. e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="ContactGroupID", EmitDefaultValue=false)]
-        public Guid ContactGroupID { get; set; }
+        public Guid? ContactGroupID { get; set; }
 
         /// <summary>
         /// The ContactID and Name of Contacts in a contact group. Returned on GETs when the ContactGroupID is supplied in the URL.

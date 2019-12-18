@@ -31,13 +31,34 @@ namespace Xero.NetStandard.OAuth2.Model
     [DataContract]
     public partial class BrandingTheme :  IEquatable<BrandingTheme>, IValidatableObject
     {
+        /// <summary>
+        /// Always INVOICE
+        /// </summary>
+        /// <value>Always INVOICE</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum INVOICE for value: INVOICE
+            /// </summary>
+            [EnumMember(Value = "INVOICE")]
+            INVOICE = 1
+
+        }
+
+        /// <summary>
+        /// Always INVOICE
+        /// </summary>
+        /// <value>Always INVOICE</value>
+        [DataMember(Name="Type", EmitDefaultValue=false)]
+        public TypeEnum Type { get; set; }
         
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
         [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
-        public Guid BrandingThemeID { get; set; }
+        public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// Name of branding theme
@@ -45,6 +66,13 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>Name of branding theme</value>
         [DataMember(Name="Name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The location of the image file used as the logo on this branding theme
+        /// </summary>
+        /// <value>The location of the image file used as the logo on this branding theme</value>
+        [DataMember(Name="LogoUrl", EmitDefaultValue=false)]
+        public string LogoUrl { get; set; }
 
         /// <summary>
         /// Integer – ranked order of branding theme. The default branding theme has a value of 0
@@ -70,6 +98,8 @@ namespace Xero.NetStandard.OAuth2.Model
             sb.Append("class BrandingTheme {\n");
             sb.Append("  BrandingThemeID: ").Append(BrandingThemeID).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  LogoUrl: ").Append(LogoUrl).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("  CreatedDateUTC: ").Append(CreatedDateUTC).Append("\n");
             sb.Append("}\n");
@@ -117,6 +147,15 @@ namespace Xero.NetStandard.OAuth2.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.LogoUrl == input.LogoUrl ||
+                    (this.LogoUrl != null &&
+                    this.LogoUrl.Equals(input.LogoUrl))
+                ) && 
+                (
+                    this.Type == input.Type ||
+                    this.Type.Equals(input.Type)
+                ) && 
+                (
                     this.SortOrder == input.SortOrder ||
                     this.SortOrder.Equals(input.SortOrder)
                 ) && 
@@ -140,6 +179,9 @@ namespace Xero.NetStandard.OAuth2.Model
                     hashCode = hashCode * 59 + this.BrandingThemeID.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.LogoUrl != null)
+                    hashCode = hashCode * 59 + this.LogoUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.Type.GetHashCode();
                 hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
                 if (this.CreatedDateUTC != null)
                     hashCode = hashCode * 59 + this.CreatedDateUTC.GetHashCode();

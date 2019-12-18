@@ -135,42 +135,42 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Filter by the SourceTransactionID. Get all the linked transactions created from a particular ACCPAY invoice</value>
         [DataMember(Name="SourceTransactionID", EmitDefaultValue=false)]
-        public Guid SourceTransactionID { get; set; }
+        public Guid? SourceTransactionID { get; set; }
 
         /// <summary>
         /// The line item identifier from the source transaction.
         /// </summary>
         /// <value>The line item identifier from the source transaction.</value>
         [DataMember(Name="SourceLineItemID", EmitDefaultValue=false)]
-        public Guid SourceLineItemID { get; set; }
+        public Guid? SourceLineItemID { get; set; }
 
         /// <summary>
         /// Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.
         /// </summary>
         /// <value>Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.</value>
         [DataMember(Name="ContactID", EmitDefaultValue=false)]
-        public Guid ContactID { get; set; }
+        public Guid? ContactID { get; set; }
 
         /// <summary>
         /// Filter by the TargetTransactionID. Get all the linked transactions  allocated to a particular ACCREC invoice
         /// </summary>
         /// <value>Filter by the TargetTransactionID. Get all the linked transactions  allocated to a particular ACCREC invoice</value>
         [DataMember(Name="TargetTransactionID", EmitDefaultValue=false)]
-        public Guid TargetTransactionID { get; set; }
+        public Guid? TargetTransactionID { get; set; }
 
         /// <summary>
         /// The line item identifier from the target transaction. It is possible  to link multiple billable expenses to the same TargetLineItemID.
         /// </summary>
         /// <value>The line item identifier from the target transaction. It is possible  to link multiple billable expenses to the same TargetLineItemID.</value>
         [DataMember(Name="TargetLineItemID", EmitDefaultValue=false)]
-        public Guid TargetLineItemID { get; set; }
+        public Guid? TargetLineItemID { get; set; }
 
         /// <summary>
         /// The Xero identifier for an Linked Transaction e.g. /LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>The Xero identifier for an Linked Transaction e.g. /LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="LinkedTransactionID", EmitDefaultValue=false)]
-        public Guid LinkedTransactionID { get; set; }
+        public Guid? LinkedTransactionID { get; set; }
 
         /// <summary>
         /// The last modified date in UTC format

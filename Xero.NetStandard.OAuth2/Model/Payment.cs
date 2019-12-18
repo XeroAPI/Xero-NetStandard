@@ -221,7 +221,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for an Payment e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="PaymentID", EmitDefaultValue=false)]
-        public Guid PaymentID { get; set; }
+        public Guid? PaymentID { get; set; }
 
         /// <summary>
         /// The suppliers bank account number the payment is being made to

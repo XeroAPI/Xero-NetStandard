@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Unique ID for the file</value>
         [DataMember(Name="AttachmentID", EmitDefaultValue=false)]
-        public Guid AttachmentID { get; set; }
+        public Guid? AttachmentID { get; set; }
 
         /// <summary>
         /// Name of the file

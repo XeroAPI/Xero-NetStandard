@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>LineItem unique ID</value>
         [DataMember(Name="LineItemID", EmitDefaultValue=false)]
-        public Guid LineItemID { get; set; }
+        public Guid? LineItemID { get; set; }
 
         /// <summary>
         /// Description needs to be at least 1 char long. A line item with just a description (i.e no unit amount or quantity) can be created by specifying just a &lt;Description&gt; element that contains at least 1 character
@@ -121,7 +121,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for a Repeating Invoicee.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="RepeatingInvoiceID", EmitDefaultValue=false)]
-        public Guid RepeatingInvoiceID { get; set; }
+        public Guid? RepeatingInvoiceID { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

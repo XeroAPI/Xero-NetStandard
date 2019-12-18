@@ -283,7 +283,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The Xero identifier for an account – specified as a string following  the endpoint name   e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="AccountID", EmitDefaultValue=false)]
-        public Guid AccountID { get; set; }
+        public Guid? AccountID { get; set; }
 
         /// <summary>
         /// For bank accounts only (Account Type BANK)
@@ -349,6 +349,13 @@ namespace Xero.NetStandard.OAuth2.Model
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// Boolean – describes whether the account is shown in the watchlist widget on the dashboard
+        /// </summary>
+        /// <value>Boolean – describes whether the account is shown in the watchlist widget on the dashboard</value>
+        [DataMember(Name="AddToWatchlist", EmitDefaultValue=false)]
+        public bool? AddToWatchlist { get; set; }
+
+        /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
@@ -381,6 +388,7 @@ namespace Xero.NetStandard.OAuth2.Model
             sb.Append("  ReportingCodeName: ").Append(ReportingCodeName).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  AddToWatchlist: ").Append(AddToWatchlist).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -498,6 +506,10 @@ namespace Xero.NetStandard.OAuth2.Model
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
+                    this.AddToWatchlist == input.AddToWatchlist ||
+                    this.AddToWatchlist.Equals(input.AddToWatchlist)
+                ) && 
+                (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
@@ -541,6 +553,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                hashCode = hashCode * 59 + this.AddToWatchlist.GetHashCode();
                 if (this.ValidationErrors != null)
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 return hashCode;

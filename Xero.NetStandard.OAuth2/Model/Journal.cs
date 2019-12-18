@@ -202,7 +202,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero identifier</value>
         [DataMember(Name="JournalID", EmitDefaultValue=false)]
-        public Guid JournalID { get; set; }
+        public Guid? JournalID { get; set; }
 
         /// <summary>
         /// Date the journal was posted
@@ -238,7 +238,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>The identifier for the source transaction (e.g. InvoiceID)</value>
         [DataMember(Name="SourceID", EmitDefaultValue=false)]
-        public Guid SourceID { get; set; }
+        public Guid? SourceID { get; set; }
 
         /// <summary>
         /// See JournalLines

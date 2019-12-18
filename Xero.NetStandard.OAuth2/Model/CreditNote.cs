@@ -182,7 +182,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Xero generated unique identifier</value>
         [DataMember(Name="CreditNoteID", EmitDefaultValue=false)]
-        public Guid CreditNoteID { get; set; }
+        public Guid? CreditNoteID { get; set; }
 
         /// <summary>
         /// ACCRECCREDIT – Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings)
@@ -238,7 +238,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>See BrandingThemes</value>
         [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
-        public Guid BrandingThemeID { get; set; }
+        public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// boolean to indicate if a credit note has an attachment
@@ -246,6 +246,13 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>boolean to indicate if a credit note has an attachment</value>
         [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
         public bool? HasAttachments { get; set; }
+
+        /// <summary>
+        /// A boolean to indicate if a credit note has an validation errors
+        /// </summary>
+        /// <value>A boolean to indicate if a credit note has an validation errors</value>
+        [DataMember(Name="HasErrors", EmitDefaultValue=false)]
+        public bool? HasErrors { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
@@ -284,6 +291,7 @@ namespace Xero.NetStandard.OAuth2.Model
             sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("  BrandingThemeID: ").Append(BrandingThemeID).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
+            sb.Append("  HasErrors: ").Append(HasErrors).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -422,6 +430,10 @@ namespace Xero.NetStandard.OAuth2.Model
                     this.HasAttachments.Equals(input.HasAttachments)
                 ) && 
                 (
+                    this.HasErrors == input.HasErrors ||
+                    this.HasErrors.Equals(input.HasErrors)
+                ) && 
+                (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
@@ -471,6 +483,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 if (this.BrandingThemeID != null)
                     hashCode = hashCode * 59 + this.BrandingThemeID.GetHashCode();
                 hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
+                hashCode = hashCode * 59 + this.HasErrors.GetHashCode();
                 if (this.ValidationErrors != null)
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 return hashCode;

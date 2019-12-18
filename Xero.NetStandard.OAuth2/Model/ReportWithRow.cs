@@ -75,17 +75,17 @@ namespace Xero.NetStandard.OAuth2.Model
         public string ReportDate { get; set; }
 
         /// <summary>
+        /// Gets or Sets Rows
+        /// </summary>
+        [DataMember(Name="Rows", EmitDefaultValue=false)]
+        public List<ReportRows> Rows { get; set; }
+
+        /// <summary>
         /// Updated Date
         /// </summary>
         /// <value>Updated Date</value>
         [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
         public DateTime? UpdatedDateUTC { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Rows
-        /// </summary>
-        [DataMember(Name="Rows", EmitDefaultValue=false)]
-        public List<ReportRows> Rows { get; set; }
 
         /// <summary>
         /// Gets or Sets Fields
@@ -107,8 +107,8 @@ namespace Xero.NetStandard.OAuth2.Model
             sb.Append("  ReportType: ").Append(ReportType).Append("\n");
             sb.Append("  ReportTitles: ").Append(ReportTitles).Append("\n");
             sb.Append("  ReportDate: ").Append(ReportDate).Append("\n");
-            sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  Rows: ").Append(Rows).Append("\n");
+            sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  Fields: ").Append(Fields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -176,15 +176,15 @@ namespace Xero.NetStandard.OAuth2.Model
                     this.ReportDate.Equals(input.ReportDate))
                 ) && 
                 (
-                    this.UpdatedDateUTC == input.UpdatedDateUTC ||
-                    (this.UpdatedDateUTC != null &&
-                    this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
-                (
                     this.Rows == input.Rows ||
                     this.Rows != null &&
                     input.Rows != null &&
                     this.Rows.SequenceEqual(input.Rows)
+                ) && 
+                (
+                    this.UpdatedDateUTC == input.UpdatedDateUTC ||
+                    (this.UpdatedDateUTC != null &&
+                    this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
                     this.Fields == input.Fields ||
@@ -215,10 +215,10 @@ namespace Xero.NetStandard.OAuth2.Model
                     hashCode = hashCode * 59 + this.ReportTitles.GetHashCode();
                 if (this.ReportDate != null)
                     hashCode = hashCode * 59 + this.ReportDate.GetHashCode();
-                if (this.UpdatedDateUTC != null)
-                    hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.Rows != null)
                     hashCode = hashCode * 59 + this.Rows.GetHashCode();
+                if (this.UpdatedDateUTC != null)
+                    hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.Fields != null)
                     hashCode = hashCode * 59 + this.Fields.GetHashCode();
                 return hashCode;

@@ -54,7 +54,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum ARCHIVED for value: ARCHIVED
             /// </summary>
             [EnumMember(Value = "ARCHIVED")]
-            ARCHIVED = 3
+            ARCHIVED = 3,
+
+            /// <summary>
+            /// Enum PENDING for value: PENDING
+            /// </summary>
+            [EnumMember(Value = "PENDING")]
+            PENDING = 4
 
         }
 
@@ -72,106 +78,196 @@ namespace Xero.NetStandard.OAuth2.Model
         public enum ReportTaxTypeEnum
         {
             /// <summary>
-            /// Enum OUTPUT for value: OUTPUT
+            /// Enum AVALARA for value: AVALARA
             /// </summary>
-            [EnumMember(Value = "OUTPUT")]
-            OUTPUT = 1,
-
-            /// <summary>
-            /// Enum INPUT for value: INPUT
-            /// </summary>
-            [EnumMember(Value = "INPUT")]
-            INPUT = 2,
-
-            /// <summary>
-            /// Enum EXEMPTOUTPUT for value: EXEMPTOUTPUT
-            /// </summary>
-            [EnumMember(Value = "EXEMPTOUTPUT")]
-            EXEMPTOUTPUT = 3,
-
-            /// <summary>
-            /// Enum INPUTTAXED for value: INPUTTAXED
-            /// </summary>
-            [EnumMember(Value = "INPUTTAXED")]
-            INPUTTAXED = 4,
+            [EnumMember(Value = "AVALARA")]
+            AVALARA = 1,
 
             /// <summary>
             /// Enum BASEXCLUDED for value: BASEXCLUDED
             /// </summary>
             [EnumMember(Value = "BASEXCLUDED")]
-            BASEXCLUDED = 5,
-
-            /// <summary>
-            /// Enum EXEMPTEXPENSES for value: EXEMPTEXPENSES
-            /// </summary>
-            [EnumMember(Value = "EXEMPTEXPENSES")]
-            EXEMPTEXPENSES = 6,
-
-            /// <summary>
-            /// Enum EXEMPTINPUT for value: EXEMPTINPUT
-            /// </summary>
-            [EnumMember(Value = "EXEMPTINPUT")]
-            EXEMPTINPUT = 7,
-
-            /// <summary>
-            /// Enum ECOUTPUT for value: ECOUTPUT
-            /// </summary>
-            [EnumMember(Value = "ECOUTPUT")]
-            ECOUTPUT = 8,
-
-            /// <summary>
-            /// Enum ECOUTPUTSERVICES for value: ECOUTPUTSERVICES
-            /// </summary>
-            [EnumMember(Value = "ECOUTPUTSERVICES")]
-            ECOUTPUTSERVICES = 9,
-
-            /// <summary>
-            /// Enum ECINPUT for value: ECINPUT
-            /// </summary>
-            [EnumMember(Value = "ECINPUT")]
-            ECINPUT = 10,
-
-            /// <summary>
-            /// Enum ECACQUISITIONS for value: ECACQUISITIONS
-            /// </summary>
-            [EnumMember(Value = "ECACQUISITIONS")]
-            ECACQUISITIONS = 11,
+            BASEXCLUDED = 2,
 
             /// <summary>
             /// Enum CAPITALSALESOUTPUT for value: CAPITALSALESOUTPUT
             /// </summary>
             [EnumMember(Value = "CAPITALSALESOUTPUT")]
-            CAPITALSALESOUTPUT = 12,
+            CAPITALSALESOUTPUT = 3,
 
             /// <summary>
             /// Enum CAPITALEXPENSESINPUT for value: CAPITALEXPENSESINPUT
             /// </summary>
             [EnumMember(Value = "CAPITALEXPENSESINPUT")]
-            CAPITALEXPENSESINPUT = 13,
+            CAPITALEXPENSESINPUT = 4,
 
             /// <summary>
-            /// Enum MOSSSALES for value: MOSSSALES
+            /// Enum ECOUTPUT for value: ECOUTPUT
             /// </summary>
-            [EnumMember(Value = "MOSSSALES")]
-            MOSSSALES = 14,
+            [EnumMember(Value = "ECOUTPUT")]
+            ECOUTPUT = 5,
 
             /// <summary>
-            /// Enum NONE for value: NONE
+            /// Enum ECOUTPUTSERVICES for value: ECOUTPUTSERVICES
             /// </summary>
-            [EnumMember(Value = "NONE")]
-            NONE = 15,
+            [EnumMember(Value = "ECOUTPUTSERVICES")]
+            ECOUTPUTSERVICES = 6,
+
+            /// <summary>
+            /// Enum ECINPUT for value: ECINPUT
+            /// </summary>
+            [EnumMember(Value = "ECINPUT")]
+            ECINPUT = 7,
+
+            /// <summary>
+            /// Enum ECACQUISITIONS for value: ECACQUISITIONS
+            /// </summary>
+            [EnumMember(Value = "ECACQUISITIONS")]
+            ECACQUISITIONS = 8,
+
+            /// <summary>
+            /// Enum EXEMPTEXPENSES for value: EXEMPTEXPENSES
+            /// </summary>
+            [EnumMember(Value = "EXEMPTEXPENSES")]
+            EXEMPTEXPENSES = 9,
+
+            /// <summary>
+            /// Enum EXEMPTINPUT for value: EXEMPTINPUT
+            /// </summary>
+            [EnumMember(Value = "EXEMPTINPUT")]
+            EXEMPTINPUT = 10,
+
+            /// <summary>
+            /// Enum EXEMPTOUTPUT for value: EXEMPTOUTPUT
+            /// </summary>
+            [EnumMember(Value = "EXEMPTOUTPUT")]
+            EXEMPTOUTPUT = 11,
 
             /// <summary>
             /// Enum GSTONIMPORTS for value: GSTONIMPORTS
             /// </summary>
             [EnumMember(Value = "GSTONIMPORTS")]
-            GSTONIMPORTS = 16,
+            GSTONIMPORTS = 12,
 
             /// <summary>
-            /// Enum AVALARA for value: AVALARA
+            /// Enum INPUT for value: INPUT
             /// </summary>
-            [EnumMember(Value = "AVALARA")]
-            AVALARA = 17
+            [EnumMember(Value = "INPUT")]
+            INPUT = 13,
+
+            /// <summary>
+            /// Enum INPUTTAXED for value: INPUTTAXED
+            /// </summary>
+            [EnumMember(Value = "INPUTTAXED")]
+            INPUTTAXED = 14,
+
+            /// <summary>
+            /// Enum MOSSSALES for value: MOSSSALES
+            /// </summary>
+            [EnumMember(Value = "MOSSSALES")]
+            MOSSSALES = 15,
+
+            /// <summary>
+            /// Enum NONE for value: NONE
+            /// </summary>
+            [EnumMember(Value = "NONE")]
+            NONE = 16,
+
+            /// <summary>
+            /// Enum NONEOUTPUT for value: NONEOUTPUT
+            /// </summary>
+            [EnumMember(Value = "NONEOUTPUT")]
+            NONEOUTPUT = 17,
+
+            /// <summary>
+            /// Enum OUTPUT for value: OUTPUT
+            /// </summary>
+            [EnumMember(Value = "OUTPUT")]
+            OUTPUT = 18,
+
+            /// <summary>
+            /// Enum PURCHASESINPUT for value: PURCHASESINPUT
+            /// </summary>
+            [EnumMember(Value = "PURCHASESINPUT")]
+            PURCHASESINPUT = 19,
+
+            /// <summary>
+            /// Enum SALESOUTPUT for value: SALESOUTPUT
+            /// </summary>
+            [EnumMember(Value = "SALESOUTPUT")]
+            SALESOUTPUT = 20,
+
+            /// <summary>
+            /// Enum EXEMPTCAPITAL for value: EXEMPTCAPITAL
+            /// </summary>
+            [EnumMember(Value = "EXEMPTCAPITAL")]
+            EXEMPTCAPITAL = 21,
+
+            /// <summary>
+            /// Enum EXEMPTEXPORT for value: EXEMPTEXPORT
+            /// </summary>
+            [EnumMember(Value = "EXEMPTEXPORT")]
+            EXEMPTEXPORT = 22,
+
+            /// <summary>
+            /// Enum CAPITALEXINPUT for value: CAPITALEXINPUT
+            /// </summary>
+            [EnumMember(Value = "CAPITALEXINPUT")]
+            CAPITALEXINPUT = 23,
+
+            /// <summary>
+            /// Enum GSTONCAPIMPORTS for value: GSTONCAPIMPORTS
+            /// </summary>
+            [EnumMember(Value = "GSTONCAPIMPORTS")]
+            GSTONCAPIMPORTS = 24,
+
+            /// <summary>
+            /// Enum REVERSECHARGES for value: REVERSECHARGES
+            /// </summary>
+            [EnumMember(Value = "REVERSECHARGES")]
+            REVERSECHARGES = 25,
+
+            /// <summary>
+            /// Enum PAYMENTS for value: PAYMENTS
+            /// </summary>
+            [EnumMember(Value = "PAYMENTS")]
+            PAYMENTS = 26,
+
+            /// <summary>
+            /// Enum INVOICE for value: INVOICE
+            /// </summary>
+            [EnumMember(Value = "INVOICE")]
+            INVOICE = 27,
+
+            /// <summary>
+            /// Enum CASH for value: CASH
+            /// </summary>
+            [EnumMember(Value = "CASH")]
+            CASH = 28,
+
+            /// <summary>
+            /// Enum ACCRUAL for value: ACCRUAL
+            /// </summary>
+            [EnumMember(Value = "ACCRUAL")]
+            ACCRUAL = 29,
+
+            /// <summary>
+            /// Enum FLATRATECASH for value: FLATRATECASH
+            /// </summary>
+            [EnumMember(Value = "FLATRATECASH")]
+            FLATRATECASH = 30,
+
+            /// <summary>
+            /// Enum FLATRATEACCRUAL for value: FLATRATEACCRUAL
+            /// </summary>
+            [EnumMember(Value = "FLATRATEACCRUAL")]
+            FLATRATEACCRUAL = 31,
+
+            /// <summary>
+            /// Enum ACCRUALS for value: ACCRUALS
+            /// </summary>
+            [EnumMember(Value = "ACCRUALS")]
+            ACCRUALS = 32
 
         }
 

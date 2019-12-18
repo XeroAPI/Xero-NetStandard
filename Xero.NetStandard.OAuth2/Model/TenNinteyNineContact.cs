@@ -184,7 +184,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Contact contact id</value>
         [DataMember(Name="ContactId", EmitDefaultValue=false)]
-        public Guid ContactId { get; set; }
+        public Guid? ContactId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
