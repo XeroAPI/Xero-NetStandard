@@ -44,15 +44,14 @@ Follow these steps to create your Xero app
 ### Installation
 Use Nuget to download the package
 ```
-dotnet add package Xero.NetStandard.OAuth2 --version 0.1.0
-dotnet add package Xero.NetStandard.OAuth2Client --version 0.1.0
+	dotnet add package Xero.NetStandard.OAuth2 --version 0.1.0
+	dotnet add package Xero.NetStandard.OAuth2Client --version 0.1.0
 ```
 or using the Package Manager Console inside Visual Studio
 
 ```
-Install-Package Xero.NetStandard.OAuth2
-Install-Package XXero.NetStandard.OAuth2Client
-
+	Install-Package Xero.NetStandard.OAuth2
+	Install-Package XXero.NetStandard.OAuth2Client
 ```
 or you can download the source code from https://github.com/XeroAPI/Xero-NetStandard and compile it by yourself.
 
@@ -74,17 +73,17 @@ Build the login link
 	XeroConfiguration xconfig = new XeroConfiguration();
     
 	xconfig.ClientId = "yourClientId";
-    xconfig.ClientSecret = "yourClientSecret";
-    xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
-    xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
+	xconfig.ClientSecret = "yourClientSecret";
+	xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
+	xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
     
 	var client = new XeroClient(xconfig);
 	
-    //build login link
-    Console.WriteLine(client.BuildLoginUri());
+	//build login link
+	Console.WriteLine(client.BuildLoginUri());
 	
-    //In the example app, I've used the config via appsettings so it becomes:
-    var client = new Xero.NetStandard.OAuth2.Client.XeroClient(config.Value, httpClientFactory);
+	//In the example app, I've used the config via appsettings so it becomes:
+	var client = new Xero.NetStandard.OAuth2.Client.XeroClient(config.Value, httpClientFactory);
 ```
 
 From here the user will be redirected to login, authorise access and get redirected back
@@ -97,45 +96,42 @@ On the way back you will get a parameter with code and state
 	XeroConfiguration xconfig = new XeroConfiguration(); 
     
 	xconfig.ClientId = "yourClientId";
-    xconfig.ClientSecret = "yourClientSecret";
-    xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
-    xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
-    
+	xconfig.ClientSecret = "yourClientSecret";
+	xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
+	xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
+	
 	var client = new XeroClient(xconfig);
 	
-    //before getting the access token please check that the state matches
-    await client.RequestAccessTokenAsync(code, "yourState");
+	//before getting the access token please check that the state matches
+	await client.RequestAccessTokenAsync(code, "yourState");
     
 	//from here you will need to access your Xero Tenants
-    List<Tenant> tenants = await client.GetConnections();
+	List<Tenant> tenants = await client.GetConnections();
     
 	// you will now have the tenant id and access token
-    foreach (Tenant tenant in tenants)
-    {
-        // do something with your tenant and access token
-        //client.AccessToken;
-        //tenant.TenantId;
-    }
+	foreach (Tenant tenant in tenants)
+	{
+		// do something with your tenant and access token
+		//client.AccessToken;
+		//tenant.TenantId;
+	}
 ```
 
 To refresh your token. Just call the refresh 
 ```csharp
-
 	xeroClient.RefreshTokenAsync(xeroToken); //use the latest token you have
-	
 ```
 
 ```csharp
-	
 	//Here is a full example using a webapi
-    [HttpGet]
-    public async Task<ActionResult> Index(string code, string state)
-    {
-    	var client = new XeroClient(config.Value, httpClientFactory);
-        var xeroToken = (XeroOAuth2Token)await client.RequestXeroTokenAsync(code);
-        TokenUtilities.StoreToken(Environment.MachineName, xeroToken);
-        return RedirectToAction("Invoices", "Accounting");
-    }
+	[HttpGet]
+	public async Task<ActionResult> Index(string code, string state)
+	{
+		var client = new XeroClient(config.Value, httpClientFactory);
+		var xeroToken = (XeroOAuth2Token)await client.RequestXeroTokenAsync(code);
+		TokenUtilities.StoreToken(Environment.MachineName, xeroToken);
+		return RedirectToAction("Invoices", "Accounting");
+	}
 ```
 
 To setup the main API object see the snippet below
