@@ -1,26 +1,51 @@
 # Xero OAuth2 .Net SDK
 
-This code is generated from the openapi-generator. 
+This code is generated from the openapi-generator based on [Xero OpenAPI 3.0 Specification](https://github.com/XeroAPI/Xero-OpenAPI)
 
+[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v0.1.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
 
 # Current release of SDK with OAuth2 support
-Version 0.0.1Beta of Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
+Version 0.1.0 of Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
 * accounting
+* identity
 
 Coming soon
-* fixed asset 
 * bank feeds 
-* files 
-* payroll
 * projects
+* payroll
+* files 
+* fixed asset 
 * xero hq
+
+## How to handle OAuth 2.0 authentication & authorization?
+We have built Xero OAuth 2.0 Client. Check out [Xero.NetStandard.OAuth2Client](https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2/Xero.NetStandard.OAuth2Client)
+
+[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2Client.v0.0.2-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2Client/)
+
+To learn more about how our OAuth 2.0 flow works and how to use the OAuth 2.0 client, check out our Xero developer blog post: [Up and running with .NET and Xero OAuth 2.0](https://devblog.xero.com/xero-oauth-2-with-ruby-313a6ea37989)
+
+## Looking for previous SDK with oAuth 1.0a support?
+Codebase, samples and setup instructions located in [oauth1 branch](https://github.com/XeroAPI/Xero-NetStandard/tree/oauth1).
+
 ## Getting Started
+
+### Create a Xero App
+Follow these steps to create your Xero app
+
+* Create a free Xero user account (if you don't have one)
+* Use this URL for beta access to oAuth2 [https://developer.xero.com/myapps](https://developer.xero.com/myapps)
+* Click "New app" link
+* Enter your App name, company url, privacy policy url, and redirect URI (this is your callback url - localhost, etc)
+* Agree to terms and condition and click "Create App".
+* Click "Generate a secret" button.
+* Copy your client id and client secret and save for use later.
+* Click the "Save" button. You secret is now hidden.
 
 ### Installation
 Use Nuget to download the package
 ```
-dotnet add package Xero.NetStandard.OAuth2 --version 0.0.2-beta
-dotnet add package Xero.NetStandard.OAuth2Client --version 0.0.1-beta
+dotnet add package Xero.NetStandard.OAuth2 --version 0.1.0
+dotnet add package Xero.NetStandard.OAuth2Client --version 0.1.0
 ```
 or using the Package Manager Console inside Visual Studio
 
@@ -30,19 +55,6 @@ Install-Package XXero.NetStandard.OAuth2Client
 
 ```
 or you can download the source code from https://github.com/XeroAPI/Xero-NetStandard and compile it by yourself.
-
-
-### Create a Xero App
-Follow these steps to create your Xero app
-
-* Create a free Xero user account (if you don't have one)
-* Use this URL for beta access to oAuth2 [https://developer.xero.com/myapps?code=oauth2create](https://developer.xero.com/myapps?code=oauth2create)
-* Click "or Try oAuth2" link
-* Enter your App name, company url, privacy policy url, and redirect URI (this is your callback url - localhost, etc)
-* Agree to terms and condition and click "Create App".
-* Click "Generate a secret" button.
-* Copy your client id and client secret and save for use later.
-* Click the "Save" button. You secret is now hidden.
 
 To get started there are a few main classes.
 
@@ -59,19 +71,20 @@ To get started you will just need two things to make calls to the Accounting Api
 
 Build the login link
 ```csharp
-
-XeroConfiguration xconfig = new XeroConfiguration();
-    xconfig.ClientId = "yourClientId";
+	XeroConfiguration xconfig = new XeroConfiguration();
+    
+	xconfig.ClientId = "yourClientId";
     xconfig.ClientSecret = "yourClientSecret";
     xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
     xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
-    var client = new XeroClient(xconfig);
+    
+	var client = new XeroClient(xconfig);
+	
     //build login link
     Console.WriteLine(client.BuildLoginUri());
-//In the example app, I've used the config via appsettings so it becomes:
-            var client = new Xero.NetStandard.OAuth2.Client.XeroClient(config.Value, httpClientFactory);
-
-    
+	
+    //In the example app, I've used the config via appsettings so it becomes:
+    var client = new Xero.NetStandard.OAuth2.Client.XeroClient(config.Value, httpClientFactory);
 ```
 
 From here the user will be redirected to login, authorise access and get redirected back
@@ -81,57 +94,63 @@ On the way back you will get a parameter with code and state
 * state
 
 ```csharp
-
-XeroConfiguration xconfig = new XeroConfiguration(); 
-    xconfig.ClientId = "yourClientId";
+	XeroConfiguration xconfig = new XeroConfiguration(); 
+    
+	xconfig.ClientId = "yourClientId";
     xconfig.ClientSecret = "yourClientSecret";
     xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
     xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
-    var client = new XeroClient(xconfig);
+    
+	var client = new XeroClient(xconfig);
+	
     //before getting the access token please check that the state matches
     await client.RequestAccessTokenAsync(code, "yourState");
-    //from here you will need to access your Xero Tenants
+    
+	//from here you will need to access your Xero Tenants
     List<Tenant> tenants = await client.GetConnections();
-    // you will now have the tenant id and access token
+    
+	// you will now have the tenant id and access token
     foreach (Tenant tenant in tenants)
     {
         // do something with your tenant and access token
         //client.AccessToken;
         //tenant.TenantId;
     }
-
 ```
+
 To refresh your token. Just call the refresh 
 ```csharp
 
-xeroClient.RefreshTokenAsync(xeroToken); //use the latest token you have
+	xeroClient.RefreshTokenAsync(xeroToken); //use the latest token you have
+	
 ```
-
 
 ```csharp
-
-//Here is a full example using a webapi
-       [HttpGet]
-        public async Task<ActionResult> Index(string code, string state)
-        {
-            var client = new XeroClient(config.Value, httpClientFactory);
-            var xeroToken = (XeroOAuth2Token)await client.RequestXeroTokenAsync(code);
-            TokenUtilities.StoreToken(Environment.MachineName, xeroToken);
-            return RedirectToAction("Invoices", "Accounting");
-        }
-
+	
+	//Here is a full example using a webapi
+    [HttpGet]
+    public async Task<ActionResult> Index(string code, string state)
+    {
+    	var client = new XeroClient(config.Value, httpClientFactory);
+        var xeroToken = (XeroOAuth2Token)await client.RequestXeroTokenAsync(code);
+        TokenUtilities.StoreToken(Environment.MachineName, xeroToken);
+        return RedirectToAction("Invoices", "Accounting");
+    }
 ```
-
 
 To setup the main API object see the snippet below
 
 ```csharp
-//
-var AccountingApi = new AccountingApi();
-var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
-Console.WriteLine(AccountingApi.GetInvoices().ToJson();)
-
+	var AccountingApi = new AccountingApi();
+	var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
+	
+	Console.WriteLine(AccountingApi.GetInvoices().ToJson();)
 ```
+
+## TLS 1.0 deprecation
+As of June 30, 2018, Xero's API will remove support for TLS 1.0.  
+
+The easiest way to force TLS 1.2 is to set the Runtime Environment for your server (Tomcat, etc) to Java 1.8 which defaults to TLS 1.2.
 
 ## License
 
