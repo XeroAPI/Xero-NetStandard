@@ -5,7 +5,7 @@ This code is generated from the openapi-generator based on [Xero OpenAPI 3.0 Spe
 [![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v0.1.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
 
 # Current release of SDK with OAuth2 support
-Version 0.1.0 of Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
+Version Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
 * accounting
 * identity
 
@@ -44,8 +44,8 @@ Follow these steps to create your Xero app
 ### Installation
 Use Nuget to download the package
 ```
-	dotnet add package Xero.NetStandard.OAuth2 --version 0.1.0
-	dotnet add package Xero.NetStandard.OAuth2Client --version 0.1.0
+	dotnet add package Xero.NetStandard.OAuth2
+	dotnet add package Xero.NetStandard.OAuth2Client
 ```
 or using the Package Manager Console inside Visual Studio
 
