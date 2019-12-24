@@ -9,16 +9,15 @@ using System.Collections.Generic;
 
 namespace Xero.NetStandard.OAuth2.Tests
 {
-    public class AccountingApiTests
+    public class InvoiceTests
     {
 
         private AccountingApi _accountingApi;
-        private XeroConfiguration _xeroConfig;
         private const string AccessToken = "XeroNetStandardAccessToken";
         private const string TenantId = "XeroNetStandardTenantId";
 
 
-        public AccountingApiTests()
+        public InvoiceTests()
         {
             var directory = Directory.GetCurrentDirectory();
             var configuration = TestHelper.GetApplicationConfiguration(directory);
@@ -59,13 +58,6 @@ namespace Xero.NetStandard.OAuth2.Tests
         }
 
         [Fact]
-        public async Task GetAccountDeserializesResponse()
-        {
-            var response = await _accountingApi.GetAccountsAsync(AccessToken, TenantId);
-            Assert.IsType<Accounts>(response);
-        }
-
-        [Fact]
         public async Task CreateInvoiceReturns200Response()
         {
             var invoice = new Invoice();
@@ -73,8 +65,6 @@ namespace Xero.NetStandard.OAuth2.Tests
             var response = await _accountingApi.CreateInvoiceAsyncWithHttpInfo(AccessToken, TenantId, invoice);
             Assert.True(response.StatusCode.Equals(HttpStatusCode.OK));
         }
-
-
 
     }
 }
