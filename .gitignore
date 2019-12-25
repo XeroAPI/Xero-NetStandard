@@ -39,12 +39,6 @@ out/
 *.DotSettings
 *.lnk
 */.vs
-.vscode/tasks.json
-.vscode/launch.json
+.vscode/
 Xero.NetStandard.OAuth2.Tests/appsettings.json
-.vscode/settings.json
-Xero.NetStandard.OAuth2.Tests/appsettings.json
-Xero.NetStandard.OAuth2.Tests/appsettings.json
-Xero.NetStandard.OAuth2.Tests/appsettings.json
-Xero.NetStandard.OAuth2.Tests/appsettings.json
-Xero.NetStandard.OAuth2.Tests/appsettings.json
+
