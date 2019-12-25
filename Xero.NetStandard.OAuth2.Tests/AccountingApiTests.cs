@@ -48,15 +48,5 @@ namespace Xero.NetStandard.OAuth2.Tests
       var response = await _accountingApi.GetAccountsAsync(AccessToken, TenantId);
       Assert.IsType<Accounts>(response);
     }
-
-    [Fact]
-    public async Task test()
-    {
-      var invoice = new Invoice();
-      invoice.Reference = "blahblah";
-      var response = await _accountingApi.CreateInvoiceAsync(AccessToken, TenantId, invoice);
-      // var test2 = AutoFaker.Generate<Invoice>();
-
-    }
   }
 }
