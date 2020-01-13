@@ -66,6 +66,12 @@ namespace Xero.NetStandard.OAuth2.Model
             /// </summary>
             [EnumMember(Value = "VOIDED")]
             VOIDED = 4
+			
+			/// <summary>
+            /// Enum ARCHIVED for value: ARCHIVED
+            /// </summary>
+            [EnumMember(Value = "ARCHIVED")]
+            ARCHIVED = 5
 
         }
 
