@@ -65,6 +65,62 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO unit test for the property 'ValidationErrors'
         }
+        /// <summary>
+        /// Test the property 'BatchPaymentID'
+        /// </summary>
+        [Fact]
+        public void BatchPaymentIDTest()
+        {
+            // TODO unit test for the property 'BatchPaymentID'
+        }
+        /// <summary>
+        /// Test the property 'BankTransactionID'
+        /// </summary>
+        [Fact]
+        public void BankTransactionIDTest()
+        {
+            // TODO unit test for the property 'BankTransactionID'
+        }
+        /// <summary>
+        /// Test the property 'CreditNoteID'
+        /// </summary>
+        [Fact]
+        public void CreditNoteIDTest()
+        {
+            // TODO unit test for the property 'CreditNoteID'
+        }
+        /// <summary>
+        /// Test the property 'ContactID'
+        /// </summary>
+        [Fact]
+        public void ContactIDTest()
+        {
+            // TODO unit test for the property 'ContactID'
+        }
+        /// <summary>
+        /// Test the property 'InvoiceID'
+        /// </summary>
+        [Fact]
+        public void InvoiceIDTest()
+        {
+            // TODO unit test for the property 'InvoiceID'
+        }
+        /// <summary>
+        /// Test the property 'ItemID'
+        /// </summary>
+        [Fact]
+        public void ItemIDTest()
+        {
+            // TODO unit test for the property 'ItemID'
+        }
+        /// <summary>
+        /// Test the property 'PurchaseOrderID'
+        /// </summary>
+        [Fact]
+        public void PurchaseOrderIDTest()
+        {
+            // TODO unit test for the property 'PurchaseOrderID'
+        }
 
     }
 

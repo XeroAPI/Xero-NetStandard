@@ -361,6 +361,14 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO unit test for the property 'HasValidationErrors'
         }
+        /// <summary>
+        /// Test the property 'StatusAttributeString'
+        /// </summary>
+        [Fact]
+        public void StatusAttributeStringTest()
+        {
+            // TODO unit test for the property 'StatusAttributeString'
+        }
 
     }
 

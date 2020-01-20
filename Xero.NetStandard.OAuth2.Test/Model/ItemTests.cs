@@ -170,6 +170,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO unit test for the property 'ItemID'
         }
         /// <summary>
+        /// Test the property 'StatusAttributeString'
+        /// </summary>
+        [Fact]
+        public void StatusAttributeStringTest()
+        {
+            // TODO unit test for the property 'StatusAttributeString'
+        }
+        /// <summary>
         /// Test the property 'ValidationErrors'
         /// </summary>
         [Fact]

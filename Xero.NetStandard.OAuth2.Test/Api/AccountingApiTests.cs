@@ -16,13 +16,12 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using Xunit;
+using System.Threading.Tasks;
+using AutoBogus;
 
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model;
-using System.Threading.Tasks;
-using Bogus;
-using AutoBogus;
 
 namespace Xero.NetStandard.OAuth2.Test
 {
@@ -36,6 +35,10 @@ namespace Xero.NetStandard.OAuth2.Test
     public class AccountingApiTests : IDisposable
     {
         private AccountingApi instance;
+
+        private const string accessToken = "XeroNetStandardTestAccessToken";
+
+        private const string xeroTenantId = "XeroNetStandardTestTenantId";
 
         public AccountingApiTests()
         {
@@ -51,13 +54,6 @@ namespace Xero.NetStandard.OAuth2.Test
             // Cleanup when everything is done.
         }
 
-        [Fact]
-        public async Task test()
-        {
-            string test = instance.Configuration.BasePath;
-            Console.WriteLine(test);
-        }
-
         /// <summary>
         /// Test an instance of AccountingApi
         /// </summary>
@@ -68,7 +64,7 @@ namespace Xero.NetStandard.OAuth2.Test
             //Assert.IsType(typeof(AccountingApi), instance, "instance is a AccountingApi");
         }
 
-
+        
         /// <summary>
         /// Test CreateAccount
         /// </summary>
@@ -76,2861 +72,2866 @@ namespace Xero.NetStandard.OAuth2.Test
         public async Task CreateAccountTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            string xeroTenantId = "null";
-            var account = AutoFaker.Generate<Account>();
-            var accessToken = "asd";
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Account account = AutoFaker.Generate<Account>();
             var response = await instance.CreateAccountAsync(accessToken, xeroTenantId, account);
             Assert.IsType<Accounts> (response);
         }
-
+        
         /// <summary>
         /// Test CreateAccountAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateAccountAttachmentByFileNameTest()
+        public async Task CreateAccountAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid accountID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateAccountAttachmentByFileNameAsync(xeroTenantId, accountID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
-        /// <summary>
-        /// Test CreateBankTransaction
-        /// </summary>
-        [Fact]
-        public void CreateBankTransactionTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //BankTransaction bankTransaction = null;
-            //var response = instance.CreateBankTransactionAsync(xeroTenantId, bankTransaction);
-            //Assert.IsType<BankTransactions> (response);
-        }
-
+        
         /// <summary>
         /// Test CreateBankTransactionAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateBankTransactionAttachmentByFileNameTest()
+        public async Task CreateBankTransactionAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateBankTransactionAttachmentByFileNameAsync(xeroTenantId, bankTransactionID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBankTransactionHistoryRecord
         /// </summary>
         [Fact]
-        public void CreateBankTransactionHistoryRecordTest()
+        public async Task CreateBankTransactionHistoryRecordTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateBankTransactionHistoryRecordAsync(xeroTenantId, bankTransactionID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateBankTransactionHistoryRecordAsync(accessToken, xeroTenantId, bankTransactionID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBankTransactions
         /// </summary>
         [Fact]
-        public void CreateBankTransactionsTest()
+        public async Task CreateBankTransactionsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //BankTransactions bankTransactions = null;
-            //bool? summarizeErrors = null;
-            //var response = instance.CreateBankTransactionsAsync(xeroTenantId, bankTransactions, summarizeErrors);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            BankTransactions bankTransactions = AutoFaker.Generate<BankTransactions>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors);
             //Assert.IsType<BankTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBankTransfer
         /// </summary>
         [Fact]
-        public void CreateBankTransferTest()
+        public async Task CreateBankTransferTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //BankTransfers bankTransfers = null;
-            //var response = instance.CreateBankTransferAsync(xeroTenantId, bankTransfers);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            BankTransfers bankTransfers = AutoFaker.Generate<BankTransfers>();
+            //var response = await instance.CreateBankTransferAsync(accessToken, xeroTenantId, bankTransfers);
             //Assert.IsType<BankTransfers> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBankTransferAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateBankTransferAttachmentByFileNameTest()
+        public async Task CreateBankTransferAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateBankTransferAttachmentByFileNameAsync(xeroTenantId, bankTransferID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBankTransferHistoryRecord
         /// </summary>
         [Fact]
-        public void CreateBankTransferHistoryRecordTest()
+        public async Task CreateBankTransferHistoryRecordTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateBankTransferHistoryRecordAsync(xeroTenantId, bankTransferID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateBankTransferHistoryRecordAsync(accessToken, xeroTenantId, bankTransferID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBatchPayment
         /// </summary>
         [Fact]
-        public void CreateBatchPaymentTest()
+        public async Task CreateBatchPaymentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //BatchPayments batchPayments = null;
-            //var response = instance.CreateBatchPaymentAsync(xeroTenantId, batchPayments);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            BatchPayments batchPayments = AutoFaker.Generate<BatchPayments>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.CreateBatchPaymentAsync(accessToken, xeroTenantId, batchPayments, summarizeErrors);
             //Assert.IsType<BatchPayments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBatchPaymentHistoryRecord
         /// </summary>
         [Fact]
-        public void CreateBatchPaymentHistoryRecordTest()
+        public async Task CreateBatchPaymentHistoryRecordTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid batchPaymentID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateBatchPaymentHistoryRecordAsync(xeroTenantId, batchPaymentID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid batchPaymentID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateBatchPaymentHistoryRecordAsync(accessToken, xeroTenantId, batchPaymentID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateBrandingThemePaymentServices
         /// </summary>
         [Fact]
-        public void CreateBrandingThemePaymentServicesTest()
+        public async Task CreateBrandingThemePaymentServicesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid brandingThemeID = null;
-            //PaymentService paymentService = null;
-            //var response = instance.CreateBrandingThemePaymentServicesAsync(xeroTenantId, brandingThemeID, paymentService);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid brandingThemeID = AutoFaker.Generate<Guid>();
+            PaymentService paymentService = AutoFaker.Generate<PaymentService>();
+            //var response = await instance.CreateBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID, paymentService);
             //Assert.IsType<PaymentServices> (response);
         }
-
-        /// <summary>
-        /// Test CreateContact
-        /// </summary>
-        [Fact]
-        public void CreateContactTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Contact contact = null;
-            //var response = instance.CreateContactAsync(xeroTenantId, contact);
-            //Assert.IsType<Contacts> (response);
-        }
-
+        
         /// <summary>
         /// Test CreateContactAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateContactAttachmentByFileNameTest()
+        public async Task CreateContactAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateContactAttachmentByFileNameAsync(xeroTenantId, contactID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateContactGroup
         /// </summary>
         [Fact]
-        public void CreateContactGroupTest()
+        public async Task CreateContactGroupTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //ContactGroups contactGroups = null;
-            //var response = instance.CreateContactGroupAsync(xeroTenantId, contactGroups);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            ContactGroups contactGroups = AutoFaker.Generate<ContactGroups>();
+            //var response = await instance.CreateContactGroupAsync(accessToken, xeroTenantId, contactGroups);
             //Assert.IsType<ContactGroups> (response);
         }
-
+        
         /// <summary>
         /// Test CreateContactGroupContacts
         /// </summary>
         [Fact]
-        public void CreateContactGroupContactsTest()
+        public async Task CreateContactGroupContactsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactGroupID = null;
-            //Contacts contacts = null;
-            //var response = instance.CreateContactGroupContactsAsync(xeroTenantId, contactGroupID, contacts);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactGroupID = AutoFaker.Generate<Guid>();
+            Contacts contacts = AutoFaker.Generate<Contacts>();
+            //var response = await instance.CreateContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID, contacts);
             //Assert.IsType<Contacts> (response);
         }
-
+        
         /// <summary>
         /// Test CreateContactHistory
         /// </summary>
         [Fact]
-        public void CreateContactHistoryTest()
+        public async Task CreateContactHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateContactHistoryAsync(xeroTenantId, contactID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateContactHistoryAsync(accessToken, xeroTenantId, contactID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateContacts
         /// </summary>
         [Fact]
-        public void CreateContactsTest()
+        public async Task CreateContactsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Contacts contacts = null;
-            //bool? summarizeErrors = null;
-            //var response = instance.CreateContactsAsync(xeroTenantId, contacts, summarizeErrors);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Contacts contacts = AutoFaker.Generate<Contacts>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.CreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
             //Assert.IsType<Contacts> (response);
         }
-
-        /// <summary>
-        /// Test CreateCreditNote
-        /// </summary>
-        [Fact]
-        public void CreateCreditNoteTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //CreditNote creditNote = null;
-            //var response = instance.CreateCreditNoteAsync(xeroTenantId, creditNote);
-            //Assert.IsType<CreditNotes> (response);
-        }
-
+        
         /// <summary>
         /// Test CreateCreditNoteAllocation
         /// </summary>
         [Fact]
-        public void CreateCreditNoteAllocationTest()
+        public async Task CreateCreditNoteAllocationTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //Allocations allocations = null;
-            //var response = instance.CreateCreditNoteAllocationAsync(xeroTenantId, creditNoteID, allocations);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            Allocations allocations = AutoFaker.Generate<Allocations>();
+            //var response = await instance.CreateCreditNoteAllocationAsync(accessToken, xeroTenantId, creditNoteID, allocations);
             //Assert.IsType<Allocations> (response);
         }
-
+        
         /// <summary>
         /// Test CreateCreditNoteAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateCreditNoteAttachmentByFileNameTest()
+        public async Task CreateCreditNoteAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateCreditNoteAttachmentByFileNameAsync(xeroTenantId, creditNoteID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateCreditNoteHistory
         /// </summary>
         [Fact]
-        public void CreateCreditNoteHistoryTest()
+        public async Task CreateCreditNoteHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateCreditNoteHistoryAsync(xeroTenantId, creditNoteID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateCreditNotes
         /// </summary>
         [Fact]
-        public void CreateCreditNotesTest()
+        public async Task CreateCreditNotesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //CreditNotes creditNotes = null;
-            //bool? summarizeErrors = null;
-            //var response = instance.CreateCreditNotesAsync(xeroTenantId, creditNotes, summarizeErrors);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            CreditNotes creditNotes = AutoFaker.Generate<CreditNotes>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.CreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors);
             //Assert.IsType<CreditNotes> (response);
         }
-
+        
         /// <summary>
         /// Test CreateCurrency
         /// </summary>
         [Fact]
-        public void CreateCurrencyTest()
+        public async Task CreateCurrencyTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Currency currency = null;
-            //var response = instance.CreateCurrencyAsync(xeroTenantId, currency);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Currency currency = AutoFaker.Generate<Currency>();
+            //var response = await instance.CreateCurrencyAsync(accessToken, xeroTenantId, currency);
             //Assert.IsType<Currencies> (response);
         }
-
+        
         /// <summary>
         /// Test CreateEmployee
         /// </summary>
         [Fact]
-        public void CreateEmployeeTest()
+        public async Task CreateEmployeeTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Employee employee = null;
-            //var response = instance.CreateEmployeeAsync(xeroTenantId, employee);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Employee employee = AutoFaker.Generate<Employee>();
+            //var response = await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employee);
             //Assert.IsType<Employees> (response);
         }
-
+        
         /// <summary>
         /// Test CreateEmployees
         /// </summary>
         [Fact]
-        public void CreateEmployeesTest()
+        public async Task CreateEmployeesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Employees employees = null;
-            //var response = instance.CreateEmployeesAsync(xeroTenantId, employees);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Employees employees = AutoFaker.Generate<Employees>();
+            //var response = await instance.CreateEmployeesAsync(accessToken, xeroTenantId, employees);
             //Assert.IsType<Employees> (response);
         }
-
+        
         /// <summary>
         /// Test CreateExpenseClaimHistory
         /// </summary>
         [Fact]
-        public void CreateExpenseClaimHistoryTest()
+        public async Task CreateExpenseClaimHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid expenseClaimID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateExpenseClaimHistoryAsync(xeroTenantId, expenseClaimID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid expenseClaimID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateExpenseClaims
         /// </summary>
         [Fact]
-        public void CreateExpenseClaimsTest()
+        public async Task CreateExpenseClaimsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //ExpenseClaims expenseClaims = null;
-            //var response = instance.CreateExpenseClaimsAsync(xeroTenantId, expenseClaims);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            ExpenseClaims expenseClaims = AutoFaker.Generate<ExpenseClaims>();
+            //var response = await instance.CreateExpenseClaimsAsync(accessToken, xeroTenantId, expenseClaims);
             //Assert.IsType<ExpenseClaims> (response);
         }
-
-        /// <summary>
-        /// Test CreateInvoice
-        /// </summary>
-        [Fact]
-        public void CreateInvoiceTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Invoice invoice = null;
-            //var response = instance.CreateInvoiceAsync(xeroTenantId, invoice);
-            //Assert.IsType<Invoices> (response);
-        }
-
+        
         /// <summary>
         /// Test CreateInvoiceAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateInvoiceAttachmentByFileNameTest()
+        public async Task CreateInvoiceAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateInvoiceAttachmentByFileNameAsync(xeroTenantId, invoiceID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateInvoiceHistory
         /// </summary>
         [Fact]
-        public void CreateInvoiceHistoryTest()
+        public async Task CreateInvoiceHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateInvoiceHistoryAsync(xeroTenantId, invoiceID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateInvoices
         /// </summary>
         [Fact]
-        public void CreateInvoicesTest()
+        public async Task CreateInvoicesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Invoices invoices = null;
-            //bool? summarizeErrors = null;
-            //var response = instance.CreateInvoicesAsync(xeroTenantId, invoices, summarizeErrors);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Invoices invoices = AutoFaker.Generate<Invoices>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors);
             //Assert.IsType<Invoices> (response);
         }
-
+        
         /// <summary>
         /// Test CreateItem
         /// </summary>
         [Fact]
-        public void CreateItemTest()
+        public async Task CreateItemTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Item item = null;
-            //var response = instance.CreateItemAsync(xeroTenantId, item);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Item item = AutoFaker.Generate<Item>();
+            //var response = await instance.CreateItemAsync(accessToken, xeroTenantId, item);
             //Assert.IsType<Items> (response);
         }
-
+        
         /// <summary>
         /// Test CreateItemHistory
         /// </summary>
         [Fact]
-        public void CreateItemHistoryTest()
+        public async Task CreateItemHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid itemID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateItemHistoryAsync(xeroTenantId, itemID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid itemID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateItemHistoryAsync(accessToken, xeroTenantId, itemID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateItems
         /// </summary>
         [Fact]
-        public void CreateItemsTest()
+        public async Task CreateItemsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Items items = null;
-            //bool? summarizeErrors = null;
-            //var response = instance.CreateItemsAsync(xeroTenantId, items, summarizeErrors);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Items items = AutoFaker.Generate<Items>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.CreateItemsAsync(accessToken, xeroTenantId, items, summarizeErrors);
             //Assert.IsType<Items> (response);
         }
-
+        
         /// <summary>
         /// Test CreateLinkedTransaction
         /// </summary>
         [Fact]
-        public void CreateLinkedTransactionTest()
+        public async Task CreateLinkedTransactionTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //LinkedTransaction linkedTransaction = null;
-            //var response = instance.CreateLinkedTransactionAsync(xeroTenantId, linkedTransaction);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            LinkedTransaction linkedTransaction = AutoFaker.Generate<LinkedTransaction>();
+            //var response = await instance.CreateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransaction);
             //Assert.IsType<LinkedTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test CreateManualJournal
         /// </summary>
         [Fact]
-        public void CreateManualJournalTest()
+        public async Task CreateManualJournalTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //ManualJournal manualJournal = null;
-            //var response = instance.CreateManualJournalAsync(xeroTenantId, manualJournal);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            ManualJournal manualJournal = AutoFaker.Generate<ManualJournal>();
+            //var response = await instance.CreateManualJournalAsync(accessToken, xeroTenantId, manualJournal);
             //Assert.IsType<ManualJournals> (response);
         }
-
+        
         /// <summary>
         /// Test CreateManualJournalAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateManualJournalAttachmentByFileNameTest()
+        public async Task CreateManualJournalAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid manualJournalID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateManualJournalAttachmentByFileNameAsync(xeroTenantId, manualJournalID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid manualJournalID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateManualJournals
         /// </summary>
         [Fact]
-        public void CreateManualJournalsTest()
+        public async Task CreateManualJournalsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //ManualJournals manualJournals = null;
-            //var response = instance.CreateManualJournalsAsync(xeroTenantId, manualJournals);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            ManualJournals manualJournals = AutoFaker.Generate<ManualJournals>();
+            //var response = await instance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals);
             //Assert.IsType<ManualJournals> (response);
         }
-
+        
         /// <summary>
         /// Test CreateOverpaymentAllocation
         /// </summary>
         [Fact]
-        public void CreateOverpaymentAllocationTest()
+        public async Task CreateOverpaymentAllocationTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid overpaymentID = null;
-            //Allocation allocation = null;
-            //var response = instance.CreateOverpaymentAllocationAsync(xeroTenantId, overpaymentID, allocation);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid overpaymentID = AutoFaker.Generate<Guid>();
+            Allocation allocation = AutoFaker.Generate<Allocation>();
+            //var response = await instance.CreateOverpaymentAllocationAsync(accessToken, xeroTenantId, overpaymentID, allocation);
             //Assert.IsType<Allocations> (response);
         }
-
+        
         /// <summary>
         /// Test CreateOverpaymentAllocations
         /// </summary>
         [Fact]
-        public void CreateOverpaymentAllocationsTest()
+        public async Task CreateOverpaymentAllocationsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid overpaymentID = null;
-            //Allocations allocations = null;
-            //var response = instance.CreateOverpaymentAllocationsAsync(xeroTenantId, overpaymentID, allocations);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid overpaymentID = AutoFaker.Generate<Guid>();
+            Allocations allocations = AutoFaker.Generate<Allocations>();
+            //var response = await instance.CreateOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocations);
             //Assert.IsType<Allocations> (response);
         }
-
+        
         /// <summary>
         /// Test CreateOverpaymentHistory
         /// </summary>
         [Fact]
-        public void CreateOverpaymentHistoryTest()
+        public async Task CreateOverpaymentHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid overpaymentID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateOverpaymentHistoryAsync(xeroTenantId, overpaymentID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid overpaymentID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreatePayment
         /// </summary>
         [Fact]
-        public void CreatePaymentTest()
+        public async Task CreatePaymentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Payment payment = null;
-            //var response = instance.CreatePaymentAsync(xeroTenantId, payment);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Payment payment = AutoFaker.Generate<Payment>();
+            //var response = await instance.CreatePaymentAsync(accessToken, xeroTenantId, payment);
             //Assert.IsType<Payments> (response);
         }
-
+        
         /// <summary>
         /// Test CreatePaymentHistory
         /// </summary>
         [Fact]
-        public void CreatePaymentHistoryTest()
+        public async Task CreatePaymentHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid paymentID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreatePaymentHistoryAsync(xeroTenantId, paymentID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid paymentID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreatePaymentHistoryAsync(accessToken, xeroTenantId, paymentID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreatePaymentService
         /// </summary>
         [Fact]
-        public void CreatePaymentServiceTest()
+        public async Task CreatePaymentServiceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //PaymentServices paymentServices = null;
-            //var response = instance.CreatePaymentServiceAsync(xeroTenantId, paymentServices);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            PaymentServices paymentServices = AutoFaker.Generate<PaymentServices>();
+            //var response = await instance.CreatePaymentServiceAsync(accessToken, xeroTenantId, paymentServices);
             //Assert.IsType<PaymentServices> (response);
         }
-
+        
         /// <summary>
         /// Test CreatePayments
         /// </summary>
         [Fact]
-        public void CreatePaymentsTest()
+        public async Task CreatePaymentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Payments payments = null;
-            //var response = instance.CreatePaymentsAsync(xeroTenantId, payments);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Payments payments = AutoFaker.Generate<Payments>();
+            //var response = await instance.CreatePaymentsAsync(accessToken, xeroTenantId, payments);
             //Assert.IsType<Payments> (response);
         }
-
+        
         /// <summary>
         /// Test CreatePrepaymentAllocation
         /// </summary>
         [Fact]
-        public void CreatePrepaymentAllocationTest()
+        public async Task CreatePrepaymentAllocationTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid prepaymentID = null;
-            //Allocations allocations = null;
-            //var response = instance.CreatePrepaymentAllocationAsync(xeroTenantId, prepaymentID, allocations);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid prepaymentID = AutoFaker.Generate<Guid>();
+            Allocations allocations = AutoFaker.Generate<Allocations>();
+            //var response = await instance.CreatePrepaymentAllocationAsync(accessToken, xeroTenantId, prepaymentID, allocations);
             //Assert.IsType<Allocations> (response);
         }
-
+        
         /// <summary>
         /// Test CreatePrepaymentHistory
         /// </summary>
         [Fact]
-        public void CreatePrepaymentHistoryTest()
+        public async Task CreatePrepaymentHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid prepaymentID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreatePrepaymentHistoryAsync(xeroTenantId, prepaymentID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid prepaymentID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreatePrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
-        /// <summary>
-        /// Test CreatePurchaseOrder
-        /// </summary>
-        [Fact]
-        public void CreatePurchaseOrderTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //PurchaseOrder purchaseOrder = null;
-            //var response = instance.CreatePurchaseOrderAsync(xeroTenantId, purchaseOrder);
-            //Assert.IsType<PurchaseOrders> (response);
-        }
-
+        
         /// <summary>
         /// Test CreatePurchaseOrderHistory
         /// </summary>
         [Fact]
-        public void CreatePurchaseOrderHistoryTest()
+        public async Task CreatePurchaseOrderHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid purchaseOrderID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreatePurchaseOrderHistoryAsync(xeroTenantId, purchaseOrderID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid purchaseOrderID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreatePurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreatePurchaseOrders
         /// </summary>
         [Fact]
-        public void CreatePurchaseOrdersTest()
+        public async Task CreatePurchaseOrdersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //PurchaseOrders purchaseOrders = null;
-            //bool? summarizeErrors = null;
-            //var response = instance.CreatePurchaseOrdersAsync(xeroTenantId, purchaseOrders, summarizeErrors);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            PurchaseOrders purchaseOrders = AutoFaker.Generate<PurchaseOrders>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.CreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
             //Assert.IsType<PurchaseOrders> (response);
         }
-
+        
         /// <summary>
         /// Test CreateReceipt
         /// </summary>
         [Fact]
-        public void CreateReceiptTest()
+        public async Task CreateReceiptTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Receipts receipts = null;
-            //var response = instance.CreateReceiptAsync(xeroTenantId, receipts);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Receipts receipts = AutoFaker.Generate<Receipts>();
+            //var response = await instance.CreateReceiptAsync(accessToken, xeroTenantId, receipts);
             //Assert.IsType<Receipts> (response);
         }
-
+        
         /// <summary>
         /// Test CreateReceiptAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateReceiptAttachmentByFileNameTest()
+        public async Task CreateReceiptAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateReceiptAttachmentByFileNameAsync(xeroTenantId, receiptID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateReceiptHistory
         /// </summary>
         [Fact]
-        public void CreateReceiptHistoryTest()
+        public async Task CreateReceiptHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateReceiptHistoryAsync(xeroTenantId, receiptID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateReceiptHistoryAsync(accessToken, xeroTenantId, receiptID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateRepeatingInvoiceAttachmentByFileName
         /// </summary>
         [Fact]
-        public void CreateRepeatingInvoiceAttachmentByFileNameTest()
+        public async Task CreateRepeatingInvoiceAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.CreateRepeatingInvoiceAttachmentByFileNameAsync(xeroTenantId, repeatingInvoiceID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.CreateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test CreateRepeatingInvoiceHistory
         /// </summary>
         [Fact]
-        public void CreateRepeatingInvoiceHistoryTest()
+        public async Task CreateRepeatingInvoiceHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //HistoryRecords historyRecords = null;
-            //var response = instance.CreateRepeatingInvoiceHistoryAsync(xeroTenantId, repeatingInvoiceID, historyRecords);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
+            //var response = await instance.CreateRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID, historyRecords);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test CreateTaxRates
         /// </summary>
         [Fact]
-        public void CreateTaxRatesTest()
+        public async Task CreateTaxRatesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //TaxRates taxRates = null;
-            //var response = instance.CreateTaxRatesAsync(xeroTenantId, taxRates);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            TaxRates taxRates = AutoFaker.Generate<TaxRates>();
+            //var response = await instance.CreateTaxRatesAsync(accessToken, xeroTenantId, taxRates);
             //Assert.IsType<TaxRates> (response);
         }
-
+        
         /// <summary>
         /// Test CreateTrackingCategory
         /// </summary>
         [Fact]
-        public void CreateTrackingCategoryTest()
+        public async Task CreateTrackingCategoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //TrackingCategory trackingCategory = null;
-            //var response = instance.CreateTrackingCategoryAsync(xeroTenantId, trackingCategory);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            TrackingCategory trackingCategory = AutoFaker.Generate<TrackingCategory>();
+            //var response = await instance.CreateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategory);
             //Assert.IsType<TrackingCategories> (response);
         }
-
+        
         /// <summary>
         /// Test CreateTrackingOptions
         /// </summary>
         [Fact]
-        public void CreateTrackingOptionsTest()
+        public async Task CreateTrackingOptionsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid trackingCategoryID = null;
-            //TrackingOption trackingOption = null;
-            //var response = instance.CreateTrackingOptionsAsync(xeroTenantId, trackingCategoryID, trackingOption);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid trackingCategoryID = AutoFaker.Generate<Guid>();
+            TrackingOption trackingOption = AutoFaker.Generate<TrackingOption>();
+            //var response = await instance.CreateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOption);
             //Assert.IsType<TrackingOptions> (response);
         }
-
+        
         /// <summary>
         /// Test DeleteAccount
         /// </summary>
         [Fact]
-        public void DeleteAccountTest()
+        public async Task DeleteAccountTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid accountID = null;
-            //var response = instance.DeleteAccountAsync(xeroTenantId, accountID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            //var response = await instance.DeleteAccountAsync(accessToken, xeroTenantId, accountID);
             //Assert.IsType<Accounts> (response);
         }
-
+        
         /// <summary>
         /// Test DeleteContactGroupContact
         /// </summary>
         [Fact]
-        public void DeleteContactGroupContactTest()
+        public async Task DeleteContactGroupContactTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactGroupID = null;
-            //Guid contactID = null;
-            //instance.DeleteContactGroupContactAsync(xeroTenantId, contactGroupID, contactID);
-
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactGroupID = AutoFaker.Generate<Guid>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            //instance.DeleteContactGroupContactAsync(accessToken, xeroTenantId, contactGroupID, contactID);
+            
         }
-
+        
         /// <summary>
         /// Test DeleteContactGroupContacts
         /// </summary>
         [Fact]
-        public void DeleteContactGroupContactsTest()
+        public async Task DeleteContactGroupContactsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactGroupID = null;
-            //instance.DeleteContactGroupContactsAsync(xeroTenantId, contactGroupID);
-
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactGroupID = AutoFaker.Generate<Guid>();
+            //instance.DeleteContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID);
+            
         }
-
+        
         /// <summary>
         /// Test DeleteItem
         /// </summary>
         [Fact]
-        public void DeleteItemTest()
+        public async Task DeleteItemTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid itemID = null;
-            //instance.DeleteItemAsync(xeroTenantId, itemID);
-
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid itemID = AutoFaker.Generate<Guid>();
+            //instance.DeleteItemAsync(accessToken, xeroTenantId, itemID);
+            
         }
-
+        
         /// <summary>
         /// Test DeleteLinkedTransaction
         /// </summary>
         [Fact]
-        public void DeleteLinkedTransactionTest()
+        public async Task DeleteLinkedTransactionTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid linkedTransactionID = null;
-            //instance.DeleteLinkedTransactionAsync(xeroTenantId, linkedTransactionID);
-
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid linkedTransactionID = AutoFaker.Generate<Guid>();
+            //instance.DeleteLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID);
+            
         }
-
+        
         /// <summary>
         /// Test DeletePayment
         /// </summary>
         [Fact]
-        public void DeletePaymentTest()
+        public async Task DeletePaymentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid paymentID = null;
-            //Payments payments = null;
-            //var response = instance.DeletePaymentAsync(xeroTenantId, paymentID, payments);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid paymentID = AutoFaker.Generate<Guid>();
+            Payments payments = AutoFaker.Generate<Payments>();
+            //var response = await instance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, payments);
             //Assert.IsType<Payments> (response);
         }
-
+        
         /// <summary>
         /// Test DeleteTrackingCategory
         /// </summary>
         [Fact]
-        public void DeleteTrackingCategoryTest()
+        public async Task DeleteTrackingCategoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid trackingCategoryID = null;
-            //var response = instance.DeleteTrackingCategoryAsync(xeroTenantId, trackingCategoryID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid trackingCategoryID = AutoFaker.Generate<Guid>();
+            //var response = await instance.DeleteTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID);
             //Assert.IsType<TrackingCategories> (response);
         }
-
+        
         /// <summary>
         /// Test DeleteTrackingOptions
         /// </summary>
         [Fact]
-        public void DeleteTrackingOptionsTest()
+        public async Task DeleteTrackingOptionsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid trackingCategoryID = null;
-            //Guid trackingOptionID = null;
-            //var response = instance.DeleteTrackingOptionsAsync(xeroTenantId, trackingCategoryID, trackingOptionID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid trackingCategoryID = AutoFaker.Generate<Guid>();
+            Guid trackingOptionID = AutoFaker.Generate<Guid>();
+            //var response = await instance.DeleteTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID);
             //Assert.IsType<TrackingOptions> (response);
         }
-
+        
         /// <summary>
         /// Test EmailInvoice
         /// </summary>
         [Fact]
-        public void EmailInvoiceTest()
+        public async Task EmailInvoiceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //RequestEmpty requestEmpty = null;
-            //instance.EmailInvoiceAsync(xeroTenantId, invoiceID, requestEmpty);
-
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            RequestEmpty requestEmpty = AutoFaker.Generate<RequestEmpty>();
+            //instance.EmailInvoiceAsync(accessToken, xeroTenantId, invoiceID, requestEmpty);
+            
         }
-
+        
         /// <summary>
         /// Test GetAccount
         /// </summary>
         [Fact]
-        public void GetAccountTest()
+        public async Task GetAccountTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid? accountID = null;
-           // var response = instance.GetAccountAsync(xeroTenantId, accountID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetAccountAsync(accessToken, xeroTenantId, accountID);
             //Assert.IsType<Accounts> (response);
         }
-
+        
         /// <summary>
         /// Test GetAccountAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetAccountAttachmentByFileNameTest()
+        public async Task GetAccountAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid accountID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetAccountAttachmentByFileNameAsync(xeroTenantId, accountID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetAccountAttachmentById
         /// </summary>
         [Fact]
-        public void GetAccountAttachmentByIdTest()
+        public async Task GetAccountAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid accountID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetAccountAttachmentByIdAsync(xeroTenantId, accountID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetAccountAttachmentByIdAsync(accessToken, xeroTenantId, accountID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetAccountAttachments
         /// </summary>
         [Fact]
-        public void GetAccountAttachmentsTest()
+        public async Task GetAccountAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid accountID = null;
-            //var response = instance.GetAccountAttachmentsAsync(xeroTenantId, accountID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetAccountAttachmentsAsync(accessToken, xeroTenantId, accountID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetAccounts
         /// </summary>
         [Fact]
-        public void GetAccountsTest()
+        public async Task GetAccountsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetAccountsAsync(xeroTenantId, ifModifiedSince, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetAccountsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
             //Assert.IsType<Accounts> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransaction
         /// </summary>
         [Fact]
-        public void GetBankTransactionTest()
+        public async Task GetBankTransactionTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //var response = instance.GetBankTransactionAsync(xeroTenantId, bankTransactionID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID);
             //Assert.IsType<BankTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransactionAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetBankTransactionAttachmentByFileNameTest()
+        public async Task GetBankTransactionAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetBankTransactionAttachmentByFileNameAsync(xeroTenantId, bankTransactionID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransactionAttachmentById
         /// </summary>
         [Fact]
-        public void GetBankTransactionAttachmentByIdTest()
+        public async Task GetBankTransactionAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetBankTransactionAttachmentByIdAsync(xeroTenantId, bankTransactionID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetBankTransactionAttachmentByIdAsync(accessToken, xeroTenantId, bankTransactionID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransactionAttachments
         /// </summary>
         [Fact]
-        public void GetBankTransactionAttachmentsTest()
+        public async Task GetBankTransactionAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //var response = instance.GetBankTransactionAttachmentsAsync(xeroTenantId, bankTransactionID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBankTransactionAttachmentsAsync(accessToken, xeroTenantId, bankTransactionID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransactions
         /// </summary>
         [Fact]
-        public void GetBankTransactionsTest()
+        public async Task GetBankTransactionsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //int? page = null;
-            //int? unitdp = null;
-            //var response = instance.GetBankTransactionsAsync(xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            int? unitdp = AutoFaker.Generate<int?>();
+            //var response = await instance.GetBankTransactionsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
             //Assert.IsType<BankTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransactionsHistory
         /// </summary>
         [Fact]
-        public void GetBankTransactionsHistoryTest()
+        public async Task GetBankTransactionsHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //var response = instance.GetBankTransactionsHistoryAsync(xeroTenantId, bankTransactionID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBankTransactionsHistoryAsync(accessToken, xeroTenantId, bankTransactionID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransfer
         /// </summary>
         [Fact]
-        public void GetBankTransferTest()
+        public async Task GetBankTransferTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //var response = instance.GetBankTransferAsync(xeroTenantId, bankTransferID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBankTransferAsync(accessToken, xeroTenantId, bankTransferID);
             //Assert.IsType<BankTransfers> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransferAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetBankTransferAttachmentByFileNameTest()
+        public async Task GetBankTransferAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetBankTransferAttachmentByFileNameAsync(xeroTenantId, bankTransferID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransferAttachmentById
         /// </summary>
         [Fact]
-        public void GetBankTransferAttachmentByIdTest()
+        public async Task GetBankTransferAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetBankTransferAttachmentByIdAsync(xeroTenantId, bankTransferID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetBankTransferAttachmentByIdAsync(accessToken, xeroTenantId, bankTransferID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransferAttachments
         /// </summary>
         [Fact]
-        public void GetBankTransferAttachmentsTest()
+        public async Task GetBankTransferAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //var response = instance.GetBankTransferAttachmentsAsync(xeroTenantId, bankTransferID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBankTransferAttachmentsAsync(accessToken, xeroTenantId, bankTransferID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransferHistory
         /// </summary>
         [Fact]
-        public void GetBankTransferHistoryTest()
+        public async Task GetBankTransferHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //var response = instance.GetBankTransferHistoryAsync(xeroTenantId, bankTransferID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBankTransferHistoryAsync(accessToken, xeroTenantId, bankTransferID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetBankTransfers
         /// </summary>
         [Fact]
-        public void GetBankTransfersTest()
+        public async Task GetBankTransfersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetBankTransfersAsync(xeroTenantId, ifModifiedSince, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetBankTransfersAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
             //Assert.IsType<BankTransfers> (response);
         }
-
+        
         /// <summary>
         /// Test GetBatchPaymentHistory
         /// </summary>
         [Fact]
-        public void GetBatchPaymentHistoryTest()
+        public async Task GetBatchPaymentHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid batchPaymentID = null;
-            //var response = instance.GetBatchPaymentHistoryAsync(xeroTenantId, batchPaymentID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid batchPaymentID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBatchPaymentHistoryAsync(accessToken, xeroTenantId, batchPaymentID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetBatchPayments
         /// </summary>
         [Fact]
-        public void GetBatchPaymentsTest()
+        public async Task GetBatchPaymentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetBatchPaymentsAsync(xeroTenantId, ifModifiedSince, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetBatchPaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
             //Assert.IsType<BatchPayments> (response);
         }
-
+        
         /// <summary>
         /// Test GetBrandingTheme
         /// </summary>
         [Fact]
-        public void GetBrandingThemeTest()
+        public async Task GetBrandingThemeTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid brandingThemeID = null;
-            //var response = instance.GetBrandingThemeAsync(xeroTenantId, brandingThemeID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid brandingThemeID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBrandingThemeAsync(accessToken, xeroTenantId, brandingThemeID);
             //Assert.IsType<BrandingThemes> (response);
         }
-
+        
         /// <summary>
         /// Test GetBrandingThemePaymentServices
         /// </summary>
         [Fact]
-        public void GetBrandingThemePaymentServicesTest()
+        public async Task GetBrandingThemePaymentServicesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid brandingThemeID = null;
-            //var response = instance.GetBrandingThemePaymentServicesAsync(xeroTenantId, brandingThemeID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid brandingThemeID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID);
             //Assert.IsType<PaymentServices> (response);
         }
-
+        
         /// <summary>
         /// Test GetBrandingThemes
         /// </summary>
         [Fact]
-        public void GetBrandingThemesTest()
+        public async Task GetBrandingThemesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //var response = instance.GetBrandingThemesAsync(xeroTenantId);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            //var response = await instance.GetBrandingThemesAsync(accessToken, xeroTenantId);
             //Assert.IsType<BrandingThemes> (response);
         }
-
+        
         /// <summary>
         /// Test GetContact
         /// </summary>
         [Fact]
-        public void GetContactTest()
+        public async Task GetContactTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //var response = instance.GetContactAsync(xeroTenantId, contactID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetContactAsync(accessToken, xeroTenantId, contactID);
             //Assert.IsType<Contacts> (response);
         }
-
+        
         /// <summary>
         /// Test GetContactAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetContactAttachmentByFileNameTest()
+        public async Task GetContactAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetContactAttachmentByFileNameAsync(xeroTenantId, contactID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetContactAttachmentById
         /// </summary>
         [Fact]
-        public void GetContactAttachmentByIdTest()
+        public async Task GetContactAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetContactAttachmentByIdAsync(xeroTenantId, contactID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetContactAttachmentByIdAsync(accessToken, xeroTenantId, contactID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetContactAttachments
         /// </summary>
         [Fact]
-        public void GetContactAttachmentsTest()
+        public async Task GetContactAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //var response = instance.GetContactAttachmentsAsync(xeroTenantId, contactID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetContactAttachmentsAsync(accessToken, xeroTenantId, contactID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetContactCISSettings
         /// </summary>
         [Fact]
-        public void GetContactCISSettingsTest()
+        public async Task GetContactCISSettingsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //var response = instance.GetContactCISSettingsAsync(xeroTenantId, contactID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetContactCISSettingsAsync(accessToken, xeroTenantId, contactID);
             //Assert.IsType<CISSettings> (response);
         }
-
+        
         /// <summary>
         /// Test GetContactGroup
         /// </summary>
         [Fact]
-        public void GetContactGroupTest()
+        public async Task GetContactGroupTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactGroupID = null;
-            //var response = instance.GetContactGroupAsync(xeroTenantId, contactGroupID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactGroupID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetContactGroupAsync(accessToken, xeroTenantId, contactGroupID);
             //Assert.IsType<ContactGroups> (response);
         }
-
+        
         /// <summary>
         /// Test GetContactGroups
         /// </summary>
         [Fact]
-        public void GetContactGroupsTest()
+        public async Task GetContactGroupsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetContactGroupsAsync(xeroTenantId, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetContactGroupsAsync(accessToken, xeroTenantId, where, order);
             //Assert.IsType<ContactGroups> (response);
         }
-
+        
         /// <summary>
         /// Test GetContactHistory
         /// </summary>
         [Fact]
-        public void GetContactHistoryTest()
+        public async Task GetContactHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //var response = instance.GetContactHistoryAsync(xeroTenantId, contactID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetContactHistoryAsync(accessToken, xeroTenantId, contactID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetContacts
         /// </summary>
         [Fact]
-        public void GetContactsTest()
+        public async Task GetContactsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //List<Guid> iDs = null;
-            //int? page = null;
-            //bool? includeArchived = null;
-            //var response = instance.GetContactsAsync(xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            List<Guid> iDs = AutoFaker.Generate<List<Guid>>();
+            int? page = AutoFaker.Generate<int?>();
+            bool? includeArchived = AutoFaker.Generate<bool?>();
+            //var response = await instance.GetContactsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived);
             //Assert.IsType<Contacts> (response);
         }
-
+        
         /// <summary>
         /// Test GetCreditNote
         /// </summary>
         [Fact]
-        public void GetCreditNoteTest()
+        public async Task GetCreditNoteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //var response = instance.GetCreditNoteAsync(xeroTenantId, creditNoteID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetCreditNoteAsync(accessToken, xeroTenantId, creditNoteID);
             //Assert.IsType<CreditNotes> (response);
         }
-
+        
         /// <summary>
         /// Test GetCreditNoteAsPdf
         /// </summary>
         [Fact]
-        public void GetCreditNoteAsPdfTest()
+        public async Task GetCreditNoteAsPdfTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //string contentType = null;
-            //var response = instance.GetCreditNoteAsPdfAsync(xeroTenantId, creditNoteID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetCreditNoteAsPdfAsync(accessToken, xeroTenantId, creditNoteID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetCreditNoteAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetCreditNoteAttachmentByFileNameTest()
+        public async Task GetCreditNoteAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetCreditNoteAttachmentByFileNameAsync(xeroTenantId, creditNoteID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetCreditNoteAttachmentById
         /// </summary>
         [Fact]
-        public void GetCreditNoteAttachmentByIdTest()
+        public async Task GetCreditNoteAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetCreditNoteAttachmentByIdAsync(xeroTenantId, creditNoteID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetCreditNoteAttachmentByIdAsync(accessToken, xeroTenantId, creditNoteID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetCreditNoteAttachments
         /// </summary>
         [Fact]
-        public void GetCreditNoteAttachmentsTest()
+        public async Task GetCreditNoteAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //var response = instance.GetCreditNoteAttachmentsAsync(xeroTenantId, creditNoteID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetCreditNoteAttachmentsAsync(accessToken, xeroTenantId, creditNoteID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetCreditNoteHistory
         /// </summary>
         [Fact]
-        public void GetCreditNoteHistoryTest()
+        public async Task GetCreditNoteHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //var response = instance.GetCreditNoteHistoryAsync(xeroTenantId, creditNoteID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetCreditNotes
         /// </summary>
         [Fact]
-        public void GetCreditNotesTest()
+        public async Task GetCreditNotesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //int? page = null;
-            //var response = instance.GetCreditNotesAsync(xeroTenantId, ifModifiedSince, where, order, page);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            //var response = await instance.GetCreditNotesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             //Assert.IsType<CreditNotes> (response);
         }
-
+        
         /// <summary>
         /// Test GetCurrencies
         /// </summary>
         [Fact]
-        public void GetCurrenciesTest()
+        public async Task GetCurrenciesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetCurrenciesAsync(xeroTenantId, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetCurrenciesAsync(accessToken, xeroTenantId, where, order);
             //Assert.IsType<Currencies> (response);
         }
-
+        
         /// <summary>
         /// Test GetEmployee
         /// </summary>
         [Fact]
-        public void GetEmployeeTest()
+        public async Task GetEmployeeTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid employeeID = null;
-            //var response = instance.GetEmployeeAsync(xeroTenantId, employeeID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid employeeID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetEmployeeAsync(accessToken, xeroTenantId, employeeID);
             //Assert.IsType<Employees> (response);
         }
-
+        
         /// <summary>
         /// Test GetEmployees
         /// </summary>
         [Fact]
-        public void GetEmployeesTest()
+        public async Task GetEmployeesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetEmployeesAsync(xeroTenantId, ifModifiedSince, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetEmployeesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
             //Assert.IsType<Employees> (response);
         }
-
+        
         /// <summary>
         /// Test GetExpenseClaim
         /// </summary>
         [Fact]
-        public void GetExpenseClaimTest()
+        public async Task GetExpenseClaimTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid expenseClaimID = null;
-            //var response = instance.GetExpenseClaimAsync(xeroTenantId, expenseClaimID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid expenseClaimID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID);
             //Assert.IsType<ExpenseClaims> (response);
         }
-
+        
         /// <summary>
         /// Test GetExpenseClaimHistory
         /// </summary>
         [Fact]
-        public void GetExpenseClaimHistoryTest()
+        public async Task GetExpenseClaimHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid expenseClaimID = null;
-            //var response = instance.GetExpenseClaimHistoryAsync(xeroTenantId, expenseClaimID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid expenseClaimID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetExpenseClaims
         /// </summary>
         [Fact]
-        public void GetExpenseClaimsTest()
+        public async Task GetExpenseClaimsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetExpenseClaimsAsync(xeroTenantId, ifModifiedSince, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetExpenseClaimsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
             //Assert.IsType<ExpenseClaims> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoice
         /// </summary>
         [Fact]
-        public void GetInvoiceTest()
+        public async Task GetInvoiceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //var response = instance.GetInvoiceAsync(xeroTenantId, invoiceID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetInvoiceAsync(accessToken, xeroTenantId, invoiceID);
             //Assert.IsType<Invoices> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoiceAsPdf
         /// </summary>
         [Fact]
-        public void GetInvoiceAsPdfTest()
+        public async Task GetInvoiceAsPdfTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //string contentType = null;
-            //var response = instance.GetInvoiceAsPdfAsync(xeroTenantId, invoiceID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetInvoiceAsPdfAsync(accessToken, xeroTenantId, invoiceID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoiceAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetInvoiceAttachmentByFileNameTest()
+        public async Task GetInvoiceAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetInvoiceAttachmentByFileNameAsync(xeroTenantId, invoiceID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoiceAttachmentById
         /// </summary>
         [Fact]
-        public void GetInvoiceAttachmentByIdTest()
+        public async Task GetInvoiceAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetInvoiceAttachmentByIdAsync(xeroTenantId, invoiceID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetInvoiceAttachmentByIdAsync(accessToken, xeroTenantId, invoiceID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoiceAttachments
         /// </summary>
         [Fact]
-        public void GetInvoiceAttachmentsTest()
+        public async Task GetInvoiceAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //var response = instance.GetInvoiceAttachmentsAsync(xeroTenantId, invoiceID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetInvoiceAttachmentsAsync(accessToken, xeroTenantId, invoiceID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoiceHistory
         /// </summary>
         [Fact]
-        public void GetInvoiceHistoryTest()
+        public async Task GetInvoiceHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //var response = instance.GetInvoiceHistoryAsync(xeroTenantId, invoiceID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoiceReminders
         /// </summary>
         [Fact]
-        public void GetInvoiceRemindersTest()
+        public async Task GetInvoiceRemindersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //var response = instance.GetInvoiceRemindersAsync(xeroTenantId);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            //var response = await instance.GetInvoiceRemindersAsync(accessToken, xeroTenantId);
             //Assert.IsType<InvoiceReminders> (response);
         }
-
+        
         /// <summary>
         /// Test GetInvoices
         /// </summary>
         [Fact]
-        public void GetInvoicesTest()
+        public async Task GetInvoicesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //List<Guid> iDs = null;
-            //List<string> invoiceNumbers = null;
-            //List<Guid> contactIDs = null;
-            //List<string> statuses = null;
-            //int? page = null;
-            //bool? includeArchived = null;
-            //bool? createdByMyApp = null;
-            //int? unitdp = null;
-            //var response = instance.GetInvoicesAsync(xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            List<Guid> iDs = AutoFaker.Generate<List<Guid>>();
+            List<string> invoiceNumbers = AutoFaker.Generate<List<string>>();
+            List<Guid> contactIDs = AutoFaker.Generate<List<Guid>>();
+            List<string> statuses = AutoFaker.Generate<List<string>>();
+            int? page = AutoFaker.Generate<int?>();
+            bool? includeArchived = AutoFaker.Generate<bool?>();
+            bool? createdByMyApp = AutoFaker.Generate<bool?>();
+            int? unitdp = AutoFaker.Generate<int?>();
+            //var response = await instance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp);
             //Assert.IsType<Invoices> (response);
         }
-
+        
         /// <summary>
         /// Test GetItem
         /// </summary>
         [Fact]
-        public void GetItemTest()
+        public async Task GetItemTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid itemID = null;
-            //var response = instance.GetItemAsync(xeroTenantId, itemID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid itemID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetItemAsync(accessToken, xeroTenantId, itemID);
             //Assert.IsType<Items> (response);
         }
-
+        
         /// <summary>
         /// Test GetItemHistory
         /// </summary>
         [Fact]
-        public void GetItemHistoryTest()
+        public async Task GetItemHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid itemID = null;
-            //var response = instance.GetItemHistoryAsync(xeroTenantId, itemID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid itemID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetItemHistoryAsync(accessToken, xeroTenantId, itemID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetItems
         /// </summary>
         [Fact]
-        public void GetItemsTest()
+        public async Task GetItemsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //int? unitdp = null;
-            //var response = instance.GetItemsAsync(xeroTenantId, ifModifiedSince, where, order, unitdp);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? unitdp = AutoFaker.Generate<int?>();
+            //var response = await instance.GetItemsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp);
             //Assert.IsType<Items> (response);
         }
-
+        
         /// <summary>
         /// Test GetJournal
         /// </summary>
         [Fact]
-        public void GetJournalTest()
+        public async Task GetJournalTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid journalID = null;
-            //var response = instance.GetJournalAsync(xeroTenantId, journalID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid journalID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetJournalAsync(accessToken, xeroTenantId, journalID);
             //Assert.IsType<Journals> (response);
         }
-
+        
         /// <summary>
         /// Test GetJournals
         /// </summary>
         [Fact]
-        public void GetJournalsTest()
+        public async Task GetJournalsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //int? offset = null;
-            //bool? paymentsOnly = null;
-            //var response = instance.GetJournalsAsync(xeroTenantId, ifModifiedSince, offset, paymentsOnly);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            int? offset = AutoFaker.Generate<int?>();
+            bool? paymentsOnly = AutoFaker.Generate<bool?>();
+            //var response = await instance.GetJournalsAsync(accessToken, xeroTenantId, ifModifiedSince, offset, paymentsOnly);
             //Assert.IsType<Journals> (response);
         }
-
+        
         /// <summary>
         /// Test GetLinkedTransaction
         /// </summary>
         [Fact]
-        public void GetLinkedTransactionTest()
+        public async Task GetLinkedTransactionTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid linkedTransactionID = null;
-            //var response = instance.GetLinkedTransactionAsync(xeroTenantId, linkedTransactionID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid linkedTransactionID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID);
             //Assert.IsType<LinkedTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test GetLinkedTransactions
         /// </summary>
         [Fact]
-        public void GetLinkedTransactionsTest()
+        public async Task GetLinkedTransactionsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //int? page = null;
-            //string linkedTransactionID = null;
-            //string sourceTransactionID = null;
-            //string contactID = null;
-            //string status = null;
-            //string targetTransactionID = null;
-            //var response = instance.GetLinkedTransactionsAsync(xeroTenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            string linkedTransactionID = AutoFaker.Generate<string>();
+            string sourceTransactionID = AutoFaker.Generate<string>();
+            string contactID = AutoFaker.Generate<string>();
+            string status = AutoFaker.Generate<string>();
+            string targetTransactionID = AutoFaker.Generate<string>();
+            //var response = await instance.GetLinkedTransactionsAsync(accessToken, xeroTenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID);
             //Assert.IsType<LinkedTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test GetManualJournal
         /// </summary>
         [Fact]
-        public void GetManualJournalTest()
+        public async Task GetManualJournalTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid manualJournalID = null;
-            //var response = instance.GetManualJournalAsync(xeroTenantId, manualJournalID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid manualJournalID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetManualJournalAsync(accessToken, xeroTenantId, manualJournalID);
             //Assert.IsType<ManualJournals> (response);
         }
-
+        
         /// <summary>
         /// Test GetManualJournalAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetManualJournalAttachmentByFileNameTest()
+        public async Task GetManualJournalAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid manualJournalID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetManualJournalAttachmentByFileNameAsync(xeroTenantId, manualJournalID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid manualJournalID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetManualJournalAttachmentById
         /// </summary>
         [Fact]
-        public void GetManualJournalAttachmentByIdTest()
+        public async Task GetManualJournalAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid manualJournalID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetManualJournalAttachmentByIdAsync(xeroTenantId, manualJournalID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid manualJournalID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetManualJournalAttachmentByIdAsync(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetManualJournalAttachments
         /// </summary>
         [Fact]
-        public void GetManualJournalAttachmentsTest()
+        public async Task GetManualJournalAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid manualJournalID = null;
-            //var response = instance.GetManualJournalAttachmentsAsync(xeroTenantId, manualJournalID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid manualJournalID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetManualJournalAttachmentsAsync(accessToken, xeroTenantId, manualJournalID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetManualJournals
         /// </summary>
         [Fact]
-        public void GetManualJournalsTest()
+        public async Task GetManualJournalsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //int? page = null;
-            //var response = instance.GetManualJournalsAsync(xeroTenantId, ifModifiedSince, where, order, page);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            //var response = await instance.GetManualJournalsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             //Assert.IsType<ManualJournals> (response);
         }
-
+        
         /// <summary>
         /// Test GetOnlineInvoice
         /// </summary>
         [Fact]
-        public void GetOnlineInvoiceTest()
+        public async Task GetOnlineInvoiceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //var response = instance.GetOnlineInvoiceAsync(xeroTenantId, invoiceID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetOnlineInvoiceAsync(accessToken, xeroTenantId, invoiceID);
             //Assert.IsType<OnlineInvoices> (response);
         }
-
+        
         /// <summary>
         /// Test GetOrganisationCISSettings
         /// </summary>
         [Fact]
-        public void GetOrganisationCISSettingsTest()
+        public async Task GetOrganisationCISSettingsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid organisationID = null;
-            //var response = instance.GetOrganisationCISSettingsAsync(xeroTenantId, organisationID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid organisationID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetOrganisationCISSettingsAsync(accessToken, xeroTenantId, organisationID);
             //Assert.IsType<CISOrgSetting> (response);
         }
-
+        
         /// <summary>
         /// Test GetOrganisations
         /// </summary>
         [Fact]
-        public void GetOrganisationsTest()
+        public async Task GetOrganisationsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //var response = instance.GetOrganisationsAsync(xeroTenantId);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            //var response = await instance.GetOrganisationsAsync(accessToken, xeroTenantId);
             //Assert.IsType<Organisations> (response);
         }
-
+        
         /// <summary>
         /// Test GetOverpayment
         /// </summary>
         [Fact]
-        public void GetOverpaymentTest()
+        public async Task GetOverpaymentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid overpaymentID = null;
-            //var response = instance.GetOverpaymentAsync(xeroTenantId, overpaymentID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid overpaymentID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetOverpaymentAsync(accessToken, xeroTenantId, overpaymentID);
             //Assert.IsType<Overpayments> (response);
         }
-
+        
         /// <summary>
         /// Test GetOverpaymentHistory
         /// </summary>
         [Fact]
-        public void GetOverpaymentHistoryTest()
+        public async Task GetOverpaymentHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid overpaymentID = null;
-            //var response = instance.GetOverpaymentHistoryAsync(xeroTenantId, overpaymentID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid overpaymentID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetOverpayments
         /// </summary>
         [Fact]
-        public void GetOverpaymentsTest()
+        public async Task GetOverpaymentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //int? page = null;
-            //int? unitdp = null;
-            //var response = instance.GetOverpaymentsAsync(xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            int? unitdp = AutoFaker.Generate<int?>();
+            //var response = await instance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
             //Assert.IsType<Overpayments> (response);
         }
-
+        
         /// <summary>
         /// Test GetPayment
         /// </summary>
         [Fact]
-        public void GetPaymentTest()
+        public async Task GetPaymentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid paymentID = null;
-            //var response = instance.GetPaymentAsync(xeroTenantId, paymentID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid paymentID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetPaymentAsync(accessToken, xeroTenantId, paymentID);
             //Assert.IsType<Payments> (response);
         }
-
+        
         /// <summary>
         /// Test GetPaymentHistory
         /// </summary>
         [Fact]
-        public void GetPaymentHistoryTest()
+        public async Task GetPaymentHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid paymentID = null;
-            //var response = instance.GetPaymentHistoryAsync(xeroTenantId, paymentID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid paymentID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetPaymentHistoryAsync(accessToken, xeroTenantId, paymentID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetPaymentServices
         /// </summary>
         [Fact]
-        public void GetPaymentServicesTest()
+        public async Task GetPaymentServicesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //var response = instance.GetPaymentServicesAsync(xeroTenantId);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            //var response = await instance.GetPaymentServicesAsync(accessToken, xeroTenantId);
             //Assert.IsType<PaymentServices> (response);
         }
-
+        
         /// <summary>
         /// Test GetPayments
         /// </summary>
         [Fact]
-        public void GetPaymentsTest()
+        public async Task GetPaymentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetPaymentsAsync(xeroTenantId, ifModifiedSince, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetPaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
             //Assert.IsType<Payments> (response);
         }
-
+        
         /// <summary>
         /// Test GetPrepayment
         /// </summary>
         [Fact]
-        public void GetPrepaymentTest()
+        public async Task GetPrepaymentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid prepaymentID = null;
-            //var response = instance.GetPrepaymentAsync(xeroTenantId, prepaymentID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid prepaymentID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetPrepaymentAsync(accessToken, xeroTenantId, prepaymentID);
             //Assert.IsType<Prepayments> (response);
         }
-
+        
         /// <summary>
         /// Test GetPrepaymentHistory
         /// </summary>
         [Fact]
-        public void GetPrepaymentHistoryTest()
+        public async Task GetPrepaymentHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid prepaymentID = null;
-            //var response = instance.GetPrepaymentHistoryAsync(xeroTenantId, prepaymentID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid prepaymentID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetPrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetPrepayments
         /// </summary>
         [Fact]
-        public void GetPrepaymentsTest()
+        public async Task GetPrepaymentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //int? page = null;
-            //int? unitdp = null;
-            //var response = instance.GetPrepaymentsAsync(xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            int? unitdp = AutoFaker.Generate<int?>();
+            //var response = await instance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
             //Assert.IsType<Prepayments> (response);
         }
-
+        
         /// <summary>
         /// Test GetPurchaseOrder
         /// </summary>
         [Fact]
-        public void GetPurchaseOrderTest()
+        public async Task GetPurchaseOrderTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid purchaseOrderID = null;
-            //var response = instance.GetPurchaseOrderAsync(xeroTenantId, purchaseOrderID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid purchaseOrderID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetPurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID);
             //Assert.IsType<PurchaseOrders> (response);
         }
-
+        
         /// <summary>
         /// Test GetPurchaseOrderHistory
         /// </summary>
         [Fact]
-        public void GetPurchaseOrderHistoryTest()
+        public async Task GetPurchaseOrderHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid purchaseOrderID = null;
-            //var response = instance.GetPurchaseOrderHistoryAsync(xeroTenantId, purchaseOrderID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid purchaseOrderID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetPurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetPurchaseOrders
         /// </summary>
         [Fact]
-        public void GetPurchaseOrdersTest()
+        public async Task GetPurchaseOrdersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string status = null;
-            //string dateFrom = null;
-            //string dateTo = null;
-            //string order = null;
-            //int? page = null;
-            //var response = instance.GetPurchaseOrdersAsync(xeroTenantId, ifModifiedSince, status, dateFrom, dateTo, order, page);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string status = AutoFaker.Generate<string>();
+            string dateFrom = AutoFaker.Generate<string>();
+            string dateTo = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            //var response = await instance.GetPurchaseOrdersAsync(accessToken, xeroTenantId, ifModifiedSince, status, dateFrom, dateTo, order, page);
             //Assert.IsType<PurchaseOrders> (response);
         }
-
+        
         /// <summary>
         /// Test GetQuote
         /// </summary>
         [Fact]
-        public void GetQuoteTest()
+        public async Task GetQuoteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid quoteID = null;
-            //var response = instance.GetQuoteAsync(xeroTenantId, quoteID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid quoteID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetQuoteAsync(accessToken, xeroTenantId, quoteID);
             //Assert.IsType<Quotes> (response);
         }
-
+        
         /// <summary>
         /// Test GetQuotes
         /// </summary>
         [Fact]
-        public void GetQuotesTest()
+        public async Task GetQuotesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //DateTime? dateFrom = null;
-            //DateTime? dateTo = null;
-            //DateTime? expiryDateFrom = null;
-            //DateTime? expiryDateTo = null;
-            //Guid? contactID = null;
-            //string status = null;
-            //int? page = null;
-            //string order = null;
-            //var response = instance.GetQuotesAsync(xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            DateTime? dateFrom = AutoFaker.Generate<DateTime?>();
+            DateTime? dateTo = AutoFaker.Generate<DateTime?>();
+            DateTime? expiryDateFrom = AutoFaker.Generate<DateTime?>();
+            DateTime? expiryDateTo = AutoFaker.Generate<DateTime?>();
+            Guid? contactID = AutoFaker.Generate<Guid?>();
+            string status = AutoFaker.Generate<string>();
+            int? page = AutoFaker.Generate<int?>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetQuotesAsync(accessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order);
             //Assert.IsType<Quotes> (response);
         }
-
+        
         /// <summary>
         /// Test GetReceipt
         /// </summary>
         [Fact]
-        public void GetReceiptTest()
+        public async Task GetReceiptTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //var response = instance.GetReceiptAsync(xeroTenantId, receiptID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetReceiptAsync(accessToken, xeroTenantId, receiptID);
             //Assert.IsType<Receipts> (response);
         }
-
+        
         /// <summary>
         /// Test GetReceiptAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetReceiptAttachmentByFileNameTest()
+        public async Task GetReceiptAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetReceiptAttachmentByFileNameAsync(xeroTenantId, receiptID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetReceiptAttachmentById
         /// </summary>
         [Fact]
-        public void GetReceiptAttachmentByIdTest()
+        public async Task GetReceiptAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetReceiptAttachmentByIdAsync(xeroTenantId, receiptID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetReceiptAttachmentByIdAsync(accessToken, xeroTenantId, receiptID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetReceiptAttachments
         /// </summary>
         [Fact]
-        public void GetReceiptAttachmentsTest()
+        public async Task GetReceiptAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //var response = instance.GetReceiptAttachmentsAsync(xeroTenantId, receiptID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetReceiptAttachmentsAsync(accessToken, xeroTenantId, receiptID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetReceiptHistory
         /// </summary>
         [Fact]
-        public void GetReceiptHistoryTest()
+        public async Task GetReceiptHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //var response = instance.GetReceiptHistoryAsync(xeroTenantId, receiptID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetReceiptHistoryAsync(accessToken, xeroTenantId, receiptID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetReceipts
         /// </summary>
         [Fact]
-        public void GetReceiptsTest()
+        public async Task GetReceiptsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //int? unitdp = null;
-            //var response = instance.GetReceiptsAsync(xeroTenantId, ifModifiedSince, where, order, unitdp);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            int? unitdp = AutoFaker.Generate<int?>();
+            //var response = await instance.GetReceiptsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp);
             //Assert.IsType<Receipts> (response);
         }
-
+        
         /// <summary>
         /// Test GetRepeatingInvoice
         /// </summary>
         [Fact]
-        public void GetRepeatingInvoiceTest()
+        public async Task GetRepeatingInvoiceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //var response = instance.GetRepeatingInvoiceAsync(xeroTenantId, repeatingInvoiceID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetRepeatingInvoiceAsync(accessToken, xeroTenantId, repeatingInvoiceID);
             //Assert.IsType<RepeatingInvoices> (response);
         }
-
+        
         /// <summary>
         /// Test GetRepeatingInvoiceAttachmentByFileName
         /// </summary>
         [Fact]
-        public void GetRepeatingInvoiceAttachmentByFileNameTest()
+        public async Task GetRepeatingInvoiceAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //string fileName = null;
-            //string contentType = null;
-            //var response = instance.GetRepeatingInvoiceAttachmentByFileNameAsync(xeroTenantId, repeatingInvoiceID, fileName, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetRepeatingInvoiceAttachmentById
         /// </summary>
         [Fact]
-        public void GetRepeatingInvoiceAttachmentByIdTest()
+        public async Task GetRepeatingInvoiceAttachmentByIdTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //Guid attachmentID = null;
-            //string contentType = null;
-            //var response = instance.GetRepeatingInvoiceAttachmentByIdAsync(xeroTenantId, repeatingInvoiceID, attachmentID, contentType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            Guid attachmentID = AutoFaker.Generate<Guid>();
+            string contentType = AutoFaker.Generate<string>();
+            //var response = await instance.GetRepeatingInvoiceAttachmentByIdAsync(accessToken, xeroTenantId, repeatingInvoiceID, attachmentID, contentType);
             //Assert.IsType<System.IO.Stream> (response);
         }
-
+        
         /// <summary>
         /// Test GetRepeatingInvoiceAttachments
         /// </summary>
         [Fact]
-        public void GetRepeatingInvoiceAttachmentsTest()
+        public async Task GetRepeatingInvoiceAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //var response = instance.GetRepeatingInvoiceAttachmentsAsync(xeroTenantId, repeatingInvoiceID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetRepeatingInvoiceAttachmentsAsync(accessToken, xeroTenantId, repeatingInvoiceID);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test GetRepeatingInvoiceHistory
         /// </summary>
         [Fact]
-        public void GetRepeatingInvoiceHistoryTest()
+        public async Task GetRepeatingInvoiceHistoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //var response = instance.GetRepeatingInvoiceHistoryAsync(xeroTenantId, repeatingInvoiceID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID);
             //Assert.IsType<HistoryRecords> (response);
         }
-
+        
         /// <summary>
         /// Test GetRepeatingInvoices
         /// </summary>
         [Fact]
-        public void GetRepeatingInvoicesTest()
+        public async Task GetRepeatingInvoicesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetRepeatingInvoicesAsync(xeroTenantId, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetRepeatingInvoicesAsync(accessToken, xeroTenantId, where, order);
             //Assert.IsType<RepeatingInvoices> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportAgedPayablesByContact
         /// </summary>
         [Fact]
-        public void GetReportAgedPayablesByContactTest()
+        public async Task GetReportAgedPayablesByContactTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactId = null;
-            //DateTime? date = null;
-            //DateTime? fromDate = null;
-            //DateTime? toDate = null;
-            //var response = instance.GetReportAgedPayablesByContactAsync(xeroTenantId, contactId, date, fromDate, toDate);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactId = AutoFaker.Generate<Guid>();
+            DateTime? date = AutoFaker.Generate<DateTime?>();
+            DateTime? fromDate = AutoFaker.Generate<DateTime?>();
+            DateTime? toDate = AutoFaker.Generate<DateTime?>();
+            //var response = await instance.GetReportAgedPayablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportAgedReceivablesByContact
         /// </summary>
         [Fact]
-        public void GetReportAgedReceivablesByContactTest()
+        public async Task GetReportAgedReceivablesByContactTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactId = null;
-            //DateTime? date = null;
-            //DateTime? fromDate = null;
-            //DateTime? toDate = null;
-            //var response = instance.GetReportAgedReceivablesByContactAsync(xeroTenantId, contactId, date, fromDate, toDate);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactId = AutoFaker.Generate<Guid>();
+            DateTime? date = AutoFaker.Generate<DateTime?>();
+            DateTime? fromDate = AutoFaker.Generate<DateTime?>();
+            DateTime? toDate = AutoFaker.Generate<DateTime?>();
+            //var response = await instance.GetReportAgedReceivablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportBASorGST
         /// </summary>
         [Fact]
-        public void GetReportBASorGSTTest()
+        public async Task GetReportBASorGSTTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string reportID = null;
-            //var response = instance.GetReportBASorGSTAsync(xeroTenantId, reportID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string reportID = AutoFaker.Generate<string>();
+            //var response = await instance.GetReportBASorGSTAsync(accessToken, xeroTenantId, reportID);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportBASorGSTList
         /// </summary>
         [Fact]
-        public void GetReportBASorGSTListTest()
+        public async Task GetReportBASorGSTListTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //var response = instance.GetReportBASorGSTListAsync(xeroTenantId);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            //var response = await instance.GetReportBASorGSTListAsync(accessToken, xeroTenantId);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportBalanceSheet
         /// </summary>
         [Fact]
-        public void GetReportBalanceSheetTest()
+        public async Task GetReportBalanceSheetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string date = null;
-            //int? periods = null;
-            //string timeframe = null;
-            //string trackingOptionID1 = null;
-            //string trackingOptionID2 = null;
-            //bool? standardLayout = null;
-            //bool? paymentsOnly = null;
-            //var response = instance.GetReportBalanceSheetAsync(xeroTenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string date = AutoFaker.Generate<string>();
+            int? periods = AutoFaker.Generate<int?>();
+            string timeframe = AutoFaker.Generate<string>();
+            string trackingOptionID1 = AutoFaker.Generate<string>();
+            string trackingOptionID2 = AutoFaker.Generate<string>();
+            bool? standardLayout = AutoFaker.Generate<bool?>();
+            bool? paymentsOnly = AutoFaker.Generate<bool?>();
+            //var response = await instance.GetReportBalanceSheetAsync(accessToken, xeroTenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportBankSummary
         /// </summary>
         [Fact]
-        public void GetReportBankSummaryTest()
+        public async Task GetReportBankSummaryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? date = null;
-            //int? period = null;
-            //int? timeframe = null;
-            //var response = instance.GetReportBankSummaryAsync(xeroTenantId, date, period, timeframe);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? date = AutoFaker.Generate<DateTime?>();
+            int? period = AutoFaker.Generate<int?>();
+            int? timeframe = AutoFaker.Generate<int?>();
+            //var response = await instance.GetReportBankSummaryAsync(accessToken, xeroTenantId, date, period, timeframe);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportBudgetSummary
         /// </summary>
         [Fact]
-        public void GetReportBudgetSummaryTest()
+        public async Task GetReportBudgetSummaryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? date = null;
-            //int? period = null;
-            //int? timeframe = null;
-            //var response = instance.GetReportBudgetSummaryAsync(xeroTenantId, date, period, timeframe);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? date = AutoFaker.Generate<DateTime?>();
+            int? period = AutoFaker.Generate<int?>();
+            int? timeframe = AutoFaker.Generate<int?>();
+            //var response = await instance.GetReportBudgetSummaryAsync(accessToken, xeroTenantId, date, period, timeframe);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportExecutiveSummary
         /// </summary>
         [Fact]
-        public void GetReportExecutiveSummaryTest()
+        public async Task GetReportExecutiveSummaryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? date = null;
-            //var response = instance.GetReportExecutiveSummaryAsync(xeroTenantId, date);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? date = AutoFaker.Generate<DateTime?>();
+            //var response = await instance.GetReportExecutiveSummaryAsync(accessToken, xeroTenantId, date);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportProfitAndLoss
         /// </summary>
         [Fact]
-        public void GetReportProfitAndLossTest()
+        public async Task GetReportProfitAndLossTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? fromDate = null;
-            //DateTime? toDate = null;
-            //int? periods = null;
-            //string timeframe = null;
-            //string trackingCategoryID = null;
-            //string trackingCategoryID2 = null;
-            //string trackingOptionID = null;
-            //string trackingOptionID2 = null;
-            //bool? standardLayout = null;
-            //bool? paymentsOnly = null;
-            //var response = instance.GetReportProfitAndLossAsync(xeroTenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? fromDate = AutoFaker.Generate<DateTime?>();
+            DateTime? toDate = AutoFaker.Generate<DateTime?>();
+            int? periods = AutoFaker.Generate<int?>();
+            string timeframe = AutoFaker.Generate<string>();
+            string trackingCategoryID = AutoFaker.Generate<string>();
+            string trackingCategoryID2 = AutoFaker.Generate<string>();
+            string trackingOptionID = AutoFaker.Generate<string>();
+            string trackingOptionID2 = AutoFaker.Generate<string>();
+            bool? standardLayout = AutoFaker.Generate<bool?>();
+            bool? paymentsOnly = AutoFaker.Generate<bool?>();
+            //var response = await instance.GetReportProfitAndLossAsync(accessToken, xeroTenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportTenNinetyNine
         /// </summary>
         [Fact]
-        public void GetReportTenNinetyNineTest()
+        public async Task GetReportTenNinetyNineTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string reportYear = null;
-            //var response = instance.GetReportTenNinetyNineAsync(xeroTenantId, reportYear);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string reportYear = AutoFaker.Generate<string>();
+            //var response = await instance.GetReportTenNinetyNineAsync(accessToken, xeroTenantId, reportYear);
             //Assert.IsType<Reports> (response);
         }
-
+        
         /// <summary>
         /// Test GetReportTrialBalance
         /// </summary>
         [Fact]
-        public void GetReportTrialBalanceTest()
+        public async Task GetReportTrialBalanceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? date = null;
-            //bool? paymentsOnly = null;
-            //var response = instance.GetReportTrialBalanceAsync(xeroTenantId, date, paymentsOnly);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? date = AutoFaker.Generate<DateTime?>();
+            bool? paymentsOnly = AutoFaker.Generate<bool?>();
+            //var response = await instance.GetReportTrialBalanceAsync(accessToken, xeroTenantId, date, paymentsOnly);
             //Assert.IsType<ReportWithRows> (response);
         }
-
+        
         /// <summary>
         /// Test GetTaxRates
         /// </summary>
         [Fact]
-        public void GetTaxRatesTest()
+        public async Task GetTaxRatesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string where = null;
-            //string order = null;
-            //string taxType = null;
-            //var response = instance.GetTaxRatesAsync(xeroTenantId, where, order, taxType);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            string taxType = AutoFaker.Generate<string>();
+            //var response = await instance.GetTaxRatesAsync(accessToken, xeroTenantId, where, order, taxType);
             //Assert.IsType<TaxRates> (response);
         }
-
+        
         /// <summary>
         /// Test GetTrackingCategories
         /// </summary>
         [Fact]
-        public void GetTrackingCategoriesTest()
+        public async Task GetTrackingCategoriesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //string where = null;
-            //string order = null;
-            //bool? includeArchived = null;
-            //var response = instance.GetTrackingCategoriesAsync(xeroTenantId, where, order, includeArchived);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            bool? includeArchived = AutoFaker.Generate<bool?>();
+            //var response = await instance.GetTrackingCategoriesAsync(accessToken, xeroTenantId, where, order, includeArchived);
             //Assert.IsType<TrackingCategories> (response);
         }
-
+        
         /// <summary>
         /// Test GetTrackingCategory
         /// </summary>
         [Fact]
-        public void GetTrackingCategoryTest()
+        public async Task GetTrackingCategoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid trackingCategoryID = null;
-            //var response = instance.GetTrackingCategoryAsync(xeroTenantId, trackingCategoryID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid trackingCategoryID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID);
             //Assert.IsType<TrackingCategories> (response);
         }
-
+        
         /// <summary>
         /// Test GetUser
         /// </summary>
         [Fact]
-        public void GetUserTest()
+        public async Task GetUserTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid userID = null;
-            //var response = instance.GetUserAsync(xeroTenantId, userID);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid userID = AutoFaker.Generate<Guid>();
+            //var response = await instance.GetUserAsync(accessToken, xeroTenantId, userID);
             //Assert.IsType<Users> (response);
         }
-
+        
         /// <summary>
         /// Test GetUsers
         /// </summary>
         [Fact]
-        public void GetUsersTest()
+        public async Task GetUsersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //DateTime? ifModifiedSince = null;
-            //string where = null;
-            //string order = null;
-            //var response = instance.GetUsersAsync(xeroTenantId, ifModifiedSince, where, order);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+            string where = AutoFaker.Generate<string>();
+            string order = AutoFaker.Generate<string>();
+            //var response = await instance.GetUsersAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
             //Assert.IsType<Users> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateAccount
         /// </summary>
         [Fact]
-        public void UpdateAccountTest()
+        public async Task UpdateAccountTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid accountID = null;
-            //Accounts accounts = null;
-            //var response = instance.UpdateAccountAsync(xeroTenantId, accountID, accounts);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            Accounts accounts = AutoFaker.Generate<Accounts>();
+            //var response = await instance.UpdateAccountAsync(accessToken, xeroTenantId, accountID, accounts);
             //Assert.IsType<Accounts> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateAccountAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateAccountAttachmentByFileNameTest()
+        public async Task UpdateAccountAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid accountID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateAccountAttachmentByFileNameAsync(xeroTenantId, accountID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid accountID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateBankTransaction
         /// </summary>
         [Fact]
-        public void UpdateBankTransactionTest()
+        public async Task UpdateBankTransactionTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //BankTransactions bankTransactions = null;
-            //var response = instance.UpdateBankTransactionAsync(xeroTenantId, bankTransactionID, bankTransactions);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            BankTransactions bankTransactions = AutoFaker.Generate<BankTransactions>();
+            //var response = await instance.UpdateBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID, bankTransactions);
             //Assert.IsType<BankTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateBankTransactionAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateBankTransactionAttachmentByFileNameTest()
+        public async Task UpdateBankTransactionAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransactionID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateBankTransactionAttachmentByFileNameAsync(xeroTenantId, bankTransactionID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransactionID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateBankTransferAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateBankTransferAttachmentByFileNameTest()
+        public async Task UpdateBankTransferAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid bankTransferID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateBankTransferAttachmentByFileNameAsync(xeroTenantId, bankTransferID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid bankTransferID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateContact
         /// </summary>
         [Fact]
-        public void UpdateContactTest()
+        public async Task UpdateContactTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //Contacts contacts = null;
-            //var response = instance.UpdateContactAsync(xeroTenantId, contactID, contacts);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            Contacts contacts = AutoFaker.Generate<Contacts>();
+            //var response = await instance.UpdateContactAsync(accessToken, xeroTenantId, contactID, contacts);
             //Assert.IsType<Contacts> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateContactAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateContactAttachmentByFileNameTest()
+        public async Task UpdateContactAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateContactAttachmentByFileNameAsync(xeroTenantId, contactID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateContactGroup
         /// </summary>
         [Fact]
-        public void UpdateContactGroupTest()
+        public async Task UpdateContactGroupTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid contactGroupID = null;
-            //ContactGroups contactGroups = null;
-            //var response = instance.UpdateContactGroupAsync(xeroTenantId, contactGroupID, contactGroups);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid contactGroupID = AutoFaker.Generate<Guid>();
+            ContactGroups contactGroups = AutoFaker.Generate<ContactGroups>();
+            //var response = await instance.UpdateContactGroupAsync(accessToken, xeroTenantId, contactGroupID, contactGroups);
             //Assert.IsType<ContactGroups> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateCreditNote
         /// </summary>
         [Fact]
-        public void UpdateCreditNoteTest()
+        public async Task UpdateCreditNoteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //CreditNotes creditNotes = null;
-            //var response = instance.UpdateCreditNoteAsync(xeroTenantId, creditNoteID, creditNotes);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            CreditNotes creditNotes = AutoFaker.Generate<CreditNotes>();
+            //var response = await instance.UpdateCreditNoteAsync(accessToken, xeroTenantId, creditNoteID, creditNotes);
             //Assert.IsType<CreditNotes> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateCreditNoteAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateCreditNoteAttachmentByFileNameTest()
+        public async Task UpdateCreditNoteAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid creditNoteID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateCreditNoteAttachmentByFileNameAsync(xeroTenantId, creditNoteID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid creditNoteID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateEmployee
         /// </summary>
         [Fact]
-        public void UpdateEmployeeTest()
+        public async Task UpdateEmployeeTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid employeeID = null;
-            //Employees employees = null;
-            //var response = instance.UpdateEmployeeAsync(xeroTenantId, employeeID, employees);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid employeeID = AutoFaker.Generate<Guid>();
+            Employees employees = AutoFaker.Generate<Employees>();
+            //var response = await instance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeID, employees);
             //Assert.IsType<Employees> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateExpenseClaim
         /// </summary>
         [Fact]
-        public void UpdateExpenseClaimTest()
+        public async Task UpdateExpenseClaimTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid expenseClaimID = null;
-            //ExpenseClaims expenseClaims = null;
-            //var response = instance.UpdateExpenseClaimAsync(xeroTenantId, expenseClaimID, expenseClaims);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid expenseClaimID = AutoFaker.Generate<Guid>();
+            ExpenseClaims expenseClaims = AutoFaker.Generate<ExpenseClaims>();
+            //var response = await instance.UpdateExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID, expenseClaims);
             //Assert.IsType<ExpenseClaims> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateInvoice
         /// </summary>
         [Fact]
-        public void UpdateInvoiceTest()
+        public async Task UpdateInvoiceTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //Invoices invoices = null;
-            //var response = instance.UpdateInvoiceAsync(xeroTenantId, invoiceID, invoices);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            Invoices invoices = AutoFaker.Generate<Invoices>();
+            //var response = await instance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices);
             //Assert.IsType<Invoices> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateInvoiceAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateInvoiceAttachmentByFileNameTest()
+        public async Task UpdateInvoiceAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid invoiceID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateInvoiceAttachmentByFileNameAsync(xeroTenantId, invoiceID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid invoiceID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateItem
         /// </summary>
         [Fact]
-        public void UpdateItemTest()
+        public async Task UpdateItemTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid itemID = null;
-            //Items items = null;
-            //var response = instance.UpdateItemAsync(xeroTenantId, itemID, items);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid itemID = AutoFaker.Generate<Guid>();
+            Items items = AutoFaker.Generate<Items>();
+            //var response = await instance.UpdateItemAsync(accessToken, xeroTenantId, itemID, items);
             //Assert.IsType<Items> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateLinkedTransaction
         /// </summary>
         [Fact]
-        public void UpdateLinkedTransactionTest()
+        public async Task UpdateLinkedTransactionTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid linkedTransactionID = null;
-            //LinkedTransactions linkedTransactions = null;
-            //var response = instance.UpdateLinkedTransactionAsync(xeroTenantId, linkedTransactionID, linkedTransactions);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid linkedTransactionID = AutoFaker.Generate<Guid>();
+            LinkedTransactions linkedTransactions = AutoFaker.Generate<LinkedTransactions>();
+            //var response = await instance.UpdateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID, linkedTransactions);
             //Assert.IsType<LinkedTransactions> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateManualJournal
         /// </summary>
         [Fact]
-        public void UpdateManualJournalTest()
+        public async Task UpdateManualJournalTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid manualJournalID = null;
-            //ManualJournals manualJournals = null;
-            //var response = instance.UpdateManualJournalAsync(xeroTenantId, manualJournalID, manualJournals);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid manualJournalID = AutoFaker.Generate<Guid>();
+            ManualJournals manualJournals = AutoFaker.Generate<ManualJournals>();
+            //var response = await instance.UpdateManualJournalAsync(accessToken, xeroTenantId, manualJournalID, manualJournals);
             //Assert.IsType<ManualJournals> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateManualJournalAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateManualJournalAttachmentByFileNameTest()
+        public async Task UpdateManualJournalAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid manualJournalID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateManualJournalAttachmentByFileNameAsync(xeroTenantId, manualJournalID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid manualJournalID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
+        /// <summary>
+        /// Test UpdateOrCreateBankTransactions
+        /// </summary>
+        [Fact]
+        public async Task UpdateOrCreateBankTransactionsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            string xeroTenantId = AutoFaker.Generate<string>();
+            BankTransactions bankTransactions = AutoFaker.Generate<BankTransactions>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.UpdateOrCreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors);
+            //Assert.IsType<BankTransactions> (response);
+        }
+        
+        /// <summary>
+        /// Test UpdateOrCreateContacts
+        /// </summary>
+        [Fact]
+        public async Task UpdateOrCreateContactsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Contacts contacts = AutoFaker.Generate<Contacts>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.UpdateOrCreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
+            //Assert.IsType<Contacts> (response);
+        }
+        
+        /// <summary>
+        /// Test UpdateOrCreateCreditNotes
+        /// </summary>
+        [Fact]
+        public async Task UpdateOrCreateCreditNotesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            string xeroTenantId = AutoFaker.Generate<string>();
+            CreditNotes creditNotes = AutoFaker.Generate<CreditNotes>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.UpdateOrCreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors);
+            //Assert.IsType<CreditNotes> (response);
+        }
+        
+        /// <summary>
+        /// Test UpdateOrCreateInvoices
+        /// </summary>
+        [Fact]
+        public async Task UpdateOrCreateInvoicesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Invoices invoices = AutoFaker.Generate<Invoices>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors);
+            //Assert.IsType<Invoices> (response);
+        }
+        
+        /// <summary>
+        /// Test UpdateOrCreatePurchaseOrders
+        /// </summary>
+        [Fact]
+        public async Task UpdateOrCreatePurchaseOrdersTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            string xeroTenantId = AutoFaker.Generate<string>();
+            PurchaseOrders purchaseOrders = AutoFaker.Generate<PurchaseOrders>();
+            bool? summarizeErrors = AutoFaker.Generate<bool?>();
+            //var response = await instance.UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
+            //Assert.IsType<PurchaseOrders> (response);
+        }
+        
         /// <summary>
         /// Test UpdatePurchaseOrder
         /// </summary>
         [Fact]
-        public void UpdatePurchaseOrderTest()
+        public async Task UpdatePurchaseOrderTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid purchaseOrderID = null;
-            //PurchaseOrders purchaseOrders = null;
-            //var response = instance.UpdatePurchaseOrderAsync(xeroTenantId, purchaseOrderID, purchaseOrders);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid purchaseOrderID = AutoFaker.Generate<Guid>();
+            PurchaseOrders purchaseOrders = AutoFaker.Generate<PurchaseOrders>();
+            //var response = await instance.UpdatePurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID, purchaseOrders);
             //Assert.IsType<PurchaseOrders> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateReceipt
         /// </summary>
         [Fact]
-        public void UpdateReceiptTest()
+        public async Task UpdateReceiptTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //Receipts receipts = null;
-            //var response = instance.UpdateReceiptAsync(xeroTenantId, receiptID, receipts);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            Receipts receipts = AutoFaker.Generate<Receipts>();
+            //var response = await instance.UpdateReceiptAsync(accessToken, xeroTenantId, receiptID, receipts);
             //Assert.IsType<Receipts> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateReceiptAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateReceiptAttachmentByFileNameTest()
+        public async Task UpdateReceiptAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid receiptID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateReceiptAttachmentByFileNameAsync(xeroTenantId, receiptID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid receiptID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateRepeatingInvoiceAttachmentByFileName
         /// </summary>
         [Fact]
-        public void UpdateRepeatingInvoiceAttachmentByFileNameTest()
+        public async Task UpdateRepeatingInvoiceAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid repeatingInvoiceID = null;
-            //string fileName = null;
-            //byte[] body = null;
-            //var response = instance.UpdateRepeatingInvoiceAttachmentByFileNameAsync(xeroTenantId, repeatingInvoiceID, fileName, body);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
+            string fileName = AutoFaker.Generate<string>();
+            byte[] body = AutoFaker.Generate<byte[]>();
+            //var response = await instance.UpdateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
             //Assert.IsType<Attachments> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateTaxRate
         /// </summary>
         [Fact]
-        public void UpdateTaxRateTest()
+        public async Task UpdateTaxRateTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //TaxRates taxRates = null;
-            //var response = instance.UpdateTaxRateAsync(xeroTenantId, taxRates);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            TaxRates taxRates = AutoFaker.Generate<TaxRates>();
+            //var response = await instance.UpdateTaxRateAsync(accessToken, xeroTenantId, taxRates);
             //Assert.IsType<TaxRates> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateTrackingCategory
         /// </summary>
         [Fact]
-        public void UpdateTrackingCategoryTest()
+        public async Task UpdateTrackingCategoryTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid trackingCategoryID = null;
-            //TrackingCategory trackingCategory = null;
-            //var response = instance.UpdateTrackingCategoryAsync(xeroTenantId, trackingCategoryID, trackingCategory);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid trackingCategoryID = AutoFaker.Generate<Guid>();
+            TrackingCategory trackingCategory = AutoFaker.Generate<TrackingCategory>();
+            //var response = await instance.UpdateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID, trackingCategory);
             //Assert.IsType<TrackingCategories> (response);
         }
-
+        
         /// <summary>
         /// Test UpdateTrackingOptions
         /// </summary>
         [Fact]
-        public void UpdateTrackingOptionsTest()
+        public async Task UpdateTrackingOptionsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xeroTenantId = null;
-            //Guid trackingCategoryID = null;
-            //Guid trackingOptionID = null;
-            //TrackingOption trackingOption = null;
-            //var response = instance.UpdateTrackingOptionsAsync(xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption);
+            string xeroTenantId = AutoFaker.Generate<string>();
+            Guid trackingCategoryID = AutoFaker.Generate<Guid>();
+            Guid trackingOptionID = AutoFaker.Generate<Guid>();
+            TrackingOption trackingOption = AutoFaker.Generate<TrackingOption>();
+            //var response = await instance.UpdateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption);
             //Assert.IsType<TrackingOptions> (response);
         }
-
+        
     }
 
 }
