@@ -343,7 +343,6 @@ namespace Xero.NetStandard.OAuth2.Client
                     request.AddCookie(cookie.Name, cookie.Value);
                 }
             }
-            
             return request;
         }
 

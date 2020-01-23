@@ -22,6 +22,7 @@ using AutoBogus;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model;
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace Xero.NetStandard.OAuth2.Test
 {
@@ -74,13 +75,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Account account = AutoFaker.Generate<Account>();
-            var response = await instance.CreateAccountAsync(accessToken, xeroTenantId, account);
+            var response =await instance.CreateAccountAsync(accessToken, xeroTenantId, account);
             Assert.IsType<Accounts> (response);
         }
         
         /// <summary>
         /// Test CreateAccountAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task CreateAccountAttachmentByFileNameTest()
         {
@@ -89,13 +91,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid accountID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
         /// Test CreateBankTransactionAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task CreateBankTransactionAttachmentByFileNameTest()
         {
@@ -104,8 +107,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -118,8 +121,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateBankTransactionHistoryRecordAsync(accessToken, xeroTenantId, bankTransactionID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateBankTransactionHistoryRecordAsync(accessToken, xeroTenantId, bankTransactionID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -132,8 +135,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             BankTransactions bankTransactions = AutoFaker.Generate<BankTransactions>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors);
-            //Assert.IsType<BankTransactions> (response);
+            var response =await instance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors);
+            Assert.IsType<BankTransactions> (response);
         }
         
         /// <summary>
@@ -145,13 +148,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             BankTransfers bankTransfers = AutoFaker.Generate<BankTransfers>();
-            //var response = await instance.CreateBankTransferAsync(accessToken, xeroTenantId, bankTransfers);
-            //Assert.IsType<BankTransfers> (response);
+            var response =await instance.CreateBankTransferAsync(accessToken, xeroTenantId, bankTransfers);
+            Assert.IsType<BankTransfers> (response);
         }
         
         /// <summary>
         /// Test CreateBankTransferAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]        
         [Fact]
         public async Task CreateBankTransferAttachmentByFileNameTest()
         {
@@ -160,8 +164,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransferID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -174,8 +178,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransferID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateBankTransferHistoryRecordAsync(accessToken, xeroTenantId, bankTransferID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateBankTransferHistoryRecordAsync(accessToken, xeroTenantId, bankTransferID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -188,8 +192,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             BatchPayments batchPayments = AutoFaker.Generate<BatchPayments>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.CreateBatchPaymentAsync(accessToken, xeroTenantId, batchPayments, summarizeErrors);
-            //Assert.IsType<BatchPayments> (response);
+            var response =await instance.CreateBatchPaymentAsync(accessToken, xeroTenantId, batchPayments, summarizeErrors);
+            Assert.IsType<BatchPayments> (response);
         }
         
         /// <summary>
@@ -202,8 +206,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid batchPaymentID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateBatchPaymentHistoryRecordAsync(accessToken, xeroTenantId, batchPaymentID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateBatchPaymentHistoryRecordAsync(accessToken, xeroTenantId, batchPaymentID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -216,14 +220,15 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid brandingThemeID = AutoFaker.Generate<Guid>();
             PaymentService paymentService = AutoFaker.Generate<PaymentService>();
-            //var response = await instance.CreateBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID, paymentService);
-            //Assert.IsType<PaymentServices> (response);
+            var response =await instance.CreateBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID, paymentService);
+            Assert.IsType<PaymentServices> (response);
         }
         
         /// <summary>
         /// Test CreateContactAttachmentByFileName
         /// </summary>
-        [Fact]
+        [Trait("Type", "Attachment")]
+       [Fact]
         public async Task CreateContactAttachmentByFileNameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -231,8 +236,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid contactID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -244,8 +249,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             ContactGroups contactGroups = AutoFaker.Generate<ContactGroups>();
-            //var response = await instance.CreateContactGroupAsync(accessToken, xeroTenantId, contactGroups);
-            //Assert.IsType<ContactGroups> (response);
+            var response =await instance.CreateContactGroupAsync(accessToken, xeroTenantId, contactGroups);
+            Assert.IsType<ContactGroups> (response);
         }
         
         /// <summary>
@@ -258,8 +263,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactGroupID = AutoFaker.Generate<Guid>();
             Contacts contacts = AutoFaker.Generate<Contacts>();
-            //var response = await instance.CreateContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID, contacts);
-            //Assert.IsType<Contacts> (response);
+            var response =await instance.CreateContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID, contacts);
+            Assert.IsType<Contacts> (response);
         }
         
         /// <summary>
@@ -272,8 +277,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateContactHistoryAsync(accessToken, xeroTenantId, contactID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateContactHistoryAsync(accessToken, xeroTenantId, contactID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -286,8 +291,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Contacts contacts = AutoFaker.Generate<Contacts>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.CreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
-            //Assert.IsType<Contacts> (response);
+            var response =await instance.CreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
+            Assert.IsType<Contacts> (response);
         }
         
         /// <summary>
@@ -300,13 +305,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             Allocations allocations = AutoFaker.Generate<Allocations>();
-            //var response = await instance.CreateCreditNoteAllocationAsync(accessToken, xeroTenantId, creditNoteID, allocations);
-            //Assert.IsType<Allocations> (response);
+            var response =await instance.CreateCreditNoteAllocationAsync(accessToken, xeroTenantId, creditNoteID, allocations);
+            Assert.IsType<Allocations> (response);
         }
         
         /// <summary>
         /// Test CreateCreditNoteAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task CreateCreditNoteAttachmentByFileNameTest()
         {
@@ -315,8 +321,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -329,8 +335,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -343,8 +349,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             CreditNotes creditNotes = AutoFaker.Generate<CreditNotes>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.CreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors);
-            //Assert.IsType<CreditNotes> (response);
+            var response =await instance.CreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors);
+            Assert.IsType<CreditNotes> (response);
         }
         
         /// <summary>
@@ -356,8 +362,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Currency currency = AutoFaker.Generate<Currency>();
-            //var response = await instance.CreateCurrencyAsync(accessToken, xeroTenantId, currency);
-            //Assert.IsType<Currencies> (response);
+            var response =await instance.CreateCurrencyAsync(accessToken, xeroTenantId, currency);
+            Assert.IsType<Currencies> (response);
         }
         
         /// <summary>
@@ -369,8 +375,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Employee employee = AutoFaker.Generate<Employee>();
-            //var response = await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employee);
-            //Assert.IsType<Employees> (response);
+            var response =await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employee);
+            Assert.IsType<Employees> (response);
         }
         
         /// <summary>
@@ -382,8 +388,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Employees employees = AutoFaker.Generate<Employees>();
-            //var response = await instance.CreateEmployeesAsync(accessToken, xeroTenantId, employees);
-            //Assert.IsType<Employees> (response);
+            var response =await instance.CreateEmployeesAsync(accessToken, xeroTenantId, employees);
+            Assert.IsType<Employees> (response);
         }
         
         /// <summary>
@@ -396,8 +402,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid expenseClaimID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -409,13 +415,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             ExpenseClaims expenseClaims = AutoFaker.Generate<ExpenseClaims>();
-            //var response = await instance.CreateExpenseClaimsAsync(accessToken, xeroTenantId, expenseClaims);
-            //Assert.IsType<ExpenseClaims> (response);
+            var response =await instance.CreateExpenseClaimsAsync(accessToken, xeroTenantId, expenseClaims);
+            Assert.IsType<ExpenseClaims> (response);
         }
         
         /// <summary>
         /// Test CreateInvoiceAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task CreateInvoiceAttachmentByFileNameTest()
         {
@@ -424,8 +431,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid invoiceID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -438,8 +445,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -452,8 +459,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Invoices invoices = AutoFaker.Generate<Invoices>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors);
-            //Assert.IsType<Invoices> (response);
+            var response =await instance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors);
+            Assert.IsType<Invoices> (response);
         }
         
         /// <summary>
@@ -465,8 +472,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Item item = AutoFaker.Generate<Item>();
-            //var response = await instance.CreateItemAsync(accessToken, xeroTenantId, item);
-            //Assert.IsType<Items> (response);
+            var response =await instance.CreateItemAsync(accessToken, xeroTenantId, item);
+            Assert.IsType<Items> (response);
         }
         
         /// <summary>
@@ -479,8 +486,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid itemID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateItemHistoryAsync(accessToken, xeroTenantId, itemID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateItemHistoryAsync(accessToken, xeroTenantId, itemID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -493,8 +500,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Items items = AutoFaker.Generate<Items>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.CreateItemsAsync(accessToken, xeroTenantId, items, summarizeErrors);
-            //Assert.IsType<Items> (response);
+            var response =await instance.CreateItemsAsync(accessToken, xeroTenantId, items, summarizeErrors);
+            Assert.IsType<Items> (response);
         }
         
         /// <summary>
@@ -506,8 +513,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             LinkedTransaction linkedTransaction = AutoFaker.Generate<LinkedTransaction>();
-            //var response = await instance.CreateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransaction);
-            //Assert.IsType<LinkedTransactions> (response);
+            var response =await instance.CreateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransaction);
+            Assert.IsType<LinkedTransactions> (response);
         }
         
         /// <summary>
@@ -519,13 +526,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             ManualJournal manualJournal = AutoFaker.Generate<ManualJournal>();
-            //var response = await instance.CreateManualJournalAsync(accessToken, xeroTenantId, manualJournal);
-            //Assert.IsType<ManualJournals> (response);
+            var response =await instance.CreateManualJournalAsync(accessToken, xeroTenantId, manualJournal);
+            Assert.IsType<ManualJournals> (response);
         }
         
         /// <summary>
         /// Test CreateManualJournalAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task CreateManualJournalAttachmentByFileNameTest()
         {
@@ -534,8 +542,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid manualJournalID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -547,8 +555,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             ManualJournals manualJournals = AutoFaker.Generate<ManualJournals>();
-            //var response = await instance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals);
-            //Assert.IsType<ManualJournals> (response);
+            var response =await instance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals);
+            Assert.IsType<ManualJournals> (response);
         }
         
         /// <summary>
@@ -561,8 +569,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid overpaymentID = AutoFaker.Generate<Guid>();
             Allocation allocation = AutoFaker.Generate<Allocation>();
-            //var response = await instance.CreateOverpaymentAllocationAsync(accessToken, xeroTenantId, overpaymentID, allocation);
-            //Assert.IsType<Allocations> (response);
+            var response =await instance.CreateOverpaymentAllocationAsync(accessToken, xeroTenantId, overpaymentID, allocation);
+            Assert.IsType<Allocations> (response);
         }
         
         /// <summary>
@@ -575,8 +583,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid overpaymentID = AutoFaker.Generate<Guid>();
             Allocations allocations = AutoFaker.Generate<Allocations>();
-            //var response = await instance.CreateOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocations);
-            //Assert.IsType<Allocations> (response);
+            var response =await instance.CreateOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocations);
+            Assert.IsType<Allocations> (response);
         }
         
         /// <summary>
@@ -589,8 +597,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid overpaymentID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -602,8 +610,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Payment payment = AutoFaker.Generate<Payment>();
-            //var response = await instance.CreatePaymentAsync(accessToken, xeroTenantId, payment);
-            //Assert.IsType<Payments> (response);
+            var response =await instance.CreatePaymentAsync(accessToken, xeroTenantId, payment);
+            Assert.IsType<Payments> (response);
         }
         
         /// <summary>
@@ -616,8 +624,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid paymentID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreatePaymentHistoryAsync(accessToken, xeroTenantId, paymentID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreatePaymentHistoryAsync(accessToken, xeroTenantId, paymentID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -629,8 +637,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             PaymentServices paymentServices = AutoFaker.Generate<PaymentServices>();
-            //var response = await instance.CreatePaymentServiceAsync(accessToken, xeroTenantId, paymentServices);
-            //Assert.IsType<PaymentServices> (response);
+            var response =await instance.CreatePaymentServiceAsync(accessToken, xeroTenantId, paymentServices);
+            Assert.IsType<PaymentServices> (response);
         }
         
         /// <summary>
@@ -642,8 +650,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Payments payments = AutoFaker.Generate<Payments>();
-            //var response = await instance.CreatePaymentsAsync(accessToken, xeroTenantId, payments);
-            //Assert.IsType<Payments> (response);
+            var response =await instance.CreatePaymentsAsync(accessToken, xeroTenantId, payments);
+            Assert.IsType<Payments> (response);
         }
         
         /// <summary>
@@ -656,8 +664,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid prepaymentID = AutoFaker.Generate<Guid>();
             Allocations allocations = AutoFaker.Generate<Allocations>();
-            //var response = await instance.CreatePrepaymentAllocationAsync(accessToken, xeroTenantId, prepaymentID, allocations);
-            //Assert.IsType<Allocations> (response);
+            var response =await instance.CreatePrepaymentAllocationAsync(accessToken, xeroTenantId, prepaymentID, allocations);
+            Assert.IsType<Allocations> (response);
         }
         
         /// <summary>
@@ -670,8 +678,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid prepaymentID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreatePrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreatePrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -684,8 +692,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid purchaseOrderID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreatePurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreatePurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -698,8 +706,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             PurchaseOrders purchaseOrders = AutoFaker.Generate<PurchaseOrders>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.CreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
-            //Assert.IsType<PurchaseOrders> (response);
+            var response =await instance.CreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
+            Assert.IsType<PurchaseOrders> (response);
         }
         
         /// <summary>
@@ -711,13 +719,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Receipts receipts = AutoFaker.Generate<Receipts>();
-            //var response = await instance.CreateReceiptAsync(accessToken, xeroTenantId, receipts);
-            //Assert.IsType<Receipts> (response);
+            var response =await instance.CreateReceiptAsync(accessToken, xeroTenantId, receipts);
+            Assert.IsType<Receipts> (response);
         }
         
         /// <summary>
         /// Test CreateReceiptAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task CreateReceiptAttachmentByFileNameTest()
         {
@@ -726,8 +735,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid receiptID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -740,13 +749,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid receiptID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateReceiptHistoryAsync(accessToken, xeroTenantId, receiptID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateReceiptHistoryAsync(accessToken, xeroTenantId, receiptID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
         /// Test CreateRepeatingInvoiceAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task CreateRepeatingInvoiceAttachmentByFileNameTest()
         {
@@ -755,8 +765,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.CreateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.CreateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -769,8 +779,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
             HistoryRecords historyRecords = AutoFaker.Generate<HistoryRecords>();
-            //var response = await instance.CreateRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID, historyRecords);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.CreateRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID, historyRecords);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -782,8 +792,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             TaxRates taxRates = AutoFaker.Generate<TaxRates>();
-            //var response = await instance.CreateTaxRatesAsync(accessToken, xeroTenantId, taxRates);
-            //Assert.IsType<TaxRates> (response);
+            var response =await instance.CreateTaxRatesAsync(accessToken, xeroTenantId, taxRates);
+            Assert.IsType<TaxRates> (response);
         }
         
         /// <summary>
@@ -795,8 +805,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             TrackingCategory trackingCategory = AutoFaker.Generate<TrackingCategory>();
-            //var response = await instance.CreateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategory);
-            //Assert.IsType<TrackingCategories> (response);
+            var response =await instance.CreateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategory);
+            Assert.IsType<TrackingCategories> (response);
         }
         
         /// <summary>
@@ -809,8 +819,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid trackingCategoryID = AutoFaker.Generate<Guid>();
             TrackingOption trackingOption = AutoFaker.Generate<TrackingOption>();
-            //var response = await instance.CreateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOption);
-            //Assert.IsType<TrackingOptions> (response);
+            var response =await instance.CreateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOption);
+            Assert.IsType<TrackingOptions> (response);
         }
         
         /// <summary>
@@ -822,8 +832,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid accountID = AutoFaker.Generate<Guid>();
-            //var response = await instance.DeleteAccountAsync(accessToken, xeroTenantId, accountID);
-            //Assert.IsType<Accounts> (response);
+            var response =await instance.DeleteAccountAsync(accessToken, xeroTenantId, accountID);
+            Assert.IsType<Accounts> (response);
         }
         
         /// <summary>
@@ -836,7 +846,7 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactGroupID = AutoFaker.Generate<Guid>();
             Guid contactID = AutoFaker.Generate<Guid>();
-            //instance.DeleteContactGroupContactAsync(accessToken, xeroTenantId, contactGroupID, contactID);
+            await instance.DeleteContactGroupContactAsync(accessToken, xeroTenantId, contactGroupID, contactID);
             
         }
         
@@ -849,7 +859,7 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactGroupID = AutoFaker.Generate<Guid>();
-            //instance.DeleteContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID);
+            await instance.DeleteContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID);
             
         }
         
@@ -862,7 +872,7 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid itemID = AutoFaker.Generate<Guid>();
-            //instance.DeleteItemAsync(accessToken, xeroTenantId, itemID);
+            await instance.DeleteItemAsync(accessToken, xeroTenantId, itemID);
             
         }
         
@@ -875,7 +885,7 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid linkedTransactionID = AutoFaker.Generate<Guid>();
-            //instance.DeleteLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID);
+            await instance.DeleteLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID);
             
         }
         
@@ -889,8 +899,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid paymentID = AutoFaker.Generate<Guid>();
             Payments payments = AutoFaker.Generate<Payments>();
-            //var response = await instance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, payments);
-            //Assert.IsType<Payments> (response);
+            var response =await instance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, payments);
+            Assert.IsType<Payments> (response);
         }
         
         /// <summary>
@@ -902,8 +912,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid trackingCategoryID = AutoFaker.Generate<Guid>();
-            //var response = await instance.DeleteTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID);
-            //Assert.IsType<TrackingCategories> (response);
+            var response =await instance.DeleteTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID);
+            Assert.IsType<TrackingCategories> (response);
         }
         
         /// <summary>
@@ -916,8 +926,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid trackingCategoryID = AutoFaker.Generate<Guid>();
             Guid trackingOptionID = AutoFaker.Generate<Guid>();
-            //var response = await instance.DeleteTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID);
-            //Assert.IsType<TrackingOptions> (response);
+            var response =await instance.DeleteTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID);
+            Assert.IsType<TrackingOptions> (response);
         }
         
         /// <summary>
@@ -930,7 +940,7 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
             RequestEmpty requestEmpty = AutoFaker.Generate<RequestEmpty>();
-            //instance.EmailInvoiceAsync(accessToken, xeroTenantId, invoiceID, requestEmpty);
+            await instance.EmailInvoiceAsync(accessToken, xeroTenantId, invoiceID, requestEmpty);
             
         }
         
@@ -943,13 +953,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid accountID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetAccountAsync(accessToken, xeroTenantId, accountID);
-            //Assert.IsType<Accounts> (response);
+            var response =await instance.GetAccountAsync(accessToken, xeroTenantId, accountID);
+            Assert.IsType<Accounts> (response);
         }
         
         /// <summary>
         /// Test GetAccountAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetAccountAttachmentByFileNameTest()
         {
@@ -958,13 +969,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid accountID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetAccountAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetAccountAttachmentByIdTest()
         {
@@ -973,21 +985,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid accountID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetAccountAttachmentByIdAsync(accessToken, xeroTenantId, accountID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetAccountAttachmentByIdAsync(accessToken, xeroTenantId, accountID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetAccountAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetAccountAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid accountID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetAccountAttachmentsAsync(accessToken, xeroTenantId, accountID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetAccountAttachmentsAsync(accessToken, xeroTenantId, accountID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -1001,8 +1014,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetAccountsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-            //Assert.IsType<Accounts> (response);
+            var response =await instance.GetAccountsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
+            Assert.IsType<Accounts> (response);
         }
         
         /// <summary>
@@ -1014,13 +1027,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID);
-            //Assert.IsType<BankTransactions> (response);
+            var response =await instance.GetBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID);
+            Assert.IsType<BankTransactions> (response);
         }
         
         /// <summary>
         /// Test GetBankTransactionAttachmentByFileName
         /// </summary>
+       [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetBankTransactionAttachmentByFileNameTest()
         {
@@ -1029,13 +1043,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetBankTransactionAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetBankTransactionAttachmentByIdTest()
         {
@@ -1044,21 +1059,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetBankTransactionAttachmentByIdAsync(accessToken, xeroTenantId, bankTransactionID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetBankTransactionAttachmentByIdAsync(accessToken, xeroTenantId, bankTransactionID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetBankTransactionAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetBankTransactionAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBankTransactionAttachmentsAsync(accessToken, xeroTenantId, bankTransactionID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetBankTransactionAttachmentsAsync(accessToken, xeroTenantId, bankTransactionID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -1074,8 +1090,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int?>();
             int? unitdp = AutoFaker.Generate<int?>();
-            //var response = await instance.GetBankTransactionsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
-            //Assert.IsType<BankTransactions> (response);
+            var response =await instance.GetBankTransactionsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+            Assert.IsType<BankTransactions> (response);
         }
         
         /// <summary>
@@ -1087,8 +1103,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBankTransactionsHistoryAsync(accessToken, xeroTenantId, bankTransactionID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetBankTransactionsHistoryAsync(accessToken, xeroTenantId, bankTransactionID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1100,13 +1116,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransferID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBankTransferAsync(accessToken, xeroTenantId, bankTransferID);
-            //Assert.IsType<BankTransfers> (response);
+            var response =await instance.GetBankTransferAsync(accessToken, xeroTenantId, bankTransferID);
+            Assert.IsType<BankTransfers> (response);
         }
         
         /// <summary>
         /// Test GetBankTransferAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetBankTransferAttachmentByFileNameTest()
         {
@@ -1115,13 +1132,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransferID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetBankTransferAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetBankTransferAttachmentByIdTest()
         {
@@ -1130,21 +1148,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransferID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetBankTransferAttachmentByIdAsync(accessToken, xeroTenantId, bankTransferID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetBankTransferAttachmentByIdAsync(accessToken, xeroTenantId, bankTransferID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetBankTransferAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetBankTransferAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransferID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBankTransferAttachmentsAsync(accessToken, xeroTenantId, bankTransferID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetBankTransferAttachmentsAsync(accessToken, xeroTenantId, bankTransferID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -1156,8 +1175,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransferID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBankTransferHistoryAsync(accessToken, xeroTenantId, bankTransferID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetBankTransferHistoryAsync(accessToken, xeroTenantId, bankTransferID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1171,8 +1190,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetBankTransfersAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-            //Assert.IsType<BankTransfers> (response);
+            var response =await instance.GetBankTransfersAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
+            Assert.IsType<BankTransfers> (response);
         }
         
         /// <summary>
@@ -1184,8 +1203,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid batchPaymentID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBatchPaymentHistoryAsync(accessToken, xeroTenantId, batchPaymentID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetBatchPaymentHistoryAsync(accessToken, xeroTenantId, batchPaymentID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1199,8 +1218,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetBatchPaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-            //Assert.IsType<BatchPayments> (response);
+            var response =await instance.GetBatchPaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
+            Assert.IsType<BatchPayments> (response);
         }
         
         /// <summary>
@@ -1212,8 +1231,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid brandingThemeID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBrandingThemeAsync(accessToken, xeroTenantId, brandingThemeID);
-            //Assert.IsType<BrandingThemes> (response);
+            var response =await instance.GetBrandingThemeAsync(accessToken, xeroTenantId, brandingThemeID);
+            Assert.IsType<BrandingThemes> (response);
         }
         
         /// <summary>
@@ -1225,8 +1244,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid brandingThemeID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID);
-            //Assert.IsType<PaymentServices> (response);
+            var response =await instance.GetBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID);
+            Assert.IsType<PaymentServices> (response);
         }
         
         /// <summary>
@@ -1237,8 +1256,8 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
-            //var response = await instance.GetBrandingThemesAsync(accessToken, xeroTenantId);
-            //Assert.IsType<BrandingThemes> (response);
+            var response =await instance.GetBrandingThemesAsync(accessToken, xeroTenantId);
+            Assert.IsType<BrandingThemes> (response);
         }
         
         /// <summary>
@@ -1250,13 +1269,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetContactAsync(accessToken, xeroTenantId, contactID);
-            //Assert.IsType<Contacts> (response);
+            var response =await instance.GetContactAsync(accessToken, xeroTenantId, contactID);
+            Assert.IsType<Contacts> (response);
         }
         
         /// <summary>
         /// Test GetContactAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetContactAttachmentByFileNameTest()
         {
@@ -1265,13 +1285,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid contactID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetContactAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetContactAttachmentByIdTest()
         {
@@ -1280,8 +1301,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid contactID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetContactAttachmentByIdAsync(accessToken, xeroTenantId, contactID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetContactAttachmentByIdAsync(accessToken, xeroTenantId, contactID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
@@ -1293,8 +1314,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetContactAttachmentsAsync(accessToken, xeroTenantId, contactID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetContactAttachmentsAsync(accessToken, xeroTenantId, contactID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -1306,8 +1327,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetContactCISSettingsAsync(accessToken, xeroTenantId, contactID);
-            //Assert.IsType<CISSettings> (response);
+            var response =await instance.GetContactCISSettingsAsync(accessToken, xeroTenantId, contactID);
+            Assert.IsType<CISSettings> (response);
         }
         
         /// <summary>
@@ -1319,8 +1340,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactGroupID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetContactGroupAsync(accessToken, xeroTenantId, contactGroupID);
-            //Assert.IsType<ContactGroups> (response);
+            var response =await instance.GetContactGroupAsync(accessToken, xeroTenantId, contactGroupID);
+            Assert.IsType<ContactGroups> (response);
         }
         
         /// <summary>
@@ -1333,8 +1354,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetContactGroupsAsync(accessToken, xeroTenantId, where, order);
-            //Assert.IsType<ContactGroups> (response);
+            var response =await instance.GetContactGroupsAsync(accessToken, xeroTenantId, where, order);
+            Assert.IsType<ContactGroups> (response);
         }
         
         /// <summary>
@@ -1346,8 +1367,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetContactHistoryAsync(accessToken, xeroTenantId, contactID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetContactHistoryAsync(accessToken, xeroTenantId, contactID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1364,8 +1385,8 @@ namespace Xero.NetStandard.OAuth2.Test
             List<Guid> iDs = AutoFaker.Generate<List<Guid>>();
             int? page = AutoFaker.Generate<int?>();
             bool? includeArchived = AutoFaker.Generate<bool?>();
-            //var response = await instance.GetContactsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived);
-            //Assert.IsType<Contacts> (response);
+            var response =await instance.GetContactsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived);
+            Assert.IsType<Contacts> (response);
         }
         
         /// <summary>
@@ -1377,8 +1398,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid creditNoteID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetCreditNoteAsync(accessToken, xeroTenantId, creditNoteID);
-            //Assert.IsType<CreditNotes> (response);
+            var response =await instance.GetCreditNoteAsync(accessToken, xeroTenantId, creditNoteID);
+            Assert.IsType<CreditNotes> (response);
         }
         
         /// <summary>
@@ -1391,13 +1412,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetCreditNoteAsPdfAsync(accessToken, xeroTenantId, creditNoteID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetCreditNoteAsPdfAsync(accessToken, xeroTenantId, creditNoteID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetCreditNoteAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetCreditNoteAttachmentByFileNameTest()
         {
@@ -1406,13 +1428,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetCreditNoteAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetCreditNoteAttachmentByIdTest()
         {
@@ -1421,21 +1444,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetCreditNoteAttachmentByIdAsync(accessToken, xeroTenantId, creditNoteID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetCreditNoteAttachmentByIdAsync(accessToken, xeroTenantId, creditNoteID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetCreditNoteAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetCreditNoteAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid creditNoteID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetCreditNoteAttachmentsAsync(accessToken, xeroTenantId, creditNoteID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetCreditNoteAttachmentsAsync(accessToken, xeroTenantId, creditNoteID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -1447,8 +1471,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid creditNoteID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1463,8 +1487,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int?>();
-            //var response = await instance.GetCreditNotesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
-            //Assert.IsType<CreditNotes> (response);
+            var response =await instance.GetCreditNotesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
+            Assert.IsType<CreditNotes> (response);
         }
         
         /// <summary>
@@ -1477,8 +1501,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetCurrenciesAsync(accessToken, xeroTenantId, where, order);
-            //Assert.IsType<Currencies> (response);
+            var response =await instance.GetCurrenciesAsync(accessToken, xeroTenantId, where, order);
+            Assert.IsType<Currencies> (response);
         }
         
         /// <summary>
@@ -1490,8 +1514,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid employeeID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetEmployeeAsync(accessToken, xeroTenantId, employeeID);
-            //Assert.IsType<Employees> (response);
+            var response =await instance.GetEmployeeAsync(accessToken, xeroTenantId, employeeID);
+            Assert.IsType<Employees> (response);
         }
         
         /// <summary>
@@ -1505,8 +1529,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetEmployeesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-            //Assert.IsType<Employees> (response);
+            var response =await instance.GetEmployeesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
+            Assert.IsType<Employees> (response);
         }
         
         /// <summary>
@@ -1518,8 +1542,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid expenseClaimID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID);
-            //Assert.IsType<ExpenseClaims> (response);
+            var response =await instance.GetExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID);
+            Assert.IsType<ExpenseClaims> (response);
         }
         
         /// <summary>
@@ -1531,8 +1555,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid expenseClaimID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1546,8 +1570,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetExpenseClaimsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-            //Assert.IsType<ExpenseClaims> (response);
+            var response =await instance.GetExpenseClaimsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
+            Assert.IsType<ExpenseClaims> (response);
         }
         
         /// <summary>
@@ -1559,8 +1583,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetInvoiceAsync(accessToken, xeroTenantId, invoiceID);
-            //Assert.IsType<Invoices> (response);
+            var response =await instance.GetInvoiceAsync(accessToken, xeroTenantId, invoiceID);
+            Assert.IsType<Invoices> (response);
         }
         
         /// <summary>
@@ -1573,13 +1597,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetInvoiceAsPdfAsync(accessToken, xeroTenantId, invoiceID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetInvoiceAsPdfAsync(accessToken, xeroTenantId, invoiceID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetInvoiceAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetInvoiceAttachmentByFileNameTest()
         {
@@ -1588,13 +1613,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid invoiceID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetInvoiceAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetInvoiceAttachmentByIdTest()
         {
@@ -1603,21 +1629,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid invoiceID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetInvoiceAttachmentByIdAsync(accessToken, xeroTenantId, invoiceID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetInvoiceAttachmentByIdAsync(accessToken, xeroTenantId, invoiceID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetInvoiceAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetInvoiceAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetInvoiceAttachmentsAsync(accessToken, xeroTenantId, invoiceID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetInvoiceAttachmentsAsync(accessToken, xeroTenantId, invoiceID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -1629,8 +1656,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1641,8 +1668,8 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
-            //var response = await instance.GetInvoiceRemindersAsync(accessToken, xeroTenantId);
-            //Assert.IsType<InvoiceReminders> (response);
+            var response =await instance.GetInvoiceRemindersAsync(accessToken, xeroTenantId);
+            Assert.IsType<InvoiceReminders> (response);
         }
         
         /// <summary>
@@ -1664,8 +1691,8 @@ namespace Xero.NetStandard.OAuth2.Test
             bool? includeArchived = AutoFaker.Generate<bool?>();
             bool? createdByMyApp = AutoFaker.Generate<bool?>();
             int? unitdp = AutoFaker.Generate<int?>();
-            //var response = await instance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp);
-            //Assert.IsType<Invoices> (response);
+            var response =await instance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp);
+            Assert.IsType<Invoices> (response);
         }
         
         /// <summary>
@@ -1677,8 +1704,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid itemID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetItemAsync(accessToken, xeroTenantId, itemID);
-            //Assert.IsType<Items> (response);
+            var response =await instance.GetItemAsync(accessToken, xeroTenantId, itemID);
+            Assert.IsType<Items> (response);
         }
         
         /// <summary>
@@ -1690,8 +1717,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid itemID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetItemHistoryAsync(accessToken, xeroTenantId, itemID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetItemHistoryAsync(accessToken, xeroTenantId, itemID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1706,8 +1733,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? unitdp = AutoFaker.Generate<int?>();
-            //var response = await instance.GetItemsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp);
-            //Assert.IsType<Items> (response);
+            var response =await instance.GetItemsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp);
+            Assert.IsType<Items> (response);
         }
         
         /// <summary>
@@ -1719,8 +1746,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid journalID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetJournalAsync(accessToken, xeroTenantId, journalID);
-            //Assert.IsType<Journals> (response);
+            var response =await instance.GetJournalAsync(accessToken, xeroTenantId, journalID);
+            Assert.IsType<Journals> (response);
         }
         
         /// <summary>
@@ -1734,8 +1761,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             int? offset = AutoFaker.Generate<int?>();
             bool? paymentsOnly = AutoFaker.Generate<bool?>();
-            //var response = await instance.GetJournalsAsync(accessToken, xeroTenantId, ifModifiedSince, offset, paymentsOnly);
-            //Assert.IsType<Journals> (response);
+            var response =await instance.GetJournalsAsync(accessToken, xeroTenantId, ifModifiedSince, offset, paymentsOnly);
+            Assert.IsType<Journals> (response);
         }
         
         /// <summary>
@@ -1747,8 +1774,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid linkedTransactionID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID);
-            //Assert.IsType<LinkedTransactions> (response);
+            var response =await instance.GetLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID);
+            Assert.IsType<LinkedTransactions> (response);
         }
         
         /// <summary>
@@ -1765,8 +1792,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string contactID = AutoFaker.Generate<string>();
             string status = AutoFaker.Generate<string>();
             string targetTransactionID = AutoFaker.Generate<string>();
-            //var response = await instance.GetLinkedTransactionsAsync(accessToken, xeroTenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID);
-            //Assert.IsType<LinkedTransactions> (response);
+            var response =await instance.GetLinkedTransactionsAsync(accessToken, xeroTenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID);
+            Assert.IsType<LinkedTransactions> (response);
         }
         
         /// <summary>
@@ -1778,13 +1805,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid manualJournalID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetManualJournalAsync(accessToken, xeroTenantId, manualJournalID);
-            //Assert.IsType<ManualJournals> (response);
+            var response =await instance.GetManualJournalAsync(accessToken, xeroTenantId, manualJournalID);
+            Assert.IsType<ManualJournals> (response);
         }
         
         /// <summary>
         /// Test GetManualJournalAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetManualJournalAttachmentByFileNameTest()
         {
@@ -1793,13 +1821,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid manualJournalID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetManualJournalAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetManualJournalAttachmentByIdTest()
         {
@@ -1808,21 +1837,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid manualJournalID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetManualJournalAttachmentByIdAsync(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetManualJournalAttachmentByIdAsync(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetManualJournalAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetManualJournalAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid manualJournalID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetManualJournalAttachmentsAsync(accessToken, xeroTenantId, manualJournalID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetManualJournalAttachmentsAsync(accessToken, xeroTenantId, manualJournalID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -1837,8 +1867,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int?>();
-            //var response = await instance.GetManualJournalsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
-            //Assert.IsType<ManualJournals> (response);
+            var response =await instance.GetManualJournalsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
+            Assert.IsType<ManualJournals> (response);
         }
         
         /// <summary>
@@ -1850,8 +1880,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetOnlineInvoiceAsync(accessToken, xeroTenantId, invoiceID);
-            //Assert.IsType<OnlineInvoices> (response);
+            var response =await instance.GetOnlineInvoiceAsync(accessToken, xeroTenantId, invoiceID);
+            Assert.IsType<OnlineInvoices> (response);
         }
         
         /// <summary>
@@ -1863,8 +1893,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid organisationID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetOrganisationCISSettingsAsync(accessToken, xeroTenantId, organisationID);
-            //Assert.IsType<CISOrgSetting> (response);
+            var response =await instance.GetOrganisationCISSettingsAsync(accessToken, xeroTenantId, organisationID);
+            Assert.IsType<CISOrgSetting> (response);
         }
         
         /// <summary>
@@ -1875,8 +1905,8 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
-            //var response = await instance.GetOrganisationsAsync(accessToken, xeroTenantId);
-            //Assert.IsType<Organisations> (response);
+            var response =await instance.GetOrganisationsAsync(accessToken, xeroTenantId);
+            Assert.IsType<Organisations> (response);
         }
         
         /// <summary>
@@ -1888,8 +1918,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid overpaymentID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetOverpaymentAsync(accessToken, xeroTenantId, overpaymentID);
-            //Assert.IsType<Overpayments> (response);
+            var response =await instance.GetOverpaymentAsync(accessToken, xeroTenantId, overpaymentID);
+            Assert.IsType<Overpayments> (response);
         }
         
         /// <summary>
@@ -1901,8 +1931,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid overpaymentID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1918,8 +1948,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int?>();
             int? unitdp = AutoFaker.Generate<int?>();
-            //var response = await instance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
-            //Assert.IsType<Overpayments> (response);
+            var response =await instance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+            Assert.IsType<Overpayments> (response);
         }
         
         /// <summary>
@@ -1931,8 +1961,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid paymentID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetPaymentAsync(accessToken, xeroTenantId, paymentID);
-            //Assert.IsType<Payments> (response);
+            var response =await instance.GetPaymentAsync(accessToken, xeroTenantId, paymentID);
+            Assert.IsType<Payments> (response);
         }
         
         /// <summary>
@@ -1944,8 +1974,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid paymentID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetPaymentHistoryAsync(accessToken, xeroTenantId, paymentID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetPaymentHistoryAsync(accessToken, xeroTenantId, paymentID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -1956,8 +1986,8 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
-            //var response = await instance.GetPaymentServicesAsync(accessToken, xeroTenantId);
-            //Assert.IsType<PaymentServices> (response);
+            var response =await instance.GetPaymentServicesAsync(accessToken, xeroTenantId);
+            Assert.IsType<PaymentServices> (response);
         }
         
         /// <summary>
@@ -1971,8 +2001,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetPaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-            //Assert.IsType<Payments> (response);
+            var response =await instance.GetPaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
+            Assert.IsType<Payments> (response);
         }
         
         /// <summary>
@@ -1984,8 +2014,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid prepaymentID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetPrepaymentAsync(accessToken, xeroTenantId, prepaymentID);
-            //Assert.IsType<Prepayments> (response);
+            var response =await instance.GetPrepaymentAsync(accessToken, xeroTenantId, prepaymentID);
+            Assert.IsType<Prepayments> (response);
         }
         
         /// <summary>
@@ -1997,8 +2027,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid prepaymentID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetPrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetPrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -2014,8 +2044,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int?>();
             int? unitdp = AutoFaker.Generate<int?>();
-            //var response = await instance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
-            //Assert.IsType<Prepayments> (response);
+            var response =await instance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+            Assert.IsType<Prepayments> (response);
         }
         
         /// <summary>
@@ -2027,8 +2057,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid purchaseOrderID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetPurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID);
-            //Assert.IsType<PurchaseOrders> (response);
+            var response =await instance.GetPurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID);
+            Assert.IsType<PurchaseOrders> (response);
         }
         
         /// <summary>
@@ -2040,8 +2070,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid purchaseOrderID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetPurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetPurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -2058,8 +2088,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string dateTo = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int?>();
-            //var response = await instance.GetPurchaseOrdersAsync(accessToken, xeroTenantId, ifModifiedSince, status, dateFrom, dateTo, order, page);
-            //Assert.IsType<PurchaseOrders> (response);
+            var response =await instance.GetPurchaseOrdersAsync(accessToken, xeroTenantId, ifModifiedSince, status, dateFrom, dateTo, order, page);
+            Assert.IsType<PurchaseOrders> (response);
         }
         
         /// <summary>
@@ -2071,8 +2101,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid quoteID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetQuoteAsync(accessToken, xeroTenantId, quoteID);
-            //Assert.IsType<Quotes> (response);
+            var response =await instance.GetQuoteAsync(accessToken, xeroTenantId, quoteID);
+            Assert.IsType<Quotes> (response);
         }
         
         /// <summary>
@@ -2092,8 +2122,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string status = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int?>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetQuotesAsync(accessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order);
-            //Assert.IsType<Quotes> (response);
+            var response =await instance.GetQuotesAsync(accessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order);
+            Assert.IsType<Quotes> (response);
         }
         
         /// <summary>
@@ -2105,13 +2135,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid receiptID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetReceiptAsync(accessToken, xeroTenantId, receiptID);
-            //Assert.IsType<Receipts> (response);
+            var response =await instance.GetReceiptAsync(accessToken, xeroTenantId, receiptID);
+            Assert.IsType<Receipts> (response);
         }
         
         /// <summary>
         /// Test GetReceiptAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetReceiptAttachmentByFileNameTest()
         {
@@ -2120,13 +2151,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid receiptID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetReceiptAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetReceiptAttachmentByIdTest()
         {
@@ -2135,21 +2167,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid receiptID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetReceiptAttachmentByIdAsync(accessToken, xeroTenantId, receiptID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetReceiptAttachmentByIdAsync(accessToken, xeroTenantId, receiptID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetReceiptAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetReceiptAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid receiptID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetReceiptAttachmentsAsync(accessToken, xeroTenantId, receiptID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetReceiptAttachmentsAsync(accessToken, xeroTenantId, receiptID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2161,8 +2194,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid receiptID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetReceiptHistoryAsync(accessToken, xeroTenantId, receiptID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetReceiptHistoryAsync(accessToken, xeroTenantId, receiptID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -2177,8 +2210,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? unitdp = AutoFaker.Generate<int?>();
-            //var response = await instance.GetReceiptsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp);
-            //Assert.IsType<Receipts> (response);
+            var response = await instance.GetReceiptsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, unitdp);
+            Assert.IsType<Receipts> (response);
         }
         
         /// <summary>
@@ -2190,13 +2223,14 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetRepeatingInvoiceAsync(accessToken, xeroTenantId, repeatingInvoiceID);
-            //Assert.IsType<RepeatingInvoices> (response);
+            var response =await instance.GetRepeatingInvoiceAsync(accessToken, xeroTenantId, repeatingInvoiceID);
+            Assert.IsType<RepeatingInvoices> (response);
         }
         
         /// <summary>
         /// Test GetRepeatingInvoiceAttachmentByFileName
         /// </summary>
+       [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetRepeatingInvoiceAttachmentByFileNameTest()
         {
@@ -2205,13 +2239,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetRepeatingInvoiceAttachmentById
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetRepeatingInvoiceAttachmentByIdTest()
         {
@@ -2220,21 +2255,22 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
             Guid attachmentID = AutoFaker.Generate<Guid>();
             string contentType = AutoFaker.Generate<string>();
-            //var response = await instance.GetRepeatingInvoiceAttachmentByIdAsync(accessToken, xeroTenantId, repeatingInvoiceID, attachmentID, contentType);
-            //Assert.IsType<System.IO.Stream> (response);
+            var response =await instance.GetRepeatingInvoiceAttachmentByIdAsync(accessToken, xeroTenantId, repeatingInvoiceID, attachmentID, contentType);
+            Assert.IsType<System.IO.Stream> (response);
         }
         
         /// <summary>
         /// Test GetRepeatingInvoiceAttachments
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task GetRepeatingInvoiceAttachmentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetRepeatingInvoiceAttachmentsAsync(accessToken, xeroTenantId, repeatingInvoiceID);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.GetRepeatingInvoiceAttachmentsAsync(accessToken, xeroTenantId, repeatingInvoiceID);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2246,8 +2282,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID);
-            //Assert.IsType<HistoryRecords> (response);
+            var response =await instance.GetRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID);
+            Assert.IsType<HistoryRecords> (response);
         }
         
         /// <summary>
@@ -2260,8 +2296,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetRepeatingInvoicesAsync(accessToken, xeroTenantId, where, order);
-            //Assert.IsType<RepeatingInvoices> (response);
+            var response =await instance.GetRepeatingInvoicesAsync(accessToken, xeroTenantId, where, order);
+            Assert.IsType<RepeatingInvoices> (response);
         }
         
         /// <summary>
@@ -2276,8 +2312,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? date = AutoFaker.Generate<DateTime?>();
             DateTime? fromDate = AutoFaker.Generate<DateTime?>();
             DateTime? toDate = AutoFaker.Generate<DateTime?>();
-            //var response = await instance.GetReportAgedPayablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportAgedPayablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2292,8 +2328,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? date = AutoFaker.Generate<DateTime?>();
             DateTime? fromDate = AutoFaker.Generate<DateTime?>();
             DateTime? toDate = AutoFaker.Generate<DateTime?>();
-            //var response = await instance.GetReportAgedReceivablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportAgedReceivablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2305,8 +2341,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             string reportID = AutoFaker.Generate<string>();
-            //var response = await instance.GetReportBASorGSTAsync(accessToken, xeroTenantId, reportID);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportBASorGSTAsync(accessToken, xeroTenantId, reportID);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2317,8 +2353,8 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
-            //var response = await instance.GetReportBASorGSTListAsync(accessToken, xeroTenantId);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportBASorGSTListAsync(accessToken, xeroTenantId);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2336,8 +2372,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string trackingOptionID2 = AutoFaker.Generate<string>();
             bool? standardLayout = AutoFaker.Generate<bool?>();
             bool? paymentsOnly = AutoFaker.Generate<bool?>();
-            //var response = await instance.GetReportBalanceSheetAsync(accessToken, xeroTenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportBalanceSheetAsync(accessToken, xeroTenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2351,8 +2387,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? date = AutoFaker.Generate<DateTime?>();
             int? period = AutoFaker.Generate<int?>();
             int? timeframe = AutoFaker.Generate<int?>();
-            //var response = await instance.GetReportBankSummaryAsync(accessToken, xeroTenantId, date, period, timeframe);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportBankSummaryAsync(accessToken, xeroTenantId, date, period, timeframe);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2366,8 +2402,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? date = AutoFaker.Generate<DateTime?>();
             int? period = AutoFaker.Generate<int?>();
             int? timeframe = AutoFaker.Generate<int?>();
-            //var response = await instance.GetReportBudgetSummaryAsync(accessToken, xeroTenantId, date, period, timeframe);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportBudgetSummaryAsync(accessToken, xeroTenantId, date, period, timeframe);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2379,8 +2415,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             DateTime? date = AutoFaker.Generate<DateTime?>();
-            //var response = await instance.GetReportExecutiveSummaryAsync(accessToken, xeroTenantId, date);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportExecutiveSummaryAsync(accessToken, xeroTenantId, date);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2401,8 +2437,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string trackingOptionID2 = AutoFaker.Generate<string>();
             bool? standardLayout = AutoFaker.Generate<bool?>();
             bool? paymentsOnly = AutoFaker.Generate<bool?>();
-            //var response = await instance.GetReportProfitAndLossAsync(accessToken, xeroTenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportProfitAndLossAsync(accessToken, xeroTenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2414,8 +2450,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             string reportYear = AutoFaker.Generate<string>();
-            //var response = await instance.GetReportTenNinetyNineAsync(accessToken, xeroTenantId, reportYear);
-            //Assert.IsType<Reports> (response);
+            var response =await instance.GetReportTenNinetyNineAsync(accessToken, xeroTenantId, reportYear);
+            Assert.IsType<Reports> (response);
         }
         
         /// <summary>
@@ -2428,8 +2464,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             DateTime? date = AutoFaker.Generate<DateTime?>();
             bool? paymentsOnly = AutoFaker.Generate<bool?>();
-            //var response = await instance.GetReportTrialBalanceAsync(accessToken, xeroTenantId, date, paymentsOnly);
-            //Assert.IsType<ReportWithRows> (response);
+            var response =await instance.GetReportTrialBalanceAsync(accessToken, xeroTenantId, date, paymentsOnly);
+            Assert.IsType<ReportWithRows> (response);
         }
         
         /// <summary>
@@ -2443,8 +2479,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             string taxType = AutoFaker.Generate<string>();
-            //var response = await instance.GetTaxRatesAsync(accessToken, xeroTenantId, where, order, taxType);
-            //Assert.IsType<TaxRates> (response);
+            var response =await instance.GetTaxRatesAsync(accessToken, xeroTenantId, where, order, taxType);
+            Assert.IsType<TaxRates> (response);
         }
         
         /// <summary>
@@ -2458,8 +2494,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             bool? includeArchived = AutoFaker.Generate<bool?>();
-            //var response = await instance.GetTrackingCategoriesAsync(accessToken, xeroTenantId, where, order, includeArchived);
-            //Assert.IsType<TrackingCategories> (response);
+            var response =await instance.GetTrackingCategoriesAsync(accessToken, xeroTenantId, where, order, includeArchived);
+            Assert.IsType<TrackingCategories> (response);
         }
         
         /// <summary>
@@ -2471,8 +2507,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid trackingCategoryID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID);
-            //Assert.IsType<TrackingCategories> (response);
+            var response =await instance.GetTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID);
+            Assert.IsType<TrackingCategories> (response);
         }
         
         /// <summary>
@@ -2484,8 +2520,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid userID = AutoFaker.Generate<Guid>();
-            //var response = await instance.GetUserAsync(accessToken, xeroTenantId, userID);
-            //Assert.IsType<Users> (response);
+            var response =await instance.GetUserAsync(accessToken, xeroTenantId, userID);
+            Assert.IsType<Users> (response);
         }
         
         /// <summary>
@@ -2499,8 +2535,8 @@ namespace Xero.NetStandard.OAuth2.Test
             DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
-            //var response = await instance.GetUsersAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-            //Assert.IsType<Users> (response);
+            var response =await instance.GetUsersAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
+            Assert.IsType<Users> (response);
         }
         
         /// <summary>
@@ -2513,13 +2549,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid accountID = AutoFaker.Generate<Guid>();
             Accounts accounts = AutoFaker.Generate<Accounts>();
-            //var response = await instance.UpdateAccountAsync(accessToken, xeroTenantId, accountID, accounts);
-            //Assert.IsType<Accounts> (response);
+            var response =await instance.UpdateAccountAsync(accessToken, xeroTenantId, accountID, accounts);
+            Assert.IsType<Accounts> (response);
         }
         
         /// <summary>
         /// Test UpdateAccountAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateAccountAttachmentByFileNameTest()
         {
@@ -2528,8 +2565,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid accountID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2542,13 +2579,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
             BankTransactions bankTransactions = AutoFaker.Generate<BankTransactions>();
-            //var response = await instance.UpdateBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID, bankTransactions);
-            //Assert.IsType<BankTransactions> (response);
+            var response =await instance.UpdateBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID, bankTransactions);
+            Assert.IsType<BankTransactions> (response);
         }
         
         /// <summary>
         /// Test UpdateBankTransactionAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateBankTransactionAttachmentByFileNameTest()
         {
@@ -2557,13 +2595,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransactionID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
         /// Test UpdateBankTransferAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateBankTransferAttachmentByFileNameTest()
         {
@@ -2572,8 +2611,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid bankTransferID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2586,13 +2625,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactID = AutoFaker.Generate<Guid>();
             Contacts contacts = AutoFaker.Generate<Contacts>();
-            //var response = await instance.UpdateContactAsync(accessToken, xeroTenantId, contactID, contacts);
-            //Assert.IsType<Contacts> (response);
+            var response =await instance.UpdateContactAsync(accessToken, xeroTenantId, contactID, contacts);
+            Assert.IsType<Contacts> (response);
         }
         
         /// <summary>
         /// Test UpdateContactAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateContactAttachmentByFileNameTest()
         {
@@ -2601,8 +2641,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid contactID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2615,8 +2655,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid contactGroupID = AutoFaker.Generate<Guid>();
             ContactGroups contactGroups = AutoFaker.Generate<ContactGroups>();
-            //var response = await instance.UpdateContactGroupAsync(accessToken, xeroTenantId, contactGroupID, contactGroups);
-            //Assert.IsType<ContactGroups> (response);
+            var response =await instance.UpdateContactGroupAsync(accessToken, xeroTenantId, contactGroupID, contactGroups);
+            Assert.IsType<ContactGroups> (response);
         }
         
         /// <summary>
@@ -2629,13 +2669,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             CreditNotes creditNotes = AutoFaker.Generate<CreditNotes>();
-            //var response = await instance.UpdateCreditNoteAsync(accessToken, xeroTenantId, creditNoteID, creditNotes);
-            //Assert.IsType<CreditNotes> (response);
+            var response =await instance.UpdateCreditNoteAsync(accessToken, xeroTenantId, creditNoteID, creditNotes);
+            Assert.IsType<CreditNotes> (response);
         }
         
         /// <summary>
         /// Test UpdateCreditNoteAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateCreditNoteAttachmentByFileNameTest()
         {
@@ -2644,8 +2685,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid creditNoteID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response = await instance.UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2658,8 +2699,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid employeeID = AutoFaker.Generate<Guid>();
             Employees employees = AutoFaker.Generate<Employees>();
-            //var response = await instance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeID, employees);
-            //Assert.IsType<Employees> (response);
+            var response =await instance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeID, employees);
+            Assert.IsType<Employees> (response);
         }
         
         /// <summary>
@@ -2672,8 +2713,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid expenseClaimID = AutoFaker.Generate<Guid>();
             ExpenseClaims expenseClaims = AutoFaker.Generate<ExpenseClaims>();
-            //var response = await instance.UpdateExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID, expenseClaims);
-            //Assert.IsType<ExpenseClaims> (response);
+            var response =await instance.UpdateExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID, expenseClaims);
+            Assert.IsType<ExpenseClaims> (response);
         }
         
         /// <summary>
@@ -2686,13 +2727,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid invoiceID = AutoFaker.Generate<Guid>();
             Invoices invoices = AutoFaker.Generate<Invoices>();
-            //var response = await instance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices);
-            //Assert.IsType<Invoices> (response);
+            var response =await instance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices);
+            Assert.IsType<Invoices> (response);
         }
         
         /// <summary>
         /// Test UpdateInvoiceAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateInvoiceAttachmentByFileNameTest()
         {
@@ -2701,8 +2743,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid invoiceID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2715,8 +2757,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid itemID = AutoFaker.Generate<Guid>();
             Items items = AutoFaker.Generate<Items>();
-            //var response = await instance.UpdateItemAsync(accessToken, xeroTenantId, itemID, items);
-            //Assert.IsType<Items> (response);
+            var response =await instance.UpdateItemAsync(accessToken, xeroTenantId, itemID, items);
+            Assert.IsType<Items> (response);
         }
         
         /// <summary>
@@ -2729,8 +2771,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid linkedTransactionID = AutoFaker.Generate<Guid>();
             LinkedTransactions linkedTransactions = AutoFaker.Generate<LinkedTransactions>();
-            //var response = await instance.UpdateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID, linkedTransactions);
-            //Assert.IsType<LinkedTransactions> (response);
+            var response =await instance.UpdateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID, linkedTransactions);
+            Assert.IsType<LinkedTransactions> (response);
         }
         
         /// <summary>
@@ -2743,13 +2785,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid manualJournalID = AutoFaker.Generate<Guid>();
             ManualJournals manualJournals = AutoFaker.Generate<ManualJournals>();
-            //var response = await instance.UpdateManualJournalAsync(accessToken, xeroTenantId, manualJournalID, manualJournals);
-            //Assert.IsType<ManualJournals> (response);
+            var response =await instance.UpdateManualJournalAsync(accessToken, xeroTenantId, manualJournalID, manualJournals);
+            Assert.IsType<ManualJournals> (response);
         }
         
         /// <summary>
         /// Test UpdateManualJournalAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateManualJournalAttachmentByFileNameTest()
         {
@@ -2758,8 +2801,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid manualJournalID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2772,8 +2815,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             BankTransactions bankTransactions = AutoFaker.Generate<BankTransactions>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.UpdateOrCreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors);
-            //Assert.IsType<BankTransactions> (response);
+            var response =await instance.UpdateOrCreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors);
+            Assert.IsType<BankTransactions> (response);
         }
         
         /// <summary>
@@ -2786,8 +2829,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Contacts contacts = AutoFaker.Generate<Contacts>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.UpdateOrCreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
-            //Assert.IsType<Contacts> (response);
+            var response =await instance.UpdateOrCreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
+            Assert.IsType<Contacts> (response);
         }
         
         /// <summary>
@@ -2800,8 +2843,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             CreditNotes creditNotes = AutoFaker.Generate<CreditNotes>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.UpdateOrCreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors);
-            //Assert.IsType<CreditNotes> (response);
+            var response =await instance.UpdateOrCreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors);
+            Assert.IsType<CreditNotes> (response);
         }
         
         /// <summary>
@@ -2814,8 +2857,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Invoices invoices = AutoFaker.Generate<Invoices>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors);
-            //Assert.IsType<Invoices> (response);
+            var response =await instance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors);
+            Assert.IsType<Invoices> (response);
         }
         
         /// <summary>
@@ -2828,8 +2871,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             PurchaseOrders purchaseOrders = AutoFaker.Generate<PurchaseOrders>();
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
-            //var response = await instance.UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
-            //Assert.IsType<PurchaseOrders> (response);
+            var response =await instance.UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
+            Assert.IsType<PurchaseOrders> (response);
         }
         
         /// <summary>
@@ -2842,8 +2885,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid purchaseOrderID = AutoFaker.Generate<Guid>();
             PurchaseOrders purchaseOrders = AutoFaker.Generate<PurchaseOrders>();
-            //var response = await instance.UpdatePurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID, purchaseOrders);
-            //Assert.IsType<PurchaseOrders> (response);
+            var response =await instance.UpdatePurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID, purchaseOrders);
+            Assert.IsType<PurchaseOrders> (response);
         }
         
         /// <summary>
@@ -2856,13 +2899,14 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid receiptID = AutoFaker.Generate<Guid>();
             Receipts receipts = AutoFaker.Generate<Receipts>();
-            //var response = await instance.UpdateReceiptAsync(accessToken, xeroTenantId, receiptID, receipts);
-            //Assert.IsType<Receipts> (response);
+            var response =await instance.UpdateReceiptAsync(accessToken, xeroTenantId, receiptID, receipts);
+            Assert.IsType<Receipts> (response);
         }
         
         /// <summary>
         /// Test UpdateReceiptAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateReceiptAttachmentByFileNameTest()
         {
@@ -2871,13 +2915,14 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid receiptID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
         /// Test UpdateRepeatingInvoiceAttachmentByFileName
         /// </summary>
+        [Trait("Type", "Attachment")]
         [Fact]
         public async Task UpdateRepeatingInvoiceAttachmentByFileNameTest()
         {
@@ -2886,8 +2931,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid repeatingInvoiceID = AutoFaker.Generate<Guid>();
             string fileName = AutoFaker.Generate<string>();
             byte[] body = AutoFaker.Generate<byte[]>();
-            //var response = await instance.UpdateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
-            //Assert.IsType<Attachments> (response);
+            var response =await instance.UpdateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
+            Assert.IsType<Attachments> (response);
         }
         
         /// <summary>
@@ -2899,8 +2944,8 @@ namespace Xero.NetStandard.OAuth2.Test
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
             TaxRates taxRates = AutoFaker.Generate<TaxRates>();
-            //var response = await instance.UpdateTaxRateAsync(accessToken, xeroTenantId, taxRates);
-            //Assert.IsType<TaxRates> (response);
+            var response =await instance.UpdateTaxRateAsync(accessToken, xeroTenantId, taxRates);
+            Assert.IsType<TaxRates> (response);
         }
         
         /// <summary>
@@ -2913,8 +2958,8 @@ namespace Xero.NetStandard.OAuth2.Test
             string xeroTenantId = AutoFaker.Generate<string>();
             Guid trackingCategoryID = AutoFaker.Generate<Guid>();
             TrackingCategory trackingCategory = AutoFaker.Generate<TrackingCategory>();
-            //var response = await instance.UpdateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID, trackingCategory);
-            //Assert.IsType<TrackingCategories> (response);
+            var response =await instance.UpdateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID, trackingCategory);
+            Assert.IsType<TrackingCategories> (response);
         }
         
         /// <summary>
@@ -2928,8 +2973,8 @@ namespace Xero.NetStandard.OAuth2.Test
             Guid trackingCategoryID = AutoFaker.Generate<Guid>();
             Guid trackingOptionID = AutoFaker.Generate<Guid>();
             TrackingOption trackingOption = AutoFaker.Generate<TrackingOption>();
-            //var response = await instance.UpdateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption);
-            //Assert.IsType<TrackingOptions> (response);
+            var response =await instance.UpdateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption);
+            Assert.IsType<TrackingOptions> (response);
         }
         
     }

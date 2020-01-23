@@ -107,7 +107,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Percentage discount being applied to a line item (only supported on  ACCREC invoices – ACC PAY invoices and credit notes in Xero do not support discounts</value>
         [DataMember(Name="DiscountRate", EmitDefaultValue=false)]
-        public string DiscountRate { get; set; }
+        public double? DiscountRate { get; set; }
 
         /// <summary>
         /// Discount amount being applied to a line item. Only supported on ACCREC invoices - ACCPAY invoices and credit notes in Xero do not support discounts.
@@ -227,8 +227,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 ) && 
                 (
                     this.DiscountRate == input.DiscountRate ||
-                    (this.DiscountRate != null &&
-                    this.DiscountRate.Equals(input.DiscountRate))
+                    this.DiscountRate.Equals(input.DiscountRate)
                 ) && 
                 (
                     this.DiscountAmount == input.DiscountAmount ||
@@ -266,8 +265,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 hashCode = hashCode * 59 + this.LineAmount.GetHashCode();
                 if (this.Tracking != null)
                     hashCode = hashCode * 59 + this.Tracking.GetHashCode();
-                if (this.DiscountRate != null)
-                    hashCode = hashCode * 59 + this.DiscountRate.GetHashCode();
+                hashCode = hashCode * 59 + this.DiscountRate.GetHashCode();
                 hashCode = hashCode * 59 + this.DiscountAmount.GetHashCode();
                 if (this.RepeatingInvoiceID != null)
                     hashCode = hashCode * 59 + this.RepeatingInvoiceID.GetHashCode();
