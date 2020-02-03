@@ -66,8 +66,25 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum ACCRECCREDIT for value: ACCRECCREDIT
             /// </summary>
             [EnumMember(Value = "ACCRECCREDIT")]
-            ACCRECCREDIT = 5
+            ACCRECCREDIT = 5,
 
+            /// <summary>
+            /// Enum APOVERPAYMENT for value: APOVERPAYMENT
+            /// </summary>
+            [EnumMember(Value = "APOVERPAYMENT")]
+            APOVERPAYMENT = 6,
+
+            /// <summary>
+            /// Enum APPREPAYMENT for value: APPREPAYMENT
+            /// </summary>
+            [EnumMember(Value = "APPREPAYMENT")]
+            APPREPAYMENT = 7,
+
+            /// <summary>
+            /// Enum ARPREPAYMENT for value: ARPREPAYMENT
+            /// </summary>
+            [EnumMember(Value = "ARPREPAYMENT")]
+            ARPREPAYMENT = 8
         }
 
         /// <summary>
