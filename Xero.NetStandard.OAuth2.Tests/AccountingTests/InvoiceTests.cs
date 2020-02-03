@@ -6,6 +6,7 @@ using Xero.NetStandard.OAuth2.Model;
 using System.Threading.Tasks;
 using System.Net;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Xero.NetStandard.OAuth2.Tests
 {
@@ -15,7 +16,6 @@ namespace Xero.NetStandard.OAuth2.Tests
         private AccountingApi _accountingApi;
         private const string AccessToken = "XeroNetStandardAccessToken";
         private const string TenantId = "XeroNetStandardTenantId";
-
 
         public InvoiceTests()
         {
@@ -31,9 +31,16 @@ namespace Xero.NetStandard.OAuth2.Tests
         {
             Guid invoiceID = Guid.NewGuid();
             var response = await _accountingApi.GetInvoiceAsync(AccessToken, TenantId, invoiceID);
-
             Assert.IsType<Invoices>(response);
         }
+        // [Fact]
+        // public async Task GetInvoiceReturnsNoNullProperties()
+        // {
+        //     Guid invoiceID = Guid.NewGuid();
+        //     var response = await _accountingApi.GetInvoiceAsync(AccessToken, TenantId, invoiceID);
+        //     Assert.True(response._Invoices[0].GetType().GetProperties().All(p => p.GetValue(response._Invoices[0]) != null));
+        // }
+
         [Fact]
         public async Task GetInvoiceDeserializesDate()
         {
@@ -57,14 +64,13 @@ namespace Xero.NetStandard.OAuth2.Tests
             Assert.IsType<Contact>(response._Invoices[0].Contact);
         }
 
-        [Fact]
-        public async Task CreateInvoiceReturns200Response()
-        {
-            var invoice = new Invoice();
-            invoice.InvoiceNumber = "123";
-            var response = await _accountingApi.CreateInvoiceAsyncWithHttpInfo(AccessToken, TenantId, invoice);
-            Assert.True(response.StatusCode.Equals(HttpStatusCode.OK));
-        }
-
+        // [Fact]
+        // public async Task CreateInvoiceReturns200Response()
+        // {
+        //     var invoice = new Invoice();
+        //     invoice.InvoiceNumber = "123";
+        //     var response = await _accountingApi.CreateInvoicesAsyncWithHttpInfo(AccessToken, TenantId, invoice);
+        //     Assert.True(response.StatusCode.Equals(HttpStatusCode.OK));
+        // }
     }
 }
