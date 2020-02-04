@@ -134,6 +134,13 @@ namespace Xero.NetStandard.OAuth2.Model
         public Guid? ItemID { get; set; }
 
         /// <summary>
+        /// Status of object
+        /// </summary>
+        /// <value>Status of object</value>
+        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        public string StatusAttributeString { get; set; }
+
+        /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
@@ -162,6 +169,7 @@ namespace Xero.NetStandard.OAuth2.Model
             sb.Append("  QuantityOnHand: ").Append(QuantityOnHand).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  ItemID: ").Append(ItemID).Append("\n");
+            sb.Append("  StatusAttributeString: ").Append(StatusAttributeString).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -263,6 +271,11 @@ namespace Xero.NetStandard.OAuth2.Model
                     this.ItemID.Equals(input.ItemID))
                 ) && 
                 (
+                    this.StatusAttributeString == input.StatusAttributeString ||
+                    (this.StatusAttributeString != null &&
+                    this.StatusAttributeString.Equals(input.StatusAttributeString))
+                ) && 
+                (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
@@ -302,6 +315,8 @@ namespace Xero.NetStandard.OAuth2.Model
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.ItemID != null)
                     hashCode = hashCode * 59 + this.ItemID.GetHashCode();
+                if (this.StatusAttributeString != null)
+                    hashCode = hashCode * 59 + this.StatusAttributeString.GetHashCode();
                 if (this.ValidationErrors != null)
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 return hashCode;
