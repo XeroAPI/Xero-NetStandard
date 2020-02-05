@@ -51,34 +51,22 @@ namespace Xero.NetStandard.OAuth2.Model
             ACCPAYCREDIT = 2,
 
             /// <summary>
-            /// Enum APOVERPAYMENT for value: APOVERPAYMENT
+            /// Enum AROVERPAYMENT for value: AROVERPAYMENT
             /// </summary>
-            [EnumMember(Value = "APOVERPAYMENT")]
-            APOVERPAYMENT = 3,
-
-            /// <summary>
-            /// Enum APPREPAYMENT for value: APPREPAYMENT
-            /// </summary>
-            [EnumMember(Value = "APPREPAYMENT")]
-            APPREPAYMENT = 4,
+            [EnumMember(Value = "AROVERPAYMENT")]
+            AROVERPAYMENT = 3,
 
             /// <summary>
             /// Enum ACCREC for value: ACCREC
             /// </summary>
             [EnumMember(Value = "ACCREC")]
-            ACCREC = 5,
+            ACCREC = 4,
 
             /// <summary>
             /// Enum ACCRECCREDIT for value: ACCRECCREDIT
             /// </summary>
             [EnumMember(Value = "ACCRECCREDIT")]
-            ACCRECCREDIT = 6,
-
-            /// <summary>
-            /// Enum AROVERPAYMENT for value: AROVERPAYMENT
-            /// </summary>
-            [EnumMember(Value = "AROVERPAYMENT")]
-            AROVERPAYMENT = 7
+            ACCRECCREDIT = 5
 
         }
 
@@ -149,6 +137,11 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>See Invoice Status Codes</value>
         [DataMember(Name="Status", EmitDefaultValue=false)]
         public StatusEnum Status { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Invoice" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public Invoice() { }
         
         /// <summary>
         /// Gets or Sets Contact

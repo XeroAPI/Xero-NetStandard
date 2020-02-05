@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.NetStandard.OAuth2", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xero.NetStandard.OAuth2Client", "Xero.NetStandard.OAuth2Client\Xero.NetStandard.OAuth2Client.csproj", "{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xero.NetStandard.OAuth2.Test", "Xero.NetStandard.OAuth2.Test\Xero.NetStandard.OAuth2.Test.csproj", "{D9659F4B-53BA-46CE-B6D6-9ED5F19D8F46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FCA1916-DB88-41A8-A6E1-A23F837D3A64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9659F4B-53BA-46CE-B6D6-9ED5F19D8F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9659F4B-53BA-46CE-B6D6-9ED5F19D8F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9659F4B-53BA-46CE-B6D6-9ED5F19D8F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9659F4B-53BA-46CE-B6D6-9ED5F19D8F46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -86,6 +86,11 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>See Purchase Order Status Codes</value>
         [DataMember(Name="Status", EmitDefaultValue=false)]
         public StatusEnum Status { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PurchaseOrder" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public PurchaseOrder() { }
         
         /// <summary>
         /// Gets or Sets Contact

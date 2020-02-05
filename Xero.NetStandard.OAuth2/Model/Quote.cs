@@ -53,16 +53,16 @@ namespace Xero.NetStandard.OAuth2.Model
         public Quote() { }
         
         /// <summary>
-        /// QuoteID GUID is automatically generated and is returned after create or GET.
+        /// Xero generated unique identifier for quote
         /// </summary>
-        /// <value>QuoteID GUID is automatically generated and is returned after create or GET.</value>
+        /// <value>Xero generated unique identifier for quote</value>
         [DataMember(Name="QuoteID", EmitDefaultValue=false)]
         public Guid? QuoteID { get; set; }
 
         /// <summary>
-        /// Unique alpha numeric code identifying a quote (Max Length &#x3D; 255)
+        /// Unique alpha numeric code identifying quote (when missing will auto-generate from your Organisation Invoice Settings)
         /// </summary>
-        /// <value>Unique alpha numeric code identifying a quote (Max Length &#x3D; 255)</value>
+        /// <value>Unique alpha numeric code identifying quote (when missing will auto-generate from your Organisation Invoice Settings)</value>
         [DataMember(Name="QuoteNumber", EmitDefaultValue=false)]
         public string QuoteNumber { get; set; }
 
@@ -124,9 +124,9 @@ namespace Xero.NetStandard.OAuth2.Model
         public string ExpiryDateString { get; set; }
 
         /// <summary>
-        /// The currency rate for a multicurrency quote
+        /// The currency rate for a multicurrency quote. If no rate is specified, the XE.com day rate is used.
         /// </summary>
-        /// <value>The currency rate for a multicurrency quote</value>
+        /// <value>The currency rate for a multicurrency quote. If no rate is specified, the XE.com day rate is used.</value>
         [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
         public double? CurrencyRate { get; set; }
 
@@ -436,9 +436,9 @@ namespace Xero.NetStandard.OAuth2.Model
             }
 
             // Summary (string) maxLength
-            if(this.Summary != null && this.Summary.Length > 3000)
+            if(this.Summary != null && this.Summary.Length > 4000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Summary, length must be less than 3000.", new [] { "Summary" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Summary, length must be less than 4000.", new [] { "Summary" });
             }
 
             yield break;

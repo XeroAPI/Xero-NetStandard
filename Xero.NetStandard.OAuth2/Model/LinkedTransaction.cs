@@ -124,6 +124,11 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>The Type of the source tranasction. This will be ACCPAY if the linked transaction was created from an invoice and SPEND if it was created from a bank transaction.</value>
         [DataMember(Name="SourceTransactionTypeCode", EmitDefaultValue=false)]
         public SourceTransactionTypeCodeEnum SourceTransactionTypeCode { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LinkedTransaction" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public LinkedTransaction() { }
         
         /// <summary>
         /// Filter by the SourceTransactionID. Get all the linked transactions created from a particular ACCPAY invoice
@@ -161,9 +166,9 @@ namespace Xero.NetStandard.OAuth2.Model
         public Guid? TargetLineItemID { get; set; }
 
         /// <summary>
-        /// The Xero identifier for an Linked Transaction e.g./LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9
+        /// The Xero identifier for an Linked Transaction e.g. /LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
-        /// <value>The Xero identifier for an Linked Transaction e.g./LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
+        /// <value>The Xero identifier for an Linked Transaction e.g. /LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
         [DataMember(Name="LinkedTransactionID", EmitDefaultValue=false)]
         public Guid? LinkedTransactionID { get; set; }
 
