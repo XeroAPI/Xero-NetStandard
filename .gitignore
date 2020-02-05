@@ -39,6 +39,3 @@ out/
 *.DotSettings
 *.lnk
 */.vs
-.vscode/
-Xero.NetStandard.OAuth2.Tests/appsettings.json
-

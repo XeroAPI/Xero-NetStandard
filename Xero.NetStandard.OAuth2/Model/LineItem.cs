@@ -117,9 +117,9 @@ namespace Xero.NetStandard.OAuth2.Model
         public double? DiscountAmount { get; set; }
 
         /// <summary>
-        /// The Xero identifier for a Repeating Invoicee.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9
+        /// The Xero identifier for a Repeating Invoice
         /// </summary>
-        /// <value>The Xero identifier for a Repeating Invoicee.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
+        /// <value>The Xero identifier for a Repeating Invoice</value>
         [DataMember(Name="RepeatingInvoiceID", EmitDefaultValue=false)]
         public Guid? RepeatingInvoiceID { get; set; }
 
