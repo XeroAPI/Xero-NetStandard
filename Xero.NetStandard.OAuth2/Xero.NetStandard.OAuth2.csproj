@@ -13,8 +13,7 @@ Contact: api@xero.com
     <Version>0.2.0</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
-    <LicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</LicenseUrl>
-    <PackageIconUrl>https://secure.gravatar.com/avatar/7fff030fb8040a5157c3fd463858167f.png?s=128</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</PackageLicenseUrl>
     <Owners>Xero</Owners>
     <Copyright>Copyright © Xero 2019</Copyright>
     <PackageTags>xero;api;sdk;oauth2;oauth2.0</PackageTags>
