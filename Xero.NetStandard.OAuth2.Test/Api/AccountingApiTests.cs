@@ -463,7 +463,13 @@ namespace Xero.NetStandard.OAuth2.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             string xeroTenantId = AutoFaker.Generate<string>();
-            Invoices invoices = new Invoices();
+
+            Invoices invoices =  new Invoices();//AutoFaker.Generate<Invoices>();
+            Invoice invoice = new Invoice();
+            List<Invoice> invList = new List<Invoice>();
+            invList.Add(invoice);
+            invoices._Invoices = invList;
+
             bool? summarizeErrors = AutoFaker.Generate<bool?>();
             var response = await instance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors).ConfigureAwait(false);
             Assert.IsType<Invoices>(response);
