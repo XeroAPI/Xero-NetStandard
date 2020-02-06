@@ -10,7 +10,7 @@ Contact: api@xero.com
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xero.NetStandard.OAuth2</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
     <LicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</LicenseUrl>
@@ -19,6 +19,7 @@ Contact: api@xero.com
     <Copyright>Copyright © Xero 2019</Copyright>
     <PackageTags>xero;api;sdk;oauth2;oauth2.0</PackageTags>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageDescription>This is a .NETStandard SDK library, used to communicate with the Xero API using OAuth2.0. See https://github.com/XeroAPI/Xero-NetStandard for more information</PackageDescription>
   </PropertyGroup>
   <ItemGroup>
       <PackageReference Include="CompareNETObjects" Version="4.57.0" />
