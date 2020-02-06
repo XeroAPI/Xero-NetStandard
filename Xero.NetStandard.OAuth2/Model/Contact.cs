@@ -319,6 +319,13 @@ namespace Xero.NetStandard.OAuth2.Model
         public bool? HasValidationErrors { get; set; }
 
         /// <summary>
+        /// Status of object
+        /// </summary>
+        /// <value>Status of object</value>
+        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        public string StatusAttributeString { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -364,6 +371,7 @@ namespace Xero.NetStandard.OAuth2.Model
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("  HasValidationErrors: ").Append(HasValidationErrors).Append("\n");
+            sb.Append("  StatusAttributeString: ").Append(StatusAttributeString).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -588,6 +596,11 @@ namespace Xero.NetStandard.OAuth2.Model
                 (
                     this.HasValidationErrors == input.HasValidationErrors ||
                     this.HasValidationErrors.Equals(input.HasValidationErrors)
+                ) && 
+                (
+                    this.StatusAttributeString == input.StatusAttributeString ||
+                    (this.StatusAttributeString != null &&
+                    this.StatusAttributeString.Equals(input.StatusAttributeString))
                 );
         }
 
@@ -669,6 +682,8 @@ namespace Xero.NetStandard.OAuth2.Model
                 if (this.ValidationErrors != null)
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 hashCode = hashCode * 59 + this.HasValidationErrors.GetHashCode();
+                if (this.StatusAttributeString != null)
+                    hashCode = hashCode * 59 + this.StatusAttributeString.GetHashCode();
                 return hashCode;
             }
         }
