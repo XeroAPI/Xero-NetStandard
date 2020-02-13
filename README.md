@@ -51,7 +51,7 @@ or using the Package Manager Console inside Visual Studio
 
 ```
 	Install-Package Xero.NetStandard.OAuth2
-	Install-Package XXero.NetStandard.OAuth2Client
+	Install-Package Xero.NetStandard.OAuth2Client
 ```
 or you can download the source code from https://github.com/XeroAPI/Xero-NetStandard and compile it by yourself.
 
