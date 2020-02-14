@@ -58,6 +58,33 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)</value>
         [DataMember(Name="Type", EmitDefaultValue=false)]
         public TypeEnum Type { get; set; }
+        /// <summary>
+        /// AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.
+        /// </summary>
+        /// <value>AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum AUTHORISED for value: AUTHORISED
+            /// </summary>
+            [EnumMember(Value = "AUTHORISED")]
+            AUTHORISED = 1,
+
+            /// <summary>
+            /// Enum DELETED for value: DELETED
+            /// </summary>
+            [EnumMember(Value = "DELETED")]
+            DELETED = 2
+
+        }
+
+        /// <summary>
+        /// AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.
+        /// </summary>
+        /// <value>AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.</value>
+        [DataMember(Name="Status", EmitDefaultValue=false)]
+        public StatusEnum Status { get; set; }
         
         /// <summary>
         /// Gets or Sets Account
@@ -134,13 +161,6 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         [DataMember(Name="Payments", EmitDefaultValue=false)]
         public List<Payment> Payments { get; set; }
-
-        /// <summary>
-        /// AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.
-        /// </summary>
-        /// <value>AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
-        public string Status { get; private set; }
 
         /// <summary>
         /// The total of the payments that make up the batch (read-only)
@@ -282,8 +302,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 ) && 
                 (
                     this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Status.Equals(input.Status)
                 ) && 
                 (
                     this.TotalAmount == input.TotalAmount ||
@@ -333,8 +352,7 @@ namespace Xero.NetStandard.OAuth2.Model
                 if (this.Payments != null)
                     hashCode = hashCode * 59 + this.Payments.GetHashCode();
                 hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.TotalAmount != null)
                     hashCode = hashCode * 59 + this.TotalAmount.GetHashCode();
                 if (this.UpdatedDateUTC != null)

@@ -250,10 +250,52 @@ namespace Xero.NetStandard.OAuth2.Model
             WAGEPAYABLES = 13,
 
             /// <summary>
+            /// Enum CISASSETS for value: CISASSETS
+            /// </summary>
+            [EnumMember(Value = "CISASSETS")]
+            CISASSETS = 14,
+
+            /// <summary>
+            /// Enum CISASSET for value: CISASSET
+            /// </summary>
+            [EnumMember(Value = "CISASSET")]
+            CISASSET = 15,
+
+            /// <summary>
+            /// Enum CISLABOUR for value: CISLABOUR
+            /// </summary>
+            [EnumMember(Value = "CISLABOUR")]
+            CISLABOUR = 16,
+
+            /// <summary>
+            /// Enum CISLABOUREXPENSE for value: CISLABOUREXPENSE
+            /// </summary>
+            [EnumMember(Value = "CISLABOUREXPENSE")]
+            CISLABOUREXPENSE = 17,
+
+            /// <summary>
+            /// Enum CISLABOURINCOME for value: CISLABOURINCOME
+            /// </summary>
+            [EnumMember(Value = "CISLABOURINCOME")]
+            CISLABOURINCOME = 18,
+
+            /// <summary>
+            /// Enum CISLIABILITY for value: CISLIABILITY
+            /// </summary>
+            [EnumMember(Value = "CISLIABILITY")]
+            CISLIABILITY = 19,
+
+            /// <summary>
+            /// Enum CISMATERIALS for value: CISMATERIALS
+            /// </summary>
+            [EnumMember(Value = "CISMATERIALS")]
+            CISMATERIALS = 20,
+
+            /// <summary>
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
-            Empty = 14
+            Empty = 21
 
         }
 

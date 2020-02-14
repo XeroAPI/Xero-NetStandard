@@ -65,7 +65,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum DECLINED for value: DECLINED
             /// </summary>
             [EnumMember(Value = "DECLINED")]
-            DECLINED = 4
+            DECLINED = 4,
+
+            /// <summary>
+            /// Enum VOIDED for value: VOIDED
+            /// </summary>
+            [EnumMember(Value = "VOIDED")]
+            VOIDED = 5
 
         }
 
@@ -75,11 +81,6 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>Current status of receipt – see status types</value>
         [DataMember(Name="Status", EmitDefaultValue=false)]
         public StatusEnum Status { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Receipt" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        public Receipt() { }
         
         /// <summary>
         /// Date of receipt – YYYY-MM-DD

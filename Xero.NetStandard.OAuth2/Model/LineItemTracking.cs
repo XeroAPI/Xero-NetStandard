@@ -40,6 +40,13 @@ namespace Xero.NetStandard.OAuth2.Model
         public Guid? TrackingCategoryID { get; set; }
 
         /// <summary>
+        /// The Xero identifier for a tracking category option
+        /// </summary>
+        /// <value>The Xero identifier for a tracking category option</value>
+        [DataMember(Name="TrackingOptionID", EmitDefaultValue=false)]
+        public Guid? TrackingOptionID { get; set; }
+
+        /// <summary>
         /// The name of the tracking category
         /// </summary>
         /// <value>The name of the tracking category</value>
@@ -62,6 +69,7 @@ namespace Xero.NetStandard.OAuth2.Model
             var sb = new StringBuilder();
             sb.Append("class LineItemTracking {\n");
             sb.Append("  TrackingCategoryID: ").Append(TrackingCategoryID).Append("\n");
+            sb.Append("  TrackingOptionID: ").Append(TrackingOptionID).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Option: ").Append(Option).Append("\n");
             sb.Append("}\n");
@@ -104,6 +112,11 @@ namespace Xero.NetStandard.OAuth2.Model
                     this.TrackingCategoryID.Equals(input.TrackingCategoryID))
                 ) && 
                 (
+                    this.TrackingOptionID == input.TrackingOptionID ||
+                    (this.TrackingOptionID != null &&
+                    this.TrackingOptionID.Equals(input.TrackingOptionID))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -126,6 +139,8 @@ namespace Xero.NetStandard.OAuth2.Model
                 int hashCode = 41;
                 if (this.TrackingCategoryID != null)
                     hashCode = hashCode * 59 + this.TrackingCategoryID.GetHashCode();
+                if (this.TrackingOptionID != null)
+                    hashCode = hashCode * 59 + this.TrackingOptionID.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Option != null)
