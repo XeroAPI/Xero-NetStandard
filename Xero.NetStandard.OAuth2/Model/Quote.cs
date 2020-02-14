@@ -45,12 +45,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// Gets or Sets LineAmountTypes
         /// </summary>
         [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
-        public LineAmountTypes LineAmountTypes { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Quote" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        public Quote() { }
+        public QuoteLineAmountTypes LineAmountTypes { get; set; }
         
         /// <summary>
         /// QuoteID GUID is automatically generated and is returned after create or GET.

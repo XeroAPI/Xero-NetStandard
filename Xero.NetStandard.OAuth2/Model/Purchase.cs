@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>Unit Price of the item. By default UnitPrice is rounded to two decimal places. You can use 4 decimal places by adding the unitdp&#x3D;4 querystring parameter to your request.</value>
         [DataMember(Name="UnitPrice", EmitDefaultValue=false)]
-        public double? UnitPrice { get; set; }
+        public float? UnitPrice { get; set; }
 
         /// <summary>
         /// Default account code to be used for purchased/sale. Not applicable to the purchase details of tracked items

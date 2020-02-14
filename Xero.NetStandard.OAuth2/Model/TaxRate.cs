@@ -283,11 +283,6 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <value>See ReportTaxTypes</value>
         [DataMember(Name="ReportTaxType", EmitDefaultValue=false)]
         public ReportTaxTypeEnum ReportTaxType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TaxRate" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        public TaxRate() { }
         
         /// <summary>
         /// Name of tax rate

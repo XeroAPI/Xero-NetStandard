@@ -32,25 +32,25 @@ namespace Xero.NetStandard.OAuth2.Model
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum LineAmountTypes
+    public enum QuoteLineAmountTypes
     {
         /// <summary>
-        /// Enum Exclusive for value: Exclusive
+        /// Enum EXCLUSIVE for value: EXCLUSIVE
         /// </summary>
-        [EnumMember(Value = "Exclusive")]
-        Exclusive = 1,
+        [EnumMember(Value = "EXCLUSIVE")]
+        EXCLUSIVE = 1,
 
         /// <summary>
-        /// Enum Inclusive for value: Inclusive
+        /// Enum INCLUSIVE for value: INCLUSIVE
         /// </summary>
-        [EnumMember(Value = "Inclusive")]
-        Inclusive = 2,
+        [EnumMember(Value = "INCLUSIVE")]
+        INCLUSIVE = 2,
 
         /// <summary>
-        /// Enum NoTax for value: NoTax
+        /// Enum NOTAX for value: NOTAX
         /// </summary>
-        [EnumMember(Value = "NoTax")]
-        NoTax = 3
+        [EnumMember(Value = "NOTAX")]
+        NOTAX = 3
 
     }
 

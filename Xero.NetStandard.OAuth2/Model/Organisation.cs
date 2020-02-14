@@ -355,7 +355,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum YEARLY for value: YEARLY
             /// </summary>
             [EnumMember(Value = "YEARLY")]
-            YEARLY = 14
+            YEARLY = 14,
+
+            /// <summary>
+            /// Enum NONE for value: NONE
+            /// </summary>
+            [EnumMember(Value = "NONE")]
+            NONE = 15
 
         }
 

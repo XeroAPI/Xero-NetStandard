@@ -65,7 +65,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum DECLINED for value: DECLINED
             /// </summary>
             [EnumMember(Value = "DECLINED")]
-            DECLINED = 4
+            DECLINED = 4,
+
+            /// <summary>
+            /// Enum VOIDED for value: VOIDED
+            /// </summary>
+            [EnumMember(Value = "VOIDED")]
+            VOIDED = 5
 
         }
 

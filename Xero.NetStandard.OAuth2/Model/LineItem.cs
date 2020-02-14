@@ -51,14 +51,14 @@ namespace Xero.NetStandard.OAuth2.Model
         /// </summary>
         /// <value>LineItem Quantity</value>
         [DataMember(Name="Quantity", EmitDefaultValue=false)]
-        public double? Quantity { get; set; }
+        public float? Quantity { get; set; }
 
         /// <summary>
         /// LineItem Unit Amount
         /// </summary>
         /// <value>LineItem Unit Amount</value>
         [DataMember(Name="UnitAmount", EmitDefaultValue=false)]
-        public double? UnitAmount { get; set; }
+        public float? UnitAmount { get; set; }
 
         /// <summary>
         /// See Items
