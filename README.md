@@ -68,22 +68,50 @@ To get started you will just need two things to make calls to the Accounting Api
 * accessToken
 
 
-Build the login link
+Build the login link (a .NET Core Mvc example):
 ```csharp
-	XeroConfiguration xconfig = new XeroConfiguration();
-    
-	xconfig.ClientId = "yourClientId";
-	xconfig.ClientSecret = "yourClientSecret";
-	xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
-	xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
-    
-	var client = new XeroClient(xconfig);
-	
-	//build login link
-	Console.WriteLine(client.BuildLoginUri());
-	
-	//In the example app, I've used the config via appsettings so it becomes:
-	var client = new Xero.NetStandard.OAuth2.Client.XeroClient(config.Value, httpClientFactory);
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Xero.NetStandard.OAuth2.Client;
+    using Xero.NetStandard.OAuth2.Config;
+    using Xero.NetStandard.OAuth2.Token;
+    using Microsoft.Extensions.Options;
+    using System;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Xero.NetStandard.OAuth2.Models;
+    using System.Collections.Generic;
+
+
+    namespace XeroNetStandardApp.Controllers
+    {
+      public class XeroOauth2Controller : Controller
+      {
+        private readonly ILogger<HomeController> _logger;
+        private readonly IOptions<XeroConfiguration> XeroConfig;
+        private readonly IHttpClientFactory httpClientFactory;
+
+        public XeroOauth2Controller(IOptions<XeroConfiguration> config, IHttpClientFactory httpClientFactory, ILogger<HomeController> logger)
+        {
+          _logger = logger;
+          this.XeroConfig = config;
+          this.httpClientFactory = httpClientFactory;
+        }
+
+        public IActionResult Index()
+        {
+          XeroConfiguration xconfig = new XeroConfiguration();
+          xconfig.ClientId = "yourClientId";
+          xconfig.ClientSecret = "yourClientSecret";
+          xconfig.CallbackUri = new Uri("https://localhost:5001"); //default for standard webapi template
+          xconfig.Scope = "openid profile email offline_access files accounting.transactions accounting.contacts";
+
+          var client = new XeroClient(xconfig, httpClientFactory);
+
+          return Redirect(client.BuildLoginUri());
+        }
+      }
+    }
 ```
 
 From here the user will be redirected to login, authorise access and get redirected back
