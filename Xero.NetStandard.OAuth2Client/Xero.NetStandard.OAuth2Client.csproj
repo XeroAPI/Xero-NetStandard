@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xero.NetStandard.OAuth2Client</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
     <LicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</LicenseUrl>
