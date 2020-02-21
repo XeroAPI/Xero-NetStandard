@@ -14,6 +14,7 @@ Contact: api@xero.com
     <Authors>Xero</Authors>
     <Company>Xero</Company>
     <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</PackageLicenseUrl>
+    <PackageIconUrl>https://en.gravatar.com/userimage/180557955/74b3a957d886bc921b0d1455beed9dab.png</PackageIconUrl>
     <Owners>Xero</Owners>
     <Copyright>Copyright © Xero 2019</Copyright>
     <PackageTags>xero;api;sdk;oauth2;oauth2.0</PackageTags>
