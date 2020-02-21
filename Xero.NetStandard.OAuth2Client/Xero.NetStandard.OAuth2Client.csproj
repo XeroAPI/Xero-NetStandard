@@ -5,7 +5,7 @@
     <Version>0.0.3</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
-    <LicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</LicenseUrl>
+    <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</PackageLicenseUrl>
     <PackageIconUrl>https://secure.gravatar.com/avatar/7fff030fb8040a5157c3fd463858167f.png?s=128</PackageIconUrl>
     <Owners>Xero</Owners>
     <Copyright>Copyright © Xero 2019</Copyright>
