@@ -8,7 +8,7 @@ namespace Xero.NetStandard.OAuth2.Client
 {
     public interface IXeroClient
     {
-        XeroConfiguration xeroConfiguration { get; set; }
+        XeroConfiguration XeroConfiguration { get; set; }
         string BuildLoginUri();
         Task<IXeroToken> RequestAccessTokenAsync(string code);
         Task<IXeroToken> RefreshAccessTokenAsync(IXeroToken xeroToken);

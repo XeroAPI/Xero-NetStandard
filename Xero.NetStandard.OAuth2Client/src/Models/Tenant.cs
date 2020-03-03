@@ -4,7 +4,7 @@ namespace Xero.NetStandard.OAuth2.Models
 {
     public class Tenant
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public Guid TenantId { get; set; }
         public string TenantType { get; set; }
         public DateTime CreatedDateUtc { get; set; }

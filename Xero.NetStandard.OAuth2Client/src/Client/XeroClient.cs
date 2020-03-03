@@ -13,36 +13,48 @@ namespace Xero.NetStandard.OAuth2.Client
 {
     public class XeroClient : IXeroClient
     {
-        public XeroConfiguration xeroConfiguration { get; set; }
-        private readonly RequestUrl xeroAuthorizeUri;
-        private readonly IHttpClientFactory httpClientFactory;
+        const string CodeGrantType = "code";
+        const string HttpClientName = "Xero";
+        const string BearerScheme = "Bearer";
+        const string AuthorizeUrl = "https://login.xero.com/identity/connect/authorize";
+        const string IdentityTokenUrl = "https://identity.xero.com/connect/token";
+        const string ConnectionsUrl = "https://api.xero.com/connections";
+
+        private readonly RequestUrl _xeroAuthorizeUri;
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        /// <summary>
+        /// Constructor, pass in IHttpFactory to generate the client
+        /// </summary>
+        /// <param name="xeroConfiguration"></param>
+        /// <param name="httpClientFactory"></param>
+        public XeroClient(XeroConfiguration xeroConfiguration, IHttpClientFactory httpClientFactory)
+        {
+            XeroConfiguration = xeroConfiguration;
+
+            _xeroAuthorizeUri = new RequestUrl(AuthorizeUrl);
+            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+        }
+
+        public XeroConfiguration XeroConfiguration { get; set; }
+
         /// <summary>
         /// Builds a XeroLogin URL
         /// </summary>
         /// <returns>valid URI for login</returns>
         public string BuildLoginUri()
         {
-            var url = xeroAuthorizeUri.CreateAuthorizeUrl(
-                clientId: xeroConfiguration.ClientId,
-                responseType: "code", //hardcoded authorisation code for now.
-                redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
-                state: xeroConfiguration.State,
-                scope: xeroConfiguration.Scope
+            var url = _xeroAuthorizeUri.CreateAuthorizeUrl(
+                clientId: XeroConfiguration.ClientId,
+                responseType: CodeGrantType, //hardcoded authorisation code for now.
+                redirectUri: XeroConfiguration.CallbackUri.AbsoluteUri,
+                state: XeroConfiguration.State,
+                scope: XeroConfiguration.Scope
             );
+
             return url;
         }
-        /// <summary>
-        /// Constructor, pass in IHttpFactory to generate the client
-        /// </summary>
-        /// <param name="XeroConfig"></param>
-        /// <param name="httpClientFactory"></param>
-        public XeroClient(XeroConfiguration XeroConfig, IHttpClientFactory httpClientFactory)
-        {
-            this.xeroConfiguration = XeroConfig;
-            this.xeroAuthorizeUri = new RequestUrl("https://login.xero.com/identity/connect/authorize");
-            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
 
-        }
         /// <summary>
         /// Requests accesstoken and returns it inside the IXeroToken
         /// Check state before calling this method to prevent CRSF
@@ -52,23 +64,27 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns></returns>
         public async Task<IXeroToken> RequestAccessTokenAsync(string code)
         {
-
-            var client = httpClientFactory.CreateClient("Xero");
+            var client = _httpClientFactory.CreateClient(HttpClientName);
+            
             var response = await client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
-                GrantType = "code",
+                Address = IdentityTokenUrl,
+                GrantType = CodeGrantType,
                 Code = code,
-                ClientId = xeroConfiguration.ClientId,
-                ClientSecret = xeroConfiguration.ClientSecret,
-                RedirectUri = xeroConfiguration.CallbackUri.AbsoluteUri,
+                ClientId = XeroConfiguration.ClientId,
+                ClientSecret = XeroConfiguration.ClientSecret,
+                RedirectUri = XeroConfiguration.CallbackUri.AbsoluteUri,
                 Parameters =
                     {
-                        { "scope", xeroConfiguration.Scope}
+                        { "scope", XeroConfiguration.Scope}
                     }
             });
 
-            if (response.IsError) { throw new Exception(response.Error); }
+            if (response.IsError) 
+            { 
+                throw new Exception(response.Error); 
+            }
+
             return new XeroOAuth2Token()
             {
                 AccessToken = response.AccessToken,
@@ -76,9 +92,8 @@ namespace Xero.NetStandard.OAuth2.Client
                 IdToken = response.IdentityToken,
                 ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
             };
-
-
         }
+
         /// <summary>
         /// Refreshes your current token
         /// </summary>
@@ -86,28 +101,33 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns></returns>
         public async Task<IXeroToken> RefreshAccessTokenAsync(IXeroToken xeroToken)
         {
-
             if (xeroToken == null)
             {
-                throw new ArgumentNullException("xeroToken");
+                throw new ArgumentNullException(nameof(xeroToken));
             }
-            var client = httpClientFactory.CreateClient("Xero");
+
+            var client = _httpClientFactory.CreateClient(HttpClientName);
 
             var response = await client.RequestRefreshTokenAsync(new RefreshTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
-                ClientId = xeroConfiguration.ClientId,
-                ClientSecret = xeroConfiguration.ClientSecret,
+                Address = IdentityTokenUrl,
+                ClientId = XeroConfiguration.ClientId,
+                ClientSecret = XeroConfiguration.ClientSecret,
                 RefreshToken = xeroToken.RefreshToken
             });
-            if (response.IsError) { throw new Exception(response.Error); }
+
+            if (response.IsError)
+            {
+                throw new Exception(response.Error);
+            }
+
             xeroToken.AccessToken = response.AccessToken;
             xeroToken.RefreshToken = response.RefreshToken;
             xeroToken.IdToken = response.IdentityToken;
             xeroToken.ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn);
             return xeroToken;
-
         }
+
         /// <summary>
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
@@ -116,22 +136,25 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns></returns>
         public async Task<IXeroToken> RequestXeroTokenAsync(string code)
         {
-            var client = httpClientFactory.CreateClient("Xero");
+            var client = _httpClientFactory.CreateClient(HttpClientName);
             var response = await client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
-                GrantType = "code",
+                Address = IdentityTokenUrl,
+                GrantType = CodeGrantType,
                 Code = code,
-                ClientId = xeroConfiguration.ClientId,
-                ClientSecret = xeroConfiguration.ClientSecret,
-                RedirectUri = xeroConfiguration.CallbackUri.AbsoluteUri,
+                ClientId = XeroConfiguration.ClientId,
+                ClientSecret = XeroConfiguration.ClientSecret,
+                RedirectUri = XeroConfiguration.CallbackUri.AbsoluteUri,
                 Parameters =
                     {
-                        { "scope", xeroConfiguration.Scope}
+                        { "scope", XeroConfiguration.Scope}
                     }
             });
 
-            if (response.IsError) { throw new Exception(response.Error); }
+            if (response.IsError)
+            {
+                throw new Exception(response.Error);
+            }
             else
             {
                 var xeroToken = new XeroOAuth2Token()
@@ -141,11 +164,12 @@ namespace Xero.NetStandard.OAuth2.Client
                     ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn),
                     IdToken = response.IdentityToken,
                 };
+
                 xeroToken.Tenants = await GetConnectionsAsync(xeroToken);
                 return xeroToken;
             }
-
         }
+
         /// <summary>
         /// Convenience method to refresh token for you if it is expired
         /// </summary>
@@ -162,6 +186,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 return xeroToken;
             }
         }
+
         /// <summary>
         /// Get's a list of Tokens given the accesstoken
         /// </summary>
@@ -169,12 +194,14 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>List of Tenants attached to accesstoken</returns>
         public async Task<List<Tenant>> GetConnectionsAsync(IXeroToken xeroToken)
         {
-            var client = httpClientFactory.CreateClient("Xero");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
-            using (var requestMessage = new HttpRequestMessage(System.Net.Http.HttpMethod.Get, "https://api.xero.com/connections"))
+            var client = _httpClientFactory.CreateClient(HttpClientName);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(BearerScheme, xeroToken.AccessToken);
+            
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, ConnectionsUrl))
             {
-                HttpResponseMessage result = await client.SendAsync(requestMessage);
-                string json = await result.Content.ReadAsStringAsync();
+                var result = await client.SendAsync(requestMessage);
+                var json = await result.Content.ReadAsStringAsync();
+               
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     xeroToken.Tenants = JsonConvert.DeserializeObject<List<Tenant>>(json);

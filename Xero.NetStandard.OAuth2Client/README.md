@@ -1,11 +1,11 @@
 # Xero .Net OAuth Client SDK
 
-This package will allow you to connect to Xero using OAuth2 and the authorisation code flow. It will build you a login URL, redirect your user, take the code and state to get an accessToken and finally get tenants. 
+This package will allow you to connect to Xero using OAuth2 and the authorisation code flow. It will build you a login URL, redirect your user, take the code and state to get an access token and finally get tenants. 
 
 Use Nuget to download the package
+
 ```
 dotnet add package Xero.NetStandard.OAuth2Client
-
 ```
 or using the Package Manager Console inside Visual Studio
 
@@ -14,28 +14,29 @@ Install-Package Xero.NetStandard.OAuth2Client
 ```
 or you can download the source code from https://github.com/XeroAPI/Xero-NetStandard and compile it by yourself.
 
-
 ### Create a Xero App
+
 Follow these steps to create your Xero app
 
 * Create a free Xero user account (if you don't have one)
-* Use this URL for beta access to oAuth2 [https://developer.xero.com/myapps?code=oauth2create](https://developer.xero.com/myapps?code=oauth2create)
-* Click "or Try oAuth2" link
-* Enter your App name, company url, privacy policy url, and redirect URI (this is your callback url - localhost, etc)
+* Use this URL for beta access to OAuth2 [https://developer.xero.com/myapps?code=oauth2create](https://developer.xero.com/myapps?code=oauth2create)
+* Click on the 'New app' button
+* Enter your App name, Company or application URL, Privacy policy URL, and OAuth 2.0 redirect URI (this is your callback URL - e.g. localhost)
 * Agree to terms and condition and click "Create App".
 * Click "Generate a secret" button.
-* Copy your client id and client secret and save for use later.
+* Copy your Client id and Client secret and save for use later.
 * Click the "Save" button. You secret is now hidden.
 
 Build the login link
-```csharp
 
+```csharp
 XeroConfiguration xconfig = new XeroConfiguration(); 
     xconfig.ClientId = "yourClientId";
     xconfig.ClientSecret = "yourClientSecret";
     xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
     xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
     var client = new XeroClient(xconfig);
+    
     //build login link
     Console.WriteLine(client.BuildLoginUri());
 ```
@@ -54,10 +55,13 @@ XeroConfiguration xeroConfig = new XeroConfiguration();
     xeroConfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
     xeroConfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
     var client = new XeroClient(xeroConfig);
+    
     //before getting the access token please check that the state matches
     await client.RequestAccessTokenAsync(code, "yourState");
+    
     //from here you will need to access your Xero Tenants
     List<Tenant> tenants = await client.GetConnections();
+    
     // you will now have the tenant id and access token
     foreach (Tenant tenant in tenants)
     {
@@ -68,22 +72,19 @@ XeroConfiguration xeroConfig = new XeroConfiguration();
 
 ```
 
-
 To setup the main API object see the snippet below
 
 ```csharp
-//
-var AccountingApi = new AccountingApi();
-var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
-Console.WriteLine(AccountingApi.GetInvoices().ToJson());
-
+var accountingApi = new AccountingApi();
+var response = await accountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
+Console.WriteLine(accountingApi.GetInvoices().ToJson());
 ```
 
 ## License
 
 This software is published under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
 
-	Copyright (c) 2019 Xero Limited
+	Copyright (c) 2020 Xero Limited
 
 	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation

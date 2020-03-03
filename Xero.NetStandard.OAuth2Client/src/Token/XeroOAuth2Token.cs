@@ -11,6 +11,5 @@ namespace Xero.NetStandard.OAuth2.Token
         public string RefreshToken { get; set; }
         public string IdToken { get; set; }
         public DateTime ExpiresAtUtc { get; set; }
-
     }
 }
