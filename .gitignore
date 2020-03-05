@@ -39,3 +39,4 @@ out/
 *.DotSettings
 *.lnk
 */.vs
+Xero.NetStandard.OAuth2/Xero.NetStandard.OAuth2.sln

@@ -26,36 +26,31 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model
 {
     /// <summary>
-    /// Defines RowType
+    /// Line amounts are exclusive of tax by default if you don’t specify this element. See Line Amount Types
     /// </summary>
+    /// <value>Line amounts are exclusive of tax by default if you don’t specify this element. See Line Amount Types</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum RowType
+    public enum QuoteLineAmountTypes
     {
         /// <summary>
-        /// Enum Header for value: Header
+        /// Enum EXCLUSIVE for value: EXCLUSIVE
         /// </summary>
-        [EnumMember(Value = "Header")]
-        Header = 1,
+        [EnumMember(Value = "EXCLUSIVE")]
+        EXCLUSIVE = 1,
 
         /// <summary>
-        /// Enum Section for value: Section
+        /// Enum INCLUSIVE for value: INCLUSIVE
         /// </summary>
-        [EnumMember(Value = "Section")]
-        Section = 2,
+        [EnumMember(Value = "INCLUSIVE")]
+        INCLUSIVE = 2,
 
         /// <summary>
-        /// Enum Row for value: Row
+        /// Enum NOTAX for value: NOTAX
         /// </summary>
-        [EnumMember(Value = "Row")]
-        Row = 3,
-
-        /// <summary>
-        /// Enum SummaryRow for value: SummaryRow
-        /// </summary>
-        [EnumMember(Value = "SummaryRow")]
-        SummaryRow = 4
+        [EnumMember(Value = "NOTAX")]
+        NOTAX = 3
 
     }
 
