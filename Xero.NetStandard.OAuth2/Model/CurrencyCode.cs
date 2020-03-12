@@ -1006,13 +1006,17 @@ namespace Xero.NetStandard.OAuth2.Model
         [EnumMember(Value = "ZWD")]
         ZWD = 162,
 
+        /// <summary>
+        /// Enum ZMK for value: ZMK
+        /// </summary>
+        [EnumMember(Value = "ZMK")]
+        ZMK = 163,
 
         /// <summary>
-        /// Enum NA for value: NA
+        /// Enum NA for value: 
         /// </summary>
         [EnumMember(Value = "")]
-        NA = 163
+        NA = 170
 
     }
-
 }

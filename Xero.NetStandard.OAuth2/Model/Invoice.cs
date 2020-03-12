@@ -78,7 +78,13 @@ namespace Xero.NetStandard.OAuth2.Model
             /// Enum AROVERPAYMENT for value: AROVERPAYMENT
             /// </summary>
             [EnumMember(Value = "AROVERPAYMENT")]
-            AROVERPAYMENT = 7
+            AROVERPAYMENT = 7,
+
+            /// <summary>
+            /// Enum ARPREPAYMENT for value: ARPREPAYMENT
+            /// </summary>
+            [EnumMember(Value = "ARPREPAYMENT")]
+            ARPREPAYMENT = 8,
 
         }
 
