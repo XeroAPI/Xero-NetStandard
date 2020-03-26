@@ -26,17 +26,23 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model
 {
     /// <summary>
-    /// Accounts
+    /// PaymentDelete
     /// </summary>
     [DataContract]
-    public partial class Accounts :  IEquatable<Accounts>, IValidatableObject
+    public partial class PaymentDelete :  IEquatable<PaymentDelete>, IValidatableObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PaymentDelete" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public PaymentDelete() { }
         
         /// <summary>
-        /// Gets or Sets _Accounts
+        /// The status of the payment.
         /// </summary>
-        [DataMember(Name="Accounts", EmitDefaultValue=false)]
-        public List<Account> _Accounts { get; set; }
+        /// <value>The status of the payment.</value>
+        [DataMember(Name="Status", EmitDefaultValue=false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -45,8 +51,8 @@ namespace Xero.NetStandard.OAuth2.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Accounts {\n");
-            sb.Append("  _Accounts: ").Append(_Accounts).Append("\n");
+            sb.Append("class PaymentDelete {\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -67,25 +73,24 @@ namespace Xero.NetStandard.OAuth2.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Accounts);
+            return this.Equals(input as PaymentDelete);
         }
 
         /// <summary>
-        /// Returns true if Accounts instances are equal
+        /// Returns true if PaymentDelete instances are equal
         /// </summary>
-        /// <param name="input">Instance of Accounts to be compared</param>
+        /// <param name="input">Instance of PaymentDelete to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Accounts input)
+        public bool Equals(PaymentDelete input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this._Accounts == input._Accounts ||
-                    this._Accounts != null &&
-                    input._Accounts != null &&
-                    this._Accounts.SequenceEqual(input._Accounts)
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -98,8 +103,8 @@ namespace Xero.NetStandard.OAuth2.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Accounts != null)
-                    hashCode = hashCode * 59 + this._Accounts.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 return hashCode;
             }
         }
