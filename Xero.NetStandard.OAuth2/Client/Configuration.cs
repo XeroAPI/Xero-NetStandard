@@ -67,7 +67,7 @@ namespace Xero.NetStandard.OAuth2.Client
                         }
 
                     }
-                    return new ApiException(status, string.Format("{0}:{1}", error.Message, validationBuilder.ToString()), error);
+                    return new ApiException(status, string.Format("{0}:{1}", error.Message, validationBuilder.ToString()), error,response.Content.ToString());
                 case int code when status > 400:
                     return new ApiException(status,
                                        string.Format("Error calling {0}: {1}", methodName, response.Content),
