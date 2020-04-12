@@ -22,7 +22,7 @@ We have built Xero OAuth 2.0 Client. Check out [Xero.NetStandard.OAuth2Client](h
 
 [![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2Client.v0.0.2-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2Client/)
 
-To learn more about how our OAuth 2.0 flow works and how to use the OAuth 2.0 client, check out our Xero developer blog post: [Up and running with .NET and Xero OAuth 2.0](https://devblog.xero.com/xero-oauth-2-with-ruby-313a6ea37989)
+To learn more about how our OAuth 2.0 flow works and how to use the OAuth 2.0 client, check out our Xero developer blog post: [Up and running with .NET and Xero OAuth 2.0](https://devblog.xero.com/getting-started-with-net-xero-oauth2-0-763ba468a916)
 
 ## Looking for previous SDK with oAuth 1.0a support?
 Codebase, samples and setup instructions located in [oauth1 branch](https://github.com/XeroAPI/Xero-NetStandard/tree/oauth1).
