@@ -2,11 +2,12 @@
 
 This code is generated from the openapi-generator based on [Xero OpenAPI 3.0 Specification](https://github.com/XeroAPI/Xero-OpenAPI)
 
-[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v0.4.4-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
+[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v0.4.5-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
 
 # Current release of SDK with OAuth2 support
 Version Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
 * accounting
+* fixed asset
 
 Coming soon
 * identity
@@ -14,7 +15,6 @@ Coming soon
 * projects
 * payroll
 * files 
-* fixed asset 
 * xero hq
 
 ## How to handle OAuth 2.0 authentication & authorization?
@@ -167,11 +167,73 @@ To refresh your token. Just call the refresh
 
 To setup the main API object see the snippet below
 
+Get All invoices: 
 ```csharp
 	var AccountingApi = new AccountingApi();
 	var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
-	
-	Console.WriteLine(AccountingApi.GetInvoices().ToJson();)
+```
+
+Get invoices from the last 7 days: 
+```csharp
+      var AccountingApi = new AccountingApi();
+
+
+      var sevenDaysAgo = DateTime.Now.AddDays(-7).ToString("yyyy, MM, dd");
+      var invoicesFilter = "Date >= DateTime(" + sevenDaysAgo + ")";
+
+      var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId, null, invoicesFilter);
+```
+
+Create an invoice: 
+```csharp
+      var contact = new Contact();
+      contact.Name = "John Smith";
+      
+      var line = new LineItem() {
+        Description = "A golf ball",
+        Quantity = float.Parse(LineQuantity),
+        UnitAmount = float.Parse(LineUnitAmount),
+        AccountCode = "200"
+      };
+
+      var lines = new List<LineItem>() {
+        line
+      };
+
+      var invoice = new Invoice() {
+        Type = Invoice.TypeEnum.ACCREC,
+        Contact = contact,
+        Date = DateTime.Today,
+        DueDate = DateTime.Today.AddDays(30),
+        LineItems = lines
+      };
+
+      var invoiceList = new List<Invoice>();
+      invoiceList.Add(invoice);
+
+      var invoices = new Invoices();
+      invoices._Invoices = invoiceList;
+
+      var AccountingApi = new AccountingApi();
+      var response = await AccountingApi.CreateInvoicesAsync(accessToken, xeroTenantId, invoices);
+```
+
+Get All Fixed Assets:
+```csharp
+      var AssetApi = new AssetApi();
+      var response = await AssetApi.GetAssetsAsync(accessToken, xeroTenantId, AssetStatusQueryParam.DRAFT);
+```
+
+
+Create a fixed asset:
+```csharp
+      var asset = new Asset() {
+        AssetName = "Office Computer",
+        AssetNumber = "FA-001"
+      };
+
+      var AssetApi = new AssetApi();
+      var response = await AssetApi.CreateAssetAsync(accessToken, xeroTenantId, asset);
 ```
 
 ## TLS 1.0 deprecation
