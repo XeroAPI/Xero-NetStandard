@@ -23,7 +23,7 @@ using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter;
 
-namespace Xero.NetStandard.OAuth2.Model.Assets
+namespace Xero.NetStandard.OAuth2.Model.Asset
 {
     /// <summary>
     /// Setting
