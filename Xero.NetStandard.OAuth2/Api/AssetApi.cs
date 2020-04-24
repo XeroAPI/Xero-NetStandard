@@ -16,7 +16,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
+using Xero.NetStandard.OAuth2.Model.Assets;
 
 namespace Xero.NetStandard.OAuth2.Api
 {
