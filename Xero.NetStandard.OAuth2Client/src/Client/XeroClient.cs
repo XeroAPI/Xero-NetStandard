@@ -186,5 +186,30 @@ namespace Xero.NetStandard.OAuth2.Client
                 }
             }
         }
+
+        /// <summary>
+        /// Delete the connection given the accesstoken and xero tenant id
+        /// </summary>
+        /// <param name="xeroToken"></param>
+        /// <param name="xeroTenant"></param>
+        /// <returns>List of Tenants attached to accesstoken</returns>
+        public async Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant)
+        {
+            var client = httpClientFactory.CreateClient("Xero");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
+            using (var requestMessage = new HttpRequestMessage(System.Net.Http.HttpMethod.Delete, "https://api.xero.com/connections" + "/" + xeroTenant.id))
+            {
+                HttpResponseMessage result = await client.SendAsync(requestMessage);
+                string json = await result.Content.ReadAsStringAsync();
+                if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    return;
+                }
+                else
+                {
+                    throw new HttpRequestException(await result.Content.ReadAsStringAsync());
+                }
+            }
+        }
     }
 }

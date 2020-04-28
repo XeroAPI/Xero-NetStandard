@@ -2,10 +2,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xero.NetStandard.OAuth2Client</PackageId>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <Authors>Xero</Authors>
     <Company>Xero</Company>
-    <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/</PackageLicenseUrl>
     <PackageIconUrl>https://en.gravatar.com/userimage/180557955/74b3a957d886bc921b0d1455beed9dab.png</PackageIconUrl>
     <Owners>Xero</Owners>
     <Copyright>Copyright © Xero 2019</Copyright>
