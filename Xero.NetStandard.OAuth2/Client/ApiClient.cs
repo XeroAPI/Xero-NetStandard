@@ -116,7 +116,8 @@ namespace Xero.NetStandard.OAuth2.Client
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
-                return DateTime.Parse(response.Content,  null, System.Globalization.DateTimeStyles.RoundtripKind);
+                return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
+                // return DateTime.ParseExact(response.Content, "yyyy-MM-ddTHH:mm:ssZ", null, DateTimeStyles.None);
             }
 
             if (type == typeof(String) || type.Name.StartsWith("System.Nullable")) // return primitive type
