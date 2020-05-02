@@ -1551,6 +1551,20 @@ namespace Xero.NetStandard.OAuth2.Test
     }
 
     /// <summary>
+    /// Test GetInvoice UpdatedDateUTC is UTC time
+    /// </summary>
+    [Fact]
+    public async Task GetInvoiceUpdatedDateUtcTest()
+    {
+      string xeroTenantId = AutoFaker.Generate<string>();
+      Guid invoiceID = AutoFaker.Generate<Guid>();
+      var response = await instance.GetInvoiceAsync(accessToken, xeroTenantId, invoiceID).ConfigureAwait(false);
+      DateTime actualTime = response._Invoices[0].UpdatedDateUTC.Value;
+      DateTime expectedTime = new DateTime(2019, 3, 7, 17, 59, 28, 133);
+      Assert.Equal(expectedTime, actualTime);
+    }
+
+    /// <summary>
     /// Test GetInvoiceAsPdf
     /// </summary>
     [Fact(Skip = "PDF still can't render from mock server")]

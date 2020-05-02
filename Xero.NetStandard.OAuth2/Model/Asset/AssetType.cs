@@ -35,7 +35,9 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// Initializes a new instance of the <see cref="AssetType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public AssetType() { }
+        public AssetType() 
+        { 
+        }
         
         /// <summary>
         /// Xero generated unique identifier for asset types
