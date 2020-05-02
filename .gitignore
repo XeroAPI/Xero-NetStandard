@@ -40,4 +40,5 @@ out/
 *.lnk
 */.vs
 .vscode/
+.ionide/
 Xero.NetStandard.OAuth2/Xero.NetStandard.OAuth2.sln
