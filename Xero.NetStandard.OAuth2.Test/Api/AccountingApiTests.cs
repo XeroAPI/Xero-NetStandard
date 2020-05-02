@@ -21,7 +21,7 @@ using AutoBogus;
 
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Model;
+using Xero.NetStandard.OAuth2.Model.Accounting;
 using Xunit.Abstractions;
 
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
@@ -872,7 +872,8 @@ namespace Xero.NetStandard.OAuth2.Test
       string xeroTenantId = AutoFaker.Generate<string>();
       Guid paymentID = AutoFaker.Generate<Guid>();
       Payments payments = new Payments();
-      var response = await instance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, payments).ConfigureAwait(false);
+      PaymentDelete paymentDelete = new PaymentDelete();
+      var response = await instance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, paymentDelete).ConfigureAwait(false);
       Assert.IsType<Payments>(response);
     }
 
@@ -2632,20 +2633,6 @@ namespace Xero.NetStandard.OAuth2.Test
     //     var response = await instance.UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body).ConfigureAwait(false);
     //     Assert.IsType<Attachments>(response);
     // }
-
-    /// <summary>
-    /// Test UpdateEmployee
-    /// </summary>
-    [Fact]
-    public async Task UpdateEmployeeTest()
-    {
-      // TODO uncomment below to test the method and replace null with proper value
-      string xeroTenantId = AutoFaker.Generate<string>();
-      Guid employeeID = AutoFaker.Generate<Guid>();
-      Employees employees = new Employees();
-      var response = await instance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeID, employees).ConfigureAwait(false);
-      Assert.IsType<Employees>(response);
-    }
 
     /// <summary>
     /// Test UpdateExpenseClaim

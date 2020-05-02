@@ -2,32 +2,35 @@
 
 This code is generated from the openapi-generator based on [Xero OpenAPI 3.0 Specification](https://github.com/XeroAPI/Xero-OpenAPI)
 
-[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v0.1.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
+[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v2.0.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
 
 # Current release of SDK with OAuth2 support
 Version Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
 * accounting
-* identity
+* fixed asset
 
 Coming soon
+* identity
 * bank feeds 
 * projects
 * payroll
 * files 
-* fixed asset 
 * xero hq
 
 ## How to handle OAuth 2.0 authentication & authorization?
 We have built Xero OAuth 2.0 Client. Check out [Xero.NetStandard.OAuth2Client](https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2/Xero.NetStandard.OAuth2Client)
 
-[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2Client.v0.0.2-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2Client/)
+[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2Client.v0.0.4-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2Client/)
 
-To learn more about how our OAuth 2.0 flow works and how to use the OAuth 2.0 client, check out our Xero developer blog post: [Up and running with .NET and Xero OAuth 2.0](https://devblog.xero.com/xero-oauth-2-with-ruby-313a6ea37989)
+To learn more about how our OAuth 2.0 flow works and how to use the OAuth 2.0 client, check out our Xero developer blog post: [Up and running with .NET and Xero OAuth 2.0](https://devblog.xero.com/getting-started-with-net-xero-oauth2-0-763ba468a916)
 
 ## Looking for previous SDK with oAuth 1.0a support?
 Codebase, samples and setup instructions located in [oauth1 branch](https://github.com/XeroAPI/Xero-NetStandard/tree/oauth1).
 
 ## Getting Started
+
+## Sample apps
+Looking for sample apps for this SDK? A dotnet core 3.1 MVC one is available [here](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-dotnet-core). A .NET Framework 4.6.1 one is availble [here](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-app-dotnet-framework). 
 
 ### Create a Xero App
 Follow these steps to create your Xero app
@@ -51,7 +54,7 @@ or using the Package Manager Console inside Visual Studio
 
 ```
 	Install-Package Xero.NetStandard.OAuth2
-	Install-Package XXero.NetStandard.OAuth2Client
+	Install-Package Xero.NetStandard.OAuth2Client
 ```
 or you can download the source code from https://github.com/XeroAPI/Xero-NetStandard and compile it by yourself.
 
@@ -68,22 +71,50 @@ To get started you will just need two things to make calls to the Accounting Api
 * accessToken
 
 
-Build the login link
+Build the login link (a .NET Core Mvc example):
 ```csharp
-	XeroConfiguration xconfig = new XeroConfiguration();
-    
-	xconfig.ClientId = "yourClientId";
-	xconfig.ClientSecret = "yourClientSecret";
-	xconfig.CallbackUri = new Uri("https://localhost:5001") //default for standard webapi template
-	xconfig.Scope = "openid profile email files accounting.transactions accounting.contacts offline_access";
-    
-	var client = new XeroClient(xconfig);
-	
-	//build login link
-	Console.WriteLine(client.BuildLoginUri());
-	
-	//In the example app, I've used the config via appsettings so it becomes:
-	var client = new Xero.NetStandard.OAuth2.Client.XeroClient(config.Value, httpClientFactory);
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Xero.NetStandard.OAuth2.Client;
+    using Xero.NetStandard.OAuth2.Config;
+    using Xero.NetStandard.OAuth2.Token;
+    using Microsoft.Extensions.Options;
+    using System;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Xero.NetStandard.OAuth2.Models;
+    using System.Collections.Generic;
+
+
+    namespace XeroNetStandardApp.Controllers
+    {
+      public class XeroOauth2Controller : Controller
+      {
+        private readonly ILogger<HomeController> _logger;
+        private readonly IOptions<XeroConfiguration> XeroConfig;
+        private readonly IHttpClientFactory httpClientFactory;
+
+        public XeroOauth2Controller(IOptions<XeroConfiguration> config, IHttpClientFactory httpClientFactory, ILogger<HomeController> logger)
+        {
+          _logger = logger;
+          this.XeroConfig = config;
+          this.httpClientFactory = httpClientFactory;
+        }
+
+        public IActionResult Index()
+        {
+          XeroConfiguration xconfig = new XeroConfiguration();
+          xconfig.ClientId = "yourClientId";
+          xconfig.ClientSecret = "yourClientSecret";
+          xconfig.CallbackUri = new Uri("https://localhost:5001"); //default for standard webapi template
+          xconfig.Scope = "openid profile email offline_access files accounting.transactions accounting.contacts";
+
+          var client = new XeroClient(xconfig, httpClientFactory);
+
+          return Redirect(client.BuildLoginUri());
+        }
+      }
+    }
 ```
 
 From here the user will be redirected to login, authorise access and get redirected back
@@ -136,11 +167,73 @@ To refresh your token. Just call the refresh
 
 To setup the main API object see the snippet below
 
+Get All invoices: 
 ```csharp
 	var AccountingApi = new AccountingApi();
 	var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
-	
-	Console.WriteLine(AccountingApi.GetInvoices().ToJson();)
+```
+
+Get invoices from the last 7 days: 
+```csharp
+      var AccountingApi = new AccountingApi();
+
+
+      var sevenDaysAgo = DateTime.Now.AddDays(-7).ToString("yyyy, MM, dd");
+      var invoicesFilter = "Date >= DateTime(" + sevenDaysAgo + ")";
+
+      var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId, null, invoicesFilter);
+```
+
+Create an invoice: 
+```csharp
+      var contact = new Contact();
+      contact.Name = "John Smith";
+      
+      var line = new LineItem() {
+        Description = "A golf ball",
+        Quantity = float.Parse(LineQuantity),
+        UnitAmount = float.Parse(LineUnitAmount),
+        AccountCode = "200"
+      };
+
+      var lines = new List<LineItem>() {
+        line
+      };
+
+      var invoice = new Invoice() {
+        Type = Invoice.TypeEnum.ACCREC,
+        Contact = contact,
+        Date = DateTime.Today,
+        DueDate = DateTime.Today.AddDays(30),
+        LineItems = lines
+      };
+
+      var invoiceList = new List<Invoice>();
+      invoiceList.Add(invoice);
+
+      var invoices = new Invoices();
+      invoices._Invoices = invoiceList;
+
+      var AccountingApi = new AccountingApi();
+      var response = await AccountingApi.CreateInvoicesAsync(accessToken, xeroTenantId, invoices);
+```
+
+Get All Fixed Assets:
+```csharp
+      var AssetApi = new AssetApi();
+      var response = await AssetApi.GetAssetsAsync(accessToken, xeroTenantId, AssetStatusQueryParam.DRAFT);
+```
+
+
+Create a fixed asset:
+```csharp
+      var asset = new Asset() {
+        AssetName = "Office Computer",
+        AssetNumber = "FA-001"
+      };
+
+      var AssetApi = new AssetApi();
+      var response = await AssetApi.CreateAssetAsync(accessToken, xeroTenantId, asset);
 ```
 
 ## TLS 1.0 deprecation
