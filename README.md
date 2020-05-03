@@ -8,9 +8,9 @@ This code is generated from the openapi-generator based on [Xero OpenAPI 3.0 Spe
 Version Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
 * accounting
 * fixed asset
+* identity
 
 Coming soon
-* identity
 * bank feeds 
 * projects
 * payroll
