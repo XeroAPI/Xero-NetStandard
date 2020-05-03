@@ -26,44 +26,44 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.Asset
 {
     /// <summary>
-    /// ResourceValidationErrorsElement
+    /// Error
     /// </summary>
     [DataContract]
-    public partial class ResourceValidationErrorsElement :  IEquatable<ResourceValidationErrorsElement>, IValidatableObject
+    public partial class Error :  IEquatable<Error>, IValidatableObject
     {
         
         /// <summary>
-        /// The field name of the erroneous field
+        /// Array of elements of resource validation errors
         /// </summary>
-        /// <value>The field name of the erroneous field</value>
-        [DataMember(Name="resourceName", EmitDefaultValue=false)]
-        public string ResourceName { get; set; }
+        /// <value>Array of elements of resource validation errors</value>
+        [DataMember(Name="resourceValidationErrors", EmitDefaultValue=false)]
+        public List<ResourceValidationErrorsElement> ResourceValidationErrors { get; set; }
 
         /// <summary>
-        /// Explaination of the resource validation error
+        /// Array of elements of field validation errors
         /// </summary>
-        /// <value>Explaination of the resource validation error</value>
-        [DataMember(Name="localisedMessage", EmitDefaultValue=false)]
-        public string LocalisedMessage { get; set; }
+        /// <value>Array of elements of field validation errors</value>
+        [DataMember(Name="fieldValidationErrors", EmitDefaultValue=false)]
+        public List<FieldValidationErrorsElement> FieldValidationErrors { get; set; }
 
         /// <summary>
-        /// Internal type of the resource error message
+        /// The internal type of error, not accessible externally
         /// </summary>
-        /// <value>Internal type of the resource error message</value>
+        /// <value>The internal type of error, not accessible externally</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public string Type { get; set; }
 
         /// <summary>
-        /// Title of the resource validation error
+        /// Title of the error
         /// </summary>
-        /// <value>Title of the resource validation error</value>
+        /// <value>Title of the error</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; set; }
 
         /// <summary>
-        /// Detail of the resource validation error
+        /// Detail of the error
         /// </summary>
-        /// <value>Detail of the resource validation error</value>
+        /// <value>Detail of the error</value>
         [DataMember(Name="detail", EmitDefaultValue=false)]
         public string Detail { get; set; }
 
@@ -74,9 +74,9 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ResourceValidationErrorsElement {\n");
-            sb.Append("  ResourceName: ").Append(ResourceName).Append("\n");
-            sb.Append("  LocalisedMessage: ").Append(LocalisedMessage).Append("\n");
+            sb.Append("class Error {\n");
+            sb.Append("  ResourceValidationErrors: ").Append(ResourceValidationErrors).Append("\n");
+            sb.Append("  FieldValidationErrors: ").Append(FieldValidationErrors).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Detail: ").Append(Detail).Append("\n");
@@ -100,29 +100,31 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ResourceValidationErrorsElement);
+            return this.Equals(input as Error);
         }
 
         /// <summary>
-        /// Returns true if ResourceValidationErrorsElement instances are equal
+        /// Returns true if Error instances are equal
         /// </summary>
-        /// <param name="input">Instance of ResourceValidationErrorsElement to be compared</param>
+        /// <param name="input">Instance of Error to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResourceValidationErrorsElement input)
+        public bool Equals(Error input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.ResourceName == input.ResourceName ||
-                    (this.ResourceName != null &&
-                    this.ResourceName.Equals(input.ResourceName))
+                    this.ResourceValidationErrors == input.ResourceValidationErrors ||
+                    this.ResourceValidationErrors != null &&
+                    input.ResourceValidationErrors != null &&
+                    this.ResourceValidationErrors.SequenceEqual(input.ResourceValidationErrors)
                 ) && 
                 (
-                    this.LocalisedMessage == input.LocalisedMessage ||
-                    (this.LocalisedMessage != null &&
-                    this.LocalisedMessage.Equals(input.LocalisedMessage))
+                    this.FieldValidationErrors == input.FieldValidationErrors ||
+                    this.FieldValidationErrors != null &&
+                    input.FieldValidationErrors != null &&
+                    this.FieldValidationErrors.SequenceEqual(input.FieldValidationErrors)
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -150,10 +152,10 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ResourceName != null)
-                    hashCode = hashCode * 59 + this.ResourceName.GetHashCode();
-                if (this.LocalisedMessage != null)
-                    hashCode = hashCode * 59 + this.LocalisedMessage.GetHashCode();
+                if (this.ResourceValidationErrors != null)
+                    hashCode = hashCode * 59 + this.ResourceValidationErrors.GetHashCode();
+                if (this.FieldValidationErrors != null)
+                    hashCode = hashCode * 59 + this.FieldValidationErrors.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Title != null)
