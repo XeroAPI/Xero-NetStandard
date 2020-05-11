@@ -2,19 +2,21 @@
 
 This code is generated from the openapi-generator based on [Xero OpenAPI 3.0 Specification](https://github.com/XeroAPI/Xero-OpenAPI)
 
-[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v2.1.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
+[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v2.2.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
 
 # Current release of SDK with OAuth2 support
 Version Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
 * accounting
 * fixed asset
 * identity
+* payroll AU
 
 Coming soon
-* bank feeds 
+* bank feeds
 * projects
-* payroll
-* files 
+* payroll UK
+* payroll NZ
+* files
 * xero hq
 
 ## How to handle OAuth 2.0 authentication & authorization?
@@ -71,7 +73,7 @@ To get started you will just need two things to make calls to the Accounting Api
 * accessToken
 
 
-Build the login link (a .NET Core Mvc example):
+### Build the login link (a .NET Core Mvc example):
 ```csharp
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
@@ -117,7 +119,7 @@ Build the login link (a .NET Core Mvc example):
     }
 ```
 
-From here the user will be redirected to login, authorise access and get redirected back
+### From here the user will be redirected to login, authorise access and get redirected back
 
 On the way back you will get a parameter with code and state
 * code
@@ -148,7 +150,7 @@ On the way back you will get a parameter with code and state
 	}
 ```
 
-To refresh your token. Just call the refresh 
+### To refresh your token. Just call the refresh 
 ```csharp
 	xeroClient.RefreshTokenAsync(xeroToken); //use the latest token you have
 ```
@@ -165,15 +167,16 @@ To refresh your token. Just call the refresh
 	}
 ```
 
-To setup the main API object see the snippet below
+To setup the main API object see the snippet below:
 
-Get All invoices: 
+### Accounting APIs:
+- Get All invoices  
 ```csharp
 	var AccountingApi = new AccountingApi();
 	var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId);
 ```
 
-Get invoices from the last 7 days: 
+- Get invoices from the last 7 days: 
 ```csharp
       var AccountingApi = new AccountingApi();
 
@@ -184,7 +187,7 @@ Get invoices from the last 7 days:
       var response = await AccountingApi.GetInvoicesAsync(accessToken, xeroTenantId, null, invoicesFilter);
 ```
 
-Create an invoice: 
+- Create an invoice (Accounting APIs): 
 ```csharp
       var contact = new Contact();
       contact.Name = "John Smith";
@@ -218,14 +221,15 @@ Create an invoice:
       var response = await AccountingApi.CreateInvoicesAsync(accessToken, xeroTenantId, invoices);
 ```
 
-Get All Fixed Assets:
+### Fixed Asset APIs
+- Get All Fixed Assets:
 ```csharp
       var AssetApi = new AssetApi();
       var response = await AssetApi.GetAssetsAsync(accessToken, xeroTenantId, AssetStatusQueryParam.DRAFT);
 ```
 
 
-Create a fixed asset:
+- Create a fixed asset:
 ```csharp
       var asset = new Asset() {
         AssetName = "Office Computer",
@@ -234,6 +238,56 @@ Create a fixed asset:
 
       var AssetApi = new AssetApi();
       var response = await AssetApi.CreateAssetAsync(accessToken, xeroTenantId, asset);
+```
+
+### Identity APIs:
+- Get Xero API Tenant/Org connections:
+```csharp
+      var IdentityApi = new IdentityApi();
+      var response = await IdentityApi.GetConnectionsAsync(accessToken);
+```
+
+- Delete a Xero API Tenant/Org connection:
+```csharp
+      Guid connectionIdGuid = Guid.Parse(connectionId);
+
+      var IdentityApi = new IdentityApi();
+      await IdentityApi.DeleteConnectionAsync(accessToken, connectionIdGuid);
+```
+
+### Payroll AU APIs: 
+- Get Employees: 
+```csharp
+      var PayrollAUApi = new PayrollAUApi();
+      var response = await PayrollAUApi.GetEmployeesAsync(accessToken, xeroTenantId);
+
+      var employees = response._Employees;
+```
+
+- Create a Employee: 
+```csharp
+      DateTime dob = DateTime.Today.AddYears(-20);
+
+      HomeAddress homeAddress = new HomeAddress() {
+        AddressLine1 = "6 MeatMe Street",
+        AddressLine2 = " ",
+        Region = State.VIC,
+        City = "Long Island",
+        PostalCode = "0000", 
+        Country = "New York"
+      };
+
+      Employee employee = new Employee() {
+        FirstName = "Bob",
+        LastName = "Belcher",
+        DateOfBirth = dob,
+        HomeAddress = homeAddress
+      };
+
+      var employees = new List<Employee>() { employee };
+
+      var PayrollAUApi = new PayrollAUApi();
+      var response = await PayrollAUApi.CreateEmployeeAsync(accessToken, xeroTenantId, employees);
 ```
 
 ## TLS 1.0 deprecation
