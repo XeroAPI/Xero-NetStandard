@@ -26,82 +26,12 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.PayrollAu
 {
     /// <summary>
-    /// Payslip
+    /// PayslipLines
     /// </summary>
     [DataContract]
-    public partial class Payslip :  IEquatable<Payslip>, IValidatableObject
+    public partial class PayslipLines :  IEquatable<PayslipLines>, IValidatableObject
     {
         
-        /// <summary>
-        /// The Xero identifier for an employee
-        /// </summary>
-        /// <value>The Xero identifier for an employee</value>
-        [DataMember(Name="EmployeeID", EmitDefaultValue=false)]
-        public Guid? EmployeeID { get; set; }
-
-        /// <summary>
-        /// Xero identifier for the payslip
-        /// </summary>
-        /// <value>Xero identifier for the payslip</value>
-        [DataMember(Name="PayslipID", EmitDefaultValue=false)]
-        public Guid? PayslipID { get; set; }
-
-        /// <summary>
-        /// First name of employee
-        /// </summary>
-        /// <value>First name of employee</value>
-        [DataMember(Name="FirstName", EmitDefaultValue=false)]
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// Last name of employee
-        /// </summary>
-        /// <value>Last name of employee</value>
-        [DataMember(Name="LastName", EmitDefaultValue=false)]
-        public string LastName { get; set; }
-
-        /// <summary>
-        /// The Wages for the Payslip
-        /// </summary>
-        /// <value>The Wages for the Payslip</value>
-        [DataMember(Name="Wages", EmitDefaultValue=false)]
-        public float? Wages { get; set; }
-
-        /// <summary>
-        /// The Deductions for the Payslip
-        /// </summary>
-        /// <value>The Deductions for the Payslip</value>
-        [DataMember(Name="Deductions", EmitDefaultValue=false)]
-        public float? Deductions { get; set; }
-
-        /// <summary>
-        /// The Tax for the Payslip
-        /// </summary>
-        /// <value>The Tax for the Payslip</value>
-        [DataMember(Name="Tax", EmitDefaultValue=false)]
-        public float? Tax { get; set; }
-
-        /// <summary>
-        /// The Super for the Payslip
-        /// </summary>
-        /// <value>The Super for the Payslip</value>
-        [DataMember(Name="Super", EmitDefaultValue=false)]
-        public float? Super { get; set; }
-
-        /// <summary>
-        /// The Reimbursements for the Payslip
-        /// </summary>
-        /// <value>The Reimbursements for the Payslip</value>
-        [DataMember(Name="Reimbursements", EmitDefaultValue=false)]
-        public float? Reimbursements { get; set; }
-
-        /// <summary>
-        /// The NetPay for the Payslip
-        /// </summary>
-        /// <value>The NetPay for the Payslip</value>
-        [DataMember(Name="NetPay", EmitDefaultValue=false)]
-        public float? NetPay { get; set; }
-
         /// <summary>
         /// Gets or Sets EarningsLines
         /// </summary>
@@ -151,30 +81,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public List<TaxLine> TaxLines { get; set; }
 
         /// <summary>
-        /// Last modified timestamp
-        /// </summary>
-        /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
-        public DateTime? UpdatedDateUTC { get; private set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Payslip {\n");
-            sb.Append("  EmployeeID: ").Append(EmployeeID).Append("\n");
-            sb.Append("  PayslipID: ").Append(PayslipID).Append("\n");
-            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
-            sb.Append("  LastName: ").Append(LastName).Append("\n");
-            sb.Append("  Wages: ").Append(Wages).Append("\n");
-            sb.Append("  Deductions: ").Append(Deductions).Append("\n");
-            sb.Append("  Tax: ").Append(Tax).Append("\n");
-            sb.Append("  Super: ").Append(Super).Append("\n");
-            sb.Append("  Reimbursements: ").Append(Reimbursements).Append("\n");
-            sb.Append("  NetPay: ").Append(NetPay).Append("\n");
+            sb.Append("class PayslipLines {\n");
             sb.Append("  EarningsLines: ").Append(EarningsLines).Append("\n");
             sb.Append("  LeaveEarningsLines: ").Append(LeaveEarningsLines).Append("\n");
             sb.Append("  TimesheetEarningsLines: ").Append(TimesheetEarningsLines).Append("\n");
@@ -183,7 +96,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  ReimbursementLines: ").Append(ReimbursementLines).Append("\n");
             sb.Append("  SuperannuationLines: ").Append(SuperannuationLines).Append("\n");
             sb.Append("  TaxLines: ").Append(TaxLines).Append("\n");
-            sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -204,64 +116,20 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Payslip);
+            return this.Equals(input as PayslipLines);
         }
 
         /// <summary>
-        /// Returns true if Payslip instances are equal
+        /// Returns true if PayslipLines instances are equal
         /// </summary>
-        /// <param name="input">Instance of Payslip to be compared</param>
+        /// <param name="input">Instance of PayslipLines to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Payslip input)
+        public bool Equals(PayslipLines input)
         {
             if (input == null)
                 return false;
 
             return 
-                (
-                    this.EmployeeID == input.EmployeeID ||
-                    (this.EmployeeID != null &&
-                    this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
-                (
-                    this.PayslipID == input.PayslipID ||
-                    (this.PayslipID != null &&
-                    this.PayslipID.Equals(input.PayslipID))
-                ) && 
-                (
-                    this.FirstName == input.FirstName ||
-                    (this.FirstName != null &&
-                    this.FirstName.Equals(input.FirstName))
-                ) && 
-                (
-                    this.LastName == input.LastName ||
-                    (this.LastName != null &&
-                    this.LastName.Equals(input.LastName))
-                ) && 
-                (
-                    this.Wages == input.Wages ||
-                    this.Wages.Equals(input.Wages)
-                ) && 
-                (
-                    this.Deductions == input.Deductions ||
-                    this.Deductions.Equals(input.Deductions)
-                ) && 
-                (
-                    this.Tax == input.Tax ||
-                    this.Tax.Equals(input.Tax)
-                ) && 
-                (
-                    this.Super == input.Super ||
-                    this.Super.Equals(input.Super)
-                ) && 
-                (
-                    this.Reimbursements == input.Reimbursements ||
-                    this.Reimbursements.Equals(input.Reimbursements)
-                ) && 
-                (
-                    this.NetPay == input.NetPay ||
-                    this.NetPay.Equals(input.NetPay)
-                ) && 
                 (
                     this.EarningsLines == input.EarningsLines ||
                     this.EarningsLines != null &&
@@ -309,11 +177,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.TaxLines != null &&
                     input.TaxLines != null &&
                     this.TaxLines.SequenceEqual(input.TaxLines)
-                ) && 
-                (
-                    this.UpdatedDateUTC == input.UpdatedDateUTC ||
-                    (this.UpdatedDateUTC != null &&
-                    this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 );
         }
 
@@ -326,20 +189,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EmployeeID != null)
-                    hashCode = hashCode * 59 + this.EmployeeID.GetHashCode();
-                if (this.PayslipID != null)
-                    hashCode = hashCode * 59 + this.PayslipID.GetHashCode();
-                if (this.FirstName != null)
-                    hashCode = hashCode * 59 + this.FirstName.GetHashCode();
-                if (this.LastName != null)
-                    hashCode = hashCode * 59 + this.LastName.GetHashCode();
-                hashCode = hashCode * 59 + this.Wages.GetHashCode();
-                hashCode = hashCode * 59 + this.Deductions.GetHashCode();
-                hashCode = hashCode * 59 + this.Tax.GetHashCode();
-                hashCode = hashCode * 59 + this.Super.GetHashCode();
-                hashCode = hashCode * 59 + this.Reimbursements.GetHashCode();
-                hashCode = hashCode * 59 + this.NetPay.GetHashCode();
                 if (this.EarningsLines != null)
                     hashCode = hashCode * 59 + this.EarningsLines.GetHashCode();
                 if (this.LeaveEarningsLines != null)
@@ -356,8 +205,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.SuperannuationLines.GetHashCode();
                 if (this.TaxLines != null)
                     hashCode = hashCode * 59 + this.TaxLines.GetHashCode();
-                if (this.UpdatedDateUTC != null)
-                    hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 return hashCode;
             }
         }
