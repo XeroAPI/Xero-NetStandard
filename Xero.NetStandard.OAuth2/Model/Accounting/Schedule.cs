@@ -85,6 +85,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
 
             /// <summary>
             /// Enum DAYSAFTERINVOICEMONTH for value: DAYSAFTERINVOICEMONTH
+            /// </summary>
             [EnumMember(Value = "DAYSAFTERINVOICEMONTH")]
             DAYSAFTERINVOICEMONTH = 4,
 
