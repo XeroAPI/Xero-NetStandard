@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         /// <value>The number of units the employee is entitled to each year</value>
         [DataMember(Name="NormalEntitlement", EmitDefaultValue=false)]
-        public int? NormalEntitlement { get; set; }
+        public decimal? NormalEntitlement { get; set; }
 
         /// <summary>
         /// Enter an amount here if your organisation pays an additional percentage on top of ordinary earnings when your employees take leave (typically 17.5%)

@@ -120,7 +120,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         /// <value>Indicates that this earnings rate should accrue leave. Only applicable if RateType is MULTIPLE</value>
         [DataMember(Name="AccrueLeave", EmitDefaultValue=false)]
-        public decimal? AccrueLeave { get; set; }
+        public bool? AccrueLeave { get; set; }
 
         /// <summary>
         /// Optional Amount for FIXEDAMOUNT RateType EarningsRate
