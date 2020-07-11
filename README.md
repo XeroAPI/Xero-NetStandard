@@ -186,7 +186,7 @@ On the way back you will get a parameter with code and state
           xconfig.ClientId = "yourClientId";
           xconfig.CallbackUri = new Uri("https://localhost:5001"); //default for standard webapi template
           xconfig.Scope = "openid profile email offline_access files accounting.transactions accounting.contacts";
-	  xconfig.Steate = "YOUR_STATE"
+	  xconfig.State = "YOUR_STATE"
 
           var client = new XeroClient(xconfig, httpClientFactory);
 
