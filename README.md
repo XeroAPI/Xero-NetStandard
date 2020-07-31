@@ -2,6 +2,10 @@ Xero-NetStandard
 ========
 [![Build status](https://ci.appveyor.com/api/projects/status/2251yfjmkmkvb1v8/branch/master?svg=true)](https://ci.appveyor.com/project/XeroAPI/xero-netstandard/branch/master)
 
+Xero-NetStandard maintenance for OAuth 1.0a
+-----------------------
+We will continue to periodically review pull requests to fix small issues and watch for secruity issues until December 2020.  Maintenance **does not** include adding new features, oauth 2 support or large refactoring of the code base. 
+
 A wrapper of the Xero API in the .NetStandard 2.0 framework. Supports Accounting, Payroll AU/US, and Files
 
 * [Installation](#installation)
