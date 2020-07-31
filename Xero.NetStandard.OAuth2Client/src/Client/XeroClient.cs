@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Xero.NetStandard.OAuth2.Models;
-using IdentityModel.Client;
 using System.Threading.Tasks;
 using System.Net.Http;
-using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
+using Xero.NetStandard.OAuth2.Models;
+using IdentityModel.Client;
+using Newtonsoft.Json;
 using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Token;
 
@@ -38,20 +39,67 @@ namespace Xero.NetStandard.OAuth2.Client
         }
 
         /// <summary>
-        /// Builds a XeroLogin URL
+        /// Builds a XeroLogin URL for Code Flow
         /// </summary>
         /// <returns>valid URI for login</returns>
         public string BuildLoginUri()
         {
             var url = _xeroAuthorizeUri.CreateAuthorizeUrl(
                 clientId: xeroConfiguration.ClientId,
-                responseType: "code", //hardcoded authorisation code for now.
+                responseType: "code",
                 redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
                 state: xeroConfiguration.State,
                 scope: xeroConfiguration.Scope
             );
             return url;
         }
+
+        /// <summary>
+        /// Builds a XeroLogin URL for PKCE flow with codeVerifier input
+        /// </summary>
+        /// <returns>valid URI for login</returns>
+        public string BuildLoginUriPkce(string codeVerifier)
+        {
+            string codeChallenge = null;
+
+            /// Validating the code verifiier, read more at https://developer.xero.com/documentation/oauth2/pkce-flow
+            if (codeVerifier.Length < 43 || codeVerifier.Length > 128) {
+                throw new Exception("The code verifier must be between 43 and 128 characters.");
+            } else {
+                SHA256 sha256 = SHA256Managed.Create();
+
+                var codeVerifierTextBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(codeVerifier);
+
+                byte[] sha256Hash = sha256.ComputeHash(codeVerifierTextBytes);
+
+                codeChallenge = System.Convert.ToBase64String(sha256Hash)
+                    .Replace("=", "")
+                    .Replace("/", "_")
+                    .Replace("+", "-");
+            }
+
+            var url = xeroAuthorizeUri.CreateAuthorizeUrl(
+                clientId: xeroConfiguration.ClientId,
+                responseType: "code",
+                redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
+                state: xeroConfiguration.State,
+                scope: xeroConfiguration.Scope,
+                codeChallenge: codeChallenge,
+                codeChallengeMethod: "S256"
+            );
+
+            return url;
+        }
+        /// <summary>
+        /// Constructor, pass in IHttpFactory to generate the client
+        /// </summary>
+        /// <param name="XeroConfig"></param>
+        /// <param name="httpClientFactory"></param>
+        public XeroClient(XeroConfiguration XeroConfig, IHttpClientFactory httpClientFactory)
+        {
+            this.xeroConfiguration = XeroConfig;
+            this.xeroAuthorizeUri = new RequestUrl("https://login.xero.com/identity/connect/authorize");
+            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
 
         /// <summary>
         /// Requests accesstoken and returns it inside the IXeroToken
@@ -72,7 +120,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 Parameters =
                     {
                         { "scope", xeroConfiguration.Scope}
-                    }
+                    },
             });
 
             if (response.IsError)
@@ -88,6 +136,42 @@ namespace Xero.NetStandard.OAuth2.Client
                 ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
             };
 
+        }
+        /// <summary>
+        /// Requests accesstoken and returns it inside the IXeroToken
+        /// Check state before calling this method to prevent CRSF
+        /// </summary>
+        /// <param name="code">code from callback</param>
+        /// <param name="codeVerifier">codeVerifier used for initial request</param>
+        /// <param name="xeroToken"></param>
+        /// <returns></returns>
+        public async Task<IXeroToken> RequestAccessTokenPkceAsync(string code, string codeVerifier)
+        {
+
+            var client = httpClientFactory.CreateClient("Xero");
+            var response = await client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
+            {
+                Address = "https://identity.xero.com/connect/token",
+                GrantType = "code",
+                Code = code,
+                ClientId = xeroConfiguration.ClientId,
+                ClientSecret = xeroConfiguration.ClientSecret,
+                RedirectUri = xeroConfiguration.CallbackUri.AbsoluteUri,
+                Parameters =
+                    {
+                        { "scope", xeroConfiguration.Scope}
+                    },
+                CodeVerifier = codeVerifier
+            });
+
+            if (response.IsError) { throw new Exception(response.Error); }
+            return new XeroOAuth2Token()
+            {
+                AccessToken = response.AccessToken,
+                RefreshToken = response.RefreshToken,
+                IdToken = response.IdentityToken,
+                ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
+            };
 
         }
         /// <summary>
