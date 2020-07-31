@@ -72,6 +72,7 @@ To get started you will just need two things to make calls to the Accounting Api
 * xero-tenant-id
 * accessToken
 
+** Note: starting from Xero.NetStandard.OAuth2Client v1.0.0, we have dropped the dependency on IHttpClientFatory. Plase refer to older IHttpClientFactory implementation example for ![dotnet core](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-dotnet-core/tree/ihttpclientfactory-example) and ![dotnet framework](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-app-dotnet-framework/tree/ihttpclientfactory-example). 
 
 ### Build the login link - the code flow (a .NET Core Mvc example):
 ```csharp
@@ -80,7 +81,6 @@ To get started you will just need two things to make calls to the Accounting Api
     using Xero.NetStandard.OAuth2.Client;
     using Xero.NetStandard.OAuth2.Config;
     using Xero.NetStandard.OAuth2.Token;
-    using Microsoft.Extensions.Options;
     using System;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -94,13 +94,11 @@ To get started you will just need two things to make calls to the Accounting Api
       {
         private readonly ILogger<HomeController> _logger;
         private readonly IOptions<XeroConfiguration> XeroConfig;
-        private readonly IHttpClientFactory httpClientFactory;
 
-        public XeroOauth2Controller(IOptions<XeroConfiguration> config, IHttpClientFactory httpClientFactory, ILogger<HomeController> logger)
+        public XeroOauth2Controller(IOptions<XeroConfiguration> config, ILogger<HomeController> logger)
         {
           _logger = logger;
           this.XeroConfig = config;
-          this.httpClientFactory = httpClientFactory;
         }
 
         public IActionResult Index()
@@ -111,7 +109,7 @@ To get started you will just need two things to make calls to the Accounting Api
           xconfig.CallbackUri = new Uri("https://localhost:5001"); //default for standard webapi template
           xconfig.Scope = "openid profile email offline_access files accounting.transactions accounting.contacts";
 
-          var client = new XeroClient(xconfig, httpClientFactory);
+          var client = new XeroClient(xconfig);
 
           return Redirect(client.BuildLoginUri());
         }
@@ -246,7 +244,7 @@ On the way back you will get a parameter with code and state
 	[HttpGet]
 	public async Task<ActionResult> Index(string code, string state)
 	{
-		var client = new XeroClient(config.Value, httpClientFactory);
+		var client = new XeroClient(config.Value);
 		var xeroToken = (XeroOAuth2Token)await client.RequestXeroTokenAsync(code);
 		TokenUtilities.StoreToken(Environment.MachineName, xeroToken);
 		return RedirectToAction("Invoices", "Accounting");
