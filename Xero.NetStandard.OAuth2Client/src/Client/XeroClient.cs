@@ -78,7 +78,7 @@ namespace Xero.NetStandard.OAuth2.Client
                     .Replace("+", "-");
             }
 
-            var url = xeroAuthorizeUri.CreateAuthorizeUrl(
+            var url = _xeroAuthorizeUri.CreateAuthorizeUrl(
                 clientId: xeroConfiguration.ClientId,
                 responseType: "code",
                 redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
@@ -90,90 +90,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             return url;
         }
-        /// <summary>
-        /// Constructor, pass in IHttpFactory to generate the client
-        /// </summary>
-        /// <param name="XeroConfig"></param>
-        /// <param name="httpClientFactory"></param>
-        public XeroClient(XeroConfiguration XeroConfig, IHttpClientFactory httpClientFactory)
-        {
-            this.xeroConfiguration = XeroConfig;
-            this.xeroAuthorizeUri = new RequestUrl("https://login.xero.com/identity/connect/authorize");
-            this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
 
-        /// <summary>
-        /// Requests accesstoken and returns it inside the IXeroToken
-        /// Check state before calling this method to prevent CRSF
-        /// </summary>
-        /// <param name="code">code from callback</param>
-        /// <returns></returns>
-        public async Task<IXeroToken> RequestAccessTokenAsync(string code)
-        {
-            var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
-            {
-                Address = "https://identity.xero.com/connect/token",
-                GrantType = "code",
-                Code = code,
-                ClientId = xeroConfiguration.ClientId,
-                ClientSecret = xeroConfiguration.ClientSecret,
-                RedirectUri = xeroConfiguration.CallbackUri.AbsoluteUri,
-                Parameters =
-                    {
-                        { "scope", xeroConfiguration.Scope}
-                    },
-            });
-
-            if (response.IsError)
-            {
-                throw new Exception(response.Error);
-            }
-
-            return new XeroOAuth2Token
-            {
-                AccessToken = response.AccessToken,
-                RefreshToken = response.RefreshToken,
-                IdToken = response.IdentityToken,
-                ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
-            };
-
-        }
-        /// <summary>
-        /// Requests accesstoken and returns it inside the IXeroToken
-        /// Check state before calling this method to prevent CRSF
-        /// </summary>
-        /// <param name="code">code from callback</param>
-        /// <param name="codeVerifier">codeVerifier used for initial request</param>
-        /// <param name="xeroToken"></param>
-        /// <returns></returns>
-        public async Task<IXeroToken> RequestAccessTokenPkceAsync(string code, string codeVerifier)
-        {
-
-            var client = httpClientFactory.CreateClient("Xero");
-            var response = await client.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
-            {
-                Address = "https://identity.xero.com/connect/token",
-                GrantType = "code",
-                Code = code,
-                ClientId = xeroConfiguration.ClientId,
-                ClientSecret = xeroConfiguration.ClientSecret,
-                RedirectUri = xeroConfiguration.CallbackUri.AbsoluteUri,
-                Parameters =
-                    {
-                        { "scope", xeroConfiguration.Scope}
-                    },
-                CodeVerifier = codeVerifier
-            });
-
-            if (response.IsError) { throw new Exception(response.Error); }
-            return new XeroOAuth2Token()
-            {
-                AccessToken = response.AccessToken,
-                RefreshToken = response.RefreshToken,
-                IdToken = response.IdentityToken,
-                ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
-            };
-
-        }
         /// <summary>
         /// Refreshes your current token
         /// </summary>
@@ -206,6 +123,7 @@ namespace Xero.NetStandard.OAuth2.Client
             return xeroToken;
 
         }
+
         /// <summary>
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
@@ -243,6 +161,48 @@ namespace Xero.NetStandard.OAuth2.Client
             return xeroToken;
 
         }
+
+        /// <summary>
+        /// Requests accesstoken and returns it inside the IXeroToken
+        /// Check state before calling this method to prevent CRSF
+        /// </summary>
+        /// <param name="code">code from callback</param>
+        /// <param name="codeVerifier">codeVerifier used for initial request</param>
+        /// <param name="xeroToken"></param>
+        /// <returns></returns>
+        public async Task<IXeroToken> RequestAccessTokenPkceAsync(string code, string codeVerifier)
+        {
+
+            var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
+            {
+                Address = "https://identity.xero.com/connect/token",
+                GrantType = "code",
+                Code = code,
+                ClientId = xeroConfiguration.ClientId,
+                ClientSecret = xeroConfiguration.ClientSecret,
+                RedirectUri = xeroConfiguration.CallbackUri.AbsoluteUri,
+                Parameters =
+                    {
+                        { "scope", xeroConfiguration.Scope}
+                    },
+                CodeVerifier = codeVerifier
+            });
+
+            if (response.IsError)
+            {
+                throw new Exception(response.Error);
+            }
+            
+            return new XeroOAuth2Token()
+            {
+                AccessToken = response.AccessToken,
+                RefreshToken = response.RefreshToken,
+                IdToken = response.IdentityToken,
+                ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
+            };
+
+        }
+
         /// <summary>
         /// Convenience method to refresh token for you if it is expired
         /// </summary>
