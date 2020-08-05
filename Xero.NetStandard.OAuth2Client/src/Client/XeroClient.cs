@@ -129,7 +129,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="code">Code returned from callback</param>
         /// <returns></returns>
-        public async Task<IXeroToken> RequestXeroTokenAsync(string code)
+        public async Task<IXeroToken> RequestAccessTokenAsync(string code)
         {
             var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
