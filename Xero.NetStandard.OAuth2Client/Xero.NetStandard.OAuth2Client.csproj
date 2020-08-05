@@ -12,6 +12,6 @@
     <PackageTags>xero;api;sdk;oauth2;oauth2.0</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="IdentityModel" Version="3.10.10" />
+    <PackageReference Include="IdentityModel" Version="4.0.0" />
   </ItemGroup>
 </Project>
