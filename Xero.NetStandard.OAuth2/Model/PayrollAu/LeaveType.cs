@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         /// <value>Enter an amount here if your organisation pays an additional percentage on top of ordinary earnings when your employees take leave (typically 17.5%)</value>
         [DataMember(Name="LeaveLoadingRate", EmitDefaultValue=false)]
-        public int? LeaveLoadingRate { get; set; }
+        public double? LeaveLoadingRate { get; set; }
 
         /// <summary>
         /// Last modified timestamp
