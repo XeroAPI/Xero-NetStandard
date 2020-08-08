@@ -2,7 +2,7 @@
 
 This code is generated from the openapi-generator based on [Xero OpenAPI 3.0 Specification](https://github.com/XeroAPI/Xero-OpenAPI)
 
-[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v3.1.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
+[![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2.v3.2.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2/)
 
 # Current release of SDK with OAuth2 support
 Version Xero-NetStandard SDK only supports OAuth2 authentication and the following API sets.
