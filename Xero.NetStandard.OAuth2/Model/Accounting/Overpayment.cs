@@ -119,6 +119,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The date the overpayment is created YYYY-MM-DD</value>
         [DataMember(Name="Date", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>

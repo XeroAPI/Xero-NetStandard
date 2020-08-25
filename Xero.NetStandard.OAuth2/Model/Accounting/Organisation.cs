@@ -675,6 +675,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Shown if set. See lock dates</value>
         [DataMember(Name="PeriodLockDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PeriodLockDate { get; set; }
 
         /// <summary>
@@ -682,6 +683,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Shown if set. See lock dates</value>
         [DataMember(Name="EndOfYearLockDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndOfYearLockDate { get; set; }
 
         /// <summary>

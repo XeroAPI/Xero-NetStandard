@@ -93,6 +93,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date quote was issued – YYYY-MM-DD. If the Date element is not specified it will default to the current date based on the timezone setting of the organisation</value>
         [DataMember(Name="Date", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>
@@ -107,6 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date the quote expires – YYYY-MM-DD.</value>
         [DataMember(Name="ExpiryDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? ExpiryDate { get; set; }
 
         /// <summary>

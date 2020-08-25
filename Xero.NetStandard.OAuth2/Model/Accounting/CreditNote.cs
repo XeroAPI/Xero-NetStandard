@@ -131,6 +131,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The date the credit note is issued YYYY-MM-DD. If the Date element is not specified then it will default to the current date based on the timezone setting of the organisation</value>
         [DataMember(Name="Date", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>
@@ -173,6 +174,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date when credit note was fully paid(UTC format)</value>
         [DataMember(Name="FullyPaidOnDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? FullyPaidOnDate { get; set; }
 
         /// <summary>

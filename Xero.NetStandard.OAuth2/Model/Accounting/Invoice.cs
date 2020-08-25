@@ -174,6 +174,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date invoice was issued – YYYY-MM-DD. If the Date element is not specified it will default to the current date based on the timezone setting of the organisation</value>
         [DataMember(Name="Date", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>
@@ -181,6 +182,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date invoice is due – YYYY-MM-DD</value>
         [DataMember(Name="DueDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? DueDate { get; set; }
 
         /// <summary>
@@ -230,6 +232,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Shown on sales invoices (Accounts Receivable) when this has been set</value>
         [DataMember(Name="ExpectedPaymentDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? ExpectedPaymentDate { get; set; }
 
         /// <summary>
@@ -237,6 +240,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Shown on bills (Accounts Payable) when this has been set</value>
         [DataMember(Name="PlannedPaymentDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PlannedPaymentDate { get; set; }
 
         /// <summary>
@@ -335,6 +339,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The date the invoice was fully paid. Only returned on fully paid invoices</value>
         [DataMember(Name="FullyPaidOnDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? FullyPaidOnDate { get; private set; }
 
         /// <summary>

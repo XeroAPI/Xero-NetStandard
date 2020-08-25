@@ -178,6 +178,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06</value>
         [DataMember(Name="Date", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>

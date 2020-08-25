@@ -129,6 +129,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date the first invoice of the current version of the repeating schedule was generated (changes when repeating invoice is edited)</value>
         [DataMember(Name="StartDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
@@ -136,6 +137,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The calendar date of the next invoice in the schedule to be generated</value>
         [DataMember(Name="NextScheduledDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? NextScheduledDate { get; set; }
 
         /// <summary>
@@ -143,6 +145,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Invoice end date – only returned if the template has an end date set</value>
         [DataMember(Name="EndDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>

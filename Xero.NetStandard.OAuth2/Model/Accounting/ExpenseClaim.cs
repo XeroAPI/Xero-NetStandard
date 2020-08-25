@@ -136,6 +136,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The date when the expense claim is due to be paid YYYY-MM-DD</value>
         [DataMember(Name="PaymentDueDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PaymentDueDate { get; private set; }
 
         /// <summary>
@@ -143,6 +144,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The date the expense claim will be reported in Xero YYYY-MM-DD</value>
         [DataMember(Name="ReportingDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? ReportingDate { get; private set; }
 
         /// <summary>

@@ -209,6 +209,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Date the journal was posted</value>
         [DataMember(Name="JournalDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? JournalDate { get; set; }
 
         /// <summary>
