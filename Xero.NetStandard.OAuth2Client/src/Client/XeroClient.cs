@@ -261,5 +261,32 @@ namespace Xero.NetStandard.OAuth2.Client
                 throw new HttpRequestException(await result.Content.ReadAsStringAsync());
             }
         }
+
+        /// <summary>
+        /// Revokes the current token - immediate disconnect all orgs and stops the user authorisation
+        /// </summary>
+        /// <param name="xeroToken"></param>
+        /// <returns></returns>
+        public async Task RevokeAccessTokenAsync(IXeroToken xeroToken)
+        {
+            if (xeroToken == null)
+            {
+                throw new ArgumentNullException("xeroToken");
+            }
+
+            var response = await _httpClient.RevokeTokenAsync(new TokenRevocationRequest {
+                Address = "https://identity.xero.com/connect/revocation",
+                ClientId = xeroConfiguration.ClientId,
+                ClientSecret = xeroConfiguration.ClientSecret,
+                Token = xeroToken.AccessToken
+            });
+
+            if (response.IsError)
+            {
+                throw new Exception(response.Error);
+            }
+
+            return;
+        }
     }
 }
