@@ -31,7 +31,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.3.0";
+        public const string Version = "3.4.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -96,7 +96,7 @@ namespace Xero.NetStandard.OAuth2.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            UserAgent = "xero-netstandard-3.3.0";
+            UserAgent = "xero-netstandard-3.4.0";
             BasePath = "https://api.xero.com/api.xro/2.0";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -329,7 +329,7 @@ namespace Xero.NetStandard.OAuth2.Client
             String report = "C# SDK (Xero.NetStandard.OAuth2) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 2.2.14\n";
-            report += "    SDK Package Version: 3.3.0\n";
+            report += "    SDK Package Version: 3.4.0\n";
 
             return report;
         }
