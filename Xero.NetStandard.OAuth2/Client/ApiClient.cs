@@ -345,7 +345,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 }
                 else
                 {
-                    request.AddBody(options.Data);
+                    request.AddJsonBody(options.Data);
                 }            
             }
 
@@ -416,15 +416,27 @@ namespace Xero.NetStandard.OAuth2.Client
             var existingDeserializer = req.JsonSerializer as IDeserializer;
             if (existingDeserializer != null)
             {
-                client.AddHandler(existingDeserializer, "application/json", "text/json", "text/x-json", "text/javascript", "*+json", "*");
+                client.AddHandler("application/json", () => existingDeserializer);
+                client.AddHandler("text/json", () => existingDeserializer);
+                client.AddHandler("text/x-json", () => existingDeserializer);
+                client.AddHandler("text/javascript", () => existingDeserializer);
+                client.AddHandler("*+json", () => existingDeserializer);
+                client.AddHandler("*", () => existingDeserializer);
             }
             else
             {
                 var codec = new CustomJsonCodec(configuration);
-                client.AddHandler(codec, "application/json", "text/json", "text/x-json", "text/javascript", "*+json", "*");
+                client.AddHandler("application/json", () => codec);
+                client.AddHandler("text/json", () => codec);
+                client.AddHandler("text/x-json", () => codec);
+                client.AddHandler("text/javascript", () => codec);
+                client.AddHandler("*+json", () => codec);
+                client.AddHandler("*", () => codec);
             }
 
-            client.AddHandler(new XmlDeserializer(), "application/xml", "text/xml", "*+xml");
+            client.AddHandler("application/xml", () => new XmlDeserializer());
+            client.AddHandler("text/xml", () => new XmlDeserializer());
+            client.AddHandler("*+xml", () => new XmlDeserializer());
 
             client.Timeout = configuration.Timeout;
 
@@ -434,7 +446,7 @@ namespace Xero.NetStandard.OAuth2.Client
             }
 
             InterceptRequest(req);
-            var response = await client.ExecuteTaskAsync<T>(req);
+            var response = await client.ExecuteAsync<T>(req);
             InterceptResponse(req, response);
 
             var result = toApiResponse(response);
