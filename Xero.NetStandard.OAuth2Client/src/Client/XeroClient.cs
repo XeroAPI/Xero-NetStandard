@@ -278,7 +278,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 Address = "https://identity.xero.com/connect/revocation",
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
-                Token = xeroToken.AccessToken
+                Token = xeroToken.RefreshToken
             });
 
             if (response.IsError)
