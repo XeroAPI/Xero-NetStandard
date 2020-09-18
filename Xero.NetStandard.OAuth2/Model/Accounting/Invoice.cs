@@ -345,6 +345,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? AmountCredited { get; private set; }
 
         /// <summary>
+        /// Xero generated unique identifier for invoice
+        /// </summary>
+        /// <value>Xero generated unique identifier for invoice</value>
+        [DataMember(Name = "RepeatingInvoiceID", EmitDefaultValue = false)]
+        public Guid? RepeatingInvoiceID { get; set; }
+
+        /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
@@ -425,6 +432,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  InvoiceID: ").Append(InvoiceID).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  IsDiscounted: ").Append(IsDiscounted).Append("\n");
+            sb.Append("  RepeatingInvoiceID: ").Append(RepeatingInvoiceID).Append("\n");
             sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("  Prepayments: ").Append(Prepayments).Append("\n");
             sb.Append("  Overpayments: ").Append(Overpayments).Append("\n");
@@ -580,7 +588,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 (
                     this.IsDiscounted == input.IsDiscounted ||
                     this.IsDiscounted.Equals(input.IsDiscounted)
-                ) && 
+                ) &&
+                 (
+                    this.RepeatingInvoiceID == input.RepeatingInvoiceID ||
+                    (this.RepeatingInvoiceID != null &&
+                    this.RepeatingInvoiceID.Equals(input.RepeatingInvoiceID))
+                ) &&
                 (
                     this.Payments == input.Payments ||
                     this.Payments != null &&
@@ -700,6 +713,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.InvoiceID.GetHashCode();
                 hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
                 hashCode = hashCode * 59 + this.IsDiscounted.GetHashCode();
+                if (this.RepeatingInvoiceID != null)
+                    hashCode = hashCode * 59 + this.RepeatingInvoiceID.GetHashCode();
                 if (this.Payments != null)
                     hashCode = hashCode * 59 + this.Payments.GetHashCode();
                 if (this.Prepayments != null)
