@@ -11,13 +11,13 @@ Version Xero-NetStandard SDK only supports OAuth2 authentication and the followi
 * identity
 * payroll AU
 * payroll UK
+* payroll NZ
 * projects
 
 Coming soon
 * bank feeds
 
 Pending OpenAPI spec release
-* payroll NZ
 * files
 * xero hq
 
