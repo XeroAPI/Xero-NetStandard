@@ -1044,6 +1044,33 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <returns>Task of ApiResponse (HistoryRecords)</returns>
         System.Threading.Tasks.Task<ApiResponse<HistoryRecords>> CreatePrepaymentHistoryAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid prepaymentID, HistoryRecords historyRecords);
         /// <summary>
+        /// Allows you to create Attachment on Purchase Order
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of Attachments</returns>
+        System.Threading.Tasks.Task<Attachments> CreatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body);
+
+        /// <summary>
+        /// Allows you to create Attachment on Purchase Order
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of ApiResponse (Attachments)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body);
+        /// <summary>
         /// Allows you to create HistoryRecord for purchase orders
         /// </summary>
         /// <remarks>
@@ -3600,6 +3627,83 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPurchaseOrderAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID);
         /// <summary>
+        /// Allows you to retrieve Attachment on a Purchase Order by Filename
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType);
+
+        /// <summary>
+        /// Allows you to retrieve Attachment on a Purchase Order by Filename
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType);
+        /// <summary>
+        /// Allows you to retrieve specific Attachment on purchase order
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="attachmentID">Unique identifier for Attachment object</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType);
+
+        /// <summary>
+        /// Allows you to retrieve specific Attachment on purchase order
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="attachmentID">Unique identifier for Attachment object</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType);
+        /// <summary>
+        /// Allows you to retrieve attachments for purchase orders
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Orders object</param>
+        /// <returns>Task of Attachments</returns>
+        System.Threading.Tasks.Task<Attachments> GetPurchaseOrderAttachmentsAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID);
+
+        /// <summary>
+        /// Allows you to retrieve attachments for purchase orders
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Orders object</param>
+        /// <returns>Task of ApiResponse (Attachments)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> GetPurchaseOrderAttachmentsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID);
+        /// <summary>
         /// Allows you to retrieve a specified purchase orders
         /// </summary>
         /// <remarks>
@@ -5300,6 +5404,33 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="purchaseOrders"></param>
         /// <returns>Task of ApiResponse (PurchaseOrders)</returns>
         System.Threading.Tasks.Task<ApiResponse<PurchaseOrders>> UpdatePurchaseOrderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, PurchaseOrders purchaseOrders);
+        /// <summary>
+        /// Allows you to update Attachment on Purchase Order by Filename
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of Attachments</returns>
+        System.Threading.Tasks.Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body);
+
+        /// <summary>
+        /// Allows you to update Attachment on Purchase Order by Filename
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of ApiResponse (Attachments)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body);
         /// <summary>
         /// Allows you to update a specified quote
         /// </summary>
@@ -9025,6 +9156,97 @@ namespace Xero.NetStandard.OAuth2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception exception = this.ExceptionFactory("CreatePrepaymentHistory", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
+        /// Allows you to create Attachment on Purchase Order 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of Attachments</returns>
+        public async System.Threading.Tasks.Task<Attachments> CreatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Allows you to create Attachment on Purchase Order 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of ApiResponse (Attachments)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->CreatePurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'purchaseOrderID' is set
+            if (purchaseOrderID == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'purchaseOrderID' when calling AccountingApi->CreatePurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'fileName' is set
+            if (fileName == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'fileName' when calling AccountingApi->CreatePurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'body' when calling AccountingApi->CreatePurchaseOrderAttachmentByFileName");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+                "application/octet-stream"
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (purchaseOrderID != null)
+                requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
+            if (fileName != null)
+                requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+            requestOptions.Data = body;
+
+            // authentication (OAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                requestOptions.HeaderParameters.Add("Authorization", "Bearer " + accessToken);
+            }
+            // make the HTTP request
+
+      
+
+            var response = await this.AsynchronousClient.PutAsync<Attachments>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}", requestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("CreatePurchaseOrderAttachmentByFileName", response);
                 if (exception != null) throw exception;
             }
 
@@ -17772,6 +17994,263 @@ namespace Xero.NetStandard.OAuth2.Api
 
 
         /// <summary>
+        /// Allows you to retrieve Attachment on a Purchase Order by Filename 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, contentType);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Allows you to retrieve Attachment on a Purchase Order by Filename 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->GetPurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'purchaseOrderID' is set
+            if (purchaseOrderID == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'purchaseOrderID' when calling AccountingApi->GetPurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'fileName' is set
+            if (fileName == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'fileName' when calling AccountingApi->GetPurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'contentType' when calling AccountingApi->GetPurchaseOrderAttachmentByFileName");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/octet-stream"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (purchaseOrderID != null)
+                requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
+            if (fileName != null)
+                requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+            if (contentType != null)
+                requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
+
+            // authentication (OAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                requestOptions.HeaderParameters.Add("Authorization", "Bearer " + accessToken);
+            }
+            // make the HTTP request
+
+      
+
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}", requestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("GetPurchaseOrderAttachmentByFileName", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
+        /// Allows you to retrieve specific Attachment on purchase order 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="attachmentID">Unique identifier for Attachment object</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, attachmentID, contentType);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Allows you to retrieve specific Attachment on purchase order 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="attachmentID">Unique identifier for Attachment object</param>
+        /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->GetPurchaseOrderAttachmentById");
+
+            // verify the required parameter 'purchaseOrderID' is set
+            if (purchaseOrderID == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'purchaseOrderID' when calling AccountingApi->GetPurchaseOrderAttachmentById");
+
+            // verify the required parameter 'attachmentID' is set
+            if (attachmentID == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'attachmentID' when calling AccountingApi->GetPurchaseOrderAttachmentById");
+
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'contentType' when calling AccountingApi->GetPurchaseOrderAttachmentById");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/octet-stream"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (purchaseOrderID != null)
+                requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
+            if (attachmentID != null)
+                requestOptions.PathParameters.Add("AttachmentID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(attachmentID)); // path parameter
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+            if (contentType != null)
+                requestOptions.HeaderParameters.Add("contentType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(contentType)); // header parameter
+
+            // authentication (OAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                requestOptions.HeaderParameters.Add("Authorization", "Bearer " + accessToken);
+            }
+            // make the HTTP request
+
+      
+
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{AttachmentID}", requestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("GetPurchaseOrderAttachmentById", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
+        /// Allows you to retrieve attachments for purchase orders 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Orders object</param>
+        /// <returns>Task of Attachments</returns>
+        public async System.Threading.Tasks.Task<Attachments> GetPurchaseOrderAttachmentsAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await GetPurchaseOrderAttachmentsAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Allows you to retrieve attachments for purchase orders 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Orders object</param>
+        /// <returns>Task of ApiResponse (Attachments)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> GetPurchaseOrderAttachmentsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->GetPurchaseOrderAttachments");
+
+            // verify the required parameter 'purchaseOrderID' is set
+            if (purchaseOrderID == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'purchaseOrderID' when calling AccountingApi->GetPurchaseOrderAttachments");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (purchaseOrderID != null)
+                requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+
+            // authentication (OAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                requestOptions.HeaderParameters.Add("Authorization", "Bearer " + accessToken);
+            }
+            // make the HTTP request
+
+      
+
+            var response = await this.AsynchronousClient.GetAsync<Attachments>("/PurchaseOrders/{PurchaseOrderID}/Attachments", requestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("GetPurchaseOrderAttachments", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
         /// Allows you to retrieve a specified purchase orders 
         /// </summary>
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -23775,6 +24254,97 @@ namespace Xero.NetStandard.OAuth2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception exception = this.ExceptionFactory("UpdatePurchaseOrder", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
+        /// Allows you to update Attachment on Purchase Order by Filename 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of Attachments</returns>
+        public async System.Threading.Tasks.Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Allows you to update Attachment on Purchase Order by Filename 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="purchaseOrderID">Unique identifier for Purchase Order object</param>
+        /// <param name="fileName">Name of the attachment</param>
+        /// <param name="body">Byte array of file in body of request</param>
+        /// <returns>Task of ApiResponse (Attachments)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->UpdatePurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'purchaseOrderID' is set
+            if (purchaseOrderID == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'purchaseOrderID' when calling AccountingApi->UpdatePurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'fileName' is set
+            if (fileName == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'fileName' when calling AccountingApi->UpdatePurchaseOrderAttachmentByFileName");
+
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'body' when calling AccountingApi->UpdatePurchaseOrderAttachmentByFileName");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+                "application/octet-stream"
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (purchaseOrderID != null)
+                requestOptions.PathParameters.Add("PurchaseOrderID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(purchaseOrderID)); // path parameter
+            if (fileName != null)
+                requestOptions.PathParameters.Add("FileName", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(fileName)); // path parameter
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+            requestOptions.Data = body;
+
+            // authentication (OAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                requestOptions.HeaderParameters.Add("Authorization", "Bearer " + accessToken);
+            }
+            // make the HTTP request
+
+      
+
+            var response = await this.AsynchronousClient.PostAsync<Attachments>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}", requestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("UpdatePurchaseOrderAttachmentByFileName", response);
                 if (exception != null) throw exception;
             }
 
