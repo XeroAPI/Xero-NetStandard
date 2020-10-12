@@ -22,7 +22,7 @@ Pending OpenAPI spec release
 * xero hq
 
 ## How to handle OAuth 2.0 authentication & authorization?
-We have built Xero OAuth 2.0 Client. Check out [Xero.NetStandard.OAuth2Client](https://github.com/XeroAPI/Xero-NetStandard/tree/oauth2/Xero.NetStandard.OAuth2Client)
+We have built Xero OAuth 2.0 Client. Check out [Xero.NetStandard.OAuth2Client](https://github.com/XeroAPI/Xero-NetStandard/tree/master/Xero.NetStandard.OAuth2Client)
 
 [![NuGet.org](https://img.shields.io/badge/NuGet.org-Xero.NetStandard.OAuth2Client.v1.1.0-brightgreen?style=plastic&logo=appveyor)](https://www.nuget.org/packages/Xero.NetStandard.OAuth2Client/)
 
