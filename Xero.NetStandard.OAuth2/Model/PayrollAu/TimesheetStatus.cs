@@ -49,7 +49,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum APPROVED for value: APPROVED
         /// </summary>
         [EnumMember(Value = "APPROVED")]
-        APPROVED = 3
+        APPROVED = 3,
+
+        /// <summary>
+        /// Enum REJECTED for value: REJECTED
+        /// </summary>
+        [EnumMember(Value = "REJECTED")]
+        REJECTED = 4
 
     }
 
