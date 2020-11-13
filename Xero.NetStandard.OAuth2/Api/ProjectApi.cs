@@ -218,7 +218,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="taskIds">taskIdsSearch for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds&#x3D;{taskId},{taskId} (optional)</param>
         /// <param name="chargeType"> (optional)</param>
         /// <returns>Task of Tasks</returns>
-        System.Threading.Tasks.Task<Tasks> GetTasksAsync (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType chargeType = null);
+        System.Threading.Tasks.Task<Tasks> GetTasksAsync (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType? chargeType = null);
 
         /// <summary>
         /// Allows you to retrieve a single project
@@ -234,7 +234,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="taskIds">taskIdsSearch for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds&#x3D;{taskId},{taskId} (optional)</param>
         /// <param name="chargeType"> (optional)</param>
         /// <returns>Task of ApiResponse (Tasks)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Tasks>> GetTasksAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType chargeType = null);
+        System.Threading.Tasks.Task<ApiResponse<Tasks>> GetTasksAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType? chargeType = null);
         /// <summary>
         /// Allows you to retrieve the time entries associated with a specific project
         /// </summary>
@@ -1133,7 +1133,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="taskIds">taskIdsSearch for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds&#x3D;{taskId},{taskId} (optional)</param>
         /// <param name="chargeType"> (optional)</param>
         /// <returns>Task of Tasks</returns>
-        public async System.Threading.Tasks.Task<Tasks> GetTasksAsync (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType chargeType = null)
+        public async System.Threading.Tasks.Task<Tasks> GetTasksAsync (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType? chargeType = null)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Tasks> localVarResponse = await GetTasksAsyncWithHttpInfo(accessToken, xeroTenantId, projectId, page, pageSize, taskIds, chargeType);
              return localVarResponse.Data;
@@ -1151,7 +1151,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="taskIds">taskIdsSearch for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds&#x3D;{taskId},{taskId} (optional)</param>
         /// <param name="chargeType"> (optional)</param>
         /// <returns>Task of ApiResponse (Tasks)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Tasks>> GetTasksAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType chargeType = null)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Tasks>> GetTasksAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid projectId, int? page = null, int? pageSize = null, string taskIds = null, ChargeType? chargeType = null)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
