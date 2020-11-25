@@ -92,62 +92,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         [DataMember(Name="payRunType", EmitDefaultValue=false)]
         public PayRunTypeEnum PayRunType { get; set; }
         /// <summary>
-        /// Calendar type of the pay run
+        /// Gets or Sets CalendarType
         /// </summary>
-        /// <value>Calendar type of the pay run</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum CalendarTypeEnum
-        {
-            /// <summary>
-            /// Enum Weekly for value: Weekly
-            /// </summary>
-            [EnumMember(Value = "Weekly")]
-            Weekly = 1,
-
-            /// <summary>
-            /// Enum Fortnightly for value: Fortnightly
-            /// </summary>
-            [EnumMember(Value = "Fortnightly")]
-            Fortnightly = 2,
-
-            /// <summary>
-            /// Enum FourWeekly for value: FourWeekly
-            /// </summary>
-            [EnumMember(Value = "FourWeekly")]
-            FourWeekly = 3,
-
-            /// <summary>
-            /// Enum Monthly for value: Monthly
-            /// </summary>
-            [EnumMember(Value = "Monthly")]
-            Monthly = 4,
-
-            /// <summary>
-            /// Enum Annual for value: Annual
-            /// </summary>
-            [EnumMember(Value = "Annual")]
-            Annual = 5,
-
-            /// <summary>
-            /// Enum Quarterly for value: Quarterly
-            /// </summary>
-            [EnumMember(Value = "Quarterly")]
-            Quarterly = 6,
-
-            /// <summary>
-            /// Enum TwiceMonthly for value: TwiceMonthly
-            /// </summary>
-            [EnumMember(Value = "TwiceMonthly")]
-            TwiceMonthly = 7
-
-        }
-
-        /// <summary>
-        /// Calendar type of the pay run
-        /// </summary>
-        /// <value>Calendar type of the pay run</value>
         [DataMember(Name="calendarType", EmitDefaultValue=false)]
-        public CalendarTypeEnum CalendarType { get; set; }
+        public CalendarType CalendarType { get; set; }
         
         /// <summary>
         /// Xero unique identifier for the pay run

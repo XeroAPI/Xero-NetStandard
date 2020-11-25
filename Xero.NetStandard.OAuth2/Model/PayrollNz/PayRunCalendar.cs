@@ -32,56 +32,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     public partial class PayRunCalendar :  IEquatable<PayRunCalendar>, IValidatableObject
     {
         /// <summary>
-        /// Type of the calendar
+        /// Gets or Sets CalendarType
         /// </summary>
-        /// <value>Type of the calendar</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum CalendarTypeEnum
-        {
-            /// <summary>
-            /// Enum Weekly for value: Weekly
-            /// </summary>
-            [EnumMember(Value = "Weekly")]
-            Weekly = 1,
-
-            /// <summary>
-            /// Enum Fortnightly for value: Fortnightly
-            /// </summary>
-            [EnumMember(Value = "Fortnightly")]
-            Fortnightly = 2,
-
-            /// <summary>
-            /// Enum FourWeekly for value: FourWeekly
-            /// </summary>
-            [EnumMember(Value = "FourWeekly")]
-            FourWeekly = 3,
-
-            /// <summary>
-            /// Enum Monthly for value: Monthly
-            /// </summary>
-            [EnumMember(Value = "Monthly")]
-            Monthly = 4,
-
-            /// <summary>
-            /// Enum Annual for value: Annual
-            /// </summary>
-            [EnumMember(Value = "Annual")]
-            Annual = 5,
-
-            /// <summary>
-            /// Enum Quarterly for value: Quarterly
-            /// </summary>
-            [EnumMember(Value = "Quarterly")]
-            Quarterly = 6
-
-        }
-
-        /// <summary>
-        /// Type of the calendar
-        /// </summary>
-        /// <value>Type of the calendar</value>
         [DataMember(Name="calendarType", EmitDefaultValue=false)]
-        public CalendarTypeEnum CalendarType { get; set; }
+        public CalendarType CalendarType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PayRunCalendar" /> class.
         /// </summary>
