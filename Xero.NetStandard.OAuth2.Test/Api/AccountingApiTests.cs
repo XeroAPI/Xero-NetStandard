@@ -2300,7 +2300,7 @@ namespace Xero.NetStandard.OAuth2.Test
     /// <summary>
     /// Test GetReportBASorGST
     /// </summary>
-    [Fact]
+    [Fact(Skip = "OpenAPI spec has no example")]
     public async Task GetReportBASorGSTTest()
     {
       // TODO uncomment below to test the method and replace null with proper value
@@ -2330,7 +2330,7 @@ namespace Xero.NetStandard.OAuth2.Test
     {
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
-      string date = AutoFaker.Generate<string>();
+      DateTime date = AutoFaker.Generate<DateTime>();
       int? periods = AutoFaker.Generate<int?>();
       string timeframe = AutoFaker.Generate<string>();
       string trackingOptionID1 = AutoFaker.Generate<string>();

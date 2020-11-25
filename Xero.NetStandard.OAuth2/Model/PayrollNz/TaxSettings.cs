@@ -69,7 +69,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// </summary>
         /// <value>The number of units for the period type</value>
         [DataMember(Name="periodUnits", EmitDefaultValue=false)]
-        public int? PeriodUnits { get; set; }
+        public decimal? PeriodUnits { get; set; }
 
         /// <summary>
         /// Tax rate for STC and WT
