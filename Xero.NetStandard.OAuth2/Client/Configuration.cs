@@ -31,7 +31,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.9.0";
+        public const string Version = "3.10.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -54,6 +54,10 @@ namespace Xero.NetStandard.OAuth2.Client
             {
                 case int code when status == 400:
                     return new ApiException(status, string.Format("Xero API 400 error calling {0} :{1}", methodName, response.Content.ToString()), response.Content);
+                case int code when status == 429:
+                    response.Headers.TryGetValue("X-Rate-Limit-Problem", out var value);
+                    string limitType = value?[0];
+                    return new ApiException(status, string.Format("Xero API {0} rate limit error calling {1}", limitType, methodName), response.Content);
                 case int code when status > 400:
                     return new ApiException(status, string.Format("Xero API error calling {0}: {1}", methodName, response.Content.ToString()), response.Content);
             }
@@ -96,7 +100,7 @@ namespace Xero.NetStandard.OAuth2.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            UserAgent = "xero-netstandard-3.9.0";
+            UserAgent = "xero-netstandard-3.10.0";
             BasePath = "https://api.xero.com/api.xro/2.0";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -329,7 +333,7 @@ namespace Xero.NetStandard.OAuth2.Client
             String report = "C# SDK (Xero.NetStandard.OAuth2) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: 2.5.0\n";
-            report += "    SDK Package Version: 3.9.0\n";
+            report += "    SDK Package Version: 3.10.0\n";
 
             return report;
         }
