@@ -176,6 +176,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? CISDeduction { get; private set; }
 
         /// <summary>
+        /// CIS Deduction rate for the organisation
+        /// </summary>
+        /// <value>CIS Deduction rate for the organisation</value>
+        [DataMember(Name="CISRate", EmitDefaultValue=false)]
+        public decimal? CISRate { get; private set; }
+
+        /// <summary>
         /// UTC timestamp of last update to the credit note
         /// </summary>
         /// <value>UTC timestamp of last update to the credit note</value>
@@ -306,6 +313,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  TotalTax: ").Append(TotalTax).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
             sb.Append("  CISDeduction: ").Append(CISDeduction).Append("\n");
+            sb.Append("  CISRate: ").Append(CISRate).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  FullyPaidOnDate: ").Append(FullyPaidOnDate).Append("\n");
@@ -405,6 +413,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 (
                     this.CISDeduction == input.CISDeduction ||
                     this.CISDeduction.Equals(input.CISDeduction)
+                ) && 
+                (
+                    this.CISRate == input.CISRate ||
+                    this.CISRate.Equals(input.CISRate)
                 ) && 
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
@@ -513,6 +525,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 hashCode = hashCode * 59 + this.TotalTax.GetHashCode();
                 hashCode = hashCode * 59 + this.Total.GetHashCode();
                 hashCode = hashCode * 59 + this.CISDeduction.GetHashCode();
+                hashCode = hashCode * 59 + this.CISRate.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();

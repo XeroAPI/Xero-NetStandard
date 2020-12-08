@@ -247,6 +247,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? CISDeduction { get; private set; }
 
         /// <summary>
+        /// CIS Deduction rate for the organisation
+        /// </summary>
+        /// <value>CIS Deduction rate for the organisation</value>
+        [DataMember(Name="CISRate", EmitDefaultValue=false)]
+        public decimal? CISRate { get; private set; }
+
+        /// <summary>
         /// Total of invoice excluding taxes
         /// </summary>
         /// <value>Total of invoice excluding taxes</value>
@@ -425,6 +432,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  ExpectedPaymentDate: ").Append(ExpectedPaymentDate).Append("\n");
             sb.Append("  PlannedPaymentDate: ").Append(PlannedPaymentDate).Append("\n");
             sb.Append("  CISDeduction: ").Append(CISDeduction).Append("\n");
+            sb.Append("  CISRate: ").Append(CISRate).Append("\n");
             sb.Append("  SubTotal: ").Append(SubTotal).Append("\n");
             sb.Append("  TotalTax: ").Append(TotalTax).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
@@ -559,6 +567,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 (
                     this.CISDeduction == input.CISDeduction ||
                     this.CISDeduction.Equals(input.CISDeduction)
+                ) && 
+                (
+                    this.CISRate == input.CISRate ||
+                    this.CISRate.Equals(input.CISRate)
                 ) && 
                 (
                     this.SubTotal == input.SubTotal ||
@@ -705,6 +717,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 if (this.PlannedPaymentDate != null)
                     hashCode = hashCode * 59 + this.PlannedPaymentDate.GetHashCode();
                 hashCode = hashCode * 59 + this.CISDeduction.GetHashCode();
+                hashCode = hashCode * 59 + this.CISRate.GetHashCode();
                 hashCode = hashCode * 59 + this.SubTotal.GetHashCode();
                 hashCode = hashCode * 59 + this.TotalTax.GetHashCode();
                 hashCode = hashCode * 59 + this.Total.GetHashCode();

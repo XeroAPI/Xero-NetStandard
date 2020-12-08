@@ -44,7 +44,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>CIS Deduction rate for the contact if he is a subcontractor. If the contact is not CISEnabled, then the rate is not returned</value>
         [DataMember(Name="Rate", EmitDefaultValue=false)]
-        public int? Rate { get; set; }
+        public decimal? Rate { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
