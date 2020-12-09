@@ -28,6 +28,7 @@ using RestSharp.Deserializers;
 using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
 using RestSharpMethod = RestSharp.Method;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("Xero.NetStandard.OAuth2.Test")]
 namespace Xero.NetStandard.OAuth2.Client
 {
     /// <summary>
