@@ -20,6 +20,8 @@ using Xero.NetStandard.OAuth2.Model;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
+using Xero.NetStandard.OAuth2.Model.Accounting;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Accounting
 {
@@ -186,13 +188,24 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Accounting
             // TODO unit test for the property 'PlannedPaymentDate'
         }
         /// <summary>
-        /// Test the property 'CISDeduction'
+        /// Test that the property 'CISDeduction' deserializes correctly
         /// </summary>
-        [Fact]
-        public void CISDeductionTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void CISDeduction_IsNumber_DeserializesCorrectly(string number)
         {
-            // TODO unit test for the property 'CISDeduction'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""CISDeduction"": {number}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var invoices = deserializer.Deserialize<Invoice>(response);
+
+            Assert.Equal(20, invoices.CISDeduction);
         }
+        
         /// <summary>
         /// Test the property 'SubTotal'
         /// </summary>
