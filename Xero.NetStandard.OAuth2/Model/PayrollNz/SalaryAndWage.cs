@@ -133,7 +133,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// </summary>
         /// <value>The days per week for the salary.</value>
         [DataMember(Name="daysPerWeek", EmitDefaultValue=false)]
-        public int? DaysPerWeek { get; set; }
+        public double? DaysPerWeek { get; set; }
 
         /// <summary>
         /// The effective date of the corresponding salary and wages
