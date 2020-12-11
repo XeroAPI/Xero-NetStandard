@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The type of period (\&quot;weeks\&quot; or \&quot;months\&quot;)
         /// </summary>
         /// <value>The type of period (\&quot;weeks\&quot; or \&quot;months\&quot;)</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PeriodTypeEnum
         {
             /// <summary>

@@ -40,7 +40,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes
         /// </summary>
         /// <value>Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// For bank accounts only. See Bank Account types
         /// </summary>
         /// <value>For bank accounts only. See Bank Account types</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum BankAccountTypeEnum
         {
             /// <summary>
@@ -123,7 +123,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Account Class Types
         /// </summary>
         /// <value>See Account Class Types</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum ClassEnum
         {
             /// <summary>
@@ -168,7 +168,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// If this is a system account then this element is returned. See System Account types. Note that non-system accounts may have this element set as either “” or null.
         /// </summary>
         /// <value>If this is a system account then this element is returned. See System Account types. Note that non-system accounts may have this element set as either “” or null.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum SystemAccountEnum
         {
             /// <summary>

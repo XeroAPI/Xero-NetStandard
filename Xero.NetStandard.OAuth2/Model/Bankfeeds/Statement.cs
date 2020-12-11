@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         /// Current status of statements
         /// </summary>
         /// <value>Current status of statements</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>

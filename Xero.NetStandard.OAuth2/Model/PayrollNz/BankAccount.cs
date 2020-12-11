@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Calculation type for the transaction can be &#39;Fixed Amount&#39; or &#39;Balance&#39;
         /// </summary>
         /// <value>Calculation type for the transaction can be &#39;Fixed Amount&#39; or &#39;Balance&#39;</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CalculationTypeEnum
         {
             /// <summary>

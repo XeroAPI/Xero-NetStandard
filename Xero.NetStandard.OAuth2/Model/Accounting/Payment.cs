@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The status of the payment.
         /// </summary>
         /// <value>The status of the payment.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>
@@ -62,7 +62,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Payment Types.
         /// </summary>
         /// <value>See Payment Types.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PaymentTypeEnum
         {
             /// <summary>

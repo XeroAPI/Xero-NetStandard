@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The method of depreciation applied to this asset. See Depreciation Methods
         /// </summary>
         /// <value>The method of depreciation applied to this asset. See Depreciation Methods</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum DepreciationMethodEnum
         {
             /// <summary>
@@ -86,7 +86,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The method of averaging applied to this asset. See Averaging Methods
         /// </summary>
         /// <value>The method of averaging applied to this asset. See Averaging Methods</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum AveragingMethodEnum
         {
             /// <summary>
@@ -113,7 +113,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// See Depreciation Calculation Methods
         /// </summary>
         /// <value>See Depreciation Calculation Methods</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum DepreciationCalculationMethodEnum
         {
             /// <summary>

@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Prepayment Types
         /// </summary>
         /// <value>See Prepayment Types</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum ReportTypeEnum
         {
             /// <summary>

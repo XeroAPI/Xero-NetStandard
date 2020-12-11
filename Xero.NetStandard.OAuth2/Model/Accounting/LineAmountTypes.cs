@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// </summary>
     /// <value>Line amounts are exclusive of tax by default if you don’t specify this element. See Line Amount Types</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum LineAmountTypes
     {

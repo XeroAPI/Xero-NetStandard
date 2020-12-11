@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Type of the calendar
         /// </summary>
         /// <value>Type of the calendar</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CalendarTypeEnum
         {
             /// <summary>

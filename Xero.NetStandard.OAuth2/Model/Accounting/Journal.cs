@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The journal source type. The type of transaction that created the journal
         /// </summary>
         /// <value>The journal source type. The type of transaction that created the journal</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum SourceTypeEnum
         {
             /// <summary>

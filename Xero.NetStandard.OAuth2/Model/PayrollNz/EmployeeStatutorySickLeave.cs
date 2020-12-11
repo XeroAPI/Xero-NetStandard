@@ -34,7 +34,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// <summary>
         /// Defines EntitlementFailureReasons
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum EntitlementFailureReasonsEnum
         {
             /// <summary>

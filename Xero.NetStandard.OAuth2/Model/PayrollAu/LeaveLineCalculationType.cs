@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// </summary>
     /// <value>Calculation type for leave line for Opening Balance on Employee</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum LeaveLineCalculationType
     {

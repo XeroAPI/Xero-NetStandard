@@ -40,7 +40,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Manual Journal Status Codes
         /// </summary>
         /// <value>See Manual Journal Status Codes</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>

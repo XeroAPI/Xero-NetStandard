@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Overpayment Types
         /// </summary>
         /// <value>See Overpayment Types</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum TypeEnum
         {
             /// <summary>
@@ -68,7 +68,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Overpayment Status Codes
         /// </summary>
         /// <value>See Overpayment Status Codes</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>

@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Superannuations Category type
         /// </summary>
         /// <value>Superannuations Category type</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CategoryEnum
         {
             /// <summary>
@@ -68,7 +68,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Calculation Type of the superannuation either FixedAmount or PercentageOfTaxableEarnings
         /// </summary>
         /// <value>Calculation Type of the superannuation either FixedAmount or PercentageOfTaxableEarnings</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CalculationTypeNZEnum
         {
             /// <summary>

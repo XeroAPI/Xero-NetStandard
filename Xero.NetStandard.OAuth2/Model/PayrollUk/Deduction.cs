@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Deduction Category type
         /// </summary>
         /// <value>Deduction Category type</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum DeductionCategoryEnum
         {
             /// <summary>
@@ -110,7 +110,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// determine the calculation type whether fixed amount or percentage of gross
         /// </summary>
         /// <value>determine the calculation type whether fixed amount or percentage of gross</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CalculationTypeEnum
         {
             /// <summary>

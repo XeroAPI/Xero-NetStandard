@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The current status of the corresponding salary and wages
         /// </summary>
         /// <value>The current status of the corresponding salary and wages</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>
@@ -62,7 +62,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The type of the payment of the corresponding salary and wages
         /// </summary>
         /// <value>The type of the payment of the corresponding salary and wages</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PaymentTypeEnum
         {
             /// <summary>

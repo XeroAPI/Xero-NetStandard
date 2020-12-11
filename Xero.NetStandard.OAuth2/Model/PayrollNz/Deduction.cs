@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Deduction Category type
         /// </summary>
         /// <value>Deduction Category type</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum DeductionCategoryEnum
         {
             /// <summary>

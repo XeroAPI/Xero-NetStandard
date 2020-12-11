@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// </summary>
     /// <value>The status of the quote.</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum QuoteStatusCodes
     {

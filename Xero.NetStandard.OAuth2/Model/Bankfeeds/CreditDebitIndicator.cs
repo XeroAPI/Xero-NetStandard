@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// </summary>
     /// <value>If the statement balances are credit or debit, the CreditDebitIndicator should be specified from the perspective of the Customer.</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum CreditDebitIndicator
     {
