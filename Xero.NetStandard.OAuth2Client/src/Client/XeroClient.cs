@@ -39,26 +39,64 @@ namespace Xero.NetStandard.OAuth2.Client
         }
 
         /// <summary>
-        /// Builds a XeroLogin URL for Code Flow
+        /// Builds a XeroLogin URL for code flow
         /// </summary>
-        /// <returns>valid URI for login</returns>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
         public string BuildLoginUri()
+        {
+            return BuildLoginUri(xeroConfiguration.State);
+        }
+
+        /// <summary>
+        /// Builds a XeroLogin URL for code flow, allows state to be passed in.
+        /// </summary>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
+        public string BuildLoginUri(string state)
+        {
+            return BuildLoginUri(state, xeroConfiguration.Scope);
+        }
+
+        /// <summary>
+        /// Builds a XeroLogin URL for code flow, allows state and scope to be passed in.
+        /// </summary>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
+        public string BuildLoginUri(string state, string scope)
         {
             var url = _xeroAuthorizeUri.CreateAuthorizeUrl(
                 clientId: xeroConfiguration.ClientId,
                 responseType: "code",
                 redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
-                state: xeroConfiguration.State,
-                scope: xeroConfiguration.Scope
+                state: state,
+                scope: scope
             );
             return url;
         }
 
+
+
         /// <summary>
         /// Builds a XeroLogin URL for PKCE flow with codeVerifier input
         /// </summary>
-        /// <returns>valid URI for login</returns>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
         public string BuildLoginUriPkce(string codeVerifier)
+        {
+            return BuildLoginUriPkce(codeVerifier, xeroConfiguration.State);
+        }
+
+        /// <summary>
+        /// Builds a XeroLogin URL for PKCE flow with codeVerifier and state as inputs.
+        /// </summary>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
+        public string BuildLoginUriPkce(string codeVerifier, string state)
+        {
+            return BuildLoginUriPkce(codeVerifier, state, xeroConfiguration.Scope);
+        }
+
+        /// <summary>
+        /// Builds a XeroLogin URL for PKCE flow with codeVerifier, state and scope as inputs.
+        /// </summary>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
+        public string BuildLoginUriPkce(string codeVerifier, string state, string scope)
         {
             string codeChallenge = null;
 
@@ -82,8 +120,8 @@ namespace Xero.NetStandard.OAuth2.Client
                 clientId: xeroConfiguration.ClientId,
                 responseType: "code",
                 redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
-                state: xeroConfiguration.State,
-                scope: xeroConfiguration.Scope,
+                state: state,
+                scope: scope,
                 codeChallenge: codeChallenge,
                 codeChallengeMethod: "S256"
             );
