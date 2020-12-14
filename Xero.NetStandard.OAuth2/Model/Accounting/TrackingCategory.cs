@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The status of a tracking category
         /// </summary>
         /// <value>The status of a tracking category</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>

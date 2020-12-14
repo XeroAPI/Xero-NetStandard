@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         /// Identifies the type of error.
         /// </summary>
         /// <value>Identifies the type of error.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum TypeEnum
         {
             /// <summary>

@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Period Status
         /// </summary>
         /// <value>Period Status</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PeriodStatusEnum
         {
             /// <summary>

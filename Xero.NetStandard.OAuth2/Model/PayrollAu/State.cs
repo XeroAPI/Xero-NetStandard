@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// </summary>
     /// <value>State abbreviation for employee home address</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum State
     {

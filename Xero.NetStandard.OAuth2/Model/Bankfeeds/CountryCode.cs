@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// </summary>
     /// <value>ISO-3166 alpha-2 country code, e.g. US, AU This element is required only when the Application supports multi-region. Talk to your Partner Manager to confirm if this is the case.</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum CountryCode
     {

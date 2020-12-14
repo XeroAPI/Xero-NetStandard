@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// </summary>
     /// <value>See Asset Status Codes.</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum AssetStatus
     {

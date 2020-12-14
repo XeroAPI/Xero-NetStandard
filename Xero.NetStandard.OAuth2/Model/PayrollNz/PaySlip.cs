@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The payment method code
         /// </summary>
         /// <value>The payment method code</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PaymentMethodEnum
         {
             /// <summary>

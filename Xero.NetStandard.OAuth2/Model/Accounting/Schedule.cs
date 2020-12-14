@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// One of the following - WEEKLY or MONTHLY
         /// </summary>
         /// <value>One of the following - WEEKLY or MONTHLY</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum UnitEnum
         {
             /// <summary>
@@ -62,7 +62,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// the payment terms
         /// </summary>
         /// <value>the payment terms</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum DueDateTypeEnum
         {
             /// <summary>

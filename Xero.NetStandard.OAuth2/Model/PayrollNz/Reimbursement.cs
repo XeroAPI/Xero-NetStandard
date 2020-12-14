@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// See Reimbursement Categories
         /// </summary>
         /// <value>See Reimbursement Categories</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum ReimbursementCategoryEnum
         {
             /// <summary>
@@ -68,7 +68,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// See Calculation Types
         /// </summary>
         /// <value>See Calculation Types</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CalculationTypeEnum
         {
             /// <summary>
@@ -101,7 +101,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Optional Type Of Units. Applicable when calculation type is Rate Per Unit
         /// </summary>
         /// <value>Optional Type Of Units. Applicable when calculation type is Rate Per Unit</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StandardTypeOfUnitsEnum
         {
             /// <summary>

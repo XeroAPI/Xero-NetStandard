@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Invoice Types
         /// </summary>
         /// <value>See Invoice Types</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum TypeEnum
         {
             /// <summary>
@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// One of the following - DRAFT or AUTHORISED – See Invoice Status Codes
         /// </summary>
         /// <value>One of the following - DRAFT or AUTHORISED – See Invoice Status Codes</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>

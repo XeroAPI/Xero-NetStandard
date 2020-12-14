@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Pay run status
         /// </summary>
         /// <value>Pay run status</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PayRunStatusEnum
         {
             /// <summary>
@@ -62,7 +62,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Pay run type
         /// </summary>
         /// <value>Pay run type</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PayRunTypeEnum
         {
             /// <summary>
@@ -95,7 +95,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Calendar type of the pay run
         /// </summary>
         /// <value>Calendar type of the pay run</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CalendarTypeEnum
         {
             /// <summary>

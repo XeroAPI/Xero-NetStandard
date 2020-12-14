@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Always INVOICE
         /// </summary>
         /// <value>Always INVOICE</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum TypeEnum
         {
             /// <summary>

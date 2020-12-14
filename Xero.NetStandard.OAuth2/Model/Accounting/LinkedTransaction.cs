@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.
         /// </summary>
         /// <value>Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// This will always be BILLABLEEXPENSE. More types may be added in future.
         /// </summary>
         /// <value>This will always be BILLABLEEXPENSE. More types may be added in future.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum TypeEnum
         {
             /// <summary>
@@ -101,7 +101,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The Type of the source tranasction. This will be ACCPAY if the linked transaction was created from an invoice and SPEND if it was created from a bank transaction.
         /// </summary>
         /// <value>The Type of the source tranasction. This will be ACCPAY if the linked transaction was created from an invoice and SPEND if it was created from a bank transaction.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum SourceTransactionTypeCodeEnum
         {
             /// <summary>

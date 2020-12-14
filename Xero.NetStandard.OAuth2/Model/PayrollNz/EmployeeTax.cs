@@ -40,7 +40,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Contribution Option which can be &#39;MakeContributions&#39; &#39;OptOut&#39;, &#39;OnAContributionsHoliday&#39;, &#39;OnASavingsSuspension&#39;, &#39;NotCurrentlyAKiwiSaverMember&#39; for employees without a KiwiSaver membership
         /// </summary>
         /// <value>Contribution Option which can be &#39;MakeContributions&#39; &#39;OptOut&#39;, &#39;OnAContributionsHoliday&#39;, &#39;OnASavingsSuspension&#39;, &#39;NotCurrentlyAKiwiSaverMember&#39; for employees without a KiwiSaver membership</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum KiwiSaverContributionsEnum
         {
             /// <summary>

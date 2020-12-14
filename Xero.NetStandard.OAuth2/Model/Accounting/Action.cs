@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Status of the action for this organisation
         /// </summary>
         /// <value>Status of the action for this organisation</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>

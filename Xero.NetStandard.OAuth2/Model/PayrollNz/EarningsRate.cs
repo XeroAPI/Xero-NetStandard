@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Indicates how an employee will be paid when taking this type of earning
         /// </summary>
         /// <value>Indicates how an employee will be paid when taking this type of earning</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum EarningsTypeEnum
         {
             /// <summary>
@@ -140,7 +140,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Indicates the type of the earning rate
         /// </summary>
         /// <value>Indicates the type of the earning rate</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum RateTypeEnum
         {
             /// <summary>

@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// </summary>
     /// <value>Status for project</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum ProjectStatus
     {

@@ -29,7 +29,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Defines PayRunStatus
     /// </summary>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum PayRunStatus
     {

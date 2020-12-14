@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The assigned AccountType
         /// </summary>
         /// <value>The assigned AccountType</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum TypeEnum
         {
             /// <summary>

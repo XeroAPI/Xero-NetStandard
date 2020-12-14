@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The schedule of accrual
         /// </summary>
         /// <value>The schedule of accrual</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum ScheduleOfAccrualEnum
         {
             /// <summary>

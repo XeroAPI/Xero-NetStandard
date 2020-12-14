@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Pay run status
         /// </summary>
         /// <value>Pay run status</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PayRunStatusEnum
         {
             /// <summary>
@@ -62,7 +62,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Pay run type
         /// </summary>
         /// <value>Pay run type</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PayRunTypeEnum
         {
             /// <summary>

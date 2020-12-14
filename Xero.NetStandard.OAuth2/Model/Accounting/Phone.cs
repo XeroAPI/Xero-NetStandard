@@ -34,7 +34,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <summary>
         /// Defines PhoneType
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PhoneTypeEnum
         {
             /// <summary>

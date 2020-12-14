@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The NI Category of the employee
         /// </summary>
         /// <value>The NI Category of the employee</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum NiCategoryEnum
         {
             /// <summary>

@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// The employee’s gender. See Employee Gender
         /// </summary>
         /// <value>The employee’s gender. See Employee Gender</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum GenderEnum
         {
             /// <summary>

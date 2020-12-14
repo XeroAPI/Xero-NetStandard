@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The type of statutory leave
         /// </summary>
         /// <value>The type of statutory leave</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum LeaveTypeEnum
         {
             /// <summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The units will be \&quot;Hours\&quot;
         /// </summary>
         /// <value>The units will be \&quot;Hours\&quot;</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum UnitsEnum
         {
             /// <summary>

@@ -35,7 +35,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Category type of the employer pension
         /// </summary>
         /// <value>Category type of the employer pension</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CategoryEnum
         {
             /// <summary>
@@ -62,7 +62,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Calculation Type of the employer pension (FixedAmount or PercentageOfGross).
         /// </summary>
         /// <value>Calculation Type of the employer pension (FixedAmount or PercentageOfGross).</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum CalculationTypeEnum
         {
             /// <summary>

@@ -45,7 +45,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Purchase Order Status Codes
         /// </summary>
         /// <value>See Purchase Order Status Codes</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum StatusEnum
         {
             /// <summary>

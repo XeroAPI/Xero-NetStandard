@@ -30,7 +30,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// </summary>
     /// <value>Tax codes used for employee tax</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
     public enum TaxCode
     {
