@@ -36,7 +36,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         [JsonConstructorAttribute]
         public PaymentDelete() 
-        { 
+        {
+            Status = Payment.StatusEnum.DELETED;
         }
         
         /// <summary>
@@ -44,7 +45,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The status of the payment.</value>
         [DataMember(Name="Status", EmitDefaultValue=false)]
-        public string Status { get; set; }
+        public Payment.StatusEnum Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
