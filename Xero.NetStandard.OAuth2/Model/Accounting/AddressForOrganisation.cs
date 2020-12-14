@@ -26,10 +26,10 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.Accounting
 {
     /// <summary>
-    /// Address
+    /// AddressForOrganisation
     /// </summary>
     [DataContract]
-    public partial class Address :  IEquatable<Address>, IValidatableObject
+    public partial class AddressForOrganisation :  IEquatable<AddressForOrganisation>, IValidatableObject
     {
         /// <summary>
         /// define the type of address
@@ -48,7 +48,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum STREET for value: STREET
             /// </summary>
             [EnumMember(Value = "STREET")]
-            STREET = 2
+            STREET = 2,
+
+            /// <summary>
+            /// Enum DELIVERY for value: DELIVERY
+            /// </summary>
+            [EnumMember(Value = "DELIVERY")]
+            DELIVERY = 3
 
         }
 
@@ -129,7 +135,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Address {\n");
+            sb.Append("class AddressForOrganisation {\n");
             sb.Append("  AddressType: ").Append(AddressType).Append("\n");
             sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");
             sb.Append("  AddressLine2: ").Append(AddressLine2).Append("\n");
@@ -160,15 +166,15 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Address);
+            return this.Equals(input as AddressForOrganisation);
         }
 
         /// <summary>
-        /// Returns true if Address instances are equal
+        /// Returns true if AddressForOrganisation instances are equal
         /// </summary>
-        /// <param name="input">Instance of Address to be compared</param>
+        /// <param name="input">Instance of AddressForOrganisation to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Address input)
+        public bool Equals(AddressForOrganisation input)
         {
             if (input == null)
                 return false;
