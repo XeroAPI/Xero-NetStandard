@@ -1761,11 +1761,11 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       int? page = AutoFaker.Generate<int?>();
-      string linkedTransactionID = AutoFaker.Generate<string>();
-      string sourceTransactionID = AutoFaker.Generate<string>();
-      string contactID = AutoFaker.Generate<string>();
+      Guid linkedTransactionID = AutoFaker.Generate<Guid>();
+      Guid sourceTransactionID = AutoFaker.Generate<Guid>();
+      Guid contactID = AutoFaker.Generate<Guid>();
       string status = AutoFaker.Generate<string>();
-      string targetTransactionID = AutoFaker.Generate<string>();
+      Guid targetTransactionID = AutoFaker.Generate<Guid>();
       var response = await instance.GetLinkedTransactionsAsync(accessToken, xeroTenantId, page, linkedTransactionID, sourceTransactionID, contactID, status, targetTransactionID).ConfigureAwait(false);
       Assert.IsType<LinkedTransactions>(response);
     }
