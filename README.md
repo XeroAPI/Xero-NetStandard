@@ -346,6 +346,114 @@ To setup the main API object see the snippet below:
       var response = await PayrollAUApi.CreateEmployeeAsync(accessToken, xeroTenantId, employees);
 ```
 
+
+### Bankfeed APIs
+Before trying the APIs, please make sure your company had been approved for Bankfeed endpoints and have the bankfeed scope enabled on your Xero OAuth 2.0 app. If you intend to become a Xero bankfeed partner please start by [registering here](https://developer.xero.com/partner/app-partner). 
+
+- Create a bankfeed connection
+```csharp
+      var feedConnection = new FeedConnection{
+        AccountToken = accountToken, 
+        AccountNumber = accountNumber,
+        AccountType =  accountTypeEnum,
+        AccountName = accountName,
+        Currency = currencyCode,
+        Country = countryCode
+      };
+
+      List<FeedConnection> list = new List<FeedConnection>();
+      list.Add(feedConnection);
+
+      FeedConnections items = new FeedConnections{
+        Pagination = new Pagination(),
+        Items = list
+      };
+
+      var BankfeedsApi = new BankFeedsApi();
+      await BankfeedsApi.CreateFeedConnectionsAsync(accessToken, xeroTenantId, items);
+```
+
+- Get all bankfeed connections
+```csharp
+      var BankFeedsApi = new BankFeedsApi();
+      var response = await BankFeedsApi.GetFeedConnectionsAsync(accessToken, xeroTenantId);
+      var feedConnections = response.Items;
+```
+
+- Delete a bankfeed connection
+```csharp
+      Guid bankfeedConnectionIdGuid = Guid.Parse(bankfeedConnectionId);
+
+      List<FeedConnection> list = new List<FeedConnection>();
+      
+      list.Add(
+        new FeedConnection {
+          Id = bankfeedConnectionIdGuid
+        }
+      );
+
+      var feedConnections = new FeedConnections{
+          Items = list
+      };
+
+      var BankFeedsApi = new BankFeedsApi();
+      await BankFeedsApi.DeleteFeedConnectionsAsync(accessToken, xeroTenantId, feedConnections);
+```
+
+- Create statements against a bankfeed connection (plase ensure your start balance, end balance and statement amounts are mathematically correct)
+```csharp
+      StartBalance startBalance = new StartBalance{
+        Amount = decimal.Parse(startBalanceAmount),
+        CreditDebitIndicator = startIndicatorEnum
+      };
+
+
+      StatementLine statementLine = new StatementLine{
+        PostedDate = DateTime.Today,
+        Description = "A bankfeed satemement description",
+        Amount = 10,
+        CreditDebitIndicator = startIndicatorEnum,
+        TransactionId = new Guid().ToString()
+      };
+
+      EndBalance endBalance = new EndBalance{
+        Amount = decimal.Parse(startBalanceAmount) + statementLine.Amount,
+        CreditDebitIndicator = startIndicatorEnum
+      };
+
+      List<StatementLine> statementLines = new List<StatementLine>();
+      statementLines.Add(statementLine);
+
+      var statement = new Statement{
+        FeedConnectionId = new Guid(feedConnectionId),
+        StartDate = DateTime.Today.AddDays(-20),
+        EndDate = DateTime.Today,
+        StartBalance = startBalance,
+        EndBalance = endBalance,
+        StatementLines = statementLines,
+      };
+
+      List<Statement> statementList = new List<Statement>();
+      statementList.Add(statement);
+
+      Statements statements = new Statements{
+        Pagination = new Pagination(),
+        Items = statementList
+      };
+
+      var BankfeedsApi = new BankFeedsApi();
+      await BankfeedsApi.CreateStatementsAsync(accessToken, xeroTenantId, statements);
+```
+
+- Get all statements from all bankfeed connections
+```csharp
+      var BankFeedsApi = new BankFeedsApi();
+      var response = await BankFeedsApi.GetStatementsAsync(accessToken, xeroTenantId);
+```
+
+For full documentation please refer to [Xero Bankfeed API documentation](https://developer.xero.com/documentation/bank-feeds-api/overview). 
+
+
 ## TLS 1.0 deprecation
 As of June 30, 2018, Xero's API will remove support for TLS 1.0.  
 
