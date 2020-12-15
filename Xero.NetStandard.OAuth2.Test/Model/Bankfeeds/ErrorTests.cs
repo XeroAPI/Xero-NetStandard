@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -82,12 +83,62 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             // TODO unit test for the property 'Detail'
         }
         /// <summary>
-        /// Test the property 'Type'
+        /// Test the property 'Type' deserialises from valid inputs
+        /// </summary>
+        [Theory]
+        [InlineData("invalid-request", Error.TypeEnum.InvalidRequest)]
+        [InlineData("invalid-application", Error.TypeEnum.InvalidApplication)]
+        [InlineData("invalid-feed-connection", Error.TypeEnum.InvalidFeedConnection)]
+        [InlineData("duplicate-statement", Error.TypeEnum.DuplicateStatement)]
+        [InlineData("invalid-end-balance", Error.TypeEnum.InvalidEndBalance)]
+        [InlineData("invalid-start-and-end-date", Error.TypeEnum.InvalidStartAndEndDate)]
+        [InlineData("invalid-start-date", Error.TypeEnum.InvalidStartDate)]
+        [InlineData("internal-error", Error.TypeEnum.InternalError)]
+        [InlineData("feed-already-connected-in-current-organisation", Error.TypeEnum.FeedAlreadyConnectedInCurrentOrganisation)]
+        [InlineData("invalid-end-date", Error.TypeEnum.InvalidEndDate)]
+        public void Type_ValidInput_Deserialises(string input, Error.TypeEnum expected)
+        {
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Type"": ""{input}""
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Error>(response);
+
+            Assert.Equal(expected, actual.Type);
+        }
+
+        /// <summary>
+        /// Test the property 'Type' deserialises from null into 0
         /// </summary>
         [Fact]
-        public void TypeTest()
+        public void Type_NullInput_DeserialisesTo0()
         {
-            // TODO unit test for the property 'Type'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Type"": null
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Error>(response);
+
+            Assert.Equal(0, (int) actual.Type);
+        }
+
+        /// <summary>
+        /// Test the property 'Type' deserialises to 0 when not present
+        /// </summary>
+        [Fact]
+        public void Type_NotPresentInInput_DeserialisesTo0()
+        {
+            var response = new RestResponse();
+            response.Content = "{}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Error>(response);
+
+            Assert.Equal(0, (int) actual.Type);
         }
 
     }

@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -58,20 +59,36 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 
 
         /// <summary>
-        /// Test the property 'Amount'
+        /// Test the property 'Amount' deserialises from valid decimal numbers
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void Amount_GivenValidInputs_Deserialises(string input)
         {
-            // TODO unit test for the property 'Amount'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Amount"": {input}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EndBalance>(response);
+
+            Assert.Equal(20, (int)actual.Amount);
         }
         /// <summary>
-        /// Test the property 'CreditDebitIndicator'
+        /// Test the property 'CreditDebitIndicator' deserialises to 0 when not present
         /// </summary>
         [Fact]
-        public void CreditDebitIndicatorTest()
+        public void CreditDebitIndicator_NotPresent_DeserialisesTo0()
         {
-            // TODO unit test for the property 'CreditDebitIndicator'
+            var response = new RestResponse();
+            response.Content = "{}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EndBalance>(response);
+
+            Assert.Equal(0, (int)actual.CreditDebitIndicator);
         }
 
     }
