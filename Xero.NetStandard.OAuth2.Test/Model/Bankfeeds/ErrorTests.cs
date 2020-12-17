@@ -96,6 +96,16 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [InlineData("internal-error", Error.TypeEnum.InternalError)]
         [InlineData("feed-already-connected-in-current-organisation", Error.TypeEnum.FeedAlreadyConnectedInCurrentOrganisation)]
         [InlineData("invalid-end-date", Error.TypeEnum.InvalidEndDate)]
+        [InlineData("statement-not-found", Error.TypeEnum.StatementNotFound)]
+        [InlineData("feed-connected-in-different-organisation", Error.TypeEnum.FeedConnectedInDifferentOrganisation)]
+        [InlineData("feed-already-connected-in-different-organisation", Error.TypeEnum.FeedAlreadyConnectedInDifferentOrganisation)]
+        [InlineData("bank-feed-not-found", Error.TypeEnum.BankFeedNotFound)]
+        [InlineData("invalid-country-specified", Error.TypeEnum.InvalidCountrySpecified)]
+        [InlineData("invalid-organisation-bank-feeds", Error.TypeEnum.InvalidOrganisationBankFeeds)]
+        [InlineData("invalid-organisation-multi-currency", Error.TypeEnum.InvalidOrganisationMultiCurrency)]
+        [InlineData("invalid-feed-connection-for-organisation", Error.TypeEnum.InvalidFeedConnectionForOrganisation)]
+        [InlineData("invalid-user-role", Error.TypeEnum.InvalidUserRole)]
+        [InlineData("account-not-valid", Error.TypeEnum.AccountNotValid)]
         public void Type_ValidInput_Deserialises(string input, Error.TypeEnum expected)
         {
             var response = new RestResponse();
