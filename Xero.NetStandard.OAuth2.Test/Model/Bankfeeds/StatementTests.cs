@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -74,12 +75,53 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             // TODO unit test for the property 'FeedConnectionId'
         }
         /// <summary>
-        /// Test the property 'Status'
+        /// Test the property 'Status' deserialises from valid inputs
+        /// </summary>
+        [Theory]
+        [InlineData("PENDING", Statement.StatusEnum.PENDING)]
+        [InlineData("REJECTED", Statement.StatusEnum.REJECTED)]
+        [InlineData("DELIVERED", Statement.StatusEnum.DELIVERED)]
+        public void Status_ValidInput_Deserialises(string input, Statement.StatusEnum expected)
+        {
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Status"": ""{input}""
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Statement>(response);
+
+            Assert.Equal(expected, actual.Status);
+        }
+        /// <summary>
+        /// Test the property 'Status' deserialises from null input to 0
         /// </summary>
         [Fact]
-        public void StatusTest()
+        public void Status_NullInput_DeserialisesTo0()
         {
-            // TODO unit test for the property 'Status'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Status"": null
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Statement>(response);
+
+            Assert.Equal(0, (int) actual.Status);
+        }
+        /// <summary>
+        /// Test the property 'Status' deserialises to 0 when not present
+        /// </summary>
+        [Fact]
+        public void Status_NotPresentInInput_DeserialisesTo0()
+        {
+            var response = new RestResponse();
+            response.Content = "{}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Statement>(response);
+
+            Assert.Equal(0, (int) actual.Status);
         }
         /// <summary>
         /// Test the property 'StartDate'
@@ -122,12 +164,33 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             // TODO unit test for the property 'StatementLines'
         }
         /// <summary>
-        /// Test the property 'Errors'
+        /// Test the property 'Errors' deserialises from an array of Error objects
         /// </summary>
         [Fact]
-        public void ErrorsTest()
+        public void Errors_GivenValidInput_Deserialises()
         {
-            // TODO unit test for the property 'Errors'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Errors"": [
+                    {{
+                        ""type"": ""invalid-end-balance"",
+                        ""title"": ""Invalid End Balance"",
+                        ""status"": 422,
+                        ""detail"": ""Detail""
+                    }}
+                ]
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Statement>(response);
+
+            Assert.Single(actual.Errors);
+            var error = actual.Errors.First();
+
+            Assert.Equal(Error.TypeEnum.InvalidEndBalance, error.Type);
+            Assert.Equal("Invalid End Balance", error.Title);
+            Assert.Equal(422, error.Status);
+            Assert.Equal("Detail", error.Detail);
         }
         /// <summary>
         /// Test the property 'StatementLineCount'

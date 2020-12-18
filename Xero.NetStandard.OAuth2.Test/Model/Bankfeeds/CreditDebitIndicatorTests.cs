@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -47,16 +48,36 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         }
 
         /// <summary>
-        /// Test an instance of CreditDebitIndicator
+        /// Test that CreditDebitIndicator can be deserialised from valid inputs
         /// </summary>
-        [Fact]
-        public void CreditDebitIndicatorInstanceTest()
+        [Theory]
+        [InlineData("CREDIT", CreditDebitIndicator.CREDIT)]
+        [InlineData("DEBIT", CreditDebitIndicator.DEBIT)]
+        public void CreditDebitIndicator_ValidInput_Deserialises(string input, CreditDebitIndicator expected)
         {
-            // TODO uncomment below to test "IsInstanceOfType" CreditDebitIndicator
-            //Assert.IsInstanceOfType<CreditDebitIndicator> (instance, "variable 'instance' is a CreditDebitIndicator");
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<CreditDebitIndicator>(response);
+
+            Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Test that CreditDebitIndicator can be deserialised from null into 0
+        /// </summary>
+        [Fact]
+        public void CreditDebitIndicator_NullInput_Deserialises()
+        {
+            var response = new RestResponse();
+            response.Content = "null";
 
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<CreditDebitIndicator>(response);
+
+            Assert.Equal(0, (int)actual);
+        }
 
     }
 

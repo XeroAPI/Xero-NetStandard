@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -130,12 +131,28 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             // TODO unit test for the property 'Status'
         }
         /// <summary>
-        /// Test the property 'Error'
+        /// Test the property 'Error' deserialises from an Error object
         /// </summary>
         [Fact]
-        public void ErrorTest()
+        public void Error_GivenValidInput_Deserialises()
         {
-            // TODO unit test for the property 'Error'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Error"": {{
+                    ""type"": ""invalid-end-balance"",
+                    ""title"": ""Invalid End Balance"",
+                    ""status"": 422,
+                    ""detail"": ""Detail""
+                }}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<FeedConnection>(response);
+
+            Assert.Equal(Error.TypeEnum.InvalidEndBalance, actual.Error.Type);
+            Assert.Equal("Invalid End Balance", actual.Error.Title);
+            Assert.Equal(422, actual.Error.Status);
+            Assert.Equal("Detail", actual.Error.Detail);
         }
 
     }
