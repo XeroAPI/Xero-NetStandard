@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -116,10 +117,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'Gender'
         /// </summary>
-        [Fact]
-        public void GenderTest()
+        [Theory]
+        [InlineData("F", Employee.GenderEnum.F)]
+        [InlineData("M", Employee.GenderEnum.M)]
+        public void GenderEnum_ValidInput_Deserialises(string input, Employee.GenderEnum expected)
         {
-            // TODO unit test for the property 'Gender'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Employee.GenderEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GenderEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Employee.GenderEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'PhoneNumber'

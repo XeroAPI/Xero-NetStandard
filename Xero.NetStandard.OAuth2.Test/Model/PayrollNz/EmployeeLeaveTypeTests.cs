@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -52,6 +53,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [Fact]
         public void EmployeeLeaveTypeInstanceTest()
         {
+        
             // TODO uncomment below to test "IsInstanceOfType" EmployeeLeaveType
             //Assert.IsInstanceOfType<EmployeeLeaveType> (instance, "variable 'instance' is a EmployeeLeaveType");
         }
@@ -68,10 +70,31 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'ScheduleOfAccrual'
         /// </summary>
-        [Fact]
-        public void ScheduleOfAccrualTest()
+        [Theory]
+        [InlineData("AnnuallyAfter6Months", EmployeeLeaveType.ScheduleOfAccrualEnum.AnnuallyAfter6Months)]
+        [InlineData("NoAccruals", EmployeeLeaveType.ScheduleOfAccrualEnum.NoAccruals)]
+        [InlineData("OnAnniversaryDate", EmployeeLeaveType.ScheduleOfAccrualEnum.OnAnniversaryDate)]
+        [InlineData("PercentageOfGrossEarnings", EmployeeLeaveType.ScheduleOfAccrualEnum.PercentageOfGrossEarnings)]
+        public void ScheduleOfAccrualEnum_ValidInput_Deserialises(string input, EmployeeLeaveType.ScheduleOfAccrualEnum expected)
         {
-            // TODO unit test for the property 'ScheduleOfAccrual'
+           var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeLeaveType.ScheduleOfAccrualEnum>(response);
+
+            Assert.Equal(expected, actual);        
+        }
+
+        [Fact]
+        public void ScheduleOfAccrualEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeLeaveType.ScheduleOfAccrualEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'HoursAccruedAnnually'

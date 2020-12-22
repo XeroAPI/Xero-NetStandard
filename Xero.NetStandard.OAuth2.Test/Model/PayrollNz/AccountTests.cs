@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -68,11 +69,43 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'Type'
         /// </summary>
-        [Fact]
-        public void TypeTest()
+        [Theory]
+        [InlineData("PAYELIABILITY", Account.TypeEnum.PAYELIABILITY)]
+        [InlineData("WAGESPAYABLE", Account.TypeEnum.WAGESPAYABLE)]
+        [InlineData("WAGESEXPENSE", Account.TypeEnum.WAGESEXPENSE)]
+        [InlineData("BANK", Account.TypeEnum.BANK)]
+        public void TypeEnum_ValidInput_Deserialises(string input, Account.TypeEnum expected)
         {
-            // TODO unit test for the property 'Type'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Account.TypeEnum>(response);
+
+            Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void TypeEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Account.TypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
+        }
+
+        [Fact]
+        public void TypeEnum_Empty_Deserialises(){
+            // To be implemented
+        }
+
+        [Fact]
+        public void TypeEnum_InvalidInput_Deserialises(){
+            // To be implemented
+        }
+        
         /// <summary>
         /// Test the property 'Code'
         /// </summary>

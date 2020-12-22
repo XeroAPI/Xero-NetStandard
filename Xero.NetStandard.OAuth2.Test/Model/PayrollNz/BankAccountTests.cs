@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -116,10 +117,40 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'CalculationType'
         /// </summary>
-        [Fact]
-        public void CalculationTypeTest()
+        [Theory]
+        [InlineData("Balance", BankAccount.CalculationTypeEnum.Balance)]
+        [InlineData("FixedAmount", BankAccount.CalculationTypeEnum.FixedAmount)]
+        public void CalculationType_ValidInput_Deserialises(string input, BankAccount.CalculationTypeEnum expected)
         {
-            // TODO unit test for the property 'CalculationType'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CalculationType_NullInput_Deserialises()
+        {
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
+        }
+
+        [Fact]
+        public void CalculationType_Empty_Deserialises(){
+            // To be implemented
+        }
+
+        [Fact]
+        public void CalculationType_InvalidInput_Deserialises(){
+            // To be implemented
         }
 
     }

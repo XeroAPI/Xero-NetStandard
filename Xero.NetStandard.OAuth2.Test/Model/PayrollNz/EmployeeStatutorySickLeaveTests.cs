@@ -10,6 +10,7 @@
 
 
 using Xunit;
+using RestSharp;
 
 using System;
 using System.Linq;
@@ -180,10 +181,33 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'EntitlementFailureReasons'
         /// </summary>
-        [Fact]
-        public void EntitlementFailureReasonsTest()
+        [Theory]
+        [InlineData("AweLowerThanLel", EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum.AweLowerThanLel)]
+        [InlineData("ExceededMaximumDurationOfPiw", EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum.ExceededMaximumDurationOfPiw)]
+        [InlineData("ExceededMaximumEntitlementWeeksOfSsp", EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum.ExceededMaximumEntitlementWeeksOfSsp)]
+        [InlineData("NotQualifiedInPreviousPiw", EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum.NotQualifiedInPreviousPiw)]
+        [InlineData("SufficientNoticeNotGiven", EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum.SufficientNoticeNotGiven)]
+        [InlineData("UnableToCalculateAwe", EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum.UnableToCalculateAwe)]
+        public void EntitlementFailureReasonsEnum_ValidInput_Deserialises(string input, EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum expected)
         {
-            // TODO unit test for the property 'EntitlementFailureReasons'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum>(response);
+
+            Assert.Equal(expected, actual);        
+        }
+
+        [Fact]
+        public void EntitlementFailureReasonsEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+            
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutorySickLeave.EntitlementFailureReasonsEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
 
     }

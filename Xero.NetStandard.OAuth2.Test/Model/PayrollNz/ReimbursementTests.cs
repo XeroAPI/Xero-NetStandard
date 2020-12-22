@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -92,18 +93,58 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'ReimbursementCategory'
         /// </summary>
-        [Fact]
-        public void ReimbursementCategoryTest()
+        [Theory]
+        [InlineData("GST", Reimbursement.ReimbursementCategoryEnum.GST)]
+        [InlineData("GSTInclusive", Reimbursement.ReimbursementCategoryEnum.GSTInclusive)]
+        [InlineData("NoGST", Reimbursement.ReimbursementCategoryEnum.NoGST)]
+        public void ReimbursementCategoryEnum_ValidInput_Deserialises(string input, Reimbursement.ReimbursementCategoryEnum expected)
         {
-            // TODO unit test for the property 'ReimbursementCategory'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Reimbursement.ReimbursementCategoryEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ReimbursementCategoryEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Reimbursement.ReimbursementCategoryEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'CalculationType'
         /// </summary>
-        [Fact]
-        public void CalculationTypeTest()
+        [Theory]
+        [InlineData("FixedAmount", Reimbursement.CalculationTypeEnum.FixedAmount)]
+        [InlineData("RatePerUnit", Reimbursement.CalculationTypeEnum.RatePerUnit)]
+        [InlineData("Unknown", Reimbursement.CalculationTypeEnum.Unknown)]
+        public void CalculationTypeEnum_ValidInput_Deserialises(string input, Reimbursement.CalculationTypeEnum expected)
         {
-            // TODO unit test for the property 'CalculationType'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Reimbursement.CalculationTypeEnum>(response);
+
+            Assert.Equal(expected, actual);        
+        }
+
+        [Fact]
+        public void CalculationTypeEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Reimbursement.CalculationTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'StandardAmount'
@@ -116,10 +157,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'StandardTypeOfUnits'
         /// </summary>
-        [Fact]
-        public void StandardTypeOfUnitsTest()
+        [Theory]
+        [InlineData("Hours", Reimbursement.StandardTypeOfUnitsEnum.Hours)]
+        [InlineData("Km", Reimbursement.StandardTypeOfUnitsEnum.Km)]
+        public void StandardTypeOfUnitsEnum_ValidInput_Deserialises(string input, Reimbursement.StandardTypeOfUnitsEnum expected)
         {
-            // TODO unit test for the property 'StandardTypeOfUnits'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Reimbursement.StandardTypeOfUnitsEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void StandardTypeOfUnitsEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Reimbursement.StandardTypeOfUnitsEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'StandardRatePerUnit'

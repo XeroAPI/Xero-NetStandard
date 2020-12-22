@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -60,10 +61,32 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'LeaveType'
         /// </summary>
-        [Fact]
-        public void LeaveTypeTest()
+        [Theory]
+        [InlineData("Adoption", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Adoption)]
+        [InlineData("Maternity", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Maternity)]
+        [InlineData("Paternity", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Paternity)]
+        [InlineData("Sharedparental", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Sharedparental)]
+        [InlineData("Sick", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Sick)]
+        public void LeaveTypeEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveBalance.LeaveTypeEnum expected)
         {
-            // TODO unit test for the property 'LeaveType'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.LeaveTypeEnum>(response);
+
+            Assert.Equal(expected, actual);        
+        }
+
+        [Fact]
+        public void LeaveTypeEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.LeaveTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'BalanceRemaining'
@@ -76,10 +99,28 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'Units'
         /// </summary>
-        [Fact]
-        public void UnitsTest()
+        [Theory]
+        [InlineData("Hours", EmployeeStatutoryLeaveBalance.UnitsEnum.Hours)]
+        public void UnitsEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveBalance.UnitsEnum expected)
         {
-            // TODO unit test for the property 'Units'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.UnitsEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void UnitsEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.UnitsEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
 
     }

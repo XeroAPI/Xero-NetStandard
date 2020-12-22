@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -124,18 +125,56 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
-        public void StatusTest()
+        [Theory]
+        [InlineData("Active", SalaryAndWage.StatusEnum.Active)]
+        [InlineData("Pending", SalaryAndWage.StatusEnum.Pending)]
+        public void StatusEnum_ValidInput_Deserialises(string input, SalaryAndWage.StatusEnum expected)
         {
-            // TODO unit test for the property 'Status'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<SalaryAndWage.StatusEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void StatusEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<SalaryAndWage.StatusEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'PaymentType'
         /// </summary>
-        [Fact]
-        public void PaymentTypeTest()
+        [Theory]
+        [InlineData("Hourly", SalaryAndWage.PaymentTypeEnum.Hourly)]
+        [InlineData("Salary", SalaryAndWage.PaymentTypeEnum.Salary)]
+        public void PaymentTypeEnum_ValidInput_Deserialises(string input, SalaryAndWage.PaymentTypeEnum expected)
         {
-            // TODO unit test for the property 'PaymentType'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<SalaryAndWage.PaymentTypeEnum>(response);
+
+            Assert.Equal(expected, actual);        
+        }
+
+        [Fact]
+        public void PaymentTypeEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<SalaryAndWage.PaymentTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
 
     }

@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -49,14 +50,35 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test an instance of CalendarType
         /// </summary>
-        [Fact]
-        public void CalendarTypeInstanceTest()
+        [Theory]
+        [InlineData("Annual", CalendarType.Annual)]
+        [InlineData("Fortnightly", CalendarType.Fortnightly)]
+        [InlineData("FourWeekly", CalendarType.FourWeekly)]
+        [InlineData("Monthly", CalendarType.Monthly)]
+        [InlineData("Quarterly", CalendarType.Quarterly)]
+        [InlineData("TwiceMonthly", CalendarType.TwiceMonthly)]
+        [InlineData("Weekly", CalendarType.Weekly)]
+        public void CalendarType_ValidInput_Deserialises(string input, CalendarType expected)
         {
-            // TODO uncomment below to test "IsInstanceOfType" CalendarType
-            //Assert.IsInstanceOfType<CalendarType> (instance, "variable 'instance' is a CalendarType");
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<CalendarType>(response);
+
+            Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void CalendarType_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
 
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<CalendarType>(response);
+
+            Assert.Equal(0, (int)actual);
+        }
 
     }
 

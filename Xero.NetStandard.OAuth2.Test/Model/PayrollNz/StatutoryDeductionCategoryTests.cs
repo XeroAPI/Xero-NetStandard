@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -49,11 +50,38 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test an instance of StatutoryDeductionCategory
         /// </summary>
-        [Fact]
-        public void StatutoryDeductionCategoryInstanceTest()
+        [Theory]
+        [InlineData("AdditionalStudentLoan", StatutoryDeductionCategory.AdditionalStudentLoan)]
+        [InlineData("ChildSupport", StatutoryDeductionCategory.ChildSupport)]
+        [InlineData("CourtFines", StatutoryDeductionCategory.CourtFines)]
+        [InlineData("InlandRevenueArrears", StatutoryDeductionCategory.InlandRevenueArrears)]
+        [InlineData("KiwiSaver", StatutoryDeductionCategory.KiwiSaver)]
+        [InlineData("MsdRepayments", StatutoryDeductionCategory.MsdRepayments)]
+        [InlineData("NonPriorityOrder", StatutoryDeductionCategory.NonPriorityOrder)]
+        [InlineData("PriorityOrder", StatutoryDeductionCategory.PriorityOrder)]
+        [InlineData("StudentLoan", StatutoryDeductionCategory.StudentLoan)]
+        [InlineData("TableBased", StatutoryDeductionCategory.TableBased)]
+        [InlineData("VoluntaryStudentLoan", StatutoryDeductionCategory.VoluntaryStudentLoan)]
+        public void StatutoryDeductionCategory_ValidInput_Deserialises(string input, StatutoryDeductionCategory expected)
         {
-            // TODO uncomment below to test "IsInstanceOfType" StatutoryDeductionCategory
-            //Assert.IsInstanceOfType<StatutoryDeductionCategory> (instance, "variable 'instance' is a StatutoryDeductionCategory");
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<StatutoryDeductionCategory>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void StatutoryDeductionCategory_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<StatutoryDeductionCategory>(response);
+
+            Assert.Equal(0, (int)actual);
         }
 
 

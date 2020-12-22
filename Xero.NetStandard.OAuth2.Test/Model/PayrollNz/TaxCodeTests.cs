@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -49,13 +50,47 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test an instance of TaxCode
         /// </summary>
-        [Fact]
-        public void TaxCodeInstanceTest()
+        [Theory]
+        [InlineData("CAE", TaxCode.CAE)]
+        [InlineData("EDW", TaxCode.EDW)]
+        [InlineData("M", TaxCode.M)]
+        [InlineData("ME", TaxCode.ME)]
+        [InlineData("MESL", TaxCode.MESL)]
+        [InlineData("MSL", TaxCode.MSL)]
+        [InlineData("ND", TaxCode.ND)]
+        [InlineData("NSW", TaxCode.NSW)]
+        [InlineData("S", TaxCode.S)]
+        [InlineData("SB", TaxCode.SB)]
+        [InlineData("SBSL", TaxCode.SBSL)]
+        [InlineData("SH", TaxCode.SH)]
+        [InlineData("SHSL", TaxCode.SHSL)]
+        [InlineData("SSL", TaxCode.SSL)]
+        [InlineData("ST", TaxCode.ST)]
+        [InlineData("STC", TaxCode.STC)]
+        [InlineData("STCSL", TaxCode.STCSL)]
+        [InlineData("STSL", TaxCode.STSL)]
+        [InlineData("WT", TaxCode.WT)]
+        public void TaxCode_ValidInput_Deserialises(string input, TaxCode expected)
         {
-            // TODO uncomment below to test "IsInstanceOfType" TaxCode
-            //Assert.IsInstanceOfType<TaxCode> (instance, "variable 'instance' is a TaxCode");
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<TaxCode>(response);
+
+            Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void TaxCode_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<TaxCode>(response);
+
+            Assert.Equal(0, (int)actual);
+        }
 
 
     }

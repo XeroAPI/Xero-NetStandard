@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -60,10 +61,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'PeriodUnits'
         /// </summary>
-        [Fact]
-        public void PeriodUnitsTest()
+        [Theory]
+        [InlineData("Months", TaxSettings.PeriodTypeEnum.Months)]
+        [InlineData("Weeks", TaxSettings.PeriodTypeEnum.Weeks)]
+        public void PeriodUnitsEnum_ValidInput_Deserialises(string input, TaxSettings.PeriodTypeEnum expected)
         {
-            // TODO unit test for the property 'PeriodUnits'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<TaxSettings.PeriodTypeEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void PeriodUnitsEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<TaxSettings.PeriodTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'PeriodType'

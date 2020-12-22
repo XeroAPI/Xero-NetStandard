@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -76,18 +77,71 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'EarningsType'
         /// </summary>
-        [Fact]
-        public void EarningsTypeTest()
+        [Theory]
+        [InlineData("Allowance", EarningsRate.EarningsTypeEnum.Allowance)]
+        [InlineData("Backpay", EarningsRate.EarningsTypeEnum.Backpay)]
+        [InlineData("Bonus", EarningsRate.EarningsTypeEnum.Bonus)]
+        [InlineData("Commission", EarningsRate.EarningsTypeEnum.Commission)]
+        [InlineData("DiscretionaryPayments", EarningsRate.EarningsTypeEnum.DiscretionaryPayments)]
+        [InlineData("HolidayPay", EarningsRate.EarningsTypeEnum.HolidayPay)]
+        [InlineData("LumpSum", EarningsRate.EarningsTypeEnum.LumpSum)]
+        [InlineData("OtherEarnings", EarningsRate.EarningsTypeEnum.OtherEarnings)]
+        [InlineData("OtherGrossEarnings", EarningsRate.EarningsTypeEnum.OtherGrossEarnings)]
+        [InlineData("OvertimeEarnings", EarningsRate.EarningsTypeEnum.OvertimeEarnings)]
+        [InlineData("RegularEarnings", EarningsRate.EarningsTypeEnum.RegularEarnings)]
+        [InlineData("SalarySacrificeForKiwiSaver", EarningsRate.EarningsTypeEnum.SalarySacrificeForKiwiSaver)]
+        [InlineData("TipsDirect", EarningsRate.EarningsTypeEnum.TipsDirect)]
+        [InlineData("TipsNonDirect", EarningsRate.EarningsTypeEnum.TipsNonDirect)]
+        [InlineData("WithholdingIncome", EarningsRate.EarningsTypeEnum.WithholdingIncome)]
+        public void EarningsTypeEnum_ValidInput_Deserialises(string input, EarningsRate.EarningsTypeEnum expected)
         {
-            // TODO unit test for the property 'EarningsType'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EarningsRate.EarningsTypeEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void EarningsTypeEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EarningsRate.EarningsTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'RateType'
         /// </summary>
+        [Theory]
+        [InlineData("FixedAmount", EarningsRate.RateTypeEnum.FixedAmount)]
+        [InlineData("MultipleOfOrdinaryEarningsRate", EarningsRate.RateTypeEnum.MultipleOfOrdinaryEarningsRate)]
+        [InlineData("RatePerUnit", EarningsRate.RateTypeEnum.RatePerUnit)]
+        public void RateTypeTest(string input, EarningsRate.RateTypeEnum expected)
+        {     
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EarningsRate.RateTypeEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+
         [Fact]
-        public void RateTypeTest()
-        {
-            // TODO unit test for the property 'RateType'
+        public void RateTypeEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EarningsRate.RateTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);    
         }
         /// <summary>
         /// Test the property 'TypeOfUnits'

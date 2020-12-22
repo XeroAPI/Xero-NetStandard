@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -76,10 +77,32 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'Type'
         /// </summary>
-        [Fact]
-        public void TypeTest()
+        [Theory]
+        [InlineData("Adoption", EmployeeStatutoryLeaveSummary.TypeEnum.Adoption)]
+        [InlineData("Maternity", EmployeeStatutoryLeaveSummary.TypeEnum.Maternity)]
+        [InlineData("Paternity", EmployeeStatutoryLeaveSummary.TypeEnum.Paternity)]
+        [InlineData("Sharedparental", EmployeeStatutoryLeaveSummary.TypeEnum.Sharedparental)]
+        [InlineData("Sick", EmployeeStatutoryLeaveSummary.TypeEnum.Sick)]
+        public void TypeEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveSummary.TypeEnum expected)
         {
-            // TODO unit test for the property 'Type'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveSummary.TypeEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void TypeEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveSummary.TypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'StartDate'
@@ -108,10 +131,30 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
-        public void StatusTest()
+        [Theory]
+        [InlineData("Completed", EmployeeStatutoryLeaveSummary.StatusEnum.Completed)]
+        [InlineData("InProgress", EmployeeStatutoryLeaveSummary.StatusEnum.InProgress)]
+        [InlineData("Pending", EmployeeStatutoryLeaveSummary.StatusEnum.Pending)]
+        public void StatusEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveSummary.StatusEnum expected)
         {
-            // TODO unit test for the property 'Status'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveSummary.StatusEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void StatusEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveSummary.StatusEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
 
     }

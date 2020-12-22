@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -116,10 +117,32 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'KiwiSaverContributions'
         /// </summary>
-        [Fact]
-        public void KiwiSaverContributionsTest()
+        [Theory]
+        [InlineData("MakeContributions", EmployeeTax.KiwiSaverContributionsEnum.MakeContributions)]
+        [InlineData("NotCurrentlyAKiwiSaverMember", EmployeeTax.KiwiSaverContributionsEnum.NotCurrentlyAKiwiSaverMember)]
+        [InlineData("OnAContributionsHoliday", EmployeeTax.KiwiSaverContributionsEnum.OnAContributionsHoliday)]
+        [InlineData("OnASavingsSuspension", EmployeeTax.KiwiSaverContributionsEnum.OnASavingsSuspension)]
+        [InlineData("OptOut", EmployeeTax.KiwiSaverContributionsEnum.OptOut)]
+        public void KiwiSaverContributionsEnum_ValidInput_Deserialises(string input, EmployeeTax.KiwiSaverContributionsEnum expected)
         {
-            // TODO unit test for the property 'KiwiSaverContributions'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeTax.KiwiSaverContributionsEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void KiwiSaverContributionsEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<EmployeeTax.KiwiSaverContributionsEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'KiwiSaverEmployeeContributionRatePercentage'

@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -188,10 +189,30 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'PaymentMethod'
         /// </summary>
-        [Fact]
-        public void PaymentMethodTest()
+        [Theory]
+        [InlineData("Cheque", PaySlip.PaymentMethodEnum.Cheque)]
+        [InlineData("Electronically", PaySlip.PaymentMethodEnum.Electronically)]
+        [InlineData("Manual", PaySlip.PaymentMethodEnum.Manual)]
+        public void PaymentMethodEnum_ValidInput_Deserialises(string input, PaySlip.PaymentMethodEnum expected)
         {
-            // TODO unit test for the property 'PaymentMethod'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<PaySlip.PaymentMethodEnum>(response);
+
+            Assert.Equal(expected, actual);        
+        }
+
+        [Fact]
+        public void PaymentMethodEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<PaySlip.PaymentMethodEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'EarningsLines'

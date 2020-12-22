@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -76,11 +77,33 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'DeductionCategory'
         /// </summary>
-        [Fact]
-        public void DeductionCategoryTest()
+        [Theory]
+        [InlineData("KiwiSaverVoluntaryContributions", Deduction.DeductionCategoryEnum.KiwiSaverVoluntaryContributions)]
+        [InlineData("NzOther", Deduction.DeductionCategoryEnum.NzOther)]
+        [InlineData("PayrollGiving", Deduction.DeductionCategoryEnum.PayrollGiving)]
+        [InlineData("Superannuation", Deduction.DeductionCategoryEnum.Superannuation)]
+        public void DeductionCategoryEnum_ValidInput_Deserialises(string input, Deduction.DeductionCategoryEnum expected)
         {
-            // TODO unit test for the property 'DeductionCategory'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Deduction.DeductionCategoryEnum>(response);
+
+            Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void DeductionCategoryEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Deduction.DeductionCategoryEnum>(response);
+
+            Assert.Equal(0, (int)actual);
+        }
+
         /// <summary>
         /// Test the property 'LiabilityAccountId'
         /// </summary>

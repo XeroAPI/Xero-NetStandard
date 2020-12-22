@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -116,19 +117,61 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'PayRunStatus'
         /// </summary>
-        [Fact]
-        public void PayRunStatusTest()
+        [Theory]
+        [InlineData("Draft", PayRun.PayRunStatusEnum.Draft)]
+        [InlineData("Posted", PayRun.PayRunStatusEnum.Posted)]
+
+        public void PayRunStatusEnum_ValidInput_Deserialises(string input, PayRun.PayRunStatusEnum expected)
         {
-            // TODO unit test for the property 'PayRunStatus'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<PayRun.PayRunStatusEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void PayRunStatusEnum_NullInput_Deserialises(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<PayRun.PayRunStatusEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'PayRunType'
         /// </summary>
-        [Fact]
-        public void PayRunTypeTest()
+        [Theory]
+        [InlineData("EarlierYearUpdate", PayRun.PayRunTypeEnum.EarlierYearUpdate)]
+        [InlineData("Scheduled", PayRun.PayRunTypeEnum.Scheduled)]
+        [InlineData("Unscheduled", PayRun.PayRunTypeEnum.Unscheduled)]
+        public void PayRunTypeEnum_ValidInput_Deserialise(string input, PayRun.PayRunTypeEnum expected)
         {
-            // TODO unit test for the property 'PayRunType'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<PayRun.PayRunTypeEnum>(response);
+
+            Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void PayRunTypeEnum_NullInput_Deserialise(){
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<PayRun.PayRunTypeEnum>(response);
+
+            Assert.Equal(0, (int)actual);
+        }
+
+
         /// <summary>
         /// Test the property 'CalendarType'
         /// </summary>

@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -76,10 +77,31 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'Category'
         /// </summary>
-        [Fact]
-        public void CategoryTest()
+        [Theory]
+        [InlineData("ComplyingFund", Benefit.CategoryEnum.ComplyingFund)]
+        [InlineData("KiwiSaver", Benefit.CategoryEnum.KiwiSaver)]
+        [InlineData("Other", Benefit.CategoryEnum.Other)]
+        public void CategoryEnum_ValidInput_Deserialises(string input, Benefit.CategoryEnum expected)
         {
-            // TODO unit test for the property 'Category'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Benefit.CategoryEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CategoryEnumr_NullInput_Deserialises()
+        {
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Benefit.CategoryEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'LiabilityAccountId'
@@ -100,10 +122,30 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'CalculationTypeNZ'
         /// </summary>
-        [Fact]
-        public void CalculationTypeNZTest()
+        [Theory]
+        [InlineData("FixedAmount", Benefit.CalculationTypeNZEnum.FixedAmount)]
+        [InlineData("PercentageOfTaxableEarnings", Benefit.CalculationTypeNZEnum.PercentageOfTaxableEarnings)]
+        public void CalculationTypeNZEnum_ValidInput_Deserialises(string input, Benefit.CalculationTypeNZEnum expected)
         {
-            // TODO unit test for the property 'CalculationTypeNZ'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Benefit.CalculationTypeNZEnum>(response);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void CalculationTypeNZEnum_NullInput_Deserialises()
+        {
+            var response = new RestResponse();
+            response.Content = "null";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Benefit.CalculationTypeNZEnum>(response);
+
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'StandardAmount'

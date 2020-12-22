@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -84,11 +85,31 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// <summary>
         /// Test the property 'PeriodStatus'
         /// </summary>
-        [Fact]
-        public void PeriodStatusTest()
+        [Theory]
+        [InlineData("Completed", LeavePeriod.PeriodStatusEnum.Completed)]
+        [InlineData("Approved", LeavePeriod.PeriodStatusEnum.Approved)]
+        public void PeriodStatusEnum_ValidInput_Deserialises(string input, LeavePeriod.PeriodStatusEnum expected)
         {
-            // TODO unit test for the property 'PeriodStatus'
+            var response = new RestResponse();
+            response.Content = $@"""{input}""";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<LeavePeriod.PeriodStatusEnum>(response);
+
+            Assert.Equal(expected, actual);        
         }
+
+    [Fact]
+    public void PeriodStatusEnum_NullInput_Deserialises(){
+        var response = new RestResponse();
+        response.Content = "null";
+
+        var deserializer = new CustomJsonCodec(new Configuration());
+        var actual = deserializer.Deserialize<LeavePeriod.PeriodStatusEnum>(response);
+
+        Assert.Equal(0, (int)actual);
+    }
+
 
     }
 
