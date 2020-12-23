@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -32,63 +33,126 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class AccountTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Account
-        //private Account instance;
-
-        public AccountTests()
-        {
-            // TODO uncomment below to create an instance of Account
-            //instance = new Account();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of Account
+        /// Test the property 'AccountID' only deserialises from valid GUID
         /// </summary>
         [Fact]
-        public void AccountInstanceTest()
+        public void AccountID_ValidInput_Deserialises()
         {
-            // TODO uncomment below to test "IsInstanceOfType" Account
-            //Assert.IsInstanceOfType<Account> (instance, "variable 'instance' is a Account");
-        }
+            var response = new RestResponse();
+            response.Content = @"{
+                ""AccountID"": ""12345678-abcd-abcd-abcd-1234567890ab""
+            }";
 
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Account>(response);
 
-        /// <summary>
-        /// Test the property 'AccountID'
-        /// </summary>
-        [Fact]
-        public void AccountIDTest()
-        {
-            // TODO unit test for the property 'AccountID'
+            Assert.Equal(new Guid("12345678-abcd-abcd-abcd-1234567890ab"), actual.AccountID);
         }
         /// <summary>
-        /// Test the property 'Type'
+        /// Test the property 'AccountID' fails to deserialise from invalid value
         /// </summary>
         [Fact]
-        public void TypeTest()
+        public void AccountID_InvalidInput_ThrowsApiException()
         {
-            // TODO unit test for the property 'Type'
+            var response = new RestResponse();
+            response.Content = @"{
+                ""AccountID"": ""12345678-abcd-abcd-abcd-invalidvalue""
+            }";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            Assert.Throws<ApiException>(() => deserializer.Deserialize<Account>(response));
         }
         /// <summary>
-        /// Test the property 'Code'
+        /// Test the property 'Type' deserialises correctly from valid inputs
         /// </summary>
-        [Fact]
-        public void CodeTest()
+        [Theory]
+        [InlineData("BANK", AccountType.BANK)]
+        [InlineData("CURRENT", AccountType.CURRENT)]
+        [InlineData("CURRLIAB", AccountType.CURRLIAB)]
+        [InlineData("DEPRECIATN", AccountType.DEPRECIATN)]
+        [InlineData("DIRECTCOSTS", AccountType.DIRECTCOSTS)]
+        [InlineData("EQUITY", AccountType.EQUITY)]
+        [InlineData("EXPENSE", AccountType.EXPENSE)]
+        [InlineData("FIXED", AccountType.FIXED)]
+        [InlineData("INVENTORY", AccountType.INVENTORY)]
+        [InlineData("LIABILITY", AccountType.LIABILITY)]
+        [InlineData("NONCURRENT", AccountType.NONCURRENT)]
+        [InlineData("OTHERINCOME", AccountType.OTHERINCOME)]
+        [InlineData("OVERHEADS", AccountType.OVERHEADS)]
+        [InlineData("PREPAYMENT", AccountType.PREPAYMENT)]
+        [InlineData("REVENUE", AccountType.REVENUE)]
+        [InlineData("SALES", AccountType.SALES)]
+        [InlineData("TERMLIAB", AccountType.TERMLIAB)]
+        [InlineData("PAYGLIABILITY", AccountType.PAYGLIABILITY)]
+        [InlineData("PAYG", AccountType.PAYG)]
+        [InlineData("SUPERANNUATIONEXPENSE", AccountType.SUPERANNUATIONEXPENSE)]
+        [InlineData("SUPERANNUATIONLIABILITY", AccountType.SUPERANNUATIONLIABILITY)]
+        [InlineData("WAGESEXPENSE", AccountType.WAGESEXPENSE)]
+        [InlineData("WAGESPAYABLELIABILITY", AccountType.WAGESPAYABLELIABILITY)]
+        public void Type_ValidInput_Deserialises(string input, AccountType expected)
         {
-            // TODO unit test for the property 'Code'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Type"": ""{input}""
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Account>(response);
+
+            Assert.Equal(expected, actual.Type);
         }
         /// <summary>
-        /// Test the property 'Name'
+        /// Test the property 'Type' deserialises correctly from 'null'
         /// </summary>
         [Fact]
-        public void NameTest()
+        public void Type_NullInput_DeserialisesTo0()
         {
-            // TODO unit test for the property 'Name'
+            var response = new RestResponse();
+            response.Content = @"{
+                ""Type"": null
+            }";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Account>(response);
+
+            Assert.Equal(0, (int)actual.Type);
         }
+        /// <summary>
+        /// Test the property 'Type' deserialises correctly from no input
+        /// </summary>
+        [Fact]
+        public void Type_NotPresentInInput_DeserialisesTo0()
+        {
+            var response = new RestResponse();
+            response.Content = "{}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Account>(response);
+
+            Assert.Equal(0, (int) actual.Type);
+        }
+        // /// <summary>
+        // /// Test the property 'Code'
+        // /// </summary>
+        // [Fact]
+        // public void CodeTest()
+        // {
+        //     // TODO unit test for the property 'Code'
+        // }
+        // /// <summary>
+        // /// Test the property 'Name'
+        // /// </summary>
+        // [Fact]
+        // public void NameTest()
+        // {
+        //     // TODO unit test for the property 'Name'
+        // }
 
     }
 

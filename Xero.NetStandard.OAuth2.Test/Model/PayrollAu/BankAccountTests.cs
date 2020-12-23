@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -32,78 +33,80 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class BankAccountTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for BankAccount
-        //private BankAccount instance;
-
-        public BankAccountTests()
-        {
-            // TODO uncomment below to create an instance of BankAccount
-            //instance = new BankAccount();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
-        /// <summary>
-        /// Test an instance of BankAccount
-        /// </summary>
-        [Fact]
-        public void BankAccountInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" BankAccount
-            //Assert.IsInstanceOfType<BankAccount> (instance, "variable 'instance' is a BankAccount");
-        }
+        // /// <summary>
+        // /// Test the property 'StatementText'
+        // /// </summary>
+        // [Fact]
+        // public void StatementTextTest()
+        // {
+        //     // TODO unit test for the property 'StatementText'
+        // }
+        // /// <summary>
+        // /// Test the property 'AccountName'
+        // /// </summary>
+        // [Fact]
+        // public void AccountNameTest()
+        // {
+        //     // TODO unit test for the property 'AccountName'
+        // }
+        // /// <summary>
+        // /// Test the property 'BSB'
+        // /// </summary>
+        // [Fact]
+        // public void BSBTest()
+        // {
+        //     // TODO unit test for the property 'BSB'
+        // }
+        // /// <summary>
+        // /// Test the property 'AccountNumber'
+        // /// </summary>
+        // [Fact]
+        // public void AccountNumberTest()
+        // {
+        //     // TODO unit test for the property 'AccountNumber'
+        // }
 
-
-        /// <summary>
-        /// Test the property 'StatementText'
-        /// </summary>
-        [Fact]
-        public void StatementTextTest()
-        {
-            // TODO unit test for the property 'StatementText'
-        }
-        /// <summary>
-        /// Test the property 'AccountName'
-        /// </summary>
-        [Fact]
-        public void AccountNameTest()
-        {
-            // TODO unit test for the property 'AccountName'
-        }
-        /// <summary>
-        /// Test the property 'BSB'
-        /// </summary>
-        [Fact]
-        public void BSBTest()
-        {
-            // TODO unit test for the property 'BSB'
-        }
-        /// <summary>
-        /// Test the property 'AccountNumber'
-        /// </summary>
-        [Fact]
-        public void AccountNumberTest()
-        {
-            // TODO unit test for the property 'AccountNumber'
-        }
         /// <summary>
         /// Test the property 'Remainder'
         /// </summary>
-        [Fact]
-        public void RemainderTest()
+        [Theory]
+        [InlineData("true", true)]
+        [InlineData("false", false)]
+        [InlineData("null", null)]
+        public void RemainderTest(string input, bool? expected)
         {
-            // TODO unit test for the property 'Remainder'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Remainder"": {input}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<BankAccount>(response);
+
+            Assert.Equal(expected, actual.Remainder);
         }
         /// <summary>
         /// Test the property 'Amount'
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void AmountTest(string input)
         {
-            // TODO unit test for the property 'Amount'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Amount"": {input}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<BankAccount>(response);
+
+            Assert.Equal(20, actual.Amount);
         }
 
     }

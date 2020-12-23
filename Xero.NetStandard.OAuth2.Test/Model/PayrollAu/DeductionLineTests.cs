@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -32,70 +33,121 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class DeductionLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for DeductionLine
-        //private DeductionLine instance;
-
-        public DeductionLineTests()
-        {
-            // TODO uncomment below to create an instance of DeductionLine
-            //instance = new DeductionLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
+        // /// <summary>
+        // /// Test the property 'DeductionTypeID'
+        // /// </summary>
+        // [Fact]
+        // public void DeductionTypeIDTest()
+        // {
+        //     // TODO unit test for the property 'DeductionTypeID'
+        // }
         /// <summary>
-        /// Test an instance of DeductionLine
+        /// Test the property 'CalculationType' deserialises from valid inputs
         /// </summary>
-        [Fact]
-        public void DeductionLineInstanceTest()
+        [Theory]
+        [InlineData("FIXEDAMOUNT", DeductionTypeCalculationType.FIXEDAMOUNT)]
+        [InlineData("POSTTAX", DeductionTypeCalculationType.POSTTAX)]
+        [InlineData("PRETAX", DeductionTypeCalculationType.PRETAX)]
+        public void CalculationType_ValidInputs_Deserialises(string input, DeductionTypeCalculationType expected)
         {
-            // TODO uncomment below to test "IsInstanceOfType" DeductionLine
-            //Assert.IsInstanceOfType<DeductionLine> (instance, "variable 'instance' is a DeductionLine");
-        }
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""CalculationType"": ""{input}""
+            }}";
 
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<DeductionLine>(response);
 
-        /// <summary>
-        /// Test the property 'DeductionTypeID'
-        /// </summary>
-        [Fact]
-        public void DeductionTypeIDTest()
-        {
-            // TODO unit test for the property 'DeductionTypeID'
+            Assert.Equal(expected, actual.CalculationType);
         }
         /// <summary>
-        /// Test the property 'CalculationType'
+        /// Test the property 'CalculationType' deserialises to 0 from null
         /// </summary>
         [Fact]
-        public void CalculationTypeTest()
+        public void CalculationType_NullInput_DeserialisesTo0()
         {
-            // TODO unit test for the property 'CalculationType'
+            var response = new RestResponse();
+            response.Content = @"{
+                ""CalculationType"": null
+            }";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<DeductionLine>(response);
+
+            Assert.Equal(0, (int)actual.CalculationType);
+        }
+        /// <summary>
+        /// Test the property 'CalculationType' deserialises to 0 when not present
+        /// </summary>
+        [Fact]
+        public void CalculationType_NotPresentInInput_DeserialisesTo0()
+        {
+            var response = new RestResponse();
+            response.Content = "{}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<DeductionLine>(response);
+
+            Assert.Equal(0, (int)actual.CalculationType);
         }
         /// <summary>
         /// Test the property 'Amount'
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void Amount_ValidInputs_Deserialises(string input)
         {
-            // TODO unit test for the property 'Amount'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Amount"": {input}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<DeductionLine>(response);
+
+            Assert.Equal(20, actual.Amount);
         }
         /// <summary>
         /// Test the property 'Percentage'
         /// </summary>
-        [Fact]
-        public void PercentageTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void Percentage_ValidInputs_Deserialises(string input)
         {
-            // TODO unit test for the property 'Percentage'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Percentage"": {input}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<DeductionLine>(response);
+
+            Assert.Equal(20, actual.Percentage);
         }
         /// <summary>
         /// Test the property 'NumberOfUnits'
         /// </summary>
-        [Fact]
-        public void NumberOfUnitsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void NumberOfUnits_ValidInputs_Deserialises(string input)
         {
-            // TODO unit test for the property 'NumberOfUnits'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""NumberOfUnits"": {input}
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<DeductionLine>(response);
+
+            Assert.Equal(20, actual.NumberOfUnits);
         }
 
     }

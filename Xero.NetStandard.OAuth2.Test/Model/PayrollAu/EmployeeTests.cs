@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -124,10 +125,46 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// <summary>
         /// Test the property 'Gender'
         /// </summary>
-        [Fact]
-        public void GenderTest()
+        [Theory]
+        [InlineData("N", Employee.GenderEnum.N)]
+        [InlineData("M", Employee.GenderEnum.M)]
+        [InlineData("F", Employee.GenderEnum.F)]
+        [InlineData("I", Employee.GenderEnum.I)]
+        public void Gender_ValidInput_Deserialises(string input, Employee.GenderEnum expected)
         {
-            // TODO unit test for the property 'Gender'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""Gender"": ""{input}""
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Employee>(response);
+
+            Assert.Equal(expected, actual.Gender);
+        }
+        [Fact]
+        public void Gender_NullInput_DeserialisesTo0()
+        {
+            var response = new RestResponse();
+            response.Content = @"{
+                ""Gender"": null
+            }";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Employee>(response);
+
+            Assert.Equal(0, (int)actual.Gender);
+        }
+        [Fact]
+        public void Gender_NotPresentInInput_DeserialisesTo0()
+        {
+            var response = new RestResponse();
+            response.Content = "{}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Employee>(response);
+
+            Assert.Equal(0, (int)actual.Gender);
         }
         /// <summary>
         /// Test the property 'Phone'
