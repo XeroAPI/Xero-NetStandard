@@ -44,6 +44,11 @@ namespace Xero.NetStandard.OAuth2.Test
             }
         }
 
+        public class Bool : Number
+        {
+            public Bool(string propertyName, string input) : base(propertyName, input) {}
+        }
+
         public class Null : IJsonValue
         {
             public Null(string propertyName)

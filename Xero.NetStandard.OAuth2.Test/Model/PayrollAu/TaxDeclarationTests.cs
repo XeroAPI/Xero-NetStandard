@@ -32,30 +32,10 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class TaxDeclarationTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for TaxDeclaration
-        //private TaxDeclaration instance;
-
-        public TaxDeclarationTests()
-        {
-            // TODO uncomment below to create an instance of TaxDeclaration
-            //instance = new TaxDeclaration();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
-
-        /// <summary>
-        /// Test an instance of TaxDeclaration
-        /// </summary>
-        [Fact]
-        public void TaxDeclarationInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" TaxDeclaration
-            //Assert.IsInstanceOfType<TaxDeclaration> (instance, "variable 'instance' is a TaxDeclaration");
-        }
-
 
         /// <summary>
         /// Test the property 'EmployeeID'
@@ -107,12 +87,44 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             );
         }
         /// <summary>
-        /// Test the property 'TFNExemptionType'
+        /// Test the property 'TFNExemptionType' deserialises from valid inputs
+        /// </summary>
+        [Theory]
+        [InlineData("NOTQUOTED", TFNExemptionType.NOTQUOTED)]
+        [InlineData("PENDING", TFNExemptionType.PENDING)]
+        [InlineData("PENSIONER", TFNExemptionType.PENSIONER)]
+        [InlineData("UNDER18", TFNExemptionType.UNDER18)]
+        public void TFNExemptionType_ValidInputs_Deserialises(string input, TFNExemptionType expected)
+        {
+            JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
+                input: new JsonDoc.String(nameof(TaxDeclaration.TFNExemptionType), input),
+                toProperty: (declaration) => declaration.TFNExemptionType,
+                shouldBe: expected
+            );
+        }
+        /// <summary>
+        /// Test the property 'TFNExemptionType' deserialises from null to 0
         /// </summary>
         [Fact]
-        public void TFNExemptionTypeTest()
+        public void TFNExemptionType_NullInput_DeserialisesTo0()
         {
-            // TODO unit test for the property 'TFNExemptionType'
+            JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
+                input: new JsonDoc.Null(nameof(TaxDeclaration.TFNExemptionType)),
+                toProperty: (declaration) => declaration.TFNExemptionType,
+                shouldBe: 0
+            );
+        }
+        /// <summary>
+        /// Test the property 'TFNExemptionType' deserialises to 0 when not present
+        /// </summary>
+        [Fact]
+        public void TFNExemptionType_NotPresentInInput_DeserialisesTo0()
+        {
+            JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
+                input: new JsonDoc.NotPresent(nameof(TaxDeclaration.TFNExemptionType)),
+                toProperty: (declaration) => declaration.TFNExemptionType,
+                shouldBe: 0
+            );
         }
         /// <summary>
         /// Test the property 'TaxFileNumber'
@@ -125,10 +137,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// <summary>
         /// Test the property 'AustralianResidentForTaxPurposes'
         /// </summary>
-        [Fact]
-        public void AustralianResidentForTaxPurposesTest()
+        [Theory]
+        [InlineData("true", true)]
+        [InlineData("false", false)]
+        public void AustralianResidentForTaxPurposesTest(string input, bool expected)
         {
-            // TODO unit test for the property 'AustralianResidentForTaxPurposes'
+            JsonDoc.Assert<TaxDeclaration, bool?>(
+                input: new JsonDoc.Bool(
+                    nameof(TaxDeclaration.AustralianResidentForTaxPurposes),
+                    input),
+                toProperty: (declaration) => declaration.AustralianResidentForTaxPurposes,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'ResidencyStatus'
@@ -149,10 +169,16 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// <summary>
         /// Test the property 'TaxOffsetEstimatedAmount'
         /// </summary>
-        [Fact]
-        public void TaxOffsetEstimatedAmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void TaxOffsetEstimatedAmountTest(string input)
         {
-            // TODO unit test for the property 'TaxOffsetEstimatedAmount'
+            JsonDoc.Assert<TaxDeclaration, decimal?>(
+                input: new JsonDoc.Number(nameof(TaxDeclaration.TaxOffsetEstimatedAmount), input),
+                toProperty: (declaration) => declaration.TaxOffsetEstimatedAmount,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'HasHELPDebt'
@@ -216,9 +242,14 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Fact]
         public void UpdatedDateUTCTest()
         {
-            // TODO unit test for the property 'UpdatedDateUTC'
+            JsonDoc.Assert<TaxDeclaration, DateTime?>(
+                input: new JsonDoc.String(
+                    nameof(TaxDeclaration.UpdatedDateUTC),
+                    "/Date(1535481994000+0000)/"),
+                toProperty: (declaration) => declaration.UpdatedDateUTC,
+                shouldBe: new DateTime(2018, 8, 28, 18, 46, 34)
+            );
         }
-
     }
 
 }
