@@ -66,12 +66,45 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             // TODO unit test for the property 'EmployeeID'
         }
         /// <summary>
-        /// Test the property 'EmploymentBasis'
+        /// Test the property 'EmploymentBasis' deserialises from valid inputs
+        /// </summary>
+        [Theory]
+        [InlineData("FULLTIME", EmploymentBasis.FULLTIME)]
+        [InlineData("PARTTIME", EmploymentBasis.PARTTIME)]
+        [InlineData("CASUAL", EmploymentBasis.CASUAL)]
+        [InlineData("LABOURHIRE", EmploymentBasis.LABOURHIRE)]
+        [InlineData("SUPERINCOMESTREAM", EmploymentBasis.SUPERINCOMESTREAM)]
+        public void EmploymentBasis_ValidInputs_Deserialises(string input, EmploymentBasis expected)
+        {
+            JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
+                input: new JsonDoc.String(nameof(TaxDeclaration.EmploymentBasis), input),
+                toProperty: (t) => t.EmploymentBasis,
+                shouldBe: expected
+            );
+        }
+        /// <summary>
+        /// Test the property 'EmploymentBasis' deserialises from null to 0
         /// </summary>
         [Fact]
-        public void EmploymentBasisTest()
+        public void EmploymentBasis_NullInput_DeserialisesTo0()
         {
-            // TODO unit test for the property 'EmploymentBasis'
+            JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
+                input: new JsonDoc.Null(nameof(TaxDeclaration.EmploymentBasis)),
+                toProperty: (t) => t.EmploymentBasis,
+                shouldBe: 0
+            );
+        }
+        /// <summary>
+        /// Test the property 'EmploymentBasis' deserialises to 0 when not present
+        /// </summary>
+        [Fact]
+        public void EmploymentBasis_NotPresentInInput_DeserialisesTo0()
+        {
+            JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
+                input: new JsonDoc.NotPresent(nameof(TaxDeclaration.EmploymentBasis)),
+                toProperty: (t) => t.EmploymentBasis,
+                shouldBe: 0
+            );
         }
         /// <summary>
         /// Test the property 'TFNExemptionType'
