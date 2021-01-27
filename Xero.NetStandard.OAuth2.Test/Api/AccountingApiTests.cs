@@ -49,6 +49,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       this.output = output;
     }
 
+    // Methods are async but may not require it in specific cases
+    #pragma warning disable CS1998 // This async method lacks 'await' operators
     public async Task InitializeAsync()
     {
       var directory = Directory.GetCurrentDirectory();
@@ -62,6 +64,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
     {
       // Cleanup when everything is done.
     }
+    #pragma warning restore CS1998 // This async method lacks 'await' operators
 
     /// <summary>
     /// Test an instance of AccountingApi
