@@ -384,27 +384,34 @@ namespace Xero.NetStandard.OAuth2.Client
                     {
                         var bytes = ClientUtils.ReadAsBytes(fileParam.Value);
                         var name = System.IO.Path.GetFileName(fileStream.Name);
-                        request.AddFile(name, bytes, name);
+                        options.FormParameters.TryGetValue("mimeType", out var contentType);
+
+
+                        request.AddFile(name, bytes, name, contentType);
                     }
                     else if (memStream != null)
                     {
                         var bytes = memStream.ToArray();
                         var hasName = options.FormParameters.TryGetValue("filename", out var name);
+                        options.FormParameters.TryGetValue("mimeType", out var contentType);
+                        
                         if (!hasName)
                         {
                             throw new ApiException(400, "Files API: No filename provided when uploading file");
                         }
-                        request.AddFile(name, bytes, name);
+                        request.AddFile(name, bytes, name, contentType);
                     }
                     else
                     {
                         var bytes = ClientUtils.ReadAsBytes(fileParam.Value);
                         var hasName = options.FormParameters.TryGetValue("filename", out var name);
+                        options.FormParameters.TryGetValue("mimeType", out var contentType);
+
                         if (!hasName)
                         {
                             throw new ApiException(400, "Files API: No filename provided when uploading file");
                         }
-                        request.AddFile(name, bytes, name);
+                        request.AddFile(name, bytes, name, contentType);
                     }
                 }
             }
