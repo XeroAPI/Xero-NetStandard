@@ -33,9 +33,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
     /// </remarks>
     public class EndBalanceTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EndBalance
-        //private EndBalance instance;
-
         public EndBalanceTests()
         {
             // TODO uncomment below to create an instance of EndBalance
@@ -46,17 +43,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         {
             // Cleanup when everything is done.
         }
-
-        /// <summary>
-        /// Test an instance of EndBalance
-        /// </summary>
-        [Fact]
-        public void EndBalanceInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" EndBalance
-            //Assert.IsInstanceOfType<EndBalance> (instance, "variable 'instance' is a EndBalance");
-        }
-
 
         /// <summary>
         /// Test the property 'Amount' deserialises from valid decimal numbers

@@ -32,9 +32,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
     /// </remarks>
     public class StatementLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for StatementLine
-        //private StatementLine instance;
-
         public StatementLineTests()
         {
             // TODO uncomment below to create an instance of StatementLine
@@ -47,81 +44,19 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         }
 
         /// <summary>
-        /// Test an instance of StatementLine
-        /// </summary>
-        [Fact]
-        public void StatementLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" StatementLine
-            //Assert.IsInstanceOfType<StatementLine> (instance, "variable 'instance' is a StatementLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'PostedDate'
-        /// </summary>
-        [Fact]
-        public void PostedDateTest()
-        {
-            // TODO unit test for the property 'PostedDate'
-        }
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
-        /// <summary>
         /// Test the property 'Amount'
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void Amount_ValidInputs_Deserialises(string input)
         {
-            // TODO unit test for the property 'Amount'
+            JsonDoc.Assert<StatementLine, decimal?>(
+                input: new JsonDoc.Number(nameof(StatementLine.Amount), input),
+                toProperty: (x) => x.Amount,
+                shouldBe: 20m
+            );
         }
-        /// <summary>
-        /// Test the property 'CreditDebitIndicator'
-        /// </summary>
-        [Fact]
-        public void CreditDebitIndicatorTest()
-        {
-            // TODO unit test for the property 'CreditDebitIndicator'
-        }
-        /// <summary>
-        /// Test the property 'TransactionId'
-        /// </summary>
-        [Fact]
-        public void TransactionIdTest()
-        {
-            // TODO unit test for the property 'TransactionId'
-        }
-        /// <summary>
-        /// Test the property 'PayeeName'
-        /// </summary>
-        [Fact]
-        public void PayeeNameTest()
-        {
-            // TODO unit test for the property 'PayeeName'
-        }
-        /// <summary>
-        /// Test the property 'Reference'
-        /// </summary>
-        [Fact]
-        public void ReferenceTest()
-        {
-            // TODO unit test for the property 'Reference'
-        }
-        /// <summary>
-        /// Test the property 'ChequeNumber'
-        /// </summary>
-        [Fact]
-        public void ChequeNumberTest()
-        {
-            // TODO unit test for the property 'ChequeNumber'
-        }
-
     }
 
 }
