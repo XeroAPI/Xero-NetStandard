@@ -32,9 +32,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class EarningsRateTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for EarningsRate
-        //private EarningsRate instance;
-
         public EarningsRateTests()
         {
             // TODO uncomment below to create an instance of EarningsRate
@@ -47,153 +44,102 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         }
 
         /// <summary>
-        /// Test an instance of EarningsRate
-        /// </summary>
-        [Fact]
-        public void EarningsRateInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" EarningsRate
-            //Assert.IsInstanceOfType<EarningsRate> (instance, "variable 'instance' is a EarningsRate");
-        }
-
-
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Fact]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-        /// <summary>
-        /// Test the property 'AccountCode'
-        /// </summary>
-        [Fact]
-        public void AccountCodeTest()
-        {
-            // TODO unit test for the property 'AccountCode'
-        }
-        /// <summary>
-        /// Test the property 'TypeOfUnits'
-        /// </summary>
-        [Fact]
-        public void TypeOfUnitsTest()
-        {
-            // TODO unit test for the property 'TypeOfUnits'
-        }
-        /// <summary>
-        /// Test the property 'IsExemptFromTax'
-        /// </summary>
-        [Fact]
-        public void IsExemptFromTaxTest()
-        {
-            // TODO unit test for the property 'IsExemptFromTax'
-        }
-        /// <summary>
-        /// Test the property 'IsExemptFromSuper'
-        /// </summary>
-        [Fact]
-        public void IsExemptFromSuperTest()
-        {
-            // TODO unit test for the property 'IsExemptFromSuper'
-        }
-        /// <summary>
-        /// Test the property 'IsReportableAsW1'
-        /// </summary>
-        [Fact]
-        public void IsReportableAsW1Test()
-        {
-            // TODO unit test for the property 'IsReportableAsW1'
-        }
-        /// <summary>
         /// Test the property 'EarningsType'
         /// </summary>
-        [Fact]
-        public void EarningsTypeTest()
+        [Theory]
+        [InlineData("ALLOWANCE", EarningsType.ALLOWANCE)]
+        [InlineData("BONUSESANDCOMMISSIONS", EarningsType.BONUSESANDCOMMISSIONS)]
+        [InlineData("EMPLOYMENTTERMINATIONPAYMENT", EarningsType.EMPLOYMENTTERMINATIONPAYMENT)]
+        [InlineData("FIXED", EarningsType.FIXED)]
+        [InlineData("LUMPSUMA", EarningsType.LUMPSUMA)]
+        [InlineData("LUMPSUMB", EarningsType.LUMPSUMB)]
+        [InlineData("LUMPSUMD", EarningsType.LUMPSUMD)]
+        [InlineData("LUMPSUME", EarningsType.LUMPSUME)]
+        [InlineData("ORDINARYTIMEEARNINGS", EarningsType.ORDINARYTIMEEARNINGS)]
+        [InlineData("OVERTIMEEARNINGS", EarningsType.OVERTIMEEARNINGS)]
+        public void EarningsTypeTest(string input, EarningsType expected)
         {
-            // TODO unit test for the property 'EarningsType'
-        }
-        /// <summary>
-        /// Test the property 'EarningsRateID'
-        /// </summary>
-        [Fact]
-        public void EarningsRateIDTest()
-        {
-            // TODO unit test for the property 'EarningsRateID'
+            JsonDoc.Assert<EarningsRate, EarningsType>(
+                input: new JsonDoc.String(nameof(EarningsRate.EarningsType), input),
+                toProperty: e => e.EarningsType,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'RateType'
         /// </summary>
-        [Fact]
-        public void RateTypeTest()
+        [Theory]
+        [InlineData("FIXEDAMOUNT", RateType.FIXEDAMOUNT)]
+        [InlineData("MULTIPLE", RateType.MULTIPLE)]
+        [InlineData("RATEPERUNIT", RateType.RATEPERUNIT)]
+        public void RateTypeTest(string input, RateType expected)
         {
-            // TODO unit test for the property 'RateType'
-        }
-        /// <summary>
-        /// Test the property 'RatePerUnit'
-        /// </summary>
-        [Fact]
-        public void RatePerUnitTest()
-        {
-            // TODO unit test for the property 'RatePerUnit'
+            JsonDoc.Assert<EarningsRate, RateType>(
+                input: new JsonDoc.String(nameof(EarningsRate.RateType), input),
+                toProperty: e => e.RateType,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'Multiplier'
         /// </summary>
-        [Fact]
-        public void MultiplierTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void MultiplierTest(string input)
         {
-            // TODO unit test for the property 'Multiplier'
-        }
-        /// <summary>
-        /// Test the property 'AccrueLeave'
-        /// </summary>
-        [Fact]
-        public void AccrueLeaveTest()
-        {
-            // TODO unit test for the property 'AccrueLeave'
+            JsonDoc.Assert<EarningsRate, decimal?>(
+                input: new JsonDoc.Number(nameof(EarningsRate.Multiplier), input),
+                toProperty: x => x.Multiplier,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'Amount'
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void AmountTest(string input)
         {
-            // TODO unit test for the property 'Amount'
+            JsonDoc.Assert<EarningsRate, decimal?>(
+                input: new JsonDoc.Number(nameof(EarningsRate.Amount), input),
+                toProperty: x => x.Amount,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'EmploymentTerminationPaymentType'
         /// </summary>
-        [Fact]
-        public void EmploymentTerminationPaymentTypeTest()
+        [Theory]
+        [InlineData("O", EmploymentTerminationPaymentType.O)]
+        [InlineData("R", EmploymentTerminationPaymentType.R)]
+        public void EmploymentTerminationPaymentTypeTest(string input, EmploymentTerminationPaymentType expected)
         {
-            // TODO unit test for the property 'EmploymentTerminationPaymentType'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
-        /// <summary>
-        /// Test the property 'CurrentRecord'
-        /// </summary>
-        [Fact]
-        public void CurrentRecordTest()
-        {
-            // TODO unit test for the property 'CurrentRecord'
+            JsonDoc.Assert<EarningsRate, EmploymentTerminationPaymentType>(
+                input: new JsonDoc.String(nameof(EarningsRate.EmploymentTerminationPaymentType), input),
+                toProperty: x => x.EmploymentTerminationPaymentType,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'AllowanceType'
         /// </summary>
-        [Fact]
-        public void AllowanceTypeTest()
+        [Theory]
+        [InlineData("CAR", AllowanceType.CAR)]
+        [InlineData("JOBKEEPER", AllowanceType.JOBKEEPER)]
+        [InlineData("LAUNDRY", AllowanceType.LAUNDRY)]
+        [InlineData("MEALS", AllowanceType.MEALS)]
+        [InlineData("OTHER", AllowanceType.OTHER)]
+        [InlineData("TRANSPORT", AllowanceType.TRANSPORT)]
+        [InlineData("TRAVEL", AllowanceType.TRAVEL)]
+        public void AllowanceTypeTest(string input, AllowanceType expected)
         {
-            // TODO unit test for the property 'AllowanceType'
+            JsonDoc.Assert<EarningsRate, AllowanceType>(
+                input: new JsonDoc.String(nameof(EarningsRate.AllowanceType), input),
+                toProperty: x => x.AllowanceType,
+                shouldBe: expected
+            );
         }
-
     }
-
 }

@@ -137,23 +137,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 
             Assert.Equal(0, (int) actual.Type);
         }
-        // /// <summary>
-        // /// Test the property 'Code'
-        // /// </summary>
-        // [Fact]
-        // public void CodeTest()
-        // {
-        //     // TODO unit test for the property 'Code'
-        // }
-        // /// <summary>
-        // /// Test the property 'Name'
-        // /// </summary>
-        // [Fact]
-        // public void NameTest()
-        // {
-        //     // TODO unit test for the property 'Name'
-        // }
-
     }
 
 }

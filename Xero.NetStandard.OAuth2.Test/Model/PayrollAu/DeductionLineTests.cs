@@ -38,14 +38,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             // Cleanup when everything is done.
         }
 
-        // /// <summary>
-        // /// Test the property 'DeductionTypeID'
-        // /// </summary>
-        // [Fact]
-        // public void DeductionTypeIDTest()
-        // {
-        //     // TODO unit test for the property 'DeductionTypeID'
-        // }
         /// <summary>
         /// Test the property 'CalculationType' deserialises from valid inputs
         /// </summary>
@@ -149,7 +141,5 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 
             Assert.Equal(20, actual.NumberOfUnits);
         }
-
     }
-
 }

@@ -32,9 +32,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class DeductionTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for DeductionType
-        //private DeductionType instance;
-
         public DeductionTypeTests()
         {
             // TODO uncomment below to create an instance of DeductionType
@@ -47,89 +44,19 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         }
 
         /// <summary>
-        /// Test an instance of DeductionType
-        /// </summary>
-        [Fact]
-        public void DeductionTypeInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" DeductionType
-            //Assert.IsInstanceOfType<DeductionType> (instance, "variable 'instance' is a DeductionType");
-        }
-
-
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Fact]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-        /// <summary>
-        /// Test the property 'AccountCode'
-        /// </summary>
-        [Fact]
-        public void AccountCodeTest()
-        {
-            // TODO unit test for the property 'AccountCode'
-        }
-        /// <summary>
-        /// Test the property 'ReducesTax'
-        /// </summary>
-        [Fact]
-        public void ReducesTaxTest()
-        {
-            // TODO unit test for the property 'ReducesTax'
-        }
-        /// <summary>
-        /// Test the property 'ReducesSuper'
-        /// </summary>
-        [Fact]
-        public void ReducesSuperTest()
-        {
-            // TODO unit test for the property 'ReducesSuper'
-        }
-        /// <summary>
-        /// Test the property 'IsExemptFromW1'
-        /// </summary>
-        [Fact]
-        public void IsExemptFromW1Test()
-        {
-            // TODO unit test for the property 'IsExemptFromW1'
-        }
-        /// <summary>
-        /// Test the property 'DeductionTypeID'
-        /// </summary>
-        [Fact]
-        public void DeductionTypeIDTest()
-        {
-            // TODO unit test for the property 'DeductionTypeID'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
-        /// <summary>
         /// Test the property 'DeductionCategory'
         /// </summary>
-        [Fact]
-        public void DeductionCategoryTest()
+        [Theory]
+        [InlineData("NONE", DeductionType.DeductionCategoryEnum.NONE)]
+        [InlineData("UNIONFEES", DeductionType.DeductionCategoryEnum.UNIONFEES)]
+        [InlineData("WORKPLACEGIVING", DeductionType.DeductionCategoryEnum.WORKPLACEGIVING)]
+        public void DeductionCategory_ValidInputs_Deserialises(string input, DeductionType.DeductionCategoryEnum expected)
         {
-            // TODO unit test for the property 'DeductionCategory'
+            JsonDoc.Assert<DeductionType, DeductionType.DeductionCategoryEnum>(
+                input: new JsonDoc.String(nameof(DeductionType.DeductionCategory), input),
+                toProperty: (x) => x.DeductionCategory,
+                shouldBe: expected
+            );
         }
-        /// <summary>
-        /// Test the property 'CurrentRecord'
-        /// </summary>
-        [Fact]
-        public void CurrentRecordTest()
-        {
-            // TODO unit test for the property 'CurrentRecord'
-        }
-
     }
-
 }

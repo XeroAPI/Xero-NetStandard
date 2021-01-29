@@ -33,9 +33,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class EmployeeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Employee
-        //private Employee instance;
-
         public EmployeeTests()
         {
             // TODO uncomment below to create an instance of Employee
@@ -47,81 +44,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             // Cleanup when everything is done.
         }
 
-        /// <summary>
-        /// Test an instance of Employee
-        /// </summary>
-        [Fact]
-        public void EmployeeInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" Employee
-            //Assert.IsInstanceOfType<Employee> (instance, "variable 'instance' is a Employee");
-        }
-
-
-        /// <summary>
-        /// Test the property 'FirstName'
-        /// </summary>
-        [Fact]
-        public void FirstNameTest()
-        {
-            // TODO unit test for the property 'FirstName'
-        }
-        /// <summary>
-        /// Test the property 'LastName'
-        /// </summary>
-        [Fact]
-        public void LastNameTest()
-        {
-            // TODO unit test for the property 'LastName'
-        }
-        /// <summary>
-        /// Test the property 'DateOfBirth'
-        /// </summary>
-        [Fact]
-        public void DateOfBirthTest()
-        {
-            // TODO unit test for the property 'DateOfBirth'
-        }
-        /// <summary>
-        /// Test the property 'HomeAddress'
-        /// </summary>
-        [Fact]
-        public void HomeAddressTest()
-        {
-            // TODO unit test for the property 'HomeAddress'
-        }
-        /// <summary>
-        /// Test the property 'StartDate'
-        /// </summary>
-        [Fact]
-        public void StartDateTest()
-        {
-            // TODO unit test for the property 'StartDate'
-        }
-        /// <summary>
-        /// Test the property 'Title'
-        /// </summary>
-        [Fact]
-        public void TitleTest()
-        {
-            // TODO unit test for the property 'Title'
-        }
-        /// <summary>
-        /// Test the property 'MiddleNames'
-        /// </summary>
-        [Fact]
-        public void MiddleNamesTest()
-        {
-            // TODO unit test for the property 'MiddleNames'
-        }
-        /// <summary>
-        /// Test the property 'Email'
-        /// </summary>
-        [Fact]
-        public void EmailTest()
-        {
-            // TODO unit test for the property 'Email'
-        }
         /// <summary>
         /// Test the property 'Gender'
         /// </summary>
@@ -167,172 +89,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             Assert.Equal(0, (int)actual.Gender);
         }
         /// <summary>
-        /// Test the property 'Phone'
-        /// </summary>
-        [Fact]
-        public void PhoneTest()
-        {
-            // TODO unit test for the property 'Phone'
-        }
-        /// <summary>
-        /// Test the property 'Mobile'
-        /// </summary>
-        [Fact]
-        public void MobileTest()
-        {
-            // TODO unit test for the property 'Mobile'
-        }
-        /// <summary>
-        /// Test the property 'TwitterUserName'
-        /// </summary>
-        [Fact]
-        public void TwitterUserNameTest()
-        {
-            // TODO unit test for the property 'TwitterUserName'
-        }
-        /// <summary>
-        /// Test the property 'IsAuthorisedToApproveLeave'
-        /// </summary>
-        [Fact]
-        public void IsAuthorisedToApproveLeaveTest()
-        {
-            // TODO unit test for the property 'IsAuthorisedToApproveLeave'
-        }
-        /// <summary>
-        /// Test the property 'IsAuthorisedToApproveTimesheets'
-        /// </summary>
-        [Fact]
-        public void IsAuthorisedToApproveTimesheetsTest()
-        {
-            // TODO unit test for the property 'IsAuthorisedToApproveTimesheets'
-        }
-        /// <summary>
-        /// Test the property 'JobTitle'
-        /// </summary>
-        [Fact]
-        public void JobTitleTest()
-        {
-            // TODO unit test for the property 'JobTitle'
-        }
-        /// <summary>
-        /// Test the property 'Classification'
-        /// </summary>
-        [Fact]
-        public void ClassificationTest()
-        {
-            // TODO unit test for the property 'Classification'
-        }
-        /// <summary>
-        /// Test the property 'OrdinaryEarningsRateID'
-        /// </summary>
-        [Fact]
-        public void OrdinaryEarningsRateIDTest()
-        {
-            // TODO unit test for the property 'OrdinaryEarningsRateID'
-        }
-        /// <summary>
-        /// Test the property 'PayrollCalendarID'
-        /// </summary>
-        [Fact]
-        public void PayrollCalendarIDTest()
-        {
-            // TODO unit test for the property 'PayrollCalendarID'
-        }
-        /// <summary>
-        /// Test the property 'EmployeeGroupName'
-        /// </summary>
-        [Fact]
-        public void EmployeeGroupNameTest()
-        {
-            // TODO unit test for the property 'EmployeeGroupName'
-        }
-        /// <summary>
-        /// Test the property 'EmployeeID'
-        /// </summary>
-        [Fact]
-        public void EmployeeIDTest()
-        {
-            // TODO unit test for the property 'EmployeeID'
-        }
-        /// <summary>
-        /// Test the property 'TerminationDate'
-        /// </summary>
-        [Fact]
-        public void TerminationDateTest()
-        {
-            // TODO unit test for the property 'TerminationDate'
-        }
-        /// <summary>
-        /// Test the property 'BankAccounts'
-        /// </summary>
-        [Fact]
-        public void BankAccountsTest()
-        {
-            // TODO unit test for the property 'BankAccounts'
-        }
-        /// <summary>
-        /// Test the property 'PayTemplate'
-        /// </summary>
-        [Fact]
-        public void PayTemplateTest()
-        {
-            // TODO unit test for the property 'PayTemplate'
-        }
-        /// <summary>
-        /// Test the property 'OpeningBalances'
-        /// </summary>
-        [Fact]
-        public void OpeningBalancesTest()
-        {
-            // TODO unit test for the property 'OpeningBalances'
-        }
-        /// <summary>
-        /// Test the property 'TaxDeclaration'
-        /// </summary>
-        [Fact]
-        public void TaxDeclarationTest()
-        {
-            // TODO unit test for the property 'TaxDeclaration'
-        }
-        /// <summary>
-        /// Test the property 'LeaveBalances'
-        /// </summary>
-        [Fact]
-        public void LeaveBalancesTest()
-        {
-            // TODO unit test for the property 'LeaveBalances'
-        }
-        /// <summary>
-        /// Test the property 'LeaveLines'
-        /// </summary>
-        [Fact]
-        public void LeaveLinesTest()
-        {
-            // TODO unit test for the property 'LeaveLines'
-        }
-        /// <summary>
-        /// Test the property 'SuperMemberships'
-        /// </summary>
-        [Fact]
-        public void SuperMembershipsTest()
-        {
-            // TODO unit test for the property 'SuperMemberships'
-        }
-        /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
-        public void StatusTest()
+        [Theory]
+        [InlineData("ACTIVE", EmployeeStatus.ACTIVE)]
+        [InlineData("TERMINATED", EmployeeStatus.TERMINATED)]
+        public void StatusTest(string input, EmployeeStatus expected)
         {
-            // TODO unit test for the property 'Status'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
+            JsonDoc.Assert<Employee, EmployeeStatus>(
+                input: new JsonDoc.String(nameof(Employee.Status), input),
+                toProperty: x => x.Status,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'ValidationErrors'
@@ -340,9 +108,23 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Fact]
         public void ValidationErrorsTest()
         {
-            // TODO unit test for the property 'ValidationErrors'
+            var response = new RestResponse();
+            response.Content = $@"{{
+                ""ValidationErrors"": [
+                    {{
+                        ""Message"": ""One""
+                    }},
+                    {{
+                        ""Message"": ""Two""
+                    }}
+                ]
+            }}";
+
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<Employee>(response);
+
+            Assert.Equal(2, actual.ValidationErrors.Count);
+            Assert.Equal("One", actual.ValidationErrors.First().Message);
         }
-
     }
-
 }
