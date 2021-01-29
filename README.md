@@ -13,13 +13,8 @@ Version Xero-NetStandard SDK only supports OAuth2 authentication and the followi
 * payroll UK
 * payroll NZ
 * projects
-
-Coming soon
 * bank feeds
-
-Pending OpenAPI spec release
-* files
-* xero hq
+* files 
 
 ## How to handle OAuth 2.0 authentication & authorization?
 We have built Xero OAuth 2.0 Client. Check out [Xero.NetStandard.OAuth2Client](https://github.com/XeroAPI/Xero-NetStandard/tree/master/Xero.NetStandard.OAuth2Client)
@@ -68,7 +63,6 @@ To get started there are a few main classes.
 * XeroOAuth2
 
 The AccountingApi class is not coupled to the OAuth2 class, so feel free to use your own.
-
 
 To get started you will just need two things to make calls to the Accounting Api.
 * xero-tenant-id
@@ -449,6 +443,90 @@ Before trying the APIs, please make sure your company had been approved for Bank
 ```csharp
       var BankFeedsApi = new BankFeedsApi();
       var response = await BankFeedsApi.GetStatementsAsync(accessToken, xeroTenantId);
+```
+
+### Files APIs: 
+- Upload a file: 
+```csharp
+      var FilesApi = new FilesApi();
+
+      // Convet IFormFile to byte array
+      byte[] byteArray; 
+      using (MemoryStream data = new MemoryStream())
+      {
+        file.CopyTo(data);
+        byteArray = data.ToArray();
+      }
+      
+      // Upload file
+      var response = await FilesApi.UploadFileAsync(
+          accessToken,
+          xeroTenantId,
+          null,
+          byteArray,
+          file.FileName,
+          file.FileName,
+          file.ContentType
+      );
+```
+
+- Get Files: 
+```csharp
+      var FilesApi = new FilesApi();
+      var response = await FilesApi.GetFilesAsync(accessToken, xeroTenantId);
+      var filesItems = response.Items;
+```
+
+- Delete a File: 
+```csharp
+      Guid fileIDGuid = Guid.Parse(fileID);
+
+      var filesApi = new FilesApi();
+      await filesApi.DeleteFileAsync(accessToken, xeroTenantId, fileIDGuid);
+```
+
+- Rename a File: 
+```csharp
+      Guid fileIDGuid = Guid.Parse(fileID);
+
+      var filesApi = new FilesApi();
+      FileObject file = await filesApi.GetFileAsync(accessToken, xeroTenantId, fileIDGuid);
+      file.Name = newName;
+
+      var response = await filesApi.UpdateFileAsync(accessToken, xeroTenantId, fileIDGuid, file);
+```
+
+- Get Associations
+```csharp
+      var FilesApi = new FilesApi();
+      var response = await FilesApi.GetFileAssociationsAsync(accessToken, xeroTenantId, new Guid(fileId));
+```
+
+- Create an Association
+```csharp
+      var FilesApi = new FilesApi();
+
+      var fileIdGuid = new Guid(fileId);
+      var invoiceIdGuid = new Guid(invoiceId);
+      Enum.TryParse<ObjectType>(objectType, out var objectTypeEnum);
+
+      Association association = new Association{
+          FileId = fileIdGuid,
+          ObjectId = invoiceIdGuid,
+          ObjectType = objectTypeEnum,
+          ObjectGroup = ObjectGroup.Invoice
+      };
+
+      var response = await FilesApi.CreateFileAssociationAsync(accessToken, xeroTenantId, fileIdGuid, association);
+```
+
+- Delete an Association
+```csharp
+      var fileIdGuid = new Guid(fileId);
+      var objectIdGuid = new Guid(objectId);
+
+      var FilesApi = new FilesApi();
+      await FilesApi.DeleteFileAssociationAsync(accessToken, xeroTenantId, fileIdGuid, objectIdGuid);
 ```
 
 For full documentation please refer to [Xero Bankfeed API documentation](https://developer.xero.com/documentation/bank-feeds-api/overview). 
