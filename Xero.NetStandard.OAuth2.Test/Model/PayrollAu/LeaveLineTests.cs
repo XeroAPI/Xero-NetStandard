@@ -32,96 +32,55 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class LeaveLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for LeaveLine
-        //private LeaveLine instance;
-
-        public LeaveLineTests()
-        {
-            // TODO uncomment below to create an instance of LeaveLine
-            //instance = new LeaveLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of LeaveLine
-        /// </summary>
-        [Fact]
-        public void LeaveLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" LeaveLine
-            //Assert.IsInstanceOfType<LeaveLine> (instance, "variable 'instance' is a LeaveLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'LeaveTypeID'
-        /// </summary>
-        [Fact]
-        public void LeaveTypeIDTest()
-        {
-            // TODO unit test for the property 'LeaveTypeID'
-        }
-        /// <summary>
         /// Test the property 'CalculationType'
         /// </summary>
-        [Fact]
-        public void CalculationTypeTest()
+        [Theory]
+        [InlineData("BASEDONORDINARYEARNINGS", LeaveLineCalculationType.BASEDONORDINARYEARNINGS)]
+        [InlineData("ENTERRATEINPAYTEMPLATE", LeaveLineCalculationType.ENTERRATEINPAYTEMPLATE)]
+        [InlineData("FIXEDAMOUNTEACHPERIOD", LeaveLineCalculationType.FIXEDAMOUNTEACHPERIOD)]
+        [InlineData("NOCALCULATIONREQUIRED", LeaveLineCalculationType.NOCALCULATIONREQUIRED)]
+        [InlineData("", LeaveLineCalculationType.Empty)]
+        public void CalculationTypeTest(string input, LeaveLineCalculationType expected)
         {
-            // TODO unit test for the property 'CalculationType'
+            JsonDoc.Assert<LeaveLine, LeaveLineCalculationType>(
+                input: new JsonDoc.String(nameof(LeaveLine.CalculationType), input),
+                toProperty: x => x.CalculationType,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'EntitlementFinalPayPayoutType'
         /// </summary>
-        [Fact]
-        public void EntitlementFinalPayPayoutTypeTest()
+        [Theory]
+        [InlineData("NOTPAIDOUT", EntitlementFinalPayPayoutType.NOTPAIDOUT)]
+        [InlineData("PAIDOUT", EntitlementFinalPayPayoutType.PAIDOUT)]
+        public void EntitlementFinalPayPayoutTypeTest(string input, EntitlementFinalPayPayoutType expected)
         {
-            // TODO unit test for the property 'EntitlementFinalPayPayoutType'
+            JsonDoc.Assert<LeaveLine, EntitlementFinalPayPayoutType>(
+                input: new JsonDoc.String(nameof(LeaveLine.EntitlementFinalPayPayoutType), input),
+                toProperty: x => x.EntitlementFinalPayPayoutType,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'EmploymentTerminationPaymentType'
         /// </summary>
-        [Fact]
-        public void EmploymentTerminationPaymentTypeTest()
+        [Theory]
+        [InlineData("O", EmploymentTerminationPaymentType.O)]
+        [InlineData("R", EmploymentTerminationPaymentType.R)]
+        public void EmploymentTerminationPaymentTypeTest(string input, EmploymentTerminationPaymentType expected)
         {
-            // TODO unit test for the property 'EmploymentTerminationPaymentType'
+            JsonDoc.Assert<LeaveLine, EmploymentTerminationPaymentType>(
+                input: new JsonDoc.String(nameof(LeaveLine.EmploymentTerminationPaymentType), input),
+                toProperty: x => x.EmploymentTerminationPaymentType,
+                shouldBe: expected
+            );
         }
-        /// <summary>
-        /// Test the property 'IncludeSuperannuationGuaranteeContribution'
-        /// </summary>
-        [Fact]
-        public void IncludeSuperannuationGuaranteeContributionTest()
-        {
-            // TODO unit test for the property 'IncludeSuperannuationGuaranteeContribution'
-        }
-        /// <summary>
-        /// Test the property 'NumberOfUnits'
-        /// </summary>
-        [Fact]
-        public void NumberOfUnitsTest()
-        {
-            // TODO unit test for the property 'NumberOfUnits'
-        }
-        /// <summary>
-        /// Test the property 'AnnualNumberOfUnits'
-        /// </summary>
-        [Fact]
-        public void AnnualNumberOfUnitsTest()
-        {
-            // TODO unit test for the property 'AnnualNumberOfUnits'
-        }
-        /// <summary>
-        /// Test the property 'FullTimeNumberOfUnitsPerPeriod'
-        /// </summary>
-        [Fact]
-        public void FullTimeNumberOfUnitsPerPeriodTest()
-        {
-            // TODO unit test for the property 'FullTimeNumberOfUnitsPerPeriod'
-        }
-
     }
-
 }

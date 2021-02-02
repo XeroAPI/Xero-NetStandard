@@ -32,80 +32,41 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class TaxLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for TaxLine
-        //private TaxLine instance;
-
-        public TaxLineTests()
-        {
-            // TODO uncomment below to create an instance of TaxLine
-            //instance = new TaxLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of TaxLine
-        /// </summary>
-        [Fact]
-        public void TaxLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" TaxLine
-            //Assert.IsInstanceOfType<TaxLine> (instance, "variable 'instance' is a TaxLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'PayslipTaxLineID'
-        /// </summary>
-        [Fact]
-        public void PayslipTaxLineIDTest()
-        {
-            // TODO unit test for the property 'PayslipTaxLineID'
-        }
-        /// <summary>
         /// Test the property 'Amount'
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void AmountTest(string input)
         {
-            // TODO unit test for the property 'Amount'
-        }
-        /// <summary>
-        /// Test the property 'TaxTypeName'
-        /// </summary>
-        [Fact]
-        public void TaxTypeNameTest()
-        {
-            // TODO unit test for the property 'TaxTypeName'
-        }
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
+            JsonDoc.Assert<TaxLine, decimal?>(
+                input: new JsonDoc.Number(nameof(TaxLine.Amount), input),
+                toProperty: x => x.Amount,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'ManualTaxType'
         /// </summary>
-        [Fact]
-        public void ManualTaxTypeTest()
+        [Theory]
+        [InlineData("ETPOMANUAL", ManualTaxType.ETPOMANUAL)]
+        [InlineData("ETPRMANUAL", ManualTaxType.ETPRMANUAL)]
+        [InlineData("PAYGMANUAL", ManualTaxType.PAYGMANUAL)]
+        [InlineData("SCHEDULE5MANUAL", ManualTaxType.SCHEDULE5MANUAL)]
+        [InlineData("SCHEDULE5STSLMANUAL", ManualTaxType.SCHEDULE5STSLMANUAL)]
+        public void ManualTaxTypeTest(string input, ManualTaxType expected)
         {
-            // TODO unit test for the property 'ManualTaxType'
+            JsonDoc.Assert<TaxLine, ManualTaxType>(
+                input: new JsonDoc.String(nameof(TaxLine.ManualTaxType), input),
+                toProperty: x => x.ManualTaxType,
+                shouldBe: expected
+            );
         }
-        /// <summary>
-        /// Test the property 'LiabilityAccount'
-        /// </summary>
-        [Fact]
-        public void LiabilityAccountTest()
-        {
-            // TODO unit test for the property 'LiabilityAccount'
-        }
-
     }
-
 }

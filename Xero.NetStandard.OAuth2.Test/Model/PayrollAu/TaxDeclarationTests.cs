@@ -38,14 +38,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         }
 
         /// <summary>
-        /// Test the property 'EmployeeID'
-        /// </summary>
-        [Fact]
-        public void EmployeeIDTest()
-        {
-            // TODO unit test for the property 'EmployeeID'
-        }
-        /// <summary>
         /// Test the property 'EmploymentBasis' deserialises from valid inputs
         /// </summary>
         [Theory]
@@ -127,14 +119,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             );
         }
         /// <summary>
-        /// Test the property 'TaxFileNumber'
-        /// </summary>
-        [Fact]
-        public void TaxFileNumberTest()
-        {
-            // TODO unit test for the property 'TaxFileNumber'
-        }
-        /// <summary>
         /// Test the property 'AustralianResidentForTaxPurposes'
         /// </summary>
         [Theory]
@@ -153,18 +137,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// <summary>
         /// Test the property 'ResidencyStatus'
         /// </summary>
-        [Fact]
-        public void ResidencyStatusTest()
+        [Theory]
+        [InlineData("AUSTRALIANRESIDENT", ResidencyStatus.AUSTRALIANRESIDENT)]
+        [InlineData("FOREIGNRESIDENT", ResidencyStatus.FOREIGNRESIDENT)]
+        [InlineData("WORKINGHOLIDAYMAKER", ResidencyStatus.WORKINGHOLIDAYMAKER)]
+        public void ResidencyStatus_ValidInputs_Deserialises(string input, ResidencyStatus expected)
         {
-            // TODO unit test for the property 'ResidencyStatus'
-        }
-        /// <summary>
-        /// Test the property 'TaxFreeThresholdClaimed'
-        /// </summary>
-        [Fact]
-        public void TaxFreeThresholdClaimedTest()
-        {
-            // TODO unit test for the property 'TaxFreeThresholdClaimed'
+            JsonDoc.Assert<TaxDeclaration, ResidencyStatus>(
+                input: new JsonDoc.String(nameof(TaxDeclaration.ResidencyStatus), input),
+                toProperty: x => x.ResidencyStatus,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'TaxOffsetEstimatedAmount'
@@ -181,60 +164,32 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             );
         }
         /// <summary>
-        /// Test the property 'HasHELPDebt'
-        /// </summary>
-        [Fact]
-        public void HasHELPDebtTest()
-        {
-            // TODO unit test for the property 'HasHELPDebt'
-        }
-        /// <summary>
-        /// Test the property 'HasSFSSDebt'
-        /// </summary>
-        [Fact]
-        public void HasSFSSDebtTest()
-        {
-            // TODO unit test for the property 'HasSFSSDebt'
-        }
-        /// <summary>
-        /// Test the property 'HasTradeSupportLoanDebt'
-        /// </summary>
-        [Fact]
-        public void HasTradeSupportLoanDebtTest()
-        {
-            // TODO unit test for the property 'HasTradeSupportLoanDebt'
-        }
-        /// <summary>
         /// Test the property 'UpwardVariationTaxWithholdingAmount'
         /// </summary>
-        [Fact]
-        public void UpwardVariationTaxWithholdingAmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void UpwardVariationTaxWithholdingAmountTest(string input)
         {
-            // TODO unit test for the property 'UpwardVariationTaxWithholdingAmount'
-        }
-        /// <summary>
-        /// Test the property 'EligibleToReceiveLeaveLoading'
-        /// </summary>
-        [Fact]
-        public void EligibleToReceiveLeaveLoadingTest()
-        {
-            // TODO unit test for the property 'EligibleToReceiveLeaveLoading'
+            JsonDoc.Assert<TaxDeclaration, decimal?>(
+                input: new JsonDoc.Number(nameof(TaxDeclaration.UpwardVariationTaxWithholdingAmount), input),
+                toProperty: x => x.UpwardVariationTaxWithholdingAmount,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'ApprovedWithholdingVariationPercentage'
         /// </summary>
-        [Fact]
-        public void ApprovedWithholdingVariationPercentageTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void ApprovedWithholdingVariationPercentageTest(string input)
         {
-            // TODO unit test for the property 'ApprovedWithholdingVariationPercentage'
-        }
-        /// <summary>
-        /// Test the property 'HasStudentStartupLoan'
-        /// </summary>
-        [Fact]
-        public void HasStudentStartupLoanTest()
-        {
-            // TODO unit test for the property 'HasStudentStartupLoan'
+            JsonDoc.Assert<TaxDeclaration, decimal?>(
+                input: new JsonDoc.Number(nameof(TaxDeclaration.ApprovedWithholdingVariationPercentage), input),
+                toProperty: x => x.ApprovedWithholdingVariationPercentage,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'UpdatedDateUTC'

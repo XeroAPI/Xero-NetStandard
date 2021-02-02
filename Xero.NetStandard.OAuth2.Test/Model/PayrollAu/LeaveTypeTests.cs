@@ -32,104 +32,38 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class LeaveTypeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for LeaveType
-        //private LeaveType instance;
-
-        public LeaveTypeTests()
-        {
-            // TODO uncomment below to create an instance of LeaveType
-            //instance = new LeaveType();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of LeaveType
-        /// </summary>
-        [Fact]
-        public void LeaveTypeInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" LeaveType
-            //Assert.IsInstanceOfType<LeaveType> (instance, "variable 'instance' is a LeaveType");
-        }
-
-
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Fact]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-        /// <summary>
-        /// Test the property 'TypeOfUnits'
-        /// </summary>
-        [Fact]
-        public void TypeOfUnitsTest()
-        {
-            // TODO unit test for the property 'TypeOfUnits'
-        }
-        /// <summary>
-        /// Test the property 'LeaveTypeID'
-        /// </summary>
-        [Fact]
-        public void LeaveTypeIDTest()
-        {
-            // TODO unit test for the property 'LeaveTypeID'
-        }
-        /// <summary>
         /// Test the property 'NormalEntitlement'
         /// </summary>
-        [Fact]
-        public void NormalEntitlementTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void NormalEntitlementTest(string input)
         {
-            // TODO unit test for the property 'NormalEntitlement'
+            JsonDoc.Assert<LeaveType, double?>(
+                input: new JsonDoc.Number(nameof(LeaveType.NormalEntitlement), input),
+                toProperty: x => x.NormalEntitlement,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'LeaveLoadingRate'
         /// </summary>
-        [Fact]
-        public void LeaveLoadingRateTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void LeaveLoadingRateTest(string input)
         {
-            // TODO unit test for the property 'LeaveLoadingRate'
+            JsonDoc.Assert<LeaveType, double?>(
+                input: new JsonDoc.Number(nameof(LeaveType.LeaveLoadingRate), input),
+                toProperty: x => x.LeaveLoadingRate,
+                shouldBe: 20
+            );
         }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
-        /// <summary>
-        /// Test the property 'IsPaidLeave'
-        /// </summary>
-        [Fact]
-        public void IsPaidLeaveTest()
-        {
-            // TODO unit test for the property 'IsPaidLeave'
-        }
-        /// <summary>
-        /// Test the property 'ShowOnPayslip'
-        /// </summary>
-        [Fact]
-        public void ShowOnPayslipTest()
-        {
-            // TODO unit test for the property 'ShowOnPayslip'
-        }
-        /// <summary>
-        /// Test the property 'CurrentRecord'
-        /// </summary>
-        [Fact]
-        public void CurrentRecordTest()
-        {
-            // TODO unit test for the property 'CurrentRecord'
-        }
-
     }
-
 }

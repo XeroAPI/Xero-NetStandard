@@ -32,64 +32,23 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class LeaveBalanceTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for LeaveBalance
-        //private LeaveBalance instance;
-
-        public LeaveBalanceTests()
-        {
-            // TODO uncomment below to create an instance of LeaveBalance
-            //instance = new LeaveBalance();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
-
-        /// <summary>
-        /// Test an instance of LeaveBalance
-        /// </summary>
-        [Fact]
-        public void LeaveBalanceInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" LeaveBalance
-            //Assert.IsInstanceOfType<LeaveBalance> (instance, "variable 'instance' is a LeaveBalance");
-        }
-
-
-        /// <summary>
-        /// Test the property 'LeaveName'
-        /// </summary>
-        [Fact]
-        public void LeaveNameTest()
-        {
-            // TODO unit test for the property 'LeaveName'
-        }
-        /// <summary>
-        /// Test the property 'LeaveTypeID'
-        /// </summary>
-        [Fact]
-        public void LeaveTypeIDTest()
-        {
-            // TODO unit test for the property 'LeaveTypeID'
-        }
         /// <summary>
         /// Test the property 'NumberOfUnits'
         /// </summary>
-        [Fact]
-        public void NumberOfUnitsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void NumberOfUnitsTest(string input)
         {
-            // TODO unit test for the property 'NumberOfUnits'
+            JsonDoc.Assert<LeaveBalance, decimal?>(
+                input: new JsonDoc.Number(nameof(LeaveBalance.NumberOfUnits), input),
+                toProperty: x => x.NumberOfUnits,
+                shouldBe: 20
+            );
         }
-        /// <summary>
-        /// Test the property 'TypeOfUnits'
-        /// </summary>
-        [Fact]
-        public void TypeOfUnitsTest()
-        {
-            // TODO unit test for the property 'TypeOfUnits'
-        }
-
     }
-
 }
