@@ -1868,7 +1868,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string xeroTenantId = AutoFaker.Generate<string>();
       Guid organisationID = AutoFaker.Generate<Guid>();
       var response = await instance.GetOrganisationCISSettingsAsync(accessToken, xeroTenantId, organisationID).ConfigureAwait(false);
-      Assert.IsType<CISOrgSetting>(response);
+      Assert.IsType<CISOrgSettings>(response);
     }
 
     /// <summary>
