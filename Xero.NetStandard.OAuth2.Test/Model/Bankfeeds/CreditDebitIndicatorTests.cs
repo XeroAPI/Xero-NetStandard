@@ -33,9 +33,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
     /// </remarks>
     public class CreditDebitIndicatorTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CreditDebitIndicator
-        //private CreditDebitIndicator instance;
-
         public CreditDebitIndicatorTests()
         {
             // TODO uncomment below to create an instance of CreditDebitIndicator

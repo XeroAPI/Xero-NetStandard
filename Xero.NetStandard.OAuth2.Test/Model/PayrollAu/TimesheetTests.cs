@@ -32,104 +32,40 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class TimesheetTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Timesheet
-        //private Timesheet instance;
-
-        public TimesheetTests()
-        {
-            // TODO uncomment below to create an instance of Timesheet
-            //instance = new Timesheet();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
-
-        /// <summary>
-        /// Test an instance of Timesheet
-        /// </summary>
-        [Fact]
-        public void TimesheetInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" Timesheet
-            //Assert.IsInstanceOfType<Timesheet> (instance, "variable 'instance' is a Timesheet");
-        }
-
-
-        /// <summary>
-        /// Test the property 'EmployeeID'
-        /// </summary>
-        [Fact]
-        public void EmployeeIDTest()
-        {
-            // TODO unit test for the property 'EmployeeID'
-        }
-        /// <summary>
-        /// Test the property 'StartDate'
-        /// </summary>
-        [Fact]
-        public void StartDateTest()
-        {
-            // TODO unit test for the property 'StartDate'
-        }
-        /// <summary>
-        /// Test the property 'EndDate'
-        /// </summary>
-        [Fact]
-        public void EndDateTest()
-        {
-            // TODO unit test for the property 'EndDate'
-        }
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
-        public void StatusTest()
+        [Theory]
+        [InlineData("APPROVED", TimesheetStatus.APPROVED)]
+        [InlineData("DRAFT", TimesheetStatus.DRAFT)]
+        [InlineData("PROCESSED", TimesheetStatus.PROCESSED)]
+        [InlineData("REJECTED", TimesheetStatus.REJECTED)]
+        [InlineData("REQUESTED", TimesheetStatus.REQUESTED)]
+        public void StatusTest(string input, TimesheetStatus expected)
         {
-            // TODO unit test for the property 'Status'
+            JsonDoc.Assert<Timesheet, TimesheetStatus>(
+                input: new JsonDoc.String(nameof(Timesheet.Status), input),
+                toProperty: x => x.Status,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'Hours'
         /// </summary>
-        [Fact]
-        public void HoursTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void HoursTest(string input)
         {
-            // TODO unit test for the property 'Hours'
+            JsonDoc.Assert<Timesheet, decimal?>(
+                input: new JsonDoc.Number(nameof(Timesheet.Hours), input),
+                toProperty: x => x.Hours,
+                shouldBe: 20
+            );
         }
-        /// <summary>
-        /// Test the property 'TimesheetID'
-        /// </summary>
-        [Fact]
-        public void TimesheetIDTest()
-        {
-            // TODO unit test for the property 'TimesheetID'
-        }
-        /// <summary>
-        /// Test the property 'TimesheetLines'
-        /// </summary>
-        [Fact]
-        public void TimesheetLinesTest()
-        {
-            // TODO unit test for the property 'TimesheetLines'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
-        /// <summary>
-        /// Test the property 'ValidationErrors'
-        /// </summary>
-        [Fact]
-        public void ValidationErrorsTest()
-        {
-            // TODO unit test for the property 'ValidationErrors'
-        }
-
     }
-
 }

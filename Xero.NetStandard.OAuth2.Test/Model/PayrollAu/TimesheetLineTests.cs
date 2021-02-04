@@ -32,64 +32,32 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class TimesheetLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for TimesheetLine
-        //private TimesheetLine instance;
-
-        public TimesheetLineTests()
-        {
-            // TODO uncomment below to create an instance of TimesheetLine
-            //instance = new TimesheetLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of TimesheetLine
-        /// </summary>
-        [Fact]
-        public void TimesheetLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" TimesheetLine
-            //Assert.IsInstanceOfType<TimesheetLine> (instance, "variable 'instance' is a TimesheetLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'EarningsRateID'
-        /// </summary>
-        [Fact]
-        public void EarningsRateIDTest()
-        {
-            // TODO unit test for the property 'EarningsRateID'
-        }
-        /// <summary>
-        /// Test the property 'TrackingItemID'
-        /// </summary>
-        [Fact]
-        public void TrackingItemIDTest()
-        {
-            // TODO unit test for the property 'TrackingItemID'
-        }
-        /// <summary>
         /// Test the property 'NumberOfUnits'
         /// </summary>
         [Fact]
         public void NumberOfUnitsTest()
         {
-            // TODO unit test for the property 'NumberOfUnits'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
+            var response = new RestSharp.RestResponse();
+            response.Content = $@"{{
+                ""NumberOfUnits"": [
+                    20.00,
+                    20,
+                    123.123123
+                ]
+            }}";
 
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = deserializer.Deserialize<TimesheetLine>(response);
+
+            Assert.Equal(20f, actual.NumberOfUnits[0]);
+            Assert.Equal(20f, actual.NumberOfUnits[1]);
+            Assert.Equal(123.123123, actual.NumberOfUnits[2], precision: 6);
+        }
     }
-
 }

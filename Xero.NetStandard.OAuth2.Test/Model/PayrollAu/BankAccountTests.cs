@@ -38,39 +38,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             // Cleanup when everything is done.
         }
 
-        // /// <summary>
-        // /// Test the property 'StatementText'
-        // /// </summary>
-        // [Fact]
-        // public void StatementTextTest()
-        // {
-        //     // TODO unit test for the property 'StatementText'
-        // }
-        // /// <summary>
-        // /// Test the property 'AccountName'
-        // /// </summary>
-        // [Fact]
-        // public void AccountNameTest()
-        // {
-        //     // TODO unit test for the property 'AccountName'
-        // }
-        // /// <summary>
-        // /// Test the property 'BSB'
-        // /// </summary>
-        // [Fact]
-        // public void BSBTest()
-        // {
-        //     // TODO unit test for the property 'BSB'
-        // }
-        // /// <summary>
-        // /// Test the property 'AccountNumber'
-        // /// </summary>
-        // [Fact]
-        // public void AccountNumberTest()
-        // {
-        //     // TODO unit test for the property 'AccountNumber'
-        // }
-
         /// <summary>
         /// Test the property 'Remainder'
         /// </summary>
@@ -108,7 +75,5 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 
             Assert.Equal(20, actual.Amount);
         }
-
     }
-
 }

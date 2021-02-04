@@ -32,56 +32,37 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class LeaveEarningsLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for LeaveEarningsLine
-        //private LeaveEarningsLine instance;
-
-        public LeaveEarningsLineTests()
-        {
-            // TODO uncomment below to create an instance of LeaveEarningsLine
-            //instance = new LeaveEarningsLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
-
-        /// <summary>
-        /// Test an instance of LeaveEarningsLine
-        /// </summary>
-        [Fact]
-        public void LeaveEarningsLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" LeaveEarningsLine
-            //Assert.IsInstanceOfType<LeaveEarningsLine> (instance, "variable 'instance' is a LeaveEarningsLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'EarningsRateID'
-        /// </summary>
-        [Fact]
-        public void EarningsRateIDTest()
-        {
-            // TODO unit test for the property 'EarningsRateID'
-        }
         /// <summary>
         /// Test the property 'RatePerUnit'
         /// </summary>
-        [Fact]
-        public void RatePerUnitTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void RatePerUnitTest(string input)
         {
-            // TODO unit test for the property 'RatePerUnit'
+            JsonDoc.Assert<LeaveEarningsLine, decimal?>(
+                input: new JsonDoc.Number(nameof(LeaveEarningsLine.RatePerUnit), input),
+                toProperty: x => x.RatePerUnit,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'NumberOfUnits'
         /// </summary>
-        [Fact]
-        public void NumberOfUnitsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void NumberOfUnitsTest(string input)
         {
-            // TODO unit test for the property 'NumberOfUnits'
+            JsonDoc.Assert<LeaveEarningsLine, decimal?>(
+                input: new JsonDoc.Number(nameof(LeaveEarningsLine.NumberOfUnits), input),
+                toProperty: x => x.NumberOfUnits,
+                shouldBe: 20
+            );
         }
-
     }
-
 }

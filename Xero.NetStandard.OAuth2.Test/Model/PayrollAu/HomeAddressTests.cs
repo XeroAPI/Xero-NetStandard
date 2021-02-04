@@ -32,9 +32,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class HomeAddressTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for HomeAddress
-        //private HomeAddress instance;
-
         public HomeAddressTests()
         {
             // TODO uncomment below to create an instance of HomeAddress
@@ -47,65 +44,24 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         }
 
         /// <summary>
-        /// Test an instance of HomeAddress
-        /// </summary>
-        [Fact]
-        public void HomeAddressInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" HomeAddress
-            //Assert.IsInstanceOfType<HomeAddress> (instance, "variable 'instance' is a HomeAddress");
-        }
-
-
-        /// <summary>
-        /// Test the property 'AddressLine1'
-        /// </summary>
-        [Fact]
-        public void AddressLine1Test()
-        {
-            // TODO unit test for the property 'AddressLine1'
-        }
-        /// <summary>
-        /// Test the property 'AddressLine2'
-        /// </summary>
-        [Fact]
-        public void AddressLine2Test()
-        {
-            // TODO unit test for the property 'AddressLine2'
-        }
-        /// <summary>
-        /// Test the property 'City'
-        /// </summary>
-        [Fact]
-        public void CityTest()
-        {
-            // TODO unit test for the property 'City'
-        }
-        /// <summary>
         /// Test the property 'Region'
         /// </summary>
-        [Fact]
-        public void RegionTest()
+        [Theory]
+        [InlineData("ACT", State.ACT)]
+        [InlineData("NSW", State.NSW)]
+        [InlineData("NT", State.NT)]
+        [InlineData("QLD", State.QLD)]
+        [InlineData("SA", State.SA)]
+        [InlineData("TAS", State.TAS)]
+        [InlineData("VIC", State.VIC)]
+        [InlineData("WA", State.WA)]
+        public void RegionTest(string input, State expected)
         {
-            // TODO unit test for the property 'Region'
+            JsonDoc.Assert<HomeAddress, State>(
+                input: new JsonDoc.String(nameof(HomeAddress.Region), input),
+                toProperty: x => x.Region,
+                shouldBe: expected
+            );
         }
-        /// <summary>
-        /// Test the property 'PostalCode'
-        /// </summary>
-        [Fact]
-        public void PostalCodeTest()
-        {
-            // TODO unit test for the property 'PostalCode'
-        }
-        /// <summary>
-        /// Test the property 'Country'
-        /// </summary>
-        [Fact]
-        public void CountryTest()
-        {
-            // TODO unit test for the property 'Country'
-        }
-
     }
-
 }

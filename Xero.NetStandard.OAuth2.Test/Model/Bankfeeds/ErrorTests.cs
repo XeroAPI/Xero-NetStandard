@@ -33,9 +33,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
     /// </remarks>
     public class ErrorTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Error
-        //private Error instance;
-
         public ErrorTests()
         {
             // TODO uncomment below to create an instance of Error
@@ -47,41 +44,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             // Cleanup when everything is done.
         }
 
-        /// <summary>
-        /// Test an instance of Error
-        /// </summary>
-        [Fact]
-        public void ErrorInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" Error
-            //Assert.IsInstanceOfType<Error> (instance, "variable 'instance' is a Error");
-        }
-
-
-        /// <summary>
-        /// Test the property 'Title'
-        /// </summary>
-        [Fact]
-        public void TitleTest()
-        {
-            // TODO unit test for the property 'Title'
-        }
-        /// <summary>
-        /// Test the property 'Status'
-        /// </summary>
-        [Fact]
-        public void StatusTest()
-        {
-            // TODO unit test for the property 'Status'
-        }
-        /// <summary>
-        /// Test the property 'Detail'
-        /// </summary>
-        [Fact]
-        public void DetailTest()
-        {
-            // TODO unit test for the property 'Detail'
-        }
         /// <summary>
         /// Test the property 'Type' deserialises from valid inputs
         /// </summary>

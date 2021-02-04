@@ -32,56 +32,22 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class SettingsTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Settings
-        //private Settings instance;
-
-        public SettingsTests()
-        {
-            // TODO uncomment below to create an instance of Settings
-            //instance = new Settings();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of Settings
-        /// </summary>
-        [Fact]
-        public void SettingsInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" Settings
-            //Assert.IsInstanceOfType<Settings> (instance, "variable 'instance' is a Settings");
-        }
-
-
-        /// <summary>
-        /// Test the property 'Accounts'
-        /// </summary>
-        [Fact]
-        public void AccountsTest()
-        {
-            // TODO unit test for the property 'Accounts'
-        }
-        /// <summary>
-        /// Test the property 'TrackingCategories'
-        /// </summary>
-        [Fact]
-        public void TrackingCategoriesTest()
-        {
-            // TODO unit test for the property 'TrackingCategories'
-        }
-        /// <summary>
         /// Test the property 'DaysInPayrollYear'
         /// </summary>
         [Fact]
         public void DaysInPayrollYearTest()
         {
-            // TODO unit test for the property 'DaysInPayrollYear'
+            JsonDoc.Assert<Settings, int?>(
+                input: new JsonDoc.Number(nameof(Settings.DaysInPayrollYear), "20"),
+                toProperty: x => x.DaysInPayrollYear,
+                shouldBe: 20
+            );
         }
-
     }
-
 }

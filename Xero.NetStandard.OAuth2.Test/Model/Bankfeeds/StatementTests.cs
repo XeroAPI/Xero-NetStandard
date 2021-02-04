@@ -33,9 +33,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
     /// </remarks>
     public class StatementTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Statement
-        //private Statement instance;
-
         public StatementTests()
         {
             // TODO uncomment below to create an instance of Statement
@@ -47,33 +44,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             // Cleanup when everything is done.
         }
 
-        /// <summary>
-        /// Test an instance of Statement
-        /// </summary>
-        [Fact]
-        public void StatementInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" Statement
-            //Assert.IsInstanceOfType<Statement> (instance, "variable 'instance' is a Statement");
-        }
-
-
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Fact]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
-        }
-        /// <summary>
-        /// Test the property 'FeedConnectionId'
-        /// </summary>
-        [Fact]
-        public void FeedConnectionIdTest()
-        {
-            // TODO unit test for the property 'FeedConnectionId'
-        }
         /// <summary>
         /// Test the property 'Status' deserialises from valid inputs
         /// </summary>
@@ -124,46 +94,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             Assert.Equal(0, (int) actual.Status);
         }
         /// <summary>
-        /// Test the property 'StartDate'
-        /// </summary>
-        [Fact]
-        public void StartDateTest()
-        {
-            // TODO unit test for the property 'StartDate'
-        }
-        /// <summary>
-        /// Test the property 'EndDate'
-        /// </summary>
-        [Fact]
-        public void EndDateTest()
-        {
-            // TODO unit test for the property 'EndDate'
-        }
-        /// <summary>
-        /// Test the property 'StartBalance'
-        /// </summary>
-        [Fact]
-        public void StartBalanceTest()
-        {
-            // TODO unit test for the property 'StartBalance'
-        }
-        /// <summary>
-        /// Test the property 'EndBalance'
-        /// </summary>
-        [Fact]
-        public void EndBalanceTest()
-        {
-            // TODO unit test for the property 'EndBalance'
-        }
-        /// <summary>
-        /// Test the property 'StatementLines'
-        /// </summary>
-        [Fact]
-        public void StatementLinesTest()
-        {
-            // TODO unit test for the property 'StatementLines'
-        }
-        /// <summary>
         /// Test the property 'Errors' deserialises from an array of Error objects
         /// </summary>
         [Fact]
@@ -192,15 +122,5 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             Assert.Equal(422, error.Status);
             Assert.Equal("Detail", error.Detail);
         }
-        /// <summary>
-        /// Test the property 'StatementLineCount'
-        /// </summary>
-        [Fact]
-        public void StatementLineCountTest()
-        {
-            // TODO unit test for the property 'StatementLineCount'
-        }
-
     }
-
 }

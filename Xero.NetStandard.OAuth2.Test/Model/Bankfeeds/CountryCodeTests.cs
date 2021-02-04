@@ -33,9 +33,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
     /// </remarks>
     public class CountryCodeTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for CountryCode
-        //private CountryCode instance;
-
         public CountryCodeTests()
         {
             // TODO uncomment below to create an instance of CountryCode

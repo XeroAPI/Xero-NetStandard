@@ -32,64 +32,24 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class ReimbursementLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for ReimbursementLine
-        //private ReimbursementLine instance;
-
-        public ReimbursementLineTests()
-        {
-            // TODO uncomment below to create an instance of ReimbursementLine
-            //instance = new ReimbursementLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of ReimbursementLine
-        /// </summary>
-        [Fact]
-        public void ReimbursementLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" ReimbursementLine
-            //Assert.IsInstanceOfType<ReimbursementLine> (instance, "variable 'instance' is a ReimbursementLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'ReimbursementTypeID'
-        /// </summary>
-        [Fact]
-        public void ReimbursementTypeIDTest()
-        {
-            // TODO unit test for the property 'ReimbursementTypeID'
-        }
-        /// <summary>
         /// Test the property 'Amount'
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void AmountTest(string input)
         {
-            // TODO unit test for the property 'Amount'
+            JsonDoc.Assert<ReimbursementLine, decimal?>(
+                input: new JsonDoc.Number(nameof(ReimbursementLine.Amount), input),
+                toProperty: x => x.Amount,
+                shouldBe: 20
+            );
         }
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
-        /// <summary>
-        /// Test the property 'ExpenseAccount'
-        /// </summary>
-        [Fact]
-        public void ExpenseAccountTest()
-        {
-            // TODO unit test for the property 'ExpenseAccount'
-        }
-
     }
-
 }

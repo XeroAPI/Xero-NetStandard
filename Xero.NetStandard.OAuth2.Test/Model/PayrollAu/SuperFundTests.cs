@@ -32,136 +32,24 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class SuperFundTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for SuperFund
-        //private SuperFund instance;
-
-        public SuperFundTests()
-        {
-            // TODO uncomment below to create an instance of SuperFund
-            //instance = new SuperFund();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of SuperFund
-        /// </summary>
-        [Fact]
-        public void SuperFundInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" SuperFund
-            //Assert.IsInstanceOfType<SuperFund> (instance, "variable 'instance' is a SuperFund");
-        }
-
-
-        /// <summary>
-        /// Test the property 'SuperFundID'
-        /// </summary>
-        [Fact]
-        public void SuperFundIDTest()
-        {
-            // TODO unit test for the property 'SuperFundID'
-        }
-        /// <summary>
         /// Test the property 'Type'
         /// </summary>
-        [Fact]
-        public void TypeTest()
+        [Theory]
+        [InlineData("REGULATED", SuperFundType.REGULATED)]
+        [InlineData("SMSF", SuperFundType.SMSF)]
+        public void TypeTest(string input, SuperFundType expected)
         {
-            // TODO unit test for the property 'Type'
+            JsonDoc.Assert<SuperFund, SuperFundType>(
+                input: new JsonDoc.String(nameof(SuperFund.Type), input),
+                toProperty: x => x.Type,
+                shouldBe: expected
+            );
         }
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Fact]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-        /// <summary>
-        /// Test the property 'ABN'
-        /// </summary>
-        [Fact]
-        public void ABNTest()
-        {
-            // TODO unit test for the property 'ABN'
-        }
-        /// <summary>
-        /// Test the property 'BSB'
-        /// </summary>
-        [Fact]
-        public void BSBTest()
-        {
-            // TODO unit test for the property 'BSB'
-        }
-        /// <summary>
-        /// Test the property 'AccountNumber'
-        /// </summary>
-        [Fact]
-        public void AccountNumberTest()
-        {
-            // TODO unit test for the property 'AccountNumber'
-        }
-        /// <summary>
-        /// Test the property 'AccountName'
-        /// </summary>
-        [Fact]
-        public void AccountNameTest()
-        {
-            // TODO unit test for the property 'AccountName'
-        }
-        /// <summary>
-        /// Test the property 'ElectronicServiceAddress'
-        /// </summary>
-        [Fact]
-        public void ElectronicServiceAddressTest()
-        {
-            // TODO unit test for the property 'ElectronicServiceAddress'
-        }
-        /// <summary>
-        /// Test the property 'EmployerNumber'
-        /// </summary>
-        [Fact]
-        public void EmployerNumberTest()
-        {
-            // TODO unit test for the property 'EmployerNumber'
-        }
-        /// <summary>
-        /// Test the property 'SPIN'
-        /// </summary>
-        [Fact]
-        public void SPINTest()
-        {
-            // TODO unit test for the property 'SPIN'
-        }
-        /// <summary>
-        /// Test the property 'USI'
-        /// </summary>
-        [Fact]
-        public void USITest()
-        {
-            // TODO unit test for the property 'USI'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
-        /// <summary>
-        /// Test the property 'ValidationErrors'
-        /// </summary>
-        [Fact]
-        public void ValidationErrorsTest()
-        {
-            // TODO unit test for the property 'ValidationErrors'
-        }
-
     }
-
 }

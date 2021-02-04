@@ -32,62 +32,38 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class LeavePeriodTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for LeavePeriod
-        //private LeavePeriod instance;
-
-        public LeavePeriodTests()
-        {
-            // TODO uncomment below to create an instance of LeavePeriod
-            //instance = new LeavePeriod();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of LeavePeriod
-        /// </summary>
-        [Fact]
-        public void LeavePeriodInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" LeavePeriod
-            //Assert.IsInstanceOfType<LeavePeriod> (instance, "variable 'instance' is a LeavePeriod");
-        }
-
-
-        /// <summary>
         /// Test the property 'NumberOfUnits'
         /// </summary>
-        [Fact]
-        public void NumberOfUnitsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void NumberOfUnitsTest(string input)
         {
-            // TODO unit test for the property 'NumberOfUnits'
-        }
-        /// <summary>
-        /// Test the property 'PayPeriodEndDate'
-        /// </summary>
-        [Fact]
-        public void PayPeriodEndDateTest()
-        {
-            // TODO unit test for the property 'PayPeriodEndDate'
-        }
-        /// <summary>
-        /// Test the property 'PayPeriodStartDate'
-        /// </summary>
-        [Fact]
-        public void PayPeriodStartDateTest()
-        {
-            // TODO unit test for the property 'PayPeriodStartDate'
+            JsonDoc.Assert<LeavePeriod, decimal?>(
+                input: new JsonDoc.Number(nameof(LeavePeriod.NumberOfUnits), input),
+                toProperty: x => x.NumberOfUnits,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'LeavePeriodStatus'
         /// </summary>
-        [Fact]
-        public void LeavePeriodStatusTest()
+        [Theory]
+        [InlineData("PROCESSED", LeavePeriodStatus.PROCESSED)]
+        [InlineData("SCHEDULED", LeavePeriodStatus.SCHEDULED)]
+        public void LeavePeriodStatusTest(string input, LeavePeriodStatus expected)
         {
-            // TODO unit test for the property 'LeavePeriodStatus'
+            JsonDoc.Assert<LeavePeriod, LeavePeriodStatus>(
+                input: new JsonDoc.String(nameof(LeavePeriod.LeavePeriodStatus), input),
+                toProperty: x => x.LeavePeriodStatus,
+                shouldBe: expected
+            );
         }
 
     }

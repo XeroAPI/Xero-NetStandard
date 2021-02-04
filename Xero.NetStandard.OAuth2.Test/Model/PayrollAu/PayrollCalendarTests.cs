@@ -32,88 +32,28 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class PayrollCalendarTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for PayrollCalendar
-        //private PayrollCalendar instance;
-
-        public PayrollCalendarTests()
-        {
-            // TODO uncomment below to create an instance of PayrollCalendar
-            //instance = new PayrollCalendar();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of PayrollCalendar
-        /// </summary>
-        [Fact]
-        public void PayrollCalendarInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" PayrollCalendar
-            //Assert.IsInstanceOfType<PayrollCalendar> (instance, "variable 'instance' is a PayrollCalendar");
-        }
-
-
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Fact]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-        /// <summary>
         /// Test the property 'CalendarType'
         /// </summary>
-        [Fact]
-        public void CalendarTypeTest()
+        [Theory]
+        [InlineData("FORTNIGHTLY", CalendarType.FORTNIGHTLY)]
+        [InlineData("TWICEMONTHLY", CalendarType.TWICEMONTHLY)]
+        [InlineData("FOURWEEKLY", CalendarType.FOURWEEKLY)]
+        [InlineData("MONTHLY", CalendarType.MONTHLY)]
+        [InlineData("QUARTERLY", CalendarType.QUARTERLY)]
+        [InlineData("WEEKLY", CalendarType.WEEKLY)]
+        public void CalendarTypeTest(string input, CalendarType expected)
         {
-            // TODO unit test for the property 'CalendarType'
+            JsonDoc.Assert<PayrollCalendar, CalendarType>(
+                input: new JsonDoc.String(nameof(PayrollCalendar.CalendarType), input),
+                toProperty: x => x.CalendarType,
+                shouldBe: expected
+            );
         }
-        /// <summary>
-        /// Test the property 'StartDate'
-        /// </summary>
-        [Fact]
-        public void StartDateTest()
-        {
-            // TODO unit test for the property 'StartDate'
-        }
-        /// <summary>
-        /// Test the property 'PaymentDate'
-        /// </summary>
-        [Fact]
-        public void PaymentDateTest()
-        {
-            // TODO unit test for the property 'PaymentDate'
-        }
-        /// <summary>
-        /// Test the property 'PayrollCalendarID'
-        /// </summary>
-        [Fact]
-        public void PayrollCalendarIDTest()
-        {
-            // TODO unit test for the property 'PayrollCalendarID'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
-        /// <summary>
-        /// Test the property 'ValidationErrors'
-        /// </summary>
-        [Fact]
-        public void ValidationErrorsTest()
-        {
-            // TODO unit test for the property 'ValidationErrors'
-        }
-
     }
-
 }

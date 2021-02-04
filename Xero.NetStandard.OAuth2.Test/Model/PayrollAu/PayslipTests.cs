@@ -32,184 +32,94 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class PayslipTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for Payslip
-        //private Payslip instance;
-
-        public PayslipTests()
-        {
-            // TODO uncomment below to create an instance of Payslip
-            //instance = new Payslip();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of Payslip
-        /// </summary>
-        [Fact]
-        public void PayslipInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" Payslip
-            //Assert.IsInstanceOfType<Payslip> (instance, "variable 'instance' is a Payslip");
-        }
-
-
-        /// <summary>
-        /// Test the property 'EmployeeID'
-        /// </summary>
-        [Fact]
-        public void EmployeeIDTest()
-        {
-            // TODO unit test for the property 'EmployeeID'
-        }
-        /// <summary>
-        /// Test the property 'PayslipID'
-        /// </summary>
-        [Fact]
-        public void PayslipIDTest()
-        {
-            // TODO unit test for the property 'PayslipID'
-        }
-        /// <summary>
-        /// Test the property 'FirstName'
-        /// </summary>
-        [Fact]
-        public void FirstNameTest()
-        {
-            // TODO unit test for the property 'FirstName'
-        }
-        /// <summary>
-        /// Test the property 'LastName'
-        /// </summary>
-        [Fact]
-        public void LastNameTest()
-        {
-            // TODO unit test for the property 'LastName'
-        }
-        /// <summary>
         /// Test the property 'Wages'
         /// </summary>
-        [Fact]
-        public void WagesTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void WagesTest(string input)
         {
-            // TODO unit test for the property 'Wages'
+            JsonDoc.Assert<Payslip, decimal?>(
+                input: new JsonDoc.Number(nameof(Payslip.Wages), input),
+                toProperty: x => x.Wages,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'Deductions'
         /// </summary>
-        [Fact]
-        public void DeductionsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void DeductionsTest(string input)
         {
-            // TODO unit test for the property 'Deductions'
+            JsonDoc.Assert<Payslip, decimal?>(
+                input: new JsonDoc.Number(nameof(Payslip.Deductions), input),
+                toProperty: x => x.Deductions,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'Tax'
         /// </summary>
-        [Fact]
-        public void TaxTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void TaxTest(string input)
         {
-            // TODO unit test for the property 'Tax'
+            JsonDoc.Assert<Payslip, decimal?>(
+                input: new JsonDoc.Number(nameof(Payslip.Tax), input),
+                toProperty: x => x.Tax,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'Super'
         /// </summary>
-        [Fact]
-        public void SuperTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void SuperTest(string input)
         {
-            // TODO unit test for the property 'Super'
+            JsonDoc.Assert<Payslip, decimal?>(
+                input: new JsonDoc.Number(nameof(Payslip.Super), input),
+                toProperty: x => x.Super,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'Reimbursements'
         /// </summary>
-        [Fact]
-        public void ReimbursementsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void ReimbursementsTest(string input)
         {
-            // TODO unit test for the property 'Reimbursements'
+            JsonDoc.Assert<Payslip, decimal?>(
+                input: new JsonDoc.Number(nameof(Payslip.Reimbursements), input),
+                toProperty: x => x.Reimbursements,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'NetPay'
         /// </summary>
-        [Fact]
-        public void NetPayTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void NetPayTest(string input)
         {
-            // TODO unit test for the property 'NetPay'
+            JsonDoc.Assert<Payslip, decimal?>(
+                input: new JsonDoc.Number(nameof(Payslip.NetPay), input),
+                toProperty: x => x.NetPay,
+                shouldBe: 20
+            );
         }
-        /// <summary>
-        /// Test the property 'EarningsLines'
-        /// </summary>
-        [Fact]
-        public void EarningsLinesTest()
-        {
-            // TODO unit test for the property 'EarningsLines'
-        }
-        /// <summary>
-        /// Test the property 'LeaveEarningsLines'
-        /// </summary>
-        [Fact]
-        public void LeaveEarningsLinesTest()
-        {
-            // TODO unit test for the property 'LeaveEarningsLines'
-        }
-        /// <summary>
-        /// Test the property 'TimesheetEarningsLines'
-        /// </summary>
-        [Fact]
-        public void TimesheetEarningsLinesTest()
-        {
-            // TODO unit test for the property 'TimesheetEarningsLines'
-        }
-        /// <summary>
-        /// Test the property 'DeductionLines'
-        /// </summary>
-        [Fact]
-        public void DeductionLinesTest()
-        {
-            // TODO unit test for the property 'DeductionLines'
-        }
-        /// <summary>
-        /// Test the property 'LeaveAccrualLines'
-        /// </summary>
-        [Fact]
-        public void LeaveAccrualLinesTest()
-        {
-            // TODO unit test for the property 'LeaveAccrualLines'
-        }
-        /// <summary>
-        /// Test the property 'ReimbursementLines'
-        /// </summary>
-        [Fact]
-        public void ReimbursementLinesTest()
-        {
-            // TODO unit test for the property 'ReimbursementLines'
-        }
-        /// <summary>
-        /// Test the property 'SuperannuationLines'
-        /// </summary>
-        [Fact]
-        public void SuperannuationLinesTest()
-        {
-            // TODO unit test for the property 'SuperannuationLines'
-        }
-        /// <summary>
-        /// Test the property 'TaxLines'
-        /// </summary>
-        [Fact]
-        public void TaxLinesTest()
-        {
-            // TODO unit test for the property 'TaxLines'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedDateUTC'
-        /// </summary>
-        [Fact]
-        public void UpdatedDateUTCTest()
-        {
-            // TODO unit test for the property 'UpdatedDateUTC'
-        }
-
     }
-
 }

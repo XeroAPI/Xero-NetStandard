@@ -32,104 +32,83 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class SuperannuationLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for SuperannuationLine
-        //private SuperannuationLine instance;
-
-        public SuperannuationLineTests()
-        {
-            // TODO uncomment below to create an instance of SuperannuationLine
-            //instance = new SuperannuationLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
 
         /// <summary>
-        /// Test an instance of SuperannuationLine
-        /// </summary>
-        [Fact]
-        public void SuperannuationLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" SuperannuationLine
-            //Assert.IsInstanceOfType<SuperannuationLine> (instance, "variable 'instance' is a SuperannuationLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'SuperMembershipID'
-        /// </summary>
-        [Fact]
-        public void SuperMembershipIDTest()
-        {
-            // TODO unit test for the property 'SuperMembershipID'
-        }
-        /// <summary>
         /// Test the property 'ContributionType'
         /// </summary>
-        [Fact]
-        public void ContributionTypeTest()
+        [Theory]
+        [InlineData("EMPLOYEE", SuperannuationContributionType.EMPLOYEE)]
+        [InlineData("EMPLOYERADDITIONAL", SuperannuationContributionType.EMPLOYERADDITIONAL)]
+        [InlineData("SALARYSACRIFICE", SuperannuationContributionType.SALARYSACRIFICE)]
+        [InlineData("SGC", SuperannuationContributionType.SGC)]
+        public void ContributionTypeTest(string input, SuperannuationContributionType expected)
         {
-            // TODO unit test for the property 'ContributionType'
+            JsonDoc.Assert<SuperannuationLine, SuperannuationContributionType>(
+                input: new JsonDoc.String(nameof(SuperannuationLine.ContributionType), input),
+                toProperty: x => x.ContributionType,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'CalculationType'
         /// </summary>
-        [Fact]
-        public void CalculationTypeTest()
+        [Theory]
+        [InlineData("FIXEDAMOUNT", SuperannuationCalculationType.FIXEDAMOUNT)]
+        [InlineData("PERCENTAGEOFEARNINGS", SuperannuationCalculationType.PERCENTAGEOFEARNINGS)]
+        [InlineData("STATUTORY", SuperannuationCalculationType.STATUTORY)]
+        public void CalculationTypeTest(string input, SuperannuationCalculationType expected)
         {
-            // TODO unit test for the property 'CalculationType'
+            JsonDoc.Assert<SuperannuationLine, SuperannuationCalculationType>(
+                input: new JsonDoc.String(nameof(SuperannuationLine.CalculationType), input),
+                toProperty: x => x.CalculationType,
+                shouldBe: expected
+            );
         }
         /// <summary>
         /// Test the property 'MinimumMonthlyEarnings'
         /// </summary>
-        [Fact]
-        public void MinimumMonthlyEarningsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void MinimumMonthlyEarningsTest(string input)
         {
-            // TODO unit test for the property 'MinimumMonthlyEarnings'
-        }
-        /// <summary>
-        /// Test the property 'ExpenseAccountCode'
-        /// </summary>
-        [Fact]
-        public void ExpenseAccountCodeTest()
-        {
-            // TODO unit test for the property 'ExpenseAccountCode'
-        }
-        /// <summary>
-        /// Test the property 'LiabilityAccountCode'
-        /// </summary>
-        [Fact]
-        public void LiabilityAccountCodeTest()
-        {
-            // TODO unit test for the property 'LiabilityAccountCode'
-        }
-        /// <summary>
-        /// Test the property 'PaymentDateForThisPeriod'
-        /// </summary>
-        [Fact]
-        public void PaymentDateForThisPeriodTest()
-        {
-            // TODO unit test for the property 'PaymentDateForThisPeriod'
+            JsonDoc.Assert<SuperannuationLine, decimal?>(
+                input: new JsonDoc.Number(nameof(SuperannuationLine.MinimumMonthlyEarnings), input),
+                toProperty: x => x.MinimumMonthlyEarnings,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'Percentage'
         /// </summary>
-        [Fact]
-        public void PercentageTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void PercentageTest(string input)
         {
-            // TODO unit test for the property 'Percentage'
+            JsonDoc.Assert<SuperannuationLine, decimal?>(
+                input: new JsonDoc.Number(nameof(SuperannuationLine.Percentage), input),
+                toProperty: x => x.Percentage,
+                shouldBe: 20
+            );
         }
         /// <summary>
         /// Test the property 'Amount'
         /// </summary>
-        [Fact]
-        public void AmountTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void AmountTest(string input)
         {
-            // TODO unit test for the property 'Amount'
+            JsonDoc.Assert<SuperannuationLine, decimal?>(
+                input: new JsonDoc.Number(nameof(SuperannuationLine.Amount), input),
+                toProperty: x => x.Amount,
+                shouldBe: 20
+            );
         }
-
     }
-
 }

@@ -32,56 +32,23 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
     /// </remarks>
     public class LeaveAccrualLineTests : IDisposable
     {
-        // TODO uncomment below to declare an instance variable for LeaveAccrualLine
-        //private LeaveAccrualLine instance;
-
-        public LeaveAccrualLineTests()
-        {
-            // TODO uncomment below to create an instance of LeaveAccrualLine
-            //instance = new LeaveAccrualLine();
-        }
-
         public void Dispose()
         {
             // Cleanup when everything is done.
         }
-
-        /// <summary>
-        /// Test an instance of LeaveAccrualLine
-        /// </summary>
-        [Fact]
-        public void LeaveAccrualLineInstanceTest()
-        {
-            // TODO uncomment below to test "IsInstanceOfType" LeaveAccrualLine
-            //Assert.IsInstanceOfType<LeaveAccrualLine> (instance, "variable 'instance' is a LeaveAccrualLine");
-        }
-
-
-        /// <summary>
-        /// Test the property 'LeaveTypeID'
-        /// </summary>
-        [Fact]
-        public void LeaveTypeIDTest()
-        {
-            // TODO unit test for the property 'LeaveTypeID'
-        }
         /// <summary>
         /// Test the property 'NumberOfUnits'
         /// </summary>
-        [Fact]
-        public void NumberOfUnitsTest()
+        [Theory]
+        [InlineData("20.00")]
+        [InlineData("20")]
+        public void NumberOfUnitsTest(string input)
         {
-            // TODO unit test for the property 'NumberOfUnits'
+            JsonDoc.Assert<LeaveAccrualLine, decimal?>(
+                input: new JsonDoc.Number(nameof(LeaveAccrualLine.NumberOfUnits), input),
+                toProperty: x => x.NumberOfUnits,
+                shouldBe: 20
+            );
         }
-        /// <summary>
-        /// Test the property 'AutoCalculate'
-        /// </summary>
-        [Fact]
-        public void AutoCalculateTest()
-        {
-            // TODO unit test for the property 'AutoCalculate'
-        }
-
     }
-
 }
