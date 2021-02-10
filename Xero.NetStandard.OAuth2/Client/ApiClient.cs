@@ -50,7 +50,26 @@ namespace Xero.NetStandard.OAuth2.Client
                       OverrideSpecifiedNames = true
                   }
               },
-            DateTimeZoneHandling = DateTimeZoneHandling.Utc
+            DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+            CheckAdditionalContent = false,
+            Culture = CultureInfo.InvariantCulture,
+            DateFormatHandling = DateFormatHandling.IsoDateFormat,
+            DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK",
+        	DateParseHandling = DateParseHandling.DateTime,
+            DefaultValueHandling = DefaultValueHandling.Include,
+        	FloatFormatHandling = FloatFormatHandling.String,
+            FloatParseHandling = FloatParseHandling.Double,
+            Formatting = Formatting.None,
+            MaxDepth = null,
+            MetadataPropertyHandling = MetadataPropertyHandling.Default,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+        	NullValueHandling = NullValueHandling.Include,
+            ObjectCreationHandling = ObjectCreationHandling.Auto,
+            PreserveReferencesHandling = PreserveReferencesHandling.None,
+            ReferenceLoopHandling = ReferenceLoopHandling.Error,
+        	StringEscapeHandling = StringEscapeHandling.Default,
+            TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+            TypeNameHandling = TypeNameHandling.None
         };
 
         public CustomJsonCodec(IReadableConfiguration configuration)
