@@ -222,6 +222,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public Guid? PaymentID { get; set; }
 
         /// <summary>
+        /// Present if the payment was created as part of a batch.
+        /// </summary>
+        /// <value>Present if the payment was created as part of a batch.</value>
+        [DataMember(Name="BatchPaymentID", EmitDefaultValue=false)]
+        public Guid? BatchPaymentID { get; set; }
+
+        /// <summary>
         /// The suppliers bank account number the payment is being made to
         /// </summary>
         /// <value>The suppliers bank account number the payment is being made to</value>
@@ -295,6 +302,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  PaymentType: ").Append(PaymentType).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  PaymentID: ").Append(PaymentID).Append("\n");
+            sb.Append("  BatchPaymentID: ").Append(BatchPaymentID).Append("\n");
             sb.Append("  BankAccountNumber: ").Append(BankAccountNumber).Append("\n");
             sb.Append("  Particulars: ").Append(Particulars).Append("\n");
             sb.Append("  Details: ").Append(Details).Append("\n");
@@ -420,6 +428,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.PaymentID.Equals(input.PaymentID))
                 ) && 
                 (
+                    this.BatchPaymentID == input.BatchPaymentID ||
+                    (this.BatchPaymentID != null &&
+                    this.BatchPaymentID.Equals(input.BatchPaymentID))
+                ) && 
+                (
                     this.BankAccountNumber == input.BankAccountNumber ||
                     (this.BankAccountNumber != null &&
                     this.BankAccountNumber.Equals(input.BankAccountNumber))
@@ -498,6 +511,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.PaymentID != null)
                     hashCode = hashCode * 59 + this.PaymentID.GetHashCode();
+                if (this.BatchPaymentID != null)
+                    hashCode = hashCode * 59 + this.BatchPaymentID.GetHashCode();
                 if (this.BankAccountNumber != null)
                     hashCode = hashCode * 59 + this.BankAccountNumber.GetHashCode();
                 if (this.Particulars != null)
