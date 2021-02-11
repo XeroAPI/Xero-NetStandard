@@ -1,9 +1,11 @@
 name: .NET
 
 on:
-  push:
-    branches:
-      - github-actions-nuget-deploy
+#   push:
+#     branches:
+#       - github-actions-nuget-deploy
+  workflow_dispatch:
+
   
 jobs:
   build:
