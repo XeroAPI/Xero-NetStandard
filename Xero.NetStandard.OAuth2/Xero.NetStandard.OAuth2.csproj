@@ -11,12 +11,12 @@
     <Authors>Xero API</Authors>
     <Company>Xero</Company>
     <AssemblyTitle>OpenAPI Library</AssemblyTitle>
-    <Description>A library generated from a OpenAPI doc</Description>
+    <Description>This is a .NETStandard SDK library, used to communicate with the Xero API using OAuth2.0. See https://github.com/XeroAPI/Xero-NetStandard for more information</Description>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>Xero.NetStandard.OAuth2</RootNamespace>
-    <Version>3.14.0</Version>
+    <Version>3.14.1</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Xero.NetStandard.OAuth2.xml</DocumentationFile>
     <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/</PackageLicenseUrl>
     <PackageIconUrl>https://en.gravatar.com/userimage/180557955/74b3a957d886bc921b0d1455beed9dab.png</PackageIconUrl>
