@@ -9,16 +9,10 @@
 
 
 using System;
-using System.Linq;
-using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter;
 
@@ -125,8 +119,43 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum TipsNonDirect for value: Tips(Non-Direct)
             /// </summary>
             [EnumMember(Value = "Tips(Non-Direct)")]
-            TipsNonDirect = 15
+            TipsNonDirect = 15,
 
+            /// <summary>
+            /// Enum StatutoryAdoptionPayNonPensionable for value:
+            /// </summary>
+            [EnumMember(Value = "Statutory Adoption Pay (Non Pensionable)")]
+            StatutoryAdoptionPayNonPensionable = 16,
+
+            /// <summary>
+            /// Enum StatutoryMaternityPayNonPensionable for value:
+            /// </summary>
+            [EnumMember(Value = "Statutory Maternity Pay (Non Pensionable)")]
+            StatutoryMaternityPayNonPensionable = 17,
+
+            /// <summary>
+            /// Enum StatutoryPaternityPayNonPensionable for value:
+            /// </summary>
+            [EnumMember(Value = "Statutory Paternity Pay (Non Pensionable)")]
+            StatutoryPaternityPayNonPensionable = 18,
+
+            /// <summary>
+            /// Enum StatutoryParentalBereavementPayNonPensionable for value:
+            /// </summary>
+            [EnumMember(Value = "Statutory Parental Bereavement Pay (Non Pensionable)")]
+            StatutoryParentalBereavementPayNonPensionable = 19,
+
+            /// <summary>
+            /// Enum StatutorySharedParentalPayNonPensionable for value:
+            /// </summary>
+            [EnumMember(Value = "Statutory Shared Parental Pay (Non Pensionable)")]
+            StatutorySharedParentalPayNonPensionable = 20,
+
+            /// <summary>
+            /// Enum StatutorySickPayNonPensionable for value:
+            /// </summary>
+            [EnumMember(Value = "Statutory Sick Pay (Non Pensionable)")]
+            StatutorySickPayNonPensionable = 21
         }
 
         /// <summary>
