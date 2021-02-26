@@ -92,40 +92,82 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             StatutoryAdoptionPay = 9,
 
             /// <summary>
+            /// Enum StatutoryAdoptionPayNonPensionable for value: StatutoryAdoptionPayNonPensionable
+            /// </summary>
+            [EnumMember(Value = "StatutoryAdoptionPayNonPensionable")]
+            StatutoryAdoptionPayNonPensionable = 10,
+
+            /// <summary>
+            /// Enum StatutoryBereavementPay for value: StatutoryBereavementPay
+            /// </summary>
+            [EnumMember(Value = "StatutoryBereavementPay")]
+            StatutoryBereavementPay = 11,
+
+            /// <summary>
             /// Enum StatutoryMaternityPay for value: StatutoryMaternityPay
             /// </summary>
             [EnumMember(Value = "StatutoryMaternityPay")]
-            StatutoryMaternityPay = 10,
+            StatutoryMaternityPay = 12,
+
+            /// <summary>
+            /// Enum StatutoryMaternityPayNonPensionable for value: StatutoryMaternityPayNonPensionable
+            /// </summary>
+            [EnumMember(Value = "StatutoryMaternityPayNonPensionable")]
+            StatutoryMaternityPayNonPensionable = 13,
 
             /// <summary>
             /// Enum StatutoryPaternityPay for value: StatutoryPaternityPay
             /// </summary>
             [EnumMember(Value = "StatutoryPaternityPay")]
-            StatutoryPaternityPay = 11,
+            StatutoryPaternityPay = 14,
+
+            /// <summary>
+            /// Enum StatutoryPaternityPayNonPensionable for value: StatutoryPaternityPayNonPensionable
+            /// </summary>
+            [EnumMember(Value = "StatutoryPaternityPayNonPensionable")]
+            StatutoryPaternityPayNonPensionable = 15,
+
+            /// <summary>
+            /// Enum StatutoryParentalBereavementPayNonPensionable for value: StatutoryParentalBereavementPayNonPensionable
+            /// </summary>
+            [EnumMember(Value = "StatutoryParentalBereavementPayNonPensionable")]
+            StatutoryParentalBereavementPayNonPensionable = 16,
 
             /// <summary>
             /// Enum StatutorySharedParentalPay for value: StatutorySharedParentalPay
             /// </summary>
             [EnumMember(Value = "StatutorySharedParentalPay")]
-            StatutorySharedParentalPay = 12,
+            StatutorySharedParentalPay = 17,
+
+            /// <summary>
+            /// Enum StatutorySharedParentalPayNonPensionable for value: StatutorySharedParentalPayNonPensionable
+            /// </summary>
+            [EnumMember(Value = "StatutorySharedParentalPayNonPensionable")]
+            StatutorySharedParentalPayNonPensionable = 18,
 
             /// <summary>
             /// Enum StatutorySickPay for value: StatutorySickPay
             /// </summary>
             [EnumMember(Value = "StatutorySickPay")]
-            StatutorySickPay = 13,
+            StatutorySickPay = 19,
+
+            /// <summary>
+            /// Enum StatutorySickPayNonPensionable for value: StatutorySickPayNonPensionable
+            /// </summary>
+            [EnumMember(Value = "StatutorySickPayNonPensionable")]
+            StatutorySickPayNonPensionable = 20,
 
             /// <summary>
             /// Enum TipsDirect for value: Tips(Direct)
             /// </summary>
             [EnumMember(Value = "Tips(Direct)")]
-            TipsDirect = 14,
+            TipsDirect = 21,
 
             /// <summary>
             /// Enum TipsNonDirect for value: Tips(Non-Direct)
             /// </summary>
             [EnumMember(Value = "Tips(Non-Direct)")]
-            TipsNonDirect = 15
+            TipsNonDirect = 22
 
         }
 
