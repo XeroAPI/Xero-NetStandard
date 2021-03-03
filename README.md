@@ -29,7 +29,7 @@ Codebase, samples and setup instructions located in [oauth1 branch](https://gith
 ## Getting Started
 
 ## Sample apps
-Looking for sample apps for this SDK? A dotnet core 3.1 MVC one is available [here](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-dotnet-core). A .NET Framework 4.6.1 one is availble [here](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-app-dotnet-framework). 
+Looking for sample apps for this SDK? A dotnet core 3.1 MVC one is available [here](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-dotnet-core). A .NET Framework 4.6.1 one is available [here](https://github.com/XeroAPI/xero-netstandard-oauth2-starter-app-dotnet-framework). 
 
 ### Create a Xero App
 Follow these steps to create your Xero app
