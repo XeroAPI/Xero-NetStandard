@@ -183,6 +183,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string IsReconciled { get; private set; }
 
         /// <summary>
+        /// Displays array of validation error messages from the API
+        /// </summary>
+        /// <value>Displays array of validation error messages from the API</value>
+        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        public List<ValidationError> ValidationErrors { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -206,6 +213,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  TotalAmount: ").Append(TotalAmount).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  IsReconciled: ").Append(IsReconciled).Append("\n");
+            sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -318,6 +326,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.IsReconciled == input.IsReconciled ||
                     (this.IsReconciled != null &&
                     this.IsReconciled.Equals(input.IsReconciled))
+                ) && 
+                (
+                    this.ValidationErrors == input.ValidationErrors ||
+                    this.ValidationErrors != null &&
+                    input.ValidationErrors != null &&
+                    this.ValidationErrors.SequenceEqual(input.ValidationErrors)
                 );
         }
 
@@ -360,6 +374,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.IsReconciled != null)
                     hashCode = hashCode * 59 + this.IsReconciled.GetHashCode();
+                if (this.ValidationErrors != null)
+                    hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 return hashCode;
             }
         }

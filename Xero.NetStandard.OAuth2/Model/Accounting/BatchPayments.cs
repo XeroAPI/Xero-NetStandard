@@ -38,13 +38,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public List<BatchPayment> _BatchPayments { get; set; }
 
         /// <summary>
-        /// Displays array of validation error messages from the API
-        /// </summary>
-        /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
-        public List<ValidationError> ValidationErrors { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -53,7 +46,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             var sb = new StringBuilder();
             sb.Append("class BatchPayments {\n");
             sb.Append("  _BatchPayments: ").Append(_BatchPayments).Append("\n");
-            sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,12 +85,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this._BatchPayments != null &&
                     input._BatchPayments != null &&
                     this._BatchPayments.SequenceEqual(input._BatchPayments)
-                ) && 
-                (
-                    this.ValidationErrors == input.ValidationErrors ||
-                    this.ValidationErrors != null &&
-                    input.ValidationErrors != null &&
-                    this.ValidationErrors.SequenceEqual(input.ValidationErrors)
                 );
         }
 
@@ -113,8 +99,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 int hashCode = 41;
                 if (this._BatchPayments != null)
                     hashCode = hashCode * 59 + this._BatchPayments.GetHashCode();
-                if (this.ValidationErrors != null)
-                    hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 return hashCode;
             }
         }
