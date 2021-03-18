@@ -46,11 +46,11 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
         public string _AccessToken { get; set; }
 
         /// <summary>
-        /// time in milliseconds until access token expires.
+        /// time in seconds until access token expires.
         /// </summary>
-        /// <value>time in milliseconds until access token expires.</value>
+        /// <value>time in seconds until access token expires.</value>
         [DataMember(Name="expires_in", EmitDefaultValue=false)]
-        public decimal? ExpiresIn { get; set; }
+        public long? ExpiresIn { get; set; }
 
         /// <summary>
         /// type of token i.e. Bearer
