@@ -87,6 +87,13 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         public string ChequeNumber { get; set; }
 
         /// <summary>
+        /// Descriptive transaction type
+        /// </summary>
+        /// <value>Descriptive transaction type</value>
+        [DataMember(Name="transactionType", EmitDefaultValue=false)]
+        public string TransactionType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -102,6 +109,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             sb.Append("  PayeeName: ").Append(PayeeName).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  ChequeNumber: ").Append(ChequeNumber).Append("\n");
+            sb.Append("  TransactionType: ").Append(TransactionType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -174,6 +182,11 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
                     this.ChequeNumber == input.ChequeNumber ||
                     (this.ChequeNumber != null &&
                     this.ChequeNumber.Equals(input.ChequeNumber))
+                ) && 
+                (
+                    this.TransactionType == input.TransactionType ||
+                    (this.TransactionType != null &&
+                    this.TransactionType.Equals(input.TransactionType))
                 );
         }
 
@@ -201,6 +214,8 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.ChequeNumber != null)
                     hashCode = hashCode * 59 + this.ChequeNumber.GetHashCode();
+                if (this.TransactionType != null)
+                    hashCode = hashCode * 59 + this.TransactionType.GetHashCode();
                 return hashCode;
             }
         }
