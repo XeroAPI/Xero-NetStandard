@@ -36,49 +36,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The total number of accounts in the org</value>
         [DataMember(Name="Total", EmitDefaultValue=false)]
-        public decimal? Total { get; set; }
+        public int? Total { get; set; }
 
         /// <summary>
         /// The number of new accounts created
         /// </summary>
         /// <value>The number of new accounts created</value>
         [DataMember(Name="New", EmitDefaultValue=false)]
-        public decimal? New { get; set; }
+        public int? New { get; set; }
 
         /// <summary>
         /// The number of accounts updated
         /// </summary>
         /// <value>The number of accounts updated</value>
         [DataMember(Name="Updated", EmitDefaultValue=false)]
-        public decimal? Updated { get; set; }
+        public int? Updated { get; set; }
 
         /// <summary>
         /// The number of accounts deleted
         /// </summary>
         /// <value>The number of accounts deleted</value>
         [DataMember(Name="Deleted", EmitDefaultValue=false)]
-        public decimal? Deleted { get; set; }
+        public int? Deleted { get; set; }
 
         /// <summary>
         /// The number of locked accounts
         /// </summary>
         /// <value>The number of locked accounts</value>
         [DataMember(Name="Locked", EmitDefaultValue=false)]
-        public decimal? Locked { get; set; }
+        public int? Locked { get; set; }
 
         /// <summary>
         /// The number of system accounts
         /// </summary>
         /// <value>The number of system accounts</value>
         [DataMember(Name="System", EmitDefaultValue=false)]
-        public decimal? System { get; set; }
+        public int? System { get; set; }
 
         /// <summary>
         /// The number of accounts that had an error
         /// </summary>
         /// <value>The number of accounts that had an error</value>
         [DataMember(Name="Errored", EmitDefaultValue=false)]
-        public decimal? Errored { get; set; }
+        public int? Errored { get; set; }
 
         /// <summary>
         /// Gets or Sets Present
@@ -91,7 +91,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The number of new or updated accounts</value>
         [DataMember(Name="NewOrUpdated", EmitDefaultValue=false)]
-        public decimal? NewOrUpdated { get; set; }
+        public int? NewOrUpdated { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
