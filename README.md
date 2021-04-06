@@ -22,7 +22,7 @@ Xero-NetStandard SDK supports OAuth2 authentication and the following API sets.
 For full Xero API documentation please visit [developer portal documentation](https://developer.xero.com/documentation/).
 
 ## API Client Docs
-* Core [Accounting Api Docs](https://xeroapi.github.io/xero-ruby/accounting/index.html)
+* Core [Accounting Api Docs](https://xeroapi.github.io/Xero-NetStandard/accounting/index.html)
 
 
 ## How to handle OAuth 2.0 authentication & authorization?
