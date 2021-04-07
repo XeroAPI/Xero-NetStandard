@@ -557,4 +557,4 @@ Here are a few things you should be aware of as a contributor:
 * Curious about how we generate our SDK’s? Have a [read of our process](https://devblog.xero.com/building-sdks-for-the-future-b79ff726dfd6) and have a look at our [OpenAPISpec](https://github.com/XeroAPI/Xero-OpenAPI)
 * This software is published under the [MIT License](https://github.com/XeroAPI/Xero-NetStandard/blob/master/LICENSE)
  
-For questions that aren’t related to SDKs please refer to our developer support page.
+For questions that aren’t related to SDKs please refer to our [developer support page](https://developer.xero.com/support/).
