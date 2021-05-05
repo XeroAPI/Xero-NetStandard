@@ -41,5 +41,14 @@ namespace CoreTests.Integration.Payments
             Assert.IsTrue(found.Count() >= 2);
             Assert.IsTrue(found.Count(p => p.Date == date) >= 2);
         }
+        
+        [Test]
+        public async Task find_by_page()
+        {
+            await Given_a_payment(200, DateTime.Today, 150);
+            var payments = await Api.Payments.Page(1).FindAsync();
+            
+            Assert.Greater(payments.Count(), 0);
+        }
     }
 }
