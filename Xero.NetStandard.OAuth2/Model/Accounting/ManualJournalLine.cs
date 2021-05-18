@@ -78,7 +78,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The calculated tax amount based on the TaxType and LineAmount</value>
         [DataMember(Name="TaxAmount", EmitDefaultValue=false)]
-        public decimal? TaxAmount { get; private set; }
+        public decimal? TaxAmount { get; set; }
 
         /// <summary>
         /// is the line blank

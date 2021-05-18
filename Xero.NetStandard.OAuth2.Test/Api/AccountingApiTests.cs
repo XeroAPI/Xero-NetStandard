@@ -1667,8 +1667,9 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       int? page = AutoFaker.Generate<int?>();
       bool? includeArchived = AutoFaker.Generate<bool?>();
       bool? createdByMyApp = AutoFaker.Generate<bool?>();
+      bool? summaryOnly = AutoFaker.Generate<bool?>();
       int? unitdp = AutoFaker.Generate<int?>();
-      var response = await instance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp).ConfigureAwait(false);
+      var response = await instance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, summaryOnly, createdByMyApp, unitdp).ConfigureAwait(false);
       Assert.IsType<Invoices>(response);
     }
 
@@ -2313,17 +2314,17 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       Assert.IsType<ReportWithRows>(response);
     }
 
-    /// <summary>
-    /// Test GetReportBASorGSTList
-    /// </summary>
-    [Fact]
-    public async Task GetReportBASorGSTListTest()
-    {
-      // TODO uncomment below to test the method and replace null with proper value
-      string xeroTenantId = AutoFaker.Generate<string>();
-      var response = await instance.GetReportBASorGSTListAsync(accessToken, xeroTenantId).ConfigureAwait(false);
-      Assert.IsType<ReportWithRows>(response);
-    }
+    // /// <summary>
+    // /// Test GetReportBASorGSTList
+    // /// </summary>
+    // [Fact]
+    // public async Task GetReportBASorGSTListTest()
+    // {
+    //   // TODO uncomment below to test the method and replace null with proper value
+    //   string xeroTenantId = AutoFaker.Generate<string>();
+    //   var response = await instance.GetReportBASorGSTListAsync(accessToken, xeroTenantId).ConfigureAwait(false);
+    //   Assert.IsType<ReportWithRows>(response);
+    // }
 
     /// <summary>
     /// Test GetReportBalanceSheet
