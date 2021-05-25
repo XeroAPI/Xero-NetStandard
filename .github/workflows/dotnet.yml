@@ -18,8 +18,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore -p:Version=1.4.${{github.run_number}}
     - name: Create Package for Nuget.org\
       run: dotnet pack
     - name: Publish Package to Nuget.org
-      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Debug/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg -s LSFeed --api-key az
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Debug/*.nupkg -s LSFeed --api-key az
