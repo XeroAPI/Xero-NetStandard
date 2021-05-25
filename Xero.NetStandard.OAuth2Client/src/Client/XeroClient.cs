@@ -25,12 +25,15 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Constructor, pass in xeroConfig and httpClient to generate the XeroClient. Can be used in conjunction with AddHttpClient extension of ServiceProvider for dependency injection
         /// </summary>
         /// <param name="xeroConfig"></param>
-        /// <param name="httpClient"></param>
-        public XeroClient(XeroConfiguration xeroConfig, HttpClient httpClient, Uri baseAuthorizeUri = null, Uri baseTokenUri = null, Uri baseApiUri = null)
+        /// <param name="httpClient" description="optional"></param>
+        /// <param name="baseAuthorizeUri" description="optional"></param>
+        /// <param name="baseTokenUri" description="optional"></param>
+        /// <param name="baseApiUri" description="optional"></param>
+        public XeroClient(XeroConfiguration xeroConfig, HttpClient httpClient = null, Uri baseAuthorizeUri = null, Uri baseTokenUri = null, Uri baseApiUri = null)
         {
             xeroConfiguration = xeroConfig;
 
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpClient = httpClient ?? new HttpClient();
 
             var authorizeUri = new Uri("https://login.xero.com/identity/connect/authorize");
             var tokenUri = new Uri("https://identity.xero.com/connect/token");
@@ -54,14 +57,6 @@ namespace Xero.NetStandard.OAuth2.Client
             _xeroConnectionsUri = baseApiUri != null
                 ? new Uri(https + baseApiUri.Host + connectionsUri.AbsolutePath)
                 : new Uri(connectionsUri.ToString());
-        }
-
-        /// <summary>
-        /// Constructor, pass in xeroConfig to generate the XeroClient. Creates an HttpClient by default to use for requests
-        /// </summary>
-        /// <param name="xeroConfig"></param>
-        public XeroClient(XeroConfiguration xeroConfig) : this(xeroConfig, new HttpClient())
-        {
         }
 
         /// <summary>
