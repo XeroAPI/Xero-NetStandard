@@ -1,8 +1,6 @@
 name: .NET
 
-on:
-  release:
-    types: [published]
+on: push
   
 jobs:
   build:
@@ -15,6 +13,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+    - name: Setup NuGet
+      run: dotnet nuget add source "https://pkgs.dev.azure.com/ledgerscope/_packaging/LSFeed/nuget/v3/index.json" --name LSFeed -u ledgerscope --password ${{ secrets.LEDGERSCOPEDEVOPS }} --store-password-in-clear-text
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -22,4 +22,4 @@ jobs:
     - name: Create Package for Nuget.org\
       run: dotnet pack
     - name: Publish Package to Nuget.org
-      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Debug/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Debug/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg -s LSFeed --api-key az
