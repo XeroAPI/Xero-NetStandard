@@ -22,4 +22,4 @@ jobs:
     - name: Create Package for Nuget.org\
       run: dotnet pack
     - name: Publish Package to Nuget.org
-      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Debug/*.nupkg -s LSFeed --api-key az
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Debug/*.nupkg -s LSFeed --api-key az
