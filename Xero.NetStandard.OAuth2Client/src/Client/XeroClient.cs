@@ -40,22 +40,20 @@ namespace Xero.NetStandard.OAuth2.Client
             var tokenRevocationUri = new Uri("https://identity.xero.com/connect/revocation");
             var connectionsUri = new Uri("https://api.xero.com/connections");
 
-            var https = Uri.UriSchemeHttps + "://";
-
             _xeroAuthorizeUri = baseAuthorizeUri != null 
-                ? new RequestUrl(https + baseAuthorizeUri.Host + authorizeUri.AbsolutePath)
+                ? new RequestUrl(baseAuthorizeUri.GetLeftPart(UriPartial.Authority) + authorizeUri.AbsolutePath)
                 : new RequestUrl(authorizeUri.ToString());
 
             _xeroTokenUri = baseTokenUri != null
-                ? new Uri(https + baseTokenUri.Host + tokenUri.AbsolutePath)
+                ? new Uri(baseTokenUri.GetLeftPart(UriPartial.Authority) + tokenUri.AbsolutePath)
                 : new Uri(tokenUri.ToString());
 
             _xeroTokenRevocationUri = baseTokenUri != null
-                ? new Uri(https + baseTokenUri.Host + tokenRevocationUri.AbsolutePath)
+                ? new Uri(baseTokenUri.GetLeftPart(UriPartial.Authority) + tokenRevocationUri.AbsolutePath)
                 : new Uri(tokenRevocationUri.ToString());
 
             _xeroConnectionsUri = baseApiUri != null
-                ? new Uri(https + baseApiUri.Host + connectionsUri.AbsolutePath)
+                ? new Uri(baseApiUri.GetLeftPart(UriPartial.Authority) + connectionsUri.AbsolutePath)
                 : new Uri(connectionsUri.ToString());
         }
 
