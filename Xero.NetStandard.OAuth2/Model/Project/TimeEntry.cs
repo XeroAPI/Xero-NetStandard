@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             /// Enum LOCKED for value: LOCKED
             /// </summary>
             [EnumMember(Value = "LOCKED")]
-            LOCKED = 2
+            LOCKED = 2,
+
+            /// <summary>
+            /// Enum INVOICED for value: INVOICED
+            /// </summary>
+            [EnumMember(Value = "INVOICED")]
+            INVOICED = 3
 
         }
 

@@ -155,7 +155,13 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             /// Enum AccountNotValid for value: account-not-valid
             /// </summary>
             [EnumMember(Value = "account-not-valid")]
-            AccountNotValid = 20
+            AccountNotValid = 20,
+
+            /// <summary>
+            /// Enum FeedNotFoundOrAlreadyDeleted for value: feed-not-found-or-already-deleted
+            /// </summary>
+            [EnumMember(Value = "feed-not-found-or-already-deleted")]
+            FeedNotFoundOrAlreadyDeleted = 21
 
         }
 

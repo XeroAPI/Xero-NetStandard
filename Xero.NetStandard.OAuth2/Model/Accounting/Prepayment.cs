@@ -197,6 +197,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public List<Allocation> Allocations { get; set; }
 
         /// <summary>
+        /// See Payments
+        /// </summary>
+        /// <value>See Payments</value>
+        [DataMember(Name="Payments", EmitDefaultValue=false)]
+        public List<Payment> Payments { get; set; }
+
+        /// <summary>
         /// The amount of applied to an invoice
         /// </summary>
         /// <value>The amount of applied to an invoice</value>
@@ -241,6 +248,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  CurrencyRate: ").Append(CurrencyRate).Append("\n");
             sb.Append("  RemainingCredit: ").Append(RemainingCredit).Append("\n");
             sb.Append("  Allocations: ").Append(Allocations).Append("\n");
+            sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("  AppliedAmount: ").Append(AppliedAmount).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
@@ -357,6 +365,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Allocations.SequenceEqual(input.Allocations)
                 ) && 
                 (
+                    this.Payments == input.Payments ||
+                    this.Payments != null &&
+                    input.Payments != null &&
+                    this.Payments.SequenceEqual(input.Payments)
+                ) && 
+                (
                     this.AppliedAmount == input.AppliedAmount ||
                     (this.AppliedAmount != null &&
                     this.AppliedAmount.Equals(input.AppliedAmount))
@@ -411,6 +425,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.RemainingCredit.GetHashCode();
                 if (this.Allocations != null)
                     hashCode = hashCode * 59 + this.Allocations.GetHashCode();
+                if (this.Payments != null)
+                    hashCode = hashCode * 59 + this.Payments.GetHashCode();
                 if (this.AppliedAmount != null)
                     hashCode = hashCode * 59 + this.AppliedAmount.GetHashCode();
                 if (this.HasAttachments != null)
