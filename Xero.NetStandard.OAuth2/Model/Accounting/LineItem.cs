@@ -74,6 +74,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string AccountCode { get; set; }
 
         /// <summary>
+        /// The associated account ID related to this line item
+        /// </summary>
+        /// <value>The associated account ID related to this line item</value>
+        [DataMember(Name="AccountID", EmitDefaultValue=false)]
+        public Guid? AccountID { get; set; }
+
+        /// <summary>
         /// The tax type from TaxRates
         /// </summary>
         /// <value>The tax type from TaxRates</value>
@@ -136,6 +143,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  UnitAmount: ").Append(UnitAmount).Append("\n");
             sb.Append("  ItemCode: ").Append(ItemCode).Append("\n");
             sb.Append("  AccountCode: ").Append(AccountCode).Append("\n");
+            sb.Append("  AccountID: ").Append(AccountID).Append("\n");
             sb.Append("  TaxType: ").Append(TaxType).Append("\n");
             sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");
             sb.Append("  LineAmount: ").Append(LineAmount).Append("\n");
@@ -208,6 +216,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.AccountCode.Equals(input.AccountCode))
                 ) && 
                 (
+                    this.AccountID == input.AccountID ||
+                    (this.AccountID != null &&
+                    this.AccountID.Equals(input.AccountID))
+                ) && 
+                (
                     this.TaxType == input.TaxType ||
                     (this.TaxType != null &&
                     this.TaxType.Equals(input.TaxType))
@@ -266,6 +279,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.ItemCode.GetHashCode();
                 if (this.AccountCode != null)
                     hashCode = hashCode * 59 + this.AccountCode.GetHashCode();
+                if (this.AccountID != null)
+                    hashCode = hashCode * 59 + this.AccountID.GetHashCode();
                 if (this.TaxType != null)
                     hashCode = hashCode * 59 + this.TaxType.GetHashCode();
                 if (this.TaxAmount != null)

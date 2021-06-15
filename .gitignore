@@ -42,3 +42,5 @@ out/
 .vscode/
 .ionide/
 Xero.NetStandard.OAuth2/Xero.NetStandard.OAuth2.sln
+.DS_Store
+.build_notes.md

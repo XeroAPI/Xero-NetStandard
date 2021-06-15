@@ -2301,31 +2301,6 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
     }
 
     /// <summary>
-    /// Test GetReportBASorGST
-    /// </summary>
-    [Fact(Skip = "OpenAPI spec has no example")]
-    public async Task GetReportBASorGSTTest()
-    {
-      // TODO uncomment below to test the method and replace null with proper value
-      string xeroTenantId = AutoFaker.Generate<string>();
-      string reportID = AutoFaker.Generate<string>();
-      var response = await instance.GetReportBASorGSTAsync(accessToken, xeroTenantId, reportID).ConfigureAwait(false);
-      Assert.IsType<ReportWithRows>(response);
-    }
-
-    /// <summary>
-    /// Test GetReportBASorGSTList
-    /// </summary>
-    [Fact]
-    public async Task GetReportBASorGSTListTest()
-    {
-      // TODO uncomment below to test the method and replace null with proper value
-      string xeroTenantId = AutoFaker.Generate<string>();
-      var response = await instance.GetReportBASorGSTListAsync(accessToken, xeroTenantId).ConfigureAwait(false);
-      Assert.IsType<ReportWithRows>(response);
-    }
-
-    /// <summary>
     /// Test GetReportBalanceSheet
     /// </summary>
     [Fact]

@@ -56,13 +56,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Prepayment Types
         /// </summary>
         /// <value>See Prepayment Types</value>
-        [DataMember(Name="ReportID", EmitDefaultValue=false)]
-        public string ReportID { get; set; }
-
-        /// <summary>
-        /// See Prepayment Types
-        /// </summary>
-        /// <value>See Prepayment Types</value>
         [DataMember(Name="ReportName", EmitDefaultValue=false)]
         public string ReportName { get; set; }
 
@@ -101,7 +94,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         {
             var sb = new StringBuilder();
             sb.Append("class Report {\n");
-            sb.Append("  ReportID: ").Append(ReportID).Append("\n");
             sb.Append("  ReportName: ").Append(ReportName).Append("\n");
             sb.Append("  ReportType: ").Append(ReportType).Append("\n");
             sb.Append("  ReportTitle: ").Append(ReportTitle).Append("\n");
@@ -143,11 +135,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
 
             return 
                 (
-                    this.ReportID == input.ReportID ||
-                    (this.ReportID != null &&
-                    this.ReportID.Equals(input.ReportID))
-                ) && 
-                (
                     this.ReportName == input.ReportName ||
                     (this.ReportName != null &&
                     this.ReportName.Equals(input.ReportName))
@@ -188,8 +175,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ReportID != null)
-                    hashCode = hashCode * 59 + this.ReportID.GetHashCode();
                 if (this.ReportName != null)
                     hashCode = hashCode * 59 + this.ReportName.GetHashCode();
                 hashCode = hashCode * 59 + this.ReportType.GetHashCode();
