@@ -41,7 +41,7 @@ namespace Xero.NetStandard.OAuth2.Client
             var connectionsUri = new Uri("https://api.xero.com/connections");
 
             _xeroAuthorizeUri = baseAuthorizeUri != null 
-                ? new RequestUrl(baseAuthorizeUri.AbsoluteUri + authorizeUri.AbsolutePath)
+                ? new RequestUrl(baseAuthorizeUri.GetLeftPart(UriPartial.Authority) + authorizeUri.AbsolutePath)
                 : new RequestUrl(authorizeUri.ToString());
 
             _xeroTokenUri = baseTokenUri != null
