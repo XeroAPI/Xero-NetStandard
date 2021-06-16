@@ -16,26 +16,45 @@ namespace Xero.NetStandard.OAuth2.Client
     {
         public XeroConfiguration xeroConfiguration { get; set; }
         private readonly RequestUrl _xeroAuthorizeUri;
+        private readonly Uri _xeroTokenUri;
+        private readonly Uri _xeroTokenRevocationUri;
+        private readonly Uri _xeroConnectionsUri;
         private readonly HttpClient _httpClient;
 
         /// <summary>
         /// Constructor, pass in xeroConfig and httpClient to generate the XeroClient. Can be used in conjunction with AddHttpClient extension of ServiceProvider for dependency injection
         /// </summary>
         /// <param name="xeroConfig"></param>
-        /// <param name="httpClient"></param>
-        public XeroClient(XeroConfiguration xeroConfig, HttpClient httpClient)
+        /// <param name="httpClient" description="optional"></param>
+        /// <param name="baseAuthorizeUri" description="optional"></param>
+        /// <param name="baseTokenUri" description="optional"></param>
+        /// <param name="baseApiUri" description="optional"></param>
+        public XeroClient(XeroConfiguration xeroConfig, HttpClient httpClient = null, Uri baseAuthorizeUri = null, Uri baseTokenUri = null, Uri baseApiUri = null)
         {
             xeroConfiguration = xeroConfig;
-            _xeroAuthorizeUri = new RequestUrl("https://login.xero.com/identity/connect/authorize");
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        }
 
-        /// <summary>
-        /// Constructor, pass in xeroConfig to generate the XeroClient. Creates an HttpClient by default to use for requests
-        /// </summary>
-        /// <param name="xeroConfig"></param>
-        public XeroClient(XeroConfiguration xeroConfig) : this(xeroConfig, new HttpClient())
-        {
+            _httpClient = httpClient ?? new HttpClient();
+
+            var authorizeUri = new Uri("https://login.xero.com/identity/connect/authorize");
+            var tokenUri = new Uri("https://identity.xero.com/connect/token");
+            var tokenRevocationUri = new Uri("https://identity.xero.com/connect/revocation");
+            var connectionsUri = new Uri("https://api.xero.com/connections");
+
+            _xeroAuthorizeUri = baseAuthorizeUri != null 
+                ? new RequestUrl(baseAuthorizeUri.GetLeftPart(UriPartial.Authority) + authorizeUri.AbsolutePath)
+                : new RequestUrl(authorizeUri.ToString());
+
+            _xeroTokenUri = baseTokenUri != null
+                ? new Uri(baseTokenUri.GetLeftPart(UriPartial.Authority) + tokenUri.AbsolutePath)
+                : new Uri(tokenUri.ToString());
+
+            _xeroTokenRevocationUri = baseTokenUri != null
+                ? new Uri(baseTokenUri.GetLeftPart(UriPartial.Authority) + tokenRevocationUri.AbsolutePath)
+                : new Uri(tokenRevocationUri.ToString());
+
+            _xeroConnectionsUri = baseApiUri != null
+                ? new Uri(baseApiUri.GetLeftPart(UriPartial.Authority) + connectionsUri.AbsolutePath)
+                : new Uri(connectionsUri.ToString());
         }
 
         /// <summary>
@@ -62,17 +81,25 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
         public string BuildLoginUri(string state, string scope)
         {
+            return BuildLoginUri(state, scope, xeroConfiguration.AcrValues);
+        }
+
+        /// <summary>
+        /// Builds a XeroLogin URL for code flow, allows state, scope and acrValues to be passed in.
+        /// </summary>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
+        public string BuildLoginUri(string state, string scope, string acrValues)
+        { 
             var url = _xeroAuthorizeUri.CreateAuthorizeUrl(
                 clientId: xeroConfiguration.ClientId,
                 responseType: "code",
                 redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
                 state: state,
-                scope: scope
+                scope: scope,
+                acrValues: acrValues
             );
             return url;
         }
-
-
 
         /// <summary>
         /// Builds a XeroLogin URL for PKCE flow with codeVerifier input
@@ -143,7 +170,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             var response = await _httpClient.RequestRefreshTokenAsync(new RefreshTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
+                Address = _xeroTokenUri.AbsoluteUri,
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 RefreshToken = xeroToken.RefreshToken
@@ -171,7 +198,7 @@ namespace Xero.NetStandard.OAuth2.Client
         {
             var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
+                Address = _xeroTokenUri.AbsoluteUri,
                 GrantType = "code",
                 Code = code,
                 ClientId = xeroConfiguration.ClientId,
@@ -213,7 +240,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
+                Address = _xeroTokenUri.AbsoluteUri,
                 GrantType = "code",
                 Code = code,
                 ClientId = xeroConfiguration.ClientId,
@@ -262,7 +289,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>List of Tenants attached to accesstoken</returns>
         public async Task<List<Tenant>> GetConnectionsAsync(IXeroToken xeroToken)
         {
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://api.xero.com/connections"))
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, _xeroConnectionsUri.AbsoluteUri))
             {
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
 
@@ -286,7 +313,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>List of Tenants attached to accesstoken</returns>
         public async Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant)
         {
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, "https://api.xero.com/connections" + "/" + xeroTenant.id))
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, _xeroConnectionsUri.AbsoluteUri + "/" + xeroTenant.id))
             {
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
 
@@ -313,7 +340,7 @@ namespace Xero.NetStandard.OAuth2.Client
             }
 
             var response = await _httpClient.RevokeTokenAsync(new TokenRevocationRequest {
-                Address = "https://identity.xero.com/connect/revocation",
+                Address = _xeroTokenRevocationUri.AbsoluteUri,
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 Token = xeroToken.RefreshToken
