@@ -83,13 +83,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets BudgetLines
         /// </summary>
         [DataMember(Name="BudgetLines", EmitDefaultValue=false)]
-        public BudgetLines BudgetLines { get; set; }
+        public List<BudgetLine> BudgetLines { get; set; }
 
         /// <summary>
         /// Gets or Sets Tracking
         /// </summary>
         [DataMember(Name="Tracking", EmitDefaultValue=false)]
-        public TrackingCategory Tracking { get; set; }
+        public List<TrackingCategory> Tracking { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,13 +160,15 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 ) && 
                 (
                     this.BudgetLines == input.BudgetLines ||
-                    (this.BudgetLines != null &&
-                    this.BudgetLines.Equals(input.BudgetLines))
+                    this.BudgetLines != null &&
+                    input.BudgetLines != null &&
+                    this.BudgetLines.SequenceEqual(input.BudgetLines)
                 ) && 
                 (
                     this.Tracking == input.Tracking ||
-                    (this.Tracking != null &&
-                    this.Tracking.Equals(input.Tracking))
+                    this.Tracking != null &&
+                    input.Tracking != null &&
+                    this.Tracking.SequenceEqual(input.Tracking)
                 );
         }
 

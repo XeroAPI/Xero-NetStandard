@@ -167,7 +167,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum TipsNonDirect for value: Tips(Non-Direct)
             /// </summary>
             [EnumMember(Value = "Tips(Non-Direct)")]
-            TipsNonDirect = 22
+            TipsNonDirect = 22,
+
+            /// <summary>
+            /// Enum TerminationPay for value: TerminationPay
+            /// </summary>
+            [EnumMember(Value = "TerminationPay")]
+            TerminationPay = 23
 
         }
 
