@@ -165,6 +165,36 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <summary>
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
+        /// <returns></returns>
+        public async Task<IXeroToken> RequestClientCredentialsTokenAsync()
+        {
+
+            var response = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = "https://identity.xero.com/connect/token",
+                ClientId = xeroConfiguration.ClientId,
+                ClientSecret = xeroConfiguration.ClientSecret,
+                Scope = xeroConfiguration.Scope
+            });
+
+            if (response.IsError)
+            {
+                throw new Exception(response.Error);
+            }
+
+            var xeroToken = new XeroOAuth2Token()
+            {
+                AccessToken = response.AccessToken,
+                ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
+            };
+            xeroToken.Tenants = await GetConnectionsAsync(xeroToken);
+            return xeroToken;
+
+        }
+
+        /// <summary>
+        /// Requests a fully formed IXeroToken with list of tenants filled
+        /// </summary>
         /// <param name="code">Code returned from callback</param>
         /// <returns></returns>
         public async Task<IXeroToken> RequestAccessTokenAsync(string code)

@@ -72,6 +72,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// Reference Date (YYYY-MM-DD)
+        /// </summary>
+        /// <value>Reference Date (YYYY-MM-DD)</value>
+        [DataMember(Name="ReferenceDate", EmitDefaultValue=false)]
+        public DateTime? ReferenceDate { get; set; }
+
+        /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
@@ -92,6 +99,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
             sb.Append("  PayrollCalendarID: ").Append(PayrollCalendarID).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  ReferenceDate: ").Append(ReferenceDate).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -157,6 +165,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
+                    this.ReferenceDate == input.ReferenceDate ||
+                    (this.ReferenceDate != null &&
+                    this.ReferenceDate.Equals(input.ReferenceDate))
+                ) && 
+                (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
@@ -184,6 +197,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.PayrollCalendarID.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.ReferenceDate != null)
+                    hashCode = hashCode * 59 + this.ReferenceDate.GetHashCode();
                 if (this.ValidationErrors != null)
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 return hashCode;
