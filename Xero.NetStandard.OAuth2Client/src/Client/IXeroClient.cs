@@ -18,6 +18,7 @@ namespace Xero.NetStandard.OAuth2.Client
         Task<IXeroToken> RequestAccessTokenAsync(string code);
         Task<IXeroToken> RequestAccessTokenPkceAsync(string code, string codeVerifier);
         Task<IXeroToken> RefreshAccessTokenAsync(IXeroToken xeroToken);
+        Task<IXeroToken> RequestClientCredentialsTokenAsync();
         Task<IXeroToken> GetCurrentValidTokenAsync(IXeroToken xeroToken);
         Task<List<Tenant>> GetConnectionsAsync(IXeroToken xeroToken);
         Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant);
