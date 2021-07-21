@@ -346,7 +346,7 @@ Because Custom Connections are only valid for a single organisation you don't ne
 ## API Clients
 You can access the different API sets and their available methods through the following:
 
-```csharp
+```ruby
 var AccountingApi = new AccountingApi();
 var AssetApi = new AssetApi();
 var BankFeedsApi = new BankFeedsApi();
