@@ -56,4 +56,5 @@ namespace Xero.NetStandard.OAuth2.Client
             this.ErrorContent = errorContent;
         }
     }
+
 }
