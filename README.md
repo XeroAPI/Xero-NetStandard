@@ -13,6 +13,7 @@ The Xero-NetStandard SDK makes it easy for developers to access Xero's APIs in t
 - [Authentication](#authentication)
 - [Auth with PKCE](#auth-with-pkce)
 - [Custom Connections](#custom-connections)
+- [App Store Subscriptions](#app-store-subscriptions)
 - [API Clients](#api-clients)
 - [Helper Methods](#helper-methods)
 - [Usage Examples](#usage-examples)
@@ -344,11 +345,73 @@ namespace AsyncMain
 ```
 Because Custom Connections are only valid for a single organisation you don't need an actual `xero-tenant-id` however the parameter remains and still requires an empty string.
 
+
+## App Store Subscriptions
+
+---
+## App Store Subscriptions 
+If you are implementing subscriptions to participate in Xero's App Store you will need to setup [App Store subscriptions](https://developer.xero.com/documentation/guides/how-to-guides/xero-app-store-referrals/) endpoints.
+When a plan is successfully purchased, the user is redirected back to the URL specified in the setup process. The Xero App Store appends the subscription Id to this URL so you can immediately determine what plan the user has subscribed to through the subscriptions API.
+With your app credentials you can create a client via `client_credentials` grant_type with the `marketplace.billing` scope. This unique access_token will allow you to query any functions in `appStoreApi`. Client Credentials tokens to query app store endpoints will only work for apps that have completed the App Store on-boarding process.
+```ts
+// => /post-purchase-url?subscriptionId=xxxx-xxxx-xxxx-xxxx
+
+var subscriptionId = 'xxxx-xxxx-xxxx-xxxx'
+
+XeroConfiguration XeroConfig = new XeroConfiguration
+{
+    ClientId = System.Environment.GetEnvironmentVariable("CLIENT_ID"),
+    ClientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET")
+};
+
+var client = new XeroClient(XeroConfig);
+var xeroToken = await client.RequestClientCredentialsTokenAsync();
+
+client.getSubscriptionsAsync(subscriptionId)
+{
+  currentPeriodEnd: 2021-09-02T20:08:58.772Z,
+  endDate: null,
+  id: '03bc74f2-1237-4477-b782-2dfb1a6d8b21',
+  organisationId: '79e8b2e5-c63d-4dce-888f-e0f3e9eac647',
+  plans: [
+    Plan {
+      id: '6abc26f3-9390-4194-8b25-ce8b9942fda9',
+      name: 'Small',
+      status: 'ACTIVE',
+      subscriptionItems: [
+        endDate: null,
+        id: '834cff4c-b753-4de2-9e7a-3451e14fa17a',
+        price: {
+          id: '2310de92-c7c0-4bcb-b972-fb7612177bc7',
+          amount: 0.1,
+          currency: 'NZD'
+        },
+        product: Product {
+          id: '9586421f-7325-4493-bac9-d93be06a6a38',
+          name: '',
+          type: 'FIXED'
+        },      
+        startDate: 2021-08-02T20:08:58.772Z,
+        testMode: true
+      ]
+    }
+  ],
+  startDate: 2021-08-02T20:08:58.772Z,
+  status: 'ACTIVE',
+  testMode: true
+}
+```
+You should use the subscription data to provision user access/permissions to your application.
+### App Store Subscription Webhooks
+In additon to a subscription Id being passed through the URL, when a purchase or an upgrade takes place you will be notified via a webhook. You can then use the subscription Id in the webhook payload to query the AppStore endpoints and determine what plan the user purchased, upgraded, downgraded or cancelled.
+Refer to Xero's documenation to learn more about setting up and receiving webhooks or review [this blogpost](https://devblog.xero.com/getting-started-with-xero-webhooks-and-net-cbda8b7f5b5) explaing webhooks using xero-node sdk.
+> https://developer.xero.com/documentation/guides/webhooks/overview/
+
 ---
 ## API Clients
 You can access the different API sets and their available methods through the following:
 
-```ruby
+```csharp
 var AccountingApi = new AccountingApi();
 var AssetApi = new AssetApi();
 var BankFeedsApi = new BankFeedsApi();
@@ -358,6 +421,7 @@ var PayrollAUApi = new PayrollAUApi();
 var PayrollNZApi = new PayrollNZApi();
 var PayrollUkApi = new PayrollUkApi();
 var ProjectApi = new ProjectApi();
+var AppStoreApi = new AppStoreApi();
 ```
 ---
 ## Helper Methods
