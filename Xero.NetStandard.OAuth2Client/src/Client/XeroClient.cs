@@ -166,7 +166,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
         /// <returns></returns>
-        public async Task<IXeroToken> RequestClientCredentialsTokenAsync()
+        public async Task<IXeroToken> RequestClientCredentialsTokenAsync(Boolean fetchTenants=true)
         {
 
             var response = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
@@ -187,7 +187,9 @@ namespace Xero.NetStandard.OAuth2.Client
                 AccessToken = response.AccessToken,
                 ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
             };
-            xeroToken.Tenants = await GetConnectionsAsync(xeroToken);
+            if(fetchTenants){
+                xeroToken.Tenants = await GetConnectionsAsync(xeroToken);
+            }
             return xeroToken;
 
         }
