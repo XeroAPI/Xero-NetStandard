@@ -166,7 +166,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
         /// <returns></returns>
-        public async Task<IXeroToken> RequestClientCredentialsTokenAsync(Boolean fetchTenants=true)
+        public async Task<IXeroToken> RequestClientCredentialsTokenAsync(bool fetchTenants=true)
         {
 
             var response = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
