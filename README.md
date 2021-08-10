@@ -446,7 +446,7 @@ var client = new XeroClient(xconfig);
 | client.`DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant)` | List of remaining Tenants attached to accesstoken
 | client.`RevokeAccessTokenAsync(IXeroToken xeroToken)` | Revokes a IXeroToken and returns null
 | client.`RefreshAccessTokenAsync(IXeroToken xeroToken)` | Returns a IXeroToken
-| client.`RequestClientCredentialsTokenAsync()` | Returns a IXeroToken
+| client.`RequestClientCredentialsTokenAsync(Boolean fetchTenants=true)` | Returns a IXeroToken, and defaults to calling GetConnections unless specified
 | client.`RequestAccessTokenAsync(string code)` | Returns a IXeroToken
 | client.`RequestAccessTokenPkceAsync(string code, string codeVerifier)` | Returns a IXeroToken
 | client.`GetCurrentValidTokenAsync(IXeroToken xeroToken)` | Returns a IXeroToken
