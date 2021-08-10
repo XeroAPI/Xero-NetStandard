@@ -345,60 +345,108 @@ namespace AsyncMain
 ```
 Because Custom Connections are only valid for a single organisation you don't need an actual `xero-tenant-id` however the parameter remains and still requires an empty string.
 
-
-## App Store Subscriptions
-
----
 ## App Store Subscriptions 
-If you are implementing subscriptions to participate in Xero's App Store you will need to setup [App Store subscriptions](https://developer.xero.com/documentation/guides/how-to-guides/xero-app-store-referrals/) endpoints.
-When a plan is successfully purchased, the user is redirected back to the URL specified in the setup process. The Xero App Store appends the subscription Id to this URL so you can immediately determine what plan the user has subscribed to through the subscriptions API.
-With your app credentials you can create a client via `client_credentials` grant_type with the `marketplace.billing` scope. This unique access_token will allow you to query any functions in `appStoreApi`. Client Credentials tokens to query app store endpoints will only work for apps that have completed the App Store on-boarding process.
-```ts
-// => /post-purchase-url?subscriptionId=xxxx-xxxx-xxxx-xxxx
+If you are implementing subscriptions to participate in Xero's App Store you will need to setup [App Store subscriptions](https://developer.xero.com/documentation/guides/how-to-guides/xero-app-store-referrals/) endpoints. When a plan is successfully purchased, the user is redirected back to the URL specified in the setup process. The Xero App Store appends the subscription Id to this URL so you can immediately determine what plan the user has subscribed to through the subscriptions API. With your app credentials you can create a client via `client_credentials` grant type with the `marketplace.billing` scope. This unique access_token will allow you to query any functions in `AppStoreApi`. Client Credentials tokens to query app store endpoints will only work for apps that have completed the App Store on-boarding process.
 
-var subscriptionId = 'xxxx-xxxx-xxxx-xxxx'
+> => /post-purchase-url?subscriptionId=03bc74f2-1237-4477-b782-2dfb1a6d8b21
 
-XeroConfiguration XeroConfig = new XeroConfiguration
+> csharp.csproj
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetEnv" Version="2.1.1" />
+    <PackageReference Include="IdentityModel" Version="4.0.0" />
+    <PackageReference Include="Xero.NetStandard.OAuth2" Version="3.19.0" />
+    <PackageReference Include="Xero.NetStandard.OAuth2Client" Version="1.5.0" />
+  </ItemGroup>
+</Project>
+```
+> Program.cs
+```csharp
+using System;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Config;
+using System.Threading.Tasks;
+
+namespace AsyncMain
 {
-    ClientId = System.Environment.GetEnvironmentVariable("CLIENT_ID"),
-    ClientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET")
-};
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            DotNetEnv.Env.Load();
+            var helloWorld = await GetHelloWorldAsync();
+            Console.WriteLine(helloWorld);
+        }
 
-var client = new XeroClient(XeroConfig);
-var xeroToken = await client.RequestClientCredentialsTokenAsync();
+        static async Task<string> GetHelloWorldAsync()
+        {   
+            XeroConfiguration XeroConfig = new XeroConfiguration
+            {
+                ClientId = System.Environment.GetEnvironmentVariable("APPSTORE_CLIENT_ID"),
+                ClientSecret = System.Environment.GetEnvironmentVariable("APPSTORE_CLIENT_SECRET")
+            };
 
-client.getSubscriptionsAsync(subscriptionId)
+            var client = new XeroClient(XeroConfig);
+            var xeroToken = await client.RequestClientCredentialsTokenAsync(false);
+            
+            Guid subscriptionId = Guid.Parse("03bc74f2-1237-4477-b782-2dfb1a6d8b21");
+
+            try {
+                var apiInstance = new AppStoreApi();
+                var result = await apiInstance.GetSubscriptionAsync(xeroToken.AccessToken, subscriptionId);
+                return result.ToJson();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetSubscriptionAsync: " + e.Message );
+                return e.ToString();
+            }
+        }
+    }
+}
+```
+
+```json
+// dotnet run
 {
-  currentPeriodEnd: 2021-09-02T20:08:58.772Z,
-  endDate: null,
-  id: '03bc74f2-1237-4477-b782-2dfb1a6d8b21',
-  organisationId: '79e8b2e5-c63d-4dce-888f-e0f3e9eac647',
-  plans: [
-    Plan {
-      id: '6abc26f3-9390-4194-8b25-ce8b9942fda9',
-      name: 'Small',
-      status: 'ACTIVE',
-      subscriptionItems: [
-        endDate: null,
-        id: '834cff4c-b753-4de2-9e7a-3451e14fa17a',
-        price: {
-          id: '2310de92-c7c0-4bcb-b972-fb7612177bc7',
-          amount: 0.1,
-          currency: 'NZD'
-        },
-        product: Product {
-          id: '9586421f-7325-4493-bac9-d93be06a6a38',
-          name: '',
-          type: 'FIXED'
-        },      
-        startDate: 2021-08-02T20:08:58.772Z,
-        testMode: true
+  "currentPeriodEnd": "2021-09-02T14:08:58.772536Z",
+  "id": "03bc74f2-1237-4477-b782-2dfb1a6d8b21",
+  "organisationId": "79e8b2e5-c63d-4dce-888f-e0f3e9eac647",
+  "plans": [
+    {
+      "status": "ACTIVE",
+      "id": "6abc26f3-9390-4194-8b25-ce8b9942fda9",
+      "name": "Small",
+      "subscriptionItems": [
+        {
+          "id": "834cff4c-b753-4de2-9e7a-3451e14fa17a",
+          "price": {
+            "amount": 10.0000,
+            "currency": "NZD",
+            "id": "2310de92-c7c0-4bcb-b972-fb7612177bc7"
+          },
+          "product": {
+            "type": "FIXED",
+            "id": "9586421f-7325-4493-bac9-d93be06a6a38",
+            "name": ""
+          },
+          "startDate": "2021-08-02T14:08:58.772536Z",
+          "testMode": true
+        }
       ]
     }
   ],
-  startDate: 2021-08-02T20:08:58.772Z,
-  status: 'ACTIVE',
-  testMode: true
+  "startDate": "2021-08-02T14:08:58.772536Z",
+  "status": "ACTIVE",
+  "testMode": true
 }
 ```
 You should use the subscription data to provision user access/permissions to your application.
