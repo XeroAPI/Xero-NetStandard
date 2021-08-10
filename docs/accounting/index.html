@@ -4187,6 +4187,12 @@ ul.nav-tabs {
       "format" : "double",
       "x-is-money" : true
     },
+    "BankAmount" : {
+      "type" : "number",
+      "description" : "The amount of the payment in the currency of the bank account.",
+      "format" : "double",
+      "x-is-money" : true
+    },
     "Reference" : {
       "type" : "string",
       "description" : "An optional description for the payment e.g. Direct Debit"
@@ -5682,7 +5688,7 @@ ul.nav-tabs {
   "title" : "",
   "type" : "string",
   "description" : "Timezone specifications",
-  "enum" : [ "MOROCCOSTANDARDTIME", "UTC", "GMTSTANDARDTIME", "GREENWICHSTANDARDTIME", "WEUROPESTANDARDTIME", "CENTRALEUROPESTANDARDTIME", "ROMANCESTANDARDTIME", "CENTRALEUROPEANSTANDARDTIME", "WCENTRALAFRICASTANDARDTIME", "NAMIBIASTANDARDTIME", "JORDANSTANDARDTIME", "GTBSTANDARDTIME", "MIDDLEEASTSTANDARDTIME", "EGYPTSTANDARDTIME", "SYRIASTANDARDTIME", "EEUROPESTANDARDTIME", "SOUTHAFRICASTANDARDTIME", "FLESTANDARDTIME", "TURKEYSTANDARDTIME", "ISRAELSTANDARDTIME", "KALININGRADSTANDARDTIME", "LIBYASTANDARDTIME", "ARABICSTANDARDTIME", "ARABSTANDARDTIME", "BELARUSSTANDARDTIME", "RUSSIANSTANDARDTIME", "EAFRICASTANDARDTIME", "IRANSTANDARDTIME", "ARABIANSTANDARDTIME", "AZERBAIJANSTANDARDTIME", "RUSSIATIMEZONE3", "MAURITIUSSTANDARDTIME", "GEORGIANSTANDARDTIME", "CAUCASUSSTANDARDTIME", "AFGHANISTANSTANDARDTIME", "WESTASIASTANDARDTIME", "EKATERINBURGSTANDARDTIME", "PAKISTANSTANDARDTIME", "INDIASTANDARDTIME", "SRILANKASTANDARDTIME", "NEPALSTANDARDTIME", "CENTRALASIASTANDARDTIME", "BANGLADESHSTANDARDTIME", "NCENTRALASIASTANDARDTIME", "MYANMARSTANDARDTIME", "SEASIASTANDARDTIME", "NORTHASIASTANDARDTIME", "CHINASTANDARDTIME", "NORTHASIAEASTSTANDARDTIME", "SINGAPORESTANDARDTIME", "WAUSTRALIASTANDARDTIME", "TAIPEISTANDARDTIME", "ULAANBAATARSTANDARDTIME", "TOKYOSTANDARDTIME", "KOREASTANDARDTIME", "YAKUTSKSTANDARDTIME", "CENAUSTRALIASTANDARDTIME", "AUSCENTRALSTANDARDTIME", "EAUSTRALIASTANDARDTIME", "AUSEASTERNSTANDARDTIME", "WESTPACIFICSTANDARDTIME", "TASMANIASTANDARDTIME", "MAGADANSTANDARDTIME", "VLADIVOSTOKSTANDARDTIME", "RUSSIATIMEZONE10", "CENTRALPACIFICSTANDARDTIME", "RUSSIATIMEZONE11", "NEWZEALANDSTANDARDTIME", "UTC+12", "UTC+13", "FIJISTANDARDTIME", "KAMCHATKASTANDARDTIME", "TONGASTANDARDTIME", "SAMOASTANDARDTIME", "LINEISLANDSSTANDARDTIME", "AZORESSTANDARDTIME", "CAPEVERDESTANDARDTIME", "UTC02", "MIDATLANTICSTANDARDTIME", "ESOUTHAMERICASTANDARDTIME", "ARGENTINASTANDARDTIME", "SAEASTERNSTANDARDTIME", "GREENLANDSTANDARDTIME", "MONTEVIDEOSTANDARDTIME", "BAHIASTANDARDTIME", "NEWFOUNDLANDSTANDARDTIME", "PARAGUAYSTANDARDTIME", "ATLANTICSTANDARDTIME", "CENTRALBRAZILIANSTANDARDTIME", "SAWESTERNSTANDARDTIME", "PACIFICSASTANDARDTIME", "VENEZUELASTANDARDTIME", "SAPACIFICSTANDARDTIME", "EASTERNSTANDARDTIME", "USEASTERNSTANDARDTIME", "CENTRALAMERICASTANDARDTIME", "CENTRALSTANDARDTIME", "CENTRALSTANDARDTIME(MEXICO)", "CANADACENTRALSTANDARDTIME", "USMOUNTAINSTANDARDTIME", "MOUNTAINSTANDARDTIME(MEXICO)", "MOUNTAINSTANDARDTIME", "PACIFICSTANDARDTIME(MEXICO)", "PACIFICSTANDARDTIME", "ALASKANSTANDARDTIME", "HAWAIIANSTANDARDTIME", "UTC11", "DATELINESTANDARDTIME" ]
+  "enum" : [ "MOROCCOSTANDARDTIME", "UTC", "GMTSTANDARDTIME", "GREENWICHSTANDARDTIME", "WEUROPESTANDARDTIME", "CENTRALEUROPESTANDARDTIME", "ROMANCESTANDARDTIME", "CENTRALEUROPEANSTANDARDTIME", "WCENTRALAFRICASTANDARDTIME", "NAMIBIASTANDARDTIME", "JORDANSTANDARDTIME", "GTBSTANDARDTIME", "MIDDLEEASTSTANDARDTIME", "EGYPTSTANDARDTIME", "SYRIASTANDARDTIME", "EEUROPESTANDARDTIME", "SOUTHAFRICASTANDARDTIME", "FLESTANDARDTIME", "TURKEYSTANDARDTIME", "ISRAELSTANDARDTIME", "KALININGRADSTANDARDTIME", "LIBYASTANDARDTIME", "ARABICSTANDARDTIME", "ARABSTANDARDTIME", "BELARUSSTANDARDTIME", "RUSSIANSTANDARDTIME", "EAFRICASTANDARDTIME", "IRANSTANDARDTIME", "ARABIANSTANDARDTIME", "AZERBAIJANSTANDARDTIME", "RUSSIATIMEZONE3", "MAURITIUSSTANDARDTIME", "GEORGIANSTANDARDTIME", "CAUCASUSSTANDARDTIME", "AFGHANISTANSTANDARDTIME", "WESTASIASTANDARDTIME", "EKATERINBURGSTANDARDTIME", "PAKISTANSTANDARDTIME", "INDIASTANDARDTIME", "SRILANKASTANDARDTIME", "NEPALSTANDARDTIME", "CENTRALASIASTANDARDTIME", "BANGLADESHSTANDARDTIME", "NCENTRALASIASTANDARDTIME", "MYANMARSTANDARDTIME", "SEASIASTANDARDTIME", "NORTHASIASTANDARDTIME", "CHINASTANDARDTIME", "NORTHASIAEASTSTANDARDTIME", "SINGAPORESTANDARDTIME", "WAUSTRALIASTANDARDTIME", "TAIPEISTANDARDTIME", "ULAANBAATARSTANDARDTIME", "TOKYOSTANDARDTIME", "KOREASTANDARDTIME", "YAKUTSKSTANDARDTIME", "CENAUSTRALIASTANDARDTIME", "AUSCENTRALSTANDARDTIME", "EAUSTRALIASTANDARDTIME", "AUSEASTERNSTANDARDTIME", "WESTPACIFICSTANDARDTIME", "TASMANIASTANDARDTIME", "MAGADANSTANDARDTIME", "VLADIVOSTOKSTANDARDTIME", "RUSSIATIMEZONE10", "CENTRALPACIFICSTANDARDTIME", "RUSSIATIMEZONE11", "NEWZEALANDSTANDARDTIME", "UTC+12", "UTC+13", "FIJISTANDARDTIME", "KAMCHATKASTANDARDTIME", "TONGASTANDARDTIME", "SAMOASTANDARDTIME", "LINEISLANDSSTANDARDTIME", "AZORESSTANDARDTIME", "CAPEVERDESTANDARDTIME", "UTC02", "MIDATLANTICSTANDARDTIME", "ESOUTHAMERICASTANDARDTIME", "ARGENTINASTANDARDTIME", "SAEASTERNSTANDARDTIME", "GREENLANDSTANDARDTIME", "MONTEVIDEOSTANDARDTIME", "BAHIASTANDARDTIME", "NEWFOUNDLANDSTANDARDTIME", "PARAGUAYSTANDARDTIME", "ATLANTICSTANDARDTIME", "CENTRALBRAZILIANSTANDARDTIME", "SAWESTERNSTANDARDTIME", "PACIFICSASTANDARDTIME", "VENEZUELASTANDARDTIME", "SAPACIFICSTANDARDTIME", "EASTERNSTANDARDTIME", "USEASTERNSTANDARDTIME", "CENTRALAMERICASTANDARDTIME", "CENTRALSTANDARDTIME", "CENTRALSTANDARDTIME(MEXICO)", "CANADACENTRALSTANDARDTIME", "USMOUNTAINSTANDARDTIME", "MOUNTAINSTANDARDTIME(MEXICO)", "MOUNTAINSTANDARDTIME", "PACIFICSTANDARDTIME(MEXICO)", "PACIFICSTANDARDTIME", "ALASKANSTANDARDTIME", "HAWAIIANSTANDARDTIME", "UTC11", "DATELINESTANDARDTIME", "EASTERISLANDSTANDARDTIME" ]
 };
       defs["TrackingCategories"] = {
   "title" : "",
@@ -5896,6 +5902,7 @@ ul.nav-tabs {
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-uk/index.html" value="PayrollUk">Payroll (UK)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-nz/index.html" value="PayrollNz">Payroll (NZ)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/bankfeeds/index.html" value="Bankfeeds">Bankfeeds</option>
+          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">AppStore</option>
         </select>
       </fieldset>
       <div class='api-set-wrapper'>
@@ -5937,7 +5944,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Accounting"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>3.18.1</li>
+              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>3.19.0</li>
               <li class="nav-header" data-group="Accounting"><a href="#api-Accounting">Methods</a></li>
               <li data-group="Accounting" data-name="createAccount" class="">
                 <a href="#api-Accounting-createAccount">createAccount</a>
@@ -17754,6 +17761,11 @@ namespace Example
                       <td>Grant read-write access to organisation and account settings</td>
                     </tr>
                     
+                    <tr>
+                      <td>accounting.settings.read</td>
+                      <td>Grant read-only access to organisation and account settings</td>
+                    </tr>
+                    
                   </table>
                   <h2>Parameters</h2>
                   <div class="methodsubtabletitle">Path parameters</div>
@@ -17879,6 +17891,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -18056,6 +18073,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -18236,6 +18258,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -18369,6 +18396,11 @@ namespace Example
                     <tr>
                       <td>accounting.settings</td>
                       <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>accounting.settings.read</td>
+                      <td>Grant read-only access to organisation and account settings</td>
                     </tr>
                     
                   </table>
@@ -18534,6 +18566,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -18690,6 +18727,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -18867,6 +18909,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -19047,6 +19094,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -19178,6 +19230,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -19386,6 +19443,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -19513,6 +19575,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -19644,6 +19711,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -19821,6 +19893,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -20001,6 +20078,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -20128,6 +20210,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -20259,6 +20346,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -20427,6 +20519,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -20556,6 +20653,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -20722,6 +20824,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.settings.read</td>
@@ -20979,6 +21086,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.settings.read</td>
@@ -21380,6 +21492,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.contacts</td>
+                      <td>Grant read-write access to contacts and contact groups</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.contacts.read</td>
                       <td>Grant read-only access to contacts and contact groups</td>
                     </tr>
@@ -21509,6 +21626,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -21686,6 +21808,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -21866,6 +21993,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -21995,6 +22127,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.contacts</td>
+                      <td>Grant read-write access to contacts and contact groups</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.contacts.read</td>
                       <td>Grant read-only access to contacts and contact groups</td>
                     </tr>
@@ -22121,8 +22258,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>accounting.contacts.read</td>
-                      <td>Grant read-only access to contacts and contact groups</td>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>accounting.settings.read</td>
+                      <td>Grant read-only access to organisation and account settings</td>
                     </tr>
                     
                   </table>
@@ -22248,6 +22390,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.contacts</td>
+                      <td>Grant read-write access to contacts and contact groups</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.contacts.read</td>
@@ -22378,6 +22525,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.contacts</td>
+                      <td>Grant read-write access to contacts and contact groups</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.contacts.read</td>
@@ -22523,6 +22675,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.contacts</td>
+                      <td>Grant read-write access to contacts and contact groups</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.contacts.read</td>
                       <td>Grant read-only access to contacts and contact groups</td>
                     </tr>
@@ -22656,6 +22813,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.contacts</td>
+                      <td>Grant read-write access to contacts and contact groups</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.contacts.read</td>
@@ -22908,6 +23070,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -23068,6 +23235,11 @@ namespace Example
                       <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
                     </tr>
                     
+                    <tr>
+                      <td>accounting.transactions.read</td>
+                      <td>Grant read-only access to invoices</td>
+                    </tr>
+                    
                   </table>
                   <h2>Parameters</h2>
                   <div class="methodsubtabletitle">Path parameters</div>
@@ -23193,6 +23365,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -23370,6 +23547,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -23550,6 +23732,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -23677,6 +23864,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -23810,6 +24002,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -24019,6 +24216,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -24162,6 +24364,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -24291,6 +24498,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.settings.read</td>
@@ -24459,6 +24671,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -24586,6 +24803,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -24717,6 +24939,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -24886,6 +25113,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -25042,6 +25274,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -25171,6 +25408,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -25348,6 +25590,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -25528,6 +25775,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -25655,6 +25907,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -25785,8 +26042,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>accounting.transactions.read</td>
-                      <td>Grant read-only access to invoices</td>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>accounting.settings.read</td>
+                      <td>Grant read-only access to organisation and account settings</td>
                     </tr>
                     
                   </table>
@@ -25890,6 +26152,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -26245,6 +26512,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -26401,6 +26673,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -26531,6 +26808,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.settings.read</td>
@@ -27016,6 +27298,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -27148,6 +27435,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -27385,6 +27677,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -27514,6 +27811,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -27691,6 +27993,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -27871,6 +28178,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -28001,6 +28313,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -28189,6 +28506,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -28316,6 +28638,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -28446,6 +28773,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -28540,6 +28872,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.settings.read</td>
@@ -28670,6 +29007,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -28764,6 +29106,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -28893,6 +29240,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -29026,6 +29378,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -29234,6 +29591,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -29361,6 +29723,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -29590,6 +29957,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -29776,6 +30148,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -29903,6 +30280,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -30036,6 +30418,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -30244,6 +30631,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -30371,6 +30763,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -30502,6 +30899,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -30682,6 +31084,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -30811,6 +31218,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -30935,6 +31347,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -31069,6 +31486,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -31299,6 +31721,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -31474,6 +31901,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -31601,6 +32033,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -31732,6 +32169,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -31909,6 +32351,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -32089,6 +32536,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -32216,6 +32668,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -32354,6 +32811,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -32678,6 +33140,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -32834,6 +33301,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -33011,6 +33483,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -33191,6 +33668,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -33318,6 +33800,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -33450,6 +33937,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -33638,6 +34130,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.transactions.read</td>
                       <td>Grant read-only access to invoices</td>
                     </tr>
@@ -33767,6 +34264,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -33944,6 +34446,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.attachments.read</td>
@@ -34124,6 +34631,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.attachments.read</td>
                       <td>Grant read-only access to attachments</td>
                     </tr>
@@ -34251,6 +34763,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -34381,6 +34898,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.transactions.read</td>
@@ -36068,6 +36590,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.reports.read</td>
+                      <td>Grant read-only access to accounting reports</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.reports.tenninetynine.read</td>
                       <td>Grant read-only access to 1099 reports</td>
                     </tr>
@@ -36435,6 +36962,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -36600,6 +37132,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -36763,6 +37300,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>accounting.settings.read</td>
                       <td>Grant read-only access to organisation and account settings</td>
                     </tr>
@@ -36890,6 +37432,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.settings.read</td>
@@ -37021,6 +37568,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>accounting.settings</td>
+                      <td>Grant read-write access to organisation and account settings</td>
+                    </tr>
                     
                     <tr>
                       <td>accounting.settings.read</td>

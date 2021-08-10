@@ -34,7 +34,7 @@ This SDK supports full method coverage for the following Xero API sets:
 | [Payroll (UK)](https://xeroapi.github.io/Xero-NetStandard/payroll-uk/index.html) | The (UK) Payroll API exposes payroll related functions of the payroll Xero application |
 | [Payroll (NZ)](https://xeroapi.github.io/Xero-NetStandard/payroll-nz/index.html) | The (NZ) Payroll API exposes payroll related functions of the payroll Xero application |
 | [Bankfeeds](https://xeroapi.github.io/Xero-NetStandard/bankfeeds/index.html) | The Bankfeeds API facilitates the flow of transaction and statement data |
-
+| [AppStore](https://xeroapi.github.io/Xero-NetStandard/appstore/index.html) | The AppStore API encapsulates subscription based endpoints |
 
 <img src="https://i.imgur.com/6sWYrEl.png" alt="drawing" width="300"/>
 

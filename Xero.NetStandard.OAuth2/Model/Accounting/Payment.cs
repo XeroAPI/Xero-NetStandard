@@ -194,6 +194,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? Amount { get; set; }
 
         /// <summary>
+        /// The amount of the payment in the currency of the bank account.
+        /// </summary>
+        /// <value>The amount of the payment in the currency of the bank account.</value>
+        [DataMember(Name="BankAmount", EmitDefaultValue=false)]
+        public decimal? BankAmount { get; set; }
+
+        /// <summary>
         /// An optional description for the payment e.g. Direct Debit
         /// </summary>
         /// <value>An optional description for the payment e.g. Direct Debit</value>
@@ -296,6 +303,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  Date: ").Append(Date).Append("\n");
             sb.Append("  CurrencyRate: ").Append(CurrencyRate).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  BankAmount: ").Append(BankAmount).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  IsReconciled: ").Append(IsReconciled).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -400,6 +408,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Amount.Equals(input.Amount))
                 ) && 
                 (
+                    this.BankAmount == input.BankAmount ||
+                    (this.BankAmount != null &&
+                    this.BankAmount.Equals(input.BankAmount))
+                ) && 
+                (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
@@ -501,6 +514,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.CurrencyRate.GetHashCode();
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
+                if (this.BankAmount != null)
+                    hashCode = hashCode * 59 + this.BankAmount.GetHashCode();
                 if (this.Reference != null)
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.IsReconciled != null)
