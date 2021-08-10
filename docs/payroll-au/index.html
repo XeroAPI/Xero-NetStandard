@@ -1352,6 +1352,12 @@ ul.nav-tabs {
       "example" : "/Date(1584662400000+0000)/",
       "x-is-msdate" : true
     },
+    "TerminationReason" : {
+      "type" : "string",
+      "description" : "* `V` Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment\n* `I` Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability\n* `D` Deceased - The death of an employee\n* `R` Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme\n* `F` Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency\n* `C` Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required\n* `T` Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities.\n",
+      "example" : "F",
+      "enum" : [ "V", "I", "D", "R", "F", "C", "T" ]
+    },
     "BankAccounts" : {
       "type" : "array",
       "items" : {
@@ -3197,6 +3203,7 @@ ul.nav-tabs {
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-uk/index.html" value="PayrollUk">Payroll (UK)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-nz/index.html" value="PayrollNz">Payroll (NZ)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/bankfeeds/index.html" value="Bankfeeds">Bankfeeds</option>
+          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">AppStore</option>
         </select>
       </fieldset>
       <div class='api-set-wrapper'>
@@ -3238,7 +3245,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="PayrollAu"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="PayrollAu"><strong>VSN: </strong>3.18.1</li>
+              <li class="nav-header" data-group="PayrollAu"><strong>VSN: </strong>3.19.0</li>
               <li class="nav-header" data-group="PayrollAu"><a href="#api-PayrollAu">Methods</a></li>
               <li data-group="PayrollAu" data-name="createEmployee" class="">
                 <a href="#api-PayrollAu-createEmployee">createEmployee</a>
@@ -3557,8 +3564,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.leaveapplications</td>
-                      <td>Grant read-write access to payroll leaveapplications</td>
+                      <td>payroll.employees</td>
+                      <td>Grant read-write access to payroll employees</td>
                     </tr>
                     
                   </table>
@@ -3728,8 +3735,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.payitems</td>
-                      <td>Grant read-write access to payroll payitems</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -4006,8 +4013,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.payrollcalendars</td>
-                      <td>Grant read-write access to payroll calendars</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -4144,8 +4151,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.superfunds</td>
-                      <td>Grant read-write access to payroll superfunds</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -4421,6 +4428,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>payroll.employees</td>
+                      <td>Grant read-write access to payroll employees</td>
+                    </tr>
+                    
+                    <tr>
                       <td>payroll.employees.read</td>
                       <td>Grant read-only access to payroll employees</td>
                     </tr>
@@ -4551,6 +4563,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>payroll.employees</td>
+                      <td>Grant read-write access to payroll employees</td>
+                    </tr>
                     
                     <tr>
                       <td>payroll.employees.read</td>
@@ -4736,8 +4753,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.leaveapplications.read</td>
-                      <td>Grant read-only access to payroll leaveapplications</td>
+                      <td>payroll.employees</td>
+                      <td>Grant read-write access to payroll employees</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.employees.read</td>
+                      <td>Grant read-only access to payroll employees</td>
                     </tr>
                     
                   </table>
@@ -4868,8 +4890,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.leaveapplications.read</td>
-                      <td>Grant read-only access to payroll leaveapplications</td>
+                      <td>payroll.employees</td>
+                      <td>Grant read-write access to payroll employees</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.employees.read</td>
+                      <td>Grant read-only access to payroll employees</td>
                     </tr>
                     
                   </table>
@@ -5054,8 +5081,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.payitems.read</td>
-                      <td>Grant read-only access to payroll payitems</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.settings.read</td>
+                      <td>Grant read-only access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -5237,6 +5269,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>payroll.payruns</td>
+                      <td>Grant read-write access to payroll payruns</td>
+                    </tr>
+                    
+                    <tr>
                       <td>payroll.payruns.read</td>
                       <td>Grant read-only access to payroll payruns</td>
                     </tr>
@@ -5367,6 +5404,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>payroll.payruns</td>
+                      <td>Grant read-write access to payroll payruns</td>
+                    </tr>
                     
                     <tr>
                       <td>payroll.payruns.read</td>
@@ -5552,8 +5594,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.payrollcalendars.read</td>
-                      <td>Grant read-only access to payroll calendars</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.settings.read</td>
+                      <td>Grant read-only access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -5684,8 +5731,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.payrollcalendars.read</td>
-                      <td>Grant read-only access to payroll calendars</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.settings.read</td>
+                      <td>Grant read-only access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -5867,6 +5919,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>payroll.payslip</td>
+                      <td>Grant read-write access to payroll payslips</td>
+                    </tr>
+                    
+                    <tr>
                       <td>payroll.payslip.read</td>
                       <td>Grant read-only access to payroll payslips</td>
                     </tr>
@@ -5995,6 +6052,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
+                    </tr>
+                    
+                    <tr>
                       <td>payroll.settings.read</td>
                       <td>Grant read-only access to payroll settings</td>
                     </tr>
@@ -6091,8 +6153,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.superfunds.read</td>
-                      <td>Grant read-only access to payroll superfunds</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.settings.read</td>
+                      <td>Grant read-only access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -6221,8 +6288,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.superfundproducts.read</td>
-                      <td>Grant read-only access to payroll superfundproducts</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.settings.read</td>
+                      <td>Grant read-only access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -6367,8 +6439,13 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.superfunds.read</td>
-                      <td>Grant read-only access to payroll superfunds</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>payroll.settings.read</td>
+                      <td>Grant read-only access to payroll settings</td>
                     </tr>
                     
                   </table>
@@ -6550,6 +6627,11 @@ namespace Example
                   <table>
                     
                     <tr>
+                      <td>payroll.timesheets</td>
+                      <td>Grant read-write access to payroll timesheets</td>
+                    </tr>
+                    
+                    <tr>
                       <td>payroll.timesheets.read</td>
                       <td>Grant read-only access to payroll timesheets</td>
                     </tr>
@@ -6680,6 +6762,11 @@ namespace Example
                   </div>
                   <h2>Scopes</h2>
                   <table>
+                    
+                    <tr>
+                      <td>payroll.timesheets</td>
+                      <td>Grant read-write access to payroll timesheets</td>
+                    </tr>
                     
                     <tr>
                       <td>payroll.timesheets.read</td>
@@ -7051,8 +7138,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.leaveapplications</td>
-                      <td>Grant read-write access to payroll leaveapplications</td>
+                      <td>payroll.employees</td>
+                      <td>Grant read-write access to payroll employees</td>
                     </tr>
                     
                   </table>
@@ -7566,8 +7653,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>payroll.superfunds</td>
-                      <td>Grant read-write access to payroll superfunds</td>
+                      <td>payroll.settings</td>
+                      <td>Grant read-write access to payroll settings</td>
                     </tr>
                     
                   </table>
