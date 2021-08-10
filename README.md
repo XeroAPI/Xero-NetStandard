@@ -452,7 +452,7 @@ namespace AsyncMain
 You should use the subscription data to provision user access/permissions to your application.
 ### App Store Subscription Webhooks
 In additon to a subscription Id being passed through the URL, when a purchase or an upgrade takes place you will be notified via a webhook. You can then use the subscription Id in the webhook payload to query the AppStore endpoints and determine what plan the user purchased, upgraded, downgraded or cancelled.
-Refer to Xero's documenation to learn more about setting up and receiving webhooks or review [this blogpost](https://devblog.xero.com/getting-started-with-xero-webhooks-and-net-cbda8b7f5b5) explaing webhooks using xero-node sdk.
+Refer to Xero's documenation to learn more about setting up and receiving webhooks or review [this blogpost](https://devblog.xero.com/getting-started-with-xero-webhooks-and-net-cbda8b7f5b5) explaing webhooks using this sdk.
 > https://developer.xero.com/documentation/guides/webhooks/overview/
 
 ---
