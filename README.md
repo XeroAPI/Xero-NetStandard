@@ -738,7 +738,6 @@ var response = await FilesApi.UploadFileAsync(
     null,
     byteArray,
     file.FileName,
-    file.FileName,
     file.ContentType
 );
 ```
