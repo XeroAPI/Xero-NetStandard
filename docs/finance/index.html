@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Xero Files API</title>
+    <title>Xero Finance API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <!-- start *****REPLACE***** SEO meta details-->
-    <meta name="description" content="Xero-NetStandard SDK Files API Documentation">
-    <title>Xero-NetStandard Files SDK Docs</title>
+    <meta name="description" content="Xero-NetStandard SDK Finance API Documentation">
+    <title>Xero-NetStandard Finance SDK Docs</title>
     <meta name="keywords" content="Xero-NetStandard, csharp, dotnet, sdk, documentation, docs, XeroAPI, Xero, developer">
     <!-- end *****REPLACE***** SEO meta details-->
     <meta name="author" content="Xero Developer Evangelists">
@@ -862,214 +862,1216 @@ ul.nav-tabs {
     <script>
       // Script section to load models into a JS Var
       var defs = {}
-      defs["Association"] = {
+      defs["AccountUsage"] = {
   "title" : "",
   "type" : "object",
   "properties" : {
-    "FileId" : {
+    "month" : {
       "type" : "string",
-      "description" : "The unique identifier of the file",
+      "description" : "The month this usage item contains data for",
+      "nullable" : true
+    },
+    "accountId" : {
+      "type" : "string",
+      "description" : "The account this usage item contains data for",
       "format" : "uuid"
     },
-    "ObjectId" : {
+    "currencyCode" : {
       "type" : "string",
-      "description" : "The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)",
+      "description" : "The currency code this usage item contains data for",
+      "nullable" : true
+    },
+    "totalReceived" : {
+      "type" : "number",
+      "description" : "Total received",
+      "format" : "double",
+      "nullable" : true
+    },
+    "countReceived" : {
+      "type" : "integer",
+      "description" : "Count of received",
+      "format" : "int32",
+      "nullable" : true
+    },
+    "totalPaid" : {
+      "type" : "number",
+      "description" : "Total paid",
+      "format" : "double",
+      "nullable" : true
+    },
+    "countPaid" : {
+      "type" : "integer",
+      "description" : "Count of paid",
+      "format" : "int32",
+      "nullable" : true
+    },
+    "totalManualJournal" : {
+      "type" : "number",
+      "description" : "Total value of manual journals",
+      "format" : "double",
+      "nullable" : true
+    },
+    "countManualJournal" : {
+      "type" : "integer",
+      "description" : "Count of manual journals",
+      "format" : "int32",
+      "nullable" : true
+    },
+    "accountName" : {
+      "type" : "string",
+      "description" : "The name of the account",
+      "nullable" : true
+    },
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Shown if set",
+      "nullable" : true
+    },
+    "reportingCodeName" : {
+      "type" : "string",
+      "description" : "Shown if set",
+      "nullable" : true
+    },
+    "reportCodeUpdatedDateUtc" : {
+      "type" : "string",
+      "description" : "Last modified date UTC format",
+      "format" : "date-time",
+      "nullable" : true,
+      "x-is-datetime" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["AccountUsageResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
       "format" : "uuid"
     },
-    "ObjectGroup" : {
-      "$ref" : "#/components/schemas/ObjectGroup"
-    },
-    "ObjectType" : {
-      "$ref" : "#/components/schemas/ObjectType"
-    }
-  },
-  "description" : ""
-};
-      defs["FileObject"] = {
-  "title" : "",
-  "required" : [ "id", "manufacturer", "name", "releaseDate" ],
-  "type" : "object",
-  "properties" : {
-    "Name" : {
+    "startMonth" : {
       "type" : "string",
-      "description" : "File Name",
-      "example" : "File2.jpg"
+      "description" : "The start month of the report",
+      "nullable" : true
     },
-    "MimeType" : {
+    "endMonth" : {
       "type" : "string",
-      "description" : "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
-      "example" : "image/jpeg"
+      "description" : "The end month of the report",
+      "nullable" : true
     },
-    "Size" : {
-      "type" : "integer",
-      "description" : "Numeric value in bytes",
-      "example" : 3615
-    },
-    "CreatedDateUtc" : {
-      "type" : "string",
-      "description" : "Created date in UTC",
-      "example" : "2020-12-03T19:04:58.6970000"
-    },
-    "UpdatedDateUtc" : {
-      "type" : "string",
-      "description" : "Updated date in UTC",
-      "example" : "2020-12-03T19:04:58.6970000"
-    },
-    "User" : {
-      "$ref" : "#/components/schemas/User"
-    },
-    "Id" : {
-      "type" : "string",
-      "description" : "File object's UUID",
-      "format" : "uuid",
-      "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
-    },
-    "FolderId" : {
-      "type" : "string",
-      "description" : "Folder relation object's UUID",
-      "format" : "uuid",
-      "example" : "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
-    }
-  },
-  "description" : ""
-};
-      defs["Files"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "TotalCount" : {
-      "type" : "integer",
-      "example" : 2
-    },
-    "Page" : {
-      "type" : "integer",
-      "example" : 1
-    },
-    "PerPage" : {
-      "type" : "integer",
-      "example" : 50
-    },
-    "Items" : {
+    "accountUsage" : {
       "type" : "array",
+      "nullable" : true,
       "items" : {
-        "$ref" : "#/components/schemas/FileObject"
+        "$ref" : "#/components/schemas/AccountUsage"
       }
     }
   },
+  "additionalProperties" : false,
   "description" : ""
 };
-      defs["Folder"] = {
-  "title" : "",
-  "required" : [ "name" ],
-  "properties" : {
-    "Name" : {
-      "type" : "string",
-      "description" : "The name of the folder",
-      "example" : "assets"
-    },
-    "FileCount" : {
-      "type" : "integer",
-      "description" : "The number of files in the folder",
-      "example" : 5
-    },
-    "Email" : {
-      "type" : "string",
-      "description" : "The email address used to email files to the inbox. Only the inbox will have this element.",
-      "example" : "foo@bar.com"
-    },
-    "IsInbox" : {
-      "type" : "boolean",
-      "description" : "to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.",
-      "example" : true
-    },
-    "Id" : {
-      "type" : "string",
-      "description" : "Xero unique identifier for a folder  Files",
-      "format" : "uuid",
-      "example" : "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
-    }
-  },
-  "description" : ""
-};
-      defs["Folders"] = {
+      defs["BalanceSheetAccountDetail"] = {
   "title" : "",
   "type" : "object",
   "properties" : {
-    "Folders" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/Folder"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["ObjectGroup"] = {
-  "title" : "",
-  "type" : "string",
-  "description" : "The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.",
-  "enum" : [ "Account", "BankTransaction", "Contact", "CreditNote", "Invoice", "Item", "ManualJournal", "Overpayment", "Payment", "Prepayment", "Receipt" ]
-};
-      defs["ObjectType"] = {
-  "title" : "",
-  "type" : "string",
-  "description" : "The Object Type",
-  "enum" : [ "Unknown", "Accpay", "AccPayCredit", "AccPayPayment", "AccRec", "AccRecCredit", "AccRecPayment", "Adjustment", "ApCreditPayment", "ApOverPayment", "ApOverPaymentPayment", "ApOverPaymentSourcePayment", "ApPrepayment", "ApPrepaymentPayment", "ApPrepaymentSourcePayment", "ArCreditPayment", "ArOverPayment", "ArOverpaymentPayment", "ArOverpaymentSourcePayment", "ArPrepayment", "ArPrepaymentPayment", "ArPrepaymentSourcePayment", "CashPaid", "CashRec", "ExpPayment", "ManJournal", "PurchaseOrder", "Receipt", "Transfer", "Account", "Contact", "Business", "Employee", "Person", "User", "Org", "FixedAsset", "PayRun", "PriceListItem", "Bank", "Current", "Equity", "Expense", "Fixed", "Liability", "Prepayment", "Revenue", "Sales", "Overheads", "Depreciatn", "OtherIncome", "DirectCosts", "Currliab", "Termliab", "NonCurrent" ]
-};
-      defs["UploadObject"] = {
-  "title" : "",
-  "required" : [ "body", "filename", "name" ],
-  "type" : "object",
-  "properties" : {
-    "body" : {
+    "code" : {
       "type" : "string",
-      "format" : "byte"
+      "description" : "Accounting code",
+      "nullable" : true
+    },
+    "accountID" : {
+      "type" : "string",
+      "description" : "ID of the account",
+      "format" : "uuid"
     },
     "name" : {
       "type" : "string",
-      "description" : "exact name of the file you are uploading"
+      "description" : "Account name",
+      "nullable" : true
     },
-    "filename" : {
-      "type" : "string"
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Reporting code",
+      "nullable" : true
     },
-    "mimeType" : {
-      "type" : "string"
+    "total" : {
+      "type" : "number",
+      "description" : "Total movement on this account",
+      "format" : "double"
     }
   },
+  "additionalProperties" : false,
   "description" : ""
 };
-      defs["User"] = {
+      defs["BalanceSheetAccountGroup"] = {
   "title" : "",
-  "required" : [ "Id" ],
   "type" : "object",
   "properties" : {
-    "Id" : {
-      "type" : "string",
-      "description" : "Xero identifier",
-      "format" : "uuid",
-      "example" : "4ff1e5cc-9835-40d5-bb18-09fdb118db9c"
+    "accountTypes" : {
+      "type" : "array",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/BalanceSheetAccountType"
+      }
     },
-    "Name" : {
-      "type" : "string",
-      "description" : "Key is Name, but returns Email address of user who created the file",
-      "example" : "john.smith@mail.com"
-    },
-    "FirstName" : {
-      "type" : "string",
-      "description" : "First name of user",
-      "example" : "John"
-    },
-    "LastName" : {
-      "type" : "string",
-      "description" : "Last name of user",
-      "example" : "Smith"
-    },
-    "FullName" : {
-      "type" : "string",
-      "description" : "Last name of user",
-      "example" : "Smith"
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of all the accounts in this type",
+      "format" : "double"
     }
   },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["BalanceSheetAccountType"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountType" : {
+      "type" : "string",
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>",
+      "nullable" : true
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "A list of all accounts of this type. Refer to the Account section below for each account element detail.",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/BalanceSheetAccountDetail"
+      }
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of all the accounts in this type",
+      "format" : "double"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["BalanceSheetResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "balanceDate" : {
+      "type" : "string",
+      "description" : "Balance date of the report",
+      "format" : "date",
+      "nullable" : true
+    },
+    "asset" : {
+      "$ref" : "#/components/schemas/BalanceSheetAccountGroup"
+    },
+    "liability" : {
+      "$ref" : "#/components/schemas/BalanceSheetAccountGroup"
+    },
+    "equity" : {
+      "$ref" : "#/components/schemas/BalanceSheetAccountGroup"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["BankStatementResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "statementLines" : {
+      "$ref" : "#/components/schemas/StatementLinesResponse"
+    },
+    "currentStatement" : {
+      "$ref" : "#/components/schemas/CurrentStatementResponse"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashAccountResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "unreconciledAmountPos" : {
+      "type" : "number",
+      "description" : "Total value of transactions in the journals which are not reconciled to bank statement lines, and have a positive (debit) value.",
+      "format" : "double"
+    },
+    "unreconciledAmountNeg" : {
+      "type" : "number",
+      "description" : "Total value of transactions in the journals which are not reconciled to bank statement lines, and have a negative (credit) value.",
+      "format" : "double"
+    },
+    "startingBalance" : {
+      "type" : "number",
+      "description" : "Starting (or historic) balance from the journals (manually keyed in by users on account creation - unverified).",
+      "format" : "double"
+    },
+    "accountBalance" : {
+      "type" : "number",
+      "description" : "Current cash at bank accounting value from the journals.",
+      "format" : "double"
+    },
+    "balanceCurrency" : {
+      "type" : "string",
+      "description" : "Currency which the cashAccount transactions relate to.",
+      "nullable" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashBalance"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "openingCashBalance" : {
+      "type" : "number",
+      "description" : "Opening balance of cash and cash equivalents",
+      "format" : "double"
+    },
+    "closingCashBalance" : {
+      "type" : "number",
+      "description" : "Closing balance of cash and cash equivalents",
+      "format" : "double"
+    },
+    "netCashMovement" : {
+      "type" : "number",
+      "description" : "Net movement of cash and cash equivalents for the period",
+      "format" : "double",
+      "readOnly" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashValidationResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountId" : {
+      "type" : "string",
+      "description" : "The Xero identifier for an account",
+      "format" : "uuid"
+    },
+    "statementBalance" : {
+      "$ref" : "#/components/schemas/StatementBalanceResponse"
+    },
+    "statementBalanceDate" : {
+      "type" : "string",
+      "description" : "UTC Date when the last bank statement item was entered into Xero. This date is represented in ISO 8601 format.",
+      "format" : "date",
+      "nullable" : true
+    },
+    "bankStatement" : {
+      "$ref" : "#/components/schemas/BankStatementResponse"
+    },
+    "cashAccount" : {
+      "$ref" : "#/components/schemas/CashAccountResponse"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowAccount"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountId" : {
+      "type" : "string",
+      "description" : "ID of the account",
+      "format" : "uuid"
+    },
+    "accountType" : {
+      "type" : "string",
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>",
+      "nullable" : true
+    },
+    "accountClass" : {
+      "type" : "string",
+      "description" : "The class of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountClassTypes'>Account Class Types</a>",
+      "nullable" : true
+    },
+    "code" : {
+      "type" : "string",
+      "description" : "Account code",
+      "nullable" : true
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Account name",
+      "nullable" : true
+    },
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Reporting code used for cash flow classification",
+      "nullable" : true
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total amount for the account",
+      "format" : "double"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowActivity"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "description" : "Name of the cashflow activity type. It will be either Operating Activities, Investing Activities or Financing Activities",
+      "nullable" : true
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of the activity type",
+      "format" : "double"
+    },
+    "cashflowTypes" : {
+      "type" : "array",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/CashflowType"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Start date of the report",
+      "format" : "date"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "End date of the report",
+      "format" : "date"
+    },
+    "cashBalance" : {
+      "$ref" : "#/components/schemas/CashBalance"
+    },
+    "cashflowActivities" : {
+      "type" : "array",
+      "description" : "Break down of cash and cash equivalents for the period",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/CashflowActivity"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowType"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "description" : "Name of the activity",
+      "nullable" : true
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of the activity",
+      "format" : "double"
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "List of the accounts in this activity",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/CashflowAccount"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CurrentStatementResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates the first date which transactions on this statement pertain to. This date is represented in ISO 8601 format.",
+      "format" : "date",
+      "nullable" : true
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates the last date which transactions on this statement pertain to. This date is represented in ISO 8601 format.",
+      "format" : "date",
+      "nullable" : true
+    },
+    "startBalance" : {
+      "type" : "number",
+      "description" : "Looking at the most recent bank statement, this field indicates the balance before the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).",
+      "format" : "double"
+    },
+    "endBalance" : {
+      "type" : "number",
+      "description" : "Looking at the most recent bank statement, this field indicates the balance after the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).",
+      "format" : "double"
+    },
+    "importedDateTimeUtc" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates when the document was imported into Xero.  This date is represented in ISO 8601 format.",
+      "format" : "date-time",
+      "nullable" : true,
+      "x-is-datetime" : true
+    },
+    "importSourceType" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, indirect bank feed, file upload, or manual keying).",
+      "nullable" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["DataSourceResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "directBankFeed" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double"
+    },
+    "indirectBankFeed" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double"
+    },
+    "fileUpload" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double"
+    },
+    "manual" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double"
+    },
+    "directBankFeedPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.",
+      "format" : "double"
+    },
+    "indirectBankFeedPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+      "format" : "double"
+    },
+    "fileUploadPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+      "format" : "double"
+    },
+    "manualPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+      "format" : "double"
+    },
+    "directBankFeedNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double"
+    },
+    "indirectBankFeedNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double"
+    },
+    "fileUploadNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double"
+    },
+    "manualNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double"
+    },
+    "otherPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.",
+      "format" : "double"
+    },
+    "otherNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double"
+    },
+    "other" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["HistoryRecordResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "changes" : {
+      "type" : "string",
+      "description" : "The type of change recorded against the document",
+      "nullable" : true
+    },
+    "dateUTCString" : {
+      "type" : "string",
+      "description" : "UTC date that the history record was created",
+      "nullable" : true
+    },
+    "dateUTC" : {
+      "type" : "string",
+      "description" : "UTC date that the history record was created",
+      "format" : "date-time",
+      "x-is-datetime" : true
+    },
+    "user" : {
+      "type" : "string",
+      "description" : "The users first and last name",
+      "nullable" : true
+    },
+    "details" : {
+      "type" : "string",
+      "description" : "Description of the change event or transaction",
+      "nullable" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["LockHistoryModel"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "hardLockDate" : {
+      "type" : "string",
+      "description" : "Date the account hard lock was set",
+      "format" : "date",
+      "nullable" : true
+    },
+    "softLockDate" : {
+      "type" : "string",
+      "description" : "Date the account soft lock was set",
+      "format" : "date",
+      "nullable" : true
+    },
+    "updatedDateUtc" : {
+      "type" : "string",
+      "description" : "The system date time that the lock was updated",
+      "format" : "date-time",
+      "nullable" : true,
+      "x-is-datetime" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["LockHistoryResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
+      "format" : "uuid"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "The end date of the report",
+      "format" : "date",
+      "nullable" : true
+    },
+    "lockDates" : {
+      "type" : "array",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/LockHistoryModel"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PnlAccount"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountID" : {
+      "type" : "string",
+      "description" : "ID of the account",
+      "format" : "uuid"
+    },
+    "accountType" : {
+      "type" : "string",
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>",
+      "nullable" : true
+    },
+    "code" : {
+      "type" : "string",
+      "description" : "Account code",
+      "nullable" : true
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Account name",
+      "nullable" : true
+    },
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Reporting code (Shown if set)",
+      "nullable" : true
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total movement on this account",
+      "format" : "double"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PnlAccountClass"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "total" : {
+      "type" : "number",
+      "description" : "Total revenue/expense value",
+      "format" : "double"
+    },
+    "accountTypes" : {
+      "type" : "array",
+      "description" : "Contains trading income and other income for revenue section / operating expenses and direct cost for expense section if the data is available for each section. Refer to the account type element below",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/PnlAccountType"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PnlAccountType"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "total" : {
+      "type" : "number",
+      "description" : "Total movement on this account type",
+      "format" : "double"
+    },
+    "title" : {
+      "type" : "string",
+      "description" : "Name of this account type, it will be either Trading Income or Other Income for Revenue section / Direct Cost or Operating Expenses for Expense section",
+      "nullable" : true
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "A list of the movement on each account detail during the query period. Refer to the account detail element below",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/PnlAccount"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PracticeResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "xeroPartnerSince" : {
+      "type" : "integer",
+      "description" : "Year of becoming a partner.",
+      "format" : "int32"
+    },
+    "tier" : {
+      "type" : "string",
+      "description" : "Customer tier e.g. Silver",
+      "nullable" : true
+    },
+    "location" : {
+      "type" : "string",
+      "description" : "Country of location.",
+      "nullable" : true
+    },
+    "organisationCount" : {
+      "type" : "integer",
+      "description" : "Organisation count.",
+      "format" : "int32"
+    },
+    "staffCertified" : {
+      "type" : "boolean",
+      "description" : "Staff certified (true/false)."
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["Problem"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "type" : {
+      "$ref" : "#/components/schemas/ProblemType"
+    },
+    "title" : {
+      "type" : "string",
+      "nullable" : true
+    },
+    "status" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "detail" : {
+      "type" : "string",
+      "nullable" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ProblemType"] = {
+  "title" : "",
+  "type" : "string",
+  "description" : "",
+  "enum" : [ "NotSet", "invalid-request", "invalid-application", "service-unavailable", "internal-error" ]
+};
+      defs["ProfitAndLossResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Start date of the report",
+      "format" : "date"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "End date of the report",
+      "format" : "date"
+    },
+    "netProfitLoss" : {
+      "type" : "number",
+      "description" : "Net profit loss value",
+      "format" : "double"
+    },
+    "revenue" : {
+      "$ref" : "#/components/schemas/PnlAccountClass"
+    },
+    "expense" : {
+      "$ref" : "#/components/schemas/PnlAccountClass"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ReportHistoryModel"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "reportName" : {
+      "type" : "string",
+      "description" : "Report code or report title",
+      "nullable" : true
+    },
+    "reportDateText" : {
+      "type" : "string",
+      "description" : "The date or date range of the report",
+      "nullable" : true
+    },
+    "publishedDateUtc" : {
+      "type" : "string",
+      "description" : "The system date time that the report was published",
+      "format" : "date-time",
+      "x-is-datetime" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ReportHistoryResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
+      "format" : "uuid"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "The end date of the report",
+      "format" : "date",
+      "nullable" : true
+    },
+    "reports" : {
+      "type" : "array",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/ReportHistoryModel"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["StatementBalanceResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "value" : {
+      "type" : "number",
+      "description" : "Total closing balance of the account. This includes both reconciled and unreconciled bank statement lines. The closing balance will always be represented as a positive number, with it’s debit/credit status defined in the statementBalanceDebitCredit field.",
+      "format" : "double"
+    },
+    "type" : {
+      "type" : "string",
+      "description" : "The DEBIT or CREDIT status of the account. Cash accounts in credit have a negative balance.",
+      "nullable" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["StatementLinesResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "unreconciledAmountPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is positive.",
+      "format" : "double"
+    },
+    "unreconciledAmountNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is negative.",
+      "format" : "double"
+    },
+    "unreconciledLines" : {
+      "type" : "integer",
+      "description" : "Count of all statement lines where the reconciled flag is set to FALSE.",
+      "format" : "int32"
+    },
+    "avgDaysUnreconciledPos" : {
+      "type" : "number",
+      "description" : "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is positive. Provides an indication of the age of unreconciled transactions.",
+      "format" : "double"
+    },
+    "avgDaysUnreconciledNeg" : {
+      "type" : "number",
+      "description" : "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is negative. Provides an indication of the age of unreconciled transactions.",
+      "format" : "double"
+    },
+    "earliestUnreconciledTransaction" : {
+      "type" : "string",
+      "description" : "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+      "format" : "date",
+      "nullable" : true
+    },
+    "latestUnreconciledTransaction" : {
+      "type" : "string",
+      "description" : "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+      "format" : "date",
+      "nullable" : true
+    },
+    "deletedAmount" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all deleted statement lines.  Transactions may be deleted due to duplication or otherwise.",
+      "format" : "double"
+    },
+    "totalAmount" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines.  This is used as a metric of comparison to the unreconciled figures above.",
+      "format" : "double"
+    },
+    "dataSource" : {
+      "$ref" : "#/components/schemas/DataSourceResponse"
+    },
+    "earliestReconciledTransaction" : {
+      "type" : "string",
+      "description" : "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+      "format" : "date",
+      "nullable" : true
+    },
+    "latestReconciledTransaction" : {
+      "type" : "string",
+      "description" : "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+      "format" : "date",
+      "nullable" : true
+    },
+    "reconciledAmountPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is positive.",
+      "format" : "double"
+    },
+    "reconciledAmountNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is negative.",
+      "format" : "double"
+    },
+    "reconciledLines" : {
+      "type" : "integer",
+      "description" : "Count of all statement lines where the reconciled flag is set to TRUE",
+      "format" : "int32"
+    },
+    "totalAmountPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the amount is positive",
+      "format" : "double"
+    },
+    "totalAmountNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the amount is negative.",
+      "format" : "double"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TrialBalanceAccount"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountId" : {
+      "type" : "string",
+      "description" : "ID of the account",
+      "format" : "uuid"
+    },
+    "accountType" : {
+      "type" : "string",
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>",
+      "nullable" : true
+    },
+    "accountCode" : {
+      "type" : "string",
+      "description" : "Customer defined alpha numeric account code e.g 200 or SALES",
+      "nullable" : true
+    },
+    "accountClass" : {
+      "type" : "string",
+      "description" : "The class of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountClassTypes'>Account Class Types</a>",
+      "nullable" : true
+    },
+    "status" : {
+      "type" : "string",
+      "description" : "Accounts with a status of ACTIVE can be updated to ARCHIVED. See <a href='https://developer.xero.com/documentation/api/types#AccountStatusCodes'>Account Status Codes</a>",
+      "nullable" : true
+    },
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Reporting code (Shown if set)",
+      "nullable" : true
+    },
+    "accountName" : {
+      "type" : "string",
+      "description" : "Name of the account",
+      "nullable" : true
+    },
+    "balance" : {
+      "$ref" : "#/components/schemas/TrialBalanceEntry"
+    },
+    "signedBalance" : {
+      "type" : "number",
+      "description" : "Value of balance. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+      "format" : "double"
+    },
+    "accountMovement" : {
+      "$ref" : "#/components/schemas/TrialBalanceMovement"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TrialBalanceEntry"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "value" : {
+      "type" : "number",
+      "description" : "Net movement or net balance in the account",
+      "format" : "double"
+    },
+    "entryType" : {
+      "type" : "string",
+      "description" : "Sign (Debit/Credit) of the movement of balance in the account",
+      "nullable" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TrialBalanceMovement"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "debits" : {
+      "type" : "number",
+      "description" : "Debit amount",
+      "format" : "double"
+    },
+    "credits" : {
+      "type" : "number",
+      "description" : "Credit amount",
+      "format" : "double"
+    },
+    "movement" : {
+      "$ref" : "#/components/schemas/TrialBalanceEntry"
+    },
+    "signedMovement" : {
+      "type" : "number",
+      "description" : "Value of movement. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+      "format" : "double"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TrialBalanceResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Start date of the report",
+      "format" : "date",
+      "nullable" : true
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "End date of the report",
+      "format" : "date",
+      "nullable" : true
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "Refer to the accounts section below",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/TrialBalanceAccount"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["UserActivitiesResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
+      "format" : "uuid"
+    },
+    "dataMonth" : {
+      "type" : "string",
+      "description" : "The month of the report",
+      "nullable" : true
+    },
+    "users" : {
+      "type" : "array",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/UserResponse"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["UserResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "userId" : {
+      "type" : "string",
+      "description" : "The Xero identifier for the user",
+      "format" : "uuid"
+    },
+    "userCreatedDateUtc" : {
+      "type" : "string",
+      "description" : "Timestamp of user creation.",
+      "format" : "date-time",
+      "nullable" : true,
+      "x-is-datetime" : true
+    },
+    "lastLoginDateUtc" : {
+      "type" : "string",
+      "description" : "Timestamp of user last login",
+      "format" : "date-time",
+      "nullable" : true,
+      "x-is-datetime" : true
+    },
+    "isExternalPartner" : {
+      "type" : "boolean",
+      "description" : "User is external partner."
+    },
+    "hasAccountantRole" : {
+      "type" : "boolean",
+      "description" : "User has Accountant role."
+    },
+    "monthPeriod" : {
+      "type" : "string",
+      "description" : "Month period in format  yyyy-MM.",
+      "nullable" : true
+    },
+    "numberOfLogins" : {
+      "type" : "integer",
+      "description" : "Number of times the user has logged in.",
+      "format" : "int32"
+    },
+    "numberOfDocumentsCreated" : {
+      "type" : "integer",
+      "description" : "Number of documents created.",
+      "format" : "int32"
+    },
+    "netValueDocumentsCreated" : {
+      "type" : "number",
+      "description" : "Net value of documents created.",
+      "format" : "double",
+      "nullable" : true
+    },
+    "absoluteValueDocumentsCreated" : {
+      "type" : "number",
+      "description" : "Absolute value of documents created.",
+      "format" : "double",
+      "nullable" : true
+    },
+    "attachedPractices" : {
+      "type" : "array",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/PracticeResponse"
+      }
+    },
+    "historyRecords" : {
+      "type" : "array",
+      "nullable" : true,
+      "items" : {
+        "$ref" : "#/components/schemas/HistoryRecordResponse"
+      }
+    }
+  },
+  "additionalProperties" : false,
   "description" : ""
 };
       
@@ -1143,8 +2145,8 @@ ul.nav-tabs {
             }
             $('#language-set-selection option[value="'+ sdkLang +'"]').attr("selected", "selected");
             $('#sdk-name').html(sdkName);
-            console.log('Files')
-            $('#api-set-selection option[value="'+ 'Files' + '"]').attr("selected", "selected");
+            console.log('Finance')
+            $('#api-set-selection option[value="'+ 'Finance' + '"]').attr("selected", "selected");
           });
         </script>
       </div>
@@ -1154,59 +2156,35 @@ ul.nav-tabs {
         <div id="sidenav" class="span2">
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
-              <li class="nav-header" data-group="Files"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Files"><strong>VSN: </strong>3.20.0</li>
-              <li class="nav-header" data-group="Files"><a href="#api-Files">Methods</a></li>
-              <li data-group="Files" data-name="createFileAssociation" class="">
-                <a href="#api-Files-createFileAssociation">createFileAssociation</a>
+              <li class="nav-header" data-group="Finance"><strong>SDK: </strong><span id='sdk-name'></span></li>
+              <li class="nav-header" data-group="Finance"><strong>VSN: </strong>3.20.0</li>
+              <li class="nav-header" data-group="Finance"><a href="#api-Finance">Methods</a></li>
+              <li data-group="Finance" data-name="getAccountingActivityAccountUsage" class="">
+                <a href="#api-Finance-getAccountingActivityAccountUsage">getAccountingActivityAccountUsage</a>
               </li>
-              <li data-group="Files" data-name="createFolder" class="">
-                <a href="#api-Files-createFolder">createFolder</a>
+              <li data-group="Finance" data-name="getAccountingActivityLockHistory" class="">
+                <a href="#api-Finance-getAccountingActivityLockHistory">getAccountingActivityLockHistory</a>
               </li>
-              <li data-group="Files" data-name="deleteFile" class="">
-                <a href="#api-Files-deleteFile">deleteFile</a>
+              <li data-group="Finance" data-name="getAccountingActivityReportHistory" class="">
+                <a href="#api-Finance-getAccountingActivityReportHistory">getAccountingActivityReportHistory</a>
               </li>
-              <li data-group="Files" data-name="deleteFileAssociation" class="">
-                <a href="#api-Files-deleteFileAssociation">deleteFileAssociation</a>
+              <li data-group="Finance" data-name="getAccountingActivityUserActivities" class="">
+                <a href="#api-Finance-getAccountingActivityUserActivities">getAccountingActivityUserActivities</a>
               </li>
-              <li data-group="Files" data-name="deleteFolder" class="">
-                <a href="#api-Files-deleteFolder">deleteFolder</a>
+              <li data-group="Finance" data-name="getCashValidation" class="">
+                <a href="#api-Finance-getCashValidation">getCashValidation</a>
               </li>
-              <li data-group="Files" data-name="getAssociationsByObject" class="">
-                <a href="#api-Files-getAssociationsByObject">getAssociationsByObject</a>
+              <li data-group="Finance" data-name="getFinancialStatementBalanceSheet" class="">
+                <a href="#api-Finance-getFinancialStatementBalanceSheet">getFinancialStatementBalanceSheet</a>
               </li>
-              <li data-group="Files" data-name="getFile" class="">
-                <a href="#api-Files-getFile">getFile</a>
+              <li data-group="Finance" data-name="getFinancialStatementCashflow" class="">
+                <a href="#api-Finance-getFinancialStatementCashflow">getFinancialStatementCashflow</a>
               </li>
-              <li data-group="Files" data-name="getFileAssociations" class="">
-                <a href="#api-Files-getFileAssociations">getFileAssociations</a>
+              <li data-group="Finance" data-name="getFinancialStatementProfitAndLoss" class="">
+                <a href="#api-Finance-getFinancialStatementProfitAndLoss">getFinancialStatementProfitAndLoss</a>
               </li>
-              <li data-group="Files" data-name="getFileContent" class="">
-                <a href="#api-Files-getFileContent">getFileContent</a>
-              </li>
-              <li data-group="Files" data-name="getFiles" class="">
-                <a href="#api-Files-getFiles">getFiles</a>
-              </li>
-              <li data-group="Files" data-name="getFolder" class="">
-                <a href="#api-Files-getFolder">getFolder</a>
-              </li>
-              <li data-group="Files" data-name="getFolders" class="">
-                <a href="#api-Files-getFolders">getFolders</a>
-              </li>
-              <li data-group="Files" data-name="getInbox" class="">
-                <a href="#api-Files-getInbox">getInbox</a>
-              </li>
-              <li data-group="Files" data-name="updateFile" class="">
-                <a href="#api-Files-updateFile">updateFile</a>
-              </li>
-              <li data-group="Files" data-name="updateFolder" class="">
-                <a href="#api-Files-updateFolder">updateFolder</a>
-              </li>
-              <li data-group="Files" data-name="uploadFile" class="">
-                <a href="#api-Files-uploadFile">uploadFile</a>
-              </li>
-              <li data-group="Files" data-name="uploadFileToFolder" class="">
-                <a href="#api-Files-uploadFileToFolder">uploadFileToFolder</a>
+              <li data-group="Finance" data-name="getFinancialStatementTrialBalance" class="">
+                <a href="#api-Finance-getFinancialStatementTrialBalance">getFinancialStatementTrialBalance</a>
               </li>
             </ul>
           </nav>
@@ -1214,7 +2192,7 @@ ul.nav-tabs {
         <div id="content">
           <div id="project">
             <div class="pull-left">
-              <h1>Xero Files API</h1>
+              <h1>Xero Finance API</h1>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -1224,31 +2202,31 @@ ul.nav-tabs {
             </div>
           </div>
           <div id="sections">
-            <section id="api-Files">
-              <h1>Files</h1>
-              <div id="api-Files-createFileAssociation">
-                <article id="api-Files-createFileAssociation-0" data-group="User" data-name="createFileAssociation" data-version="0">
+            <section id="api-Finance">
+              <h1>Finance</h1>
+              <div id="api-Finance-getAccountingActivityAccountUsage">
+                <article id="api-Finance-getAccountingActivityAccountUsage-0" data-group="User" data-name="getAccountingActivityAccountUsage" data-version="0">
                   <div class="pull-left">
-                    <h1>createFileAssociation</h1>
-                    <p>Creates a new file association</p>
+                    <h1>getAccountingActivityAccountUsage</h1>
+                    <p>Get account usage</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked">By passing in the appropriate options, you can create a new folder</p>
+                  <p class="marked">A summary of how each account is being transacted on exposing the level of detail and amounts attributable to manual adjustments.</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/Files/{FileId}/Associations</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/AccountUsage</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-createFileAssociation-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getAccountingActivityAccountUsage-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-createFileAssociation-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityAccountUsage-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -1257,22 +2235,23 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class CreateFileAssociationExample
+    public class GetAccountingActivityAccountUsageExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
+            var apiInstance = new FinanceApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var startMonth = "2020-09";
+            var endMonth = "2021-09";
             
             try {
-                var result = await apiInstance.CreateFileAssociationAsync(accessToken, xeroTenantId, fileId, association);
+                var result = await apiInstance.GetAccountingActivityAccountUsageAsync(accessToken, xeroTenantId, startMonth, endMonth);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.CreateFileAssociation: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityAccountUsage: " + e.Message );
             }
         }
     }
@@ -1283,168 +2262,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FileId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_createFileAssociation_fileId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-File id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_createFileAssociation_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Body parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-  <td style="width:150px;">association </td>
-  <td>
-    <div class="json-schema-view">
-      <div class="primitive">
-        <span class="type">
-        Association
-        </span>
-        <div class="inner description marked">
-          
-        </div>
-      </div>
-    </div>
-    <script type="application/ld+json">
-      {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/Association"
-      },
-      "example" : "{ \"ObjectId\": \"1270bf7c-5d18-473a-9231-1e36c4bd33ed\", \"ObjectGroup\": \"Contact\", \"ObjectType\": \"Business\" }"
-    }
-  }
-}
-    </script>
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-createFolder">
-                <article id="api-Files-createFolder-0" data-group="User" data-name="createFolder" data-version="0">
-                  <div class="pull-left">
-                    <h1>createFolder</h1>
-                    <p>Creates a new folder</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">By passing in the appropriate properties, you can create a new folder</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/Folders</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-createFolder-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-createFolder-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class CreateFolderExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            
-            try {
-                var result = await apiInstance.CreateFolderAsync(accessToken, xeroTenantId, folder);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.CreateFolder: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
                     </tr>
                     
                   </table>
@@ -1459,1089 +2278,7 @@ namespace Example
 <td>
 
 
-    <div id="d2e199_createFolder_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Body parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-  <td style="width:150px;">folder </td>
-  <td>
-    <div class="json-schema-view">
-      <div class="primitive">
-        <span class="type">
-        Folder
-        </span>
-        <div class="inner description marked">
-          
-        </div>
-      </div>
-    </div>
-    <script type="application/ld+json">
-      {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/Folder"
-      },
-      "example" : "{ \"Name\": \"My Docs\" }"
-    }
-  }
-}
-    </script>
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-deleteFile">
-                <article id="api-Files-deleteFile-0" data-group="User" data-name="deleteFile" data-version="0">
-                  <div class="pull-left">
-                    <h1>deleteFile</h1>
-                    <p>Deletes a specific file</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">Delete a specific file</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/Files/{FileId}</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-deleteFile-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-deleteFile-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class DeleteFileExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            
-            try {
-                await apiInstance.DeleteFileAsync(accessToken, xeroTenantId, fileId);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.DeleteFile: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FileId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_deleteFile_fileId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-File id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_deleteFile_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-deleteFileAssociation">
-                <article id="api-Files-deleteFileAssociation-0" data-group="User" data-name="deleteFileAssociation" data-version="0">
-                  <div class="pull-left">
-                    <h1>deleteFileAssociation</h1>
-                    <p>Deletes an existing file association</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">By passing in the appropriate options, you can create a new folder</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/Files/{FileId}/Associations/{ObjectId}</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-deleteFileAssociation-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-deleteFileAssociation-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class DeleteFileAssociationExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            var objectId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            
-            try {
-                await apiInstance.DeleteFileAssociationAsync(accessToken, xeroTenantId, fileId, objectId);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.DeleteFileAssociation: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FileId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_deleteFileAssociation_fileId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-File id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">ObjectId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_deleteFileAssociation_objectId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-Object id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_deleteFileAssociation_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-deleteFolder">
-                <article id="api-Files-deleteFolder-0" data-group="User" data-name="deleteFolder" data-version="0">
-                  <div class="pull-left">
-                    <h1>deleteFolder</h1>
-                    <p>Deletes a folder</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">By passing in the appropriate ID, you can delete a folder</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/Folders/{FolderId}</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-deleteFolder-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-deleteFolder-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class DeleteFolderExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var folderId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            
-            try {
-                await apiInstance.DeleteFolderAsync(accessToken, xeroTenantId, folderId);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.DeleteFolder: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FolderId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_deleteFolder_folderId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-Folder id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_deleteFolder_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-getAssociationsByObject">
-                <article id="api-Files-getAssociationsByObject-0" data-group="User" data-name="getAssociationsByObject" data-version="0">
-                  <div class="pull-left">
-                    <h1>getAssociationsByObject</h1>
-                    <p>Retrieves an association object using a unique object ID</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">By passing in the appropriate options,</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Associations/{ObjectId}</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getAssociationsByObject-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getAssociationsByObject-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class GetAssociationsByObjectExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var objectId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            
-            try {
-                var result = await apiInstance.GetAssociationsByObjectAsync(accessToken, xeroTenantId, objectId);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.GetAssociationsByObject: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">ObjectId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getAssociationsByObject_objectId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-Object id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getAssociationsByObject_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-getFile">
-                <article id="api-Files-getFile-0" data-group="User" data-name="getFile" data-version="0">
-                  <div class="pull-left">
-                    <h1>getFile</h1>
-                    <p>Retrieves a file by a unique file ID</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked"></p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Files/{FileId}</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getFile-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getFile-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class GetFileExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            
-            try {
-                var result = await apiInstance.GetFileAsync(accessToken, xeroTenantId, fileId);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.GetFile: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FileId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFile_fileId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-File id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFile_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-getFileAssociations">
-                <article id="api-Files-getFileAssociations-0" data-group="User" data-name="getFileAssociations" data-version="0">
-                  <div class="pull-left">
-                    <h1>getFileAssociations</h1>
-                    <p>Retrieves a specific file associations</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">By passing in the appropriate options,</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Files/{FileId}/Associations</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getFileAssociations-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getFileAssociations-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class GetFileAssociationsExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            
-            try {
-                var result = await apiInstance.GetFileAssociationsAsync(accessToken, xeroTenantId, fileId);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.GetFileAssociations: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FileId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFileAssociations_fileId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-File id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFileAssociations_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-getFileContent">
-                <article id="api-Files-getFileContent-0" data-group="User" data-name="getFileContent" data-version="0">
-                  <div class="pull-left">
-                    <h1>getFileContent</h1>
-                    <p>Retrieves the content of a specific file</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">By passing in the appropriate options, retrieve data for specific file</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Files/{FileId}/Content</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getFileContent-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getFileContent-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class GetFileContentExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            
-            try {
-                var result = await apiInstance.GetFileContentAsync(accessToken, xeroTenantId, fileId);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.GetFileContent: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FileId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFileContent_fileId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-File id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFileContent_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-getFiles">
-                <article id="api-Files-getFiles-0" data-group="User" data-name="getFiles" data-version="0">
-                  <div class="pull-left">
-                    <h1>getFiles</h1>
-                    <p>Retrieves files</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked"></p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Files</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getFiles-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getFiles-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class GetFilesExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var pagesize = 50;
-            var page = 2;
-            var sort = "CreatedDateUTC DESC";
-            
-            try {
-                var result = await apiInstance.GetFilesAsync(accessToken, xeroTenantId, pagesize, page, sort);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.GetFiles: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFiles_xeroTenantId">
+    <div id="d2e199_getAccountingActivityAccountUsage_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -2567,51 +2304,11 @@ Xero identifier for Tenant
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr><td style="width:150px;">pagesize</td>
+                    <tr><td style="width:150px;">startMonth</td>
 <td>
 
 
-    <div id="d2e199_getFiles_pagesize">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description marked">
-pass an optional page size value
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">page</td>
-<td>
-
-
-    <div id="d2e199_getFiles_page">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description marked">
-number of records to skip for pagination
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">sort</td>
-<td>
-
-
-    <div id="d2e199_getFiles_sort">
+    <div id="d2e199_getAccountingActivityAccountUsage_startMonth">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -2619,7 +2316,33 @@ number of records to skip for pagination
                 </span>
 
                     <div class="inner description marked">
-values to sort by
+<p>date, yyyy-MM</p>
+<p>If no parameter is provided, the month 12 months prior to the end month will be used.</p>
+<p>Account usage for up to 12 months from this date will be returned.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endMonth</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityAccountUsage_endMonth">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM</p>
+<p>If no parameter is provided, the current month will be used.</p>
+<p>Account usage for up to 12 months prior to this date will be returned.</p>
+
                     </div>
             </div>
         </div>
@@ -2631,29 +2354,29 @@ values to sort by
                 </article>
               </div>
               <hr>
-              <div id="api-Files-getFolder">
-                <article id="api-Files-getFolder-0" data-group="User" data-name="getFolder" data-version="0">
+              <div id="api-Finance-getAccountingActivityLockHistory">
+                <article id="api-Finance-getAccountingActivityLockHistory-0" data-group="User" data-name="getAccountingActivityLockHistory" data-version="0">
                   <div class="pull-left">
-                    <h1>getFolder</h1>
-                    <p>Retrieves specific folder by using a unique folder ID</p>
+                    <h1>getAccountingActivityLockHistory</h1>
+                    <p>Get lock history</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked">By passing in the appropriate ID, you can search for specific folder</p>
+                  <p class="marked">Provides a history of locking of accounting books. Locking may be an indicator of good accounting practices that could reduce the risk of changes to accounting records in prior periods.</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Folders/{FolderId}</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/LockHistory</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getFolder-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getAccountingActivityLockHistory-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getFolder-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityLockHistory-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -2662,22 +2385,22 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class GetFolderExample
+    public class GetAccountingActivityLockHistoryExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
+            var apiInstance = new FinanceApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var folderId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var endDate = "2021-09-15";
             
             try {
-                var result = await apiInstance.GetFolderAsync(accessToken, xeroTenantId, folderId);
+                var result = await apiInstance.GetAccountingActivityLockHistoryAsync(accessToken, xeroTenantId, endDate);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.GetFolder: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityLockHistory: " + e.Message );
             }
         }
     }
@@ -2688,147 +2411,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FolderId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFolder_folderId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-Folder id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getFolder_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Files-getFolders">
-                <article id="api-Files-getFolders-0" data-group="User" data-name="getFolders" data-version="0">
-                  <div class="pull-left">
-                    <h1>getFolders</h1>
-                    <p>Retrieves folders</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked">By passing in the appropriate options, you can search for available folders</p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Folders</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getFolders-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getFolders-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class GetFoldersExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var sort = "CreatedDateUTC DESC";
-            
-            try {
-                var result = await apiInstance.GetFoldersAsync(accessToken, xeroTenantId, sort);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.GetFolders: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
                     </tr>
                     
                   </table>
@@ -2843,7 +2427,7 @@ namespace Example
 <td>
 
 
-    <div id="d2e199_getFolders_xeroTenantId">
+    <div id="d2e199_getAccountingActivityLockHistory_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -2869,11 +2453,11 @@ Xero identifier for Tenant
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr><td style="width:150px;">sort</td>
+                    <tr><td style="width:150px;">endDate</td>
 <td>
 
 
-    <div id="d2e199_getFolders_sort">
+    <div id="d2e199_getAccountingActivityLockHistory_endDate">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -2881,7 +2465,11 @@ Xero identifier for Tenant
                 </span>
 
                     <div class="inner description marked">
-values to sort by
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>Any changes to hard or soft lock dates that were made within the period up to 12 months before this date will be returned.</p>
+<p>Please be aware that there may be a delay of up to 3 days before a change is visible from this API.</p>
+
                     </div>
             </div>
         </div>
@@ -2893,29 +2481,29 @@ values to sort by
                 </article>
               </div>
               <hr>
-              <div id="api-Files-getInbox">
-                <article id="api-Files-getInbox-0" data-group="User" data-name="getInbox" data-version="0">
+              <div id="api-Finance-getAccountingActivityReportHistory">
+                <article id="api-Finance-getAccountingActivityReportHistory-0" data-group="User" data-name="getAccountingActivityReportHistory" data-version="0">
                   <div class="pull-left">
-                    <h1>getInbox</h1>
-                    <p>Retrieves inbox folder</p>
+                    <h1>getAccountingActivityReportHistory</h1>
+                    <p>Get report history</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked">Search for the user inbox</p>
+                  <p class="marked">For a specified organisation, provides a summary of all the reports published within a given period, which may be an indicator for good business management and oversight.</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Inbox</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/ReportHistory</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-getInbox-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getAccountingActivityReportHistory-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-getInbox-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityReportHistory-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -2924,21 +2512,22 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class GetInboxExample
+    public class GetAccountingActivityReportHistoryExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
+            var apiInstance = new FinanceApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var endDate = "2021-09-15";
             
             try {
-                var result = await apiInstance.GetInboxAsync(accessToken, xeroTenantId);
+                var result = await apiInstance.GetAccountingActivityReportHistoryAsync(accessToken, xeroTenantId, endDate);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.GetInbox: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityReportHistory: " + e.Message );
             }
         }
     }
@@ -2949,13 +2538,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>files.read</td>
-                      <td>Grant read-only access to files and folders</td>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
                     </tr>
                     
                   </table>
@@ -2970,7 +2554,7 @@ namespace Example
 <td>
 
 
-    <div id="d2e199_getInbox_xeroTenantId">
+    <div id="d2e199_getAccountingActivityReportHistory_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -2990,32 +2574,63 @@ Xero identifier for Tenant
 </tr>
 
                   </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityReportHistory_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>Any reports that were published within the period up to 12 months before this date will be returned.</p>
+<p>Please be aware that there may be a delay of up to 3 days before a published report is visible from this API.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
                 </article>
               </div>
               <hr>
-              <div id="api-Files-updateFile">
-                <article id="api-Files-updateFile-0" data-group="User" data-name="updateFile" data-version="0">
+              <div id="api-Finance-getAccountingActivityUserActivities">
+                <article id="api-Finance-getAccountingActivityUserActivities-0" data-group="User" data-name="getAccountingActivityUserActivities" data-version="0">
                   <div class="pull-left">
-                    <h1>updateFile</h1>
-                    <p>Update a file</p>
+                    <h1>getAccountingActivityUserActivities</h1>
+                    <p>Get user activities</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked">Updates file properties of a single file</p>
+                  <p class="marked">For a specified organisation, provides a list of all the users registered, and a history of their accounting transactions. Also identifies the existence of an external accounting advisor and the level of interaction.</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/Files/{FileId}</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/UserActivities</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-updateFile-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getAccountingActivityUserActivities-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-updateFile-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityUserActivities-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -3024,22 +2639,22 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class UpdateFileExample
+    public class GetAccountingActivityUserActivitiesExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
+            var apiInstance = new FinanceApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var dataMonth = "2021-09";
             
             try {
-                var result = await apiInstance.UpdateFileAsync(accessToken, xeroTenantId, fileId, fileObject);
+                var result = await apiInstance.GetAccountingActivityUserActivitiesAsync(accessToken, xeroTenantId, dataMonth);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.UpdateFile: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityUserActivities: " + e.Message );
             }
         }
     }
@@ -3050,45 +2665,12 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
                     </tr>
                     
                   </table>
                   <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FileId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_updateFile_fileId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-File id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
                   <div class="methodsubtabletitle">Header parameters</div>
                   <table id="methodsubtable">
                     <tr>
@@ -3099,7 +2681,7 @@ File id for single object
 <td>
 
 
-    <div id="d2e199_updateFile_xeroTenantId">
+    <div id="d2e199_getAccountingActivityUserActivities_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -3119,64 +2701,64 @@ Xero identifier for Tenant
 </tr>
 
                   </table>
-                  <div class="methodsubtabletitle">Body parameters</div>
+                  <div class="methodsubtabletitle">Query parameters</div>
                   <table id="methodsubtable">
                     <tr>
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr>
-  <td style="width:150px;">fileObject </td>
-  <td>
-    <div class="json-schema-view">
-      <div class="primitive">
-        <span class="type">
-        FileObject
-        </span>
-        <div class="inner description marked">
-          
+                    <tr><td style="width:150px;">dataMonth</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityUserActivities_dataMonth">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM</p>
+<p>The specified month must be complete (in the past); The current month cannot be specified since it is not complete.</p>
+<p>If no parameter is provided, the month immediately previous to the current month will be used.</p>
+<p>Any user activities occurring within the specified month will be returned.</p>
+<p>Please be aware that there may be a delay of up to 3 days before a user activity is visible from this API.</p>
+
+                    </div>
+            </div>
         </div>
-      </div>
     </div>
-    <script type="application/ld+json">
-      {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/FileObject"
-      },
-      "example" : "{ \"FolderId\": \"bf924975-7097-46f2-a143-1ecfbab3c8c3\" }"
-    }
-  }
-}
-    </script>
+</td>
+</tr>
+
                   </table>
                 </article>
               </div>
               <hr>
-              <div id="api-Files-updateFolder">
-                <article id="api-Files-updateFolder-0" data-group="User" data-name="updateFolder" data-version="0">
+              <div id="api-Finance-getCashValidation">
+                <article id="api-Finance-getCashValidation-0" data-group="User" data-name="getCashValidation" data-version="0">
                   <div class="pull-left">
-                    <h1>updateFolder</h1>
-                    <p>Updates an existing folder</p>
+                    <h1>getCashValidation</h1>
+                    <p>Get cash validation</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked">By passing in the appropriate ID and properties, you can update a folder</p>
+                  <p class="marked">Summarizes the total cash position for each account for an org</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/Folders/{FolderId}</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/CashValidation</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-updateFolder-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getCashValidation-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-updateFolder-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getCashValidation-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -3185,22 +2767,24 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class UpdateFolderExample
+    public class GetCashValidationExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
+            var apiInstance = new FinanceApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var folderId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var balanceDate = "2021-09-15";
+            var asAtSystemDate = "2021-09-15";
+            var beginDate = "2021-09-15";
             
             try {
-                var result = await apiInstance.UpdateFolderAsync(accessToken, xeroTenantId, folderId, folder);
+                var result = await apiInstance.GetCashValidationAsync(accessToken, xeroTenantId, balanceDate, asAtSystemDate, beginDate);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.UpdateFolder: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetCashValidation: " + e.Message );
             }
         }
     }
@@ -3211,45 +2795,12 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
+                      <td>finance.cashvalidation.read</td>
+                      <td>Grant read-only access to bank statement and reconcilation data</td>
                     </tr>
                     
                   </table>
                   <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FolderId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_updateFolder_folderId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-Folder id for single object
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
                   <div class="methodsubtabletitle">Header parameters</div>
                   <table id="methodsubtable">
                     <tr>
@@ -3260,7 +2811,7 @@ Folder id for single object
 <td>
 
 
-    <div id="d2e199_updateFolder_xeroTenantId">
+    <div id="d2e199_getCashValidation_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -3280,68 +2831,114 @@ Xero identifier for Tenant
 </tr>
 
                   </table>
-                  <div class="methodsubtabletitle">Body parameters</div>
+                  <div class="methodsubtabletitle">Query parameters</div>
                   <table id="methodsubtable">
                     <tr>
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr>
-  <td style="width:150px;">folder <span style="color:red;">*</span></td>
-  <td>
-    <div class="json-schema-view">
-      <div class="primitive">
-        <span class="type">
-        Folder
-        </span>
-        <div class="inner description marked">
-          
+                    <tr><td style="width:150px;">balanceDate</td>
+<td>
+
+
+    <div id="d2e199_getCashValidation_balanceDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>The ‘balance date’ will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.
+The user has discretion as to which accounting period the transaction relates to.</p>
+<p>The ‘balance date’  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)</p>
+
+                    </div>
+            </div>
         </div>
-      </div>
-      <div class="inner required">
-        Required
-      </div>
     </div>
-    <script type="application/ld+json">
-      {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/Folder"
-      },
-      "example" : "{ \"Name\": \"Your Docs\" }"
-    }
-  },
-  "required" : true
-}
-    </script>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">asAtSystemDate</td>
+<td>
+
+
+    <div id="d2e199_getCashValidation_asAtSystemDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>The ‘as at’ date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.
+The ‘as at’ date can not be overridden by the user.  This can be used to estimate a ‘historical frequency of reconciliation’.</p>
+<p>The ‘as at’ date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified ‘as at’ date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.</p>
+<p>Note;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the ‘as at’ functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">beginDate</td>
+<td>
+
+
+    <div id="d2e199_getCashValidation_beginDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the aggregate results will be drawn from the user’s total history.</p>
+<p>The ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.
+The user has discretion as to which accounting period the transaction relates to.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                 </article>
               </div>
               <hr>
-              <div id="api-Files-uploadFile">
-                <article id="api-Files-uploadFile-0" data-group="User" data-name="uploadFile" data-version="0">
+              <div id="api-Finance-getFinancialStatementBalanceSheet">
+                <article id="api-Finance-getFinancialStatementBalanceSheet-0" data-group="User" data-name="getFinancialStatementBalanceSheet" data-version="0">
                   <div class="pull-left">
-                    <h1>uploadFile</h1>
-                    <p>Uploads a File to the inbox</p>
+                    <h1>getFinancialStatementBalanceSheet</h1>
+                    <p>Get Balance Sheet report</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked"></p>
+                  <p class="marked">The balance sheet report is a standard financial report which describes the financial position of an organisation at a point in time.</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/Files</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/BalanceSheet</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-uploadFile-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getFinancialStatementBalanceSheet-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-uploadFile-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementBalanceSheet-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -3350,25 +2947,22 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class UploadFileExample
+    public class GetFinancialStatementBalanceSheetExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
+            var apiInstance = new FinanceApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            byte[] body = BYTE_ARRAY_DATA_HERE;
-            var name = "name_example";
-            var filename = "filename_example";
-            var mimeType = "mimeType_example";
+            var balanceDate = "2020-06-30";
             
             try {
-                var result = await apiInstance.UploadFileAsync(accessToken, xeroTenantId, body, name, filename, mimeType);
+                var result = await apiInstance.GetFinancialStatementBalanceSheetAsync(accessToken, xeroTenantId, balanceDate);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.UploadFile: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementBalanceSheet: " + e.Message );
             }
         }
     }
@@ -3379,8 +2973,8 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
                     </tr>
                     
                   </table>
@@ -3395,7 +2989,7 @@ namespace Example
 <td>
 
 
-    <div id="d2e199_uploadFile_xeroTenantId">
+    <div id="d2e199_getFinancialStatementBalanceSheet_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -3415,43 +3009,17 @@ Xero identifier for Tenant
 </tr>
 
                   </table>
-                  <div class="methodsubtabletitle">Form parameters</div>
+                  <div class="methodsubtabletitle">Query parameters</div>
                   <table id="methodsubtable">
                     <tr>
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr><td style="width:150px;">body<span style="color:red;">*</span></td>
+                    <tr><td style="width:150px;">balanceDate</td>
 <td>
 
 
-    <div id="d2e199_uploadFile_body">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    byte[]
-                </span>
-                    <span class="format">
-                        (byte)
-                    </span>
-
-                    <div class="inner description marked">
-
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">name<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_uploadFile_name">
+    <div id="d2e199_getFinancialStatementBalanceSheet_balanceDate">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -3459,52 +3027,8 @@ Xero identifier for Tenant
                 </span>
 
                     <div class="inner description marked">
-exact name of the file you are uploading
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">filename<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_uploadFile_filename">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">mimeType</td>
-<td>
-
-
-    <div id="d2e199_uploadFile_mimeType">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
+<p>Specifies the date for balance sheet report.</p>
+<p>Format yyyy-MM-dd. If no parameter is provided, the current date will be used.</p>
 
                     </div>
             </div>
@@ -3517,29 +3041,29 @@ exact name of the file you are uploading
                 </article>
               </div>
               <hr>
-              <div id="api-Files-uploadFileToFolder">
-                <article id="api-Files-uploadFileToFolder-0" data-group="User" data-name="uploadFileToFolder" data-version="0">
+              <div id="api-Finance-getFinancialStatementCashflow">
+                <article id="api-Finance-getFinancialStatementCashflow-0" data-group="User" data-name="getFinancialStatementCashflow" data-version="0">
                   <div class="pull-left">
-                    <h1>uploadFileToFolder</h1>
-                    <p>Uploads a File to a specific folder</p>
+                    <h1>getFinancialStatementCashflow</h1>
+                    <p>Get Cash flow report</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked"></p>
+                  <p class="marked">The statement of cash flows - direct method, provides the year to date changes in operating, financing and investing cash flow activities for an organisation. Cashflow statement is not available in US region at this stage.</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/Files/{FolderId}</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/Cashflow</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Files-uploadFileToFolder-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getFinancialStatementCashflow-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Files-uploadFileToFolder-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementCashflow-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -3548,26 +3072,23 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class UploadFileToFolderExample
+    public class GetFinancialStatementCashflowExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new FilesApi();
+            var apiInstance = new FinanceApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var folderId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
-            byte[] body = BYTE_ARRAY_DATA_HERE;
-            var name = "name_example";
-            var filename = "filename_example";
-            var mimeType = "mimeType_example";
+            var startDate = "2020-09-15";
+            var endDate = "2021-09-15";
             
             try {
-                var result = await apiInstance.UploadFileToFolderAsync(accessToken, xeroTenantId, folderId, body, name, filename, mimeType);
+                var result = await apiInstance.GetFinancialStatementCashflowAsync(accessToken, xeroTenantId, startDate, endDate);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.UploadFileToFolder: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementCashflow: " + e.Message );
             }
         }
     }
@@ -3578,45 +3099,12 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>files</td>
-                      <td>Grant read-write access to files and folders</td>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
                     </tr>
                     
                   </table>
                   <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">FolderId<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_uploadFileToFolder_folderId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-pass required folder id to save file to specific folder
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
                   <div class="methodsubtabletitle">Header parameters</div>
                   <table id="methodsubtable">
                     <tr>
@@ -3627,7 +3115,7 @@ pass required folder id to save file to specific folder
 <td>
 
 
-    <div id="d2e199_uploadFileToFolder_xeroTenantId">
+    <div id="d2e199_getFinancialStatementCashflow_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -3647,28 +3135,145 @@ Xero identifier for Tenant
 </tr>
 
                   </table>
-                  <div class="methodsubtabletitle">Form parameters</div>
+                  <div class="methodsubtabletitle">Query parameters</div>
                   <table id="methodsubtable">
                     <tr>
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr><td style="width:150px;">body<span style="color:red;">*</span></td>
+                    <tr><td style="width:150px;">startDate</td>
 <td>
 
 
-    <div id="d2e199_uploadFileToFolder_body">
+    <div id="d2e199_getFinancialStatementCashflow_startDate">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    byte[]
+                    String
                 </span>
-                    <span class="format">
-                        (byte)
-                    </span>
 
                     <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the start date for cash flow report.</p>
+<p>If no parameter is provided, the date of 12 months before the end date will be used.</p>
 
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementCashflow_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the end date for cash flow report.</p>
+<p>If no parameter is provided, the current date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementProfitAndLoss">
+                <article id="api-Finance-getFinancialStatementProfitAndLoss-0" data-group="User" data-name="getFinancialStatementProfitAndLoss" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementProfitAndLoss</h1>
+                    <p>Get Profit &amp; Loss report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The profit and loss statement is a standard financial report providing detailed year to date income and expense detail for an organisation.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/ProfitAndLoss</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementProfitAndLoss-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementProfitAndLoss-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementProfitAndLossExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var startDate = "2020-09-15";
+            var endDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementProfitAndLossAsync(accessToken, xeroTenantId, startDate, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementProfitAndLoss: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementProfitAndLoss_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
                     </div>
             </div>
                 <div class="inner required">
@@ -3679,11 +3284,18 @@ Xero identifier for Tenant
 </td>
 </tr>
 
-                    <tr><td style="width:150px;">name<span style="color:red;">*</span></td>
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">startDate</td>
 <td>
 
 
-    <div id="d2e199_uploadFileToFolder_name">
+    <div id="d2e199_getFinancialStatementProfitAndLoss_startDate">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -3691,7 +3303,126 @@ Xero identifier for Tenant
                 </span>
 
                     <div class="inner description marked">
-exact name of the file you are uploading
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the start date for profit and loss report</p>
+<p>If no parameter is provided, the date of 12 months before the end date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementProfitAndLoss_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the end date for profit and loss report</p>
+<p>If no parameter is provided, the current date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementTrialBalance">
+                <article id="api-Finance-getFinancialStatementTrialBalance-0" data-group="User" data-name="getFinancialStatementTrialBalance" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementTrialBalance</h1>
+                    <p>Get Trial Balance report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The trial balance provides a detailed list of all accounts of an organisation at a point in time, with revenue and expense items being year to date.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/TrialBalance</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementTrialBalance-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementTrialBalance-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementTrialBalanceExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var endDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementTrialBalanceAsync(accessToken, xeroTenantId, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementTrialBalance: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementTrialBalance_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
                     </div>
             </div>
                 <div class="inner required">
@@ -3702,11 +3433,18 @@ exact name of the file you are uploading
 </td>
 </tr>
 
-                    <tr><td style="width:150px;">filename<span style="color:red;">*</span></td>
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">endDate</td>
 <td>
 
 
-    <div id="d2e199_uploadFileToFolder_filename">
+    <div id="d2e199_getFinancialStatementTrialBalance_endDate">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -3714,29 +3452,9 @@ exact name of the file you are uploading
                 </span>
 
                     <div class="inner description marked">
-
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">mimeType</td>
-<td>
-
-
-    <div id="d2e199_uploadFileToFolder_mimeType">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the end date for trial balance report</p>
+<p>If no parameter is provided, the current date will be used.</p>
 
                     </div>
             </div>
@@ -3757,8 +3475,8 @@ exact name of the file you are uploading
               <div class="app-desc">Information URL: <a href="https://developer.xero.com">https://developer.xero.com</a></div>
               <div class="app-desc">Contact Info: <a href="api@xero.com">api@xero.com</a></div>
               </p>
-              <div class="license-info">All rights reserved</div>
-              <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+              <div class="license-info">MIT</div>
+              <div class="license-url">https://github.com/XeroAPI/Xero-OpenAPI/blob/master/LICENSE</div>
             </div>
           </div>
         </div>
