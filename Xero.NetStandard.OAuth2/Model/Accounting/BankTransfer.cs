@@ -94,6 +94,27 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public Guid? ToBankTransactionID { get; private set; }
 
         /// <summary>
+        /// The Bank Transaction boolean to show if it is reconciled for the source account
+        /// </summary>
+        /// <value>The Bank Transaction boolean to show if it is reconciled for the source account</value>
+        [DataMember(Name="FromIsReconciled", EmitDefaultValue=false)]
+        public bool? FromIsReconciled { get; set; }
+
+        /// <summary>
+        /// The Bank Transaction boolean to show if it is reconciled for the destination account
+        /// </summary>
+        /// <value>The Bank Transaction boolean to show if it is reconciled for the destination account</value>
+        [DataMember(Name="ToIsReconciled", EmitDefaultValue=false)]
+        public bool? ToIsReconciled { get; set; }
+
+        /// <summary>
+        /// Reference for the transactions.
+        /// </summary>
+        /// <value>Reference for the transactions.</value>
+        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        public string Reference { get; set; }
+
+        /// <summary>
         /// Boolean to indicate if a Bank Transfer has an attachment
         /// </summary>
         /// <value>Boolean to indicate if a Bank Transfer has an attachment</value>
@@ -130,6 +151,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  CurrencyRate: ").Append(CurrencyRate).Append("\n");
             sb.Append("  FromBankTransactionID: ").Append(FromBankTransactionID).Append("\n");
             sb.Append("  ToBankTransactionID: ").Append(ToBankTransactionID).Append("\n");
+            sb.Append("  FromIsReconciled: ").Append(FromIsReconciled).Append("\n");
+            sb.Append("  ToIsReconciled: ").Append(ToIsReconciled).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  CreatedDateUTC: ").Append(CreatedDateUTC).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
@@ -208,6 +232,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.ToBankTransactionID.Equals(input.ToBankTransactionID))
                 ) && 
                 (
+                    this.FromIsReconciled == input.FromIsReconciled ||
+                    (this.FromIsReconciled != null &&
+                    this.FromIsReconciled.Equals(input.FromIsReconciled))
+                ) && 
+                (
+                    this.ToIsReconciled == input.ToIsReconciled ||
+                    (this.ToIsReconciled != null &&
+                    this.ToIsReconciled.Equals(input.ToIsReconciled))
+                ) && 
+                (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
+                ) && 
+                (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
@@ -250,6 +289,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.FromBankTransactionID.GetHashCode();
                 if (this.ToBankTransactionID != null)
                     hashCode = hashCode * 59 + this.ToBankTransactionID.GetHashCode();
+                if (this.FromIsReconciled != null)
+                    hashCode = hashCode * 59 + this.FromIsReconciled.GetHashCode();
+                if (this.ToIsReconciled != null)
+                    hashCode = hashCode * 59 + this.ToIsReconciled.GetHashCode();
+                if (this.Reference != null)
+                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.HasAttachments != null)
                     hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
                 if (this.CreatedDateUTC != null)

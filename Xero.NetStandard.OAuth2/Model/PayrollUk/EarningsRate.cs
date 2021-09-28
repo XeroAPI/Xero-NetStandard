@@ -158,16 +158,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             StatutorySickPayNonPensionable = 20,
 
             /// <summary>
-            /// Enum TipsDirect for value: Tips(Direct)
+            /// Enum TipsNonDirect for value: TipsNonDirect
             /// </summary>
-            [EnumMember(Value = "Tips(Direct)")]
-            TipsDirect = 21,
+            [EnumMember(Value = "TipsNonDirect")]
+            TipsNonDirect = 21,
 
             /// <summary>
-            /// Enum TipsNonDirect for value: Tips(Non-Direct)
+            /// Enum TipsDirect for value: TipsDirect
             /// </summary>
-            [EnumMember(Value = "Tips(Non-Direct)")]
-            TipsNonDirect = 22,
+            [EnumMember(Value = "TipsDirect")]
+            TipsDirect = 22,
 
             /// <summary>
             /// Enum TerminationPay for value: TerminationPay
