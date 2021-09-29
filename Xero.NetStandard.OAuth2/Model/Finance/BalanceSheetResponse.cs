@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>Balance date of the report</value>
         [DataMember(Name="balanceDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? BalanceDate { get; set; }
+        public DateTime? BalanceDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Asset

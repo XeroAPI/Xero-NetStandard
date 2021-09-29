@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>Start date of the report</value>
         [DataMember(Name="startDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// End date of the report
@@ -45,7 +45,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>End date of the report</value>
         [DataMember(Name="endDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Refer to the accounts section below

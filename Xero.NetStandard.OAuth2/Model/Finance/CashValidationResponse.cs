@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>UTC Date when the last bank statement item was entered into Xero. This date is represented in ISO 8601 format.</value>
         [DataMember(Name="statementBalanceDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? StatementBalanceDate { get; set; }
+        public DateTime? StatementBalanceDate { get; set; }
 
         /// <summary>
         /// Gets or Sets BankStatement

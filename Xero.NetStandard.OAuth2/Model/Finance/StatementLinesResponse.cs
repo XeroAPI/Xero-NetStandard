@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.</value>
         [DataMember(Name="earliestUnreconciledTransaction", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? EarliestUnreconciledTransaction { get; set; }
+        public DateTime? EarliestUnreconciledTransaction { get; set; }
 
         /// <summary>
         /// UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.</value>
         [DataMember(Name="latestUnreconciledTransaction", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? LatestUnreconciledTransaction { get; set; }
+        public DateTime? LatestUnreconciledTransaction { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all deleted statement lines.  Transactions may be deleted due to duplication or otherwise.
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.</value>
         [DataMember(Name="earliestReconciledTransaction", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? EarliestReconciledTransaction { get; set; }
+        public DateTime? EarliestReconciledTransaction { get; set; }
 
         /// <summary>
         /// UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.
@@ -116,7 +116,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.</value>
         [DataMember(Name="latestReconciledTransaction", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? LatestReconciledTransaction { get; set; }
+        public DateTime? LatestReconciledTransaction { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is positive.

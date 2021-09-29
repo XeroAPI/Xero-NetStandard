@@ -57,42 +57,42 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// </summary>
         /// <value>Total received</value>
         [DataMember(Name="totalReceived", EmitDefaultValue=true)]
-        public double?? TotalReceived { get; set; }
+        public double? TotalReceived { get; set; }
 
         /// <summary>
         /// Count of received
         /// </summary>
         /// <value>Count of received</value>
         [DataMember(Name="countReceived", EmitDefaultValue=true)]
-        public int?? CountReceived { get; set; }
+        public int? CountReceived { get; set; }
 
         /// <summary>
         /// Total paid
         /// </summary>
         /// <value>Total paid</value>
         [DataMember(Name="totalPaid", EmitDefaultValue=true)]
-        public double?? TotalPaid { get; set; }
+        public double? TotalPaid { get; set; }
 
         /// <summary>
         /// Count of paid
         /// </summary>
         /// <value>Count of paid</value>
         [DataMember(Name="countPaid", EmitDefaultValue=true)]
-        public int?? CountPaid { get; set; }
+        public int? CountPaid { get; set; }
 
         /// <summary>
         /// Total value of manual journals
         /// </summary>
         /// <value>Total value of manual journals</value>
         [DataMember(Name="totalManualJournal", EmitDefaultValue=true)]
-        public double?? TotalManualJournal { get; set; }
+        public double? TotalManualJournal { get; set; }
 
         /// <summary>
         /// Count of manual journals
         /// </summary>
         /// <value>Count of manual journals</value>
         [DataMember(Name="countManualJournal", EmitDefaultValue=true)]
-        public int?? CountManualJournal { get; set; }
+        public int? CountManualJournal { get; set; }
 
         /// <summary>
         /// The name of the account
@@ -120,7 +120,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// </summary>
         /// <value>Last modified date UTC format</value>
         [DataMember(Name="reportCodeUpdatedDateUtc", EmitDefaultValue=true)]
-        public DateTime?? ReportCodeUpdatedDateUtc { get; set; }
+        public DateTime? ReportCodeUpdatedDateUtc { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>Date the account hard lock was set</value>
         [DataMember(Name="hardLockDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? HardLockDate { get; set; }
+        public DateTime? HardLockDate { get; set; }
 
         /// <summary>
         /// Date the account soft lock was set
@@ -45,14 +45,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>Date the account soft lock was set</value>
         [DataMember(Name="softLockDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? SoftLockDate { get; set; }
+        public DateTime? SoftLockDate { get; set; }
 
         /// <summary>
         /// The system date time that the lock was updated
         /// </summary>
         /// <value>The system date time that the lock was updated</value>
         [DataMember(Name="updatedDateUtc", EmitDefaultValue=true)]
-        public DateTime?? UpdatedDateUtc { get; set; }
+        public DateTime? UpdatedDateUtc { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

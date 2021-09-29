@@ -44,7 +44,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>The end date of the report</value>
         [DataMember(Name="endDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets LockDates

@@ -37,7 +37,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>Looking at the most recent bank statement, this field indicates the first date which transactions on this statement pertain to. This date is represented in ISO 8601 format.</value>
         [DataMember(Name="startDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// Looking at the most recent bank statement, this field indicates the last date which transactions on this statement pertain to. This date is represented in ISO 8601 format.
@@ -45,7 +45,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>Looking at the most recent bank statement, this field indicates the last date which transactions on this statement pertain to. This date is represented in ISO 8601 format.</value>
         [DataMember(Name="endDate", EmitDefaultValue=true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime?? EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Looking at the most recent bank statement, this field indicates the balance before the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// </summary>
         /// <value>Looking at the most recent bank statement, this field indicates when the document was imported into Xero.  This date is represented in ISO 8601 format.</value>
         [DataMember(Name="importedDateTimeUtc", EmitDefaultValue=true)]
-        public DateTime?? ImportedDateTimeUtc { get; set; }
+        public DateTime? ImportedDateTimeUtc { get; set; }
 
         /// <summary>
         /// Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, indirect bank feed, file upload, or manual keying).

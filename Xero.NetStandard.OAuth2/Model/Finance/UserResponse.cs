@@ -43,14 +43,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// </summary>
         /// <value>Timestamp of user creation.</value>
         [DataMember(Name="userCreatedDateUtc", EmitDefaultValue=true)]
-        public DateTime?? UserCreatedDateUtc { get; set; }
+        public DateTime? UserCreatedDateUtc { get; set; }
 
         /// <summary>
         /// Timestamp of user last login
         /// </summary>
         /// <value>Timestamp of user last login</value>
         [DataMember(Name="lastLoginDateUtc", EmitDefaultValue=true)]
-        public DateTime?? LastLoginDateUtc { get; set; }
+        public DateTime? LastLoginDateUtc { get; set; }
 
         /// <summary>
         /// User is external partner.
@@ -92,14 +92,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// </summary>
         /// <value>Net value of documents created.</value>
         [DataMember(Name="netValueDocumentsCreated", EmitDefaultValue=true)]
-        public double?? NetValueDocumentsCreated { get; set; }
+        public double? NetValueDocumentsCreated { get; set; }
 
         /// <summary>
         /// Absolute value of documents created.
         /// </summary>
         /// <value>Absolute value of documents created.</value>
         [DataMember(Name="absoluteValueDocumentsCreated", EmitDefaultValue=true)]
-        public double?? AbsoluteValueDocumentsCreated { get; set; }
+        public double? AbsoluteValueDocumentsCreated { get; set; }
 
         /// <summary>
         /// Gets or Sets AttachedPractices
