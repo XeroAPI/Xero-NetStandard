@@ -73,6 +73,13 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
         public string Name { get; set; }
 
         /// <summary>
+        /// The unit of the per seat product. e.g. \&quot;user\&quot;, \&quot;organisation\&quot;, \&quot;SMS\&quot;, etc
+        /// </summary>
+        /// <value>The unit of the per seat product. e.g. \&quot;user\&quot;, \&quot;organisation\&quot;, \&quot;SMS\&quot;, etc</value>
+        [DataMember(Name="seatUnit", EmitDefaultValue=false)]
+        public string SeatUnit { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -83,6 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  SeatUnit: ").Append(SeatUnit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -130,6 +138,11 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
+                ) && 
+                (
+                    this.SeatUnit == input.SeatUnit ||
+                    (this.SeatUnit != null &&
+                    this.SeatUnit.Equals(input.SeatUnit))
                 );
         }
 
@@ -147,6 +160,8 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.SeatUnit != null)
+                    hashCode = hashCode * 59 + this.SeatUnit.GetHashCode();
                 return hashCode;
             }
         }

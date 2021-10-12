@@ -43,14 +43,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>LineItem Quantity</value>
         [DataMember(Name="Amount", EmitDefaultValue=false)]
-        public int? Amount { get; set; }
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Budgeted amount
         /// </summary>
         /// <value>Budgeted amount</value>
         [DataMember(Name="UnitAmount", EmitDefaultValue=false)]
-        public int? UnitAmount { get; set; }
+        public decimal? UnitAmount { get; set; }
 
         /// <summary>
         /// Any footnotes associated with this balance

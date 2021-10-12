@@ -1236,7 +1236,7 @@ ul.nav-tabs {
   "title" : "",
   "type" : "string",
   "description" : "",
-  "enum" : [ "FIXED", "ORDINARYTIMEEARNINGS", "OVERTIMEEARNINGS", "ALLOWANCE", "LUMPSUMD", "EMPLOYMENTTERMINATIONPAYMENT", "LUMPSUMA", "LUMPSUMB", "BONUSESANDCOMMISSIONS", "LUMPSUME" ]
+  "enum" : [ "FIXED", "ORDINARYTIMEEARNINGS", "OVERTIMEEARNINGS", "ALLOWANCE", "LUMPSUMD", "EMPLOYMENTTERMINATIONPAYMENT", "LUMPSUMA", "LUMPSUMB", "BONUSESANDCOMMISSIONS", "LUMPSUME", "LUMPSUMW", "DIRECTORSFEES" ]
 };
       defs["Employee"] = {
   "title" : "",
@@ -1818,7 +1818,7 @@ ul.nav-tabs {
   "title" : "",
   "type" : "string",
   "description" : "",
-  "enum" : [ "PAYGMANUAL", "ETPOMANUAL", "ETPRMANUAL", "SCHEDULE5MANUAL", "SCHEDULE5STSLMANUAL" ]
+  "enum" : [ "PAYGMANUAL", "ETPOMANUAL", "ETPRMANUAL", "SCHEDULE5MANUAL", "SCHEDULE5STSLMANUAL", "SCHEDULE4MANUAL" ]
 };
       defs["OpeningBalances"] = {
   "title" : "",
@@ -3203,7 +3203,7 @@ ul.nav-tabs {
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-uk/index.html" value="PayrollUk">Payroll (UK)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-nz/index.html" value="PayrollNz">Payroll (NZ)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/bankfeeds/index.html" value="Bankfeeds">Bankfeeds</option>
-          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">AppStore</option>
+          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">App Store</option>
         </select>
       </fieldset>
       <div class='api-set-wrapper'>
@@ -3245,7 +3245,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="PayrollAu"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="PayrollAu"><strong>VSN: </strong>3.19.0</li>
+              <li class="nav-header" data-group="PayrollAu"><strong>VSN: </strong>3.20.0</li>
               <li class="nav-header" data-group="PayrollAu"><a href="#api-PayrollAu">Methods</a></li>
               <li data-group="PayrollAu" data-name="createEmployee" class="">
                 <a href="#api-PayrollAu-createEmployee">createEmployee</a>
@@ -4543,7 +4543,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
-            var ifModifiedSince = "ifModifiedSince_example";
+            var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
             var where = "Status=="ACTIVE"";
             var order = "EmailAddress%20DESC";
             var page = 56;
@@ -4613,8 +4613,11 @@ Xero identifier for Tenant
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    String
+                    Date
                 </span>
+                    <span class="format">
+                        (date-time)
+                    </span>
 
                     <div class="inner description marked">
 Only records created or modified since this timestamp will be returned
@@ -4868,7 +4871,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
-            var ifModifiedSince = "ifModifiedSince_example";
+            var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
             var where = "Status=="ACTIVE"";
             var order = "EmailAddress%20DESC";
             var page = 56;
@@ -4938,8 +4941,11 @@ Xero identifier for Tenant
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    String
+                    Date
                 </span>
+                    <span class="format">
+                        (date-time)
+                    </span>
 
                     <div class="inner description marked">
 Only records created or modified since this timestamp will be returned
@@ -5059,7 +5065,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
-            var ifModifiedSince = "ifModifiedSince_example";
+            var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
             var where = "Status=="ACTIVE"";
             var order = "EmailAddress%20DESC";
             var page = 56;
@@ -5129,8 +5135,11 @@ Xero identifier for Tenant
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    String
+                    Date
                 </span>
+                    <span class="format">
+                        (date-time)
+                    </span>
 
                     <div class="inner description marked">
 Only records created or modified since this timestamp will be returned
@@ -5384,7 +5393,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
-            var ifModifiedSince = "ifModifiedSince_example";
+            var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
             var where = "Status=="ACTIVE"";
             var order = "EmailAddress%20DESC";
             var page = 56;
@@ -5454,8 +5463,11 @@ Xero identifier for Tenant
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    String
+                    Date
                 </span>
+                    <span class="format">
+                        (date-time)
+                    </span>
 
                     <div class="inner description marked">
 Only records created or modified since this timestamp will be returned
@@ -5709,7 +5721,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
-            var ifModifiedSince = "ifModifiedSince_example";
+            var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
             var where = "Status=="ACTIVE"";
             var order = "EmailAddress%20DESC";
             var page = 56;
@@ -5779,8 +5791,11 @@ Xero identifier for Tenant
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    String
+                    Date
                 </span>
+                    <span class="format">
+                        (date-time)
+                    </span>
 
                     <div class="inner description marked">
 Only records created or modified since this timestamp will be returned
@@ -6417,7 +6432,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
-            var ifModifiedSince = "ifModifiedSince_example";
+            var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
             var where = "Status=="ACTIVE"";
             var order = "EmailAddress%20DESC";
             var page = 56;
@@ -6487,8 +6502,11 @@ Xero identifier for Tenant
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    String
+                    Date
                 </span>
+                    <span class="format">
+                        (date-time)
+                    </span>
 
                     <div class="inner description marked">
 Only records created or modified since this timestamp will be returned
@@ -6742,7 +6760,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
-            var ifModifiedSince = "ifModifiedSince_example";
+            var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
             var where = "Status=="ACTIVE"";
             var order = "EmailAddress%20DESC";
             var page = 56;
@@ -6812,8 +6830,11 @@ Xero identifier for Tenant
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    String
+                    Date
                 </span>
+                    <span class="format">
+                        (date-time)
+                    </span>
 
                     <div class="inner description marked">
 Only records created or modified since this timestamp will be returned

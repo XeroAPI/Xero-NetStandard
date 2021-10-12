@@ -3796,7 +3796,7 @@ ul.nav-tabs {
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-uk/index.html" value="PayrollUk">Payroll (UK)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-nz/index.html" value="PayrollNz">Payroll (NZ)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/bankfeeds/index.html" value="Bankfeeds">Bankfeeds</option>
-          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">AppStore</option>
+          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">App Store</option>
         </select>
       </fieldset>
       <div class='api-set-wrapper'>
@@ -3838,7 +3838,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="PayrollNz"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="PayrollNz"><strong>VSN: </strong>3.19.0</li>
+              <li class="nav-header" data-group="PayrollNz"><strong>VSN: </strong>3.20.0</li>
               <li class="nav-header" data-group="PayrollNz"><a href="#api-PayrollNz">Methods</a></li>
               <li data-group="PayrollNz" data-name="approveTimesheet" class="">
                 <a href="#api-PayrollNz-approveTimesheet">approveTimesheet</a>
@@ -10057,12 +10057,11 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollNzApi();
             var xeroTenantId = "xeroTenantId_example";
-            var firstName = "John";
-            var lastName = "Johnson";
-            var page = 56;
+            var filter = "firstName==John,lastName==Smith";
+            var page = 5;
             
             try {
-                var result = await apiInstance.GetEmployeesAsync(accessToken, xeroTenantId, firstName, lastName, page);
+                var result = await apiInstance.GetEmployeesAsync(accessToken, xeroTenantId, filter, page);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10125,11 +10124,11 @@ Xero identifier for Tenant
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr><td style="width:150px;">firstName</td>
+                    <tr><td style="width:150px;">filter</td>
 <td>
 
 
-    <div id="d2e199_getEmployees_firstName">
+    <div id="d2e199_getEmployees_filter">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -10137,27 +10136,7 @@ Xero identifier for Tenant
                 </span>
 
                     <div class="inner description marked">
-Filter by first name
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">lastName</td>
-<td>
-
-
-    <div id="d2e199_getEmployees_lastName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Filter by last name
+Filter by first name and/or lastname
                     </div>
             </div>
         </div>
@@ -12364,12 +12343,15 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollNzApi();
             var xeroTenantId = "xeroTenantId_example";
-            var page = 56;
-            var employeeId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
-            var payrollCalendarId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+            var page = 5;
+            var filter = "employeeId==00000000-0000-0000-0000-000000000000,payrollCalendarId==00000000-0000-0000-0000-000000000000";
+            var status = "Draft";
+            var startDate = "2019-01-02";
+            var endDate = "2020-01-02";
+            var sort = "startDate";
             
             try {
-                var result = await apiInstance.GetTimesheetsAsync(accessToken, xeroTenantId, page, employeeId, payrollCalendarId);
+                var result = await apiInstance.GetTimesheetsAsync(accessToken, xeroTenantId, page, filter, status, startDate, endDate, sort);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12452,22 +12434,19 @@ Page number which specifies the set of records to retrieve. By default the numbe
 </td>
 </tr>
 
-                    <tr><td style="width:150px;">employeeId</td>
+                    <tr><td style="width:150px;">filter</td>
 <td>
 
 
-    <div id="d2e199_getTimesheets_employeeId">
+    <div id="d2e199_getTimesheets_filter">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    UUID
+                    String
                 </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
 
                     <div class="inner description marked">
-By default get Timesheets will return the timesheets for all employees in an organization. You can add GET https://…/timesheets?filter=employeeId=={EmployeeID} to get only the timesheets of a particular employee.
+Filter by employeeId and/or payrollCalendarId
                     </div>
             </div>
         </div>
@@ -12475,22 +12454,79 @@ By default get Timesheets will return the timesheets for all employees in an org
 </td>
 </tr>
 
-                    <tr><td style="width:150px;">payrollCalendarId</td>
+                    <tr><td style="width:150px;">status</td>
 <td>
 
 
-    <div id="d2e199_getTimesheets_payrollCalendarId">
+    <div id="d2e199_getTimesheets_status">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    UUID
+                    String
                 </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
 
                     <div class="inner description marked">
-By default get Timesheets will return all the timesheets for an organization. You can add GET https://…/timesheets?filter=payrollCalendarId=={PayrollCalendarID} to filter the timesheets by payroll calendar id
+filter results by any timesheets with a matching timesheet status
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">startDate</td>
+<td>
+
+
+    <div id="d2e199_getTimesheets_startDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+filter results by any timesheets with a startDate on or after the provided date
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getTimesheets_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+filter results by any timesheets with a endDate on or before the provided date
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">sort</td>
+<td>
+
+
+    <div id="d2e199_getTimesheets_sort">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest.
                     </div>
             </div>
         </div>
