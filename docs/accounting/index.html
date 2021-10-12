@@ -1512,6 +1512,22 @@ ul.nav-tabs {
       "format" : "uuid",
       "readOnly" : true
     },
+    "FromIsReconciled" : {
+      "type" : "boolean",
+      "description" : "The Bank Transaction boolean to show if it is reconciled for the source account",
+      "example" : false,
+      "default" : false
+    },
+    "ToIsReconciled" : {
+      "type" : "boolean",
+      "description" : "The Bank Transaction boolean to show if it is reconciled for the destination account",
+      "example" : false,
+      "default" : false
+    },
+    "Reference" : {
+      "type" : "string",
+      "description" : "Reference for the transactions."
+    },
     "HasAttachments" : {
       "type" : "boolean",
       "description" : "Boolean to indicate if a Bank Transfer has an attachment",
@@ -1828,12 +1844,16 @@ ul.nav-tabs {
       "x-is-msdate" : true
     },
     "Amount" : {
-      "type" : "integer",
-      "description" : "LineItem Quantity"
+      "type" : "number",
+      "description" : "LineItem Quantity",
+      "format" : "double",
+      "x-is-money" : true
     },
     "UnitAmount" : {
-      "type" : "integer",
-      "description" : "Budgeted amount"
+      "type" : "number",
+      "description" : "Budgeted amount",
+      "format" : "double",
+      "x-is-money" : true
     },
     "Notes" : {
       "maxLength" : 255,
@@ -5902,7 +5922,7 @@ ul.nav-tabs {
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-uk/index.html" value="PayrollUk">Payroll (UK)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/payroll-nz/index.html" value="PayrollNz">Payroll (NZ)</option>
           <option data-url="https://xeroapi.github.io/Xero-NetStandard/bankfeeds/index.html" value="Bankfeeds">Bankfeeds</option>
-          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">AppStore</option>
+          <option data-url="https://xeroapi.github.io/Xero-NetStandard/appstore/index.html" value="AppStore">App Store</option>
         </select>
       </fieldset>
       <div class='api-set-wrapper'>
@@ -5944,7 +5964,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Accounting"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>3.19.0</li>
+              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>3.20.0</li>
               <li class="nav-header" data-group="Accounting"><a href="#api-Accounting">Methods</a></li>
               <li data-group="Accounting" data-name="createAccount" class="">
                 <a href="#api-Accounting-createAccount">createAccount</a>
@@ -7680,7 +7700,7 @@ Xero identifier for Tenant
       "schema" : {
         "$ref" : "#/components/schemas/BankTransfers"
       },
-      "example" : "{ \"BankTransfers\": [ { \"FromBankAccount\": { \"Code\": \"090\", \"Name\": \"My Savings\", \"AccountID\": \"00000000-0000-0000-0000-000000000000\", \"Type\": \"BANK\", \"BankAccountNumber\": \"123455\", \"Status\": \"ACTIVE\", \"BankAccountType\": \"BANK\", \"CurrencyCode\": \"USD\", \"TaxType\": \"NONE\", \"EnablePaymentsToAccount\": false, \"ShowInExpenseClaims\": false, \"Class\": \"ASSET\", \"ReportingCode\": \"ASS\", \"ReportingCodeName\": \"Assets\", \"HasAttachments\": false, \"UpdatedDateUTC\": \"2016-10-17T13:45:33.993-07:00\" }, \"ToBankAccount\": { \"Code\": \"088\", \"Name\": \"Business Wells Fargo\", \"AccountID\": \"00000000-0000-0000-0000-000000000000\", \"Type\": \"BANK\", \"BankAccountNumber\": \"123455\", \"Status\": \"ACTIVE\", \"BankAccountType\": \"BANK\", \"CurrencyCode\": \"USD\", \"TaxType\": \"NONE\", \"EnablePaymentsToAccount\": false, \"ShowInExpenseClaims\": false, \"Class\": \"ASSET\", \"ReportingCode\": \"ASS\", \"ReportingCodeName\": \"Assets\", \"HasAttachments\": false, \"UpdatedDateUTC\": \"2016-06-03T08:31:14.517-07:00\" }, \"Amount\": \"50.00\" } ] }"
+      "example" : "{ \"BankTransfers\": [ { \"FromBankAccount\": { \"Code\": \"090\", \"Name\": \"My Savings\", \"AccountID\": \"00000000-0000-0000-0000-000000000000\", \"Type\": \"BANK\", \"BankAccountNumber\": \"123455\", \"Status\": \"ACTIVE\", \"BankAccountType\": \"BANK\", \"CurrencyCode\": \"USD\", \"TaxType\": \"NONE\", \"EnablePaymentsToAccount\": false, \"ShowInExpenseClaims\": false, \"Class\": \"ASSET\", \"ReportingCode\": \"ASS\", \"ReportingCodeName\": \"Assets\", \"HasAttachments\": false, \"UpdatedDateUTC\": \"2016-10-17T13:45:33.993-07:00\" }, \"ToBankAccount\": { \"Code\": \"088\", \"Name\": \"Business Wells Fargo\", \"AccountID\": \"00000000-0000-0000-0000-000000000000\", \"Type\": \"BANK\", \"BankAccountNumber\": \"123455\", \"Status\": \"ACTIVE\", \"BankAccountType\": \"BANK\", \"CurrencyCode\": \"USD\", \"TaxType\": \"NONE\", \"EnablePaymentsToAccount\": false, \"ShowInExpenseClaims\": false, \"Class\": \"ASSET\", \"ReportingCode\": \"ASS\", \"ReportingCodeName\": \"Assets\", \"HasAttachments\": false, \"UpdatedDateUTC\": \"2016-06-03T08:31:14.517-07:00\" }, \"Amount\": \"50.00\", \"FromIsReconciled\": true, \"ToIsReconciled\": true, \"Reference\": \"Sub 098801\" } ] }"
     }
   },
   "required" : true
@@ -21136,7 +21156,7 @@ Xero identifier for Tenant
                 <article id="api-Accounting-getBudget-0" data-group="User" data-name="getBudget" data-version="0">
                   <div class="pull-left">
                     <h1>getBudget</h1>
-                    <p>Retrieves a specific budgets, which includes budget lines</p>
+                    <p>Retrieves a specific budget, which includes budget lines</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
@@ -21171,9 +21191,11 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var budgetID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var dateTo = DateTime.Parse("2019-10-31");
+            var dateFrom = DateTime.Parse("2019-10-31");
             
             try {
-                var result = await apiInstance.GetBudgetAsync(accessToken, xeroTenantId, budgetID);
+                var result = await apiInstance.GetBudgetAsync(accessToken, xeroTenantId, budgetID, dateTo, dateFrom);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -21258,6 +21280,59 @@ Xero identifier for Tenant
 </tr>
 
                   </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">DateTo</td>
+<td>
+
+
+    <div id="d2e199_getBudget_dateTo">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    date
+                </span>
+                    <span class="format">
+                        (date)
+                    </span>
+
+                    <div class="inner description marked">
+Filter by start date
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">DateFrom</td>
+<td>
+
+
+    <div id="d2e199_getBudget_dateFrom">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    date
+                </span>
+                    <span class="format">
+                        (date)
+                    </span>
+
+                    <div class="inner description marked">
+Filter by end date
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
                 </article>
               </div>
               <hr>
@@ -21300,8 +21375,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var iDs = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var dateTo = DateTime.Parse("2013-10-20");
-            var dateFrom = DateTime.Parse("2013-10-20");
+            var dateTo = DateTime.Parse("2019-10-31");
+            var dateFrom = DateTime.Parse("2019-10-31");
             
             try {
                 var result = await apiInstance.GetBudgetsAsync(accessToken, xeroTenantId, iDs, dateTo, dateFrom);
@@ -22797,9 +22872,10 @@ namespace Example
             var page = 1;
             var includeArchived = true;
             var summaryOnly = true;
+            var searchTerm = "searchTerm=Joe Bloggs";
             
             try {
-                var result = await apiInstance.GetContactsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived, summaryOnly);
+                var result = await apiInstance.GetContactsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived, summaryOnly, searchTerm);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -23001,6 +23077,26 @@ e.g. includeArchived=true - Contacts with a status of ARCHIVED will be included 
 
                     <div class="inner description marked">
 Use summaryOnly=true in GET Contacts and Invoices endpoint to retrieve a smaller version of the response object. This returns only lightweight fields, excluding computation-heavy fields from the response, making the API calls quick and efficient.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">searchTerm</td>
+<td>
+
+
+    <div id="d2e199_getContacts_searchTerm">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Search parameter that performs a case-insensitive text search across the Name, FirstName, LastName, ContactNumber and EmailAddress fields.
                     </div>
             </div>
         </div>
@@ -32786,10 +32882,10 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var ifModifiedSince = DateTime.Parse("2020-02-06T12:17:43.202-08:00");
-            var dateFrom = DateTime.Parse("2013-10-20");
-            var dateTo = DateTime.Parse("2013-10-20");
-            var expiryDateFrom = DateTime.Parse("2013-10-20");
-            var expiryDateTo = DateTime.Parse("2013-10-20");
+            var dateFrom = DateTime.Parse("2019-10-31");
+            var dateTo = DateTime.Parse("2019-10-31");
+            var expiryDateFrom = DateTime.Parse("2019-10-31");
+            var expiryDateTo = DateTime.Parse("2019-10-31");
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var status = "DRAFT";
             var page = 1;
@@ -35030,9 +35126,9 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactId = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var date = DateTime.Parse("2013-10-20");
-            var fromDate = DateTime.Parse("2013-10-20");
-            var toDate = DateTime.Parse("2013-10-20");
+            var date = DateTime.Parse("2019-10-31");
+            var fromDate = DateTime.Parse("2019-10-31");
+            var toDate = DateTime.Parse("2019-10-31");
             
             try {
                 var result = await apiInstance.GetReportAgedPayablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
@@ -35231,9 +35327,9 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactId = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var date = DateTime.Parse("2013-10-20");
-            var fromDate = DateTime.Parse("2013-10-20");
-            var toDate = DateTime.Parse("2013-10-20");
+            var date = DateTime.Parse("2019-10-31");
+            var fromDate = DateTime.Parse("2019-10-31");
+            var toDate = DateTime.Parse("2019-10-31");
             
             try {
                 var result = await apiInstance.GetReportAgedReceivablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate);
@@ -35683,8 +35779,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fromDate = DateTime.Parse("2013-10-20");
-            var toDate = DateTime.Parse("2013-10-20");
+            var fromDate = DateTime.Parse("2019-10-31");
+            var toDate = DateTime.Parse("2019-10-31");
             
             try {
                 var result = await apiInstance.GetReportBankSummaryAsync(accessToken, xeroTenantId, fromDate, toDate);
@@ -36253,8 +36349,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var fromDate = DateTime.Parse("2013-10-20");
-            var toDate = DateTime.Parse("2013-10-20");
+            var fromDate = DateTime.Parse("2019-10-31");
+            var toDate = DateTime.Parse("2019-10-31");
             var periods = 3;
             var timeframe = "MONTH";
             var trackingCategoryID = "00000000-0000-0000-0000-000000000000";
