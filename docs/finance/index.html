@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Xero AppStore API</title>
+    <title>Xero Finance API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <!-- start *****REPLACE***** SEO meta details-->
-    <meta name="description" content="Xero-NetStandard SDK AppStore API Documentation">
-    <title>Xero-NetStandard AppStore SDK Docs</title>
+    <meta name="description" content="Xero-NetStandard SDK Finance API Documentation">
+    <title>Xero-NetStandard Finance SDK Docs</title>
     <meta name="keywords" content="Xero-NetStandard, csharp, dotnet, sdk, documentation, docs, XeroAPI, Xero, developer">
     <!-- end *****REPLACE***** SEO meta details-->
     <meta name="author" content="Xero Developer Evangelists">
@@ -862,186 +862,1376 @@ ul.nav-tabs {
     <script>
       // Script section to load models into a JS Var
       var defs = {}
-      defs["Plan"] = {
+      defs["AccountUsage"] = {
   "title" : "",
-  "required" : [ "id", "name", "status", "subscriptionItems" ],
   "type" : "object",
   "properties" : {
-    "id" : {
+    "month" : {
       "type" : "string",
-      "description" : "The unique identifier of the plan",
+      "description" : "The month this usage item contains data for"
+    },
+    "accountId" : {
+      "type" : "string",
+      "description" : "The account this usage item contains data for",
+      "format" : "uuid"
+    },
+    "currencyCode" : {
+      "type" : "string",
+      "description" : "The currency code this usage item contains data for"
+    },
+    "totalReceived" : {
+      "type" : "number",
+      "description" : "Total received",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "countReceived" : {
+      "type" : "integer",
+      "description" : "Count of received",
+      "format" : "int32"
+    },
+    "totalPaid" : {
+      "type" : "number",
+      "description" : "Total paid",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "countPaid" : {
+      "type" : "integer",
+      "description" : "Count of paid",
+      "format" : "int32"
+    },
+    "totalManualJournal" : {
+      "type" : "number",
+      "description" : "Total value of manual journals",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "countManualJournal" : {
+      "type" : "integer",
+      "description" : "Count of manual journals",
+      "format" : "int32"
+    },
+    "accountName" : {
+      "type" : "string",
+      "description" : "The name of the account"
+    },
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Shown if set"
+    },
+    "reportingCodeName" : {
+      "type" : "string",
+      "description" : "Shown if set"
+    },
+    "reportCodeUpdatedDateUtc" : {
+      "type" : "string",
+      "description" : "Last modified date UTC format",
+      "format" : "date-time"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["AccountUsageResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
+      "format" : "uuid"
+    },
+    "startMonth" : {
+      "type" : "string",
+      "description" : "The start month of the report"
+    },
+    "endMonth" : {
+      "type" : "string",
+      "description" : "The end month of the report"
+    },
+    "accountUsage" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/AccountUsage"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["BalanceSheetAccountDetail"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "code" : {
+      "type" : "string",
+      "description" : "Accounting code"
+    },
+    "accountID" : {
+      "type" : "string",
+      "description" : "ID of the account",
       "format" : "uuid"
     },
     "name" : {
       "type" : "string",
-      "description" : "The name of the plan. It is used in the invoice line item\ndescription.\n"
+      "description" : "Account name"
     },
-    "status" : {
+    "reportingCode" : {
       "type" : "string",
-      "description" : "Status of the plan. Available statuses are ACTIVE,\nPENDING_ACTIVATION.\n",
-      "enum" : [ "ACTIVE", "PENDING_ACTIVATION" ]
+      "description" : "Reporting code"
     },
-    "subscriptionItems" : {
-      "type" : "array",
-      "description" : "List of the subscription items belonging to the plan. It does not\ninclude cancelled subscription items.\n",
-      "items" : {
-        "$ref" : "#/components/schemas/SubscriptionItem"
-      }
+    "total" : {
+      "type" : "number",
+      "description" : "Total movement on this account",
+      "format" : "double",
+      "x-is-money" : true
     }
   },
+  "additionalProperties" : false,
   "description" : ""
 };
-      defs["Price"] = {
+      defs["BalanceSheetAccountGroup"] = {
   "title" : "",
-  "required" : [ "amount", "currency", "id" ],
   "type" : "object",
   "properties" : {
-    "amount" : {
+    "accountTypes" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/BalanceSheetAccountType"
+      }
+    },
+    "total" : {
       "type" : "number",
-      "description" : "The net (before tax) amount.",
+      "description" : "Total value of all the accounts in this type",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["BalanceSheetAccountType"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountType" : {
+      "type" : "string",
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "A list of all accounts of this type. Refer to the Account section below for each account element detail.",
+      "items" : {
+        "$ref" : "#/components/schemas/BalanceSheetAccountDetail"
+      }
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of all the accounts in this type",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["BalanceSheetResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "balanceDate" : {
+      "type" : "string",
+      "description" : "Balance date of the report",
+      "format" : "date"
+    },
+    "asset" : {
+      "$ref" : "#/components/schemas/BalanceSheetAccountGroup"
+    },
+    "liability" : {
+      "$ref" : "#/components/schemas/BalanceSheetAccountGroup"
+    },
+    "equity" : {
+      "$ref" : "#/components/schemas/BalanceSheetAccountGroup"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["BankStatementResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "statementLines" : {
+      "$ref" : "#/components/schemas/StatementLinesResponse"
+    },
+    "currentStatement" : {
+      "$ref" : "#/components/schemas/CurrentStatementResponse"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashAccountResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "unreconciledAmountPos" : {
+      "type" : "number",
+      "description" : "Total value of transactions in the journals which are not reconciled to bank statement lines, and have a positive (debit) value.",
       "format" : "double",
       "x-is-money" : true
     },
-    "currency" : {
-      "type" : "string",
-      "description" : "The currency of the price."
+    "unreconciledAmountNeg" : {
+      "type" : "number",
+      "description" : "Total value of transactions in the journals which are not reconciled to bank statement lines, and have a negative (credit) value.",
+      "format" : "double",
+      "x-is-money" : true
     },
-    "id" : {
+    "startingBalance" : {
+      "type" : "number",
+      "description" : "Starting (or historic) balance from the journals (manually keyed in by users on account creation - unverified).",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "accountBalance" : {
+      "type" : "number",
+      "description" : "Current cash at bank accounting value from the journals.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "balanceCurrency" : {
       "type" : "string",
-      "description" : "The unique identifier of the price.",
-      "format" : "uuid"
+      "description" : "Currency which the cashAccount transactions relate to."
     }
   },
+  "additionalProperties" : false,
   "description" : ""
 };
-      defs["ProblemDetails"] = {
+      defs["CashBalance"] = {
   "title" : "",
   "type" : "object",
   "properties" : {
-    "detail" : {
-      "type" : "string"
+    "openingCashBalance" : {
+      "type" : "number",
+      "description" : "Opening balance of cash and cash equivalents",
+      "format" : "double",
+      "x-is-money" : true
     },
-    "extensions" : {
-      "type" : "object"
+    "closingCashBalance" : {
+      "type" : "number",
+      "description" : "Closing balance of cash and cash equivalents",
+      "format" : "double",
+      "x-is-money" : true
     },
-    "instance" : {
-      "type" : "string"
+    "netCashMovement" : {
+      "type" : "number",
+      "description" : "Net movement of cash and cash equivalents for the period",
+      "format" : "double",
+      "readOnly" : true,
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashValidationResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountId" : {
+      "type" : "string",
+      "description" : "The Xero identifier for an account",
+      "format" : "uuid"
     },
-    "status" : {
-      "type" : "integer"
+    "statementBalance" : {
+      "$ref" : "#/components/schemas/StatementBalanceResponse"
+    },
+    "statementBalanceDate" : {
+      "type" : "string",
+      "description" : "UTC Date when the last bank statement item was entered into Xero. This date is represented in ISO 8601 format.",
+      "format" : "date"
+    },
+    "bankStatement" : {
+      "$ref" : "#/components/schemas/BankStatementResponse"
+    },
+    "cashAccount" : {
+      "$ref" : "#/components/schemas/CashAccountResponse"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowAccount"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountId" : {
+      "type" : "string",
+      "description" : "ID of the account",
+      "format" : "uuid"
+    },
+    "accountType" : {
+      "type" : "string",
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
+    },
+    "accountClass" : {
+      "type" : "string",
+      "description" : "The class of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountClassTypes'>Account Class Types</a>"
+    },
+    "code" : {
+      "type" : "string",
+      "description" : "Account code"
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Account name"
+    },
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Reporting code used for cash flow classification"
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total amount for the account",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowActivity"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "description" : "Name of the cashflow activity type. It will be either Operating Activities, Investing Activities or Financing Activities"
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of the activity type",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "cashflowTypes" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/CashflowType"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Start date of the report",
+      "format" : "date"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "End date of the report",
+      "format" : "date"
+    },
+    "cashBalance" : {
+      "$ref" : "#/components/schemas/CashBalance"
+    },
+    "cashflowActivities" : {
+      "type" : "array",
+      "description" : "Break down of cash and cash equivalents for the period",
+      "items" : {
+        "$ref" : "#/components/schemas/CashflowActivity"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CashflowType"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "description" : "Name of the activity"
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of the activity",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "List of the accounts in this activity",
+      "items" : {
+        "$ref" : "#/components/schemas/CashflowAccount"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ContactDetail"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "contactId" : {
+      "type" : "string",
+      "description" : "ID of the contact associated with the transactions.\r\n\r\nTransactions with no contact will be grouped under the special ID: 86793108-198C-46D8-90A3-43C1D12686CE.\r\n\r\nTransactions that are receive or spend bank transfers will be grouped under the special ID: 207322B3-6A58-4BE7-80F1-430123914AD6",
+      "format" : "uuid"
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Name of the contact associated with the transactions.\r\n\r\nIf no contact is associated with the transactions this will appear as “None Provided”,\r\n\r\nFor receive or spend bank transfer transactions, this will appear as “Bank Transfer”."
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value for the contact",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalDetail" : {
+      "$ref" : "#/components/schemas/ContactTotalDetail"
+    },
+    "totalOther" : {
+      "$ref" : "#/components/schemas/ContactTotalOther"
+    },
+    "accountCodes" : {
+      "type" : "array",
+      "description" : "A list of account codes involved in transactions.",
+      "items" : {
+        "type" : "string"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ContactTotalDetail"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "totalPaid" : {
+      "type" : "number",
+      "description" : "Total paid invoice and cash value for the contact within the period.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalOutstanding" : {
+      "type" : "number",
+      "description" : "Total outstanding invoice value for the contact within the period.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalCreditedUnApplied" : {
+      "type" : "number",
+      "description" : "Total unapplied credited value for the contact within the period.",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ContactTotalOther"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "totalOutstandingAged" : {
+      "type" : "number",
+      "description" : "Total outstanding invoice value for the contact within the period where the invoices are more than 90 days old",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalVoided" : {
+      "type" : "number",
+      "description" : "Total voided value for the contact.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalCredited" : {
+      "type" : "number",
+      "description" : "Total credited value for the contact.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "transactionCount" : {
+      "type" : "integer",
+      "description" : "Number of transactions for the contact.",
+      "format" : "int32"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["CurrentStatementResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates the first date which transactions on this statement pertain to. This date is represented in ISO 8601 format.",
+      "format" : "date"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates the last date which transactions on this statement pertain to. This date is represented in ISO 8601 format.",
+      "format" : "date"
+    },
+    "startBalance" : {
+      "type" : "number",
+      "description" : "Looking at the most recent bank statement, this field indicates the balance before the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "endBalance" : {
+      "type" : "number",
+      "description" : "Looking at the most recent bank statement, this field indicates the balance after the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "importedDateTimeUtc" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates when the document was imported into Xero.  This date is represented in ISO 8601 format.",
+      "format" : "date-time"
+    },
+    "importSourceType" : {
+      "type" : "string",
+      "description" : "Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, indirect bank feed, file upload, or manual keying)."
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["DataSourceResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "directBankFeed" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "indirectBankFeed" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "fileUpload" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "manual" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "directBankFeedPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "indirectBankFeedPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "fileUploadPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "manualPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "directBankFeedNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "indirectBankFeedNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "fileUploadNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "manualNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "otherPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "otherNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "other" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["HistoryRecordResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "changes" : {
+      "type" : "string",
+      "description" : "The type of change recorded against the document"
+    },
+    "dateUTCString" : {
+      "type" : "string",
+      "description" : "UTC date that the history record was created"
+    },
+    "dateUTC" : {
+      "type" : "string",
+      "description" : "UTC date that the history record was created",
+      "format" : "date-time"
+    },
+    "user" : {
+      "type" : "string",
+      "description" : "The users first and last name"
+    },
+    "details" : {
+      "type" : "string",
+      "description" : "Description of the change event or transaction"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["IncomeByContactResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Start date of the report",
+      "format" : "date"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "End date of the report",
+      "format" : "date"
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total value",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalDetail" : {
+      "$ref" : "#/components/schemas/TotalDetail"
+    },
+    "totalOther" : {
+      "$ref" : "#/components/schemas/TotalOther"
+    },
+    "contacts" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/ContactDetail"
+      }
+    },
+    "manualJournals" : {
+      "$ref" : "#/components/schemas/ManualJournalTotal"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["LockHistoryModel"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "hardLockDate" : {
+      "type" : "string",
+      "description" : "Date the account hard lock was set",
+      "format" : "date"
+    },
+    "softLockDate" : {
+      "type" : "string",
+      "description" : "Date the account soft lock was set",
+      "format" : "date"
+    },
+    "updatedDateUtc" : {
+      "type" : "string",
+      "description" : "The system date time that the lock was updated",
+      "format" : "date-time"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["LockHistoryResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
+      "format" : "uuid"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "The end date of the report",
+      "format" : "date"
+    },
+    "lockDates" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/LockHistoryModel"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ManualJournalTotal"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "total" : {
+      "type" : "number",
+      "description" : "Total value of manual journals.",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PnlAccount"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountID" : {
+      "type" : "string",
+      "description" : "ID of the account",
+      "format" : "uuid"
+    },
+    "accountType" : {
+      "type" : "string",
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
+    },
+    "code" : {
+      "type" : "string",
+      "description" : "Account code"
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Account name"
+    },
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Reporting code (Shown if set)"
+    },
+    "total" : {
+      "type" : "number",
+      "description" : "Total movement on this account",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PnlAccountClass"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "total" : {
+      "type" : "number",
+      "description" : "Total revenue/expense value",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "accountTypes" : {
+      "type" : "array",
+      "description" : "Contains trading income and other income for revenue section / operating expenses and direct cost for expense section if the data is available for each section. Refer to the account type element below",
+      "items" : {
+        "$ref" : "#/components/schemas/PnlAccountType"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PnlAccountType"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "total" : {
+      "type" : "number",
+      "description" : "Total movement on this account type",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "title" : {
+      "type" : "string",
+      "description" : "Name of this account type, it will be either Trading Income or Other Income for Revenue section / Direct Cost or Operating Expenses for Expense section"
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "A list of the movement on each account detail during the query period. Refer to the account detail element below",
+      "items" : {
+        "$ref" : "#/components/schemas/PnlAccount"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["PracticeResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "xeroPartnerSince" : {
+      "type" : "integer",
+      "description" : "Year of becoming a partner.",
+      "format" : "int32"
+    },
+    "tier" : {
+      "type" : "string",
+      "description" : "Customer tier e.g. Silver"
+    },
+    "location" : {
+      "type" : "string",
+      "description" : "Country of location."
+    },
+    "organisationCount" : {
+      "type" : "integer",
+      "description" : "Organisation count.",
+      "format" : "int32"
+    },
+    "staffCertified" : {
+      "type" : "boolean",
+      "description" : "Staff certified (true/false)."
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["Problem"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "type" : {
+      "$ref" : "#/components/schemas/ProblemType"
     },
     "title" : {
       "type" : "string"
     },
-    "type" : {
+    "status" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "detail" : {
       "type" : "string"
     }
   },
+  "additionalProperties" : false,
   "description" : ""
 };
-      defs["Product"] = {
+      defs["ProblemType"] = {
   "title" : "",
+  "type" : "string",
+  "description" : "",
+  "enum" : [ "NotSet", "invalid-request", "invalid-application", "service-unavailable", "internal-error" ]
+};
+      defs["ProfitAndLossResponse"] = {
+  "title" : "",
+  "type" : "object",
   "properties" : {
-    "id" : {
+    "startDate" : {
       "type" : "string",
-      "description" : "The unique identifier for the product",
+      "description" : "Start date of the report",
+      "format" : "date"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "End date of the report",
+      "format" : "date"
+    },
+    "netProfitLoss" : {
+      "type" : "number",
+      "description" : "Net profit loss value",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "revenue" : {
+      "$ref" : "#/components/schemas/PnlAccountClass"
+    },
+    "expense" : {
+      "$ref" : "#/components/schemas/PnlAccountClass"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ReportHistoryModel"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "reportName" : {
+      "type" : "string",
+      "description" : "Report code or report title"
+    },
+    "reportDateText" : {
+      "type" : "string",
+      "description" : "The date or date range of the report"
+    },
+    "publishedDateUtc" : {
+      "type" : "string",
+      "description" : "The system date time that the report was published",
+      "format" : "date-time"
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["ReportHistoryResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
       "format" : "uuid"
     },
-    "name" : {
+    "endDate" : {
       "type" : "string",
-      "description" : "The name of the product"
+      "description" : "The end date of the report",
+      "format" : "date"
+    },
+    "reports" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/ReportHistoryModel"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["StatementBalanceResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "value" : {
+      "type" : "number",
+      "description" : "Total closing balance of the account. This includes both reconciled and unreconciled bank statement lines. The closing balance will always be represented as a positive number, with it’s debit/credit status defined in the statementBalanceDebitCredit field.",
+      "format" : "double",
+      "x-is-money" : true
     },
     "type" : {
       "type" : "string",
-      "description" : "The pricing model of the product:\n* FIXED: Customers are charged a fixed amount for each billing period\n* PER_SEAT: Customers are charged based on the number of units they purchase\n",
-      "enum" : [ "FIXED", "PER_SEAT" ]
-    },
-    "seatUnit" : {
-      "type" : "string",
-      "description" : "The unit of the per seat product. e.g. \"user\", \"organisation\", \"SMS\", etc"
+      "description" : "The DEBIT or CREDIT status of the account. Cash accounts in credit have a negative balance."
     }
   },
+  "additionalProperties" : false,
   "description" : ""
 };
-      defs["Subscription"] = {
+      defs["StatementLinesResponse"] = {
   "title" : "",
-  "required" : [ "currentPeriodEnd", "id", "organisationId", "plans", "startDate", "status" ],
   "type" : "object",
   "properties" : {
-    "currentPeriodEnd" : {
-      "type" : "string",
-      "description" : "End of the current period that the subscription has been invoiced for.\n",
-      "format" : "date-time"
+    "unreconciledAmountPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is positive.",
+      "format" : "double",
+      "x-is-money" : true
     },
-    "endDate" : {
-      "type" : "string",
-      "description" : "If the subscription has been canceled, this is the date when the subscription ends. If null, the subscription is active and has not been cancelled",
-      "format" : "date-time"
+    "unreconciledAmountNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is negative.",
+      "format" : "double",
+      "x-is-money" : true
     },
-    "id" : {
+    "unreconciledLines" : {
+      "type" : "integer",
+      "description" : "Count of all statement lines where the reconciled flag is set to FALSE.",
+      "format" : "int32"
+    },
+    "avgDaysUnreconciledPos" : {
+      "type" : "number",
+      "description" : "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is positive. Provides an indication of the age of unreconciled transactions.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "avgDaysUnreconciledNeg" : {
+      "type" : "number",
+      "description" : "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is negative. Provides an indication of the age of unreconciled transactions.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "earliestUnreconciledTransaction" : {
       "type" : "string",
-      "description" : "The unique identifier of the subscription",
+      "description" : "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+      "format" : "date"
+    },
+    "latestUnreconciledTransaction" : {
+      "type" : "string",
+      "description" : "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+      "format" : "date"
+    },
+    "deletedAmount" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all deleted statement lines.  Transactions may be deleted due to duplication or otherwise.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalAmount" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines.  This is used as a metric of comparison to the unreconciled figures above.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "dataSource" : {
+      "$ref" : "#/components/schemas/DataSourceResponse"
+    },
+    "earliestReconciledTransaction" : {
+      "type" : "string",
+      "description" : "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+      "format" : "date"
+    },
+    "latestReconciledTransaction" : {
+      "type" : "string",
+      "description" : "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+      "format" : "date"
+    },
+    "reconciledAmountPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is positive.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "reconciledAmountNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is negative.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "reconciledLines" : {
+      "type" : "integer",
+      "description" : "Count of all statement lines where the reconciled flag is set to TRUE",
+      "format" : "int32"
+    },
+    "totalAmountPos" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the amount is positive",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalAmountNeg" : {
+      "type" : "number",
+      "description" : "Sum of the amounts of all statement lines where the amount is negative.",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TotalDetail"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "totalPaid" : {
+      "type" : "number",
+      "description" : "Total paid invoice and cash value within the period.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalOutstanding" : {
+      "type" : "number",
+      "description" : "Total outstanding invoice value within the period.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalCreditedUnApplied" : {
+      "type" : "number",
+      "description" : "Total unapplied credited value within the period.",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TotalOther"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "totalOutstandingAged" : {
+      "type" : "number",
+      "description" : "Total outstanding invoice value within the period where the invoices are more than 90 days old",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalVoided" : {
+      "type" : "number",
+      "description" : "Total voided value.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "totalCredited" : {
+      "type" : "number",
+      "description" : "Total credited value.",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TrialBalanceAccount"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "accountId" : {
+      "type" : "string",
+      "description" : "ID of the account",
       "format" : "uuid"
     },
-    "organisationId" : {
+    "accountType" : {
       "type" : "string",
-      "description" : "The Xero generated unique identifier for the organisation",
-      "format" : "uuid"
+      "description" : "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
     },
-    "plans" : {
-      "type" : "array",
-      "description" : "List of plans for the subscription.",
-      "items" : {
-        "$ref" : "#/components/schemas/Plan"
-      }
-    },
-    "startDate" : {
+    "accountCode" : {
       "type" : "string",
-      "description" : "Date when the subscription was first created.",
-      "format" : "date-time"
+      "description" : "Customer defined alpha numeric account code e.g 200 or SALES"
+    },
+    "accountClass" : {
+      "type" : "string",
+      "description" : "The class of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountClassTypes'>Account Class Types</a>"
     },
     "status" : {
       "type" : "string",
-      "description" : "Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE."
+      "description" : "Accounts with a status of ACTIVE can be updated to ARCHIVED. See <a href='https://developer.xero.com/documentation/api/types#AccountStatusCodes'>Account Status Codes</a>"
     },
-    "testMode" : {
-      "type" : "boolean",
-      "description" : "Boolean used to indicate if the subscription is in test mode"
+    "reportingCode" : {
+      "type" : "string",
+      "description" : "Reporting code (Shown if set)"
+    },
+    "accountName" : {
+      "type" : "string",
+      "description" : "Name of the account"
+    },
+    "balance" : {
+      "$ref" : "#/components/schemas/TrialBalanceEntry"
+    },
+    "signedBalance" : {
+      "type" : "number",
+      "description" : "Value of balance. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "accountMovement" : {
+      "$ref" : "#/components/schemas/TrialBalanceMovement"
     }
   },
+  "additionalProperties" : false,
   "description" : ""
 };
-      defs["SubscriptionItem"] = {
+      defs["TrialBalanceEntry"] = {
   "title" : "",
-  "required" : [ "id", "price", "product", "startDate" ],
   "type" : "object",
   "properties" : {
-    "endDate" : {
+    "value" : {
+      "type" : "number",
+      "description" : "Net movement or net balance in the account",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "entryType" : {
       "type" : "string",
-      "description" : "Date when the subscription to this product will end",
-      "format" : "date-time"
-    },
-    "id" : {
-      "type" : "string",
-      "description" : "The unique identifier of the subscription item.",
-      "format" : "uuid"
-    },
-    "price" : {
-      "$ref" : "#/components/schemas/Price"
-    },
-    "product" : {
-      "$ref" : "#/components/schemas/Product"
-    },
-    "startDate" : {
-      "type" : "string",
-      "description" : "Date the subscription started, or will start. Note: this could be in\nthe future for downgrades or reduced number of seats that haven't taken effect yet.\n",
-      "format" : "date-time"
-    },
-    "testMode" : {
-      "type" : "boolean",
-      "description" : "If the subscription is a test subscription"
+      "description" : "Sign (Debit/Credit) of the movement of balance in the account"
     }
   },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TrialBalanceMovement"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "debits" : {
+      "type" : "number",
+      "description" : "Debit amount",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "credits" : {
+      "type" : "number",
+      "description" : "Credit amount",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "movement" : {
+      "$ref" : "#/components/schemas/TrialBalanceEntry"
+    },
+    "signedMovement" : {
+      "type" : "number",
+      "description" : "Value of movement. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+      "format" : "double",
+      "x-is-money" : true
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["TrialBalanceResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "startDate" : {
+      "type" : "string",
+      "description" : "Start date of the report",
+      "format" : "date"
+    },
+    "endDate" : {
+      "type" : "string",
+      "description" : "End date of the report",
+      "format" : "date"
+    },
+    "accounts" : {
+      "type" : "array",
+      "description" : "Refer to the accounts section below",
+      "items" : {
+        "$ref" : "#/components/schemas/TrialBalanceAccount"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["UserActivitiesResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "organisationId" : {
+      "type" : "string",
+      "description" : "The requested Organisation to which the data pertains",
+      "format" : "uuid"
+    },
+    "dataMonth" : {
+      "type" : "string",
+      "description" : "The month of the report"
+    },
+    "users" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/UserResponse"
+      }
+    }
+  },
+  "additionalProperties" : false,
+  "description" : ""
+};
+      defs["UserResponse"] = {
+  "title" : "",
+  "type" : "object",
+  "properties" : {
+    "userId" : {
+      "type" : "string",
+      "description" : "The Xero identifier for the user",
+      "format" : "uuid"
+    },
+    "userCreatedDateUtc" : {
+      "type" : "string",
+      "description" : "Timestamp of user creation.",
+      "format" : "date-time"
+    },
+    "lastLoginDateUtc" : {
+      "type" : "string",
+      "description" : "Timestamp of user last login",
+      "format" : "date-time"
+    },
+    "isExternalPartner" : {
+      "type" : "boolean",
+      "description" : "User is external partner."
+    },
+    "hasAccountantRole" : {
+      "type" : "boolean",
+      "description" : "User has Accountant role."
+    },
+    "monthPeriod" : {
+      "type" : "string",
+      "description" : "Month period in format  yyyy-MM."
+    },
+    "numberOfLogins" : {
+      "type" : "integer",
+      "description" : "Number of times the user has logged in.",
+      "format" : "int32"
+    },
+    "numberOfDocumentsCreated" : {
+      "type" : "integer",
+      "description" : "Number of documents created.",
+      "format" : "int32"
+    },
+    "netValueDocumentsCreated" : {
+      "type" : "number",
+      "description" : "Net value of documents created.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "absoluteValueDocumentsCreated" : {
+      "type" : "number",
+      "description" : "Absolute value of documents created.",
+      "format" : "double",
+      "x-is-money" : true
+    },
+    "attachedPractices" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/PracticeResponse"
+      }
+    },
+    "historyRecords" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/HistoryRecordResponse"
+      }
+    }
+  },
+  "additionalProperties" : false,
   "description" : ""
 };
       
@@ -1116,8 +2306,8 @@ ul.nav-tabs {
             }
             $('#language-set-selection option[value="'+ sdkLang +'"]').attr("selected", "selected");
             $('#sdk-name').html(sdkName);
-            console.log('AppStore')
-            $('#api-set-selection option[value="'+ 'AppStore' + '"]').attr("selected", "selected");
+            console.log('Finance')
+            $('#api-set-selection option[value="'+ 'Finance' + '"]').attr("selected", "selected");
           });
         </script>
       </div>
@@ -1127,11 +2317,41 @@ ul.nav-tabs {
         <div id="sidenav" class="span2">
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
-              <li class="nav-header" data-group="AppStore"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="AppStore"><strong>VSN: </strong>3.21.0</li>
-              <li class="nav-header" data-group="AppStore"><a href="#api-AppStore">Methods</a></li>
-              <li data-group="AppStore" data-name="getSubscription" class="">
-                <a href="#api-AppStore-getSubscription">getSubscription</a>
+              <li class="nav-header" data-group="Finance"><strong>SDK: </strong><span id='sdk-name'></span></li>
+              <li class="nav-header" data-group="Finance"><strong>VSN: </strong>3.21.0</li>
+              <li class="nav-header" data-group="Finance"><a href="#api-Finance">Methods</a></li>
+              <li data-group="Finance" data-name="getAccountingActivityAccountUsage" class="">
+                <a href="#api-Finance-getAccountingActivityAccountUsage">getAccountingActivityAccountUsage</a>
+              </li>
+              <li data-group="Finance" data-name="getAccountingActivityLockHistory" class="">
+                <a href="#api-Finance-getAccountingActivityLockHistory">getAccountingActivityLockHistory</a>
+              </li>
+              <li data-group="Finance" data-name="getAccountingActivityReportHistory" class="">
+                <a href="#api-Finance-getAccountingActivityReportHistory">getAccountingActivityReportHistory</a>
+              </li>
+              <li data-group="Finance" data-name="getAccountingActivityUserActivities" class="">
+                <a href="#api-Finance-getAccountingActivityUserActivities">getAccountingActivityUserActivities</a>
+              </li>
+              <li data-group="Finance" data-name="getCashValidation" class="">
+                <a href="#api-Finance-getCashValidation">getCashValidation</a>
+              </li>
+              <li data-group="Finance" data-name="getFinancialStatementBalanceSheet" class="">
+                <a href="#api-Finance-getFinancialStatementBalanceSheet">getFinancialStatementBalanceSheet</a>
+              </li>
+              <li data-group="Finance" data-name="getFinancialStatementCashflow" class="">
+                <a href="#api-Finance-getFinancialStatementCashflow">getFinancialStatementCashflow</a>
+              </li>
+              <li data-group="Finance" data-name="getFinancialStatementContactsExpense" class="">
+                <a href="#api-Finance-getFinancialStatementContactsExpense">getFinancialStatementContactsExpense</a>
+              </li>
+              <li data-group="Finance" data-name="getFinancialStatementContactsRevenue" class="">
+                <a href="#api-Finance-getFinancialStatementContactsRevenue">getFinancialStatementContactsRevenue</a>
+              </li>
+              <li data-group="Finance" data-name="getFinancialStatementProfitAndLoss" class="">
+                <a href="#api-Finance-getFinancialStatementProfitAndLoss">getFinancialStatementProfitAndLoss</a>
+              </li>
+              <li data-group="Finance" data-name="getFinancialStatementTrialBalance" class="">
+                <a href="#api-Finance-getFinancialStatementTrialBalance">getFinancialStatementTrialBalance</a>
               </li>
             </ul>
           </nav>
@@ -1139,7 +2359,7 @@ ul.nav-tabs {
         <div id="content">
           <div id="project">
             <div class="pull-left">
-              <h1>Xero AppStore API</h1>
+              <h1>Xero Finance API</h1>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -1149,31 +2369,31 @@ ul.nav-tabs {
             </div>
           </div>
           <div id="sections">
-            <section id="api-AppStore">
-              <h1>AppStore</h1>
-              <div id="api-AppStore-getSubscription">
-                <article id="api-AppStore-getSubscription-0" data-group="User" data-name="getSubscription" data-version="0">
+            <section id="api-Finance">
+              <h1>Finance</h1>
+              <div id="api-Finance-getAccountingActivityAccountUsage">
+                <article id="api-Finance-getAccountingActivityAccountUsage-0" data-group="User" data-name="getAccountingActivityAccountUsage" data-version="0">
                   <div class="pull-left">
-                    <h1>getSubscription</h1>
-                    <p>Retrieves a subscription for a given subscriptionId</p>
+                    <h1>getAccountingActivityAccountUsage</h1>
+                    <p>Get account usage</p>
                   </div>
                   <div class="pull-right"></div>
                   <div class="clearfix"></div>
                   <p></p>
-                  <p class="marked"></p>
+                  <p class="marked">A summary of how each account is being transacted on exposing the level of detail and amounts attributable to manual adjustments.</p>
                   <p></p>
                   <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/subscriptions/{subscriptionId}</span></code></pre>
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/AccountUsage</span></code></pre>
                   <p>
                   <h3>Usage and SDK Samples</h3>
                   </p>
                   <ul class="nav nav-tabs nav-tabs-examples">
                     <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-AppStore-getSubscription-0-csharp">C#</a></li>
+                    <li class=""><a href="#examples-Finance-getAccountingActivityAccountUsage-0-csharp">C#</a></li>
                   </ul>
                   <div class="tab-content">
                     <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-AppStore-getSubscription-0-csharp">
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityAccountUsage-0-csharp">
                       <pre class="prettyprint"><code class="language-csharp">using System;
 using System.Diagnostics;
 using Xero.NetStandard.OAuth2.Api;
@@ -1182,21 +2402,23 @@ using Xero.NetStandard.OAuth2.Model;
 
 namespace Example
 {
-    public class GetSubscriptionExample
+    public class GetAccountingActivityAccountUsageExample
     {
         public async Task Main()
         {            
             var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new AppStoreApi();
-            var subscriptionId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var startMonth = "2020-09";
+            var endMonth = "2021-09";
             
             try {
-                var result = await apiInstance.GetSubscriptionAsync(accessToken, subscriptionId);
+                var result = await apiInstance.GetAccountingActivityAccountUsageAsync(accessToken, xeroTenantId, startMonth, endMonth);
                 Console.WriteLine(result);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception when calling apiInstance.GetSubscription: " + e.Message );
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityAccountUsage: " + e.Message );
             }
         }
     }
@@ -1207,39 +2429,1604 @@ namespace Example
                   <table>
                     
                     <tr>
-                      <td>marketplace.billing</td>
-                      <td>Grant read-only access to fixed assets</td>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
                     </tr>
                     
                   </table>
                   <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
+                  <div class="methodsubtabletitle">Header parameters</div>
                   <table id="methodsubtable">
                     <tr>
                       <th width="150px">Name</th>
                       <th>Description</th>
                     </tr>
-                    <tr><td style="width:150px;">subscriptionId<span style="color:red;">*</span></td>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
 <td>
 
 
-    <div id="d2e199_getSubscription_subscriptionId">
+    <div id="d2e199_getAccountingActivityAccountUsage_xeroTenantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    UUID
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">startMonth</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityAccountUsage_startMonth">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM</p>
+<p>If no parameter is provided, the month 12 months prior to the end month will be used.</p>
+<p>Account usage for up to 12 months from this date will be returned.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endMonth</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityAccountUsage_endMonth">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM</p>
+<p>If no parameter is provided, the current month will be used.</p>
+<p>Account usage for up to 12 months prior to this date will be returned.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getAccountingActivityLockHistory">
+                <article id="api-Finance-getAccountingActivityLockHistory-0" data-group="User" data-name="getAccountingActivityLockHistory" data-version="0">
+                  <div class="pull-left">
+                    <h1>getAccountingActivityLockHistory</h1>
+                    <p>Get lock history</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">Provides a history of locking of accounting books. Locking may be an indicator of good accounting practices that could reduce the risk of changes to accounting records in prior periods.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/LockHistory</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getAccountingActivityLockHistory-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityLockHistory-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetAccountingActivityLockHistoryExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var endDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetAccountingActivityLockHistoryAsync(accessToken, xeroTenantId, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityLockHistory: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityLockHistory_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityLockHistory_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>Any changes to hard or soft lock dates that were made within the period up to 12 months before this date will be returned.</p>
+<p>Please be aware that there may be a delay of up to 3 days before a change is visible from this API.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getAccountingActivityReportHistory">
+                <article id="api-Finance-getAccountingActivityReportHistory-0" data-group="User" data-name="getAccountingActivityReportHistory" data-version="0">
+                  <div class="pull-left">
+                    <h1>getAccountingActivityReportHistory</h1>
+                    <p>Get report history</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">For a specified organisation, provides a summary of all the reports published within a given period, which may be an indicator for good business management and oversight.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/ReportHistory</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getAccountingActivityReportHistory-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityReportHistory-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetAccountingActivityReportHistoryExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var endDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetAccountingActivityReportHistoryAsync(accessToken, xeroTenantId, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityReportHistory: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityReportHistory_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityReportHistory_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>Any reports that were published within the period up to 12 months before this date will be returned.</p>
+<p>Please be aware that there may be a delay of up to 3 days before a published report is visible from this API.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getAccountingActivityUserActivities">
+                <article id="api-Finance-getAccountingActivityUserActivities-0" data-group="User" data-name="getAccountingActivityUserActivities" data-version="0">
+                  <div class="pull-left">
+                    <h1>getAccountingActivityUserActivities</h1>
+                    <p>Get user activities</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">For a specified organisation, provides a list of all the users registered, and a history of their accounting transactions. Also identifies the existence of an external accounting advisor and the level of interaction.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/AccountingActivities/UserActivities</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getAccountingActivityUserActivities-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getAccountingActivityUserActivities-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetAccountingActivityUserActivitiesExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var dataMonth = "2021-09";
+            
+            try {
+                var result = await apiInstance.GetAccountingActivityUserActivitiesAsync(accessToken, xeroTenantId, dataMonth);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetAccountingActivityUserActivities: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.accountingactivity.read</td>
+                      <td>Grant read-only access to Xero usage activity</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityUserActivities_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">dataMonth</td>
+<td>
+
+
+    <div id="d2e199_getAccountingActivityUserActivities_dataMonth">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM</p>
+<p>The specified month must be complete (in the past); The current month cannot be specified since it is not complete.</p>
+<p>If no parameter is provided, the month immediately previous to the current month will be used.</p>
+<p>Any user activities occurring within the specified month will be returned.</p>
+<p>Please be aware that there may be a delay of up to 3 days before a user activity is visible from this API.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getCashValidation">
+                <article id="api-Finance-getCashValidation-0" data-group="User" data-name="getCashValidation" data-version="0">
+                  <div class="pull-left">
+                    <h1>getCashValidation</h1>
+                    <p>Get cash validation</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">Summarizes the total cash position for each account for an org</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/CashValidation</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getCashValidation-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getCashValidation-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetCashValidationExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var balanceDate = "2021-09-15";
+            var asAtSystemDate = "2021-09-15";
+            var beginDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetCashValidationAsync(accessToken, xeroTenantId, balanceDate, asAtSystemDate, beginDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetCashValidation: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.cashvalidation.read</td>
+                      <td>Grant read-only access to bank statement and reconcilation data</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getCashValidation_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">balanceDate</td>
+<td>
+
+
+    <div id="d2e199_getCashValidation_balanceDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>The ‘balance date’ will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.
+The user has discretion as to which accounting period the transaction relates to.</p>
+<p>The ‘balance date’  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">asAtSystemDate</td>
+<td>
+
+
+    <div id="d2e199_getCashValidation_asAtSystemDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>The ‘as at’ date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.
+The ‘as at’ date can not be overridden by the user.  This can be used to estimate a ‘historical frequency of reconciliation’.</p>
+<p>The ‘as at’ date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified ‘as at’ date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.</p>
+<p>Note;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the ‘as at’ functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">beginDate</td>
+<td>
+
+
+    <div id="d2e199_getCashValidation_beginDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>date, yyyy-MM-dd</p>
+<p>If no parameter is provided, the aggregate results will be drawn from the user’s total history.</p>
+<p>The ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.
+The user has discretion as to which accounting period the transaction relates to.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementBalanceSheet">
+                <article id="api-Finance-getFinancialStatementBalanceSheet-0" data-group="User" data-name="getFinancialStatementBalanceSheet" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementBalanceSheet</h1>
+                    <p>Get Balance Sheet report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The balance sheet report is a standard financial report which describes the financial position of an organisation at a point in time.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/BalanceSheet</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementBalanceSheet-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementBalanceSheet-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementBalanceSheetExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var balanceDate = "2020-06-30";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementBalanceSheetAsync(accessToken, xeroTenantId, balanceDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementBalanceSheet: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementBalanceSheet_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">balanceDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementBalanceSheet_balanceDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Specifies the date for balance sheet report.</p>
+<p>Format yyyy-MM-dd. If no parameter is provided, the current date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementCashflow">
+                <article id="api-Finance-getFinancialStatementCashflow-0" data-group="User" data-name="getFinancialStatementCashflow" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementCashflow</h1>
+                    <p>Get Cash flow report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The statement of cash flows - direct method, provides the year to date changes in operating, financing and investing cash flow activities for an organisation. Cashflow statement is not available in US region at this stage.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/Cashflow</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementCashflow-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementCashflow-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementCashflowExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var startDate = "2020-09-15";
+            var endDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementCashflowAsync(accessToken, xeroTenantId, startDate, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementCashflow: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementCashflow_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">startDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementCashflow_startDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the start date for cash flow report.</p>
+<p>If no parameter is provided, the date of 12 months before the end date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementCashflow_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the end date for cash flow report.</p>
+<p>If no parameter is provided, the current date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementContactsExpense">
+                <article id="api-Finance-getFinancialStatementContactsExpense-0" data-group="User" data-name="getFinancialStatementContactsExpense" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementContactsExpense</h1>
+                    <p>Get expense by contacts report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The expense by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/contacts/expense</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementContactsExpense-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementContactsExpense-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementContactsExpenseExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var contactIds = 
+            var includeManualJournals = true;
+            var startDate = "2020-09-15";
+            var endDate = "2020-09-15";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementContactsExpenseAsync(accessToken, xeroTenantId, contactIds, includeManualJournals, startDate, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementContactsExpense: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsExpense_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">contactIds</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsExpense_contactIds">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    array[UUID]
                 </span>
                     <span class="format">
                         (uuid)
                     </span>
 
                     <div class="inner description marked">
-Unique identifier for Subscription object
+<p>Specifies the customer contacts to be included in the report.</p>
+<p>If no parameter is provided, all customer contacts will be included</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">includeManualJournals</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsExpense_includeManualJournals">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Boolean
+                </span>
+
+                    <div class="inner description marked">
+<p>Specifies whether to include the manual journals in the report.</p>
+<p>If no parameter is provided, manual journals will not be included.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">startDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsExpense_startDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date yyyy-MM-dd</p>
+<p>Specifies the start date for the report.</p>
+<p>If no parameter is provided, the date of 12 months before the end date will be used.</p>
+<p>It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsExpense_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date yyyy-MM-dd</p>
+<p>Specifies the end date for the report.</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementContactsRevenue">
+                <article id="api-Finance-getFinancialStatementContactsRevenue-0" data-group="User" data-name="getFinancialStatementContactsRevenue" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementContactsRevenue</h1>
+                    <p>Get revenue by contacts report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The revenue by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/contacts/revenue</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementContactsRevenue-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementContactsRevenue-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementContactsRevenueExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var contactIds = 
+            var includeManualJournals = true;
+            var startDate = "2020-09-15";
+            var endDate = "2020-09-15";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementContactsRevenueAsync(accessToken, xeroTenantId, contactIds, includeManualJournals, startDate, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementContactsRevenue: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsRevenue_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
                     </div>
             </div>
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">contactIds</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsRevenue_contactIds">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    array[UUID]
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+<p>Specifies the customer contacts to be included in the report.</p>
+<p>If no parameter is provided, all customer contacts will be included</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">includeManualJournals</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsRevenue_includeManualJournals">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Boolean
+                </span>
+
+                    <div class="inner description marked">
+<p>Specifies whether to include the manual journals in the report.</p>
+<p>If no parameter is provided, manual journals will not be included.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">startDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsRevenue_startDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date yyyy-MM-dd</p>
+<p>Specifies the start date for the report.</p>
+<p>If no parameter is provided, the date of 12 months before the end date will be used.</p>
+<p>It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementContactsRevenue_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date yyyy-MM-dd</p>
+<p>Specifies the end date for the report.</p>
+<p>If no parameter is provided, the current date will be used.</p>
+<p>It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementProfitAndLoss">
+                <article id="api-Finance-getFinancialStatementProfitAndLoss-0" data-group="User" data-name="getFinancialStatementProfitAndLoss" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementProfitAndLoss</h1>
+                    <p>Get Profit &amp; Loss report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The profit and loss statement is a standard financial report providing detailed year to date income and expense detail for an organisation.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/ProfitAndLoss</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementProfitAndLoss-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementProfitAndLoss-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementProfitAndLossExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var startDate = "2020-09-15";
+            var endDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementProfitAndLossAsync(accessToken, xeroTenantId, startDate, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementProfitAndLoss: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementProfitAndLoss_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">startDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementProfitAndLoss_startDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the start date for profit and loss report</p>
+<p>If no parameter is provided, the date of 12 months before the end date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementProfitAndLoss_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the end date for profit and loss report</p>
+<p>If no parameter is provided, the current date will be used.</p>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Finance-getFinancialStatementTrialBalance">
+                <article id="api-Finance-getFinancialStatementTrialBalance-0" data-group="User" data-name="getFinancialStatementTrialBalance" data-version="0">
+                  <div class="pull-left">
+                    <h1>getFinancialStatementTrialBalance</h1>
+                    <p>Get Trial Balance report</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked">The trial balance provides a detailed list of all accounts of an organisation at a point in time, with revenue and expense items being year to date.</p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/FinancialStatements/TrialBalance</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Finance-getFinancialStatementTrialBalance-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Finance-getFinancialStatementTrialBalance-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetFinancialStatementTrialBalanceExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new FinanceApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var endDate = "2021-09-15";
+            
+            try {
+                var result = await apiInstance.GetFinancialStatementTrialBalanceAsync(accessToken, xeroTenantId, endDate);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetFinancialStatementTrialBalance: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>finance.statements.read</td>
+                      <td>Grant read-only access to finacial statements</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementTrialBalance_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">endDate</td>
+<td>
+
+
+    <div id="d2e199_getFinancialStatementTrialBalance_endDate">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+<p>Date e.g. yyyy-MM-dd</p>
+<p>Specifies the end date for trial balance report</p>
+<p>If no parameter is provided, the current date will be used.</p>
+
+                    </div>
+            </div>
         </div>
     </div>
 </td>
