@@ -50,7 +50,5 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// </summary>
         [EnumMember(Value = "DISPOSED")]
         DISPOSED = 3
-
     }
-
 }

@@ -731,7 +731,7 @@ namespace Xero.NetStandard.OAuth2.Api
                 requestOptions.HeaderParameters.Add("Accept", accept);
             
 
-            if (status != null)
+            if ((status == AssetStatusQueryParam.DRAFT) || (status == AssetStatusQueryParam.DISPOSED) || (status == AssetStatusQueryParam.REGISTERED))
             {
                 foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "status", status))
                 {
