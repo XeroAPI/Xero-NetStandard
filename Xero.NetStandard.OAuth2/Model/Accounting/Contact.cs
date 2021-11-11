@@ -64,6 +64,72 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         [DataMember(Name="ContactStatus", EmitDefaultValue=false)]
         public ContactStatusEnum ContactStatus { get; set; }
         /// <summary>
+        /// The default sales line amount type for a contact. Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.
+        /// </summary>
+        /// <value>The default sales line amount type for a contact. Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum SalesDefaultLineAmountTypeEnum
+        {
+            /// <summary>
+            /// Enum INCLUSIVE for value: INCLUSIVE
+            /// </summary>
+            [EnumMember(Value = "INCLUSIVE")]
+            INCLUSIVE = 1,
+
+            /// <summary>
+            /// Enum EXCLUSIVE for value: EXCLUSIVE
+            /// </summary>
+            [EnumMember(Value = "EXCLUSIVE")]
+            EXCLUSIVE = 2,
+
+            /// <summary>
+            /// Enum NONE for value: NONE
+            /// </summary>
+            [EnumMember(Value = "NONE")]
+            NONE = 3
+
+        }
+
+        /// <summary>
+        /// The default sales line amount type for a contact. Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.
+        /// </summary>
+        /// <value>The default sales line amount type for a contact. Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.</value>
+        [DataMember(Name="SalesDefaultLineAmountType", EmitDefaultValue=false)]
+        public SalesDefaultLineAmountTypeEnum SalesDefaultLineAmountType { get; set; }
+        /// <summary>
+        /// The default purchases line amount type for a contact Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.
+        /// </summary>
+        /// <value>The default purchases line amount type for a contact Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum PurchasesDefaultLineAmountTypeEnum
+        {
+            /// <summary>
+            /// Enum INCLUSIVE for value: INCLUSIVE
+            /// </summary>
+            [EnumMember(Value = "INCLUSIVE")]
+            INCLUSIVE = 1,
+
+            /// <summary>
+            /// Enum EXCLUSIVE for value: EXCLUSIVE
+            /// </summary>
+            [EnumMember(Value = "EXCLUSIVE")]
+            EXCLUSIVE = 2,
+
+            /// <summary>
+            /// Enum NONE for value: NONE
+            /// </summary>
+            [EnumMember(Value = "NONE")]
+            NONE = 3
+
+        }
+
+        /// <summary>
+        /// The default purchases line amount type for a contact Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.
+        /// </summary>
+        /// <value>The default purchases line amount type for a contact Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.</value>
+        [DataMember(Name="PurchasesDefaultLineAmountType", EmitDefaultValue=false)]
+        public PurchasesDefaultLineAmountTypeEnum PurchasesDefaultLineAmountType { get; set; }
+        /// <summary>
         /// Gets or Sets DefaultCurrency
         /// </summary>
         [DataMember(Name="DefaultCurrency", EmitDefaultValue=false)]
@@ -75,6 +141,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <value>Xero identifier</value>
         [DataMember(Name="ContactID", EmitDefaultValue=false)]
         public Guid? ContactID { get; set; }
+
+        /// <summary>
+        /// ID for the destination of a merged contact. Only returned when using paging or when fetching a contact by ContactId or ContactNumber.
+        /// </summary>
+        /// <value>ID for the destination of a merged contact. Only returned when using paging or when fetching a contact by ContactId or ContactNumber.</value>
+        [DataMember(Name="MergedToContactID", EmitDefaultValue=false)]
+        public Guid? MergedToContactID { get; set; }
 
         /// <summary>
         /// This can be updated via the API only i.e. This field is read only on the Xero contact screen, used to identify contacts in external systems (max length &#x3D; 50). If the Contact Number is used, this is displayed as Contact Code in the Contacts UI in Xero.
@@ -110,6 +183,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <value>Last name of contact person (max length &#x3D; 255)</value>
         [DataMember(Name="LastName", EmitDefaultValue=false)]
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Company registration number (max length &#x3D; 50)
+        /// </summary>
+        /// <value>Company registration number (max length &#x3D; 50)</value>
+        [DataMember(Name="CompanyNumber", EmitDefaultValue=false)]
+        public string CompanyNumber { get; set; }
 
         /// <summary>
         /// Email address of contact person (umlauts not supported) (max length  &#x3D; 255)
@@ -333,12 +413,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             var sb = new StringBuilder();
             sb.Append("class Contact {\n");
             sb.Append("  ContactID: ").Append(ContactID).Append("\n");
+            sb.Append("  MergedToContactID: ").Append(MergedToContactID).Append("\n");
             sb.Append("  ContactNumber: ").Append(ContactNumber).Append("\n");
             sb.Append("  AccountNumber: ").Append(AccountNumber).Append("\n");
             sb.Append("  ContactStatus: ").Append(ContactStatus).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  CompanyNumber: ").Append(CompanyNumber).Append("\n");
             sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
             sb.Append("  SkypeUserName: ").Append(SkypeUserName).Append("\n");
             sb.Append("  ContactPersons: ").Append(ContactPersons).Append("\n");
@@ -350,6 +432,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  Phones: ").Append(Phones).Append("\n");
             sb.Append("  IsSupplier: ").Append(IsSupplier).Append("\n");
             sb.Append("  IsCustomer: ").Append(IsCustomer).Append("\n");
+            sb.Append("  SalesDefaultLineAmountType: ").Append(SalesDefaultLineAmountType).Append("\n");
+            sb.Append("  PurchasesDefaultLineAmountType: ").Append(PurchasesDefaultLineAmountType).Append("\n");
             sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
             sb.Append("  XeroNetworkKey: ").Append(XeroNetworkKey).Append("\n");
             sb.Append("  SalesDefaultAccountCode: ").Append(SalesDefaultAccountCode).Append("\n");
@@ -411,6 +495,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.ContactID.Equals(input.ContactID))
                 ) && 
                 (
+                    this.MergedToContactID == input.MergedToContactID ||
+                    (this.MergedToContactID != null &&
+                    this.MergedToContactID.Equals(input.MergedToContactID))
+                ) && 
+                (
                     this.ContactNumber == input.ContactNumber ||
                     (this.ContactNumber != null &&
                     this.ContactNumber.Equals(input.ContactNumber))
@@ -438,6 +527,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
+                ) && 
+                (
+                    this.CompanyNumber == input.CompanyNumber ||
+                    (this.CompanyNumber != null &&
+                    this.CompanyNumber.Equals(input.CompanyNumber))
                 ) && 
                 (
                     this.EmailAddress == input.EmailAddress ||
@@ -496,6 +590,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.IsCustomer == input.IsCustomer ||
                     (this.IsCustomer != null &&
                     this.IsCustomer.Equals(input.IsCustomer))
+                ) && 
+                (
+                    this.SalesDefaultLineAmountType == input.SalesDefaultLineAmountType ||
+                    this.SalesDefaultLineAmountType.Equals(input.SalesDefaultLineAmountType)
+                ) && 
+                (
+                    this.PurchasesDefaultLineAmountType == input.PurchasesDefaultLineAmountType ||
+                    this.PurchasesDefaultLineAmountType.Equals(input.PurchasesDefaultLineAmountType)
                 ) && 
                 (
                     this.DefaultCurrency == input.DefaultCurrency ||
@@ -619,6 +721,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 int hashCode = 41;
                 if (this.ContactID != null)
                     hashCode = hashCode * 59 + this.ContactID.GetHashCode();
+                if (this.MergedToContactID != null)
+                    hashCode = hashCode * 59 + this.MergedToContactID.GetHashCode();
                 if (this.ContactNumber != null)
                     hashCode = hashCode * 59 + this.ContactNumber.GetHashCode();
                 if (this.AccountNumber != null)
@@ -630,6 +734,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.FirstName.GetHashCode();
                 if (this.LastName != null)
                     hashCode = hashCode * 59 + this.LastName.GetHashCode();
+                if (this.CompanyNumber != null)
+                    hashCode = hashCode * 59 + this.CompanyNumber.GetHashCode();
                 if (this.EmailAddress != null)
                     hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
                 if (this.SkypeUserName != null)
@@ -652,6 +758,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.IsSupplier.GetHashCode();
                 if (this.IsCustomer != null)
                     hashCode = hashCode * 59 + this.IsCustomer.GetHashCode();
+                hashCode = hashCode * 59 + this.SalesDefaultLineAmountType.GetHashCode();
+                hashCode = hashCode * 59 + this.PurchasesDefaultLineAmountType.GetHashCode();
                 hashCode = hashCode * 59 + this.DefaultCurrency.GetHashCode();
                 if (this.XeroNetworkKey != null)
                     hashCode = hashCode * 59 + this.XeroNetworkKey.GetHashCode();
@@ -732,6 +840,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if(this.LastName != null && this.LastName.Length > 255)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastName, length must be less than 255.", new [] { "LastName" });
+            }
+
+            // CompanyNumber (string) maxLength
+            if(this.CompanyNumber != null && this.CompanyNumber.Length > 50)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CompanyNumber, length must be less than 50.", new [] { "CompanyNumber" });
             }
 
             // EmailAddress (string) maxLength
