@@ -31,6 +31,39 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     public partial class SubscriptionItem :  IEquatable<SubscriptionItem>, IValidatableObject
     {
         /// <summary>
+        /// Status of the subscription item. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. 
+        /// </summary>
+        /// <value>Status of the subscription item. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. </value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum ACTIVE for value: ACTIVE
+            /// </summary>
+            [EnumMember(Value = "ACTIVE")]
+            ACTIVE = 1,
+
+            /// <summary>
+            /// Enum CANCELED for value: CANCELED
+            /// </summary>
+            [EnumMember(Value = "CANCELED")]
+            CANCELED = 2,
+
+            /// <summary>
+            /// Enum PENDINGACTIVATION for value: PENDING_ACTIVATION
+            /// </summary>
+            [EnumMember(Value = "PENDING_ACTIVATION")]
+            PENDINGACTIVATION = 3
+
+        }
+
+        /// <summary>
+        /// Status of the subscription item. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. 
+        /// </summary>
+        /// <value>Status of the subscription item. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. </value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public StatusEnum Status { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionItem" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -91,6 +124,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  TestMode: ").Append(TestMode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -152,6 +186,10 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                     this.StartDate.Equals(input.StartDate))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    this.Status.Equals(input.Status)
+                ) && 
+                (
                     this.TestMode == input.TestMode ||
                     (this.TestMode != null &&
                     this.TestMode.Equals(input.TestMode))
@@ -177,6 +215,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                     hashCode = hashCode * 59 + this.Product.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.TestMode != null)
                     hashCode = hashCode * 59 + this.TestMode.GetHashCode();
                 return hashCode;

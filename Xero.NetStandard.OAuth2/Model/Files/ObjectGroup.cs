@@ -94,10 +94,16 @@ namespace Xero.NetStandard.OAuth2.Model.Files
         Prepayment = 10,
 
         /// <summary>
+        /// Enum Quote for value: Quote
+        /// </summary>
+        [EnumMember(Value = "Quote")]
+        Quote = 11,
+
+        /// <summary>
         /// Enum Receipt for value: Receipt
         /// </summary>
         [EnumMember(Value = "Receipt")]
-        Receipt = 11
+        Receipt = 12
 
     }
 

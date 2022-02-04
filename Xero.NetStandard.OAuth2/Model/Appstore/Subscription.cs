@@ -31,6 +31,39 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     public partial class Subscription :  IEquatable<Subscription>, IValidatableObject
     {
         /// <summary>
+        /// Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.
+        /// </summary>
+        /// <value>Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum ACTIVE for value: ACTIVE
+            /// </summary>
+            [EnumMember(Value = "ACTIVE")]
+            ACTIVE = 1,
+
+            /// <summary>
+            /// Enum CANCELED for value: CANCELED
+            /// </summary>
+            [EnumMember(Value = "CANCELED")]
+            CANCELED = 2,
+
+            /// <summary>
+            /// Enum PASTDUE for value: PAST_DUE
+            /// </summary>
+            [EnumMember(Value = "PAST_DUE")]
+            PASTDUE = 3
+
+        }
+
+        /// <summary>
+        /// Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.
+        /// </summary>
+        /// <value>Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.</value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public StatusEnum Status { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="Subscription" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -80,13 +113,6 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
         /// <value>Date when the subscription was first created.</value>
         [DataMember(Name="startDate", EmitDefaultValue=false)]
         public DateTime? StartDate { get; set; }
-
-        /// <summary>
-        /// Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.
-        /// </summary>
-        /// <value>Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
-        public string Status { get; set; }
 
         /// <summary>
         /// Boolean used to indicate if the subscription is in test mode
@@ -178,8 +204,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                 ) && 
                 (
                     this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Status.Equals(input.Status)
                 ) && 
                 (
                     this.TestMode == input.TestMode ||
@@ -209,8 +234,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                     hashCode = hashCode * 59 + this.Plans.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.TestMode != null)
                     hashCode = hashCode * 59 + this.TestMode.GetHashCode();
                 return hashCode;
