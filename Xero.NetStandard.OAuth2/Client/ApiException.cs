@@ -30,6 +30,18 @@ namespace Xero.NetStandard.OAuth2.Client
         public dynamic ErrorContent { get; private set; }
 
         /// <summary>
+        /// Gets or sets Retry-After
+        /// </summary>
+        /// <value>The Retry-After .</value>
+        public int RetryAfter { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Limit Type
+        /// </summary>
+        /// <value>The Limit Type .</value>
+        public string LimitType { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.
         /// </summary>
         public ApiException() {}
@@ -54,6 +66,22 @@ namespace Xero.NetStandard.OAuth2.Client
         {
             this.ErrorCode = errorCode;
             this.ErrorContent = errorContent;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        /// </summary>
+        /// <param name="errorCode">HTTP status code.</param>
+        /// <param name="message">Error message.</param>
+        /// <param name="errorContent">Error content.</param>
+        /// <param name="limitType">Error content.</param>
+        /// <param name="retryAfter">Error content.</param>
+        public ApiException(int errorCode, string message, dynamic errorContent = null, string limitType = null, int retryAfter = 0) : base(message)
+        {
+            this.ErrorCode = errorCode;
+            this.ErrorContent = errorContent;
+            this.LimitType = limitType;
+            this.RetryAfter = retryAfter;
         }
     }
 
