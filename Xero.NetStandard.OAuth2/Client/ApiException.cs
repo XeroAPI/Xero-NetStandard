@@ -30,15 +30,15 @@ namespace Xero.NetStandard.OAuth2.Client
         public dynamic ErrorContent { get; private set; }
 
         /// <summary>
-        /// Gets or sets Retry-After
+        /// Gets or sets Retry-After value
         /// </summary>
-        /// <value>The Retry-After .</value>
+        /// <value>The Retry-After (Http response header Retry-After).</value>
         public int RetryAfter { get; set; }
 
         /// <summary>
-        /// Gets or sets the Limit Type
+        /// Gets or sets the Limit Type value
         /// </summary>
-        /// <value>The Limit Type .</value>
+        /// <value>The Limit Type (Http response header X-Rate-Limit-Problem).</value>
         public string LimitType { get; set; }
 
         /// <summary>
