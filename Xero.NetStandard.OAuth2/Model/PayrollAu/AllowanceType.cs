@@ -45,34 +45,52 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         TRANSPORT = 2,
 
         /// <summary>
-        /// Enum TRAVEL for value: TRAVEL
-        /// </summary>
-        [EnumMember(Value = "TRAVEL")]
-        TRAVEL = 3,
-
-        /// <summary>
         /// Enum LAUNDRY for value: LAUNDRY
         /// </summary>
         [EnumMember(Value = "LAUNDRY")]
-        LAUNDRY = 4,
+        LAUNDRY = 3,
 
         /// <summary>
         /// Enum MEALS for value: MEALS
         /// </summary>
         [EnumMember(Value = "MEALS")]
-        MEALS = 5,
+        MEALS = 4,
 
         /// <summary>
-        /// Enum JOBKEEPER for value: JOBKEEPER
+        /// Enum TRAVEL for value: TRAVEL
         /// </summary>
-        [EnumMember(Value = "JOBKEEPER")]
-        JOBKEEPER = 6,
+        [EnumMember(Value = "TRAVEL")]
+        TRAVEL = 5,
 
         /// <summary>
         /// Enum OTHER for value: OTHER
         /// </summary>
         [EnumMember(Value = "OTHER")]
-        OTHER = 7
+        OTHER = 6,
+
+        /// <summary>
+        /// Enum JOBKEEPER for value: JOBKEEPER
+        /// </summary>
+        [EnumMember(Value = "JOBKEEPER")]
+        JOBKEEPER = 7,
+
+        /// <summary>
+        /// Enum TOOLS for value: TOOLS
+        /// </summary>
+        [EnumMember(Value = "TOOLS")]
+        TOOLS = 8,
+
+        /// <summary>
+        /// Enum TASKS for value: TASKS
+        /// </summary>
+        [EnumMember(Value = "TASKS")]
+        TASKS = 9,
+
+        /// <summary>
+        /// Enum QUALIFICATIONS for value: QUALIFICATIONS
+        /// </summary>
+        [EnumMember(Value = "QUALIFICATIONS")]
+        QUALIFICATIONS = 10
 
     }
 
