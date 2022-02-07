@@ -59,7 +59,7 @@ namespace Xero.NetStandard.OAuth2.Client
                     int ra = response.Headers.TryGetValue("Retry-After", out var ras) && int.TryParse(ras.FirstOrDefault(), out ra)
                         ? ra
                         : 0;
-                    return new ApiException(status, string.Format("Xero API {0} rate limit error calling {1}. Retry-After {2}", limitType, methodName, ra), ra, response.Content, limitType);
+                    return new ApiException(status, string.Format("Xero API {0} rate limit error calling {1}", limitType, methodName), response.Content, ra, limitType);
                 case int code when status > 400:
                     return new ApiException(status, string.Format("Xero API error calling {0}: {1}", methodName, response.Content.ToString()), response.Content);
             }
