@@ -33,7 +33,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Gets or sets Retry-After value
         /// </summary>
         /// <value>The Retry-After (Http response header Retry-After).</value>
-        public int RetryAfter { get; set; }
+        public int? RetryAfter { get; set; }
 
         /// <summary>
         /// Gets or sets the Limit Type value
@@ -76,7 +76,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="errorContent">Error content.</param>
         /// <param name="limitType">Error content.</param>
         /// <param name="retryAfter">Error content.</param>
-        public ApiException(int errorCode, string message, dynamic errorContent = null, string limitType = null, int retryAfter = 0) : base(message)
+        public ApiException(int errorCode, string message, int retryAfter, dynamic errorContent = null, string limitType = null) : base(message)
         {
             this.ErrorCode = errorCode;
             this.ErrorContent = errorContent;
