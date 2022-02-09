@@ -30,6 +30,21 @@ namespace Xero.NetStandard.OAuth2.Client
         public dynamic ErrorContent { get; private set; }
 
         /// <summary>
+        /// Gets or sets retry after value
+        /// </summary>
+        /// <value>
+        /// The number of seconds the client should wait before retrying the request.
+        /// Set from the value of the Retry-After header returned by the server.
+        /// </value>
+        public int? RetryAfter { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the limit type value
+        /// </summary>
+        /// <value>The type of the rate limit hit, such as minute or daily.</value>
+        public string LimitType { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.
         /// </summary>
         public ApiException() {}
@@ -54,6 +69,22 @@ namespace Xero.NetStandard.OAuth2.Client
         {
             this.ErrorCode = errorCode;
             this.ErrorContent = errorContent;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiException"/> class for the case when a rate limit is hit.
+        /// </summary>
+        /// <param name="errorCode">HTTP status code.</param>
+        /// <param name="message">Error message.</param>
+        /// <param name="errorContent">Error content.</param>
+        /// <param name="limitType">The type of limit hit.</param>
+        /// <param name="retryAfter">Number of seconds to wait before retrying.</param>
+        public ApiException(int errorCode, string message, dynamic errorContent, int retryAfter, string limitType) : base(message)
+        {
+            this.ErrorCode = errorCode;
+            this.ErrorContent = errorContent;
+            this.LimitType = limitType;
+            this.RetryAfter = retryAfter;
         }
     }
 
