@@ -31,7 +31,7 @@
       <PackageReference Include="JsonSubTypes" Version="1.5.2" />
       <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
       <PackageReference Include="RestSharp" Version="106.11.4" />
-      <PackageReference Include="System.ComponentModel.Annotations" Version="6.0.0-preview.4.21253.7" />
+      <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
   </ItemGroup>
 
 
