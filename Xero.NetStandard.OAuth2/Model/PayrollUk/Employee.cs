@@ -159,6 +159,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         public string NationalInsuranceNumber { get; set; }
 
         /// <summary>
+        /// Whether the employee is an off payroll worker
+        /// </summary>
+        /// <value>Whether the employee is an off payroll worker</value>
+        [DataMember(Name="isOffPayrollWorker", EmitDefaultValue=false)]
+        public bool? IsOffPayrollWorker { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -181,6 +188,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  CreatedDateUTC: ").Append(CreatedDateUTC).Append("\n");
             sb.Append("  NationalInsuranceNumber: ").Append(NationalInsuranceNumber).Append("\n");
+            sb.Append("  IsOffPayrollWorker: ").Append(IsOffPayrollWorker).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -288,6 +296,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                     this.NationalInsuranceNumber == input.NationalInsuranceNumber ||
                     (this.NationalInsuranceNumber != null &&
                     this.NationalInsuranceNumber.Equals(input.NationalInsuranceNumber))
+                ) && 
+                (
+                    this.IsOffPayrollWorker == input.IsOffPayrollWorker ||
+                    (this.IsOffPayrollWorker != null &&
+                    this.IsOffPayrollWorker.Equals(input.IsOffPayrollWorker))
                 );
         }
 
@@ -329,6 +342,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                     hashCode = hashCode * 59 + this.CreatedDateUTC.GetHashCode();
                 if (this.NationalInsuranceNumber != null)
                     hashCode = hashCode * 59 + this.NationalInsuranceNumber.GetHashCode();
+                if (this.IsOffPayrollWorker != null)
+                    hashCode = hashCode * 59 + this.IsOffPayrollWorker.GetHashCode();
                 return hashCode;
             }
         }

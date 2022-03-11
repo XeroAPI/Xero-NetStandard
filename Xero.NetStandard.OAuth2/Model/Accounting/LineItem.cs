@@ -95,6 +95,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? TaxAmount { get; set; }
 
         /// <summary>
+        /// Gets or Sets Item
+        /// </summary>
+        [DataMember(Name="Item", EmitDefaultValue=false)]
+        public LineItemItem Item { get; set; }
+
+        /// <summary>
         /// If you wish to omit either of the &lt;Quantity&gt; or &lt;UnitAmount&gt; you can provide a LineAmount and Xero will calculate the missing amount for you. The line amount reflects the discounted price if a DiscountRate has been used . i.e LineAmount &#x3D; Quantity * Unit Amount * ((100 – DiscountRate)/100)
         /// </summary>
         /// <value>If you wish to omit either of the &lt;Quantity&gt; or &lt;UnitAmount&gt; you can provide a LineAmount and Xero will calculate the missing amount for you. The line amount reflects the discounted price if a DiscountRate has been used . i.e LineAmount &#x3D; Quantity * Unit Amount * ((100 – DiscountRate)/100)</value>
@@ -146,6 +152,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  AccountID: ").Append(AccountID).Append("\n");
             sb.Append("  TaxType: ").Append(TaxType).Append("\n");
             sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");
+            sb.Append("  Item: ").Append(Item).Append("\n");
             sb.Append("  LineAmount: ").Append(LineAmount).Append("\n");
             sb.Append("  Tracking: ").Append(Tracking).Append("\n");
             sb.Append("  DiscountRate: ").Append(DiscountRate).Append("\n");
@@ -231,6 +238,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.TaxAmount.Equals(input.TaxAmount))
                 ) && 
                 (
+                    this.Item == input.Item ||
+                    (this.Item != null &&
+                    this.Item.Equals(input.Item))
+                ) && 
+                (
                     this.LineAmount == input.LineAmount ||
                     (this.LineAmount != null &&
                     this.LineAmount.Equals(input.LineAmount))
@@ -285,6 +297,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.TaxType.GetHashCode();
                 if (this.TaxAmount != null)
                     hashCode = hashCode * 59 + this.TaxAmount.GetHashCode();
+                if (this.Item != null)
+                    hashCode = hashCode * 59 + this.Item.GetHashCode();
                 if (this.LineAmount != null)
                     hashCode = hashCode * 59 + this.LineAmount.GetHashCode();
                 if (this.Tracking != null)
