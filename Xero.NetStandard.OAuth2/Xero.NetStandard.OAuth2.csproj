@@ -16,7 +16,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>Xero.NetStandard.OAuth2</RootNamespace>
-    <Version>3.22.1</Version>
+    <Version>3.22.2</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Xero.NetStandard.OAuth2.xml</DocumentationFile>
     <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/</PackageLicenseUrl>
     <PackageIconUrl>https://en.gravatar.com/userimage/180557955/74b3a957d886bc921b0d1455beed9dab.png</PackageIconUrl>
@@ -30,7 +30,7 @@
       <PackageReference Include="CompareNETObjects" Version="4.57.0" />
       <PackageReference Include="JsonSubTypes" Version="1.5.2" />
       <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-      <PackageReference Include="RestSharp" Version="106.11.4" />
+      <PackageReference Include="RestSharp" Version="106.12.0" />
       <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
   </ItemGroup>
 
