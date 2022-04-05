@@ -60,7 +60,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum SCHEDULE5STSLMANUAL for value: SCHEDULE5STSLMANUAL
         /// </summary>
         [EnumMember(Value = "SCHEDULE5STSLMANUAL")]
-        SCHEDULE5STSLMANUAL = 5
+        SCHEDULE5STSLMANUAL = 5,
+
+        /// <summary>
+        /// Enum SCHEDULE4MANUAL for value: SCHEDULE4MANUAL
+        /// </summary>
+        [EnumMember(Value = "SCHEDULE4MANUAL")]
+        SCHEDULE4MANUAL = 6
 
     }
 

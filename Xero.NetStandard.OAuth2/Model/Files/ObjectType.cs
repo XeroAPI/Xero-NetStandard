@@ -361,7 +361,13 @@ namespace Xero.NetStandard.OAuth2.Model.Files
         /// Enum NonCurrent for value: NonCurrent
         /// </summary>
         [EnumMember(Value = "NonCurrent")]
-        NonCurrent = 55
+        NonCurrent = 55,
+
+        /// <summary>
+        /// Enum SalesQuote for value: SalesQuote
+        /// </summary>
+        [EnumMember(Value = "SalesQuote")]
+        SalesQuote = 56
 
     }
 

@@ -70,6 +70,63 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         [DataMember(Name="Gender", EmitDefaultValue=false)]
         public GenderEnum Gender { get; set; }
         /// <summary>
+        /// * &#x60;V&#x60; Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment * &#x60;I&#x60; Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability * &#x60;D&#x60; Deceased - The death of an employee * &#x60;R&#x60; Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme * &#x60;F&#x60; Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency * &#x60;C&#x60; Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required * &#x60;T&#x60; Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities. 
+        /// </summary>
+        /// <value>* &#x60;V&#x60; Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment * &#x60;I&#x60; Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability * &#x60;D&#x60; Deceased - The death of an employee * &#x60;R&#x60; Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme * &#x60;F&#x60; Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency * &#x60;C&#x60; Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required * &#x60;T&#x60; Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities. </value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum TerminationReasonEnum
+        {
+            /// <summary>
+            /// Enum V for value: V
+            /// </summary>
+            [EnumMember(Value = "V")]
+            V = 1,
+
+            /// <summary>
+            /// Enum I for value: I
+            /// </summary>
+            [EnumMember(Value = "I")]
+            I = 2,
+
+            /// <summary>
+            /// Enum D for value: D
+            /// </summary>
+            [EnumMember(Value = "D")]
+            D = 3,
+
+            /// <summary>
+            /// Enum R for value: R
+            /// </summary>
+            [EnumMember(Value = "R")]
+            R = 4,
+
+            /// <summary>
+            /// Enum F for value: F
+            /// </summary>
+            [EnumMember(Value = "F")]
+            F = 5,
+
+            /// <summary>
+            /// Enum C for value: C
+            /// </summary>
+            [EnumMember(Value = "C")]
+            C = 6,
+
+            /// <summary>
+            /// Enum T for value: T
+            /// </summary>
+            [EnumMember(Value = "T")]
+            T = 7
+
+        }
+
+        /// <summary>
+        /// * &#x60;V&#x60; Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment * &#x60;I&#x60; Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability * &#x60;D&#x60; Deceased - The death of an employee * &#x60;R&#x60; Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme * &#x60;F&#x60; Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency * &#x60;C&#x60; Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required * &#x60;T&#x60; Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities. 
+        /// </summary>
+        /// <value>* &#x60;V&#x60; Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment * &#x60;I&#x60; Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability * &#x60;D&#x60; Deceased - The death of an employee * &#x60;R&#x60; Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme * &#x60;F&#x60; Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency * &#x60;C&#x60; Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required * &#x60;T&#x60; Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities. </value>
+        [DataMember(Name="TerminationReason", EmitDefaultValue=false)]
+        public TerminationReasonEnum TerminationReason { get; set; }
+        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name="Status", EmitDefaultValue=false)]
@@ -311,6 +368,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  EmployeeGroupName: ").Append(EmployeeGroupName).Append("\n");
             sb.Append("  EmployeeID: ").Append(EmployeeID).Append("\n");
             sb.Append("  TerminationDate: ").Append(TerminationDate).Append("\n");
+            sb.Append("  TerminationReason: ").Append(TerminationReason).Append("\n");
             sb.Append("  BankAccounts: ").Append(BankAccounts).Append("\n");
             sb.Append("  PayTemplate: ").Append(PayTemplate).Append("\n");
             sb.Append("  OpeningBalances: ").Append(OpeningBalances).Append("\n");
@@ -460,6 +518,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.TerminationDate.Equals(input.TerminationDate))
                 ) && 
                 (
+                    this.TerminationReason == input.TerminationReason ||
+                    this.TerminationReason.Equals(input.TerminationReason)
+                ) && 
+                (
                     this.BankAccounts == input.BankAccounts ||
                     this.BankAccounts != null &&
                     input.BankAccounts != null &&
@@ -565,6 +627,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.EmployeeID.GetHashCode();
                 if (this.TerminationDate != null)
                     hashCode = hashCode * 59 + this.TerminationDate.GetHashCode();
+                hashCode = hashCode * 59 + this.TerminationReason.GetHashCode();
                 if (this.BankAccounts != null)
                     hashCode = hashCode * 59 + this.BankAccounts.GetHashCode();
                 if (this.PayTemplate != null)

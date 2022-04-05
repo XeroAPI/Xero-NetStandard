@@ -679,7 +679,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum DATELINESTANDARDTIME for value: DATELINESTANDARDTIME
         /// </summary>
         [EnumMember(Value = "DATELINESTANDARDTIME")]
-        DATELINESTANDARDTIME = 108
+        DATELINESTANDARDTIME = 108,
+
+        /// <summary>
+        /// Enum EASTERISLANDSTANDARDTIME for value: EASTERISLANDSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "EASTERISLANDSTANDARDTIME")]
+        EASTERISLANDSTANDARDTIME = 109
 
     }
 

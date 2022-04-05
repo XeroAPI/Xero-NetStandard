@@ -137,52 +137,58 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             CLUBORSOCIETY = 4,
 
             /// <summary>
+            /// Enum INDIVIDUAL for value: INDIVIDUAL
+            /// </summary>
+            [EnumMember(Value = "INDIVIDUAL")]
+            INDIVIDUAL = 5,
+
+            /// <summary>
             /// Enum LOOKTHROUGHCOMPANY for value: LOOK_THROUGH_COMPANY
             /// </summary>
             [EnumMember(Value = "LOOK_THROUGH_COMPANY")]
-            LOOKTHROUGHCOMPANY = 5,
+            LOOKTHROUGHCOMPANY = 6,
 
             /// <summary>
             /// Enum NOTFORPROFIT for value: NOT_FOR_PROFIT
             /// </summary>
             [EnumMember(Value = "NOT_FOR_PROFIT")]
-            NOTFORPROFIT = 6,
+            NOTFORPROFIT = 7,
 
             /// <summary>
             /// Enum PARTNERSHIP for value: PARTNERSHIP
             /// </summary>
             [EnumMember(Value = "PARTNERSHIP")]
-            PARTNERSHIP = 7,
+            PARTNERSHIP = 8,
 
             /// <summary>
             /// Enum SCORPORATION for value: S_CORPORATION
             /// </summary>
             [EnumMember(Value = "S_CORPORATION")]
-            SCORPORATION = 8,
+            SCORPORATION = 9,
 
             /// <summary>
             /// Enum SELFMANAGEDSUPERANNUATIONFUND for value: SELF_MANAGED_SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SELF_MANAGED_SUPERANNUATION_FUND")]
-            SELFMANAGEDSUPERANNUATIONFUND = 9,
+            SELFMANAGEDSUPERANNUATIONFUND = 10,
 
             /// <summary>
             /// Enum SOLETRADER for value: SOLE_TRADER
             /// </summary>
             [EnumMember(Value = "SOLE_TRADER")]
-            SOLETRADER = 10,
+            SOLETRADER = 11,
 
             /// <summary>
             /// Enum SUPERANNUATIONFUND for value: SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SUPERANNUATION_FUND")]
-            SUPERANNUATIONFUND = 11,
+            SUPERANNUATIONFUND = 12,
 
             /// <summary>
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 12
+            TRUST = 13
 
         }
 
@@ -407,52 +413,58 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             CLUBORSOCIETY = 4,
 
             /// <summary>
+            /// Enum INDIVIDUAL for value: INDIVIDUAL
+            /// </summary>
+            [EnumMember(Value = "INDIVIDUAL")]
+            INDIVIDUAL = 5,
+
+            /// <summary>
             /// Enum LOOKTHROUGHCOMPANY for value: LOOK_THROUGH_COMPANY
             /// </summary>
             [EnumMember(Value = "LOOK_THROUGH_COMPANY")]
-            LOOKTHROUGHCOMPANY = 5,
+            LOOKTHROUGHCOMPANY = 6,
 
             /// <summary>
             /// Enum NOTFORPROFIT for value: NOT_FOR_PROFIT
             /// </summary>
             [EnumMember(Value = "NOT_FOR_PROFIT")]
-            NOTFORPROFIT = 6,
+            NOTFORPROFIT = 7,
 
             /// <summary>
             /// Enum PARTNERSHIP for value: PARTNERSHIP
             /// </summary>
             [EnumMember(Value = "PARTNERSHIP")]
-            PARTNERSHIP = 7,
+            PARTNERSHIP = 8,
 
             /// <summary>
             /// Enum SCORPORATION for value: S_CORPORATION
             /// </summary>
             [EnumMember(Value = "S_CORPORATION")]
-            SCORPORATION = 8,
+            SCORPORATION = 9,
 
             /// <summary>
             /// Enum SELFMANAGEDSUPERANNUATIONFUND for value: SELF_MANAGED_SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SELF_MANAGED_SUPERANNUATION_FUND")]
-            SELFMANAGEDSUPERANNUATIONFUND = 9,
+            SELFMANAGEDSUPERANNUATIONFUND = 10,
 
             /// <summary>
             /// Enum SOLETRADER for value: SOLE_TRADER
             /// </summary>
             [EnumMember(Value = "SOLE_TRADER")]
-            SOLETRADER = 10,
+            SOLETRADER = 11,
 
             /// <summary>
             /// Enum SUPERANNUATIONFUND for value: SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SUPERANNUATION_FUND")]
-            SUPERANNUATIONFUND = 11,
+            SUPERANNUATIONFUND = 12,
 
             /// <summary>
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 12
+            TRUST = 13
 
         }
 

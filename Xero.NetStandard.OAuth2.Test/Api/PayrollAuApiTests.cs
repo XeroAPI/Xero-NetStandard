@@ -168,7 +168,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task GetEmployeesTest()
         {
-            string ifModifiedSince = "2020-12-25"; // SDK validates date format
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int>();
@@ -193,7 +193,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task GetLeaveApplicationsTest()
         {
-            string ifModifiedSince = "2020-12-25"; // SDK validates date format
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int>();
@@ -207,7 +207,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task GetPayItemsTest()
         {
-            string ifModifiedSince = "2020-12-25"; // SDK validates date format
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int>();
@@ -232,7 +232,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task GetPayRunsTest()
         {
-            string ifModifiedSince = "2020-12-25"; // SDK validates date format
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int>();
@@ -257,7 +257,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task GetPayrollCalendarsTest()
         {
-            string ifModifiedSince = "2020-12-25"; // SDK validates date format
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int>();
@@ -315,7 +315,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task GetSuperfundsTest()
         {
-            string ifModifiedSince = "2020-12-25"; // SDK validates date format
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int>();
@@ -340,7 +340,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task GetTimesheetsTest()
         {
-            string ifModifiedSince = "2020-12-25"; // SDK validates date format
+            DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
             string where = AutoFaker.Generate<string>();
             string order = AutoFaker.Generate<string>();
             int? page = AutoFaker.Generate<int>();

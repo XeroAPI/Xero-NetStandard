@@ -50,6 +50,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         [DataMember(Name="AllowanceType", EmitDefaultValue=false)]
         public AllowanceType AllowanceType { get; set; }
+        /// <summary>
+        /// Gets or Sets AllowanceCategory
+        /// </summary>
+        [DataMember(Name="AllowanceCategory", EmitDefaultValue=false)]
+        public AllowanceCategory AllowanceCategory { get; set; }
         
         /// <summary>
         /// Name of the earnings rate (max length &#x3D; 100)
@@ -167,6 +172,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  CurrentRecord: ").Append(CurrentRecord).Append("\n");
             sb.Append("  AllowanceType: ").Append(AllowanceType).Append("\n");
+            sb.Append("  AllowanceCategory: ").Append(AllowanceCategory).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -281,6 +287,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 (
                     this.AllowanceType == input.AllowanceType ||
                     this.AllowanceType.Equals(input.AllowanceType)
+                ) && 
+                (
+                    this.AllowanceCategory == input.AllowanceCategory ||
+                    this.AllowanceCategory.Equals(input.AllowanceCategory)
                 );
         }
 
@@ -323,6 +333,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 if (this.CurrentRecord != null)
                     hashCode = hashCode * 59 + this.CurrentRecord.GetHashCode();
                 hashCode = hashCode * 59 + this.AllowanceType.GetHashCode();
+                hashCode = hashCode * 59 + this.AllowanceCategory.GetHashCode();
                 return hashCode;
             }
         }
