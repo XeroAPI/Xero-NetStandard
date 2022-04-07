@@ -798,6 +798,34 @@ await FilesApi.DeleteFileAssociationAsync(accessToken, xeroTenantId, fileIdGuid,
 ---
 ## SDK conventions
 
+## Security (state check & Jwt validation)
+Checking state in OAuth 2.0 flow can prevent CSFR attack. When acccess token and id token is returned, it is also security best practice to validate them. 
+
+Examples of checking state and jwt validation: 
+
+```csharp
+      var clientState = TokenUtilities.GetCurrentState();
+      
+      if (state != clientState) {
+        return Content("Cross site forgery attack detected!");
+      }    
+
+      var client = new XeroClient(XeroConfig.Value);
+      var xeroToken = (XeroOAuth2Token)await client.RequestAccessTokenAsync(code);
+
+      var decodedIdToken = JwtUtils.decode(xeroToken.IdToken);
+
+      if ( !JwtUtils.validateIdToken(xeroToken.IdToken, XeroConfig.Value.ClientId) )
+      {
+        return Content("ID token is not valid");
+      }
+
+      if ( !JwtUtils.validateAccessToken(xeroToken.IdToken) )
+      {
+        return Content("Access token is not valid");
+      }
+```
+
 ### TLS 1.0 deprecation
 As of June 30, 2018, Xero's API will remove support for TLS 1.0.  
 
