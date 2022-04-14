@@ -54,7 +54,7 @@ public static class JwtUtils
       var jwk = new JsonWebKey();
       var jwks = new JsonWebKeyList();
       var validatedJwt = new JwtSecurityToken();
-      var issuer = "http://identity.xero.com";
+      var issuer = "https://identity.xero.com";
       var handler = new JwtSecurityTokenHandler();
 
       using (var client = new HttpClient())
