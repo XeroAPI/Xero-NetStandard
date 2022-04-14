@@ -56,34 +56,64 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             C = 3,
 
             /// <summary>
+            /// Enum F for value: F
+            /// </summary>
+            [EnumMember(Value = "F")]
+            F = 4,
+
+            /// <summary>
             /// Enum H for value: H
             /// </summary>
             [EnumMember(Value = "H")]
-            H = 4,
+            H = 5,
+
+            /// <summary>
+            /// Enum I for value: I
+            /// </summary>
+            [EnumMember(Value = "I")]
+            I = 6,
 
             /// <summary>
             /// Enum J for value: J
             /// </summary>
             [EnumMember(Value = "J")]
-            J = 5,
+            J = 7,
+
+            /// <summary>
+            /// Enum L for value: L
+            /// </summary>
+            [EnumMember(Value = "L")]
+            L = 8,
 
             /// <summary>
             /// Enum M for value: M
             /// </summary>
             [EnumMember(Value = "M")]
-            M = 6,
+            M = 9,
 
             /// <summary>
-            /// Enum Z for value: Z
+            /// Enum S for value: S
             /// </summary>
-            [EnumMember(Value = "Z")]
-            Z = 7,
+            [EnumMember(Value = "S")]
+            S = 10,
+
+            /// <summary>
+            /// Enum V for value: V
+            /// </summary>
+            [EnumMember(Value = "V")]
+            V = 11,
 
             /// <summary>
             /// Enum X for value: X
             /// </summary>
             [EnumMember(Value = "X")]
-            X = 8
+            X = 12,
+
+            /// <summary>
+            /// Enum Z for value: Z
+            /// </summary>
+            [EnumMember(Value = "Z")]
+            Z = 13
 
         }
 
