@@ -10,5 +10,6 @@ namespace Xero.NetStandard.OAuth2.Config
         public Uri CallbackUri { get; set; }
         public string Scope { get; set; }
         public string State { get; set; }
+        public string AcrValues { get; set; }
     }
 }
