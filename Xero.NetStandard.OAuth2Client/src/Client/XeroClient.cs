@@ -26,7 +26,7 @@ namespace Xero.NetStandard.OAuth2.Client
         public XeroClient(XeroConfiguration xeroConfig, HttpClient httpClient)
         {
             xeroConfiguration = xeroConfig;
-            _xeroAuthorizeUri = new RequestUrl("https://login.xero.com/identity/connect/authorize");
+            _xeroAuthorizeUri = new RequestUrl($"{xeroConfiguration.XeroLoginBaseUri}/identity/connect/authorize");
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
@@ -143,7 +143,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             var response = await _httpClient.RequestRefreshTokenAsync(new RefreshTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
+                Address = $"{xeroConfiguration.XeroIdentityBaseUri}/connect/token",
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 RefreshToken = xeroToken.RefreshToken
@@ -171,7 +171,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             var response = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
+                Address = $"{xeroConfiguration.XeroIdentityBaseUri}/connect/token",
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 Scope = xeroConfiguration.Scope
@@ -203,7 +203,7 @@ namespace Xero.NetStandard.OAuth2.Client
         {
             var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
+                Address = $"{xeroConfiguration.XeroIdentityBaseUri}/connect/token",
                 GrantType = "code",
                 Code = code,
                 ClientId = xeroConfiguration.ClientId,
@@ -245,7 +245,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
-                Address = "https://identity.xero.com/connect/token",
+                Address = $"{xeroConfiguration.XeroIdentityBaseUri}/connect/token",
                 GrantType = "code",
                 Code = code,
                 ClientId = xeroConfiguration.ClientId,
@@ -294,7 +294,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>List of Tenants attached to accesstoken</returns>
         public async Task<List<Tenant>> GetConnectionsAsync(IXeroToken xeroToken)
         {
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://api.xero.com/connections"))
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{xeroConfiguration.XeroApiBaseUri}/connections"))
             {
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
 
@@ -318,7 +318,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>List of Tenants attached to accesstoken</returns>
         public async Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant)
         {
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, "https://api.xero.com/connections" + "/" + xeroTenant.id))
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, $"{xeroConfiguration.XeroApiBaseUri}/connections" + "/" + xeroTenant.id))
             {
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
 
@@ -345,7 +345,7 @@ namespace Xero.NetStandard.OAuth2.Client
             }
 
             var response = await _httpClient.RevokeTokenAsync(new TokenRevocationRequest {
-                Address = "https://identity.xero.com/connect/revocation",
+                Address = $"{xeroConfiguration.XeroIdentityBaseUri}/connect/revocation",
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 Token = xeroToken.RefreshToken
