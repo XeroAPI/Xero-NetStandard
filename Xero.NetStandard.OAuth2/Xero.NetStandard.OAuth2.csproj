@@ -16,7 +16,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>Xero.NetStandard.OAuth2</RootNamespace>
-    <Version>3.23.0</Version>
+    <Version>3.25.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Xero.NetStandard.OAuth2.xml</DocumentationFile>
     <PackageLicenseUrl>https://github.com/XeroAPI/Xero-NetStandard/</PackageLicenseUrl>
     <PackageIconUrl>https://en.gravatar.com/userimage/180557955/74b3a957d886bc921b0d1455beed9dab.png</PackageIconUrl>

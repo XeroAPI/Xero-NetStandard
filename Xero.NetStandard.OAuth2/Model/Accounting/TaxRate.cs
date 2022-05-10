@@ -518,7 +518,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum OTHERINPUT for value: OTHERINPUT
             /// </summary>
             [EnumMember(Value = "OTHERINPUT")]
-            OTHERINPUT = 74
+            OTHERINPUT = 74,
+
+            /// <summary>
+            /// Enum BADDEBTRELIEF for value: BADDEBTRELIEF
+            /// </summary>
+            [EnumMember(Value = "BADDEBTRELIEF")]
+            BADDEBTRELIEF = 75,
+
+            /// <summary>
+            /// Enum IGDSINPUT3 for value: IGDSINPUT3
+            /// </summary>
+            [EnumMember(Value = "IGDSINPUT3")]
+            IGDSINPUT3 = 76,
+
+            /// <summary>
+            /// Enum SROVR for value: SROVR
+            /// </summary>
+            [EnumMember(Value = "SROVR")]
+            SROVR = 77,
+
+            /// <summary>
+            /// Enum TOURISTREFUND for value: TOURISTREFUND
+            /// </summary>
+            [EnumMember(Value = "TOURISTREFUND")]
+            TOURISTREFUND = 78,
+
+            /// <summary>
+            /// Enum TXRCN33INPUT for value: TXRCN33INPUT
+            /// </summary>
+            [EnumMember(Value = "TXRCN33INPUT")]
+            TXRCN33INPUT = 79,
+
+            /// <summary>
+            /// Enum TXRCREINPUT for value: TXRCREINPUT
+            /// </summary>
+            [EnumMember(Value = "TXRCREINPUT")]
+            TXRCREINPUT = 80,
+
+            /// <summary>
+            /// Enum TXRCESSINPUT for value: TXRCESSINPUT
+            /// </summary>
+            [EnumMember(Value = "TXRCESSINPUT")]
+            TXRCESSINPUT = 81
 
         }
 

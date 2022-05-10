@@ -545,7 +545,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum NONGSTCASHBOOK for value: NON_GST_CASHBOOK
             /// </summary>
             [EnumMember(Value = "NON_GST_CASHBOOK")]
-            NONGSTCASHBOOK = 11
+            NONGSTCASHBOOK = 11,
+
+            /// <summary>
+            /// Enum ULTIMATE for value: ULTIMATE
+            /// </summary>
+            [EnumMember(Value = "ULTIMATE")]
+            ULTIMATE = 12
 
         }
 
