@@ -62,11 +62,25 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         public DateTime? ImportedDateTimeUtc { get; set; }
 
         /// <summary>
-        /// Import source of statement (STMTIMPORTSRC/MANUAL, STMTIMPORTSRC/CSV, STMTIMPORTSRC/QIF, STMTIMPORTSRC/OFX, XeroApi)
+        /// Indicates the source of the statement data. Either imported from 1) direct bank feed OR 2) manual customer entry or upload. Manual import sources are STMTIMPORTSRC/MANUAL, STMTIMPORTSRC/CSV, STMTIMPORTSRC/OFX, Ofx or STMTIMPORTSRC/QIF. All other import sources are direct and, depending on the direct solution, may contain the name of the financial institution.
         /// </summary>
-        /// <value>Import source of statement (STMTIMPORTSRC/MANUAL, STMTIMPORTSRC/CSV, STMTIMPORTSRC/QIF, STMTIMPORTSRC/OFX, XeroApi)</value>
+        /// <value>Indicates the source of the statement data. Either imported from 1) direct bank feed OR 2) manual customer entry or upload. Manual import sources are STMTIMPORTSRC/MANUAL, STMTIMPORTSRC/CSV, STMTIMPORTSRC/OFX, Ofx or STMTIMPORTSRC/QIF. All other import sources are direct and, depending on the direct solution, may contain the name of the financial institution.</value>
         [DataMember(Name="importSource", EmitDefaultValue=false)]
         public string ImportSource { get; set; }
+
+        /// <summary>
+        /// Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.
+        /// </summary>
+        /// <value>Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.</value>
+        [DataMember(Name="startBalance", EmitDefaultValue=false)]
+        public decimal? StartBalance { get; set; }
+
+        /// <summary>
+        /// Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.
+        /// </summary>
+        /// <value>Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.</value>
+        [DataMember(Name="endBalance", EmitDefaultValue=false)]
+        public decimal? EndBalance { get; set; }
 
         /// <summary>
         /// List of statement lines
@@ -88,6 +102,8 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  ImportedDateTimeUtc: ").Append(ImportedDateTimeUtc).Append("\n");
             sb.Append("  ImportSource: ").Append(ImportSource).Append("\n");
+            sb.Append("  StartBalance: ").Append(StartBalance).Append("\n");
+            sb.Append("  EndBalance: ").Append(EndBalance).Append("\n");
             sb.Append("  StatementLines: ").Append(StatementLines).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -149,6 +165,16 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     this.ImportSource.Equals(input.ImportSource))
                 ) && 
                 (
+                    this.StartBalance == input.StartBalance ||
+                    (this.StartBalance != null &&
+                    this.StartBalance.Equals(input.StartBalance))
+                ) && 
+                (
+                    this.EndBalance == input.EndBalance ||
+                    (this.EndBalance != null &&
+                    this.EndBalance.Equals(input.EndBalance))
+                ) && 
+                (
                     this.StatementLines == input.StatementLines ||
                     this.StatementLines != null &&
                     input.StatementLines != null &&
@@ -175,6 +201,10 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     hashCode = hashCode * 59 + this.ImportedDateTimeUtc.GetHashCode();
                 if (this.ImportSource != null)
                     hashCode = hashCode * 59 + this.ImportSource.GetHashCode();
+                if (this.StartBalance != null)
+                    hashCode = hashCode * 59 + this.StartBalance.GetHashCode();
+                if (this.EndBalance != null)
+                    hashCode = hashCode * 59 + this.EndBalance.GetHashCode();
                 if (this.StatementLines != null)
                     hashCode = hashCode * 59 + this.StatementLines.GetHashCode();
                 return hashCode;
