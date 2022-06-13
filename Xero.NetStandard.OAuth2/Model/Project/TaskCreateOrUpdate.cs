@@ -57,9 +57,9 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         public Amount Rate { get; set; }
 
         /// <summary>
-        /// Estimated time to perform the task. EstimateMinutes has to be greater than 0 if provided.
+        /// An estimated time to perform the task
         /// </summary>
-        /// <value>Estimated time to perform the task. EstimateMinutes has to be greater than 0 if provided.</value>
+        /// <value>An estimated time to perform the task</value>
         [DataMember(Name="estimateMinutes", EmitDefaultValue=false)]
         public int? EstimateMinutes { get; set; }
 

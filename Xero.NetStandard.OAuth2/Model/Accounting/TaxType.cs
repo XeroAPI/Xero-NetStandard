@@ -427,7 +427,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum TXRCESSINPUT for value: TXRCESSINPUT
         /// </summary>
         [EnumMember(Value = "TXRCESSINPUT")]
-        TXRCESSINPUT = 66
+        TXRCESSINPUT = 66,
+
+        /// <summary>
+        /// Enum TXRCTSINPUT for value: TXRCTSINPUT
+        /// </summary>
+        [EnumMember(Value = "TXRCTSINPUT")]
+        TXRCTSINPUT = 67
 
     }
 
