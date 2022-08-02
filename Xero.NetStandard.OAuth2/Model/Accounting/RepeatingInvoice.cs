@@ -170,9 +170,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public Guid? ID { get; set; }
 
         /// <summary>
-        /// boolean to indicate if an invoice has an attachment
+        /// Boolean to indicate if an invoice has an attachment
         /// </summary>
-        /// <value>boolean to indicate if an invoice has an attachment</value>
+        /// <value>Boolean to indicate if an invoice has an attachment</value>
         [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
         public bool? HasAttachments { get; private set; }
 
@@ -182,6 +182,34 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <value>Displays array of attachments from the API</value>
         [DataMember(Name="Attachments", EmitDefaultValue=false)]
         public List<Attachment> Attachments { get; set; }
+
+        /// <summary>
+        /// Boolean to indicate whether the invoice has been approved for sending
+        /// </summary>
+        /// <value>Boolean to indicate whether the invoice has been approved for sending</value>
+        [DataMember(Name="ApprovedForSending", EmitDefaultValue=false)]
+        public bool? ApprovedForSending { get; set; }
+
+        /// <summary>
+        /// Boolean to indicate whether a copy is sent to sender&#39;s email
+        /// </summary>
+        /// <value>Boolean to indicate whether a copy is sent to sender&#39;s email</value>
+        [DataMember(Name="SendCopy", EmitDefaultValue=false)]
+        public bool? SendCopy { get; set; }
+
+        /// <summary>
+        /// Boolean to indicate whether the invoice in the Xero app displays as \&quot;sent\&quot;
+        /// </summary>
+        /// <value>Boolean to indicate whether the invoice in the Xero app displays as \&quot;sent\&quot;</value>
+        [DataMember(Name="MarkAsSent", EmitDefaultValue=false)]
+        public bool? MarkAsSent { get; set; }
+
+        /// <summary>
+        /// Boolean to indicate whether to include PDF attachment
+        /// </summary>
+        /// <value>Boolean to indicate whether to include PDF attachment</value>
+        [DataMember(Name="IncludePDF", EmitDefaultValue=false)]
+        public bool? IncludePDF { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -207,6 +235,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  ID: ").Append(ID).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
+            sb.Append("  ApprovedForSending: ").Append(ApprovedForSending).Append("\n");
+            sb.Append("  SendCopy: ").Append(SendCopy).Append("\n");
+            sb.Append("  MarkAsSent: ").Append(MarkAsSent).Append("\n");
+            sb.Append("  IncludePDF: ").Append(IncludePDF).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -318,6 +350,26 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Attachments != null &&
                     input.Attachments != null &&
                     this.Attachments.SequenceEqual(input.Attachments)
+                ) && 
+                (
+                    this.ApprovedForSending == input.ApprovedForSending ||
+                    (this.ApprovedForSending != null &&
+                    this.ApprovedForSending.Equals(input.ApprovedForSending))
+                ) && 
+                (
+                    this.SendCopy == input.SendCopy ||
+                    (this.SendCopy != null &&
+                    this.SendCopy.Equals(input.SendCopy))
+                ) && 
+                (
+                    this.MarkAsSent == input.MarkAsSent ||
+                    (this.MarkAsSent != null &&
+                    this.MarkAsSent.Equals(input.MarkAsSent))
+                ) && 
+                (
+                    this.IncludePDF == input.IncludePDF ||
+                    (this.IncludePDF != null &&
+                    this.IncludePDF.Equals(input.IncludePDF))
                 );
         }
 
@@ -358,6 +410,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
                 if (this.Attachments != null)
                     hashCode = hashCode * 59 + this.Attachments.GetHashCode();
+                if (this.ApprovedForSending != null)
+                    hashCode = hashCode * 59 + this.ApprovedForSending.GetHashCode();
+                if (this.SendCopy != null)
+                    hashCode = hashCode * 59 + this.SendCopy.GetHashCode();
+                if (this.MarkAsSent != null)
+                    hashCode = hashCode * 59 + this.MarkAsSent.GetHashCode();
+                if (this.IncludePDF != null)
+                    hashCode = hashCode * 59 + this.IncludePDF.GetHashCode();
                 return hashCode;
             }
         }
