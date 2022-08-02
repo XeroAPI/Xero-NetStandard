@@ -102,7 +102,19 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum DIRECTORSFEES for value: DIRECTORSFEES
         /// </summary>
         [EnumMember(Value = "DIRECTORSFEES")]
-        DIRECTORSFEES = 12
+        DIRECTORSFEES = 12,
+
+        /// <summary>
+        /// Enum PAIDPARENTALLEAVE for value: PAIDPARENTALLEAVE
+        /// </summary>
+        [EnumMember(Value = "PAIDPARENTALLEAVE")]
+        PAIDPARENTALLEAVE = 13,
+
+        /// <summary>
+        /// Enum WORKERSCOMPENSATION for value: WORKERSCOMPENSATION
+        /// </summary>
+        [EnumMember(Value = "WORKERSCOMPENSATION")]
+        WORKERSCOMPENSATION = 14
 
     }
 

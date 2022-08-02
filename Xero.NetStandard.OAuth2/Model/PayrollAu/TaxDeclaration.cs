@@ -131,6 +131,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public bool? HasStudentStartupLoan { get; set; }
 
         /// <summary>
+        /// If the employee has any of the following loans or debts: Higher Education Loan Program (HELP/HECS), VET Student Loan (VSL), Financial Supplement (FS), Student Start-up Loan (SSL), or Trade Support Loan (TSL)
+        /// </summary>
+        /// <value>If the employee has any of the following loans or debts: Higher Education Loan Program (HELP/HECS), VET Student Loan (VSL), Financial Supplement (FS), Student Start-up Loan (SSL), or Trade Support Loan (TSL)</value>
+        [DataMember(Name="HasLoanOrStudentDebt", EmitDefaultValue=false)]
+        public bool? HasLoanOrStudentDebt { get; set; }
+
+        /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
@@ -160,6 +167,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  EligibleToReceiveLeaveLoading: ").Append(EligibleToReceiveLeaveLoading).Append("\n");
             sb.Append("  ApprovedWithholdingVariationPercentage: ").Append(ApprovedWithholdingVariationPercentage).Append("\n");
             sb.Append("  HasStudentStartupLoan: ").Append(HasStudentStartupLoan).Append("\n");
+            sb.Append("  HasLoanOrStudentDebt: ").Append(HasLoanOrStudentDebt).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -268,6 +276,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.HasStudentStartupLoan.Equals(input.HasStudentStartupLoan))
                 ) && 
                 (
+                    this.HasLoanOrStudentDebt == input.HasLoanOrStudentDebt ||
+                    (this.HasLoanOrStudentDebt != null &&
+                    this.HasLoanOrStudentDebt.Equals(input.HasLoanOrStudentDebt))
+                ) && 
+                (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
@@ -310,6 +323,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.ApprovedWithholdingVariationPercentage.GetHashCode();
                 if (this.HasStudentStartupLoan != null)
                     hashCode = hashCode * 59 + this.HasStudentStartupLoan.GetHashCode();
+                if (this.HasLoanOrStudentDebt != null)
+                    hashCode = hashCode * 59 + this.HasLoanOrStudentDebt.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 return hashCode;
