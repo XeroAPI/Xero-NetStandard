@@ -98,6 +98,13 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
         public Product Product { get; set; }
 
         /// <summary>
+        /// The quantity of the item. For a fixed product, it is 1. For a per-seat product, it is a positive integer. For metered products, it is always null.
+        /// </summary>
+        /// <value>The quantity of the item. For a fixed product, it is 1. For a per-seat product, it is a positive integer. For metered products, it is always null.</value>
+        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        public int? Quantity { get; set; }
+
+        /// <summary>
         /// Date the subscription started, or will start. Note: this could be in the future for downgrades or reduced number of seats that haven&#39;t taken effect yet. 
         /// </summary>
         /// <value>Date the subscription started, or will start. Note: this could be in the future for downgrades or reduced number of seats that haven&#39;t taken effect yet. </value>
@@ -123,6 +130,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  TestMode: ").Append(TestMode).Append("\n");
@@ -181,6 +189,11 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                     this.Product.Equals(input.Product))
                 ) && 
                 (
+                    this.Quantity == input.Quantity ||
+                    (this.Quantity != null &&
+                    this.Quantity.Equals(input.Quantity))
+                ) && 
+                (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
@@ -213,6 +226,8 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
                     hashCode = hashCode * 59 + this.Price.GetHashCode();
                 if (this.Product != null)
                     hashCode = hashCode * 59 + this.Product.GetHashCode();
+                if (this.Quantity != null)
+                    hashCode = hashCode * 59 + this.Quantity.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
                 hashCode = hashCode * 59 + this.Status.GetHashCode();

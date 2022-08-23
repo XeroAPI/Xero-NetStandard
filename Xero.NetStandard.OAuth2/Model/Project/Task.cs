@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         /// </summary>
         /// <value>An estimated time to perform the task</value>
         [DataMember(Name="estimateMinutes", EmitDefaultValue=false)]
-        public double? EstimateMinutes { get; set; }
+        public int? EstimateMinutes { get; set; }
 
         /// <summary>
         /// Identifier of the project task belongs to.
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         /// </summary>
         /// <value>Total minutes which have been logged against the task. Logged by assigning a time entry to a task</value>
         [DataMember(Name="totalMinutes", EmitDefaultValue=false)]
-        public double? TotalMinutes { get; set; }
+        public int? TotalMinutes { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
@@ -121,28 +121,28 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         /// </summary>
         /// <value>Minutes on this task which have been invoiced.</value>
         [DataMember(Name="minutesInvoiced", EmitDefaultValue=false)]
-        public double? MinutesInvoiced { get; set; }
+        public int? MinutesInvoiced { get; set; }
 
         /// <summary>
         /// Minutes on this task which have not been invoiced.
         /// </summary>
         /// <value>Minutes on this task which have not been invoiced.</value>
         [DataMember(Name="minutesToBeInvoiced", EmitDefaultValue=false)]
-        public double? MinutesToBeInvoiced { get; set; }
+        public int? MinutesToBeInvoiced { get; set; }
 
         /// <summary>
         /// Minutes logged against this task if its charge type is &#x60;FIXED&#x60;.
         /// </summary>
         /// <value>Minutes logged against this task if its charge type is &#x60;FIXED&#x60;.</value>
         [DataMember(Name="fixedMinutes", EmitDefaultValue=false)]
-        public double? FixedMinutes { get; set; }
+        public int? FixedMinutes { get; set; }
 
         /// <summary>
         /// Minutes logged against this task if its charge type is &#x60;NON_CHARGEABLE&#x60;.
         /// </summary>
         /// <value>Minutes logged against this task if its charge type is &#x60;NON_CHARGEABLE&#x60;.</value>
         [DataMember(Name="nonChargeableMinutes", EmitDefaultValue=false)]
-        public double? NonChargeableMinutes { get; set; }
+        public int? NonChargeableMinutes { get; set; }
 
         /// <summary>
         /// Gets or Sets AmountToBeInvoiced

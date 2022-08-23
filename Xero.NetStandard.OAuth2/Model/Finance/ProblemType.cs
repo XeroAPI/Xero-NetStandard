@@ -39,28 +39,58 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         NotSet = 1,
 
         /// <summary>
-        /// Enum InvalidRequest for value: invalid-request
+        /// Enum BankAccountNotFound for value: bank-account-not-found
         /// </summary>
-        [EnumMember(Value = "invalid-request")]
-        InvalidRequest = 2,
-
-        /// <summary>
-        /// Enum InvalidApplication for value: invalid-application
-        /// </summary>
-        [EnumMember(Value = "invalid-application")]
-        InvalidApplication = 3,
-
-        /// <summary>
-        /// Enum ServiceUnavailable for value: service-unavailable
-        /// </summary>
-        [EnumMember(Value = "service-unavailable")]
-        ServiceUnavailable = 4,
+        [EnumMember(Value = "bank-account-not-found")]
+        BankAccountNotFound = 2,
 
         /// <summary>
         /// Enum InternalError for value: internal-error
         /// </summary>
         [EnumMember(Value = "internal-error")]
-        InternalError = 5
+        InternalError = 3,
+
+        /// <summary>
+        /// Enum InvalidApplication for value: invalid-application
+        /// </summary>
+        [EnumMember(Value = "invalid-application")]
+        InvalidApplication = 4,
+
+        /// <summary>
+        /// Enum InvalidRequest for value: invalid-request
+        /// </summary>
+        [EnumMember(Value = "invalid-request")]
+        InvalidRequest = 5,
+
+        /// <summary>
+        /// Enum OrganisationNotFound for value: organisation-not-found
+        /// </summary>
+        [EnumMember(Value = "organisation-not-found")]
+        OrganisationNotFound = 6,
+
+        /// <summary>
+        /// Enum OrganisationOffline for value: organisation-offline
+        /// </summary>
+        [EnumMember(Value = "organisation-offline")]
+        OrganisationOffline = 7,
+
+        /// <summary>
+        /// Enum RequestTimeout for value: request-timeout
+        /// </summary>
+        [EnumMember(Value = "request-timeout")]
+        RequestTimeout = 8,
+
+        /// <summary>
+        /// Enum ServiceUnavailable for value: service-unavailable
+        /// </summary>
+        [EnumMember(Value = "service-unavailable")]
+        ServiceUnavailable = 9,
+
+        /// <summary>
+        /// Enum Unauthorized for value: unauthorized
+        /// </summary>
+        [EnumMember(Value = "unauthorized")]
+        Unauthorized = 10
 
     }
 
