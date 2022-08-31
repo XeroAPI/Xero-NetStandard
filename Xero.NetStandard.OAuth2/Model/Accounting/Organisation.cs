@@ -551,7 +551,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum ULTIMATE for value: ULTIMATE
             /// </summary>
             [EnumMember(Value = "ULTIMATE")]
-            ULTIMATE = 12
+            ULTIMATE = 12,
+
+            /// <summary>
+            /// Enum LITE for value: LITE
+            /// </summary>
+            [EnumMember(Value = "LITE")]
+            LITE = 13
 
         }
 

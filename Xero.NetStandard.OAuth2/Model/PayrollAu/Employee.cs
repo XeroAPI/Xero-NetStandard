@@ -31,9 +31,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     public partial class Employee :  IEquatable<Employee>, IValidatableObject
     {
         /// <summary>
-        /// The employee’s gender. See Employee Gender
+        /// The employee’s gender. See Employee Gender
         /// </summary>
-        /// <value>The employee’s gender. See Employee Gender</value>
+        /// <value>The employee’s gender. See Employee Gender</value>
         [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum GenderEnum
         {
@@ -64,9 +64,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         }
 
         /// <summary>
-        /// The employee’s gender. See Employee Gender
+        /// The employee’s gender. See Employee Gender
         /// </summary>
-        /// <value>The employee’s gender. See Employee Gender</value>
+        /// <value>The employee’s gender. See Employee Gender</value>
         [DataMember(Name="Gender", EmitDefaultValue=false)]
         public GenderEnum Gender { get; set; }
         /// <summary>
