@@ -566,7 +566,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TXRCTSINPUT for value: TXRCTSINPUT
             /// </summary>
             [EnumMember(Value = "TXRCTSINPUT")]
-            TXRCTSINPUT = 82
+            TXRCTSINPUT = 82,
+
+            /// <summary>
+            /// Enum CAPEXINPUT for value: CAPEXINPUT
+            /// </summary>
+            [EnumMember(Value = "CAPEXINPUT")]
+            CAPEXINPUT = 83,
+
+            /// <summary>
+            /// Enum UNDEFINED for value: UNDEFINED
+            /// </summary>
+            [EnumMember(Value = "UNDEFINED")]
+            UNDEFINED = 84,
+
+            /// <summary>
+            /// Enum CAPEXOUTPUT for value: CAPEXOUTPUT
+            /// </summary>
+            [EnumMember(Value = "CAPEXOUTPUT")]
+            CAPEXOUTPUT = 85,
+
+            /// <summary>
+            /// Enum ZEROEXPOUTPUT for value: ZEROEXPOUTPUT
+            /// </summary>
+            [EnumMember(Value = "ZEROEXPOUTPUT")]
+            ZEROEXPOUTPUT = 86,
+
+            /// <summary>
+            /// Enum GOODSIMPORT for value: GOODSIMPORT
+            /// </summary>
+            [EnumMember(Value = "GOODSIMPORT")]
+            GOODSIMPORT = 87,
+
+            /// <summary>
+            /// Enum NONEINPUT for value: NONEINPUT
+            /// </summary>
+            [EnumMember(Value = "NONEINPUT")]
+            NONEINPUT = 88,
+
+            /// <summary>
+            /// Enum NOTREPORTED for value: NOTREPORTED
+            /// </summary>
+            [EnumMember(Value = "NOTREPORTED")]
+            NOTREPORTED = 89
 
         }
 

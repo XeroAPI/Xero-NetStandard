@@ -341,9 +341,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string Description { get; set; }
 
         /// <summary>
-        /// The tax type from TaxRates
+        /// The tax type from taxRates
         /// </summary>
-        /// <value>The tax type from TaxRates</value>
+        /// <value>The tax type from taxRates</value>
         [DataMember(Name="TaxType", EmitDefaultValue=false)]
         public string TaxType { get; set; }
 
