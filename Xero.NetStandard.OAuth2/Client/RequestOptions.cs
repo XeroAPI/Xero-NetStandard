@@ -49,11 +49,6 @@ namespace Xero.NetStandard.OAuth2.Client
         public Dictionary<String, Stream> FileParameters { get; set; }
 
         /// <summary>
-        /// Cookies to be sent along with the request.
-        /// </summary>
-        public List<Cookie> Cookies { get; set; }
-
-        /// <summary>
         /// Any data associated with a request body.
         /// </summary>
         public Object Data { get; set; }
@@ -68,7 +63,6 @@ namespace Xero.NetStandard.OAuth2.Client
             HeaderParameters = new Multimap<string, string>();
             FormParameters = new Dictionary<string, string>();
             FileParameters = new Dictionary<String, Stream>();
-            Cookies = new List<Cookie>();
         }
     }
 }
