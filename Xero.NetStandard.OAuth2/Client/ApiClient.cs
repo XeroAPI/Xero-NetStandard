@@ -493,11 +493,14 @@ namespace Xero.NetStandard.OAuth2.Client
 
         private async Task<ApiResponse<T>> Exec<T>(RestRequest req, IReadableConfiguration configuration)
         {
-            RestClientOptions clientOptions = new RestClientOptions(_baseUrl)
+            RestClient client = new RestClient(_baseUrl);
+
+            client.ClearHandlers();
+            var existingDeserializer = req.JsonSerializer as IDeserializer;
+            if (existingDeserializer != null)
             {
                 MaxTimeout = configuration.Timeout
             };
-
             if (configuration.UserAgent != null)
             {
                 clientOptions.UserAgent = configuration.UserAgent;
