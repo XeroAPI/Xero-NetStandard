@@ -46,10 +46,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         LONGSERVICELEAVE = 2,
 
         /// <summary>
-        /// Enum PERSONALCARERSLEAVE for value: PERSONALCARERSLEAVE
+        /// Enum PERSONALSICKCARERSLEAVE for value: PERSONALSICKCARERSLEAVE
         /// </summary>
-        [EnumMember(Value = "PERSONALCARERSLEAVE")]
-        PERSONALCARERSLEAVE = 3,
+        [EnumMember(Value = "PERSONALSICKCARERSLEAVE")]
+        PERSONALSICKCARERSLEAVE = 3,
 
         /// <summary>
         /// Enum ROSTEREDDAYOFF for value: ROSTEREDDAYOFF
