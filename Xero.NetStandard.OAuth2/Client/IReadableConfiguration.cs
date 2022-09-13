@@ -9,6 +9,7 @@
 
 
 using System.Collections.Generic;
+using System.Net;
 
 namespace Xero.NetStandard.OAuth2.Client
 {
@@ -89,5 +90,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>
         /// <returns>API key with prefix.</returns>
         string GetApiKeyWithPrefix(string apiKeyIdentifier);
+
+        /// <summary>
+        /// Cookies to be sent along with the request.
+        /// </summary>
+        List<Cookie> Cookies { get; set; }
     }
 }
