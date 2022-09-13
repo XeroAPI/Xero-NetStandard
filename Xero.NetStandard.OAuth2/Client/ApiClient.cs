@@ -177,7 +177,7 @@ namespace Xero.NetStandard.OAuth2.Client
             get { return _contentType; }
             set { throw new InvalidOperationException("Not allowed to set content type."); }
         }
-
+        
         public string Serialize(Parameter parameter)
         {
             return Serialize(parameter.Value);
@@ -335,7 +335,7 @@ namespace Xero.NetStandard.OAuth2.Client
             if (path == null) throw new ArgumentNullException("path");
             if (options == null) throw new ArgumentNullException("options");
             if (configuration == null) throw new ArgumentNullException("configuration");
-
+            
             RestRequest request = new RestRequest(path, Method(method))
             {
                 Timeout = configuration.Timeout
@@ -497,7 +497,6 @@ namespace Xero.NetStandard.OAuth2.Client
             {
                 MaxTimeout = configuration.Timeout
             };
-
             if (configuration.UserAgent != null)
             {
                 clientOptions.UserAgent = configuration.UserAgent;
@@ -520,7 +519,6 @@ namespace Xero.NetStandard.OAuth2.Client
                     client.CookieContainer.Add(new Cookie(cookie.Name, cookie.Value));
                 }
             }
-
 
             InterceptRequest(req);
             var response = await client.ExecuteAsync<T>(req);
