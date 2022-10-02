@@ -25,48 +25,30 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.PayrollAu
 {
     /// <summary>
-    /// Defines EmploymentBasis
+    /// Defines WorkCondition
     /// </summary>
     
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
-    public enum EmploymentBasis
+    public enum WorkCondition
     {
         /// <summary>
-        /// Enum FULLTIME for value: FULLTIME
+        /// Enum PROMOTIONAL for value: PROMOTIONAL
         /// </summary>
-        [EnumMember(Value = "FULLTIME")]
-        FULLTIME = 1,
+        [EnumMember(Value = "PROMOTIONAL")]
+        PROMOTIONAL = 1,
 
         /// <summary>
-        /// Enum PARTTIME for value: PARTTIME
+        /// Enum THREELESSPERFORMANCESPERWEEK for value: THREELESSPERFORMANCESPERWEEK
         /// </summary>
-        [EnumMember(Value = "PARTTIME")]
-        PARTTIME = 2,
+        [EnumMember(Value = "THREELESSPERFORMANCESPERWEEK")]
+        THREELESSPERFORMANCESPERWEEK = 2,
 
         /// <summary>
-        /// Enum CASUAL for value: CASUAL
+        /// Enum NONE for value: NONE
         /// </summary>
-        [EnumMember(Value = "CASUAL")]
-        CASUAL = 3,
-
-        /// <summary>
-        /// Enum LABOURHIRE for value: LABOURHIRE
-        /// </summary>
-        [EnumMember(Value = "LABOURHIRE")]
-        LABOURHIRE = 4,
-
-        /// <summary>
-        /// Enum SUPERINCOMESTREAM for value: SUPERINCOMESTREAM
-        /// </summary>
-        [EnumMember(Value = "SUPERINCOMESTREAM")]
-        SUPERINCOMESTREAM = 5,
-
-        /// <summary>
-        /// Enum NONEMPLOYEE for value: NONEMPLOYEE
-        /// </summary>
-        [EnumMember(Value = "NONEMPLOYEE")]
-        NONEMPLOYEE = 6
+        [EnumMember(Value = "NONE")]
+        NONE = 3
 
     }
 

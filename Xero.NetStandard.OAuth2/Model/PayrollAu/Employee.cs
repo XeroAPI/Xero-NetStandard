@@ -127,6 +127,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         [DataMember(Name="TerminationReason", EmitDefaultValue=false)]
         public TerminationReasonEnum TerminationReason { get; set; }
         /// <summary>
+        /// Gets or Sets IncomeType
+        /// </summary>
+        [DataMember(Name="IncomeType", EmitDefaultValue=false)]
+        public IncomeType IncomeType { get; set; }
+        /// <summary>
+        /// Gets or Sets EmploymentType
+        /// </summary>
+        [DataMember(Name="EmploymentType", EmitDefaultValue=false)]
+        public EmploymentType EmploymentType { get; set; }
+        /// <summary>
+        /// Gets or Sets CountryOfResidence
+        /// </summary>
+        [DataMember(Name="CountryOfResidence", EmitDefaultValue=false)]
+        public CountryOfResidence CountryOfResidence { get; set; }
+        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name="Status", EmitDefaultValue=false)]
@@ -308,6 +323,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public TaxDeclaration TaxDeclaration { get; set; }
 
         /// <summary>
+        /// Indicates if the employee has been updated for STP Phase 2 compliance. Doesn&#39;t indicate that the employee is payable.
+        /// </summary>
+        /// <value>Indicates if the employee has been updated for STP Phase 2 compliance. Doesn&#39;t indicate that the employee is payable.</value>
+        [DataMember(Name="IsSTP2Qualified", EmitDefaultValue=false)]
+        public bool? IsSTP2Qualified { get; set; }
+
+        /// <summary>
         /// Gets or Sets LeaveBalances
         /// </summary>
         [DataMember(Name="LeaveBalances", EmitDefaultValue=false)]
@@ -373,6 +395,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  PayTemplate: ").Append(PayTemplate).Append("\n");
             sb.Append("  OpeningBalances: ").Append(OpeningBalances).Append("\n");
             sb.Append("  TaxDeclaration: ").Append(TaxDeclaration).Append("\n");
+            sb.Append("  IncomeType: ").Append(IncomeType).Append("\n");
+            sb.Append("  EmploymentType: ").Append(EmploymentType).Append("\n");
+            sb.Append("  CountryOfResidence: ").Append(CountryOfResidence).Append("\n");
+            sb.Append("  IsSTP2Qualified: ").Append(IsSTP2Qualified).Append("\n");
             sb.Append("  LeaveBalances: ").Append(LeaveBalances).Append("\n");
             sb.Append("  LeaveLines: ").Append(LeaveLines).Append("\n");
             sb.Append("  SuperMemberships: ").Append(SuperMemberships).Append("\n");
@@ -543,6 +569,23 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.TaxDeclaration.Equals(input.TaxDeclaration))
                 ) && 
                 (
+                    this.IncomeType == input.IncomeType ||
+                    this.IncomeType.Equals(input.IncomeType)
+                ) && 
+                (
+                    this.EmploymentType == input.EmploymentType ||
+                    this.EmploymentType.Equals(input.EmploymentType)
+                ) && 
+                (
+                    this.CountryOfResidence == input.CountryOfResidence ||
+                    this.CountryOfResidence.Equals(input.CountryOfResidence)
+                ) && 
+                (
+                    this.IsSTP2Qualified == input.IsSTP2Qualified ||
+                    (this.IsSTP2Qualified != null &&
+                    this.IsSTP2Qualified.Equals(input.IsSTP2Qualified))
+                ) && 
+                (
                     this.LeaveBalances == input.LeaveBalances ||
                     this.LeaveBalances != null &&
                     input.LeaveBalances != null &&
@@ -636,6 +679,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.OpeningBalances.GetHashCode();
                 if (this.TaxDeclaration != null)
                     hashCode = hashCode * 59 + this.TaxDeclaration.GetHashCode();
+                hashCode = hashCode * 59 + this.IncomeType.GetHashCode();
+                hashCode = hashCode * 59 + this.EmploymentType.GetHashCode();
+                hashCode = hashCode * 59 + this.CountryOfResidence.GetHashCode();
+                if (this.IsSTP2Qualified != null)
+                    hashCode = hashCode * 59 + this.IsSTP2Qualified.GetHashCode();
                 if (this.LeaveBalances != null)
                     hashCode = hashCode * 59 + this.LeaveBalances.GetHashCode();
                 if (this.LeaveLines != null)

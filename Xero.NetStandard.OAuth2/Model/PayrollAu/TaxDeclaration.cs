@@ -45,6 +45,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         [DataMember(Name="ResidencyStatus", EmitDefaultValue=false)]
         public ResidencyStatus ResidencyStatus { get; set; }
+        /// <summary>
+        /// Gets or Sets TaxScaleType
+        /// </summary>
+        [DataMember(Name="TaxScaleType", EmitDefaultValue=false)]
+        public TaxScaleType TaxScaleType { get; set; }
+        /// <summary>
+        /// Gets or Sets WorkCondition
+        /// </summary>
+        [DataMember(Name="WorkCondition", EmitDefaultValue=false)]
+        public WorkCondition WorkCondition { get; set; }
+        /// <summary>
+        /// Gets or Sets SeniorMaritalStatus
+        /// </summary>
+        [DataMember(Name="SeniorMaritalStatus", EmitDefaultValue=false)]
+        public SeniorMaritalStatus SeniorMaritalStatus { get; set; }
         
         /// <summary>
         /// Address line 1 for employee home address
@@ -59,6 +74,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// <value>The tax file number e.g 123123123.</value>
         [DataMember(Name="TaxFileNumber", EmitDefaultValue=false)]
         public string TaxFileNumber { get; set; }
+
+        /// <summary>
+        /// 11-digit Australian Business Number e.g 21006819692 or an empty string (\&quot;\&quot;) to unset a previously set value. Only applicable, and mandatory if income type is NONEMPLOYEE.
+        /// </summary>
+        /// <value>11-digit Australian Business Number e.g 21006819692 or an empty string (\&quot;\&quot;) to unset a previously set value. Only applicable, and mandatory if income type is NONEMPLOYEE.</value>
+        [DataMember(Name="ABN", EmitDefaultValue=false)]
+        public string ABN { get; set; }
 
         /// <summary>
         /// If the employee is Australian resident for tax purposes. e.g true or false
@@ -156,8 +178,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  EmploymentBasis: ").Append(EmploymentBasis).Append("\n");
             sb.Append("  TFNExemptionType: ").Append(TFNExemptionType).Append("\n");
             sb.Append("  TaxFileNumber: ").Append(TaxFileNumber).Append("\n");
+            sb.Append("  ABN: ").Append(ABN).Append("\n");
             sb.Append("  AustralianResidentForTaxPurposes: ").Append(AustralianResidentForTaxPurposes).Append("\n");
             sb.Append("  ResidencyStatus: ").Append(ResidencyStatus).Append("\n");
+            sb.Append("  TaxScaleType: ").Append(TaxScaleType).Append("\n");
+            sb.Append("  WorkCondition: ").Append(WorkCondition).Append("\n");
+            sb.Append("  SeniorMaritalStatus: ").Append(SeniorMaritalStatus).Append("\n");
             sb.Append("  TaxFreeThresholdClaimed: ").Append(TaxFreeThresholdClaimed).Append("\n");
             sb.Append("  TaxOffsetEstimatedAmount: ").Append(TaxOffsetEstimatedAmount).Append("\n");
             sb.Append("  HasHELPDebt: ").Append(HasHELPDebt).Append("\n");
@@ -222,6 +248,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.TaxFileNumber.Equals(input.TaxFileNumber))
                 ) && 
                 (
+                    this.ABN == input.ABN ||
+                    (this.ABN != null &&
+                    this.ABN.Equals(input.ABN))
+                ) && 
+                (
                     this.AustralianResidentForTaxPurposes == input.AustralianResidentForTaxPurposes ||
                     (this.AustralianResidentForTaxPurposes != null &&
                     this.AustralianResidentForTaxPurposes.Equals(input.AustralianResidentForTaxPurposes))
@@ -229,6 +260,18 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 (
                     this.ResidencyStatus == input.ResidencyStatus ||
                     this.ResidencyStatus.Equals(input.ResidencyStatus)
+                ) && 
+                (
+                    this.TaxScaleType == input.TaxScaleType ||
+                    this.TaxScaleType.Equals(input.TaxScaleType)
+                ) && 
+                (
+                    this.WorkCondition == input.WorkCondition ||
+                    this.WorkCondition.Equals(input.WorkCondition)
+                ) && 
+                (
+                    this.SeniorMaritalStatus == input.SeniorMaritalStatus ||
+                    this.SeniorMaritalStatus.Equals(input.SeniorMaritalStatus)
                 ) && 
                 (
                     this.TaxFreeThresholdClaimed == input.TaxFreeThresholdClaimed ||
@@ -302,9 +345,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 hashCode = hashCode * 59 + this.TFNExemptionType.GetHashCode();
                 if (this.TaxFileNumber != null)
                     hashCode = hashCode * 59 + this.TaxFileNumber.GetHashCode();
+                if (this.ABN != null)
+                    hashCode = hashCode * 59 + this.ABN.GetHashCode();
                 if (this.AustralianResidentForTaxPurposes != null)
                     hashCode = hashCode * 59 + this.AustralianResidentForTaxPurposes.GetHashCode();
                 hashCode = hashCode * 59 + this.ResidencyStatus.GetHashCode();
+                hashCode = hashCode * 59 + this.TaxScaleType.GetHashCode();
+                hashCode = hashCode * 59 + this.WorkCondition.GetHashCode();
+                hashCode = hashCode * 59 + this.SeniorMaritalStatus.GetHashCode();
                 if (this.TaxFreeThresholdClaimed != null)
                     hashCode = hashCode * 59 + this.TaxFreeThresholdClaimed.GetHashCode();
                 if (this.TaxOffsetEstimatedAmount != null)

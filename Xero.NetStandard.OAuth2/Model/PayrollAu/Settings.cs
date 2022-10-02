@@ -52,6 +52,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public int? DaysInPayrollYear { get; set; }
 
         /// <summary>
+        /// Indicates if the organisation has been enabled for STP Phase 2 editing of employees.
+        /// </summary>
+        /// <value>Indicates if the organisation has been enabled for STP Phase 2 editing of employees.</value>
+        [DataMember(Name="EmployeesAreSTP2", EmitDefaultValue=false)]
+        public bool? EmployeesAreSTP2 { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -62,6 +69,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  Accounts: ").Append(Accounts).Append("\n");
             sb.Append("  TrackingCategories: ").Append(TrackingCategories).Append("\n");
             sb.Append("  DaysInPayrollYear: ").Append(DaysInPayrollYear).Append("\n");
+            sb.Append("  EmployeesAreSTP2: ").Append(EmployeesAreSTP2).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -111,6 +119,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.DaysInPayrollYear == input.DaysInPayrollYear ||
                     (this.DaysInPayrollYear != null &&
                     this.DaysInPayrollYear.Equals(input.DaysInPayrollYear))
+                ) && 
+                (
+                    this.EmployeesAreSTP2 == input.EmployeesAreSTP2 ||
+                    (this.EmployeesAreSTP2 != null &&
+                    this.EmployeesAreSTP2.Equals(input.EmployeesAreSTP2))
                 );
         }
 
@@ -129,6 +142,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.TrackingCategories.GetHashCode();
                 if (this.DaysInPayrollYear != null)
                     hashCode = hashCode * 59 + this.DaysInPayrollYear.GetHashCode();
+                if (this.EmployeesAreSTP2 != null)
+                    hashCode = hashCode * 59 + this.EmployeesAreSTP2.GetHashCode();
                 return hashCode;
             }
         }
