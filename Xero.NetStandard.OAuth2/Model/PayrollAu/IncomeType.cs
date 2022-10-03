@@ -25,48 +25,42 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.PayrollAu
 {
     /// <summary>
-    /// Defines EmploymentBasis
+    /// Defines IncomeType
     /// </summary>
     
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
-    public enum EmploymentBasis
+    public enum IncomeType
     {
         /// <summary>
-        /// Enum FULLTIME for value: FULLTIME
+        /// Enum SALARYANDWAGES for value: SALARYANDWAGES
         /// </summary>
-        [EnumMember(Value = "FULLTIME")]
-        FULLTIME = 1,
+        [EnumMember(Value = "SALARYANDWAGES")]
+        SALARYANDWAGES = 1,
 
         /// <summary>
-        /// Enum PARTTIME for value: PARTTIME
+        /// Enum WORKINGHOLIDAYMAKER for value: WORKINGHOLIDAYMAKER
         /// </summary>
-        [EnumMember(Value = "PARTTIME")]
-        PARTTIME = 2,
-
-        /// <summary>
-        /// Enum CASUAL for value: CASUAL
-        /// </summary>
-        [EnumMember(Value = "CASUAL")]
-        CASUAL = 3,
-
-        /// <summary>
-        /// Enum LABOURHIRE for value: LABOURHIRE
-        /// </summary>
-        [EnumMember(Value = "LABOURHIRE")]
-        LABOURHIRE = 4,
-
-        /// <summary>
-        /// Enum SUPERINCOMESTREAM for value: SUPERINCOMESTREAM
-        /// </summary>
-        [EnumMember(Value = "SUPERINCOMESTREAM")]
-        SUPERINCOMESTREAM = 5,
+        [EnumMember(Value = "WORKINGHOLIDAYMAKER")]
+        WORKINGHOLIDAYMAKER = 2,
 
         /// <summary>
         /// Enum NONEMPLOYEE for value: NONEMPLOYEE
         /// </summary>
         [EnumMember(Value = "NONEMPLOYEE")]
-        NONEMPLOYEE = 6
+        NONEMPLOYEE = 3,
+
+        /// <summary>
+        /// Enum CLOSELYHELDPAYEES for value: CLOSELYHELDPAYEES
+        /// </summary>
+        [EnumMember(Value = "CLOSELYHELDPAYEES")]
+        CLOSELYHELDPAYEES = 4,
+
+        /// <summary>
+        /// Enum LABOURHIRE for value: LABOURHIRE
+        /// </summary>
+        [EnumMember(Value = "LABOURHIRE")]
+        LABOURHIRE = 5
 
     }
 

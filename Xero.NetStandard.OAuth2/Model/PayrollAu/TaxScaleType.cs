@@ -25,48 +25,48 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.PayrollAu
 {
     /// <summary>
-    /// Defines EmploymentBasis
+    /// Defines TaxScaleType
     /// </summary>
     
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
-    public enum EmploymentBasis
+    public enum TaxScaleType
     {
         /// <summary>
-        /// Enum FULLTIME for value: FULLTIME
+        /// Enum REGULAR for value: REGULAR
         /// </summary>
-        [EnumMember(Value = "FULLTIME")]
-        FULLTIME = 1,
+        [EnumMember(Value = "REGULAR")]
+        REGULAR = 1,
 
         /// <summary>
-        /// Enum PARTTIME for value: PARTTIME
+        /// Enum ACTORSARTISTSENTERTAINERS for value: ACTORSARTISTSENTERTAINERS
         /// </summary>
-        [EnumMember(Value = "PARTTIME")]
-        PARTTIME = 2,
+        [EnumMember(Value = "ACTORSARTISTSENTERTAINERS")]
+        ACTORSARTISTSENTERTAINERS = 2,
 
         /// <summary>
-        /// Enum CASUAL for value: CASUAL
+        /// Enum HORTICULTURISTORSHEARER for value: HORTICULTURISTORSHEARER
         /// </summary>
-        [EnumMember(Value = "CASUAL")]
-        CASUAL = 3,
+        [EnumMember(Value = "HORTICULTURISTORSHEARER")]
+        HORTICULTURISTORSHEARER = 3,
 
         /// <summary>
-        /// Enum LABOURHIRE for value: LABOURHIRE
+        /// Enum SENIORORPENSIONER for value: SENIORORPENSIONER
         /// </summary>
-        [EnumMember(Value = "LABOURHIRE")]
-        LABOURHIRE = 4,
+        [EnumMember(Value = "SENIORORPENSIONER")]
+        SENIORORPENSIONER = 4,
 
         /// <summary>
-        /// Enum SUPERINCOMESTREAM for value: SUPERINCOMESTREAM
+        /// Enum WORKINGHOLIDAYMAKER for value: WORKINGHOLIDAYMAKER
         /// </summary>
-        [EnumMember(Value = "SUPERINCOMESTREAM")]
-        SUPERINCOMESTREAM = 5,
+        [EnumMember(Value = "WORKINGHOLIDAYMAKER")]
+        WORKINGHOLIDAYMAKER = 5,
 
         /// <summary>
-        /// Enum NONEMPLOYEE for value: NONEMPLOYEE
+        /// Enum FOREIGN for value: FOREIGN
         /// </summary>
-        [EnumMember(Value = "NONEMPLOYEE")]
-        NONEMPLOYEE = 6
+        [EnumMember(Value = "FOREIGN")]
+        FOREIGN = 6
 
     }
 
