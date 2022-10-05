@@ -685,7 +685,199 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum EASTERISLANDSTANDARDTIME for value: EASTERISLANDSTANDARDTIME
         /// </summary>
         [EnumMember(Value = "EASTERISLANDSTANDARDTIME")]
-        EASTERISLANDSTANDARDTIME = 109
+        EASTERISLANDSTANDARDTIME = 109,
+
+        /// <summary>
+        /// Enum SAOTOMESTANDARDTIME for value: SAOTOMESTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "SAOTOMESTANDARDTIME")]
+        SAOTOMESTANDARDTIME = 110,
+
+        /// <summary>
+        /// Enum WESTBANKSTANDARDTIME for value: WESTBANKSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "WESTBANKSTANDARDTIME")]
+        WESTBANKSTANDARDTIME = 111,
+
+        /// <summary>
+        /// Enum SOUTHSUDANSTANDARDTIME for value: SOUTHSUDANSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "SOUTHSUDANSTANDARDTIME")]
+        SOUTHSUDANSTANDARDTIME = 112,
+
+        /// <summary>
+        /// Enum SUDANSTANDARDTIME for value: SUDANSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "SUDANSTANDARDTIME")]
+        SUDANSTANDARDTIME = 113,
+
+        /// <summary>
+        /// Enum VOLGOGRADSTANDARDTIME for value: VOLGOGRADSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "VOLGOGRADSTANDARDTIME")]
+        VOLGOGRADSTANDARDTIME = 114,
+
+        /// <summary>
+        /// Enum ASTRAKHANSTANDARDTIME for value: ASTRAKHANSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "ASTRAKHANSTANDARDTIME")]
+        ASTRAKHANSTANDARDTIME = 115,
+
+        /// <summary>
+        /// Enum SARATOVSTANDARDTIME for value: SARATOVSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "SARATOVSTANDARDTIME")]
+        SARATOVSTANDARDTIME = 116,
+
+        /// <summary>
+        /// Enum QYZYLORDASTANDARDTIME for value: QYZYLORDASTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "QYZYLORDASTANDARDTIME")]
+        QYZYLORDASTANDARDTIME = 117,
+
+        /// <summary>
+        /// Enum OMSKSTANDARDTIME for value: OMSKSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "OMSKSTANDARDTIME")]
+        OMSKSTANDARDTIME = 118,
+
+        /// <summary>
+        /// Enum ALTAISTANDARDTIME for value: ALTAISTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "ALTAISTANDARDTIME")]
+        ALTAISTANDARDTIME = 119,
+
+        /// <summary>
+        /// Enum WMONGOLIASTANDARDTIME for value: WMONGOLIASTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "WMONGOLIASTANDARDTIME")]
+        WMONGOLIASTANDARDTIME = 120,
+
+        /// <summary>
+        /// Enum TOMSKSTANDARDTIME for value: TOMSKSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "TOMSKSTANDARDTIME")]
+        TOMSKSTANDARDTIME = 121,
+
+        /// <summary>
+        /// Enum AUSCENTRALWSTANDARDTIME for value: AUSCENTRALWSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "AUSCENTRALWSTANDARDTIME")]
+        AUSCENTRALWSTANDARDTIME = 122,
+
+        /// <summary>
+        /// Enum ALEUTIANSTANDARDTIME for value: ALEUTIANSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "ALEUTIANSTANDARDTIME")]
+        ALEUTIANSTANDARDTIME = 123,
+
+        /// <summary>
+        /// Enum BOUGAINVILLESTANDARDTIME for value: BOUGAINVILLESTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "BOUGAINVILLESTANDARDTIME")]
+        BOUGAINVILLESTANDARDTIME = 124,
+
+        /// <summary>
+        /// Enum CHATHAMISLANDSSTANDARDTIME for value: CHATHAMISLANDSSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "CHATHAMISLANDSSTANDARDTIME")]
+        CHATHAMISLANDSSTANDARDTIME = 125,
+
+        /// <summary>
+        /// Enum CUBASTANDARDTIME for value: CUBASTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "CUBASTANDARDTIME")]
+        CUBASTANDARDTIME = 126,
+
+        /// <summary>
+        /// Enum EASTERNSTANDARDTIMEMEXICO for value: EASTERNSTANDARDTIME(MEXICO)
+        /// </summary>
+        [EnumMember(Value = "EASTERNSTANDARDTIME(MEXICO)")]
+        EASTERNSTANDARDTIMEMEXICO = 127,
+
+        /// <summary>
+        /// Enum HAITISTANDARDTIME for value: HAITISTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "HAITISTANDARDTIME")]
+        HAITISTANDARDTIME = 128,
+
+        /// <summary>
+        /// Enum LORDHOWESTANDARDTIME for value: LORDHOWESTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "LORDHOWESTANDARDTIME")]
+        LORDHOWESTANDARDTIME = 129,
+
+        /// <summary>
+        /// Enum MAGALLANESSTANDARDTIME for value: MAGALLANESSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "MAGALLANESSTANDARDTIME")]
+        MAGALLANESSTANDARDTIME = 130,
+
+        /// <summary>
+        /// Enum MARQUESASSTANDARDTIME for value: MARQUESASSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "MARQUESASSTANDARDTIME")]
+        MARQUESASSTANDARDTIME = 131,
+
+        /// <summary>
+        /// Enum NORFOLKSTANDARDTIME for value: NORFOLKSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "NORFOLKSTANDARDTIME")]
+        NORFOLKSTANDARDTIME = 132,
+
+        /// <summary>
+        /// Enum NORTHKOREASTANDARDTIME for value: NORTHKOREASTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "NORTHKOREASTANDARDTIME")]
+        NORTHKOREASTANDARDTIME = 133,
+
+        /// <summary>
+        /// Enum SAINTPIERRESTANDARDTIME for value: SAINTPIERRESTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "SAINTPIERRESTANDARDTIME")]
+        SAINTPIERRESTANDARDTIME = 134,
+
+        /// <summary>
+        /// Enum SAKHALINSTANDARDTIME for value: SAKHALINSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "SAKHALINSTANDARDTIME")]
+        SAKHALINSTANDARDTIME = 135,
+
+        /// <summary>
+        /// Enum TOCANTINSSTANDARDTIME for value: TOCANTINSSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "TOCANTINSSTANDARDTIME")]
+        TOCANTINSSTANDARDTIME = 136,
+
+        /// <summary>
+        /// Enum TRANSBAIKALSTANDARDTIME for value: TRANSBAIKALSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "TRANSBAIKALSTANDARDTIME")]
+        TRANSBAIKALSTANDARDTIME = 137,
+
+        /// <summary>
+        /// Enum TURKSANDCAICOSSTANDARDTIME for value: TURKSANDCAICOSSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "TURKSANDCAICOSSTANDARDTIME")]
+        TURKSANDCAICOSSTANDARDTIME = 138,
+
+        /// <summary>
+        /// Enum UTC08 for value: UTC08
+        /// </summary>
+        [EnumMember(Value = "UTC08")]
+        UTC08 = 139,
+
+        /// <summary>
+        /// Enum UTC09 for value: UTC09
+        /// </summary>
+        [EnumMember(Value = "UTC09")]
+        UTC09 = 140,
+
+        /// <summary>
+        /// Enum YUKONSTANDARDTIME for value: YUKONSTANDARDTIME
+        /// </summary>
+        [EnumMember(Value = "YUKONSTANDARDTIME")]
+        YUKONSTANDARDTIME = 141
 
     }
 
