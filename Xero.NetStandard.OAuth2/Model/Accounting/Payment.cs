@@ -160,6 +160,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string CreditNoteNumber { get; set; }
 
         /// <summary>
+        /// Gets or Sets BatchPayment
+        /// </summary>
+        [DataMember(Name="BatchPayment", EmitDefaultValue=false)]
+        public BatchPayment BatchPayment { get; set; }
+
+        /// <summary>
         /// Gets or Sets Account
         /// </summary>
         [DataMember(Name="Account", EmitDefaultValue=false)]
@@ -298,6 +304,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  Overpayment: ").Append(Overpayment).Append("\n");
             sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
             sb.Append("  CreditNoteNumber: ").Append(CreditNoteNumber).Append("\n");
+            sb.Append("  BatchPayment: ").Append(BatchPayment).Append("\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Date: ").Append(Date).Append("\n");
@@ -381,6 +388,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.CreditNoteNumber == input.CreditNoteNumber ||
                     (this.CreditNoteNumber != null &&
                     this.CreditNoteNumber.Equals(input.CreditNoteNumber))
+                ) && 
+                (
+                    this.BatchPayment == input.BatchPayment ||
+                    (this.BatchPayment != null &&
+                    this.BatchPayment.Equals(input.BatchPayment))
                 ) && 
                 (
                     this.Account == input.Account ||
@@ -504,6 +516,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.InvoiceNumber.GetHashCode();
                 if (this.CreditNoteNumber != null)
                     hashCode = hashCode * 59 + this.CreditNoteNumber.GetHashCode();
+                if (this.BatchPayment != null)
+                    hashCode = hashCode * 59 + this.BatchPayment.GetHashCode();
                 if (this.Account != null)
                     hashCode = hashCode * 59 + this.Account.GetHashCode();
                 if (this.Code != null)
