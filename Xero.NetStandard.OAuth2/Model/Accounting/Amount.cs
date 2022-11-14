@@ -25,25 +25,22 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.Accounting
 {
     /// <summary>
-    /// Error
+    /// Amount
     /// </summary>
     [DataContract]
-    public partial class Error :  IEquatable<Error>, IValidatableObject
+    public partial class Amount :  IEquatable<Amount>, IValidatableObject
     {
+        /// <summary>
+        /// Gets or Sets Currency
+        /// </summary>
+        [DataMember(Name="currency", EmitDefaultValue=false)]
+        public CurrencyCode Currency { get; set; }
         
         /// <summary>
-        /// Exception message
+        /// Gets or Sets Value
         /// </summary>
-        /// <value>Exception message</value>
-        [DataMember(Name="message", EmitDefaultValue=false)]
-        public string Message { get; set; }
-
-        /// <summary>
-        /// Array of Elements of validation Errors
-        /// </summary>
-        /// <value>Array of Elements of validation Errors</value>
-        [DataMember(Name="modelState", EmitDefaultValue=false)]
-        public Object ModelState { get; set; }
+        [DataMember(Name="value", EmitDefaultValue=false)]
+        public decimal? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,9 +49,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Error {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  ModelState: ").Append(ModelState).Append("\n");
+            sb.Append("class Amount {\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -75,29 +72,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Error);
+            return this.Equals(input as Amount);
         }
 
         /// <summary>
-        /// Returns true if Error instances are equal
+        /// Returns true if Amount instances are equal
         /// </summary>
-        /// <param name="input">Instance of Error to be compared</param>
+        /// <param name="input">Instance of Amount to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Error input)
+        public bool Equals(Amount input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
+                    this.Currency == input.Currency ||
+                    this.Currency.Equals(input.Currency)
                 ) && 
                 (
-                    this.ModelState == input.ModelState ||
-                    (this.ModelState != null &&
-                    this.ModelState.Equals(input.ModelState))
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 );
         }
 
@@ -110,10 +106,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Message != null)
-                    hashCode = hashCode * 59 + this.Message.GetHashCode();
-                if (this.ModelState != null)
-                    hashCode = hashCode * 59 + this.ModelState.GetHashCode();
+                hashCode = hashCode * 59 + this.Currency.GetHashCode();
+                if (this.Value != null)
+                    hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;
             }
         }

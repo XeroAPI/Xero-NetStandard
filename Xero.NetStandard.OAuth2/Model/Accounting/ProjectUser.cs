@@ -25,25 +25,32 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.Accounting
 {
     /// <summary>
-    /// Error
+    /// ProjectUser
     /// </summary>
     [DataContract]
-    public partial class Error :  IEquatable<Error>, IValidatableObject
+    public partial class ProjectUser :  IEquatable<ProjectUser>, IValidatableObject
     {
         
         /// <summary>
-        /// Exception message
+        /// Identifier of the user of the project.
         /// </summary>
-        /// <value>Exception message</value>
-        [DataMember(Name="message", EmitDefaultValue=false)]
-        public string Message { get; set; }
+        /// <value>Identifier of the user of the project.</value>
+        [DataMember(Name="userId", EmitDefaultValue=false)]
+        public Guid? UserId { get; set; }
 
         /// <summary>
-        /// Array of Elements of validation Errors
+        /// Full name of the user.
         /// </summary>
-        /// <value>Array of Elements of validation Errors</value>
-        [DataMember(Name="modelState", EmitDefaultValue=false)]
-        public Object ModelState { get; set; }
+        /// <value>Full name of the user.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Email address of the user.
+        /// </summary>
+        /// <value>Email address of the user.</value>
+        [DataMember(Name="email", EmitDefaultValue=false)]
+        public string Email { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,9 +59,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Error {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  ModelState: ").Append(ModelState).Append("\n");
+            sb.Append("class ProjectUser {\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -75,29 +83,34 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Error);
+            return this.Equals(input as ProjectUser);
         }
 
         /// <summary>
-        /// Returns true if Error instances are equal
+        /// Returns true if ProjectUser instances are equal
         /// </summary>
-        /// <param name="input">Instance of Error to be compared</param>
+        /// <param name="input">Instance of ProjectUser to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Error input)
+        public bool Equals(ProjectUser input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.ModelState == input.ModelState ||
-                    (this.ModelState != null &&
-                    this.ModelState.Equals(input.ModelState))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Email == input.Email ||
+                    (this.Email != null &&
+                    this.Email.Equals(input.Email))
                 );
         }
 
@@ -110,10 +123,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Message != null)
-                    hashCode = hashCode * 59 + this.Message.GetHashCode();
-                if (this.ModelState != null)
-                    hashCode = hashCode * 59 + this.ModelState.GetHashCode();
+                if (this.UserId != null)
+                    hashCode = hashCode * 59 + this.UserId.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Email != null)
+                    hashCode = hashCode * 59 + this.Email.GetHashCode();
                 return hashCode;
             }
         }

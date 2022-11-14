@@ -25,25 +25,23 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.Accounting
 {
     /// <summary>
-    /// Error
+    /// Projects
     /// </summary>
     [DataContract]
-    public partial class Error :  IEquatable<Error>, IValidatableObject
+    public partial class Projects :  IEquatable<Projects>, IValidatableObject
     {
         
         /// <summary>
-        /// Exception message
+        /// Gets or Sets Pagination
         /// </summary>
-        /// <value>Exception message</value>
-        [DataMember(Name="message", EmitDefaultValue=false)]
-        public string Message { get; set; }
+        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        public Pagination Pagination { get; set; }
 
         /// <summary>
-        /// Array of Elements of validation Errors
+        /// Gets or Sets Items
         /// </summary>
-        /// <value>Array of Elements of validation Errors</value>
-        [DataMember(Name="modelState", EmitDefaultValue=false)]
-        public Object ModelState { get; set; }
+        [DataMember(Name="items", EmitDefaultValue=false)]
+        public List<Project> Items { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,9 +50,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Error {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  ModelState: ").Append(ModelState).Append("\n");
+            sb.Append("class Projects {\n");
+            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
+            sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -75,29 +73,30 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Error);
+            return this.Equals(input as Projects);
         }
 
         /// <summary>
-        /// Returns true if Error instances are equal
+        /// Returns true if Projects instances are equal
         /// </summary>
-        /// <param name="input">Instance of Error to be compared</param>
+        /// <param name="input">Instance of Projects to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Error input)
+        public bool Equals(Projects input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Message == input.Message ||
-                    (this.Message != null &&
-                    this.Message.Equals(input.Message))
+                    this.Pagination == input.Pagination ||
+                    (this.Pagination != null &&
+                    this.Pagination.Equals(input.Pagination))
                 ) && 
                 (
-                    this.ModelState == input.ModelState ||
-                    (this.ModelState != null &&
-                    this.ModelState.Equals(input.ModelState))
+                    this.Items == input.Items ||
+                    this.Items != null &&
+                    input.Items != null &&
+                    this.Items.SequenceEqual(input.Items)
                 );
         }
 
@@ -110,10 +109,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Message != null)
-                    hashCode = hashCode * 59 + this.Message.GetHashCode();
-                if (this.ModelState != null)
-                    hashCode = hashCode * 59 + this.ModelState.GetHashCode();
+                if (this.Pagination != null)
+                    hashCode = hashCode * 59 + this.Pagination.GetHashCode();
+                if (this.Items != null)
+                    hashCode = hashCode * 59 + this.Items.GetHashCode();
                 return hashCode;
             }
         }
