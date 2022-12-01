@@ -166,7 +166,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>The total of the payments that make up the batch (read-only)</value>
         [DataMember(Name="TotalAmount", EmitDefaultValue=false)]
-        public string TotalAmount { get; private set; }
+        public decimal? TotalAmount { get; private set; }
 
         /// <summary>
         /// UTC timestamp of last update to the payment
@@ -180,7 +180,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Booelan that tells you if the batch payment has been reconciled (read-only)</value>
         [DataMember(Name="IsReconciled", EmitDefaultValue=false)]
-        public string IsReconciled { get; private set; }
+        public bool? IsReconciled { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API

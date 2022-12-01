@@ -608,7 +608,25 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum NOTREPORTED for value: NOTREPORTED
             /// </summary>
             [EnumMember(Value = "NOTREPORTED")]
-            NOTREPORTED = 89
+            NOTREPORTED = 89,
+
+            /// <summary>
+            /// Enum SROVRRS for value: SROVRRS
+            /// </summary>
+            [EnumMember(Value = "SROVRRS")]
+            SROVRRS = 90,
+
+            /// <summary>
+            /// Enum SROVRLVG for value: SROVRLVG
+            /// </summary>
+            [EnumMember(Value = "SROVRLVG")]
+            SROVRLVG = 91,
+
+            /// <summary>
+            /// Enum SRLVG for value: SRLVG
+            /// </summary>
+            [EnumMember(Value = "SRLVG")]
+            SRLVG = 92
 
         }
 

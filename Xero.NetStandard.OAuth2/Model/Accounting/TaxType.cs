@@ -433,7 +433,97 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum TXRCTSINPUT for value: TXRCTSINPUT
         /// </summary>
         [EnumMember(Value = "TXRCTSINPUT")]
-        TXRCTSINPUT = 67
+        TXRCTSINPUT = 67,
+
+        /// <summary>
+        /// Enum OUTPUTY23 for value: OUTPUTY23
+        /// </summary>
+        [EnumMember(Value = "OUTPUTY23")]
+        OUTPUTY23 = 68,
+
+        /// <summary>
+        /// Enum DSOUTPUTY23 for value: DSOUTPUTY23
+        /// </summary>
+        [EnumMember(Value = "DSOUTPUTY23")]
+        DSOUTPUTY23 = 69,
+
+        /// <summary>
+        /// Enum INPUTY23 for value: INPUTY23
+        /// </summary>
+        [EnumMember(Value = "INPUTY23")]
+        INPUTY23 = 70,
+
+        /// <summary>
+        /// Enum IMINPUT2Y23 for value: IMINPUT2Y23
+        /// </summary>
+        [EnumMember(Value = "IMINPUT2Y23")]
+        IMINPUT2Y23 = 71,
+
+        /// <summary>
+        /// Enum IGDSINPUT2Y23 for value: IGDSINPUT2Y23
+        /// </summary>
+        [EnumMember(Value = "IGDSINPUT2Y23")]
+        IGDSINPUT2Y23 = 72,
+
+        /// <summary>
+        /// Enum TXPETINPUTY23 for value: TXPETINPUTY23
+        /// </summary>
+        [EnumMember(Value = "TXPETINPUTY23")]
+        TXPETINPUTY23 = 73,
+
+        /// <summary>
+        /// Enum TXESSINPUTY23 for value: TXESSINPUTY23
+        /// </summary>
+        [EnumMember(Value = "TXESSINPUTY23")]
+        TXESSINPUTY23 = 74,
+
+        /// <summary>
+        /// Enum TXN33INPUTY23 for value: TXN33INPUTY23
+        /// </summary>
+        [EnumMember(Value = "TXN33INPUTY23")]
+        TXN33INPUTY23 = 75,
+
+        /// <summary>
+        /// Enum TXREINPUTY23 for value: TXREINPUTY23
+        /// </summary>
+        [EnumMember(Value = "TXREINPUTY23")]
+        TXREINPUTY23 = 76,
+
+        /// <summary>
+        /// Enum TXCAY23 for value: TXCAY23
+        /// </summary>
+        [EnumMember(Value = "TXCAY23")]
+        TXCAY23 = 77,
+
+        /// <summary>
+        /// Enum BADDEBTRELIEFY23 for value: BADDEBTRELIEFY23
+        /// </summary>
+        [EnumMember(Value = "BADDEBTRELIEFY23")]
+        BADDEBTRELIEFY23 = 78,
+
+        /// <summary>
+        /// Enum IGDSINPUT3Y23 for value: IGDSINPUT3Y23
+        /// </summary>
+        [EnumMember(Value = "IGDSINPUT3Y23")]
+        IGDSINPUT3Y23 = 79,
+
+        /// <summary>
+        /// Enum SROVRRSY23 for value: SROVRRSY23
+        /// </summary>
+        [EnumMember(Value = "SROVRRSY23")]
+        SROVRRSY23 = 80,
+
+        /// <summary>
+        /// Enum SROVRLVGY23 for value: SROVRLVGY23
+        /// </summary>
+        [EnumMember(Value = "SROVRLVGY23")]
+        SROVRLVGY23 = 81,
+
+        /// <summary>
+        /// Enum SRLVGY23 for value: SRLVGY23
+        /// </summary>
+        [EnumMember(Value = "SRLVGY23")]
+        SRLVGY23 = 82
 
     }
 
