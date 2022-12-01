@@ -231,8 +231,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       Guid brandingThemeID = AutoFaker.Generate<Guid>();
-      PaymentService paymentService = new PaymentService();
-      var response = await instance.CreateBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID, paymentService).ConfigureAwait(false);
+      PaymentServices paymentServices = new PaymentServices();
+      var response = await instance.CreateBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID, paymentServices).ConfigureAwait(false);
       Assert.IsType<PaymentServices>(response);
     }
 
