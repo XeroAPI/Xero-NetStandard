@@ -44,10 +44,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             Allowance = 1,
 
             /// <summary>
-            /// Enum Backpay for value: Backpay
+            /// Enum BackPay for value: BackPay
             /// </summary>
-            [EnumMember(Value = "Backpay")]
-            Backpay = 2,
+            [EnumMember(Value = "BackPay")]
+            BackPay = 2,
 
             /// <summary>
             /// Enum Bonus for value: Bonus

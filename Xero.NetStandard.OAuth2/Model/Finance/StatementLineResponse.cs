@@ -47,6 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         public DateTime? PostedDate { get; set; }
 
         /// <summary>
+        /// Payee description of statement line
+        /// </summary>
+        /// <value>Payee description of statement line</value>
+        [DataMember(Name="payee", EmitDefaultValue=false)]
+        public string Payee { get; set; }
+
+        /// <summary>
         /// Reference description of statement line
         /// </summary>
         /// <value>Reference description of statement line</value>
@@ -134,6 +141,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("class StatementLineResponse {\n");
             sb.Append("  StatementLineId: ").Append(StatementLineId).Append("\n");
             sb.Append("  PostedDate: ").Append(PostedDate).Append("\n");
+            sb.Append("  Payee: ").Append(Payee).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  ChequeNo: ").Append(ChequeNo).Append("\n");
@@ -188,6 +196,11 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     this.PostedDate == input.PostedDate ||
                     (this.PostedDate != null &&
                     this.PostedDate.Equals(input.PostedDate))
+                ) && 
+                (
+                    this.Payee == input.Payee ||
+                    (this.Payee != null &&
+                    this.Payee.Equals(input.Payee))
                 ) && 
                 (
                     this.Reference == input.Reference ||
@@ -261,6 +274,8 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     hashCode = hashCode * 59 + this.StatementLineId.GetHashCode();
                 if (this.PostedDate != null)
                     hashCode = hashCode * 59 + this.PostedDate.GetHashCode();
+                if (this.Payee != null)
+                    hashCode = hashCode * 59 + this.Payee.GetHashCode();
                 if (this.Reference != null)
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.Notes != null)

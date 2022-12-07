@@ -9,7 +9,7 @@
 
 
 using System;
-using System.IO;
+using System.Threading;
 
 namespace Xero.NetStandard.OAuth2.Client
 {
@@ -26,9 +26,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="path">The relative path to invoke.</param>
         /// <param name="options">The request parameters to pass along to the client.</param>
         /// <param name="configuration">Per-request configurable settings.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The response data, decorated with <see cref="ApiResponse{T}"/></returns>
-        ApiResponse<T> Get<T>(String path, RequestOptions options, IReadableConfiguration configuration = null);
+        ApiResponse<T> Get<T>(String path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Executes a blocking call to some <paramref name="path"/> using the POST http verb.
@@ -36,9 +37,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="path">The relative path to invoke.</param>
         /// <param name="options">The request parameters to pass along to the client.</param>
         /// <param name="configuration">Per-request configurable settings.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The response data, decorated with <see cref="ApiResponse{T}"/></returns>
-        ApiResponse<T> Post<T>(String path, RequestOptions options, IReadableConfiguration configuration = null);
+        ApiResponse<T> Post<T>(String path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Executes a blocking call to some <paramref name="path"/> using the PUT http verb.
@@ -46,9 +48,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="path">The relative path to invoke.</param>
         /// <param name="options">The request parameters to pass along to the client.</param>
         /// <param name="configuration">Per-request configurable settings.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The response data, decorated with <see cref="ApiResponse{T}"/></returns>
-        ApiResponse<T> Put<T>(String path, RequestOptions options, IReadableConfiguration configuration = null);
+        ApiResponse<T> Put<T>(String path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Executes a blocking call to some <paramref name="path"/> using the DELETE http verb.
@@ -56,9 +59,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="path">The relative path to invoke.</param>
         /// <param name="options">The request parameters to pass along to the client.</param>
         /// <param name="configuration">Per-request configurable settings.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The response data, decorated with <see cref="ApiResponse{T}"/></returns>
-        ApiResponse<T> Delete<T>(String path, RequestOptions options, IReadableConfiguration configuration = null);
+        ApiResponse<T> Delete<T>(String path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Executes a blocking call to some <paramref name="path"/> using the HEAD http verb.
@@ -66,9 +70,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="path">The relative path to invoke.</param>
         /// <param name="options">The request parameters to pass along to the client.</param>
         /// <param name="configuration">Per-request configurable settings.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The response data, decorated with <see cref="ApiResponse{T}"/></returns>
-        ApiResponse<T> Head<T>(String path, RequestOptions options, IReadableConfiguration configuration = null);
+        ApiResponse<T> Head<T>(String path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Executes a blocking call to some <paramref name="path"/> using the OPTIONS http verb.
@@ -76,9 +81,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="path">The relative path to invoke.</param>
         /// <param name="options">The request parameters to pass along to the client.</param>
         /// <param name="configuration">Per-request configurable settings.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The response data, decorated with <see cref="ApiResponse{T}"/></returns>
-        ApiResponse<T> Options<T>(String path, RequestOptions options, IReadableConfiguration configuration = null);
+        ApiResponse<T> Options<T>(String path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Executes a blocking call to some <paramref name="path"/> using the PATCH http verb.
@@ -86,8 +92,9 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="path">The relative path to invoke.</param>
         /// <param name="options">The request parameters to pass along to the client.</param>
         /// <param name="configuration">Per-request configurable settings.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <typeparam name="T">The return type.</typeparam>
         /// <returns>The response data, decorated with <see cref="ApiResponse{T}"/></returns>
-        ApiResponse<T> Patch<T>(String path, RequestOptions options, IReadableConfiguration configuration = null);
+        ApiResponse<T> Patch<T>(String path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default);
     }
 }
