@@ -99,6 +99,20 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public bool? IsReportableAsW1 { get; set; }
 
         /// <summary>
+        /// Boolean to determine if the allowance earnings rate contributes towards annual leave rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT
+        /// </summary>
+        /// <value>Boolean to determine if the allowance earnings rate contributes towards annual leave rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT</value>
+        [DataMember(Name="AllowanceContributesToAnnualLeaveRate", EmitDefaultValue=false)]
+        public bool? AllowanceContributesToAnnualLeaveRate { get; set; }
+
+        /// <summary>
+        /// Boolean to determine if the allowance earnings rate contributes towards overtime allowance rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT
+        /// </summary>
+        /// <value>Boolean to determine if the allowance earnings rate contributes towards overtime allowance rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT</value>
+        [DataMember(Name="AllowanceContributesToOvertimeRate", EmitDefaultValue=false)]
+        public bool? AllowanceContributesToOvertimeRate { get; set; }
+
+        /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
@@ -161,6 +175,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  IsExemptFromTax: ").Append(IsExemptFromTax).Append("\n");
             sb.Append("  IsExemptFromSuper: ").Append(IsExemptFromSuper).Append("\n");
             sb.Append("  IsReportableAsW1: ").Append(IsReportableAsW1).Append("\n");
+            sb.Append("  AllowanceContributesToAnnualLeaveRate: ").Append(AllowanceContributesToAnnualLeaveRate).Append("\n");
+            sb.Append("  AllowanceContributesToOvertimeRate: ").Append(AllowanceContributesToOvertimeRate).Append("\n");
             sb.Append("  EarningsType: ").Append(EarningsType).Append("\n");
             sb.Append("  EarningsRateID: ").Append(EarningsRateID).Append("\n");
             sb.Append("  RateType: ").Append(RateType).Append("\n");
@@ -236,6 +252,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.IsReportableAsW1 == input.IsReportableAsW1 ||
                     (this.IsReportableAsW1 != null &&
                     this.IsReportableAsW1.Equals(input.IsReportableAsW1))
+                ) && 
+                (
+                    this.AllowanceContributesToAnnualLeaveRate == input.AllowanceContributesToAnnualLeaveRate ||
+                    (this.AllowanceContributesToAnnualLeaveRate != null &&
+                    this.AllowanceContributesToAnnualLeaveRate.Equals(input.AllowanceContributesToAnnualLeaveRate))
+                ) && 
+                (
+                    this.AllowanceContributesToOvertimeRate == input.AllowanceContributesToOvertimeRate ||
+                    (this.AllowanceContributesToOvertimeRate != null &&
+                    this.AllowanceContributesToOvertimeRate.Equals(input.AllowanceContributesToOvertimeRate))
                 ) && 
                 (
                     this.EarningsType == input.EarningsType ||
@@ -315,6 +341,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.IsExemptFromSuper.GetHashCode();
                 if (this.IsReportableAsW1 != null)
                     hashCode = hashCode * 59 + this.IsReportableAsW1.GetHashCode();
+                if (this.AllowanceContributesToAnnualLeaveRate != null)
+                    hashCode = hashCode * 59 + this.AllowanceContributesToAnnualLeaveRate.GetHashCode();
+                if (this.AllowanceContributesToOvertimeRate != null)
+                    hashCode = hashCode * 59 + this.AllowanceContributesToOvertimeRate.GetHashCode();
                 hashCode = hashCode * 59 + this.EarningsType.GetHashCode();
                 if (this.EarningsRateID != null)
                     hashCode = hashCode * 59 + this.EarningsRateID.GetHashCode();
