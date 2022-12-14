@@ -69,18 +69,32 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         public string ImportSource { get; set; }
 
         /// <summary>
-        /// Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.
+        /// Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.
         /// </summary>
-        /// <value>Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.</value>
+        /// <value>Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.</value>
         [DataMember(Name="startBalance", EmitDefaultValue=false)]
         public decimal? StartBalance { get; set; }
 
         /// <summary>
-        /// Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.
+        /// Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.
         /// </summary>
-        /// <value>Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied.</value>
+        /// <value>Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.</value>
         [DataMember(Name="endBalance", EmitDefaultValue=false)]
         public decimal? EndBalance { get; set; }
+
+        /// <summary>
+        /// Opening statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true 
+        /// </summary>
+        /// <value>Opening statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true </value>
+        [DataMember(Name="indicativeStartBalance", EmitDefaultValue=false)]
+        public decimal? IndicativeStartBalance { get; set; }
+
+        /// <summary>
+        /// Closing statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true  
+        /// </summary>
+        /// <value>Closing statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true  </value>
+        [DataMember(Name="indicativeEndBalance", EmitDefaultValue=false)]
+        public decimal? IndicativeEndBalance { get; set; }
 
         /// <summary>
         /// List of statement lines
@@ -104,6 +118,8 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("  ImportSource: ").Append(ImportSource).Append("\n");
             sb.Append("  StartBalance: ").Append(StartBalance).Append("\n");
             sb.Append("  EndBalance: ").Append(EndBalance).Append("\n");
+            sb.Append("  IndicativeStartBalance: ").Append(IndicativeStartBalance).Append("\n");
+            sb.Append("  IndicativeEndBalance: ").Append(IndicativeEndBalance).Append("\n");
             sb.Append("  StatementLines: ").Append(StatementLines).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -175,6 +191,16 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     this.EndBalance.Equals(input.EndBalance))
                 ) && 
                 (
+                    this.IndicativeStartBalance == input.IndicativeStartBalance ||
+                    (this.IndicativeStartBalance != null &&
+                    this.IndicativeStartBalance.Equals(input.IndicativeStartBalance))
+                ) && 
+                (
+                    this.IndicativeEndBalance == input.IndicativeEndBalance ||
+                    (this.IndicativeEndBalance != null &&
+                    this.IndicativeEndBalance.Equals(input.IndicativeEndBalance))
+                ) && 
+                (
                     this.StatementLines == input.StatementLines ||
                     this.StatementLines != null &&
                     input.StatementLines != null &&
@@ -205,6 +231,10 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     hashCode = hashCode * 59 + this.StartBalance.GetHashCode();
                 if (this.EndBalance != null)
                     hashCode = hashCode * 59 + this.EndBalance.GetHashCode();
+                if (this.IndicativeStartBalance != null)
+                    hashCode = hashCode * 59 + this.IndicativeStartBalance.GetHashCode();
+                if (this.IndicativeEndBalance != null)
+                    hashCode = hashCode * 59 + this.IndicativeEndBalance.GetHashCode();
                 if (this.StatementLines != null)
                     hashCode = hashCode * 59 + this.StatementLines.GetHashCode();
                 return hashCode;

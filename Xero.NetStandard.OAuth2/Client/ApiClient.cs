@@ -23,6 +23,7 @@ using RestSharp;
 using RestSharp.Serializers;
 using RestSharpMethod = RestSharp.Method;
 using RestSharp.Serializers.Xml;
+using System.Threading;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("Xero.NetStandard.OAuth2.Test")]
 namespace Xero.NetStandard.OAuth2.Client
@@ -228,7 +229,7 @@ namespace Xero.NetStandard.OAuth2.Client
     }
 
     /// <summary>
-    /// Provides a default implementation of an Api client (both synchronous and asynchronous implementatios),
+    /// Provides a default implementation of an Api client (both synchronous and asynchronous implementations),
     /// encapsulating general REST accessor use cases.
     /// </summary>
     public partial class ApiClient : ISynchronousClient, IAsynchronousClient
@@ -491,7 +492,7 @@ namespace Xero.NetStandard.OAuth2.Client
             return transformed;
         }
 
-        private async Task<ApiResponse<T>> Exec<T>(RestRequest req, IReadableConfiguration configuration)
+        private async Task<ApiResponse<T>> Exec<T>(RestRequest req, IReadableConfiguration configuration, CancellationToken cancellationToken = default)
         {
             RestClientOptions clientOptions = new RestClientOptions(_baseUrl)
             {
@@ -521,7 +522,7 @@ namespace Xero.NetStandard.OAuth2.Client
             }
 
             InterceptRequest(req);
-            var response = await client.ExecuteAsync<T>(req);
+            var response = await client.ExecuteAsync<T>(req, cancellationToken);
             InterceptResponse(req, response);
 
             var result = toApiResponse(response);
@@ -568,11 +569,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public async Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Get, path, options, config), config);
+            return await Exec<T>(newRequest(HttpMethod.Get, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -582,11 +584,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public async Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Post, path, options, config), config);
+            return await Exec<T>(newRequest(HttpMethod.Post, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -596,11 +599,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public async Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Put, path, options, config), config);
+            return await Exec<T>(newRequest(HttpMethod.Put, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -610,11 +614,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public async Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Delete, path, options, config), config);
+            return await Exec<T>(newRequest(HttpMethod.Delete, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -624,11 +629,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public async Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Head, path, options, config), config);
+            return await Exec<T>(newRequest(HttpMethod.Head, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -638,11 +644,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public async Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Options, path, options, config), config);
+            return await Exec<T>(newRequest(HttpMethod.Options, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -652,11 +659,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public async Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Patch, path, options, config), config);
+            return await Exec<T>(newRequest(HttpMethod.Patch, path, options, config), config, cancellationToken);
         }
         #endregion IAsynchronousClient
 
@@ -668,10 +676,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Get<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Get<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return GetAsync<T>(path, options, configuration).Result;
+            return GetAsync<T>(path, options, configuration, cancellationToken).Result;
         }
 
         /// <summary>
@@ -681,10 +690,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Post<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Post<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return PostAsync<T>(path, options, configuration).Result;
+            return PostAsync<T>(path, options, configuration, cancellationToken).Result;
         }
 
         /// <summary>
@@ -694,10 +704,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Put<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Put<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return PutAsync<T>(path, options, configuration).Result;
+            return PutAsync<T>(path, options, configuration, cancellationToken).Result;
         }
 
         /// <summary>
@@ -707,10 +718,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Delete<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Delete<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return DeleteAsync<T>(path, options, configuration).Result;
+            return DeleteAsync<T>(path, options, configuration, cancellationToken).Result;
         }
 
         /// <summary>
@@ -720,10 +732,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Head<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Head<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return HeadAsync<T>(path, options, configuration).Result;
+            return HeadAsync<T>(path, options, configuration, cancellationToken).Result;
         }
 
         /// <summary>
@@ -733,10 +746,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Options<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Options<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return OptionsAsync<T>(path, options, configuration).Result;
+            return OptionsAsync<T>(path, options, configuration, cancellationToken).Result;
         }
 
         /// <summary>
@@ -746,10 +760,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Patch<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
+        public ApiResponse<T> Patch<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return PatchAsync<T>(path, options, configuration).Result;
+            return PatchAsync<T>(path, options, configuration, cancellationToken).Result;
         }
         #endregion ISynchronousClient
     }
