@@ -4,7 +4,7 @@ on:
     types:
       - opened
       - reopened
-  workflow_dispatch:
+  workflow_call:
 jobs:
   create_jira_issue:
     name: Create Jira Issue
