@@ -412,28 +412,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         TOURISTREFUND = 63,
 
         /// <summary>
-        /// Enum TXRCN33INPUT for value: TXRCN33INPUT
+        /// Enum TXRCN33 for value: TXRCN33
         /// </summary>
-        [EnumMember(Value = "TXRCN33INPUT")]
-        TXRCN33INPUT = 64,
+        [EnumMember(Value = "TXRCN33")]
+        TXRCN33 = 64,
 
         /// <summary>
-        /// Enum TXRCREINPUT for value: TXRCREINPUT
+        /// Enum TXRCRE for value: TXRCRE
         /// </summary>
-        [EnumMember(Value = "TXRCREINPUT")]
-        TXRCREINPUT = 65,
+        [EnumMember(Value = "TXRCRE")]
+        TXRCRE = 65,
 
         /// <summary>
-        /// Enum TXRCESSINPUT for value: TXRCESSINPUT
+        /// Enum TXRCESS for value: TXRCESS
         /// </summary>
-        [EnumMember(Value = "TXRCESSINPUT")]
-        TXRCESSINPUT = 66,
+        [EnumMember(Value = "TXRCESS")]
+        TXRCESS = 66,
 
         /// <summary>
-        /// Enum TXRCTSINPUT for value: TXRCTSINPUT
+        /// Enum TXRCTS for value: TXRCTS
         /// </summary>
-        [EnumMember(Value = "TXRCTSINPUT")]
-        TXRCTSINPUT = 67,
+        [EnumMember(Value = "TXRCTS")]
+        TXRCTS = 67,
 
         /// <summary>
         /// Enum OUTPUTY23 for value: OUTPUTY23
@@ -523,7 +523,31 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum SRLVGY23 for value: SRLVGY23
         /// </summary>
         [EnumMember(Value = "SRLVGY23")]
-        SRLVGY23 = 82
+        SRLVGY23 = 82,
+
+        /// <summary>
+        /// Enum TXRCN33Y23 for value: TXRCN33Y23
+        /// </summary>
+        [EnumMember(Value = "TXRCN33Y23")]
+        TXRCN33Y23 = 83,
+
+        /// <summary>
+        /// Enum TXRCREY23 for value: TXRCREY23
+        /// </summary>
+        [EnumMember(Value = "TXRCREY23")]
+        TXRCREY23 = 84,
+
+        /// <summary>
+        /// Enum TXRCESSY23 for value: TXRCESSY23
+        /// </summary>
+        [EnumMember(Value = "TXRCESSY23")]
+        TXRCESSY23 = 85,
+
+        /// <summary>
+        /// Enum TXRCTSY23 for value: TXRCTSY23
+        /// </summary>
+        [EnumMember(Value = "TXRCTSY23")]
+        TXRCTSY23 = 86
 
     }
 

@@ -30,6 +30,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     [DataContract]
     public partial class LeaveEarningsLine :  IEquatable<LeaveEarningsLine>, IValidatableObject
     {
+        /// <summary>
+        /// Gets or Sets PayOutType
+        /// </summary>
+        [DataMember(Name="PayOutType", EmitDefaultValue=false)]
+        public PayOutType PayOutType { get; set; }
         
         /// <summary>
         /// Xero identifier
@@ -63,6 +68,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  EarningsRateID: ").Append(EarningsRateID).Append("\n");
             sb.Append("  RatePerUnit: ").Append(RatePerUnit).Append("\n");
             sb.Append("  NumberOfUnits: ").Append(NumberOfUnits).Append("\n");
+            sb.Append("  PayOutType: ").Append(PayOutType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -111,6 +117,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
+                ) && 
+                (
+                    this.PayOutType == input.PayOutType ||
+                    this.PayOutType.Equals(input.PayOutType)
                 );
         }
 
@@ -129,6 +139,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.RatePerUnit.GetHashCode();
                 if (this.NumberOfUnits != null)
                     hashCode = hashCode * 59 + this.NumberOfUnits.GetHashCode();
+                hashCode = hashCode * 59 + this.PayOutType.GetHashCode();
                 return hashCode;
             }
         }
