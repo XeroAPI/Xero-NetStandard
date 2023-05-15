@@ -30,6 +30,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     [DataContract]
     public partial class LeaveApplication :  IEquatable<LeaveApplication>, IValidatableObject
     {
+        /// <summary>
+        /// Gets or Sets PayOutType
+        /// </summary>
+        [DataMember(Name="PayOutType", EmitDefaultValue=false)]
+        public PayOutType PayOutType { get; set; }
         
         /// <summary>
         /// The Xero identifier for Payroll Employee
@@ -115,6 +120,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  PayOutType: ").Append(PayOutType).Append("\n");
             sb.Append("  LeavePeriods: ").Append(LeavePeriods).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
@@ -188,6 +194,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.PayOutType == input.PayOutType ||
+                    this.PayOutType.Equals(input.PayOutType)
+                ) && 
+                (
                     this.LeavePeriods == input.LeavePeriods ||
                     this.LeavePeriods != null &&
                     input.LeavePeriods != null &&
@@ -229,6 +239,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.EndDate.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
+                hashCode = hashCode * 59 + this.PayOutType.GetHashCode();
                 if (this.LeavePeriods != null)
                     hashCode = hashCode * 59 + this.LeavePeriods.GetHashCode();
                 if (this.UpdatedDateUTC != null)

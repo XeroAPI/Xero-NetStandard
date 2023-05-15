@@ -76,6 +76,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public List<LeaveLine> LeaveLines { get; set; }
 
         /// <summary>
+        /// Gets or Sets PaidLeaveEarningsLines
+        /// </summary>
+        [DataMember(Name="PaidLeaveEarningsLines", EmitDefaultValue=false)]
+        public List<PaidLeaveEarningsLine> PaidLeaveEarningsLines { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -90,6 +96,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  SuperLines: ").Append(SuperLines).Append("\n");
             sb.Append("  ReimbursementLines: ").Append(ReimbursementLines).Append("\n");
             sb.Append("  LeaveLines: ").Append(LeaveLines).Append("\n");
+            sb.Append("  PaidLeaveEarningsLines: ").Append(PaidLeaveEarningsLines).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +170,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.LeaveLines != null &&
                     input.LeaveLines != null &&
                     this.LeaveLines.SequenceEqual(input.LeaveLines)
+                ) && 
+                (
+                    this.PaidLeaveEarningsLines == input.PaidLeaveEarningsLines ||
+                    this.PaidLeaveEarningsLines != null &&
+                    input.PaidLeaveEarningsLines != null &&
+                    this.PaidLeaveEarningsLines.SequenceEqual(input.PaidLeaveEarningsLines)
                 );
         }
 
@@ -189,6 +202,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.ReimbursementLines.GetHashCode();
                 if (this.LeaveLines != null)
                     hashCode = hashCode * 59 + this.LeaveLines.GetHashCode();
+                if (this.PaidLeaveEarningsLines != null)
+                    hashCode = hashCode * 59 + this.PaidLeaveEarningsLines.GetHashCode();
                 return hashCode;
             }
         }

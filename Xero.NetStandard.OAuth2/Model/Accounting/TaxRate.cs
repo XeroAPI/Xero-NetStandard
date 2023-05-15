@@ -545,28 +545,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             TOURISTREFUND = 78,
 
             /// <summary>
-            /// Enum TXRCN33INPUT for value: TXRCN33INPUT
+            /// Enum TXRCN33 for value: TXRCN33
             /// </summary>
-            [EnumMember(Value = "TXRCN33INPUT")]
-            TXRCN33INPUT = 79,
+            [EnumMember(Value = "TXRCN33")]
+            TXRCN33 = 79,
 
             /// <summary>
-            /// Enum TXRCREINPUT for value: TXRCREINPUT
+            /// Enum TXRCRE for value: TXRCRE
             /// </summary>
-            [EnumMember(Value = "TXRCREINPUT")]
-            TXRCREINPUT = 80,
+            [EnumMember(Value = "TXRCRE")]
+            TXRCRE = 80,
 
             /// <summary>
-            /// Enum TXRCESSINPUT for value: TXRCESSINPUT
+            /// Enum TXRCESS for value: TXRCESS
             /// </summary>
-            [EnumMember(Value = "TXRCESSINPUT")]
-            TXRCESSINPUT = 81,
+            [EnumMember(Value = "TXRCESS")]
+            TXRCESS = 81,
 
             /// <summary>
-            /// Enum TXRCTSINPUT for value: TXRCTSINPUT
+            /// Enum TXRCTS for value: TXRCTS
             /// </summary>
-            [EnumMember(Value = "TXRCTSINPUT")]
-            TXRCTSINPUT = 82,
+            [EnumMember(Value = "TXRCTS")]
+            TXRCTS = 82,
 
             /// <summary>
             /// Enum CAPEXINPUT for value: CAPEXINPUT
