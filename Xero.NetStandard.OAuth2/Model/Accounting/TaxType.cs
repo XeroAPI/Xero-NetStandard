@@ -547,7 +547,67 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum TXRCTSY23 for value: TXRCTSY23
         /// </summary>
         [EnumMember(Value = "TXRCTSY23")]
-        TXRCTSY23 = 86
+        TXRCTSY23 = 86,
+
+        /// <summary>
+        /// Enum IM for value: IM
+        /// </summary>
+        [EnumMember(Value = "IM")]
+        IM = 87,
+
+        /// <summary>
+        /// Enum IMY23 for value: IMY23
+        /// </summary>
+        [EnumMember(Value = "IMY23")]
+        IMY23 = 88,
+
+        /// <summary>
+        /// Enum IMESS for value: IMESS
+        /// </summary>
+        [EnumMember(Value = "IMESS")]
+        IMESS = 89,
+
+        /// <summary>
+        /// Enum IMESSY23 for value: IMESSY23
+        /// </summary>
+        [EnumMember(Value = "IMESSY23")]
+        IMESSY23 = 90,
+
+        /// <summary>
+        /// Enum IMN33 for value: IMN33
+        /// </summary>
+        [EnumMember(Value = "IMN33")]
+        IMN33 = 91,
+
+        /// <summary>
+        /// Enum IMN33Y23 for value: IMN33Y23
+        /// </summary>
+        [EnumMember(Value = "IMN33Y23")]
+        IMN33Y23 = 92,
+
+        /// <summary>
+        /// Enum IMRE for value: IMRE
+        /// </summary>
+        [EnumMember(Value = "IMRE")]
+        IMRE = 93,
+
+        /// <summary>
+        /// Enum IMREY23 for value: IMREY23
+        /// </summary>
+        [EnumMember(Value = "IMREY23")]
+        IMREY23 = 94,
+
+        /// <summary>
+        /// Enum BADDEBTRECOVERY for value: BADDEBTRECOVERY
+        /// </summary>
+        [EnumMember(Value = "BADDEBTRECOVERY")]
+        BADDEBTRECOVERY = 95,
+
+        /// <summary>
+        /// Enum BADDEBTRECOVERYY23 for value: BADDEBTRECOVERYY23
+        /// </summary>
+        [EnumMember(Value = "BADDEBTRECOVERYY23")]
+        BADDEBTRECOVERYY23 = 96
 
     }
 
