@@ -30,6 +30,63 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     [DataContract]
     public partial class TenNinetyNineContact :  IEquatable<TenNinetyNineContact>, IValidatableObject
     {
+        /// <summary>
+        /// Contact federal tax classification
+        /// </summary>
+        /// <value>Contact federal tax classification</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum FederalTaxClassificationEnum
+        {
+            /// <summary>
+            /// Enum SOLEPROPRIETOR for value: SOLE_PROPRIETOR
+            /// </summary>
+            [EnumMember(Value = "SOLE_PROPRIETOR")]
+            SOLEPROPRIETOR = 1,
+
+            /// <summary>
+            /// Enum PARTNERSHIP for value: PARTNERSHIP
+            /// </summary>
+            [EnumMember(Value = "PARTNERSHIP")]
+            PARTNERSHIP = 2,
+
+            /// <summary>
+            /// Enum TRUSTORESTATE for value: TRUST_OR_ESTATE
+            /// </summary>
+            [EnumMember(Value = "TRUST_OR_ESTATE")]
+            TRUSTORESTATE = 3,
+
+            /// <summary>
+            /// Enum NONPROFIT for value: NONPROFIT
+            /// </summary>
+            [EnumMember(Value = "NONPROFIT")]
+            NONPROFIT = 4,
+
+            /// <summary>
+            /// Enum CCORP for value: C_CORP
+            /// </summary>
+            [EnumMember(Value = "C_CORP")]
+            CCORP = 5,
+
+            /// <summary>
+            /// Enum SCORP for value: S_CORP
+            /// </summary>
+            [EnumMember(Value = "S_CORP")]
+            SCORP = 6,
+
+            /// <summary>
+            /// Enum OTHER for value: OTHER
+            /// </summary>
+            [EnumMember(Value = "OTHER")]
+            OTHER = 7
+
+        }
+
+        /// <summary>
+        /// Contact federal tax classification
+        /// </summary>
+        /// <value>Contact federal tax classification</value>
+        [DataMember(Name="FederalTaxClassification", EmitDefaultValue=false)]
+        public FederalTaxClassificationEnum FederalTaxClassification { get; set; }
         
         /// <summary>
         /// Box 1 on 1099 Form
@@ -186,6 +243,20 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public Guid? ContactId { get; set; }
 
         /// <summary>
+        /// Contact legal name
+        /// </summary>
+        /// <value>Contact legal name</value>
+        [DataMember(Name="LegalName", EmitDefaultValue=false)]
+        public string LegalName { get; set; }
+
+        /// <summary>
+        /// Contact business name
+        /// </summary>
+        /// <value>Contact business name</value>
+        [DataMember(Name="BusinessName", EmitDefaultValue=false)]
+        public string BusinessName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -215,6 +286,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  StreetAddress: ").Append(StreetAddress).Append("\n");
             sb.Append("  TaxID: ").Append(TaxID).Append("\n");
             sb.Append("  ContactId: ").Append(ContactId).Append("\n");
+            sb.Append("  LegalName: ").Append(LegalName).Append("\n");
+            sb.Append("  BusinessName: ").Append(BusinessName).Append("\n");
+            sb.Append("  FederalTaxClassification: ").Append(FederalTaxClassification).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -358,6 +432,20 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.ContactId == input.ContactId ||
                     (this.ContactId != null &&
                     this.ContactId.Equals(input.ContactId))
+                ) && 
+                (
+                    this.LegalName == input.LegalName ||
+                    (this.LegalName != null &&
+                    this.LegalName.Equals(input.LegalName))
+                ) && 
+                (
+                    this.BusinessName == input.BusinessName ||
+                    (this.BusinessName != null &&
+                    this.BusinessName.Equals(input.BusinessName))
+                ) && 
+                (
+                    this.FederalTaxClassification == input.FederalTaxClassification ||
+                    this.FederalTaxClassification.Equals(input.FederalTaxClassification)
                 );
         }
 
@@ -414,6 +502,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.TaxID.GetHashCode();
                 if (this.ContactId != null)
                     hashCode = hashCode * 59 + this.ContactId.GetHashCode();
+                if (this.LegalName != null)
+                    hashCode = hashCode * 59 + this.LegalName.GetHashCode();
+                if (this.BusinessName != null)
+                    hashCode = hashCode * 59 + this.BusinessName.GetHashCode();
+                hashCode = hashCode * 59 + this.FederalTaxClassification.GetHashCode();
                 return hashCode;
             }
         }

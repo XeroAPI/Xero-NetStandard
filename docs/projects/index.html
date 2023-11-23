@@ -1569,9 +1569,10 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new ProjectApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateProjectAsync(accessToken, xeroTenantId, projectCreateOrUpdate);
+                var result = await apiInstance.CreateProjectAsync(accessToken, xeroTenantId, projectCreateOrUpdate, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1617,6 +1618,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createProject_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -1702,9 +1723,10 @@ namespace Example
             var apiInstance = new ProjectApi();
             var xeroTenantId = "xeroTenantId_example";
             var projectId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateTaskAsync(accessToken, xeroTenantId, projectId, taskCreateOrUpdate);
+                var result = await apiInstance.CreateTaskAsync(accessToken, xeroTenantId, projectId, taskCreateOrUpdate, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1783,6 +1805,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createTask_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -1868,9 +1910,10 @@ namespace Example
             var apiInstance = new ProjectApi();
             var xeroTenantId = "xeroTenantId_example";
             var projectId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateTimeEntryAsync(accessToken, xeroTenantId, projectId, timeEntryCreateOrUpdate);
+                var result = await apiInstance.CreateTimeEntryAsync(accessToken, xeroTenantId, projectId, timeEntryCreateOrUpdate, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1949,6 +1992,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createTimeEntry_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -3761,9 +3824,10 @@ namespace Example
             var apiInstance = new ProjectApi();
             var xeroTenantId = "xeroTenantId_example";
             var projectId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                await apiInstance.PatchProjectAsync(accessToken, xeroTenantId, projectId, projectPatch);
+                await apiInstance.PatchProjectAsync(accessToken, xeroTenantId, projectId, projectPatch, idempotencyKey);
             }
             catch (Exception e)
             {
@@ -3841,6 +3905,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_patchProject_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -3926,9 +4010,10 @@ namespace Example
             var apiInstance = new ProjectApi();
             var xeroTenantId = "xeroTenantId_example";
             var projectId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                await apiInstance.UpdateProjectAsync(accessToken, xeroTenantId, projectId, projectCreateOrUpdate);
+                await apiInstance.UpdateProjectAsync(accessToken, xeroTenantId, projectId, projectCreateOrUpdate, idempotencyKey);
             }
             catch (Exception e)
             {
@@ -4006,6 +4091,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateProject_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -4092,9 +4197,10 @@ namespace Example
             var xeroTenantId = "xeroTenantId_example";
             var projectId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
             var taskId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                await apiInstance.UpdateTaskAsync(accessToken, xeroTenantId, projectId, taskId, taskCreateOrUpdate);
+                await apiInstance.UpdateTaskAsync(accessToken, xeroTenantId, projectId, taskId, taskCreateOrUpdate, idempotencyKey);
             }
             catch (Exception e)
             {
@@ -4203,6 +4309,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateTask_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -4283,9 +4409,10 @@ namespace Example
             var xeroTenantId = "xeroTenantId_example";
             var projectId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
             var timeEntryId = Guid.Parse("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                await apiInstance.UpdateTimeEntryAsync(accessToken, xeroTenantId, projectId, timeEntryId, timeEntryCreateOrUpdate);
+                await apiInstance.UpdateTimeEntryAsync(accessToken, xeroTenantId, projectId, timeEntryId, timeEntryCreateOrUpdate, idempotencyKey);
             }
             catch (Exception e)
             {
@@ -4389,6 +4516,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateTimeEntry_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>

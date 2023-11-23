@@ -1813,7 +1813,7 @@ ul.nav-tabs {
   "title" : "",
   "type" : "string",
   "description" : "",
-  "enum" : [ "SCHEDULED", "PROCESSED" ]
+  "enum" : [ "SCHEDULED", "PROCESSED", "REQUESTED", "REJECTED" ]
 };
       defs["LeaveType"] = {
   "title" : "",
@@ -3568,9 +3568,10 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var leaveApplicationID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.ApproveLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationID);
+                var result = await apiInstance.ApproveLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationID, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -3654,6 +3655,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_approveLeaveApplication_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                 </article>
               </div>
@@ -3696,6 +3717,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             var dateOfBirth = new DateTime(2000, 10, 10);
 
             var homeAddress = new HomeAddress();
@@ -3711,7 +3733,7 @@ namespace Example
             employee.HomeAddress = homeAddress;
             
             try {
-                var result = await apiInstance.CreateEmployeeAsync(accessToken, xeroTenantId, employee);
+                var result = await apiInstance.CreateEmployeeAsync(accessToken, xeroTenantId, employee, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -3757,6 +3779,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createEmployee_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -3843,6 +3885,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             var startDate = new DateTime(2020, 10, 10);
             var endDate = new DateTime(2020, 10, 12);
 
@@ -3854,7 +3897,7 @@ namespace Example
             leaveApplication.EndDate = endDate;
             
             try {
-                var result = await apiInstance.CreateLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplication);
+                var result = await apiInstance.CreateLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplication, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -3900,6 +3943,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createLeaveApplication_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -3986,6 +4049,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
 
             var earningsRate = new EarningsRate();
             earningsRate.Name = "Ordinary Hours 123";
@@ -4025,7 +4089,7 @@ namespace Example
             payItem.ReimbursementTypes = reimbursementTypes;
             
             try {
-                var result = await apiInstance.CreatePayItemAsync(accessToken, xeroTenantId, payItem);
+                var result = await apiInstance.CreatePayItemAsync(accessToken, xeroTenantId, payItem, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -4071,6 +4135,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPayItem_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -4154,12 +4238,13 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
 
             var payRun = new PayRun();
             payRun.PayrollCalendarID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             
             try {
-                var result = await apiInstance.CreatePayRunAsync(accessToken, xeroTenantId, payRun);
+                var result = await apiInstance.CreatePayRunAsync(accessToken, xeroTenantId, payRun, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -4205,6 +4290,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPayRun_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -4291,6 +4396,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             var startDate = new DateTime(2020, 10, 10);
             var paymentDate = new DateTime(2020, 10, 30);
 
@@ -4303,7 +4409,7 @@ namespace Example
             payrollCalendars.Add(payrollCalendar);
             
             try {
-                var result = await apiInstance.CreatePayrollCalendarAsync(accessToken, xeroTenantId, payrollCalendar);
+                var result = await apiInstance.CreatePayrollCalendarAsync(accessToken, xeroTenantId, payrollCalendar, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -4349,6 +4455,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPayrollCalendar_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -4435,13 +4561,14 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
 
             var superFund = new SuperFund();
             superfund.Type = SuperFundType.REGULATED;
             superfund.USI = "40022701955002";
             
             try {
-                var result = await apiInstance.CreateSuperfundAsync(accessToken, xeroTenantId, superFund);
+                var result = await apiInstance.CreateSuperfundAsync(accessToken, xeroTenantId, superFund, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -4487,6 +4614,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createSuperfund_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -4573,6 +4720,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             var startDate = new DateTime(2020, 10, 23);
             var endDate = new DateTime(2020, 10, 30);
 
@@ -4583,7 +4731,7 @@ namespace Example
             timesheet.Status = TimesheetStatus.DRAFT;
             
             try {
-                var result = await apiInstance.CreateTimesheetAsync(accessToken, xeroTenantId, timesheet);
+                var result = await apiInstance.CreateTimesheetAsync(accessToken, xeroTenantId, timesheet, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -4629,6 +4777,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createTimesheet_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -7455,9 +7623,10 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var leaveApplicationID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.RejectLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationID);
+                var result = await apiInstance.RejectLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationID, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7541,6 +7710,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_rejectLeaveApplication_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                 </article>
               </div>
@@ -7584,6 +7773,7 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var employeeID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             var dateOfBirth = new DateTime(2000, 10, 10);
 
             var homeAddress = new HomeAddress();
@@ -7599,7 +7789,7 @@ namespace Example
             employee.HomeAddress = homeAddress;
             
             try {
-                var result = await apiInstance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeID, employee);
+                var result = await apiInstance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeID, idempotencyKey, employee);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7683,6 +7873,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateEmployee_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -7761,6 +7971,7 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var leaveApplicationID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             var startDate = new DateTime(2020, 10, 10);
             var endDate = new DateTime(2020, 10, 12);
 
@@ -7772,7 +7983,7 @@ namespace Example
             leaveApplication.EndDate = endDate;
             
             try {
-                var result = await apiInstance.UpdateLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationID, leaveApplication);
+                var result = await apiInstance.UpdateLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationID, leaveApplication, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7851,6 +8062,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateLeaveApplication_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -7938,12 +8169,13 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var payRunID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
 
             var payRun = new PayRun();
             payRun.PayrollCalendarID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             
             try {
-                var result = await apiInstance.UpdatePayRunAsync(accessToken, xeroTenantId, payRunID, payRun);
+                var result = await apiInstance.UpdatePayRunAsync(accessToken, xeroTenantId, payRunID, idempotencyKey, payRun);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8027,6 +8259,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updatePayRun_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -8105,6 +8357,7 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var payslipID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
 
             var earningsLine = new EarningsLine();
             earningsLine.EarningsRateID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -8119,7 +8372,7 @@ namespace Example
             payslipLines.Add(payslipLine);
             
             try {
-                var result = await apiInstance.UpdatePayslipAsync(accessToken, xeroTenantId, payslipID, payslipLines);
+                var result = await apiInstance.UpdatePayslipAsync(accessToken, xeroTenantId, payslipID, idempotencyKey, payslipLines);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8203,6 +8456,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updatePayslip_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -8281,13 +8554,14 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var superFundID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
 
             var superFund = new SuperFund();
             superfund.Type = SuperFundType.REGULATED;
             superfund.USI = "40022701955002";
             
             try {
-                var result = await apiInstance.UpdateSuperfundAsync(accessToken, xeroTenantId, superFundID, superFund);
+                var result = await apiInstance.UpdateSuperfundAsync(accessToken, xeroTenantId, superFundID, idempotencyKey, superFund);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8371,6 +8645,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateSuperfund_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -8449,6 +8743,7 @@ namespace Example
             var apiInstance = new PayrollAuApi();
             var xeroTenantId = "xeroTenantId_example";
             var timesheetID = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             var startDate = new DateTime(2020, 10, 23);
             var endDate = new DateTime(2020, 10, 30);
 
@@ -8459,7 +8754,7 @@ namespace Example
             timesheet.Status = TimesheetStatus.DRAFT;
             
             try {
-                var result = await apiInstance.UpdateTimesheetAsync(accessToken, xeroTenantId, timesheetID, timesheet);
+                var result = await apiInstance.UpdateTimesheetAsync(accessToken, xeroTenantId, timesheetID, idempotencyKey, timesheet);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8538,6 +8833,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateTimesheet_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>

@@ -42,7 +42,19 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum PROCESSED for value: PROCESSED
         /// </summary>
         [EnumMember(Value = "PROCESSED")]
-        PROCESSED = 2
+        PROCESSED = 2,
+
+        /// <summary>
+        /// Enum REQUESTED for value: REQUESTED
+        /// </summary>
+        [EnumMember(Value = "REQUESTED")]
+        REQUESTED = 3,
+
+        /// <summary>
+        /// Enum REJECTED for value: REJECTED
+        /// </summary>
+        [EnumMember(Value = "REJECTED")]
+        REJECTED = 4
 
     }
 

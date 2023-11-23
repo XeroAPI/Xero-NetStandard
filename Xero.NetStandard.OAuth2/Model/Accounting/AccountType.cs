@@ -136,34 +136,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         TERMLIAB = 17,
 
         /// <summary>
-        /// Enum PAYGLIABILITY for value: PAYGLIABILITY
-        /// </summary>
-        [EnumMember(Value = "PAYGLIABILITY")]
-        PAYGLIABILITY = 18,
-
-        /// <summary>
         /// Enum PAYG for value: PAYG
         /// </summary>
         [EnumMember(Value = "PAYG")]
-        PAYG = 19,
-
-        /// <summary>
-        /// Enum SUPERANNUATIONEXPENSE for value: SUPERANNUATIONEXPENSE
-        /// </summary>
-        [EnumMember(Value = "SUPERANNUATIONEXPENSE")]
-        SUPERANNUATIONEXPENSE = 20,
-
-        /// <summary>
-        /// Enum SUPERANNUATIONLIABILITY for value: SUPERANNUATIONLIABILITY
-        /// </summary>
-        [EnumMember(Value = "SUPERANNUATIONLIABILITY")]
-        SUPERANNUATIONLIABILITY = 21,
-
-        /// <summary>
-        /// Enum WAGESEXPENSE for value: WAGESEXPENSE
-        /// </summary>
-        [EnumMember(Value = "WAGESEXPENSE")]
-        WAGESEXPENSE = 22
+        PAYG = 18
 
     }
 
