@@ -90,7 +90,13 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Enum Unauthorized for value: unauthorized
         /// </summary>
         [EnumMember(Value = "unauthorized")]
-        Unauthorized = 10
+        Unauthorized = 10,
+
+        /// <summary>
+        /// Enum RateLimitError for value: rate-limit-error
+        /// </summary>
+        [EnumMember(Value = "rate-limit-error")]
+        RateLimitError = 11
 
     }
 

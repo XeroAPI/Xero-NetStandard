@@ -1469,6 +1469,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AssetApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var asset = new Asset();
             asset.assetName = "AssetName";
@@ -1476,7 +1477,7 @@ namespace Example
             asset.Status = AssetStatus.Draft;
             
             try {
-                var result = await apiInstance.CreateAssetAsync(accessToken, xeroTenantId, asset);
+                var result = await apiInstance.CreateAssetAsync(accessToken, xeroTenantId, asset, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1522,6 +1523,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createAsset_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -1606,6 +1627,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AssetApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var bookDepreciationSetting = new BookDepreciationSetting();
             bookDepreciationSetting.DepreciationMethod = "DiminishingValue100";
@@ -1621,7 +1643,7 @@ namespace Example
             assetType.BookDepreciationSetting = bookDepreciationSetting;
             
             try {
-                var result = await apiInstance.CreateAssetTypeAsync(accessToken, xeroTenantId, assetType);
+                var result = await apiInstance.CreateAssetTypeAsync(accessToken, xeroTenantId, idempotencyKey, assetType);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1667,6 +1689,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createAssetType_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>

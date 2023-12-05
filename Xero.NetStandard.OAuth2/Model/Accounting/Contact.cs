@@ -199,13 +199,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string EmailAddress { get; set; }
 
         /// <summary>
-        /// Skype user name of contact
-        /// </summary>
-        /// <value>Skype user name of contact</value>
-        [DataMember(Name="SkypeUserName", EmitDefaultValue=false)]
-        public string SkypeUserName { get; set; }
-
-        /// <summary>
         /// See contact persons
         /// </summary>
         /// <value>See contact persons</value>
@@ -422,7 +415,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  CompanyNumber: ").Append(CompanyNumber).Append("\n");
             sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
-            sb.Append("  SkypeUserName: ").Append(SkypeUserName).Append("\n");
             sb.Append("  ContactPersons: ").Append(ContactPersons).Append("\n");
             sb.Append("  BankAccountDetails: ").Append(BankAccountDetails).Append("\n");
             sb.Append("  TaxNumber: ").Append(TaxNumber).Append("\n");
@@ -537,11 +529,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.EmailAddress == input.EmailAddress ||
                     (this.EmailAddress != null &&
                     this.EmailAddress.Equals(input.EmailAddress))
-                ) && 
-                (
-                    this.SkypeUserName == input.SkypeUserName ||
-                    (this.SkypeUserName != null &&
-                    this.SkypeUserName.Equals(input.SkypeUserName))
                 ) && 
                 (
                     this.ContactPersons == input.ContactPersons ||
@@ -738,8 +725,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.CompanyNumber.GetHashCode();
                 if (this.EmailAddress != null)
                     hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
-                if (this.SkypeUserName != null)
-                    hashCode = hashCode * 59 + this.SkypeUserName.GetHashCode();
                 if (this.ContactPersons != null)
                     hashCode = hashCode * 59 + this.ContactPersons.GetHashCode();
                 if (this.BankAccountDetails != null)

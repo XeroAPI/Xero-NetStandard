@@ -40,6 +40,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         }
         
         /// <summary>
+        /// Xero generated unique identifier
+        /// </summary>
+        /// <value>Xero generated unique identifier</value>
+        [DataMember(Name="AllocationID", EmitDefaultValue=false)]
+        public Guid? AllocationID { get; set; }
+
+        /// <summary>
         /// Gets or Sets Invoice
         /// </summary>
         [DataMember(Name="Invoice", EmitDefaultValue=false)]
@@ -78,6 +85,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? Date { get; set; }
 
         /// <summary>
+        /// A flag that returns true when the allocation is succesfully deleted
+        /// </summary>
+        /// <value>A flag that returns true when the allocation is succesfully deleted</value>
+        [DataMember(Name="IsDeleted", EmitDefaultValue=false)]
+        public bool? IsDeleted { get; private set; }
+
+        /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
@@ -99,12 +113,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         {
             var sb = new StringBuilder();
             sb.Append("class Allocation {\n");
+            sb.Append("  AllocationID: ").Append(AllocationID).Append("\n");
             sb.Append("  Invoice: ").Append(Invoice).Append("\n");
             sb.Append("  Overpayment: ").Append(Overpayment).Append("\n");
             sb.Append("  Prepayment: ").Append(Prepayment).Append("\n");
             sb.Append("  CreditNote: ").Append(CreditNote).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Date: ").Append(Date).Append("\n");
+            sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("  StatusAttributeString: ").Append(StatusAttributeString).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
@@ -142,6 +158,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
 
             return 
                 (
+                    this.AllocationID == input.AllocationID ||
+                    (this.AllocationID != null &&
+                    this.AllocationID.Equals(input.AllocationID))
+                ) && 
+                (
                     this.Invoice == input.Invoice ||
                     (this.Invoice != null &&
                     this.Invoice.Equals(input.Invoice))
@@ -172,6 +193,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Date.Equals(input.Date))
                 ) && 
                 (
+                    this.IsDeleted == input.IsDeleted ||
+                    (this.IsDeleted != null &&
+                    this.IsDeleted.Equals(input.IsDeleted))
+                ) && 
+                (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
@@ -193,6 +219,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AllocationID != null)
+                    hashCode = hashCode * 59 + this.AllocationID.GetHashCode();
                 if (this.Invoice != null)
                     hashCode = hashCode * 59 + this.Invoice.GetHashCode();
                 if (this.Overpayment != null)
@@ -205,6 +233,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
                 if (this.Date != null)
                     hashCode = hashCode * 59 + this.Date.GetHashCode();
+                if (this.IsDeleted != null)
+                    hashCode = hashCode * 59 + this.IsDeleted.GetHashCode();
                 if (this.StatusAttributeString != null)
                     hashCode = hashCode * 59 + this.StatusAttributeString.GetHashCode();
                 if (this.ValidationErrors != null)

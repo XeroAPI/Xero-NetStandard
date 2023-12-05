@@ -975,7 +975,7 @@ ul.nav-tabs {
   "title" : "",
   "type" : "string",
   "description" : "See Account Types",
-  "enum" : [ "BANK", "CURRENT", "CURRLIAB", "DEPRECIATN", "DIRECTCOSTS", "EQUITY", "EXPENSE", "FIXED", "INVENTORY", "LIABILITY", "NONCURRENT", "OTHERINCOME", "OVERHEADS", "PREPAYMENT", "REVENUE", "SALES", "TERMLIAB", "PAYGLIABILITY", "PAYG", "SUPERANNUATIONEXPENSE", "SUPERANNUATIONLIABILITY", "WAGESEXPENSE" ]
+  "enum" : [ "BANK", "CURRENT", "CURRLIAB", "DEPRECIATN", "DIRECTCOSTS", "EQUITY", "EXPENSE", "FIXED", "INVENTORY", "LIABILITY", "NONCURRENT", "OTHERINCOME", "OVERHEADS", "PREPAYMENT", "REVENUE", "SALES", "TERMLIAB", "PAYG" ]
 };
       defs["Accounts"] = {
   "title" : "",
@@ -1183,6 +1183,11 @@ ul.nav-tabs {
   "required" : [ "Amount", "Date", "Invoice" ],
   "type" : "object",
   "properties" : {
+    "AllocationID" : {
+      "type" : "string",
+      "description" : "Xero generated unique identifier",
+      "format" : "uuid"
+    },
     "Invoice" : {
       "$ref" : "#/components/schemas/Invoice"
     },
@@ -1205,6 +1210,11 @@ ul.nav-tabs {
       "type" : "string",
       "description" : "the date the allocation is applied YYYY-MM-DD.",
       "x-is-msdate" : true
+    },
+    "IsDeleted" : {
+      "type" : "boolean",
+      "description" : "A flag that returns true when the allocation is succesfully deleted",
+      "readOnly" : true
     },
     "StatusAttributeString" : {
       "type" : "string",
@@ -2067,10 +2077,6 @@ ul.nav-tabs {
       "maxLength" : 255,
       "type" : "string",
       "description" : "Email address of contact person (umlauts not supported) (max length  = 255)"
-    },
-    "SkypeUserName" : {
-      "type" : "string",
-      "description" : "Skype user name of contact"
     },
     "ContactPersons" : {
       "type" : "array",
@@ -5691,7 +5697,7 @@ ul.nav-tabs {
   "title" : "",
   "type" : "string",
   "description" : "See Tax Types – can only be used on update calls",
-  "enum" : [ "OUTPUT", "INPUT", "CAPEXINPUT", "EXEMPTEXPORT", "EXEMPTEXPENSES", "EXEMPTCAPITAL", "EXEMPTOUTPUT", "INPUTTAXED", "BASEXCLUDED", "GSTONCAPIMPORTS", "GSTONIMPORTS", "NONE", "INPUT2", "ZERORATED", "OUTPUT2", "CAPEXINPUT2", "CAPEXOUTPUT", "CAPEXOUTPUT2", "CAPEXSRINPUT", "CAPEXSROUTPUT", "ECACQUISITIONS", "ECZRINPUT", "ECZROUTPUT", "ECZROUTPUTSERVICES", "EXEMPTINPUT", "REVERSECHARGES", "RRINPUT", "RROUTPUT", "SRINPUT", "SROUTPUT", "ZERORATEDINPUT", "ZERORATEDOUTPUT", "BLINPUT", "DSOUTPUT", "EPINPUT", "ES33OUTPUT", "ESN33OUTPUT", "IGDSINPUT2", "IMINPUT2", "MEINPUT", "NRINPUT", "OPINPUT", "OSOUTPUT", "TXESSINPUT", "TXN33INPUT", "TXPETINPUT", "TXREINPUT", "INPUT3", "INPUT4", "OUTPUT3", "OUTPUT4", "SROUTPUT2", "TXCA", "SRCAS", "BLINPUT2", "DRCHARGESUPPLY20", "DRCHARGE20", "DRCHARGESUPPLY5", "DRCHARGE5", "BADDEBTRELIEF", "IGDSINPUT3", "SROVR", "TOURISTREFUND", "TXRCN33", "TXRCRE", "TXRCESS", "TXRCTS", "OUTPUTY23", "DSOUTPUTY23", "INPUTY23", "IMINPUT2Y23", "IGDSINPUT2Y23", "TXPETINPUTY23", "TXESSINPUTY23", "TXN33INPUTY23", "TXREINPUTY23", "TXCAY23", "BADDEBTRELIEFY23", "IGDSINPUT3Y23", "SROVRRSY23", "SROVRLVGY23", "SRLVGY23", "TXRCN33Y23", "TXRCREY23", "TXRCESSY23", "TXRCTSY23", "IM", "IMY23", "IMESS", "IMESSY23", "IMN33", "IMN33Y23", "IMRE", "IMREY23", "BADDEBTRECOVERY", "BADDEBTRECOVERYY23" ]
+  "enum" : [ "OUTPUT", "INPUT", "CAPEXINPUT", "EXEMPTEXPORT", "EXEMPTEXPENSES", "EXEMPTCAPITAL", "EXEMPTOUTPUT", "INPUTTAXED", "BASEXCLUDED", "GSTONCAPIMPORTS", "GSTONIMPORTS", "NONE", "INPUT2", "ZERORATED", "OUTPUT2", "CAPEXINPUT2", "CAPEXOUTPUT", "CAPEXOUTPUT2", "CAPEXSRINPUT", "CAPEXSROUTPUT", "ECACQUISITIONS", "ECZRINPUT", "ECZROUTPUT", "ECZROUTPUTSERVICES", "EXEMPTINPUT", "REVERSECHARGES", "RRINPUT", "RROUTPUT", "SRINPUT", "SROUTPUT", "ZERORATEDINPUT", "ZERORATEDOUTPUT", "BLINPUT", "DSOUTPUT", "EPINPUT", "ES33OUTPUT", "ESN33OUTPUT", "IGDSINPUT2", "IMINPUT2", "MEINPUT", "NRINPUT", "OPINPUT", "OSOUTPUT", "TXESSINPUT", "TXN33INPUT", "TXPETINPUT", "TXREINPUT", "INPUT3", "INPUT4", "OUTPUT3", "OUTPUT4", "SROUTPUT2", "TXCA", "SRCAS", "BLINPUT2", "DRCHARGESUPPLY20", "DRCHARGE20", "DRCHARGESUPPLY5", "DRCHARGE5", "BADDEBTRELIEF", "IGDSINPUT3", "SROVR", "TOURISTREFUND", "TXRCN33", "TXRCRE", "TXRCESS", "TXRCTS", "OUTPUTY23", "DSOUTPUTY23", "INPUTY23", "IMINPUT2Y23", "IGDSINPUT2Y23", "TXPETINPUTY23", "TXESSINPUTY23", "TXN33INPUTY23", "TXREINPUTY23", "TXCAY23", "BADDEBTRELIEFY23", "IGDSINPUT3Y23", "SROVRRSY23", "SROVRLVGY23", "SRLVGY23", "TXRCN33Y23", "TXRCREY23", "TXRCESSY23", "TXRCTSY23", "IM", "IMY23", "IMESS", "IMESSY23", "IMN33", "IMN33Y23", "IMRE", "IMREY23", "BADDEBTRECOVERY", "BADDEBTRECOVERYY23", "OUTPUTY24", "DSOUTPUTY24", "INPUTY24", "IGDSINPUT2Y24", "TXPETINPUTY24", "TXESSINPUTY24", "TXN33INPUTY24", "TXREINPUTY24", "TXCAY24", "BADDEBTRELIEFY24", "IGDSINPUT3Y24", "SROVRRSY24", "SROVRLVGY24", "SRLVGY24", "TXRCTSY24", "TXRCESSY24", "TXRCN33Y24", "TXRCREY24", "IMY24", "IMESSY24", "IMN33Y24", "IMREY24", "BADDEBTRECOVERYY24", "OSOUTPUT2" ]
 };
       defs["TenNinetyNineContact"] = {
   "title" : "",
@@ -5810,6 +5816,19 @@ ul.nav-tabs {
       "type" : "string",
       "description" : "Contact contact id",
       "format" : "uuid"
+    },
+    "LegalName" : {
+      "type" : "string",
+      "description" : "Contact legal name"
+    },
+    "BusinessName" : {
+      "type" : "string",
+      "description" : "Contact business name"
+    },
+    "FederalTaxClassification" : {
+      "type" : "string",
+      "description" : "Contact federal tax classification",
+      "enum" : [ "SOLE_PROPRIETOR", "PARTNERSHIP", "TRUST_OR_ESTATE", "NONPROFIT", "C_CORP", "S_CORP", "OTHER" ]
     }
   },
   "description" : ""
@@ -6260,14 +6279,23 @@ ul.nav-tabs {
               <li data-group="Accounting" data-name="deleteContactGroupContacts" class="">
                 <a href="#api-Accounting-deleteContactGroupContacts">deleteContactGroupContacts</a>
               </li>
+              <li data-group="Accounting" data-name="deleteCreditNoteAllocations" class="">
+                <a href="#api-Accounting-deleteCreditNoteAllocations">deleteCreditNoteAllocations</a>
+              </li>
               <li data-group="Accounting" data-name="deleteItem" class="">
                 <a href="#api-Accounting-deleteItem">deleteItem</a>
               </li>
               <li data-group="Accounting" data-name="deleteLinkedTransaction" class="">
                 <a href="#api-Accounting-deleteLinkedTransaction">deleteLinkedTransaction</a>
               </li>
+              <li data-group="Accounting" data-name="deleteOverpaymentAllocations" class="">
+                <a href="#api-Accounting-deleteOverpaymentAllocations">deleteOverpaymentAllocations</a>
+              </li>
               <li data-group="Accounting" data-name="deletePayment" class="">
                 <a href="#api-Accounting-deletePayment">deletePayment</a>
+              </li>
+              <li data-group="Accounting" data-name="deletePrepaymentAllocations" class="">
+                <a href="#api-Accounting-deletePrepaymentAllocations">deletePrepaymentAllocations</a>
               </li>
               <li data-group="Accounting" data-name="deleteTrackingCategory" class="">
                 <a href="#api-Accounting-deleteTrackingCategory">deleteTrackingCategory</a>
@@ -6536,6 +6564,9 @@ ul.nav-tabs {
               <li data-group="Accounting" data-name="getPurchaseOrderAsPdf" class="">
                 <a href="#api-Accounting-getPurchaseOrderAsPdf">getPurchaseOrderAsPdf</a>
               </li>
+              <li data-group="Accounting" data-name="getPurchaseOrderAttachmentByFileName" class="">
+                <a href="#api-Accounting-getPurchaseOrderAttachmentByFileName">getPurchaseOrderAttachmentByFileName</a>
+              </li>
               <li data-group="Accounting" data-name="getPurchaseOrderAttachmentById" class="">
                 <a href="#api-Accounting-getPurchaseOrderAttachmentById">getPurchaseOrderAttachmentById</a>
               </li>
@@ -6550,9 +6581,6 @@ ul.nav-tabs {
               </li>
               <li data-group="Accounting" data-name="getPurchaseOrders" class="">
                 <a href="#api-Accounting-getPurchaseOrders">getPurchaseOrders</a>
-              </li>
-              <li data-group="Accounting" data-name="getPurchaseOrder≠AttachmentByFileName" class="">
-                <a href="#api-Accounting-getPurchaseOrder≠AttachmentByFileName">getPurchaseOrder≠AttachmentByFileName</a>
               </li>
               <li data-group="Accounting" data-name="getQuote" class="">
                 <a href="#api-Accounting-getQuote">getQuote</a>
@@ -6832,6 +6860,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var account = new Account();
             account.Code = "123456";
@@ -6840,7 +6869,7 @@ namespace Example
             account.Description = "Hello World";
             
             try {
-                var result = await apiInstance.CreateAccountAsync(accessToken, xeroTenantId, account);
+                var result = await apiInstance.CreateAccountAsync(accessToken, xeroTenantId, account, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -6886,6 +6915,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createAccount_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -6972,10 +7021,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var accountID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
+                var result = await apiInstance.CreateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7082,6 +7132,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createAccountAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -7163,10 +7233,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
+                var result = await apiInstance.CreateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7273,6 +7344,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBankTransactionAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -7353,6 +7444,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -7363,7 +7455,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateBankTransactionHistoryRecordAsync(accessToken, xeroTenantId, bankTransactionID, historyRecords);
+                var result = await apiInstance.CreateBankTransactionHistoryRecordAsync(accessToken, xeroTenantId, bankTransactionID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7442,6 +7534,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBankTransactionHistoryRecord_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -7526,6 +7638,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
 
@@ -7555,7 +7668,7 @@ namespace Example
             bankTransactions._BankTransactions = bankTransactionsList;
             
             try {
-                var result = await apiInstance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7601,6 +7714,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBankTransactions_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -7732,6 +7865,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var fromBankAccount = new Account();
             fromBankAccount.AccountID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -7750,7 +7884,7 @@ namespace Example
             bankTransfers._BankTransfers = bankTransfersList;
             
             try {
-                var result = await apiInstance.CreateBankTransferAsync(accessToken, xeroTenantId, bankTransfers);
+                var result = await apiInstance.CreateBankTransferAsync(accessToken, xeroTenantId, bankTransfers, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7796,6 +7930,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBankTransfer_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -7882,10 +8036,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransferID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
+                var result = await apiInstance.CreateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -7992,6 +8147,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBankTransferAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -8072,6 +8247,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransferID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -8082,7 +8258,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateBankTransferHistoryRecordAsync(accessToken, xeroTenantId, bankTransferID, historyRecords);
+                var result = await apiInstance.CreateBankTransferHistoryRecordAsync(accessToken, xeroTenantId, bankTransferID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8161,6 +8337,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBankTransferHistoryRecord_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -8246,6 +8442,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var paymentAccount = new Account();
@@ -8277,7 +8474,7 @@ namespace Example
             batchPayments._BatchPayments = batchPaymentsList;
             
             try {
-                var result = await apiInstance.CreateBatchPaymentAsync(accessToken, xeroTenantId, batchPayments, summarizeErrors);
+                var result = await apiInstance.CreateBatchPaymentAsync(accessToken, xeroTenantId, batchPayments, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8323,6 +8520,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBatchPayment_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -8435,6 +8652,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var batchPaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -8445,7 +8663,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateBatchPaymentHistoryRecordAsync(accessToken, xeroTenantId, batchPaymentID, historyRecords);
+                var result = await apiInstance.CreateBatchPaymentHistoryRecordAsync(accessToken, xeroTenantId, batchPaymentID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8524,6 +8742,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBatchPaymentHistoryRecord_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -8609,6 +8847,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var brandingThemeID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var paymentService = new PaymentService();
             paymentService.PaymentServiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -8622,7 +8861,7 @@ namespace Example
             paymentServices._PaymentServices = paymentServicesList;
             
             try {
-                var result = await apiInstance.CreateBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID, paymentServices);
+                var result = await apiInstance.CreateBrandingThemePaymentServicesAsync(accessToken, xeroTenantId, brandingThemeID, paymentServices, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8701,6 +8940,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createBrandingThemePaymentServices_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -8787,10 +9046,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
+                var result = await apiInstance.CreateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -8897,6 +9157,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createContactAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -8976,6 +9256,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var contactGroup = new ContactGroup();
             contactGroup.Name = "VIPs";
@@ -8986,7 +9267,7 @@ namespace Example
             contactGroups._ContactGroups = contactGroupsList;
             
             try {
-                var result = await apiInstance.CreateContactGroupAsync(accessToken, xeroTenantId, contactGroups);
+                var result = await apiInstance.CreateContactGroupAsync(accessToken, xeroTenantId, contactGroups, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -9032,6 +9313,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createContactGroup_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -9117,6 +9418,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactGroupID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var contact = new Contact();
             contact.ContactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -9127,7 +9429,7 @@ namespace Example
             contacts._Contacts = contactsList;
             
             try {
-                var result = await apiInstance.CreateContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID, contacts);
+                var result = await apiInstance.CreateContactGroupContactsAsync(accessToken, xeroTenantId, contactGroupID, contacts, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -9206,6 +9508,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createContactGroupContacts_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -9291,6 +9613,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -9301,7 +9624,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateContactHistoryAsync(accessToken, xeroTenantId, contactID, historyRecords);
+                var result = await apiInstance.CreateContactHistoryAsync(accessToken, xeroTenantId, contactID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -9380,6 +9703,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createContactHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -9464,6 +9807,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
 
             var phone = new Phone();
@@ -9483,7 +9827,7 @@ namespace Example
             contacts._Contacts = contactsList;
             
             try {
-                var result = await apiInstance.CreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
+                var result = await apiInstance.CreateContactsAsync(accessToken, xeroTenantId, contacts, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -9529,6 +9873,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createContacts_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -9641,6 +10005,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var currDate = DateTime.Now;
 
@@ -9658,7 +10023,7 @@ namespace Example
             allocations._Allocations = allocationsList;
             
             try {
-                var result = await apiInstance.CreateCreditNoteAllocationAsync(accessToken, xeroTenantId, creditNoteID, allocations, summarizeErrors);
+                var result = await apiInstance.CreateCreditNoteAllocationAsync(accessToken, xeroTenantId, creditNoteID, allocations, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -9737,6 +10102,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createCreditNoteAllocation_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -9850,11 +10235,12 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             var includeOnline = true;
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body, includeOnline);
+                var result = await apiInstance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body, idempotencyKey, includeOnline);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -9956,6 +10342,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createCreditNoteAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -10068,6 +10474,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -10078,7 +10485,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID, historyRecords);
+                var result = await apiInstance.CreateCreditNoteHistoryAsync(accessToken, xeroTenantId, creditNoteID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10157,6 +10564,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createCreditNoteHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -10241,6 +10668,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
             var currDate = DateTime.Now;
@@ -10268,7 +10696,7 @@ namespace Example
             creditNotes._CreditNotes = creditNotesList;
             
             try {
-                var result = await apiInstance.CreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10314,6 +10742,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createCreditNotes_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -10445,13 +10893,14 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var currency = new Currency();
             currency.Code = CurrencyCode.USD;
             currency.Description = "United States Dollar";
             
             try {
-                var result = await apiInstance.CreateCurrencyAsync(accessToken, xeroTenantId, currency);
+                var result = await apiInstance.CreateCurrencyAsync(accessToken, xeroTenantId, currency, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10497,6 +10946,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createCurrency_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -10581,6 +11050,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
 
             var employee = new Employee();
@@ -10593,7 +11063,7 @@ namespace Example
             employees._Employees = employeesList;
             
             try {
-                var result = await apiInstance.CreateEmployeesAsync(accessToken, xeroTenantId, employees, summarizeErrors);
+                var result = await apiInstance.CreateEmployeesAsync(accessToken, xeroTenantId, employees, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10639,6 +11109,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createEmployees_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -10751,6 +11241,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var expenseClaimID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -10761,7 +11252,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID, historyRecords);
+                var result = await apiInstance.CreateExpenseClaimHistoryAsync(accessToken, xeroTenantId, expenseClaimID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10840,6 +11331,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createExpenseClaimHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -10924,6 +11435,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var user = new User();
@@ -10946,7 +11458,7 @@ namespace Example
             expenseClaims._ExpenseClaims = expenseClaimsList;
             
             try {
-                var result = await apiInstance.CreateExpenseClaimsAsync(accessToken, xeroTenantId, expenseClaims);
+                var result = await apiInstance.CreateExpenseClaimsAsync(accessToken, xeroTenantId, expenseClaims, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10992,6 +11504,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createExpenseClaims_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -11078,11 +11610,12 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             var includeOnline = true;
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body, includeOnline);
+                var result = await apiInstance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body, idempotencyKey, includeOnline);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -11184,6 +11717,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createInvoiceAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -11296,6 +11849,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -11306,7 +11860,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID, historyRecords);
+                var result = await apiInstance.CreateInvoiceHistoryAsync(accessToken, xeroTenantId, invoiceID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -11385,6 +11939,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createInvoiceHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -11469,6 +12043,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
             var dateValue = new DateTime(2020, 10, 10);
@@ -11507,7 +12082,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -11553,6 +12128,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createInvoices_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -11685,6 +12280,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var itemID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -11695,7 +12291,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateItemHistoryAsync(accessToken, xeroTenantId, itemID, historyRecords);
+                var result = await apiInstance.CreateItemHistoryAsync(accessToken, xeroTenantId, itemID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -11774,6 +12370,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createItemHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -11858,6 +12474,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
 
@@ -11877,7 +12494,7 @@ namespace Example
             items._Items = itemsList;
             
             try {
-                var result = await apiInstance.CreateItemsAsync(accessToken, xeroTenantId, items, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateItemsAsync(accessToken, xeroTenantId, items, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -11923,6 +12540,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createItems_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -12054,13 +12691,14 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var linkedTransaction = new LinkedTransaction();
             linkedTransaction.SourceTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             linkedTransaction.SourceLineItemID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             
             try {
-                var result = await apiInstance.CreateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransaction);
+                var result = await apiInstance.CreateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransaction, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12106,6 +12744,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createLinkedTransaction_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -12192,10 +12850,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var manualJournalID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
+                var result = await apiInstance.CreateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12302,6 +12961,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createManualJournalAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -12382,6 +13061,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var manualJournalID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -12392,7 +13072,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateManualJournalHistoryRecordAsync(accessToken, xeroTenantId, manualJournalID, historyRecords);
+                var result = await apiInstance.CreateManualJournalHistoryRecordAsync(accessToken, xeroTenantId, manualJournalID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12471,6 +13151,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createManualJournalHistoryRecord_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -12555,6 +13255,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var dateValue = new DateTime(2020, 10, 10);
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
@@ -12582,7 +13283,7 @@ namespace Example
             manualJournals._ManualJournals = manualJournalsList;
             
             try {
-                var result = await apiInstance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, summarizeErrors);
+                var result = await apiInstance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12628,6 +13329,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createManualJournals_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -12740,6 +13461,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var overpaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var currDate = DateTime.Now;
 
@@ -12757,7 +13479,7 @@ namespace Example
             allocations._Allocations = allocationsList;
             
             try {
-                var result = await apiInstance.CreateOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocations, summarizeErrors);
+                var result = await apiInstance.CreateOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocations, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12836,6 +13558,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createOverpaymentAllocations_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -12948,6 +13690,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var overpaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -12958,7 +13701,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID, historyRecords);
+                var result = await apiInstance.CreateOverpaymentHistoryAsync(accessToken, xeroTenantId, overpaymentID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13037,6 +13780,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createOverpaymentHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -13121,6 +13884,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var invoice = new Invoice();
@@ -13141,7 +13905,7 @@ namespace Example
             payments._Payments = paymentsList;
             
             try {
-                var result = await apiInstance.CreatePaymentAsync(accessToken, xeroTenantId, payment);
+                var result = await apiInstance.CreatePaymentAsync(accessToken, xeroTenantId, payment, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13187,6 +13951,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPayment_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -13272,6 +14056,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var paymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -13282,7 +14067,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreatePaymentHistoryAsync(accessToken, xeroTenantId, paymentID, historyRecords);
+                var result = await apiInstance.CreatePaymentHistoryAsync(accessToken, xeroTenantId, paymentID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13361,6 +14146,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPaymentHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -13445,6 +14250,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var paymentService = new PaymentService();
             paymentService.PaymentServiceName = "ACME Payments";
@@ -13457,7 +14263,7 @@ namespace Example
             paymentServices._PaymentServices = paymentServicesList;
             
             try {
-                var result = await apiInstance.CreatePaymentServiceAsync(accessToken, xeroTenantId, paymentServices);
+                var result = await apiInstance.CreatePaymentServiceAsync(accessToken, xeroTenantId, paymentServices, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13503,6 +14309,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPaymentService_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -13587,6 +14413,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var dateValue = DateTime.Now;
 
@@ -13608,7 +14435,7 @@ namespace Example
             payments._Payments = paymentsList;
             
             try {
-                var result = await apiInstance.CreatePaymentsAsync(accessToken, xeroTenantId, payments, summarizeErrors);
+                var result = await apiInstance.CreatePaymentsAsync(accessToken, xeroTenantId, payments, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13654,6 +14481,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPayments_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -13766,6 +14613,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var prepaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var currDate = DateTime.Now;
 
@@ -13783,7 +14631,7 @@ namespace Example
             allocations._Allocations = allocationsList;
             
             try {
-                var result = await apiInstance.CreatePrepaymentAllocationsAsync(accessToken, xeroTenantId, prepaymentID, allocations, summarizeErrors);
+                var result = await apiInstance.CreatePrepaymentAllocationsAsync(accessToken, xeroTenantId, prepaymentID, allocations, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13862,6 +14710,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPrepaymentAllocations_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -13974,6 +14842,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var prepaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -13984,7 +14853,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreatePrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID, historyRecords);
+                var result = await apiInstance.CreatePrepaymentHistoryAsync(accessToken, xeroTenantId, prepaymentID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14063,6 +14932,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPrepaymentHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -14149,10 +15038,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreatePurchaseOrderAttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, body);
+                var result = await apiInstance.CreatePurchaseOrderAttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14259,6 +15149,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPurchaseOrderAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -14339,6 +15249,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -14349,7 +15260,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreatePurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID, historyRecords);
+                var result = await apiInstance.CreatePurchaseOrderHistoryAsync(accessToken, xeroTenantId, purchaseOrderID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14428,6 +15339,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPurchaseOrderHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -14512,6 +15443,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var dateValue = DateTime.Now;
 
@@ -14537,7 +15469,7 @@ namespace Example
             purchaseOrders._PurchaseOrders = purchaseOrdersList;
             
             try {
-                var result = await apiInstance.CreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
+                var result = await apiInstance.CreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14583,6 +15515,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createPurchaseOrders_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -14696,10 +15648,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var quoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateQuoteAttachmentByFileNameAsync(accessToken, xeroTenantId, quoteID, fileName, body);
+                var result = await apiInstance.CreateQuoteAttachmentByFileNameAsync(accessToken, xeroTenantId, quoteID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14806,6 +15759,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createQuoteAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -14886,6 +15859,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var quoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -14896,7 +15870,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateQuoteHistoryAsync(accessToken, xeroTenantId, quoteID, historyRecords);
+                var result = await apiInstance.CreateQuoteHistoryAsync(accessToken, xeroTenantId, quoteID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14975,6 +15949,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createQuoteHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -15059,6 +16053,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var dateValue = DateTime.Now;
 
@@ -15084,7 +16079,7 @@ namespace Example
             quotes._Quotes = quotesList;
             
             try {
-                var result = await apiInstance.CreateQuotesAsync(accessToken, xeroTenantId, quotes, summarizeErrors);
+                var result = await apiInstance.CreateQuotesAsync(accessToken, xeroTenantId, quotes, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -15130,6 +16125,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createQuotes_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -15241,6 +16256,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
 
             var contact = new Contact();
@@ -15270,7 +16286,7 @@ namespace Example
             receipts._Receipts = receiptsList;
             
             try {
-                var result = await apiInstance.CreateReceiptAsync(accessToken, xeroTenantId, receipts, unitdp);
+                var result = await apiInstance.CreateReceiptAsync(accessToken, xeroTenantId, receipts, idempotencyKey, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -15316,6 +16332,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createReceipt_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -15429,10 +16465,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var receiptID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
+                var result = await apiInstance.CreateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -15539,6 +16576,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createReceiptAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -15619,6 +16676,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var receiptID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -15629,7 +16687,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateReceiptHistoryAsync(accessToken, xeroTenantId, receiptID, historyRecords);
+                var result = await apiInstance.CreateReceiptHistoryAsync(accessToken, xeroTenantId, receiptID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -15708,6 +16766,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createReceiptHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -15794,10 +16872,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var repeatingInvoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
+                var result = await apiInstance.CreateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -15904,6 +16983,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createRepeatingInvoiceAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -15984,6 +17083,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var repeatingInvoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var historyRecord = new HistoryRecord();
             historyRecord.Details = "Hello World";
@@ -15994,7 +17094,7 @@ namespace Example
             historyRecords._HistoryRecords = historyRecordsList;
             
             try {
-                var result = await apiInstance.CreateRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID, historyRecords);
+                var result = await apiInstance.CreateRepeatingInvoiceHistoryAsync(accessToken, xeroTenantId, repeatingInvoiceID, historyRecords, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16073,6 +17173,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createRepeatingInvoiceHistory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -16157,10 +17277,11 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             
             try {
-                var result = await apiInstance.CreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, summarizeErrors);
+                var result = await apiInstance.CreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16206,6 +17327,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createRepeatingInvoices_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -16317,6 +17458,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var taxComponent = new TaxComponent();
             taxComponent.Name = "State Tax";
@@ -16334,7 +17476,7 @@ namespace Example
             taxRates._TaxRates = taxRatesList;
             
             try {
-                var result = await apiInstance.CreateTaxRatesAsync(accessToken, xeroTenantId, taxRates);
+                var result = await apiInstance.CreateTaxRatesAsync(accessToken, xeroTenantId, taxRates, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16380,6 +17522,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createTaxRates_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -16464,12 +17626,13 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var trackingCategory = new TrackingCategory();
             trackingCategory.Name = "Foobar";
             
             try {
-                var result = await apiInstance.CreateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategory);
+                var result = await apiInstance.CreateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategory, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16515,6 +17678,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createTrackingCategory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -16600,12 +17783,13 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var trackingCategoryID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var trackingOption = new TrackingOption();
             trackingOption.Name = "Foobar";
             
             try {
-                var result = await apiInstance.CreateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOption);
+                var result = await apiInstance.CreateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOption, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16684,6 +17868,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createTrackingOptions_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -16897,13 +18101,14 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var batchPaymentDelete = new BatchPaymentDelete();
             batchPaymentDelete.Status = "DELETED";
             batchPaymentDelete.BatchPaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             
             try {
-                var result = await apiInstance.DeleteBatchPaymentAsync(accessToken, xeroTenantId, batchPaymentDelete);
+                var result = await apiInstance.DeleteBatchPaymentAsync(accessToken, xeroTenantId, batchPaymentDelete, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16949,6 +18154,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_deleteBatchPayment_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -17033,9 +18258,10 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var batchPaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.DeleteBatchPaymentByUrlParamAsync(accessToken, xeroTenantId, batchPaymentID, batchPaymentDeleteByUrlParam);
+                var result = await apiInstance.DeleteBatchPaymentByUrlParamAsync(accessToken, xeroTenantId, batchPaymentID, batchPaymentDeleteByUrlParam, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -17114,6 +18340,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_deleteBatchPaymentByUrlParam_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -17442,6 +18688,162 @@ Xero identifier for Tenant
                 </article>
               </div>
               <hr>
+              <div id="api-Accounting-deleteCreditNoteAllocations">
+                <article id="api-Accounting-deleteCreditNoteAllocations-0" data-group="User" data-name="deleteCreditNoteAllocations" data-version="0">
+                  <div class="pull-left">
+                    <h1>deleteCreditNoteAllocations</h1>
+                    <p>Deletes an Allocation from a Credit Note</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked"></p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/CreditNotes/{CreditNoteID}/Allocations/{AllocationID}</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Accounting-deleteCreditNoteAllocations-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Accounting-deleteCreditNoteAllocations-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class DeleteCreditNoteAllocationsExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new AccountingApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var allocationID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            
+            try {
+                var result = await apiInstance.DeleteCreditNoteAllocationsAsync(accessToken, xeroTenantId, creditNoteID, allocationID);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.DeleteCreditNoteAllocations: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Path parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">CreditNoteID<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deleteCreditNoteAllocations_creditNoteID">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+Unique identifier for a Credit Note
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">AllocationID<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deleteCreditNoteAllocations_allocationID">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+Unique identifier for Allocation object
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deleteCreditNoteAllocations_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
               <div id="api-Accounting-deleteItem">
                 <article id="api-Accounting-deleteItem-0" data-group="User" data-name="deleteItem" data-version="0">
                   <div class="pull-left">
@@ -17698,6 +19100,162 @@ Xero identifier for Tenant
                 </article>
               </div>
               <hr>
+              <div id="api-Accounting-deleteOverpaymentAllocations">
+                <article id="api-Accounting-deleteOverpaymentAllocations-0" data-group="User" data-name="deleteOverpaymentAllocations" data-version="0">
+                  <div class="pull-left">
+                    <h1>deleteOverpaymentAllocations</h1>
+                    <p>Deletes an Allocation from an overpayment</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked"></p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/Overpayments/{OverpaymentID}/Allocations/{AllocationID}</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Accounting-deleteOverpaymentAllocations-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Accounting-deleteOverpaymentAllocations-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class DeleteOverpaymentAllocationsExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new AccountingApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var overpaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var allocationID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            
+            try {
+                var result = await apiInstance.DeleteOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocationID);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.DeleteOverpaymentAllocations: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Path parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">OverpaymentID<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deleteOverpaymentAllocations_overpaymentID">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+Unique identifier for a Overpayment
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">AllocationID<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deleteOverpaymentAllocations_allocationID">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+Unique identifier for Allocation object
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deleteOverpaymentAllocations_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
               <div id="api-Accounting-deletePayment">
                 <article id="api-Accounting-deletePayment-0" data-group="User" data-name="deletePayment" data-version="0">
                   <div class="pull-left">
@@ -17737,12 +19295,13 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var paymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var paymentDelete = new PaymentDelete();
             paymentDelete.Status = "DELETED";
             
             try {
-                var result = await apiInstance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, paymentDelete);
+                var result = await apiInstance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, paymentDelete, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -17826,6 +19385,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_deletePayment_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -17862,6 +19441,162 @@ Xero identifier for Tenant
   "required" : true
 }
     </script>
+                  </table>
+                </article>
+              </div>
+              <hr>
+              <div id="api-Accounting-deletePrepaymentAllocations">
+                <article id="api-Accounting-deletePrepaymentAllocations-0" data-group="User" data-name="deletePrepaymentAllocations" data-version="0">
+                  <div class="pull-left">
+                    <h1>deletePrepaymentAllocations</h1>
+                    <p>Deletes an Allocation from a Prepayment</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked"></p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/Prepayments/{PrepaymentID}/Allocations/{AllocationID}</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Accounting-deletePrepaymentAllocations-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Accounting-deletePrepaymentAllocations-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class DeletePrepaymentAllocationsExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new AccountingApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var prepaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var allocationID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            
+            try {
+                var result = await apiInstance.DeletePrepaymentAllocationsAsync(accessToken, xeroTenantId, prepaymentID, allocationID);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.DeletePrepaymentAllocations: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>accounting.transactions</td>
+                      <td>Grant read-write access to bank transactions, credit notes, invoices, repeating invoices</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Path parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">PrepaymentID<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deletePrepaymentAllocations_prepaymentID">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+Unique identifier for a PrePayment
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">AllocationID<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deletePrepaymentAllocations_allocationID">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+Unique identifier for Allocation object
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_deletePrepaymentAllocations_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                 </article>
               </div>
@@ -18190,11 +19925,12 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var requestEmpty = new RequestEmpty();
             
             try {
-                await apiInstance.EmailInvoiceAsync(accessToken, xeroTenantId, invoiceID, requestEmpty);
+                await apiInstance.EmailInvoiceAsync(accessToken, xeroTenantId, invoiceID, requestEmpty, idempotencyKey);
             }
             catch (Exception e)
             {
@@ -18272,6 +20008,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_emailInvoice_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -31795,6 +33551,188 @@ Xero identifier for Tenant
                 </article>
               </div>
               <hr>
+              <div id="api-Accounting-getPurchaseOrderAttachmentByFileName">
+                <article id="api-Accounting-getPurchaseOrderAttachmentByFileName-0" data-group="User" data-name="getPurchaseOrderAttachmentByFileName" data-version="0">
+                  <div class="pull-left">
+                    <h1>getPurchaseOrderAttachmentByFileName</h1>
+                    <p>Retrieves a specific attachment for a specific purchase order by filename</p>
+                  </div>
+                  <div class="pull-right"></div>
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <p class="marked"></p>
+                  <p></p>
+                  <br />
+                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}</span></code></pre>
+                  <p>
+                  <h3>Usage and SDK Samples</h3>
+                  </p>
+                  <ul class="nav nav-tabs nav-tabs-examples">
+                    <!-- *****REPLACE***** comment out the other languages <li> -->
+                    <li class=""><a href="#examples-Accounting-getPurchaseOrderAttachmentByFileName-0-csharp">C#</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
+                    <div class="tab-pane" id="examples-Accounting-getPurchaseOrderAttachmentByFileName-0-csharp">
+                      <pre class="prettyprint"><code class="language-csharp">using System;
+using System.Diagnostics;
+using Xero.NetStandard.OAuth2.Api;
+using Xero.NetStandard.OAuth2.Client;
+using Xero.NetStandard.OAuth2.Model;
+
+namespace Example
+{
+    public class GetPurchaseOrderAttachmentByFileNameExample
+    {
+        public async Task Main()
+        {            
+            var accessToken = "YOUR_ACCESS_TOKEN";          
+            var apiInstance = new AccountingApi();
+            var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var fileName = "xero-dev.jpg";
+            var contentType = "image/jpg";
+            
+            try {
+                var result = await apiInstance.GetPurchaseOrderAttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, contentType);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception when calling apiInstance.GetPurchaseOrderAttachmentByFileName: " + e.Message );
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+                  </div>
+                  <h2>Scopes</h2>
+                  <table>
+                    
+                    <tr>
+                      <td>accounting.attachments</td>
+                      <td>Grant read-write access to attachments</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>accounting.attachments.read</td>
+                      <td>Grant read-only access to attachments</td>
+                    </tr>
+                    
+                  </table>
+                  <h2>Parameters</h2>
+                  <div class="methodsubtabletitle">Path parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">PurchaseOrderID<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getPurchaseOrderAttachmentByFileName_purchaseOrderID">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+Unique identifier for an Purchase Order
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">FileName<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getPurchaseOrderAttachmentByFileName_fileName">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Name of the attachment
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getPurchaseOrderAttachmentByFileName_xeroTenantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Xero identifier for Tenant
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">contentType<span style="color:red;">*</span></td>
+<td>
+
+
+    <div id="d2e199_getPurchaseOrderAttachmentByFileName_contentType">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                </article>
+              </div>
+              <hr>
               <div id="api-Accounting-getPurchaseOrderAttachmentById">
                 <article id="api-Accounting-getPurchaseOrderAttachmentById-0" data-group="User" data-name="getPurchaseOrderAttachmentById" data-version="0">
                   <div class="pull-left">
@@ -32606,188 +34544,6 @@ Order by an any element
 To specify a page, append the page parameter to the URL e.g. ?page=1. If there are 100 records in the response you will need to check if there is any more data by fetching the next page e.g ?page=2 and continuing this process until no more results are returned.
                     </div>
             </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                </article>
-              </div>
-              <hr>
-              <div id="api-Accounting-getPurchaseOrder≠AttachmentByFileName">
-                <article id="api-Accounting-getPurchaseOrder≠AttachmentByFileName-0" data-group="User" data-name="getPurchaseOrder≠AttachmentByFileName" data-version="0">
-                  <div class="pull-left">
-                    <h1>getPurchaseOrder≠AttachmentByFileName</h1>
-                    <p>Retrieves a specific attachment for a specific purchase order by filename</p>
-                  </div>
-                  <div class="pull-right"></div>
-                  <div class="clearfix"></div>
-                  <p></p>
-                  <p class="marked"></p>
-                  <p></p>
-                  <br />
-                  <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}</span></code></pre>
-                  <p>
-                  <h3>Usage and SDK Samples</h3>
-                  </p>
-                  <ul class="nav nav-tabs nav-tabs-examples">
-                    <!-- *****REPLACE***** comment out the other languages <li> -->
-                    <li class=""><a href="#examples-Accounting-getPurchaseOrder≠AttachmentByFileName-0-csharp">C#</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <!-- *****REPLACE***** comment out the other languages tab-pane -->
-                    <div class="tab-pane" id="examples-Accounting-getPurchaseOrder≠AttachmentByFileName-0-csharp">
-                      <pre class="prettyprint"><code class="language-csharp">using System;
-using System.Diagnostics;
-using Xero.NetStandard.OAuth2.Api;
-using Xero.NetStandard.OAuth2.Client;
-using Xero.NetStandard.OAuth2.Model;
-
-namespace Example
-{
-    public class GetPurchaseOrder≠AttachmentByFileNameExample
-    {
-        public async Task Main()
-        {            
-            var accessToken = "YOUR_ACCESS_TOKEN";          
-            var apiInstance = new AccountingApi();
-            var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var fileName = "xero-dev.jpg";
-            var contentType = "image/jpg";
-            
-            try {
-                var result = await apiInstance.GetPurchaseOrder≠AttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, contentType);
-                Console.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception when calling apiInstance.GetPurchaseOrder≠AttachmentByFileName: " + e.Message );
-            }
-        }
-    }
-}</code></pre>
-                    </div>
-                  </div>
-                  <h2>Scopes</h2>
-                  <table>
-                    
-                    <tr>
-                      <td>accounting.attachments</td>
-                      <td>Grant read-write access to attachments</td>
-                    </tr>
-                    
-                    <tr>
-                      <td>accounting.attachments.read</td>
-                      <td>Grant read-only access to attachments</td>
-                    </tr>
-                    
-                  </table>
-                  <h2>Parameters</h2>
-                  <div class="methodsubtabletitle">Path parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">PurchaseOrderID<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getPurchaseOrder≠AttachmentByFileName_purchaseOrderID">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    UUID
-                </span>
-                    <span class="format">
-                        (uuid)
-                    </span>
-
-                    <div class="inner description marked">
-Unique identifier for an Purchase Order
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">FileName<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getPurchaseOrder≠AttachmentByFileName_fileName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Name of the attachment
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                  </table>
-                  <div class="methodsubtabletitle">Header parameters</div>
-                  <table id="methodsubtable">
-                    <tr>
-                      <th width="150px">Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr><td style="width:150px;">xero-tenant-id<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getPurchaseOrder≠AttachmentByFileName_xeroTenantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-Xero identifier for Tenant
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                    <tr><td style="width:150px;">contentType<span style="color:red;">*</span></td>
-<td>
-
-
-    <div id="d2e199_getPurchaseOrder≠AttachmentByFileName_contentType">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description marked">
-The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
         </div>
     </div>
 </td>
@@ -38675,6 +40431,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var account = new Account();
             account.Code = "123";
@@ -38694,7 +40451,7 @@ namespace Example
             setup.ConversionBalances = conversionBalances;
             
             try {
-                var result = await apiInstance.PostSetupAsync(accessToken, xeroTenantId, setup);
+                var result = await apiInstance.PostSetupAsync(accessToken, xeroTenantId, setup, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -38740,6 +40497,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_postSetup_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -38825,6 +40602,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var accountID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var account = new Account();
             account.Code = "123456";
@@ -38839,7 +40617,7 @@ namespace Example
             accounts._Accounts = accountsList;
             
             try {
-                var result = await apiInstance.UpdateAccountAsync(accessToken, xeroTenantId, accountID, accounts);
+                var result = await apiInstance.UpdateAccountAsync(accessToken, xeroTenantId, accountID, accounts, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -38918,6 +40696,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateAccount_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -39004,10 +40802,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var accountID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body);
+                var result = await apiInstance.UpdateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -39114,6 +40913,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateAccountAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -39194,6 +41013,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
 
             var contact = new Contact();
@@ -39223,7 +41043,7 @@ namespace Example
             bankTransactions._BankTransactions = bankTransactionsList;
             
             try {
-                var result = await apiInstance.UpdateBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID, bankTransactions, unitdp);
+                var result = await apiInstance.UpdateBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID, bankTransactions, idempotencyKey, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -39302,6 +41122,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateBankTransaction_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -39414,10 +41254,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body);
+                var result = await apiInstance.UpdateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -39524,6 +41365,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateBankTransactionAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -39605,10 +41466,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransferID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body);
+                var result = await apiInstance.UpdateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -39715,6 +41577,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateBankTransferAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -39795,6 +41677,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var contact = new Contact();
             contact.Name = "Thanos";
@@ -39806,7 +41689,7 @@ namespace Example
             contacts._Contacts = contactsList;
             
             try {
-                var result = await apiInstance.UpdateContactAsync(accessToken, xeroTenantId, contactID, contacts);
+                var result = await apiInstance.UpdateContactAsync(accessToken, xeroTenantId, contactID, contacts, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -39885,6 +41768,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateContact_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -39971,10 +41874,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body);
+                var result = await apiInstance.UpdateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -40081,6 +41985,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateContactAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -40161,6 +42085,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactGroupID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var contactGroup = new ContactGroup();
             contactGroup.Name = "Vendor";
@@ -40171,7 +42096,7 @@ namespace Example
             contactGroups._ContactGroups = contactGroupsList;
             
             try {
-                var result = await apiInstance.UpdateContactGroupAsync(accessToken, xeroTenantId, contactGroupID, contactGroups);
+                var result = await apiInstance.UpdateContactGroupAsync(accessToken, xeroTenantId, contactGroupID, contactGroups, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -40250,6 +42175,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateContactGroup_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -40335,6 +42280,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
             var currDate = DateTime.Now;
 
@@ -40363,7 +42309,7 @@ namespace Example
             creditNotes._CreditNotes = creditNotesList;
             
             try {
-                var result = await apiInstance.UpdateCreditNoteAsync(accessToken, xeroTenantId, creditNoteID, creditNotes, unitdp);
+                var result = await apiInstance.UpdateCreditNoteAsync(accessToken, xeroTenantId, creditNoteID, creditNotes, idempotencyKey, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -40442,6 +42388,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateCreditNote_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -40555,10 +42521,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body);
+                var result = await apiInstance.UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -40665,6 +42632,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateCreditNoteAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -40745,6 +42732,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var expenseClaimID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var user = new User();
@@ -40767,7 +42755,7 @@ namespace Example
             expenseClaims._ExpenseClaims = expenseClaimsList;
             
             try {
-                var result = await apiInstance.UpdateExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID, expenseClaims);
+                var result = await apiInstance.UpdateExpenseClaimAsync(accessToken, xeroTenantId, expenseClaimID, expenseClaims, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -40846,6 +42834,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateExpenseClaim_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -40930,6 +42938,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
 
             var invoice = new Invoice();
@@ -40941,7 +42950,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices, unitdp);
+                var result = await apiInstance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices, idempotencyKey, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -41020,6 +43029,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateInvoice_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -41132,10 +43161,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body);
+                var result = await apiInstance.UpdateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -41242,6 +43272,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateInvoiceAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -41322,6 +43372,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var itemID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
 
             var item = new Item();
@@ -41334,7 +43385,7 @@ namespace Example
             items._Items = itemsList;
             
             try {
-                var result = await apiInstance.UpdateItemAsync(accessToken, xeroTenantId, itemID, items, unitdp);
+                var result = await apiInstance.UpdateItemAsync(accessToken, xeroTenantId, itemID, items, idempotencyKey, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -41413,6 +43464,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateItem_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -41524,6 +43595,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var linkedTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var linkedTransaction = new LinkedTransaction();
             linkedTransaction.SourceLineItemID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -41535,7 +43607,7 @@ namespace Example
             linkedTransactions._LinkedTransactions = linkedTransactionsList;
             
             try {
-                var result = await apiInstance.UpdateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID, linkedTransactions);
+                var result = await apiInstance.UpdateLinkedTransactionAsync(accessToken, xeroTenantId, linkedTransactionID, linkedTransactions, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -41614,6 +43686,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateLinkedTransaction_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -41698,6 +43790,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var manualJournalID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = new DateTime(2020, 10, 10);
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
 
@@ -41724,7 +43817,7 @@ namespace Example
             manualJournals._ManualJournals = manualJournalsList;
             
             try {
-                var result = await apiInstance.UpdateManualJournalAsync(accessToken, xeroTenantId, manualJournalID, manualJournals);
+                var result = await apiInstance.UpdateManualJournalAsync(accessToken, xeroTenantId, manualJournalID, manualJournals, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -41803,6 +43896,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateManualJournal_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -41888,10 +44001,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var manualJournalID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body);
+                var result = await apiInstance.UpdateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -41998,6 +44112,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateManualJournalAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -42077,6 +44211,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
 
@@ -42106,7 +44241,7 @@ namespace Example
             bankTransactions._BankTransactions = bankTransactionsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42152,6 +44287,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateBankTransactions_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -42282,6 +44437,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
 
             var phone = new Phone();
@@ -42301,7 +44457,7 @@ namespace Example
             contacts._Contacts = contactsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateContactsAsync(accessToken, xeroTenantId, contacts, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42347,6 +44503,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateContacts_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -42457,6 +44633,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
             var currDate = DateTime.Now;
@@ -42484,7 +44661,7 @@ namespace Example
             creditNotes._CreditNotes = creditNotesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42530,6 +44707,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateCreditNotes_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -42661,6 +44858,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
 
             var employee = new Employee();
@@ -42673,7 +44871,7 @@ namespace Example
             employees._Employees = employeesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateEmployeesAsync(accessToken, xeroTenantId, employees, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateEmployeesAsync(accessToken, xeroTenantId, employees, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42719,6 +44917,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateEmployees_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -42830,6 +45048,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
             var dateValue = new DateTime(2020, 10, 10);
@@ -42861,7 +45080,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42907,6 +45126,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateInvoices_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -43037,6 +45276,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
 
@@ -43051,7 +45291,7 @@ namespace Example
             items._Items = itemsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateItemsAsync(accessToken, xeroTenantId, items, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateItemsAsync(accessToken, xeroTenantId, items, idempotencyKey, summarizeErrors, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -43097,6 +45337,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateItems_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -43227,6 +45487,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var dateValue = new DateTime(2020, 10, 10);
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
@@ -43254,7 +45515,7 @@ namespace Example
             manualJournals._ManualJournals = manualJournalsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -43300,6 +45561,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateManualJournals_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -43411,6 +45692,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var dateValue = DateTime.Now;
 
@@ -43436,7 +45718,7 @@ namespace Example
             purchaseOrders._PurchaseOrders = purchaseOrdersList;
             
             try {
-                var result = await apiInstance.UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -43482,6 +45764,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreatePurchaseOrders_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -43592,6 +45894,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var dateValue = DateTime.Now;
 
@@ -43617,7 +45920,7 @@ namespace Example
             quotes._Quotes = quotesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateQuotesAsync(accessToken, xeroTenantId, quotes, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateQuotesAsync(accessToken, xeroTenantId, quotes, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -43663,6 +45966,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateQuotes_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -43773,10 +46096,11 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             
             try {
-                var result = await apiInstance.UpdateOrCreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, idempotencyKey, summarizeErrors);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -43822,6 +46146,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateRepeatingInvoices_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -43934,6 +46278,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var purchaseOrder = new PurchaseOrder();
             purchaseOrder.AttentionTo = "Peter Parker";
@@ -43944,7 +46289,7 @@ namespace Example
             purchaseOrders._PurchaseOrders = purchaseOrdersList;
             
             try {
-                var result = await apiInstance.UpdatePurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID, purchaseOrders);
+                var result = await apiInstance.UpdatePurchaseOrderAsync(accessToken, xeroTenantId, purchaseOrderID, purchaseOrders, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44023,6 +46368,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updatePurchaseOrder_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -44108,10 +46473,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdatePurchaseOrderAttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, body);
+                var result = await apiInstance.UpdatePurchaseOrderAttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44218,6 +46584,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updatePurchaseOrderAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -44298,6 +46684,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var quoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var contact = new Contact();
@@ -44314,7 +46701,7 @@ namespace Example
             quotes._Quotes = quotesList;
             
             try {
-                var result = await apiInstance.UpdateQuoteAsync(accessToken, xeroTenantId, quoteID, quotes);
+                var result = await apiInstance.UpdateQuoteAsync(accessToken, xeroTenantId, quoteID, quotes, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44393,6 +46780,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateQuote_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -44478,10 +46885,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var quoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateQuoteAttachmentByFileNameAsync(accessToken, xeroTenantId, quoteID, fileName, body);
+                var result = await apiInstance.UpdateQuoteAttachmentByFileNameAsync(accessToken, xeroTenantId, quoteID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44588,6 +46996,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateQuoteAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -44668,6 +47096,7 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var receiptID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
             var dateValue = DateTime.Now;
 
@@ -44685,7 +47114,7 @@ namespace Example
             receipts._Receipts = receiptsList;
             
             try {
-                var result = await apiInstance.UpdateReceiptAsync(accessToken, xeroTenantId, receiptID, receipts, unitdp);
+                var result = await apiInstance.UpdateReceiptAsync(accessToken, xeroTenantId, receiptID, receipts, idempotencyKey, unitdp);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44764,6 +47193,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateReceipt_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -44876,10 +47325,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var receiptID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body);
+                var result = await apiInstance.UpdateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44986,6 +47436,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateReceiptAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -45066,9 +47536,10 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var repeatingInvoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.UpdateRepeatingInvoiceAsync(accessToken, xeroTenantId, repeatingInvoiceID, repeatingInvoices);
+                var result = await apiInstance.UpdateRepeatingInvoiceAsync(accessToken, xeroTenantId, repeatingInvoiceID, repeatingInvoices, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45147,6 +47618,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateRepeatingInvoice_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -45232,10 +47723,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var repeatingInvoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.UpdateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body);
+                var result = await apiInstance.UpdateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45342,6 +47834,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateRepeatingInvoiceAttachmentByFileName_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -45421,6 +47933,7 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
 
             var taxComponent = new TaxComponent();
             taxComponent.Name = "State Tax";
@@ -45438,7 +47951,7 @@ namespace Example
             taxRates._TaxRates = taxRatesList;
             
             try {
-                var result = await apiInstance.UpdateTaxRateAsync(accessToken, xeroTenantId, taxRates);
+                var result = await apiInstance.UpdateTaxRateAsync(accessToken, xeroTenantId, taxRates, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45484,6 +47997,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateTaxRate_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -45568,12 +48101,13 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var trackingCategoryID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var trackingCategory = new TrackingCategory();
             trackingCategory.Name = "Foobar";
             
             try {
-                var result = await apiInstance.UpdateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID, trackingCategory);
+                var result = await apiInstance.UpdateTrackingCategoryAsync(accessToken, xeroTenantId, trackingCategoryID, trackingCategory, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45652,6 +48186,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateTrackingCategory_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -45737,12 +48291,13 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var trackingCategoryID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var trackingOptionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
 
             var trackingOption = new TrackingOption();
             trackingOption.Name = "Foobar";
             
             try {
-                var result = await apiInstance.UpdateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption);
+                var result = await apiInstance.UpdateTrackingOptionsAsync(accessToken, xeroTenantId, trackingCategoryID, trackingOptionID, trackingOption, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45847,6 +48402,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateTrackingOptions_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>

@@ -1348,9 +1348,10 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new BankFeedsApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateFeedConnectionsAsync(accessToken, xeroTenantId, feedConnections);
+                var result = await apiInstance.CreateFeedConnectionsAsync(accessToken, xeroTenantId, feedConnections, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1396,6 +1397,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createFeedConnections_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -1488,9 +1509,10 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new BankFeedsApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateStatementsAsync(accessToken, xeroTenantId, statements);
+                var result = await apiInstance.CreateStatementsAsync(accessToken, xeroTenantId, idempotencyKey, statements);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1536,6 +1558,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createStatements_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -1664,9 +1706,10 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new BankFeedsApi();
             var xeroTenantId = "xeroTenantId_example";
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.DeleteFeedConnectionsAsync(accessToken, xeroTenantId, feedConnections);
+                var result = await apiInstance.DeleteFeedConnectionsAsync(accessToken, xeroTenantId, feedConnections, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1712,6 +1755,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_deleteFeedConnections_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>

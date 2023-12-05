@@ -1269,9 +1269,10 @@ namespace Example
             var apiInstance = new FilesApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateFileAssociationAsync(accessToken, xeroTenantId, fileId, association);
+                var result = await apiInstance.CreateFileAssociationAsync(accessToken, xeroTenantId, fileId, idempotencyKey, association);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1355,6 +1356,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createFileAssociation_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -1429,9 +1450,10 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new FilesApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateFolderAsync(accessToken, xeroTenantId, folder);
+                var result = await apiInstance.CreateFolderAsync(accessToken, xeroTenantId, idempotencyKey, folder);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1477,6 +1499,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_createFolder_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -1968,9 +2010,13 @@ namespace Example
             var apiInstance = new FilesApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var objectId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var pagesize = 50;
+            var page = 2;
+            var sort = "Associations/{ObjectId}?sort=CreatedDateUtc";
+            var direction = "Associations/{ObjectId}?sort=CreatedDateUtc&direction=DESC";
             
             try {
-                var result = await apiInstance.GetAssociationsByObjectAsync(accessToken, xeroTenantId, objectId);
+                var result = await apiInstance.GetAssociationsByObjectAsync(accessToken, xeroTenantId, objectId, pagesize, page, sort, direction);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -2054,6 +2100,93 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Query parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">pagesize</td>
+<td>
+
+
+    <div id="d2e199_getAssociationsByObject_pagesize">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description marked">
+pass an optional page size value
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">page</td>
+<td>
+
+
+    <div id="d2e199_getAssociationsByObject_page">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description marked">
+number of records to skip for pagination
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">sort</td>
+<td>
+
+
+    <div id="d2e199_getAssociationsByObject_sort">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+values to sort by
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">direction</td>
+<td>
+
+
+    <div id="d2e199_getAssociationsByObject_direction">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+direction to sort by
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -3170,9 +3303,10 @@ namespace Example
             var apiInstance = new FilesApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var fileId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.UpdateFileAsync(accessToken, xeroTenantId, fileId, fileObject);
+                var result = await apiInstance.UpdateFileAsync(accessToken, xeroTenantId, fileId, idempotencyKey, fileObject);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -3256,6 +3390,26 @@ Xero identifier for Tenant
 </td>
 </tr>
 
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateFile_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                   </table>
                   <div class="methodsubtabletitle">Body parameters</div>
                   <table id="methodsubtable">
@@ -3331,9 +3485,10 @@ namespace Example
             var apiInstance = new FilesApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var folderId = Guid.Parse("4ff1e5cc-9835-40d5-bb18-09fdb118db9c");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.UpdateFolderAsync(accessToken, xeroTenantId, folderId, folder);
+                var result = await apiInstance.UpdateFolderAsync(accessToken, xeroTenantId, folderId, folder, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -3412,6 +3567,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_updateFolder_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -3498,10 +3673,11 @@ namespace Example
             byte[] body = BYTE_ARRAY_DATA_HERE;
             var name = "name_example";
             var filename = "filename_example";
+            var idempotencyKey = "KEY_VALUE";
             var mimeType = "mimeType_example";
             
             try {
-                var result = await apiInstance.UploadFileAsync(accessToken, xeroTenantId, body, name, filename, mimeType);
+                var result = await apiInstance.UploadFileAsync(accessToken, xeroTenantId, body, name, filename, idempotencyKey, mimeType);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -3547,6 +3723,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_uploadFile_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -3697,10 +3893,11 @@ namespace Example
             byte[] body = BYTE_ARRAY_DATA_HERE;
             var name = "name_example";
             var filename = "filename_example";
+            var idempotencyKey = "KEY_VALUE";
             var mimeType = "mimeType_example";
             
             try {
-                var result = await apiInstance.UploadFileToFolderAsync(accessToken, xeroTenantId, folderId, body, name, filename, mimeType);
+                var result = await apiInstance.UploadFileToFolderAsync(accessToken, xeroTenantId, folderId, body, name, filename, idempotencyKey, mimeType);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -3779,6 +3976,26 @@ Xero identifier for Tenant
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_uploadFileToFolder_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>

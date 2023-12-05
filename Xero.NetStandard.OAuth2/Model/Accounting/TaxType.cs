@@ -607,7 +607,151 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum BADDEBTRECOVERYY23 for value: BADDEBTRECOVERYY23
         /// </summary>
         [EnumMember(Value = "BADDEBTRECOVERYY23")]
-        BADDEBTRECOVERYY23 = 96
+        BADDEBTRECOVERYY23 = 96,
+
+        /// <summary>
+        /// Enum OUTPUTY24 for value: OUTPUTY24
+        /// </summary>
+        [EnumMember(Value = "OUTPUTY24")]
+        OUTPUTY24 = 97,
+
+        /// <summary>
+        /// Enum DSOUTPUTY24 for value: DSOUTPUTY24
+        /// </summary>
+        [EnumMember(Value = "DSOUTPUTY24")]
+        DSOUTPUTY24 = 98,
+
+        /// <summary>
+        /// Enum INPUTY24 for value: INPUTY24
+        /// </summary>
+        [EnumMember(Value = "INPUTY24")]
+        INPUTY24 = 99,
+
+        /// <summary>
+        /// Enum IGDSINPUT2Y24 for value: IGDSINPUT2Y24
+        /// </summary>
+        [EnumMember(Value = "IGDSINPUT2Y24")]
+        IGDSINPUT2Y24 = 100,
+
+        /// <summary>
+        /// Enum TXPETINPUTY24 for value: TXPETINPUTY24
+        /// </summary>
+        [EnumMember(Value = "TXPETINPUTY24")]
+        TXPETINPUTY24 = 101,
+
+        /// <summary>
+        /// Enum TXESSINPUTY24 for value: TXESSINPUTY24
+        /// </summary>
+        [EnumMember(Value = "TXESSINPUTY24")]
+        TXESSINPUTY24 = 102,
+
+        /// <summary>
+        /// Enum TXN33INPUTY24 for value: TXN33INPUTY24
+        /// </summary>
+        [EnumMember(Value = "TXN33INPUTY24")]
+        TXN33INPUTY24 = 103,
+
+        /// <summary>
+        /// Enum TXREINPUTY24 for value: TXREINPUTY24
+        /// </summary>
+        [EnumMember(Value = "TXREINPUTY24")]
+        TXREINPUTY24 = 104,
+
+        /// <summary>
+        /// Enum TXCAY24 for value: TXCAY24
+        /// </summary>
+        [EnumMember(Value = "TXCAY24")]
+        TXCAY24 = 105,
+
+        /// <summary>
+        /// Enum BADDEBTRELIEFY24 for value: BADDEBTRELIEFY24
+        /// </summary>
+        [EnumMember(Value = "BADDEBTRELIEFY24")]
+        BADDEBTRELIEFY24 = 106,
+
+        /// <summary>
+        /// Enum IGDSINPUT3Y24 for value: IGDSINPUT3Y24
+        /// </summary>
+        [EnumMember(Value = "IGDSINPUT3Y24")]
+        IGDSINPUT3Y24 = 107,
+
+        /// <summary>
+        /// Enum SROVRRSY24 for value: SROVRRSY24
+        /// </summary>
+        [EnumMember(Value = "SROVRRSY24")]
+        SROVRRSY24 = 108,
+
+        /// <summary>
+        /// Enum SROVRLVGY24 for value: SROVRLVGY24
+        /// </summary>
+        [EnumMember(Value = "SROVRLVGY24")]
+        SROVRLVGY24 = 109,
+
+        /// <summary>
+        /// Enum SRLVGY24 for value: SRLVGY24
+        /// </summary>
+        [EnumMember(Value = "SRLVGY24")]
+        SRLVGY24 = 110,
+
+        /// <summary>
+        /// Enum TXRCTSY24 for value: TXRCTSY24
+        /// </summary>
+        [EnumMember(Value = "TXRCTSY24")]
+        TXRCTSY24 = 111,
+
+        /// <summary>
+        /// Enum TXRCESSY24 for value: TXRCESSY24
+        /// </summary>
+        [EnumMember(Value = "TXRCESSY24")]
+        TXRCESSY24 = 112,
+
+        /// <summary>
+        /// Enum TXRCN33Y24 for value: TXRCN33Y24
+        /// </summary>
+        [EnumMember(Value = "TXRCN33Y24")]
+        TXRCN33Y24 = 113,
+
+        /// <summary>
+        /// Enum TXRCREY24 for value: TXRCREY24
+        /// </summary>
+        [EnumMember(Value = "TXRCREY24")]
+        TXRCREY24 = 114,
+
+        /// <summary>
+        /// Enum IMY24 for value: IMY24
+        /// </summary>
+        [EnumMember(Value = "IMY24")]
+        IMY24 = 115,
+
+        /// <summary>
+        /// Enum IMESSY24 for value: IMESSY24
+        /// </summary>
+        [EnumMember(Value = "IMESSY24")]
+        IMESSY24 = 116,
+
+        /// <summary>
+        /// Enum IMN33Y24 for value: IMN33Y24
+        /// </summary>
+        [EnumMember(Value = "IMN33Y24")]
+        IMN33Y24 = 117,
+
+        /// <summary>
+        /// Enum IMREY24 for value: IMREY24
+        /// </summary>
+        [EnumMember(Value = "IMREY24")]
+        IMREY24 = 118,
+
+        /// <summary>
+        /// Enum BADDEBTRECOVERYY24 for value: BADDEBTRECOVERYY24
+        /// </summary>
+        [EnumMember(Value = "BADDEBTRECOVERYY24")]
+        BADDEBTRECOVERYY24 = 119,
+
+        /// <summary>
+        /// Enum OSOUTPUT2 for value: OSOUTPUT2
+        /// </summary>
+        [EnumMember(Value = "OSOUTPUT2")]
+        OSOUTPUT2 = 120
 
     }
 

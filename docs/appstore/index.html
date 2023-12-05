@@ -1509,9 +1509,10 @@ namespace Example
             var apiInstance = new AppStoreApi();
             var subscriptionId = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var subscriptionItemId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.PostUsageRecordsAsync(accessToken, subscriptionId, subscriptionItemId, createUsageRecord);
+                var result = await apiInstance.PostUsageRecordsAsync(accessToken, subscriptionId, subscriptionItemId, createUsageRecord, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1586,6 +1587,33 @@ The unique identifier of the subscriptionItem
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_postUsageRecords_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
@@ -1672,9 +1700,10 @@ namespace Example
             var subscriptionId = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var subscriptionItemId = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var usageRecordId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.PutUsageRecordsAsync(accessToken, subscriptionId, subscriptionItemId, usageRecordId, updateUsageRecord);
+                var result = await apiInstance.PutUsageRecordsAsync(accessToken, subscriptionId, subscriptionItemId, usageRecordId, updateUsageRecord, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1775,6 +1804,33 @@ The unique identifier of the usage record
                 <div class="inner required">
                     Required
                 </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                  </table>
+                  <div class="methodsubtabletitle">Header parameters</div>
+                  <table id="methodsubtable">
+                    <tr>
+                      <th width="150px">Name</th>
+                      <th>Description</th>
+                    </tr>
+                    <tr><td style="width:150px;">Idempotency-Key</td>
+<td>
+
+
+    <div id="d2e199_putUsageRecords_idempotencyKey">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+                    </div>
+            </div>
         </div>
     </div>
 </td>
