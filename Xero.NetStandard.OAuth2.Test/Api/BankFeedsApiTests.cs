@@ -91,7 +91,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
         public async Task CreateStatementsTest()
         {
             Statements statements = new Statements();
-            var response = await instance.CreateStatementsAsync(accessToken, xeroTenantId, statements);
+            string idempotencyKey = AutoFaker.Generate<string>();
+            var response = await instance.CreateStatementsAsync(accessToken, xeroTenantId, idempotencyKey, statements);
             Assert.IsType<Statements>(response);
         }
         
