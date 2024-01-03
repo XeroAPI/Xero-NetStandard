@@ -34,7 +34,7 @@ namespace Xero.NetStandard.OAuth2.Client
     internal class CustomJsonCodec : IRestSerializer, ISerializer, IDeserializer
     {
         private readonly IReadableConfiguration _configuration;
-        private string _contentType = "application/json";
+        private ContentType _contentType = "application/json";
         private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
             // OpenAPI generated types generally hide default constructors.
@@ -173,7 +173,7 @@ namespace Xero.NetStandard.OAuth2.Client
         public string Namespace { get; set; }
         public string DateFormat { get; set; }
 
-        public string ContentType
+        public ContentType ContentType
         {
             get { return _contentType; }
             set { throw new InvalidOperationException("Not allowed to set content type."); }
@@ -198,7 +198,7 @@ namespace Xero.NetStandard.OAuth2.Client
             "*"
         };
 
-        public SupportsContentType SupportsContentType => type => AcceptedContentTypes.Contains(type);
+        public SupportsContentType SupportsContentType => type => AcceptedContentTypes.Contains(type.Value);
 
         public DataFormat DataFormat => DataFormat.Json;
     }
@@ -503,21 +503,21 @@ namespace Xero.NetStandard.OAuth2.Client
                 clientOptions.UserAgent = configuration.UserAgent;
             }
 
-            RestClient client = new RestClient(clientOptions);
-
-            client
-                .UseSerializer(() =>
+            RestClient client = new RestClient(
+                clientOptions,
+                configureSerialization: cs => cs.UseSerializer(() =>
                 {
                     var serializer = new CustomJsonCodec(configuration);
                     return serializer;
                 })
-                .UseSerializer<XmlRestSerializer>();
+                    .UseSerializer<XmlRestSerializer>()
+            );
 
             if (configuration.Cookies != null && configuration.Cookies.Count > 0)
             {
                 foreach (var cookie in configuration.Cookies)
                 {
-                    client.CookieContainer.Add(new Cookie(cookie.Name, cookie.Value));
+                    req.CookieContainer.Add(new Cookie(cookie.Name, cookie.Value));
                 }
             }
 
