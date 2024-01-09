@@ -656,7 +656,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum BADDEBTRECOVERY for value: BADDEBTRECOVERY
             /// </summary>
             [EnumMember(Value = "BADDEBTRECOVERY")]
-            BADDEBTRECOVERY = 97
+            BADDEBTRECOVERY = 97,
+
+            /// <summary>
+            /// Enum USSALESTAX for value: USSALESTAX
+            /// </summary>
+            [EnumMember(Value = "USSALESTAX")]
+            USSALESTAX = 98
 
         }
 
