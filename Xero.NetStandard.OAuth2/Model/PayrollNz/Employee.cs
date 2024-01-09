@@ -152,6 +152,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public DateTime? CreatedDateUTC { get; set; }
 
         /// <summary>
+        /// Employee&#39;s job title
+        /// </summary>
+        /// <value>Employee&#39;s job title</value>
+        [DataMember(Name="jobTitle", EmitDefaultValue=false)]
+        public string JobTitle { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -173,6 +180,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  PayrollCalendarID: ").Append(PayrollCalendarID).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  CreatedDateUTC: ").Append(CreatedDateUTC).Append("\n");
+            sb.Append("  JobTitle: ").Append(JobTitle).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -275,6 +283,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.CreatedDateUTC == input.CreatedDateUTC ||
                     (this.CreatedDateUTC != null &&
                     this.CreatedDateUTC.Equals(input.CreatedDateUTC))
+                ) && 
+                (
+                    this.JobTitle == input.JobTitle ||
+                    (this.JobTitle != null &&
+                    this.JobTitle.Equals(input.JobTitle))
                 );
         }
 
@@ -314,6 +327,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.CreatedDateUTC != null)
                     hashCode = hashCode * 59 + this.CreatedDateUTC.GetHashCode();
+                if (this.JobTitle != null)
+                    hashCode = hashCode * 59 + this.JobTitle.GetHashCode();
                 return hashCode;
             }
         }
