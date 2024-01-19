@@ -25,9 +25,9 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.PayrollAu
 {
     /// <summary>
-    /// Country of residence as a valid ISO 3166-1 alpha-2 country code e.g. \&quot;AU\&quot;, \&quot;NZ\&quot;, \&quot;CA\&quot; or an empty string (\&quot;\&quot;) to unset a previously set value. Only applicable, and mandatory if income type is WORKINGHOLIDAYMAKER.
+    /// Country of residence as a valid ISO 3166-1 alpha-2 country code e.g. \&quot;AU\&quot;, \&quot;NZ\&quot;, \&quot;CA\&quot;. Only applicable, and mandatory if income type is WORKINGHOLIDAYMAKER.
     /// </summary>
-    /// <value>Country of residence as a valid ISO 3166-1 alpha-2 country code e.g. \&quot;AU\&quot;, \&quot;NZ\&quot;, \&quot;CA\&quot; or an empty string (\&quot;\&quot;) to unset a previously set value. Only applicable, and mandatory if income type is WORKINGHOLIDAYMAKER.</value>
+    /// <value>Country of residence as a valid ISO 3166-1 alpha-2 country code e.g. \&quot;AU\&quot;, \&quot;NZ\&quot;, \&quot;CA\&quot;. Only applicable, and mandatory if income type is WORKINGHOLIDAYMAKER.</value>
     
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
     
@@ -1531,13 +1531,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum SS for value: SS
         /// </summary>
         [EnumMember(Value = "SS")]
-        SS = 250,
-
-        /// <summary>
-        /// Enum Empty for value: 
-        /// </summary>
-        [EnumMember(Value = "")]
-        Empty = 251
+        SS = 250
 
     }
 
