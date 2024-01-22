@@ -55,13 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum BASEDONORDINARYEARNINGS for value: BASEDONORDINARYEARNINGS
         /// </summary>
         [EnumMember(Value = "BASEDONORDINARYEARNINGS")]
-        BASEDONORDINARYEARNINGS = 4,
-
-        /// <summary>
-        /// Enum Empty for value: 
-        /// </summary>
-        [EnumMember(Value = "")]
-        Empty = 5
+        BASEDONORDINARYEARNINGS = 4
 
     }
 

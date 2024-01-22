@@ -1,4 +1,4 @@
-/* 
+/*
  * Xero Payroll AU
  *
  * This is the Xero Payroll API for orgs in Australia region.
@@ -45,7 +45,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("ENTERRATEINPAYTEMPLATE", LeaveLineCalculationType.ENTERRATEINPAYTEMPLATE)]
         [InlineData("FIXEDAMOUNTEACHPERIOD", LeaveLineCalculationType.FIXEDAMOUNTEACHPERIOD)]
         [InlineData("NOCALCULATIONREQUIRED", LeaveLineCalculationType.NOCALCULATIONREQUIRED)]
-        [InlineData("", LeaveLineCalculationType.Empty)]
         public void CalculationTypeTest(string input, LeaveLineCalculationType expected)
         {
             JsonDoc.Assert<LeaveLine, LeaveLineCalculationType>(
