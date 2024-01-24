@@ -48,6 +48,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = @"{
                 ""AccountID"": ""12345678-abcd-abcd-abcd-1234567890ab""
             }";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Account>(response);
@@ -64,6 +65,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = @"{
                 ""AccountID"": ""12345678-abcd-abcd-abcd-invalidvalue""
             }";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             Assert.Throws<ApiException>(() => deserializer.Deserialize<Account>(response));
@@ -101,6 +103,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""Type"": ""{input}""
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Account>(response);
@@ -117,6 +120,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = @"{
                 ""Type"": null
             }";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Account>(response);
@@ -131,6 +135,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         {
             var response = new RestResponse();
             response.Content = "{}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Account>(response);

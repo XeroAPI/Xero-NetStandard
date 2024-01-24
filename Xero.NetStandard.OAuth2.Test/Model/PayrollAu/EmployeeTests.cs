@@ -58,7 +58,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""Gender"": ""{input}""
             }}";
-
+            response.StatusCode = System.Net.HttpStatusCode.OK;
+            
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Employee>(response);
 
@@ -71,6 +72,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = @"{
                 ""Gender"": null
             }";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Employee>(response);
@@ -82,6 +84,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         {
             var response = new RestResponse();
             response.Content = "{}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Employee>(response);
@@ -119,6 +122,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
                     }}
                 ]
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Employee>(response);

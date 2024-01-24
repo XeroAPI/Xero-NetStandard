@@ -89,7 +89,7 @@ namespace Xero.NetStandard.OAuth2.Test
                     ""{input.PropertyName}"": {input.GetJsonRepresentation()}
                 }}";
             }
-
+            response.StatusCode = System.Net.HttpStatusCode.OK;
             var deserializer = new CustomJsonCodec(new Configuration());
             var output = deserializer.Deserialize<TModel>(response);
             Xunit.Assert.Equal(shouldBe, toProperty(output));

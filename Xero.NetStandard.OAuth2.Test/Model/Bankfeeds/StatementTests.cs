@@ -57,6 +57,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             response.Content = $@"{{
                 ""Status"": ""{input}""
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Statement>(response);
@@ -73,6 +74,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             response.Content = $@"{{
                 ""Status"": null
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Statement>(response);
@@ -87,6 +89,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         {
             var response = new RestResponse();
             response.Content = "{}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Statement>(response);
@@ -110,6 +113,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
                     }}
                 ]
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Statement>(response);

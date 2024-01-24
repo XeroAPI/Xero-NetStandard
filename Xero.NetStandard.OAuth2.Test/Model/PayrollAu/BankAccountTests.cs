@@ -51,6 +51,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""Remainder"": {input}
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<BankAccount>(response);
@@ -69,6 +70,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""Amount"": {input}
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<BankAccount>(response);

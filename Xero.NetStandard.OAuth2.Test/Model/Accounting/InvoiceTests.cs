@@ -199,7 +199,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Accounting
             response.Content = $@"{{
                 ""CISDeduction"": {number}
             }}";
-
+            response.StatusCode = System.Net.HttpStatusCode.OK;
+            
             var deserializer = new CustomJsonCodec(new Configuration());
             var invoices = deserializer.Deserialize<Invoice>(response);
 
