@@ -158,7 +158,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 return ClientUtils.ConvertType(response.Content, type);
             }
 
-            if(response.StatusCode != HttpStatusCode.OK)
+            if(response.StatusCode < HttpStatusCode.OK || response.StatusCode >= HttpStatusCode.MultipleChoices)
             {
                 throw new ApiException((int)response.StatusCode, response.Content);
             }
