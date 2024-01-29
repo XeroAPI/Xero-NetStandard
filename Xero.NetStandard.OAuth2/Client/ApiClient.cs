@@ -158,6 +158,11 @@ namespace Xero.NetStandard.OAuth2.Client
                 return ClientUtils.ConvertType(response.Content, type);
             }
 
+            if(response.StatusCode < HttpStatusCode.OK || response.StatusCode >= HttpStatusCode.MultipleChoices)
+            {
+                throw new ApiException((int)response.StatusCode, response.Content);
+            }
+
             // at this point, it must be a model (json)
             try
             {
@@ -505,7 +510,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             RestClient client = new RestClient(
                 clientOptions,
-                configureSerialization: cs => cs.UseSerializer(() =>
+                configureSerialization: _ => _.UseSerializer(() =>
                 {
                     var serializer = new CustomJsonCodec(configuration);
                     return serializer;

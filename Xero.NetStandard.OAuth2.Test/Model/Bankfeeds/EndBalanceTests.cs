@@ -56,6 +56,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             response.Content = $@"{{
                 ""Amount"": {input}
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<EndBalance>(response);
@@ -70,6 +71,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         {
             var response = new RestResponse();
             response.Content = "{}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<EndBalance>(response);

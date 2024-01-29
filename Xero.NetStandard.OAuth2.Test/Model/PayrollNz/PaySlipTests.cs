@@ -197,6 +197,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         {
             var response = new RestResponse();
             response.Content = $@"""{input}""";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<PaySlip.PaymentMethodEnum>(response);
@@ -208,6 +209,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         public void PaymentMethodEnum_NullInput_Deserialises(){
             var response = new RestResponse();
             response.Content = "null";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<PaySlip.PaymentMethodEnum>(response);

@@ -51,6 +51,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""CalculationType"": ""{input}""
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<DeductionLine>(response);
@@ -67,6 +68,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = @"{
                 ""CalculationType"": null
             }";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<DeductionLine>(response);
@@ -81,6 +83,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         {
             var response = new RestResponse();
             response.Content = "{}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<DeductionLine>(response);
@@ -99,6 +102,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""Amount"": {input}
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<DeductionLine>(response);
@@ -117,6 +121,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""Percentage"": {input}
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<DeductionLine>(response);
@@ -135,6 +140,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.Content = $@"{{
                 ""NumberOfUnits"": {input}
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<DeductionLine>(response);

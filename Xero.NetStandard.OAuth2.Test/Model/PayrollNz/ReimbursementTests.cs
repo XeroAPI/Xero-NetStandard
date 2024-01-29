@@ -101,6 +101,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         {
             var response = new RestResponse();
             response.Content = $@"""{input}""";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Reimbursement.ReimbursementCategoryEnum>(response);
@@ -112,6 +113,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         public void ReimbursementCategoryEnum_NullInput_Deserialises(){
             var response = new RestResponse();
             response.Content = "null";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Reimbursement.ReimbursementCategoryEnum>(response);
@@ -129,6 +131,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         {
             var response = new RestResponse();
             response.Content = $@"""{input}""";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Reimbursement.CalculationTypeEnum>(response);
@@ -140,6 +143,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         public void CalculationTypeEnum_NullInput_Deserialises(){
             var response = new RestResponse();
             response.Content = "null";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Reimbursement.CalculationTypeEnum>(response);
@@ -164,6 +168,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         {
             var response = new RestResponse();
             response.Content = $@"""{input}""";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Reimbursement.StandardTypeOfUnitsEnum>(response);
@@ -175,6 +180,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         public void StandardTypeOfUnitsEnum_NullInput_Deserialises(){
             var response = new RestResponse();
             response.Content = "null";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<Reimbursement.StandardTypeOfUnitsEnum>(response);

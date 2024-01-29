@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
                 toProperty: (x) => x.AccountType,
                 shouldBe: expected
             );
-        }
+                    }
 
         /// <summary>
         /// Test the property 'Status'
@@ -88,6 +88,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
                     ""detail"": ""Detail""
                 }}
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<FeedConnection>(response);

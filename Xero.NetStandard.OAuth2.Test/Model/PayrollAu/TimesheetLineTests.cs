@@ -51,6 +51,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
                     123.123123
                 ]
             }}";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<TimesheetLine>(response);

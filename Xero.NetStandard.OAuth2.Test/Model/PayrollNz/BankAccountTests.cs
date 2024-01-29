@@ -124,6 +124,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         {
             var response = new RestResponse();
             response.Content = $@"""{input}""";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
@@ -136,6 +137,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         {
             var response = new RestResponse();
             response.Content = "null";
+            response.StatusCode = System.Net.HttpStatusCode.OK;
 
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
