@@ -1643,7 +1643,7 @@ namespace Example
             assetType.BookDepreciationSetting = bookDepreciationSetting;
             
             try {
-                var result = await apiInstance.CreateAssetTypeAsync(accessToken, xeroTenantId, idempotencyKey, assetType);
+                var result = await apiInstance.CreateAssetTypeAsync(accessToken, xeroTenantId, assetType, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -1722,7 +1722,7 @@ This allows you to safely retry requests without the risk of duplicate processin
                       <th>Description</th>
                     </tr>
                     <tr>
-  <td style="width:150px;">assetType </td>
+  <td style="width:150px;">assetType <span style="color:red;">*</span></td>
   <td>
     <div class="json-schema-view">
       <div class="primitive">
@@ -1732,6 +1732,9 @@ This allows you to safely retry requests without the risk of duplicate processin
         <div class="inner description marked">
           Asset type to add
         </div>
+      </div>
+      <div class="inner required">
+        Required
       </div>
     </div>
     <script type="application/ld+json">
@@ -1744,7 +1747,8 @@ This allows you to safely retry requests without the risk of duplicate processin
       },
       "example" : "{ \"assetTypeName\":\"Machinery11004\", \"fixedAssetAccountId\":\"3d8d063a-c148-4bb8-8b3c-a5e2ad3b1e82\", \"depreciationExpenseAccountId\":\"d1602f69-f900-4616-8d34-90af393fa368\", \"accumulatedDepreciationAccountId\":\"9195cadd-8645-41e6-9f67-7bcd421defe8\", \"bookDepreciationSetting\":{ \"depreciationMethod\":\"DiminishingValue100\", \"averagingMethod\":\"ActualDays\", \"depreciationRate\":0.05, \"depreciationCalculationMethod\":\"None\" } }"
     }
-  }
+  },
+  "required" : true
 }
     </script>
                   </table>
