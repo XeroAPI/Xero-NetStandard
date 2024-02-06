@@ -6094,7 +6094,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Accounting"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>3.34.5</li>
+              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>4.0.0</li>
               <li class="nav-header" data-group="Accounting"><a href="#api-Accounting">Methods</a></li>
               <li data-group="Accounting" data-name="createAccount" class="">
                 <a href="#api-Accounting-createAccount">createAccount</a>
@@ -7638,9 +7638,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var contact = new Contact();
             contact.ContactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -7668,7 +7668,7 @@ namespace Example
             bankTransactions._BankTransactions = bankTransactionsList;
             
             try {
-                var result = await apiInstance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -9807,8 +9807,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
 
             var phone = new Phone();
             phone.PhoneNumber = "555-1212";
@@ -9827,7 +9827,7 @@ namespace Example
             contacts._Contacts = contactsList;
             
             try {
-                var result = await apiInstance.CreateContactsAsync(accessToken, xeroTenantId, contacts, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10005,8 +10005,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var invoice = new Invoice();
@@ -10023,7 +10023,7 @@ namespace Example
             allocations._Allocations = allocationsList;
             
             try {
-                var result = await apiInstance.CreateCreditNoteAllocationAsync(accessToken, xeroTenantId, creditNoteID, allocations, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreateCreditNoteAllocationAsync(accessToken, xeroTenantId, creditNoteID, allocations, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10235,12 +10235,12 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
-            var idempotencyKey = "KEY_VALUE";
             var includeOnline = true;
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body, idempotencyKey, includeOnline);
+                var result = await apiInstance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body, includeOnline, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -10668,9 +10668,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var contact = new Contact();
@@ -10696,7 +10696,7 @@ namespace Example
             creditNotes._CreditNotes = creditNotesList;
             
             try {
-                var result = await apiInstance.CreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -11050,8 +11050,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
 
             var employee = new Employee();
             employee.FirstName = "Nick";
@@ -11063,7 +11063,7 @@ namespace Example
             employees._Employees = employeesList;
             
             try {
-                var result = await apiInstance.CreateEmployeesAsync(accessToken, xeroTenantId, employees, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreateEmployeesAsync(accessToken, xeroTenantId, employees, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -11610,12 +11610,12 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
-            var idempotencyKey = "KEY_VALUE";
             var includeOnline = true;
+            var idempotencyKey = "KEY_VALUE";
             byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
-                var result = await apiInstance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body, idempotencyKey, includeOnline);
+                var result = await apiInstance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body, includeOnline, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12043,9 +12043,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = new DateTime(2020, 10, 10);
             var dueDateValue = new DateTime(2020, 10, 10);
 
@@ -12082,7 +12082,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12474,9 +12474,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var purchaseDetails = new Purchase();
             purchaseDetails.COGSAccountCode = "500";
@@ -12494,7 +12494,7 @@ namespace Example
             items._Items = itemsList;
             
             try {
-                var result = await apiInstance.CreateItemsAsync(accessToken, xeroTenantId, items, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.CreateItemsAsync(accessToken, xeroTenantId, items, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13255,8 +13255,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = new DateTime(2020, 10, 10);
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
 
@@ -13283,7 +13283,7 @@ namespace Example
             manualJournals._ManualJournals = manualJournalsList;
             
             try {
-                var result = await apiInstance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -13461,8 +13461,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var overpaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var invoice = new Invoice();
@@ -13479,7 +13479,7 @@ namespace Example
             allocations._Allocations = allocationsList;
             
             try {
-                var result = await apiInstance.CreateOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocations, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreateOverpaymentAllocationsAsync(accessToken, xeroTenantId, overpaymentID, allocations, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14413,8 +14413,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var invoice = new Invoice();
@@ -14435,7 +14435,7 @@ namespace Example
             payments._Payments = paymentsList;
             
             try {
-                var result = await apiInstance.CreatePaymentsAsync(accessToken, xeroTenantId, payments, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreatePaymentsAsync(accessToken, xeroTenantId, payments, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -14613,8 +14613,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var prepaymentID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var invoice = new Invoice();
@@ -14631,7 +14631,7 @@ namespace Example
             allocations._Allocations = allocationsList;
             
             try {
-                var result = await apiInstance.CreatePrepaymentAllocationsAsync(accessToken, xeroTenantId, prepaymentID, allocations, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreatePrepaymentAllocationsAsync(accessToken, xeroTenantId, prepaymentID, allocations, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -15443,8 +15443,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var contact = new Contact();
@@ -15469,7 +15469,7 @@ namespace Example
             purchaseOrders._PurchaseOrders = purchaseOrdersList;
             
             try {
-                var result = await apiInstance.CreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16053,8 +16053,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var contact = new Contact();
@@ -16079,7 +16079,7 @@ namespace Example
             quotes._Quotes = quotesList;
             
             try {
-                var result = await apiInstance.CreateQuotesAsync(accessToken, xeroTenantId, quotes, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreateQuotesAsync(accessToken, xeroTenantId, quotes, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -16256,8 +16256,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var contact = new Contact();
             contact.ContactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -16286,7 +16286,7 @@ namespace Example
             receipts._Receipts = receiptsList;
             
             try {
-                var result = await apiInstance.CreateReceiptAsync(accessToken, xeroTenantId, receipts, idempotencyKey, unitdp);
+                var result = await apiInstance.CreateReceiptAsync(accessToken, xeroTenantId, receipts, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -17277,11 +17277,11 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.CreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.CreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -41013,8 +41013,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var bankTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var contact = new Contact();
             contact.ContactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -41043,7 +41043,7 @@ namespace Example
             bankTransactions._BankTransactions = bankTransactionsList;
             
             try {
-                var result = await apiInstance.UpdateBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID, bankTransactions, idempotencyKey, unitdp);
+                var result = await apiInstance.UpdateBankTransactionAsync(accessToken, xeroTenantId, bankTransactionID, bankTransactions, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42280,8 +42280,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var contact = new Contact();
@@ -42309,7 +42309,7 @@ namespace Example
             creditNotes._CreditNotes = creditNotesList;
             
             try {
-                var result = await apiInstance.UpdateCreditNoteAsync(accessToken, xeroTenantId, creditNoteID, creditNotes, idempotencyKey, unitdp);
+                var result = await apiInstance.UpdateCreditNoteAsync(accessToken, xeroTenantId, creditNoteID, creditNotes, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42938,8 +42938,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var invoice = new Invoice();
             invoice.Reference = "I am Iron man";
@@ -42950,7 +42950,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices, idempotencyKey, unitdp);
+                var result = await apiInstance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -43372,8 +43372,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var itemID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var item = new Item();
             item.Code = "ItemCode123";
@@ -43385,7 +43385,7 @@ namespace Example
             items._Items = itemsList;
             
             try {
-                var result = await apiInstance.UpdateItemAsync(accessToken, xeroTenantId, itemID, items, idempotencyKey, unitdp);
+                var result = await apiInstance.UpdateItemAsync(accessToken, xeroTenantId, itemID, items, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44211,9 +44211,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var contact = new Contact();
             contact.ContactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
@@ -44241,7 +44241,7 @@ namespace Example
             bankTransactions._BankTransactions = bankTransactionsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44437,8 +44437,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
 
             var phone = new Phone();
             phone.PhoneNumber = "555-1212";
@@ -44457,7 +44457,7 @@ namespace Example
             contacts._Contacts = contactsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateContactsAsync(accessToken, xeroTenantId, contacts, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateContactsAsync(accessToken, xeroTenantId, contacts, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44633,9 +44633,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
             var currDate = DateTime.Now;
 
             var contact = new Contact();
@@ -44661,7 +44661,7 @@ namespace Example
             creditNotes._CreditNotes = creditNotesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateCreditNotesAsync(accessToken, xeroTenantId, creditNotes, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44858,8 +44858,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
 
             var employee = new Employee();
             employee.FirstName = "Nick";
@@ -44871,7 +44871,7 @@ namespace Example
             employees._Employees = employeesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateEmployeesAsync(accessToken, xeroTenantId, employees, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateEmployeesAsync(accessToken, xeroTenantId, employees, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45048,9 +45048,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = new DateTime(2020, 10, 10);
             var dueDateValue = new DateTime(2020, 10, 10);
 
@@ -45080,7 +45080,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45276,9 +45276,9 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
 
             var item = new Item();
             item.Code = "abcXYZ123";
@@ -45291,7 +45291,7 @@ namespace Example
             items._Items = itemsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateItemsAsync(accessToken, xeroTenantId, items, idempotencyKey, summarizeErrors, unitdp);
+                var result = await apiInstance.UpdateOrCreateItemsAsync(accessToken, xeroTenantId, items, summarizeErrors, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45487,8 +45487,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = new DateTime(2020, 10, 10);
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
 
@@ -45515,7 +45515,7 @@ namespace Example
             manualJournals._ManualJournals = manualJournalsList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45692,8 +45692,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var contact = new Contact();
@@ -45718,7 +45718,7 @@ namespace Example
             purchaseOrders._PurchaseOrders = purchaseOrdersList;
             
             try {
-                var result = await apiInstance.UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreatePurchaseOrdersAsync(accessToken, xeroTenantId, purchaseOrders, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -45894,8 +45894,8 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var contact = new Contact();
@@ -45920,7 +45920,7 @@ namespace Example
             quotes._Quotes = quotesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateQuotesAsync(accessToken, xeroTenantId, quotes, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateQuotesAsync(accessToken, xeroTenantId, quotes, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -46096,11 +46096,11 @@ namespace Example
             var accessToken = "YOUR_ACCESS_TOKEN";          
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
-            var idempotencyKey = "KEY_VALUE";
             var summarizeErrors = true;
+            var idempotencyKey = "KEY_VALUE";
             
             try {
-                var result = await apiInstance.UpdateOrCreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, idempotencyKey, summarizeErrors);
+                var result = await apiInstance.UpdateOrCreateRepeatingInvoicesAsync(accessToken, xeroTenantId, repeatingInvoices, summarizeErrors, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -47096,8 +47096,8 @@ namespace Example
             var apiInstance = new AccountingApi();
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var receiptID = Guid.Parse("00000000-0000-0000-0000-000000000000");
-            var idempotencyKey = "KEY_VALUE";
             var unitdp = 4;
+            var idempotencyKey = "KEY_VALUE";
             var dateValue = DateTime.Now;
 
             var user = new User();
@@ -47114,7 +47114,7 @@ namespace Example
             receipts._Receipts = receiptsList;
             
             try {
-                var result = await apiInstance.UpdateReceiptAsync(accessToken, xeroTenantId, receiptID, receipts, idempotencyKey, unitdp);
+                var result = await apiInstance.UpdateReceiptAsync(accessToken, xeroTenantId, receiptID, receipts, unitdp, idempotencyKey);
                 Console.WriteLine(result);
             }
             catch (Exception e)
