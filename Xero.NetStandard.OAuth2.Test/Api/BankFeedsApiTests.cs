@@ -92,7 +92,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
         {
             Statements statements = new Statements();
             string idempotencyKey = AutoFaker.Generate<string>();
-            var response = await instance.CreateStatementsAsync(accessToken, xeroTenantId, idempotencyKey, statements);
+            var response = await instance.CreateStatementsAsync(accessToken, xeroTenantId, statements, idempotencyKey);
             Assert.IsType<Statements>(response);
         }
         
