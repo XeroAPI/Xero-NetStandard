@@ -291,6 +291,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
+        /// Displays array of warning messages from the API
+        /// </summary>
+        /// <value>Displays array of warning messages from the API</value>
+        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        public List<ValidationError> Warnings { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -325,6 +332,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  HasValidationErrors: ").Append(HasValidationErrors).Append("\n");
             sb.Append("  StatusAttributeString: ").Append(StatusAttributeString).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -492,6 +500,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
                     this.ValidationErrors.SequenceEqual(input.ValidationErrors)
+                ) && 
+                (
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
                 );
         }
 
@@ -556,6 +570,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.StatusAttributeString.GetHashCode();
                 if (this.ValidationErrors != null)
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
+                if (this.Warnings != null)
+                    hashCode = hashCode * 59 + this.Warnings.GetHashCode();
                 return hashCode;
             }
         }

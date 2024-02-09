@@ -341,7 +341,7 @@ namespace Xero.NetStandard.OAuth2.Client
         {
             String report = "C# SDK (Xero.NetStandard.OAuth2) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
-            report += "    Version of the API: 3.0.0\n";
+            report += "    Version of the API: 3.0.1\n";
             report += "    SDK Package Version: 4.0.0\n";
 
             return report;
