@@ -289,6 +289,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
             sb.Append("  BankAccount: ").Append(BankAccount).Append("\n");
             sb.Append("  IsReconciled: ").Append(IsReconciled).Append("\n");
+            sb.Append("  DateString: ").Append(DateString).Append("\n");
             sb.Append("  Date: ").Append(Date).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
