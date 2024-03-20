@@ -173,6 +173,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public bool? IsReconciled { get; set; }
 
         /// <summary>
+        /// String representation of the Date property in ISO 8601 format (YYYY-MM-DDTHH:MM:SS)
+        /// </summary>
+        [DataMember(Name="DateString", EmitDefaultValue=false)]
+        public string DateString { get; set; }
+
+        /// <summary>
         /// Date of transaction – YYYY-MM-DD
         /// </summary>
         /// <value>Date of transaction – YYYY-MM-DD</value>
