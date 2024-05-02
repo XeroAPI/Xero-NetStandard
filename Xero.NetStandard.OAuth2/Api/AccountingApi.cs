@@ -5787,6 +5787,33 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <returns>Task of ApiResponse (ReportWithRows)</returns>
         System.Threading.Tasks.Task<ApiResponse<ReportWithRows>> GetReportsListAsyncWithHttpInfo (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
         /// <summary>
+        /// Retrieves a specific tax rate according to given TaxType code
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessToken">Xero API OAuth 2.0 accessToken</param>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="taxType">A valid TaxType code</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <returns>Task of TaxRates</returns>
+        System.Threading.Tasks.Task<TaxRates> GetTaxRateByTaxTypeAsync (string accessToken, string xeroTenantId, string taxType, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieves a specific tax rate according to given TaxType code
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessToken">Xero API OAuth 2.0 accessToken</param>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="taxType">A valid TaxType code</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <returns>Task of ApiResponse (TaxRates)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TaxRates>> GetTaxRateByTaxTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, string taxType, CancellationToken cancellationToken = default);
+        /// <summary>
         /// Retrieves tax rates
         /// </summary>
         /// <remarks>
@@ -5797,10 +5824,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="where">Filter by an any element (optional)</param>
         /// <param name="order">Order by an any element (optional)</param>
-        /// <param name="taxType">Filter by tax type (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TaxRates</returns>
-        System.Threading.Tasks.Task<TaxRates> GetTaxRatesAsync (string accessToken, string xeroTenantId, string where = null, string order = null, string taxType = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TaxRates> GetTaxRatesAsync (string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves tax rates
@@ -5813,10 +5839,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="where">Filter by an any element (optional)</param>
         /// <param name="order">Order by an any element (optional)</param>
-        /// <param name="taxType">Filter by tax type (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TaxRates)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TaxRates>> GetTaxRatesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string where = null, string order = null, string taxType = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TaxRates>> GetTaxRatesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves tracking categories and options
         /// </summary>
@@ -25057,6 +25082,85 @@ namespace Xero.NetStandard.OAuth2.Api
 
 
         /// <summary>
+        /// Retrieves a specific tax rate according to given TaxType code 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessToken">Xero API OAuth 2.0 accessToken</param>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="taxType">A valid TaxType code</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <returns>Task of TaxRates</returns>
+        public async System.Threading.Tasks.Task<TaxRates> GetTaxRateByTaxTypeAsync (string accessToken, string xeroTenantId, string taxType, CancellationToken cancellationToken = default)
+        {
+             Xero.NetStandard.OAuth2.Client.ApiResponse<TaxRates> localVarResponse = await GetTaxRateByTaxTypeAsyncWithHttpInfo(accessToken, xeroTenantId, taxType, cancellationToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Retrieves a specific tax rate according to given TaxType code 
+        /// </summary>
+        /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accessToken">Xero API OAuth 2.0 accessToken</param>
+        /// <param name="xeroTenantId">Xero identifier for Tenant</param>
+        /// <param name="taxType">A valid TaxType code</param>
+        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <returns>Task of ApiResponse (TaxRates)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TaxRates>> GetTaxRateByTaxTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, string taxType, CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'xeroTenantId' is set
+            if (xeroTenantId == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'xeroTenantId' when calling AccountingApi->GetTaxRateByTaxType");
+
+            // verify the required parameter 'taxType' is set
+            if (taxType == null)
+                throw new Xero.NetStandard.OAuth2.Client.ApiException(400, "Missing required parameter 'taxType' when calling AccountingApi->GetTaxRateByTaxType");
+
+
+            Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();
+
+            String[] @contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] @accepts = new String[] {
+                "application/json"
+            };
+            
+            foreach (var cType in @contentTypes)
+                requestOptions.HeaderParameters.Add("Content-Type", cType);
+            
+            foreach (var accept in @accepts)
+                requestOptions.HeaderParameters.Add("Accept", accept);
+            
+            if (taxType != null)
+                requestOptions.PathParameters.Add("TaxType", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(taxType)); // path parameter
+            if (xeroTenantId != null)
+                requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
+
+            // authentication (OAuth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(accessToken))
+            {
+                requestOptions.HeaderParameters.Add("Authorization", "Bearer " + accessToken);
+            }
+            // make the HTTP request
+
+      
+
+            var response = await this.AsynchronousClient.GetAsync<TaxRates>("/TaxRates/{TaxType}", requestOptions, this.Configuration, cancellationToken);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception exception = this.ExceptionFactory("GetTaxRateByTaxType", response);
+                if (exception != null) throw exception;
+            }
+
+            return response;
+        }
+
+
+        /// <summary>
         /// Retrieves tax rates 
         /// </summary>
         /// <exception cref="Xero.NetStandard.OAuth2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -25064,12 +25168,11 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="where">Filter by an any element (optional)</param>
         /// <param name="order">Order by an any element (optional)</param>
-        /// <param name="taxType">Filter by tax type (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TaxRates</returns>
-        public async System.Threading.Tasks.Task<TaxRates> GetTaxRatesAsync (string accessToken, string xeroTenantId, string where = null, string order = null, string taxType = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TaxRates> GetTaxRatesAsync (string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TaxRates> localVarResponse = await GetTaxRatesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, taxType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<TaxRates> localVarResponse = await GetTaxRatesAsyncWithHttpInfo(accessToken, xeroTenantId, where, order, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -25082,10 +25185,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="where">Filter by an any element (optional)</param>
         /// <param name="order">Order by an any element (optional)</param>
-        /// <param name="taxType">Filter by tax type (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TaxRates)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TaxRates>> GetTaxRatesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string where = null, string order = null, string taxType = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TaxRates>> GetTaxRatesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string where = null, string order = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -25123,17 +25225,6 @@ namespace Xero.NetStandard.OAuth2.Api
             if (order != null)
             {
                 foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "order", order))
-                {
-                    foreach (var value in kvp.Value)
-                    {
-                        requestOptions.QueryParameters.Add(kvp.Key, value);
-                    }
-                }
-            }
-
-            if (taxType != null)
-            {
-                foreach (var kvp in Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToMultiMap("", "TaxType", taxType))
                 {
                     foreach (var value in kvp.Value)
                     {

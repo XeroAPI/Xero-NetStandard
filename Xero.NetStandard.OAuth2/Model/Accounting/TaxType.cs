@@ -751,7 +751,25 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum OSOUTPUT2 for value: OSOUTPUT2
         /// </summary>
         [EnumMember(Value = "OSOUTPUT2")]
-        OSOUTPUT2 = 120
+        OSOUTPUT2 = 120,
+
+        /// <summary>
+        /// Enum BLINPUT3 for value: BLINPUT3
+        /// </summary>
+        [EnumMember(Value = "BLINPUT3")]
+        BLINPUT3 = 121,
+
+        /// <summary>
+        /// Enum BLINPUT3Y23 for value: BLINPUT3Y23
+        /// </summary>
+        [EnumMember(Value = "BLINPUT3Y23")]
+        BLINPUT3Y23 = 122,
+
+        /// <summary>
+        /// Enum BLINPUT3Y24 for value: BLINPUT3Y24
+        /// </summary>
+        [EnumMember(Value = "BLINPUT3Y24")]
+        BLINPUT3Y24 = 123
 
     }
 
