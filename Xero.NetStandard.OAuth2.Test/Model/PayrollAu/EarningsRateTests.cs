@@ -127,7 +127,6 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// </summary>
         [Theory]
         [InlineData("CAR", AllowanceType.CAR)]
-        [InlineData("JOBKEEPER", AllowanceType.JOBKEEPER)]
         [InlineData("LAUNDRY", AllowanceType.LAUNDRY)]
         [InlineData("MEALS", AllowanceType.MEALS)]
         [InlineData("OTHER", AllowanceType.OTHER)]

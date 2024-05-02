@@ -2426,7 +2426,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string where = AutoFaker.Generate<string>();
       string order = AutoFaker.Generate<string>();
       string taxType = AutoFaker.Generate<string>();
-      var response = await instance.GetTaxRatesAsync(accessToken, xeroTenantId, where, order, taxType).ConfigureAwait(false);
+      var response = await instance.GetTaxRatesAsync(accessToken, xeroTenantId, where, order).ConfigureAwait(false);
       Assert.IsType<TaxRates>(response);
     }
 

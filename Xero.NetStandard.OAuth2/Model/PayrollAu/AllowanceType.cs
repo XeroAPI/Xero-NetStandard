@@ -69,28 +69,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         OTHER = 6,
 
         /// <summary>
-        /// Enum JOBKEEPER for value: JOBKEEPER
-        /// </summary>
-        [EnumMember(Value = "JOBKEEPER")]
-        JOBKEEPER = 7,
-
-        /// <summary>
         /// Enum TOOLS for value: TOOLS
         /// </summary>
         [EnumMember(Value = "TOOLS")]
-        TOOLS = 8,
+        TOOLS = 7,
 
         /// <summary>
         /// Enum TASKS for value: TASKS
         /// </summary>
         [EnumMember(Value = "TASKS")]
-        TASKS = 9,
+        TASKS = 8,
 
         /// <summary>
         /// Enum QUALIFICATIONS for value: QUALIFICATIONS
         /// </summary>
         [EnumMember(Value = "QUALIFICATIONS")]
-        QUALIFICATIONS = 10
+        QUALIFICATIONS = 9
 
     }
 
