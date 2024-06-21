@@ -42,6 +42,27 @@ namespace Xero.NetStandard.OAuth2.Model.Files
         public ObjectType ObjectType { get; set; }
         
         /// <summary>
+        /// Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.
+        /// </summary>
+        /// <value>Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.</value>
+        [DataMember(Name="SendWithObject", EmitDefaultValue=false)]
+        public bool? SendWithObject { get; set; }
+
+        /// <summary>
+        /// The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.
+        /// </summary>
+        /// <value>The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.</value>
+        [DataMember(Name="Name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.
+        /// </summary>
+        /// <value>The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.</value>
+        [DataMember(Name="Size", EmitDefaultValue=false)]
+        public int? Size { get; set; }
+
+        /// <summary>
         /// The unique identifier of the file
         /// </summary>
         /// <value>The unique identifier of the file</value>
@@ -63,6 +84,9 @@ namespace Xero.NetStandard.OAuth2.Model.Files
         {
             var sb = new StringBuilder();
             sb.Append("class Association {\n");
+            sb.Append("  SendWithObject: ").Append(SendWithObject).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Size: ").Append(Size).Append("\n");
             sb.Append("  FileId: ").Append(FileId).Append("\n");
             sb.Append("  ObjectId: ").Append(ObjectId).Append("\n");
             sb.Append("  ObjectGroup: ").Append(ObjectGroup).Append("\n");
@@ -102,6 +126,21 @@ namespace Xero.NetStandard.OAuth2.Model.Files
 
             return 
                 (
+                    this.SendWithObject == input.SendWithObject ||
+                    (this.SendWithObject != null &&
+                    this.SendWithObject.Equals(input.SendWithObject))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Size == input.Size ||
+                    (this.Size != null &&
+                    this.Size.Equals(input.Size))
+                ) && 
+                (
                     this.FileId == input.FileId ||
                     (this.FileId != null &&
                     this.FileId.Equals(input.FileId))
@@ -130,6 +169,12 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.SendWithObject != null)
+                    hashCode = hashCode * 59 + this.SendWithObject.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Size != null)
+                    hashCode = hashCode * 59 + this.Size.GetHashCode();
                 if (this.FileId != null)
                     hashCode = hashCode * 59 + this.FileId.GetHashCode();
                 if (this.ObjectId != null)
