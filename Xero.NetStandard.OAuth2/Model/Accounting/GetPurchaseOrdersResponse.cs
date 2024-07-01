@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets PurchaseOrders
         /// </summary>
         [DataMember(Name="PurchaseOrders", EmitDefaultValue=false)]
-        public List<PurchaseOrders> PurchaseOrders { get; set; }
+        public List<PurchaseOrder> PurchaseOrders { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

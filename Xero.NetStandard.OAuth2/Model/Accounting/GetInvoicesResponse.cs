@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets Invoices
         /// </summary>
         [DataMember(Name="Invoices", EmitDefaultValue=false)]
-        public List<Invoices> Invoices { get; set; }
+        public List<Invoice> Invoices { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

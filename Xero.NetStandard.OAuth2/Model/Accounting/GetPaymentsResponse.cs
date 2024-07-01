@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets Payments
         /// </summary>
         [DataMember(Name="Payments", EmitDefaultValue=false)]
-        public List<Payments> Payments { get; set; }
+        public List<Payment> Payments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

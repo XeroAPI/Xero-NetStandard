@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets CreditNotes
         /// </summary>
         [DataMember(Name="CreditNotes", EmitDefaultValue=false)]
-        public List<CreditNotes> CreditNotes { get; set; }
+        public List<CreditNote> CreditNotes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

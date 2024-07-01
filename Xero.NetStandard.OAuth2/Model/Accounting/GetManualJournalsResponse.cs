@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets ManualJournals
         /// </summary>
         [DataMember(Name="ManualJournals", EmitDefaultValue=false)]
-        public List<ManualJournals> ManualJournals { get; set; }
+        public List<ManualJournal> ManualJournals { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

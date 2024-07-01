@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets Overpayments
         /// </summary>
         [DataMember(Name="Overpayments", EmitDefaultValue=false)]
-        public List<Overpayments> Overpayments { get; set; }
+        public List<Overpayment> Overpayments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets Contacts
         /// </summary>
         [DataMember(Name="Contacts", EmitDefaultValue=false)]
-        public List<Contacts> Contacts { get; set; }
+        public List<Contact> Contacts { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

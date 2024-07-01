@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets Prepayments
         /// </summary>
         [DataMember(Name="Prepayments", EmitDefaultValue=false)]
-        public List<Prepayments> Prepayments { get; set; }
+        public List<Prepayment> Prepayments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Gets or Sets BankTransactions
         /// </summary>
         [DataMember(Name="BankTransactions", EmitDefaultValue=false)]
-        public List<BankTransactions> BankTransactions { get; set; }
+        public List<BankTransaction> BankTransactions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
