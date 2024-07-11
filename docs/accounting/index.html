@@ -1465,6 +1465,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "BankTransactions" : {
       "type" : "array",
       "items" : {
@@ -2320,6 +2323,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "Contacts" : {
       "type" : "array",
       "items" : {
@@ -2555,6 +2561,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "CreditNotes" : {
       "type" : "array",
       "items" : {
@@ -2859,267 +2868,6 @@ ul.nav-tabs {
   "externalDocs" : {
     "url" : "http://developer.xero.com/documentation/api/organisation/"
   }
-};
-      defs["GetBankTransactionsResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "BankTransactions" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/BankTransaction"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetContactsResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "Contacts" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/Contact"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetCreditNotesResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "CreditNotes" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/CreditNote"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetInvoicesResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "Invoices" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/Invoice"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetManualJournalsResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "ManualJournals" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/ManualJournal"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetOverpaymentsResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "Overpayments" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/Overpayment"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetPaymentsResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "Payments" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/Payment"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetPrepaymentsResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "Prepayments" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/Prepayment"
-      }
-    }
-  },
-  "description" : ""
-};
-      defs["GetPurchaseOrdersResponse"] = {
-  "title" : "",
-  "type" : "object",
-  "properties" : {
-    "Id" : {
-      "type" : "string"
-    },
-    "Status" : {
-      "type" : "string"
-    },
-    "ProviderName" : {
-      "type" : "string"
-    },
-    "DateTimeUTC" : {
-      "type" : "string"
-    },
-    "PageInfo" : {
-      "$ref" : "#/components/schemas/PageInfo"
-    },
-    "PurchaseOrders" : {
-      "minItems" : 1,
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/PurchaseOrder"
-      }
-    }
-  },
-  "description" : ""
 };
       defs["HistoryRecord"] = {
   "title" : "",
@@ -3529,6 +3277,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "Invoices" : {
       "type" : "array",
       "items" : {
@@ -4165,6 +3916,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "ManualJournals" : {
       "type" : "array",
       "items" : {
@@ -4499,6 +4253,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "Overpayments" : {
       "type" : "array",
       "items" : {
@@ -4509,24 +4266,24 @@ ul.nav-tabs {
   "description" : "",
   "x-isObjectArray" : true
 };
-      defs["PageInfo"] = {
+      defs["Pagination"] = {
   "title" : "",
   "type" : "object",
   "properties" : {
-    "Page" : {
+    "page" : {
       "type" : "integer"
     },
-    "PageSize" : {
+    "pageSize" : {
       "type" : "integer"
     },
-    "TotalPages" : {
+    "pageCount" : {
       "type" : "integer"
     },
-    "TotalRows" : {
+    "itemCount" : {
       "type" : "integer"
     }
   },
-  "description" : "Pagination information"
+  "description" : ""
 };
       defs["Payment"] = {
   "title" : "",
@@ -4764,6 +4521,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "Payments" : {
       "type" : "array",
       "items" : {
@@ -4929,6 +4689,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "Prepayments" : {
       "type" : "array",
       "items" : {
@@ -5128,6 +4891,9 @@ ul.nav-tabs {
   "title" : "",
   "type" : "object",
   "properties" : {
+    "pagination" : {
+      "$ref" : "#/components/schemas/Pagination"
+    },
     "PurchaseOrders" : {
       "type" : "array",
       "items" : {
@@ -6381,7 +6147,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Accounting"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>7.0.0</li>
+              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>7.0.1</li>
               <li class="nav-header" data-group="Accounting"><a href="#api-Accounting">Methods</a></li>
               <li data-group="Accounting" data-name="createAccount" class="">
                 <a href="#api-Accounting-createAccount">createAccount</a>
@@ -13551,13 +13317,13 @@ namespace Example
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
 
             var credit = new ManualJournalLine();
-            credit.LineAmount = new decimal(100.0);
+            credit.LineAmount = new decimal(-100.0);
             credit.AccountCode = "400";
             credit.Description = "Hello there";
             manualJournalLines.Add(credit);
 
             var debit = new ManualJournalLine();
-            debit.LineAmount = new decimal(-100.0);
+            debit.LineAmount = new decimal(100.0);
             debit.AccountCode = "120";
             debit.Description = "Hello there";
             manualJournalLines.Add(debit);
@@ -29073,9 +28839,10 @@ namespace Example
             var unitdp = 4;
             var summaryOnly = true;
             var pageSize = 100;
+            var searchTerm = "SearchTerm=REF12";
             
             try {
-                var result = await apiInstance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp, summaryOnly, pageSize);
+                var result = await apiInstance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp, summaryOnly, pageSize, searchTerm);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -29400,6 +29167,26 @@ Use summaryOnly=true in GET Contacts and Invoices endpoint to retrieve a smaller
 
                     <div class="inner description marked">
 Number of records to retrieve per page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">searchTerm</td>
+<td>
+
+
+    <div id="d2e199_getInvoices_searchTerm">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+Search parameter that performs a case-insensitive text search across the fields e.g. InvoiceNumber, Reference.
                     </div>
             </div>
         </div>
@@ -32466,9 +32253,10 @@ namespace Example
             var order = "Status ASC";
             var page = 1;
             var unitdp = 4;
+            var pageSize = 100;
             
             try {
-                var result = await apiInstance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+                var result = await apiInstance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -32627,6 +32415,26 @@ e.g. page=1 – Up to 100 overpayments will be returned in a single API call wit
 
                     <div class="inner description marked">
 e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">pageSize</td>
+<td>
+
+
+    <div id="d2e199_getOverpayments_pageSize">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description marked">
+Number of records to retrieve per page
                     </div>
             </div>
         </div>
@@ -33527,9 +33335,10 @@ namespace Example
             var order = "Reference ASC";
             var page = 1;
             var unitdp = 4;
+            var pageSize = 100;
             
             try {
-                var result = await apiInstance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+                var result = await apiInstance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -33688,6 +33497,26 @@ e.g. page=1 – Up to 100 prepayments will be returned in a single API call with
 
                     <div class="inner description marked">
 e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">pageSize</td>
+<td>
+
+
+    <div id="d2e199_getPrepayments_pageSize">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description marked">
+Number of records to retrieve per page
                     </div>
             </div>
         </div>
@@ -44342,13 +44171,13 @@ namespace Example
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
 
             var credit = new ManualJournalLine();
-            credit.LineAmount = new decimal(100.0);
+            credit.LineAmount = new decimal(-100.0);
             credit.AccountCode = "400";
             credit.Description = "Hello there";
             manualJournalLines.Add(credit);
 
             var debit = new ManualJournalLine();
-            debit.LineAmount = new decimal(-100.0);
+            debit.LineAmount = new decimal(100.0);
             debit.AccountCode = "120";
             debit.Description = "Hello there";
             manualJournalLines.Add(debit);
@@ -46040,13 +45869,13 @@ namespace Example
             var manualJournalLines = new List&lt;ManualJournalLine&gt;();
 
             var credit = new ManualJournalLine();
-            credit.LineAmount = new decimal(100.0);
+            credit.LineAmount = new decimal(-100.0);
             credit.AccountCode = "400";
             credit.Description = "Hello there";
             manualJournalLines.Add(credit);
 
             var debit = new ManualJournalLine();
-            debit.LineAmount = new decimal(-100.0);
+            debit.LineAmount = new decimal(100.0);
             debit.AccountCode = "120";
             debit.Description = "Hello there";
             manualJournalLines.Add(debit);
