@@ -32,6 +32,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     {
         
         /// <summary>
+        /// Gets or Sets Pagination
+        /// </summary>
+        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        public Pagination Pagination { get; set; }
+
+        /// <summary>
         /// Gets or Sets _Overpayments
         /// </summary>
         [DataMember(Name="Overpayments", EmitDefaultValue=false)]
@@ -45,6 +51,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         {
             var sb = new StringBuilder();
             sb.Append("class Overpayments {\n");
+            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
             sb.Append("  _Overpayments: ").Append(_Overpayments).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -81,6 +88,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
 
             return 
                 (
+                    this.Pagination == input.Pagination ||
+                    (this.Pagination != null &&
+                    this.Pagination.Equals(input.Pagination))
+                ) && 
+                (
                     this._Overpayments == input._Overpayments ||
                     this._Overpayments != null &&
                     input._Overpayments != null &&
@@ -97,6 +109,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Pagination != null)
+                    hashCode = hashCode * 59 + this.Pagination.GetHashCode();
                 if (this._Overpayments != null)
                     hashCode = hashCode * 59 + this._Overpayments.GetHashCode();
                 return hashCode;
