@@ -1070,7 +1070,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       int? page = AutoFaker.Generate<int?>();
       int? unitdp = AutoFaker.Generate<int?>();
       var response = await instance.GetBankTransactionsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp).ConfigureAwait(false);
-      Assert.IsType<GetBankTransactionsResponse>(response);
+      Assert.IsType<BankTransactions>(response);
     }
 
     /// <summary>
@@ -1360,7 +1360,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       int? page = AutoFaker.Generate<int?>();
       bool? includeArchived = AutoFaker.Generate<bool?>();
       var response = await instance.GetContactsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, page, includeArchived).ConfigureAwait(false);
-      Assert.IsType<GetContactsResponse>(response);
+      Assert.IsType<Contacts>(response);
     }
 
     /// <summary>
@@ -1459,7 +1459,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string order = AutoFaker.Generate<string>();
       int? page = AutoFaker.Generate<int?>();
       var response = await instance.GetCreditNotesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page).ConfigureAwait(false);
-      Assert.IsType<GetCreditNotesResponse>(response);
+      Assert.IsType<CreditNotes>(response);
     }
 
     /// <summary>
@@ -1674,7 +1674,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       bool? createdByMyApp = AutoFaker.Generate<bool?>();
       int? unitdp = AutoFaker.Generate<int?>();
       var response = await instance.GetInvoicesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, iDs, invoiceNumbers, contactIDs, statuses, page, includeArchived, createdByMyApp, unitdp).ConfigureAwait(false);
-      Assert.IsType<GetInvoicesResponse>(response);
+      Assert.IsType<Invoices>(response);
     }
 
     /// <summary>
@@ -1847,7 +1847,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string order = AutoFaker.Generate<string>();
       int? page = AutoFaker.Generate<int?>();
       var response = await instance.GetManualJournalsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page).ConfigureAwait(false);
-      Assert.IsType<GetManualJournalsResponse>(response);
+      Assert.IsType<ManualJournals>(response);
     }
 
     /// <summary>
@@ -1928,7 +1928,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       int? page = AutoFaker.Generate<int?>();
       int? unitdp = AutoFaker.Generate<int?>();
       var response = await instance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp).ConfigureAwait(false);
-      Assert.IsType<GetOverpaymentsResponse>(response);
+      Assert.IsType<Overpayments>(response);
     }
 
     /// <summary>
@@ -1981,7 +1981,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string where = AutoFaker.Generate<string>();
       string order = AutoFaker.Generate<string>();
       var response = await instance.GetPaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order).ConfigureAwait(false);
-      Assert.IsType<GetPaymentsResponse>(response);
+      Assert.IsType<Payments>(response);
     }
 
     /// <summary>
@@ -2024,7 +2024,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       int? page = AutoFaker.Generate<int?>();
       int? unitdp = AutoFaker.Generate<int?>();
       var response = await instance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp).ConfigureAwait(false);
-      Assert.IsType<GetPrepaymentsResponse>(response);
+      Assert.IsType<Prepayments>(response);
     }
 
     /// <summary>
@@ -2068,7 +2068,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string order = AutoFaker.Generate<string>();
       int? page = AutoFaker.Generate<int?>();
       var response = await instance.GetPurchaseOrdersAsync(accessToken, xeroTenantId, ifModifiedSince, status, dateFrom, dateTo, order, page).ConfigureAwait(false);
-      Assert.IsType<GetPurchaseOrdersResponse>(response);
+      Assert.IsType<PurchaseOrders>(response);
     }
 
     /// <summary>
