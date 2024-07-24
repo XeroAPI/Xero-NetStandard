@@ -30,7 +30,7 @@
       <PackageReference Include="CompareNETObjects" Version="4.57.0" />
       <PackageReference Include="JsonSubTypes" Version="1.5.2" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-      <PackageReference Include="RestSharp" Version="111.0.0" />
+      <PackageReference Include="RestSharp" Version="111.4.0" />
       <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
   </ItemGroup>
 
