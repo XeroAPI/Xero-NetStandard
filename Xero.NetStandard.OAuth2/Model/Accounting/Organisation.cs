@@ -557,7 +557,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum LITE for value: LITE
             /// </summary>
             [EnumMember(Value = "LITE")]
-            LITE = 13
+            LITE = 13,
+
+            /// <summary>
+            /// Enum ULTIMATE10 for value: ULTIMATE_10
+            /// </summary>
+            [EnumMember(Value = "ULTIMATE_10")]
+            ULTIMATE10 = 14,
+
+            /// <summary>
+            /// Enum ULTIMATE20 for value: ULTIMATE_20
+            /// </summary>
+            [EnumMember(Value = "ULTIMATE_20")]
+            ULTIMATE20 = 15,
+
+            /// <summary>
+            /// Enum ULTIMATE50 for value: ULTIMATE_50
+            /// </summary>
+            [EnumMember(Value = "ULTIMATE_50")]
+            ULTIMATE50 = 16,
+
+            /// <summary>
+            /// Enum ULTIMATE100 for value: ULTIMATE_100
+            /// </summary>
+            [EnumMember(Value = "ULTIMATE_100")]
+            ULTIMATE100 = 17,
+
+            /// <summary>
+            /// Enum IGNITE for value: IGNITE
+            /// </summary>
+            [EnumMember(Value = "IGNITE")]
+            IGNITE = 18,
+
+            /// <summary>
+            /// Enum GROW for value: GROW
+            /// </summary>
+            [EnumMember(Value = "GROW")]
+            GROW = 19,
+
+            /// <summary>
+            /// Enum COMPREHENSIVE for value: COMPREHENSIVE
+            /// </summary>
+            [EnumMember(Value = "COMPREHENSIVE")]
+            COMPREHENSIVE = 20
 
         }
 

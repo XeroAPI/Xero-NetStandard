@@ -25,23 +25,35 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.Accounting
 {
     /// <summary>
-    /// Prepayments
+    /// Pagination
     /// </summary>
     [DataContract]
-    public partial class Prepayments :  IEquatable<Prepayments>, IValidatableObject
+    public partial class Pagination :  IEquatable<Pagination>, IValidatableObject
     {
         
         /// <summary>
-        /// Gets or Sets Pagination
+        /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name="pagination", EmitDefaultValue=false)]
-        public Pagination Pagination { get; set; }
+        [DataMember(Name="page", EmitDefaultValue=false)]
+        public int? Page { get; set; }
 
         /// <summary>
-        /// Gets or Sets _Prepayments
+        /// Gets or Sets PageSize
         /// </summary>
-        [DataMember(Name="Prepayments", EmitDefaultValue=false)]
-        public List<Prepayment> _Prepayments { get; set; }
+        [DataMember(Name="pageSize", EmitDefaultValue=false)]
+        public int? PageSize { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PageCount
+        /// </summary>
+        [DataMember(Name="pageCount", EmitDefaultValue=false)]
+        public int? PageCount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemCount
+        /// </summary>
+        [DataMember(Name="itemCount", EmitDefaultValue=false)]
+        public int? ItemCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,9 +62,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Prepayments {\n");
-            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
-            sb.Append("  _Prepayments: ").Append(_Prepayments).Append("\n");
+            sb.Append("class Pagination {\n");
+            sb.Append("  Page: ").Append(Page).Append("\n");
+            sb.Append("  PageSize: ").Append(PageSize).Append("\n");
+            sb.Append("  PageCount: ").Append(PageCount).Append("\n");
+            sb.Append("  ItemCount: ").Append(ItemCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -73,30 +87,39 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Prepayments);
+            return this.Equals(input as Pagination);
         }
 
         /// <summary>
-        /// Returns true if Prepayments instances are equal
+        /// Returns true if Pagination instances are equal
         /// </summary>
-        /// <param name="input">Instance of Prepayments to be compared</param>
+        /// <param name="input">Instance of Pagination to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Prepayments input)
+        public bool Equals(Pagination input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Pagination == input.Pagination ||
-                    (this.Pagination != null &&
-                    this.Pagination.Equals(input.Pagination))
+                    this.Page == input.Page ||
+                    (this.Page != null &&
+                    this.Page.Equals(input.Page))
                 ) && 
                 (
-                    this._Prepayments == input._Prepayments ||
-                    this._Prepayments != null &&
-                    input._Prepayments != null &&
-                    this._Prepayments.SequenceEqual(input._Prepayments)
+                    this.PageSize == input.PageSize ||
+                    (this.PageSize != null &&
+                    this.PageSize.Equals(input.PageSize))
+                ) && 
+                (
+                    this.PageCount == input.PageCount ||
+                    (this.PageCount != null &&
+                    this.PageCount.Equals(input.PageCount))
+                ) && 
+                (
+                    this.ItemCount == input.ItemCount ||
+                    (this.ItemCount != null &&
+                    this.ItemCount.Equals(input.ItemCount))
                 );
         }
 
@@ -109,10 +132,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Pagination != null)
-                    hashCode = hashCode * 59 + this.Pagination.GetHashCode();
-                if (this._Prepayments != null)
-                    hashCode = hashCode * 59 + this._Prepayments.GetHashCode();
+                if (this.Page != null)
+                    hashCode = hashCode * 59 + this.Page.GetHashCode();
+                if (this.PageSize != null)
+                    hashCode = hashCode * 59 + this.PageSize.GetHashCode();
+                if (this.PageCount != null)
+                    hashCode = hashCode * 59 + this.PageCount.GetHashCode();
+                if (this.ItemCount != null)
+                    hashCode = hashCode * 59 + this.ItemCount.GetHashCode();
                 return hashCode;
             }
         }

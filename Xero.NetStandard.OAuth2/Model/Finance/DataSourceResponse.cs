@@ -32,107 +32,107 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     {
         
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.
+        /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.</value>
         [DataMember(Name="directBankFeed", EmitDefaultValue=false)]
         public decimal? DirectBankFeed { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.
+        /// No longer in use.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.</value>
+        /// <value>No longer in use.</value>
         [DataMember(Name="indirectBankFeed", EmitDefaultValue=false)]
         public decimal? IndirectBankFeed { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.
+        /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
         [DataMember(Name="fileUpload", EmitDefaultValue=false)]
         public decimal? FileUpload { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.
+        /// Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
         [DataMember(Name="manual", EmitDefaultValue=false)]
         public decimal? Manual { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.</value>
         [DataMember(Name="directBankFeedPos", EmitDefaultValue=false)]
         public decimal? DirectBankFeedPos { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
+        /// No longer in use.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
+        /// <value>No longer in use.</value>
         [DataMember(Name="indirectBankFeedPos", EmitDefaultValue=false)]
         public decimal? IndirectBankFeedPos { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
         [DataMember(Name="fileUploadPos", EmitDefaultValue=false)]
         public decimal? FileUploadPos { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
         [DataMember(Name="manualPos", EmitDefaultValue=false)]
         public decimal? ManualPos { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
         [DataMember(Name="directBankFeedNeg", EmitDefaultValue=false)]
         public decimal? DirectBankFeedNeg { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
+        /// No longer in use.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a indirect bank feed to Xero (usually via Yodlee).   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
+        /// <value>No longer in use.</value>
         [DataMember(Name="indirectBankFeedNeg", EmitDefaultValue=false)]
         public decimal? IndirectBankFeedNeg { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was a CSV file upload in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
         [DataMember(Name="fileUploadNeg", EmitDefaultValue=false)]
         public decimal? FileUploadNeg { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was manually keyed in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
         [DataMember(Name="manualNeg", EmitDefaultValue=false)]
         public decimal? ManualNeg { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.</value>
         [DataMember(Name="otherPos", EmitDefaultValue=false)]
         public decimal? OtherPos { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
+        /// Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
         [DataMember(Name="otherNeg", EmitDefaultValue=false)]
         public decimal? OtherNeg { get; set; }
 
         /// <summary>
-        /// Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.
+        /// Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
-        /// <value>Sum of the amounts of all statement lines where the source of the data was any other category.   This gives an indication on the certainty of correctness of the data.</value>
+        /// <value>Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.</value>
         [DataMember(Name="other", EmitDefaultValue=false)]
         public decimal? Other { get; set; }
 
