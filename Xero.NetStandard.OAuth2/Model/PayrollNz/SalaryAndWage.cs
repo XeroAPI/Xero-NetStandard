@@ -91,6 +91,33 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         [DataMember(Name="paymentType", EmitDefaultValue=false)]
         public PaymentTypeEnum PaymentType { get; set; }
         /// <summary>
+        /// The type of the Working Pattern of the corresponding salary and wages
+        /// </summary>
+        /// <value>The type of the Working Pattern of the corresponding salary and wages</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum WorkPatternTypeEnum
+        {
+            /// <summary>
+            /// Enum DaysAndHours for value: DaysAndHours
+            /// </summary>
+            [EnumMember(Value = "DaysAndHours")]
+            DaysAndHours = 1,
+
+            /// <summary>
+            /// Enum RegularWeek for value: RegularWeek
+            /// </summary>
+            [EnumMember(Value = "RegularWeek")]
+            RegularWeek = 2
+
+        }
+
+        /// <summary>
+        /// The type of the Working Pattern of the corresponding salary and wages
+        /// </summary>
+        /// <value>The type of the Working Pattern of the corresponding salary and wages</value>
+        [DataMember(Name="workPatternType", EmitDefaultValue=false)]
+        public WorkPatternTypeEnum WorkPatternType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SalaryAndWage" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -173,6 +200,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  AnnualSalary: ").Append(AnnualSalary).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  PaymentType: ").Append(PaymentType).Append("\n");
+            sb.Append("  WorkPatternType: ").Append(WorkPatternType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -254,6 +282,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                 (
                     this.PaymentType == input.PaymentType ||
                     this.PaymentType.Equals(input.PaymentType)
+                ) && 
+                (
+                    this.WorkPatternType == input.WorkPatternType ||
+                    this.WorkPatternType.Equals(input.WorkPatternType)
                 );
         }
 
@@ -284,6 +316,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.AnnualSalary.GetHashCode();
                 hashCode = hashCode * 59 + this.Status.GetHashCode();
                 hashCode = hashCode * 59 + this.PaymentType.GetHashCode();
+                hashCode = hashCode * 59 + this.WorkPatternType.GetHashCode();
                 return hashCode;
             }
         }

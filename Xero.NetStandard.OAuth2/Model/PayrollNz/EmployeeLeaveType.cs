@@ -134,6 +134,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public decimal? AnnualLeaveTotalAmountPaid { get; set; }
 
         /// <summary>
+        /// The date when an employee becomes entitled to their accrual.
+        /// </summary>
+        /// <value>The date when an employee becomes entitled to their accrual.</value>
+        [DataMember(Name="scheduleOfAccrualDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? ScheduleOfAccrualDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -151,6 +159,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  IncludeHolidayPayEveryPay: ").Append(IncludeHolidayPayEveryPay).Append("\n");
             sb.Append("  ShowAnnualLeaveInAdvance: ").Append(ShowAnnualLeaveInAdvance).Append("\n");
             sb.Append("  AnnualLeaveTotalAmountPaid: ").Append(AnnualLeaveTotalAmountPaid).Append("\n");
+            sb.Append("  ScheduleOfAccrualDate: ").Append(ScheduleOfAccrualDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -233,6 +242,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.AnnualLeaveTotalAmountPaid == input.AnnualLeaveTotalAmountPaid ||
                     (this.AnnualLeaveTotalAmountPaid != null &&
                     this.AnnualLeaveTotalAmountPaid.Equals(input.AnnualLeaveTotalAmountPaid))
+                ) && 
+                (
+                    this.ScheduleOfAccrualDate == input.ScheduleOfAccrualDate ||
+                    (this.ScheduleOfAccrualDate != null &&
+                    this.ScheduleOfAccrualDate.Equals(input.ScheduleOfAccrualDate))
                 );
         }
 
@@ -264,6 +278,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.ShowAnnualLeaveInAdvance.GetHashCode();
                 if (this.AnnualLeaveTotalAmountPaid != null)
                     hashCode = hashCode * 59 + this.AnnualLeaveTotalAmountPaid.GetHashCode();
+                if (this.ScheduleOfAccrualDate != null)
+                    hashCode = hashCode * 59 + this.ScheduleOfAccrualDate.GetHashCode();
                 return hashCode;
             }
         }
