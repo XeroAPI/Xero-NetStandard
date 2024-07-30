@@ -376,8 +376,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeWorkingPatternWithWorkingWeeksRequest"></param>
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of EmployeeWorkingPatternWithWorkingWeeks</returns>
-        System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeks> CreateEmployeeWorkingPatternAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default);
+2        /// <returns>Task of EmployeeWorkingPatternWithWorkingWeeksObject</returns>
+        System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeksObject> CreateEmployeeWorkingPatternAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an employee working pattern
@@ -392,8 +392,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeWorkingPatternWithWorkingWeeksRequest"></param>
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (EmployeeWorkingPatternWithWorkingWeeks)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeWorkingPatternWithWorkingWeeks>> CreateEmployeeWorkingPatternAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (EmployeeWorkingPatternWithWorkingWeeksObject)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject>> CreateEmployeeWorkingPatternAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates an employment detail for a specific employee
         /// </summary>
@@ -3213,10 +3213,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeWorkingPatternWithWorkingWeeksRequest"></param>
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of EmployeeWorkingPatternWithWorkingWeeks</returns>
-        public async System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeks> CreateEmployeeWorkingPatternAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        /// <returns>Task of EmployeeWorkingPatternWithWorkingWeeksObject</returns>
+        public async System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeksObject> CreateEmployeeWorkingPatternAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeks> localVarResponse = await CreateEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternWithWorkingWeeksRequest, idempotencyKey, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject> localVarResponse = await CreateEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternWithWorkingWeeksRequest, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -3231,8 +3231,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeWorkingPatternWithWorkingWeeksRequest"></param>
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (EmployeeWorkingPatternWithWorkingWeeks)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeks>> CreateEmployeeWorkingPatternAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (EmployeeWorkingPatternWithWorkingWeeksObject)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject>> CreateEmployeeWorkingPatternAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3282,7 +3282,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.PostAsync<EmployeeWorkingPatternWithWorkingWeeks>("/Employees/{EmployeeID}/Working-Patterns", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.PostAsync<EmployeeWorkingPatternWithWorkingWeeksObject>("/Employees/{EmployeeID}/Working-Patterns", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
