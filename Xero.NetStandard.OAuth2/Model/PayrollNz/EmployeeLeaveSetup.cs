@@ -81,6 +81,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public decimal? SickLeaveOpeningBalance { get; set; }
 
         /// <summary>
+        /// Set Schedule of Accrual Type for Sick Leave
+        /// </summary>
+        /// <value>Set Schedule of Accrual Type for Sick Leave</value>
+        [DataMember(Name="SickLeaveScheduleOfAccrual", EmitDefaultValue=false)]
+        public string SickLeaveScheduleOfAccrual { get; set; }
+
+        /// <summary>
+        /// If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave
+        /// </summary>
+        /// <value>If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave</value>
+        [DataMember(Name="SickLeaveAnniversaryDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? SickLeaveAnniversaryDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -95,6 +110,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  SickLeaveHoursToAccrueAnnually: ").Append(SickLeaveHoursToAccrueAnnually).Append("\n");
             sb.Append("  SickLeaveMaximumHoursToAccrue: ").Append(SickLeaveMaximumHoursToAccrue).Append("\n");
             sb.Append("  SickLeaveOpeningBalance: ").Append(SickLeaveOpeningBalance).Append("\n");
+            sb.Append("  SickLeaveScheduleOfAccrual: ").Append(SickLeaveScheduleOfAccrual).Append("\n");
+            sb.Append("  SickLeaveAnniversaryDate: ").Append(SickLeaveAnniversaryDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +180,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.SickLeaveOpeningBalance == input.SickLeaveOpeningBalance ||
                     (this.SickLeaveOpeningBalance != null &&
                     this.SickLeaveOpeningBalance.Equals(input.SickLeaveOpeningBalance))
+                ) && 
+                (
+                    this.SickLeaveScheduleOfAccrual == input.SickLeaveScheduleOfAccrual ||
+                    (this.SickLeaveScheduleOfAccrual != null &&
+                    this.SickLeaveScheduleOfAccrual.Equals(input.SickLeaveScheduleOfAccrual))
+                ) && 
+                (
+                    this.SickLeaveAnniversaryDate == input.SickLeaveAnniversaryDate ||
+                    (this.SickLeaveAnniversaryDate != null &&
+                    this.SickLeaveAnniversaryDate.Equals(input.SickLeaveAnniversaryDate))
                 );
         }
 
@@ -189,6 +216,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.SickLeaveMaximumHoursToAccrue.GetHashCode();
                 if (this.SickLeaveOpeningBalance != null)
                     hashCode = hashCode * 59 + this.SickLeaveOpeningBalance.GetHashCode();
+                if (this.SickLeaveScheduleOfAccrual != null)
+                    hashCode = hashCode * 59 + this.SickLeaveScheduleOfAccrual.GetHashCode();
+                if (this.SickLeaveAnniversaryDate != null)
+                    hashCode = hashCode * 59 + this.SickLeaveAnniversaryDate.GetHashCode();
                 return hashCode;
             }
         }

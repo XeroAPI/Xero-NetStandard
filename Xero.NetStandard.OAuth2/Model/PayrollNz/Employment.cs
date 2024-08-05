@@ -54,6 +54,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public DateTime? StartDate { get; set; }
 
         /// <summary>
+        /// Engagement type of the employee
+        /// </summary>
+        /// <value>Engagement type of the employee</value>
+        [DataMember(Name="engagementType", EmitDefaultValue=false)]
+        public string EngagementType { get; set; }
+
+        /// <summary>
+        /// End date for an employee with a fixed-term engagement type
+        /// </summary>
+        /// <value>End date for an employee with a fixed-term engagement type</value>
+        [DataMember(Name="fixedTermEndDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? FixedTermEndDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +79,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  PayrollCalendarID: ").Append(PayrollCalendarID).Append("\n");
             sb.Append("  PayRunCalendarID: ").Append(PayRunCalendarID).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+            sb.Append("  EngagementType: ").Append(EngagementType).Append("\n");
+            sb.Append("  FixedTermEndDate: ").Append(FixedTermEndDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,6 +129,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
+                ) && 
+                (
+                    this.EngagementType == input.EngagementType ||
+                    (this.EngagementType != null &&
+                    this.EngagementType.Equals(input.EngagementType))
+                ) && 
+                (
+                    this.FixedTermEndDate == input.FixedTermEndDate ||
+                    (this.FixedTermEndDate != null &&
+                    this.FixedTermEndDate.Equals(input.FixedTermEndDate))
                 );
         }
 
@@ -130,6 +157,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.PayRunCalendarID.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
+                if (this.EngagementType != null)
+                    hashCode = hashCode * 59 + this.EngagementType.GetHashCode();
+                if (this.FixedTermEndDate != null)
+                    hashCode = hashCode * 59 + this.FixedTermEndDate.GetHashCode();
                 return hashCode;
             }
         }

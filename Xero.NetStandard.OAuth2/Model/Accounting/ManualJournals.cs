@@ -38,6 +38,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public Pagination Pagination { get; set; }
 
         /// <summary>
+        /// Displays array of warning messages from the API
+        /// </summary>
+        /// <value>Displays array of warning messages from the API</value>
+        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        public List<ValidationError> Warnings { get; set; }
+
+        /// <summary>
         /// Gets or Sets _ManualJournals
         /// </summary>
         [DataMember(Name="ManualJournals", EmitDefaultValue=false)]
@@ -52,6 +59,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             var sb = new StringBuilder();
             sb.Append("class ManualJournals {\n");
             sb.Append("  Pagination: ").Append(Pagination).Append("\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  _ManualJournals: ").Append(_ManualJournals).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -93,6 +101,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Pagination.Equals(input.Pagination))
                 ) && 
                 (
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
+                ) && 
+                (
                     this._ManualJournals == input._ManualJournals ||
                     this._ManualJournals != null &&
                     input._ManualJournals != null &&
@@ -111,6 +125,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 int hashCode = 41;
                 if (this.Pagination != null)
                     hashCode = hashCode * 59 + this.Pagination.GetHashCode();
+                if (this.Warnings != null)
+                    hashCode = hashCode * 59 + this.Warnings.GetHashCode();
                 if (this._ManualJournals != null)
                     hashCode = hashCode * 59 + this._ManualJournals.GetHashCode();
                 return hashCode;

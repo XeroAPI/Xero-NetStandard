@@ -32,6 +32,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     {
         
         /// <summary>
+        /// Displays array of warning messages from the API
+        /// </summary>
+        /// <value>Displays array of warning messages from the API</value>
+        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        public List<ValidationError> Warnings { get; set; }
+
+        /// <summary>
         /// Gets or Sets _Journals
         /// </summary>
         [DataMember(Name="Journals", EmitDefaultValue=false)]
@@ -45,6 +52,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         {
             var sb = new StringBuilder();
             sb.Append("class Journals {\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  _Journals: ").Append(_Journals).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -81,6 +89,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
 
             return 
                 (
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
+                ) && 
+                (
                     this._Journals == input._Journals ||
                     this._Journals != null &&
                     input._Journals != null &&
@@ -97,6 +111,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Warnings != null)
+                    hashCode = hashCode * 59 + this.Warnings.GetHashCode();
                 if (this._Journals != null)
                     hashCode = hashCode * 59 + this._Journals.GetHashCode();
                 return hashCode;
