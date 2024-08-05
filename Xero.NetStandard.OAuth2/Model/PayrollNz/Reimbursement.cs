@@ -113,7 +113,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum Km for value: km
             /// </summary>
             [EnumMember(Value = "km")]
-            Km = 2
+            Km = 2,
+
+            /// <summary>
+            /// Enum Each for value: each
+            /// </summary>
+            [EnumMember(Value = "each")]
+            Each = 3            
 
         }
 
