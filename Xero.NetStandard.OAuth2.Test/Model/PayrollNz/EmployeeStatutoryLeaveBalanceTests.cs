@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -67,27 +70,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [InlineData("Paternity", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Paternity)]
         [InlineData("Sharedparental", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Sharedparental)]
         [InlineData("Sick", EmployeeStatutoryLeaveBalance.LeaveTypeEnum.Sick)]
-        public void LeaveTypeEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveBalance.LeaveTypeEnum expected)
+        public async Task LeaveTypeEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveBalance.LeaveTypeEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.LeaveTypeEnum>(response);
-
-            Assert.Equal(expected, actual);        
+            var actual = await deserializer.Deserialize<EmployeeStatutoryLeaveBalance.LeaveTypeEnum>(response);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void LeaveTypeEnum_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task LeaveTypeEnum_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.LeaveTypeEnum>(response);
-
+            var actual = await deserializer.Deserialize<EmployeeStatutoryLeaveBalance.LeaveTypeEnum>(response);
             Assert.Equal(0, (int)actual);
         }
         /// <summary>
@@ -103,27 +108,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         /// </summary>
         [Theory]
         [InlineData("Hours", EmployeeStatutoryLeaveBalance.UnitsEnum.Hours)]
-        public void UnitsEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveBalance.UnitsEnum expected)
+        public async Task UnitsEnum_ValidInput_Deserialises(string input, EmployeeStatutoryLeaveBalance.UnitsEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.UnitsEnum>(response);
-
+            var actual = await deserializer.Deserialize<EmployeeStatutoryLeaveBalance.UnitsEnum>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void UnitsEnum_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task UnitsEnum_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EmployeeStatutoryLeaveBalance.UnitsEnum>(response);
-
+            var actual = await deserializer.Deserialize<EmployeeStatutoryLeaveBalance.UnitsEnum>(response);
             Assert.Equal(0, (int)actual);
         }
 

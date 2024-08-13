@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -52,43 +55,46 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("M", Employee.GenderEnum.M)]
         [InlineData("F", Employee.GenderEnum.F)]
         [InlineData("I", Employee.GenderEnum.I)]
-        public void Gender_ValidInput_Deserialises(string input, Employee.GenderEnum expected)
+        public async Task Gender_ValidInput_Deserialises(string input, Employee.GenderEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent = $@"{{
                 ""Gender"": ""{input}""
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Employee>(response);
-
+            var actual = await deserializer.Deserialize<Employee>(response);
             Assert.Equal(expected, actual.Gender);
         }
         [Fact]
-        public void Gender_NullInput_DeserialisesTo0()
+        public async Task Gender_NullInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = @"{
+            var jsonContent =  @"{
                 ""Gender"": null
             }";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Employee>(response);
-
+            var actual = await deserializer.Deserialize<Employee>(response);
             Assert.Equal(0, (int)actual.Gender);
         }
         [Fact]
-        public void Gender_NotPresentInInput_DeserialisesTo0()
+        public async Task Gender_NotPresentInInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = "{}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = "{}";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Employee>(response);
-
+            var actual = await deserializer.Deserialize<Employee>(response);
             Assert.Equal(0, (int)actual.Gender);
         }
         /// <summary>
@@ -109,10 +115,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'ValidationErrors'
         /// </summary>
         [Fact]
-        public void ValidationErrorsTest()
+        public async Task ValidationErrorsTest()
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent = $@"{{
                 ""ValidationErrors"": [
                     {{
                         ""Message"": ""One""
@@ -122,11 +127,13 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
                     }}
                 ]
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Employee>(response);
-
+            var actual = await deserializer.Deserialize<Employee>(response);
             Assert.Equal(2, actual.ValidationErrors.Count);
             Assert.Equal("One", actual.ValidationErrors.First().Message);
         }

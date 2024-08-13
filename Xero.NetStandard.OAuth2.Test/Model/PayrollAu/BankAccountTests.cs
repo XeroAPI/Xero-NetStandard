@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -45,17 +48,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("true", true)]
         [InlineData("false", false)]
         [InlineData("null", null)]
-        public void RemainderTest(string input, bool? expected)
+        public async Task RemainderTest(string input, bool? expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent = $@"{{
                 ""Remainder"": {input}
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<BankAccount>(response);
-
+            var actual = await deserializer.Deserialize<BankAccount>(response);
             Assert.Equal(expected, actual.Remainder);
         }
         /// <summary>
@@ -64,17 +68,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void AmountTest(string input)
+        public async Task AmountTest(string input)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent = $@"{{
                 ""Amount"": {input}
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<BankAccount>(response);
-
+            var actual = await deserializer.Deserialize<BankAccount>(response);
             Assert.Equal(20, actual.Amount);
         }
     }

@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -105,27 +108,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [InlineData("Approved", Timesheet.StatusEnum.Approved)]
         [InlineData("Completed", Timesheet.StatusEnum.Completed)]
         [InlineData("Draft", Timesheet.StatusEnum.Draft)]
-        public void StatusEnum_ValidInput_Deserialises(string input, Timesheet.StatusEnum expected)
+        public async Task StatusEnum_ValidInput_Deserialises(string input, Timesheet.StatusEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Timesheet.StatusEnum>(response);
-
+            var actual = await deserializer.Deserialize<Timesheet.StatusEnum>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void StatusEnum_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task StatusEnum_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Timesheet.StatusEnum>(response);
-
+            var actual = await deserializer.Deserialize<Timesheet.StatusEnum>(response);
             Assert.Equal(0, (int)actual);
         }
         /// <summary>

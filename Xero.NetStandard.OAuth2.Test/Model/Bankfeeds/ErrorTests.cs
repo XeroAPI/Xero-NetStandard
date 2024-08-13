@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -68,17 +71,22 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [InlineData("invalid-feed-connection-for-organisation", Error.TypeEnum.InvalidFeedConnectionForOrganisation)]
         [InlineData("invalid-user-role", Error.TypeEnum.InvalidUserRole)]
         [InlineData("account-not-valid", Error.TypeEnum.AccountNotValid)]
-        public void Type_ValidInput_Deserialises(string input, Error.TypeEnum expected)
+        public async Task Type_ValidInput_Deserialises(string input, Error.TypeEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            string jsonContent = $@"{{
                 ""Type"": ""{input}""
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Error>(response);
-
+            var actual = await deserializer.Deserialize<Error>(response);
+            
             Assert.Equal(expected, actual.Type);
         }
 
@@ -86,16 +94,21 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'Type' deserialises from null into 0
         /// </summary>
         [Fact]
-        public void Type_NullInput_DeserialisesTo0()
+        public async Task Type_NullInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent = $@"{{
                 ""Type"": null
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Error>(response);
+            var actual = await deserializer.Deserialize<Error>(response);
 
             Assert.Equal(0, (int) actual.Type);
         }
@@ -104,14 +117,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'Type' deserialises to 0 when not present
         /// </summary>
         [Fact]
-        public void Type_NotPresentInInput_DeserialisesTo0()
+        public async Task Type_NotPresentInInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = "{}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("{}", Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Error>(response);
+            var actual = await deserializer.Deserialize<Error>(response);
 
             Assert.Equal(0, (int) actual.Type);
         }

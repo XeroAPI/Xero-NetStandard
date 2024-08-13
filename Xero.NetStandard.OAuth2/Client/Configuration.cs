@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Xero.NetStandard.OAuth2.Client
 {
@@ -197,6 +198,9 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Cookies to be sent along with the request.
         /// </summary>
         public virtual List<Cookie> Cookies { get; set; }
+
+        public X509CertificateCollection ClientCertificates { get; }
+        public WebProxy Proxy { get; }
 
         /// <summary>
         /// Gets the API key with prefix.

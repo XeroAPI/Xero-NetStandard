@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -45,49 +48,52 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("FIXEDAMOUNT", DeductionTypeCalculationType.FIXEDAMOUNT)]
         [InlineData("POSTTAX", DeductionTypeCalculationType.POSTTAX)]
         [InlineData("PRETAX", DeductionTypeCalculationType.PRETAX)]
-        public void CalculationType_ValidInputs_Deserialises(string input, DeductionTypeCalculationType expected)
+        public async Task CalculationType_ValidInputs_Deserialises(string input, DeductionTypeCalculationType expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent = $@"{{
                 ""CalculationType"": ""{input}""
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<DeductionLine>(response);
-
+            var actual = await deserializer.Deserialize<DeductionLine>(response);
             Assert.Equal(expected, actual.CalculationType);
         }
         /// <summary>
         /// Test the property 'CalculationType' deserialises to 0 from null
         /// </summary>
         [Fact]
-        public void CalculationType_NullInput_DeserialisesTo0()
+        public async Task CalculationType_NullInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = @"{
+            var jsonContent = @"{
                 ""CalculationType"": null
             }";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<DeductionLine>(response);
-
+            var actual = await deserializer.Deserialize<DeductionLine>(response);
             Assert.Equal(0, (int)actual.CalculationType);
         }
         /// <summary>
         /// Test the property 'CalculationType' deserialises to 0 when not present
         /// </summary>
         [Fact]
-        public void CalculationType_NotPresentInInput_DeserialisesTo0()
+        public async Task CalculationType_NotPresentInInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = "{}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = "{}";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<DeductionLine>(response);
-
+            var actual = await deserializer.Deserialize<DeductionLine>(response);
             Assert.Equal(0, (int)actual.CalculationType);
         }
         /// <summary>
@@ -96,17 +102,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void Amount_ValidInputs_Deserialises(string input)
+        public async Task Amount_ValidInputs_Deserialises(string input)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent =  $@"{{
                 ""Amount"": {input}
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<DeductionLine>(response);
-
+            var actual = await deserializer.Deserialize<DeductionLine>(response);
             Assert.Equal(20, actual.Amount);
         }
         /// <summary>
@@ -115,17 +122,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void Percentage_ValidInputs_Deserialises(string input)
+        public async Task Percentage_ValidInputs_Deserialises(string input)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent =  $@"{{
                 ""Percentage"": {input}
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<DeductionLine>(response);
-
+            var actual = await deserializer.Deserialize<DeductionLine>(response);
             Assert.Equal(20, actual.Percentage);
         }
         /// <summary>
@@ -134,17 +142,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void NumberOfUnits_ValidInputs_Deserialises(string input)
+        public async Task NumberOfUnits_ValidInputs_Deserialises(string input)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var jsonContent =  $@"{{
                 ""NumberOfUnits"": {input}
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<DeductionLine>(response);
-
+            var actual = await deserializer.Deserialize<DeductionLine>(response);
             Assert.Equal(20, actual.NumberOfUnits);
         }
     }
