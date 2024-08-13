@@ -15,7 +15,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using RestSharp;
 using Xunit;
 
 using Xero.NetStandard.OAuth2.Client;

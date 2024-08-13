@@ -300,8 +300,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of System.IO.Stream</returns>
-        System.Threading.Tasks.Task<System.IO.Stream> GetFileContentAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        /// <returns>Task of FileParameter</returns>
+        System.Threading.Tasks.Task<FileParameter> GetFileContentAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves the content of a specific file
@@ -314,8 +314,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetFileContentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetFileContentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves files
         /// </summary>
@@ -1478,10 +1478,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of System.IO.Stream</returns>
-        public async System.Threading.Tasks.Task<System.IO.Stream> GetFileContentAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
+        /// <returns>Task of FileParameter</returns>
+        public async System.Threading.Tasks.Task<FileParameter> GetFileContentAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetFileContentAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetFileContentAsyncWithHttpInfo(accessToken, xeroTenantId, fileId, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1494,8 +1494,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetFileContentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetFileContentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1537,7 +1537,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Files/{FileId}/Content", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Files/{FileId}/Content", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {

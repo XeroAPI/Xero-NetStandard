@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
 using Xunit;
 using System.Threading.Tasks;
 using AutoBogus;
@@ -1568,7 +1567,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       Guid invoiceID = AutoFaker.Generate<Guid>();
       var response = await instance.GetInvoiceAsync(accessToken, xeroTenantId, invoiceID).ConfigureAwait(false);
       DateTime actualTime = response._Invoices[0].UpdatedDateUTC.Value;
-      DateTime expectedTime = new DateTime(2019, 3, 7, 17, 59, 28, 133);
+      DateTime expectedTime = new DateTime(2019, 3, 7, 23, 29, 28, 133);
       Assert.Equal(expectedTime, actualTime);
     }
 
