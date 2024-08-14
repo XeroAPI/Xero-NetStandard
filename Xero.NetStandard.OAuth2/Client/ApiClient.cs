@@ -473,11 +473,11 @@ namespace Xero.NetStandard.OAuth2.Client
             {
                 if (options.Data != null)
                 {
-                    if (options.Data is FileParameter fp)
+                    if (options.PathParameters.ContainsKey("FileName"))
                     {
                         contentType = contentType ?? "application/octet-stream";
-
-                        var streamContent = new StreamContent(fp.Content);
+                        var stream = new MemoryStream(options.Data as byte[]);
+                        var streamContent = new StreamContent(stream);
                         streamContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                         request.Content = streamContent;
                     }
@@ -511,7 +511,8 @@ namespace Xero.NetStandard.OAuth2.Client
             var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result)
             {
                 ErrorText = response.ReasonPhrase,
-                Cookies = new List<Cookie>()
+                Cookies = new List<Cookie>(),
+                Content = response.Content
             };
 
             // process response headers, e.g. Access-Control-Allow-Methods
