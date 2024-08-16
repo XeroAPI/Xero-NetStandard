@@ -46,7 +46,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <summary>
         /// File parameters to be sent along with the request.
         /// </summary>
-        public Multimap<string, FileParameter> FileParameters { get; set; }
+        public Dictionary<string, Stream> FileParameters { get; set; }
 
         /// <summary>
         /// Cookies to be sent along with the request.
@@ -67,7 +67,7 @@ namespace Xero.NetStandard.OAuth2.Client
             QueryParameters = new Multimap<string, string>();
             HeaderParameters = new Multimap<string, string>();
             FormParameters = new Dictionary<string, string>();
-            FileParameters = new Multimap<string, FileParameter>();
+            FileParameters = new Dictionary<string, Stream>();
             Cookies = new List<Cookie>();
         }
     }

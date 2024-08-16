@@ -384,14 +384,13 @@ namespace Xero.NetStandard.OAuth2.Client
 
             if (options.FileParameters != null && options.FileParameters.Count > 0)
             {
+                options.FormParameters.TryGetValue("mimeType", out var mimeType);
+                options.FormParameters.TryGetValue("filename", out var filename);
                 foreach (var fileParam in options.FileParameters)
                 {
-                    foreach (var file in fileParam.Value)
-                    {
-                        var content = new StreamContent(file.Content);
-                        content.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
-                        multipartContent.Add(content, fileParam.Key, file.Name);
-                    }
+                    var content = new StreamContent(fileParam.Value);
+                    content.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
+                    multipartContent.Add(content, fileParam.Key, filename);
                 }
             }
             return multipartContent;
