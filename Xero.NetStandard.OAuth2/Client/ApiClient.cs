@@ -503,15 +503,23 @@ namespace Xero.NetStandard.OAuth2.Client
         partial void InterceptRequest(HttpRequestMessage req);
         partial void InterceptResponse(HttpRequestMessage req, HttpResponseMessage response);
 
-        private async Task<ApiResponse<T>> ToApiResponse<T>(HttpResponseMessage response, object responseData, Uri uri)
+        private async Task<ApiResponse<T>> ToApiResponse<T>(HttpResponseMessage response, object responseData, Uri uri, bool isSuccess = true)
         {
             T result = (T) responseData;
+
+            object content;
+
+            if (isSuccess) {
+                content = response.Content;
+            } else {
+                content = await response.Content.ReadAsStringAsync();
+            }
             
             var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result)
             {
                 ErrorText = response.ReasonPhrase,
                 Cookies = new List<Cookie>(),
-                Content = response.Content
+                Content = content
             };
 
             // process response headers, e.g. Access-Control-Allow-Methods
@@ -592,7 +600,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             if (!response.IsSuccessStatusCode)
             {
-                return await ToApiResponse<T>(response, default(T), req.RequestUri);
+                return await ToApiResponse<T>(response, default(T), req.RequestUri, false);
             }
 
             object responseData = await deserializer.Deserialize<T>(response);
