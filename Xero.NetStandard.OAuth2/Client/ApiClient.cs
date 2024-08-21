@@ -514,6 +514,7 @@ namespace Xero.NetStandard.OAuth2.Client
             } else {
                 content = await response.Content.ReadAsStringAsync();
             }
+
             
             var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result)
             {
@@ -553,7 +554,6 @@ namespace Xero.NetStandard.OAuth2.Client
 
             return transformed;
         }
-
 
         private async Task<ApiResponse<T>> Exec<T>(HttpRequestMessage req,
             IReadableConfiguration configuration,

@@ -2228,8 +2228,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves an attachment for a specific account by filename
@@ -2244,8 +2244,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific account using a unique attachment Id
         /// </summary>
@@ -2259,8 +2259,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetAccountAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetAccountAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific account using a unique attachment Id
@@ -2275,8 +2275,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetAccountAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetAccountAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments for a specific accounts by using a unique account Id
         /// </summary>
@@ -2377,8 +2377,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific bank transaction by filename
@@ -2393,8 +2393,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves specific attachments from a specific BankTransaction using a unique attachment Id
         /// </summary>
@@ -2408,8 +2408,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetBankTransactionAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetBankTransactionAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves specific attachments from a specific BankTransaction using a unique attachment Id
@@ -2424,8 +2424,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetBankTransactionAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetBankTransactionAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves any attachments from a specific bank transactions
         /// </summary>
@@ -2557,8 +2557,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment on a specific bank transfer by file name
@@ -2573,8 +2573,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific bank transfer using a unique attachment ID
         /// </summary>
@@ -2588,8 +2588,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetBankTransferAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetBankTransferAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific bank transfer using a unique attachment ID
@@ -2604,8 +2604,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetBankTransferAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetBankTransferAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments from a specific bank transfer
         /// </summary>
@@ -2957,8 +2957,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific contact by file name
@@ -2973,8 +2973,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific contact using a unique attachment Id
         /// </summary>
@@ -2988,8 +2988,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetContactAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetContactAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific contact using a unique attachment Id
@@ -3004,8 +3004,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetContactAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetContactAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments for a specific contact in a Xero organisation
         /// </summary>
@@ -3253,8 +3253,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNoteID">Unique identifier for a Credit Note</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetCreditNoteAsPdfAsync (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetCreditNoteAsPdfAsync (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves credit notes as PDF files
@@ -3267,8 +3267,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNoteID">Unique identifier for a Credit Note</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetCreditNoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetCreditNoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment on a specific credit note by file name
         /// </summary>
@@ -3282,8 +3282,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment on a specific credit note by file name
@@ -3298,8 +3298,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific credit note using a unique attachment Id
         /// </summary>
@@ -3313,8 +3313,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetCreditNoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetCreditNoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific credit note using a unique attachment Id
@@ -3329,8 +3329,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetCreditNoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetCreditNoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments for a specific credit notes
         /// </summary>
@@ -3634,8 +3634,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoiceID">Unique identifier for an Invoice</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetInvoiceAsPdfAsync (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetInvoiceAsPdfAsync (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves invoices or purchase bills as PDF files
@@ -3648,8 +3648,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoiceID">Unique identifier for an Invoice</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetInvoiceAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetInvoiceAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves an attachment from a specific invoice or purchase bill by filename
         /// </summary>
@@ -3663,8 +3663,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves an attachment from a specific invoice or purchase bill by filename
@@ -3679,8 +3679,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific invoices or purchase bills by using a unique attachment Id
         /// </summary>
@@ -3694,8 +3694,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific invoices or purchase bills by using a unique attachment Id
@@ -3710,8 +3710,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments for a specific invoice or purchase bill
         /// </summary>
@@ -4122,8 +4122,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific manual journal by file name
@@ -4138,8 +4138,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Allows you to retrieve a specific attachment from a specific manual journal using a unique attachment Id
         /// </summary>
@@ -4153,8 +4153,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Allows you to retrieve a specific attachment from a specific manual journal using a unique attachment Id
@@ -4169,8 +4169,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachment for a specific manual journal
         /// </summary>
@@ -4698,8 +4698,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrderID">Unique identifier for an Purchase Order</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetPurchaseOrderAsPdfAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAsPdfAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves specific purchase order as PDF files using a unique purchase order Id
@@ -4712,8 +4712,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrderID">Unique identifier for an Purchase Order</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetPurchaseOrderAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPurchaseOrderAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment for a specific purchase order by filename
         /// </summary>
@@ -4727,8 +4727,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetPurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment for a specific purchase order by filename
@@ -4743,8 +4743,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves specific attachment for a specific purchase order using a unique attachment Id
         /// </summary>
@@ -4758,8 +4758,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetPurchaseOrderAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves specific attachment for a specific purchase order using a unique attachment Id
@@ -4774,8 +4774,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments for a specific purchase order
         /// </summary>
@@ -4934,8 +4934,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="quoteID">Unique identifier for an Quote</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetQuoteAsPdfAsync (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetQuoteAsPdfAsync (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific quote as a PDF file using a unique quote Id
@@ -4948,8 +4948,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="quoteID">Unique identifier for an Quote</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetQuoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetQuoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific quote by filename
         /// </summary>
@@ -4963,8 +4963,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific quote by filename
@@ -4979,8 +4979,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific quote using a unique attachment Id
         /// </summary>
@@ -4994,8 +4994,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetQuoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetQuoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific quote using a unique attachment Id
@@ -5010,8 +5010,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetQuoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetQuoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments for a specific quote
         /// </summary>
@@ -5153,8 +5153,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific expense claim receipts by file name
@@ -5169,8 +5169,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachments from a specific expense claim receipts by using a unique attachment Id
         /// </summary>
@@ -5184,8 +5184,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetReceiptAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetReceiptAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachments from a specific expense claim receipts by using a unique attachment Id
@@ -5200,8 +5200,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetReceiptAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetReceiptAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments for a specific expense claim receipt
         /// </summary>
@@ -5329,8 +5329,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific repeating invoices by file name
@@ -5345,8 +5345,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific attachment from a specific repeating invoice
         /// </summary>
@@ -5360,8 +5360,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        System.Threading.Tasks.Task<FileParameter> GetRepeatingInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetRepeatingInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific attachment from a specific repeating invoice
@@ -5376,8 +5376,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileParameter>> GetRepeatingInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetRepeatingInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachments from a specific repeating invoice
         /// </summary>
@@ -13815,10 +13815,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetAccountAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetAccountAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -13833,8 +13833,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -13888,7 +13888,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Accounts/{AccountID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Accounts/{AccountID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -13910,10 +13910,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetAccountAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetAccountAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetAccountAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetAccountAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -13928,8 +13928,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetAccountAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetAccountAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -13983,7 +13983,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Accounts/{AccountID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Accounts/{AccountID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -14277,10 +14277,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetBankTransactionAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetBankTransactionAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -14295,8 +14295,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -14350,7 +14350,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/BankTransactions/{BankTransactionID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/BankTransactions/{BankTransactionID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -14372,10 +14372,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetBankTransactionAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetBankTransactionAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetBankTransactionAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetBankTransactionAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -14390,8 +14390,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetBankTransactionAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetBankTransactionAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -14445,7 +14445,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/BankTransactions/{BankTransactionID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/BankTransactions/{BankTransactionID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -14844,10 +14844,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetBankTransferAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetBankTransferAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -14862,8 +14862,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -14917,7 +14917,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/BankTransfers/{BankTransferID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/BankTransfers/{BankTransferID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -14939,10 +14939,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetBankTransferAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetBankTransferAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetBankTransferAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetBankTransferAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -14957,8 +14957,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetBankTransferAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetBankTransferAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -15012,7 +15012,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/BankTransfers/{BankTransferID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/BankTransfers/{BankTransferID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -16075,10 +16075,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetContactAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetContactAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -16093,8 +16093,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -16148,7 +16148,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Contacts/{ContactID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Contacts/{ContactID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -16170,10 +16170,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetContactAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetContactAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetContactAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetContactAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -16188,8 +16188,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetContactAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetContactAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -16243,7 +16243,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Contacts/{ContactID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Contacts/{ContactID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -17016,10 +17016,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNoteID">Unique identifier for a Credit Note</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetCreditNoteAsPdfAsync (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetCreditNoteAsPdfAsync (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetCreditNoteAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetCreditNoteAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -17032,8 +17032,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="creditNoteID">Unique identifier for a Credit Note</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetCreditNoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetCreditNoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -17075,7 +17075,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/CreditNotes/{CreditNoteID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/CreditNotes/{CreditNoteID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -17097,10 +17097,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetCreditNoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetCreditNoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -17115,8 +17115,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -17170,7 +17170,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/CreditNotes/{CreditNoteID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/CreditNotes/{CreditNoteID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -17192,10 +17192,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetCreditNoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetCreditNoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetCreditNoteAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetCreditNoteAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -17210,8 +17210,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetCreditNoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetCreditNoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -17265,7 +17265,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/CreditNotes/{CreditNoteID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/CreditNotes/{CreditNoteID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -18211,10 +18211,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoiceID">Unique identifier for an Invoice</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetInvoiceAsPdfAsync (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetInvoiceAsPdfAsync (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetInvoiceAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetInvoiceAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -18227,8 +18227,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="invoiceID">Unique identifier for an Invoice</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetInvoiceAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetInvoiceAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -18270,7 +18270,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Invoices/{InvoiceID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Invoices/{InvoiceID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -18292,10 +18292,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -18310,8 +18310,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -18365,7 +18365,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Invoices/{InvoiceID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Invoices/{InvoiceID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -18387,10 +18387,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetInvoiceAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetInvoiceAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -18405,8 +18405,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -18460,7 +18460,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Invoices/{InvoiceID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Invoices/{InvoiceID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -19786,10 +19786,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetManualJournalAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetManualJournalAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -19804,8 +19804,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -19859,7 +19859,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/ManualJournals/{ManualJournalID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/ManualJournals/{ManualJournalID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -19881,10 +19881,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetManualJournalAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetManualJournalAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -19899,8 +19899,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -19954,7 +19954,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -21590,10 +21590,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrderID">Unique identifier for an Purchase Order</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetPurchaseOrderAsPdfAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAsPdfAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetPurchaseOrderAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetPurchaseOrderAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -21606,8 +21606,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="purchaseOrderID">Unique identifier for an Purchase Order</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetPurchaseOrderAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetPurchaseOrderAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -21649,7 +21649,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/PurchaseOrders/{PurchaseOrderID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/PurchaseOrders/{PurchaseOrderID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -21671,10 +21671,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetPurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -21689,8 +21689,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -21744,7 +21744,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -21766,10 +21766,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetPurchaseOrderAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetPurchaseOrderAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -21784,8 +21784,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetPurchaseOrderAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -21839,7 +21839,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/PurchaseOrders/{PurchaseOrderID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -22328,10 +22328,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="quoteID">Unique identifier for an Quote</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetQuoteAsPdfAsync (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetQuoteAsPdfAsync (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetQuoteAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetQuoteAsPdfAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -22344,8 +22344,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="quoteID">Unique identifier for an Quote</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetQuoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetQuoteAsPdfAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -22387,7 +22387,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Quotes/{QuoteID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Quotes/{QuoteID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -22409,10 +22409,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetQuoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetQuoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -22427,8 +22427,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -22482,7 +22482,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Quotes/{QuoteID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Quotes/{QuoteID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -22504,10 +22504,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetQuoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetQuoteAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetQuoteAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetQuoteAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -22522,8 +22522,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetQuoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetQuoteAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -22577,7 +22577,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Quotes/{QuoteID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Quotes/{QuoteID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -23041,10 +23041,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetReceiptAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetReceiptAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -23059,8 +23059,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -23114,7 +23114,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Receipts/{ReceiptID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Receipts/{ReceiptID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -23136,10 +23136,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetReceiptAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetReceiptAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetReceiptAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetReceiptAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -23154,8 +23154,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetReceiptAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetReceiptAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -23209,7 +23209,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/Receipts/{ReceiptID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/Receipts/{ReceiptID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -23582,10 +23582,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, fileName, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, fileName, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -23600,8 +23600,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileName">Name of the attachment</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -23655,7 +23655,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -23677,10 +23677,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of FileParameter</returns>
-        public async System.Threading.Tasks.Task<FileParameter> GetRepeatingInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetRepeatingInvoiceAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter> localVarResponse = await GetRepeatingInvoiceAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetRepeatingInvoiceAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -23695,8 +23695,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (FileParameter)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileParameter>> GetRepeatingInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetRepeatingInvoiceAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -23750,7 +23750,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<FileParameter>("/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
