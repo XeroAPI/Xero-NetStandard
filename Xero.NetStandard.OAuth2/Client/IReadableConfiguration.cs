@@ -10,7 +10,6 @@
 
 using System.Collections.Generic;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Xero.NetStandard.OAuth2.Client
 {
