@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -50,16 +53,21 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void Amount_GivenValidInputs_Deserialises(string input)
+        public async Task Amount_GivenValidInputs_Deserialises(string input)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            string jsonContent = $@"{{
                 ""Amount"": {input}
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EndBalance>(response);
+            var actual = await deserializer.Deserialize<EndBalance>(response);
 
             Assert.Equal(20, (int)actual.Amount);
         }
@@ -67,15 +75,20 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'CreditDebitIndicator' deserialises to 0 when not present
         /// </summary>
         [Fact]
-        public void CreditDebitIndicator_NotPresent_DeserialisesTo0()
+        public async Task CreditDebitIndicator_NotPresent_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = "{}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            string jsonContent = "{}";
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EndBalance>(response);
-
+            var actual = await deserializer.Deserialize<EndBalance>(response);
+            
             Assert.Equal(0, (int)actual.CreditDebitIndicator);
         }
 

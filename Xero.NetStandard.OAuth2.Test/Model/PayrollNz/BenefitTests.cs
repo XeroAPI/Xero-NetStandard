@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -81,28 +84,30 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [InlineData("ComplyingFund", Benefit.CategoryEnum.ComplyingFund)]
         [InlineData("KiwiSaver", Benefit.CategoryEnum.KiwiSaver)]
         [InlineData("Other", Benefit.CategoryEnum.Other)]
-        public void CategoryEnum_ValidInput_Deserialises(string input, Benefit.CategoryEnum expected)
+        public async Task CategoryEnum_ValidInput_Deserialises(string input, Benefit.CategoryEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Benefit.CategoryEnum>(response);
-
+            var actual = await deserializer.Deserialize<Benefit.CategoryEnum>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void CategoryEnumr_NullInput_Deserialises()
+        public async Task CategoryEnumr_NullInput_Deserialises()
         {
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Benefit.CategoryEnum>(response);
-
+            var actual = await deserializer.Deserialize<Benefit.CategoryEnum>(response);
             Assert.Equal(0, (int)actual);
         }
         /// <summary>
@@ -127,28 +132,30 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [Theory]
         [InlineData("FixedAmount", Benefit.CalculationTypeNZEnum.FixedAmount)]
         [InlineData("PercentageOfTaxableEarnings", Benefit.CalculationTypeNZEnum.PercentageOfTaxableEarnings)]
-        public void CalculationTypeNZEnum_ValidInput_Deserialises(string input, Benefit.CalculationTypeNZEnum expected)
+        public async Task CalculationTypeNZEnum_ValidInput_Deserialises(string input, Benefit.CalculationTypeNZEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Benefit.CalculationTypeNZEnum>(response);
-
+            var actual = await deserializer.Deserialize<Benefit.CalculationTypeNZEnum>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void CalculationTypeNZEnum_NullInput_Deserialises()
+        public async Task CalculationTypeNZEnum_NullInput_Deserialises()
         {
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Benefit.CalculationTypeNZEnum>(response);
-
+            var actual = await deserializer.Deserialize<Benefit.CalculationTypeNZEnum>(response);
             Assert.Equal(0, (int)actual);
         }
         /// <summary>

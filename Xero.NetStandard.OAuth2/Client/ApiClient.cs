@@ -9,45 +9,45 @@
 
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
+using System.Threading;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Converters;
-using RestSharp;
-using RestSharp.Serializers;
-using RestSharpMethod = RestSharp.Method;
-using RestSharp.Serializers.Xml;
-using System.Threading;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("Xero.NetStandard.OAuth2.Test")]
 namespace Xero.NetStandard.OAuth2.Client
 {
     /// <summary>
-    /// Allows RestSharp to Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON. 
+    /// To Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON.
     /// </summary>
-    internal class CustomJsonCodec : IRestSerializer, ISerializer, IDeserializer
+    internal class CustomJsonCodec
     {
         private readonly IReadableConfiguration _configuration;
-        private ContentType _contentType = "application/json";
+        private static readonly string _contentType = "application/json";
         private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
             // OpenAPI generated types generally hide default constructors.
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
             ContractResolver = new DefaultContractResolver
-              {
-                  NamingStrategy = new DefaultNamingStrategy()
-                  {
-                      OverrideSpecifiedNames = true
-                  }
-              },
+            {
+                NamingStrategy = new DefaultNamingStrategy()
+                {
+                    OverrideSpecifiedNames = true
+                }
+            },
             DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-            CheckAdditionalContent = false,
+                        CheckAdditionalContent = false,
             Culture = CultureInfo.InvariantCulture,
             DateFormatHandling = DateFormatHandling.IsoDateFormat,
             DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK",
@@ -73,6 +73,17 @@ namespace Xero.NetStandard.OAuth2.Client
             _configuration = configuration;
         }
 
+        public CustomJsonCodec(JsonSerializerSettings serializerSettings, IReadableConfiguration configuration)
+        {
+            _serializerSettings = serializerSettings;
+            _configuration = configuration;
+        }
+
+        /// <summary>
+        /// Serialize the object into a JSON string.
+        /// </summary>
+        /// <param name="obj">Object to be serialized.</param>
+        /// <returns>A JSON string.</returns>
         public string Serialize(object obj)
         {
             String result = JsonConvert.SerializeObject(obj, _serializerSettings);
@@ -104,9 +115,9 @@ namespace Xero.NetStandard.OAuth2.Client
             return result;
         }
 
-        public T Deserialize<T>(RestResponse response)
+        public async Task<T> Deserialize<T>(HttpResponseMessage response)
         {
-            var result = (T) Deserialize(response, typeof(T));
+            var result = (T) await Deserialize(response, typeof(T));
             return result;
         }
 
@@ -116,20 +127,22 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        internal object Deserialize(RestResponse response, Type type)
+        internal async Task<object> Deserialize(HttpResponseMessage response, Type type)
         {
-            IReadOnlyCollection<HeaderParameter> headers = response.Headers;
+            IList<string> headers = response.Headers.Select(x => $"{x.Key}={x.Value}").ToList();
+
             if (type == typeof(byte[])) // return byte array
             {
-                return response.RawBytes;
+                return await response.Content.ReadAsByteArrayAsync();
             }
 
             // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
             if (type == typeof(Stream))
             {
+                var bytes = await response.Content.ReadAsByteArrayAsync();
                 if (headers != null)
                 {
-                    var filePath = String.IsNullOrEmpty(_configuration.TempFolderPath)
+                    var filePath = string.IsNullOrEmpty(_configuration.TempFolderPath)
                         ? Path.GetTempPath()
                         : _configuration.TempFolderPath;
                     var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
@@ -139,34 +152,34 @@ namespace Xero.NetStandard.OAuth2.Client
                         if (match.Success)
                         {
                             string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, response.RawBytes);
+                            File.WriteAllBytes(fileName, bytes);
                             return new FileStream(fileName, FileMode.Open);
                         }
                     }
                 }
-                var stream = new MemoryStream(response.RawBytes);
+                var stream = new MemoryStream(bytes);
                 return stream;
             }
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
-                return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
+                return DateTime.Parse(await response.Content.ReadAsStringAsync(), null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
 
-            if (type == typeof(String) || type.Name.StartsWith("System.Nullable")) // return primitive type
+            if (type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
             {
-                return ClientUtils.ConvertType(response.Content, type);
+                return ClientUtils.ConvertType(await response.Content.ReadAsStringAsync(), type);
             }
 
             if(response.StatusCode < HttpStatusCode.OK || response.StatusCode >= HttpStatusCode.MultipleChoices)
             {
-                throw new ApiException((int)response.StatusCode, response.Content);
+                throw new ApiException((int)response.StatusCode, await response.Content.ReadAsStringAsync());
             }
 
             // at this point, it must be a model (json)
             try
             {
-                return JsonConvert.DeserializeObject(response.Content, type, _serializerSettings);
+                return JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync(), type, _serializerSettings);
             }
             catch (Exception e)
             {
@@ -178,34 +191,11 @@ namespace Xero.NetStandard.OAuth2.Client
         public string Namespace { get; set; }
         public string DateFormat { get; set; }
 
-        public ContentType ContentType
+        public string ContentType
         {
             get { return _contentType; }
             set { throw new InvalidOperationException("Not allowed to set content type."); }
         }
-        
-        public string Serialize(Parameter parameter)
-        {
-            return Serialize(parameter.Value);
-        }
-
-        public ISerializer Serializer => this;
-
-        public IDeserializer Deserializer => this;
-
-        public string[] AcceptedContentTypes => new[]
-        {
-            "application/json",
-            "text/json",
-            "text/x-json",
-            "text/javascript",
-            "*+json",
-            "*"
-        };
-
-        public SupportsContentType SupportsContentType => type => AcceptedContentTypes.Contains(type.Value);
-
-        public DataFormat DataFormat => DataFormat.Json;
     }
 
     /// <summary>
@@ -237,132 +227,141 @@ namespace Xero.NetStandard.OAuth2.Client
     /// Provides a default implementation of an Api client (both synchronous and asynchronous implementations),
     /// encapsulating general REST accessor use cases.
     /// </summary>
-    public partial class ApiClient : ISynchronousClient, IAsynchronousClient
+    /// <remarks>
+    /// The Dispose method will manage the HttpClient lifecycle when not passed by constructor.
+    /// </remarks>
+    public partial class ApiClient : IDisposable, ISynchronousClient, IAsynchronousClient
     {
-        private readonly String _baseUrl;
+        private readonly string _baseUrl;
 
-        /// <summary>
-        /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
-        /// </summary>
-        /// <param name="request">The RestSharp request object</param>
-        protected virtual void InterceptRequest(RestRequest request)
-        {
-
-        }
-
-        /// <summary>
-        /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
-        /// </summary>
-        /// <param name="request">The RestSharp request object</param>
-        /// <param name="response">The RestSharp response object</param>
-        protected virtual void InterceptResponse(RestRequest request, RestResponse response)
-        {
-            
-        }
+        private readonly HttpClientHandler _httpClientHandler;
+        private readonly HttpClient _httpClient;
+        private readonly bool _disposeClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" />, defaulting to the global configurations' base url.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        public ApiClient()
+        public ApiClient() :
+                 this(Xero.NetStandard.OAuth2.Client.GlobalConfiguration.Instance.BasePath)
         {
-            _baseUrl = Xero.NetStandard.OAuth2.Client.GlobalConfiguration.Instance.BasePath;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" />
+        /// Initializes a new instance of the <see cref="ApiClient" />.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <param name="basePath">The target service's base path in URL format.</param>
         /// <exception cref="ArgumentException"></exception>
-        public ApiClient(String basePath)
+        public ApiClient(string basePath)
         {
-           if (String.IsNullOrEmpty(basePath))
-                throw new ArgumentException("basePath cannot be empty");
+            if (string.IsNullOrEmpty(basePath)) throw new ArgumentException("basePath cannot be empty");
 
+            _httpClientHandler = new HttpClientHandler();
+            _httpClient = new HttpClient(_httpClientHandler, true);
+            _disposeClient = true;
             _baseUrl = basePath;
         }
 
         /// <summary>
-        /// Constructs the RestSharp version of an http method
+        /// Disposes resources if they were created by us
         /// </summary>
-        /// <param name="method">Swagger Client Custom HttpMethod</param>
-        /// <returns>RestSharp's HttpMethod instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private RestSharpMethod Method(HttpMethod method)
+        public void Dispose()
         {
-            RestSharpMethod other;
+            if(_disposeClient) {
+                _httpClient.Dispose();
+            }
+        }
+
+        private System.Net.Http.HttpMethod Method(HttpMethod method)
+        {
             switch (method)
             {
                 case HttpMethod.Get:
-                    other = RestSharpMethod.Get;
-                    break;
+                    return System.Net.Http.HttpMethod.Get;
                 case HttpMethod.Post:
-                    other = RestSharpMethod.Post;
-                    break;
+                    return System.Net.Http.HttpMethod.Post;
                 case HttpMethod.Put:
-                    other = RestSharpMethod.Put;
-                    break;
+                    return System.Net.Http.HttpMethod.Put;
                 case HttpMethod.Delete:
-                    other = RestSharpMethod.Delete;
-                    break;
+                    return System.Net.Http.HttpMethod.Delete;
                 case HttpMethod.Head:
-                    other = RestSharpMethod.Head;
-                    break;
+                    return System.Net.Http.HttpMethod.Head;
                 case HttpMethod.Options:
-                    other = RestSharpMethod.Options;
-                    break;
+                    return System.Net.Http.HttpMethod.Options;
                 case HttpMethod.Patch:
-                    other = RestSharpMethod.Patch;
-                    break;
+                    return new System.Net.Http.HttpMethod("PATCH");
                 default:
-                    throw new ArgumentOutOfRangeException("method", method, null);
+                    throw new ArgumentOutOfRangeException(nameof(method), method, null);
+            }
+        }
+
+        /// Prepares multipart/form-data content
+        HttpContent PrepareMultipartFormDataContent(RequestOptions options)
+        {
+            string boundary = "---------" + Guid.NewGuid().ToString().ToUpperInvariant();
+            var multipartContent = new MultipartFormDataContent(boundary);
+            foreach (var formParameter in options.FormParameters)
+            {
+                multipartContent.Add(new StringContent(formParameter.Value), formParameter.Key);
             }
 
-            return other;
+            if (options.FileParameters != null && options.FileParameters.Count > 0)
+            {
+                options.FormParameters.TryGetValue("mimeType", out var mimeType);
+                options.FormParameters.TryGetValue("filename", out var filename);
+                foreach (var fileParam in options.FileParameters)
+                {
+                    var content = new StreamContent(fileParam.Value);
+                    content.Headers.ContentType = new MediaTypeHeaderValue(mimeType);
+                    multipartContent.Add(content, fileParam.Key, filename);
+                }
+            }
+            return multipartContent;
         }
 
         /// <summary>
-        /// Provides all logic for constructing a new RestSharp <see cref="RestRequest"/>.
+        /// Provides all logic for constructing a new HttpRequestMessage.
         /// At this point, all information for querying the service is known. Here, it is simply
-        /// mapped into the RestSharp request.
+        /// mapped into the a HttpRequestMessage.
         /// </summary>
         /// <param name="method">The http verb.</param>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <returns>[private] A new RestRequest instance.</returns>
+        /// <returns>[private] A new HttpRequestMessage instance.</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        private RestRequest newRequest(
+        private HttpRequestMessage NewRequest(
             HttpMethod method,
-            String path,
+            string path,
             RequestOptions options,
             IReadableConfiguration configuration)
         {
             if (path == null) throw new ArgumentNullException("path");
             if (options == null) throw new ArgumentNullException("options");
             if (configuration == null) throw new ArgumentNullException("configuration");
-            
-            RestRequest request = new RestRequest(path, Method(method))
-            {
-                Timeout = configuration.Timeout
-            };
 
-            if (options.PathParameters != null)
+            WebRequestPathBuilder builder = new WebRequestPathBuilder(_baseUrl, path);
+
+            builder.AddPathParameters(options.PathParameters);
+
+            builder.AddQueryParameters(options.QueryParameters);
+
+            HttpRequestMessage request = new HttpRequestMessage(Method(method), builder.GetFullUri());
+
+            if (configuration.UserAgent != null)
             {
-                foreach (var pathParam in options.PathParameters)
-                {
-                    request.AddParameter(pathParam.Key, pathParam.Value, ParameterType.UrlSegment);
-                }
+                request.Headers.TryAddWithoutValidation("User-Agent", configuration.UserAgent);
             }
-            
-            if (options.QueryParameters != null)
+
+            if (configuration.DefaultHeader != null)
             {
-                foreach (var queryParam in options.QueryParameters)
+                foreach (var headerParam in configuration.DefaultHeader)
                 {
-                    foreach (var value in queryParam.Value)
-                    {
-                        request.AddQueryParameter(queryParam.Key, value);
-                    }
+                    request.Headers.Add(headerParam.Key, headerParam.Value);
                 }
             }
 
@@ -372,200 +371,165 @@ namespace Xero.NetStandard.OAuth2.Client
                 {
                     foreach (var value in headerParam.Value)
                     {
-                        request.AddHeader(headerParam.Key, value);
+                        // Todo make content headers actually content headers
+                        request.Headers.TryAddWithoutValidation(headerParam.Key, value);
                     }
                 }
             }
 
-            if (options.FormParameters != null)
+            List<Tuple<HttpContent, string, string>> contentList = new List<Tuple<HttpContent, string, string>>();
+
+            string contentType = null;
+            if (options.HeaderParameters != null && options.HeaderParameters.ContainsKey("Content-Type"))
             {
-                foreach (var formParam in options.FormParameters)
-                {
-                    request.AddParameter(formParam.Key, formParam.Value);
-                }
+                var contentTypes = options.HeaderParameters["Content-Type"];
+                contentType = contentTypes.FirstOrDefault();
             }
 
-            if (options.Data != null)
+            if (contentType == "multipart/form-data")
             {
-                if (options.HeaderParameters != null)
+                request.Content = PrepareMultipartFormDataContent(options);
+            }
+            else if (contentType == "application/x-www-form-urlencoded")
+            {
+                request.Content = new FormUrlEncodedContent(options.FormParameters);
+            }
+            else
+            {
+                if (options.Data != null)
                 {
-                    var contentTypes = options.HeaderParameters["Content-Type"];
-                    if (contentTypes == null || contentTypes.Any(header => header.Contains("application/json")))
+                    if (options.PathParameters.ContainsKey("FileName"))
                     {
-                        request.RequestFormat = DataFormat.Json;
+                        contentType = contentType ?? "application/octet-stream";
+                        var stream = new MemoryStream(options.Data as byte[]);
+                        var streamContent = new StreamContent(stream);
+                        streamContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                        request.Content = streamContent;
                     }
                     else
                     {
-                        // TODO: Generated client user should add additional handlers. RestSharp only supports XML and JSON, with XML as default.
+                        var serializer = new CustomJsonCodec(configuration);
+                        request.Content = new StringContent(serializer.Serialize(options.Data), new UTF8Encoding(),
+                            "application/json");
                     }
                 }
-                else
-                {
-                    // Here, we'll assume JSON APIs are more common. XML can be forced by adding produces/consumes to openapi spec explicitly.
-                    request.RequestFormat = DataFormat.Json;
-                }
-
-                if (options.PathParameters.ContainsKey("FileName"))
-                {
-                    //restsharp needs the bytestream to go here. addfile adds metadata which corrupts file. 
-                    request.AddParameter("application/octet-stream",(byte[])options.Data,ParameterType.RequestBody);
-                }
-                else
-                {
-                    request.AddJsonBody(options.Data);
-                }            
             }
 
-            if (options.FileParameters != null)
+
+
+            // TODO provide an alternative that allows cookies per request instead of per API client
+            if (options.Cookies != null && options.Cookies.Count > 0)
             {
-                foreach (var fileParam in options.FileParameters)
-                {
-                    var memStream = fileParam.Value as MemoryStream;
-                    var fileStream = fileParam.Value as FileStream;
-                    if (fileStream != null)
-                    {
-                        var bytes = ClientUtils.ReadAsBytes(fileParam.Value);
-                        var name = System.IO.Path.GetFileName(fileStream.Name);
-                        options.FormParameters.TryGetValue("mimeType", out var contentType);
-
-
-                        request.AddFile(name, bytes, name, contentType);
-                    }
-                    else if (memStream != null)
-                    {
-                        var bytes = memStream.ToArray();
-                        var hasName = options.FormParameters.TryGetValue("filename", out var name);
-                        options.FormParameters.TryGetValue("mimeType", out var contentType);
-                        
-                        if (!hasName)
-                        {
-                            throw new ApiException(400, "Files API: No filename provided when uploading file");
-                        }
-                        request.AddFile(name, bytes, name, contentType);
-                    }
-                    else
-                    {
-                        var bytes = ClientUtils.ReadAsBytes(fileParam.Value);
-                        var hasName = options.FormParameters.TryGetValue("filename", out var name);
-                        options.FormParameters.TryGetValue("mimeType", out var contentType);
-
-                        if (!hasName)
-                        {
-                            throw new ApiException(400, "Files API: No filename provided when uploading file");
-                        }
-                        request.AddFile(name, bytes, name, contentType);
-                    }
-                }
+                request.Properties["CookieContainer"] = options.Cookies;
             }
 
             return request;
         }
 
-        private ApiResponse<T> toApiResponse<T>(RestResponse<T> response)
+        partial void InterceptRequest(HttpRequestMessage req);
+        partial void InterceptResponse(HttpRequestMessage req, HttpResponseMessage response);
+
+        private async Task<ApiResponse<T>> ToApiResponse<T>(HttpResponseMessage response, object responseData, Uri uri, bool isSuccess = true)
         {
-            T result = response.Data;
+            T result = (T) responseData;
+
+            object content;
+
+            if (isSuccess) {
+                content = response.Content;
+            } else {
+                content = await response.Content.ReadAsStringAsync();
+            }
+
+            
             var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result)
             {
-                ErrorText = response.ErrorMessage,
+                ErrorText = response.ReasonPhrase,
                 Cookies = new List<Cookie>(),
-                Content = response.Content
+                Content = content
             };
-            
+
+            // process response headers, e.g. Access-Control-Allow-Methods
             if (response.Headers != null)
             {
                 foreach (var responseHeader in response.Headers)
                 {
-                    transformed.Headers.Add(responseHeader.Name, ClientUtils.ParameterToString(responseHeader.Value));
+                    transformed.Headers.Add(responseHeader.Key, ClientUtils.ParameterToString(responseHeader.Value));
                 }
             }
 
-            if (response.Cookies != null)
+            // process response content headers, e.g. Content-Type
+            if (response.Content.Headers != null)
             {
-                for(int i = 0; i < response.Cookies.Count; i++)
+                foreach (var responseHeader in response.Content.Headers)
                 {
-                    Cookie responseCookies = response.Cookies[i];
-                    transformed.Cookies.Add(
-                        new Cookie(
-                            responseCookies.Name, 
-                            responseCookies.Value, 
-                            responseCookies.Path, 
-                            responseCookies.Domain)
-                        );
+                    transformed.Headers.Add(responseHeader.Key, ClientUtils.ParameterToString(responseHeader.Value));
                 }
+            }
+
+            if (_httpClientHandler != null && response != null)
+            {
+                try {
+                    foreach (Cookie cookie in _httpClientHandler.CookieContainer.GetCookies(uri))
+                    {
+                        transformed.Cookies.Add(cookie);
+                    }
+                }
+                catch (PlatformNotSupportedException) {}
             }
 
             return transformed;
         }
 
-        private async Task<ApiResponse<T>> Exec<T>(RestRequest req, IReadableConfiguration configuration, CancellationToken cancellationToken = default)
+        private async Task<ApiResponse<T>> Exec<T>(HttpRequestMessage req,
+            IReadableConfiguration configuration,
+            System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            RestClientOptions clientOptions = new RestClientOptions(_baseUrl)
+            var deserializer = new CustomJsonCodec(configuration);
+
+            var finalToken = cancellationToken;
+
+            if (configuration.Timeout > 0)
             {
-                MaxTimeout = configuration.Timeout
-            };
-            if (configuration.UserAgent != null)
-            {
-                clientOptions.UserAgent = configuration.UserAgent;
+                var tokenSource = new CancellationTokenSource(configuration.Timeout);
+                finalToken = CancellationTokenSource.CreateLinkedTokenSource(finalToken, tokenSource.Token).Token;
             }
 
-            RestClient client = new RestClient(
-                clientOptions,
-                configureSerialization: _ => _.UseSerializer(() =>
-                {
-                    var serializer = new CustomJsonCodec(configuration);
-                    return serializer;
-                })
-                    .UseSerializer<XmlRestSerializer>()
-            );
+            var cookieContainer = req.Properties.ContainsKey("CookieContainer") ? req.Properties["CookieContainer"] as List<Cookie> : null;
 
-            if (configuration.Cookies != null && configuration.Cookies.Count > 0)
+            if (cookieContainer != null)
             {
-                foreach (var cookie in configuration.Cookies)
+                if(_httpClientHandler == null) throw new InvalidOperationException("Request property `CookieContainer` not supported when the client is explicitly created without an HttpClientHandler, use the proper constructor.");
+                foreach (var cookie in cookieContainer)
                 {
-                    req.CookieContainer.Add(new Cookie(cookie.Name, cookie.Value));
+                    _httpClientHandler.CookieContainer.Add(cookie);
                 }
             }
 
             InterceptRequest(req);
-            var response = await client.ExecuteAsync<T>(req, cancellationToken);
+
+            HttpResponseMessage response;
+
+            response = await _httpClient.SendAsync(req, cancellationToken).ConfigureAwait(false);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return await ToApiResponse<T>(response, default(T), req.RequestUri, false);
+            }
+
+            object responseData = await deserializer.Deserialize<T>(response);
+
+            // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
+            if (typeof(T).Name == "Stream") // for binary response
+            {
+                responseData = (T) (object) await response.Content.ReadAsStreamAsync();
+            }
+
             InterceptResponse(req, response);
 
-            var result = toApiResponse(response);
-            if (response.ErrorMessage != null)
-            {
-                result.ErrorText = response.ErrorMessage;
-            }
-
-            if (response.Cookies != null && response.Cookies.Count > 0)
-            {
-                if(result.Cookies == null) result.Cookies = new List<Cookie>();
-                for (int i = 0; i < response.Cookies.Count; i++)
-                {
-                    var restResponseCookie = response.Cookies[i];
-                    var cookie = new Cookie(
-                        restResponseCookie.Name,
-                        restResponseCookie.Value,
-                        restResponseCookie.Path,
-                        restResponseCookie.Domain
-                    )
-                    {
-                        Comment = restResponseCookie.Comment,
-                        CommentUri = restResponseCookie.CommentUri,
-                        Discard = restResponseCookie.Discard,
-                        Expired = restResponseCookie.Expired,
-                        Expires = restResponseCookie.Expires,
-                        HttpOnly = restResponseCookie.HttpOnly,
-                        Port = restResponseCookie.Port,
-                        Secure = restResponseCookie.Secure,
-                        Version = restResponseCookie.Version
-                    };
-                    
-                    result.Cookies.Add(cookie);
-                }
-            }
-            return result;
+            return await ToApiResponse<T>(response, responseData, req.RequestUri);
         }
-        
+
         #region IAsynchronousClient
         /// <summary>
         /// Make a HTTP GET request (async).
@@ -574,12 +538,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
+        public async Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Get, path, options, config), config, cancellationToken);
+            return await Exec<T>(NewRequest(HttpMethod.Get, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -589,12 +553,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
+        public async Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Post, path, options, config), config, cancellationToken);
+            return await Exec<T>(NewRequest(HttpMethod.Post, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -604,12 +568,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
+        public async Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Put, path, options, config), config, cancellationToken);
+            return await Exec<T>(NewRequest(HttpMethod.Put, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -619,12 +583,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
+        public async Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Delete, path, options, config), config, cancellationToken);
+            return await Exec<T>(NewRequest(HttpMethod.Delete, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -634,12 +598,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
+        public async Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Head, path, options, config), config, cancellationToken);
+            return await Exec<T>(NewRequest(HttpMethod.Head, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -649,12 +613,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
+        public async Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Options, path, options, config), config, cancellationToken);
+            return await Exec<T>(NewRequest(HttpMethod.Options, path, options, config), config, cancellationToken);
         }
 
         /// <summary>
@@ -664,12 +628,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
+        /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public async Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
+        public async Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return await Exec<T>(newRequest(HttpMethod.Patch, path, options, config), config, cancellationToken);
+            return await Exec<T>(NewRequest(HttpMethod.Patch, path, options, config), config, cancellationToken);
         }
         #endregion IAsynchronousClient
 
@@ -681,11 +645,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Get<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return GetAsync<T>(path, options, configuration, cancellationToken).Result;
+            return GetAsync<T>(path, options, configuration, cancellationToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -695,11 +658,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Post<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return PostAsync<T>(path, options, configuration, cancellationToken).Result;
+            return PostAsync<T>(path, options, configuration, cancellationToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -709,11 +671,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Put<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return PutAsync<T>(path, options, configuration, cancellationToken).Result;
+            return PutAsync<T>(path, options, configuration, cancellationToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -723,11 +684,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Delete<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return DeleteAsync<T>(path, options, configuration, cancellationToken).Result;
+            return DeleteAsync<T>(path, options, configuration, cancellationToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -737,11 +697,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Head<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return HeadAsync<T>(path, options, configuration, cancellationToken).Result;
+            return HeadAsync<T>(path, options, configuration, cancellationToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -751,11 +710,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Options<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return OptionsAsync<T>(path, options, configuration, cancellationToken).Result;
+            return OptionsAsync<T>(path, options, configuration, cancellationToken).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -765,11 +723,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Patch<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, CancellationToken cancellationToken = default)
         {
-            return PatchAsync<T>(path, options, configuration, cancellationToken).Result;
+            return PatchAsync<T>(path, options, configuration, cancellationToken).GetAwaiter().GetResult();
         }
         #endregion ISynchronousClient
     }

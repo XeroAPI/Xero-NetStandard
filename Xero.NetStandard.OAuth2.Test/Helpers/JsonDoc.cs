@@ -1,5 +1,8 @@
 using System;
-using RestSharp;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using Xero.NetStandard.OAuth2.Client;
 using Xunit;
 using Xunit.Sdk;
@@ -75,23 +78,33 @@ namespace Xero.NetStandard.OAuth2.Test
             }
         }
 
-        public static void Assert<TModel, TProperty>(IJsonValue input, Func<TModel, TProperty> toProperty, TProperty shouldBe)
+        public static async Task Assert<TModel, TProperty>(IJsonValue input, Func<TModel, TProperty> toProperty, TProperty shouldBe)
         {
-            var response = new RestResponse();
-
+            HttpResponseMessage response;
             if (input is NotPresent)
             {
-                response.Content = "{}";
+                response = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent("{}", Encoding.UTF8, "application/json")
+                };
             }
             else
             {
-                response.Content = $@"{{
+                var jsonContent = $@"{{
                     ""{input.PropertyName}"": {input.GetJsonRepresentation()}
                 }}";
+
+                response = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+                };
             }
-            response.StatusCode = System.Net.HttpStatusCode.OK;
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var output = deserializer.Deserialize<TModel>(response);
+            var output = await deserializer.Deserialize<TModel>(response);
+
             Xunit.Assert.Equal(shouldBe, toProperty(output));
         }
     }

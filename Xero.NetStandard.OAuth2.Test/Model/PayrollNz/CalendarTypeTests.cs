@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -58,27 +61,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [InlineData("Quarterly", CalendarType.Quarterly)]
         [InlineData("TwiceMonthly", CalendarType.TwiceMonthly)]
         [InlineData("Weekly", CalendarType.Weekly)]
-        public void CalendarType_ValidInput_Deserialises(string input, CalendarType expected)
+        public async Task CalendarType_ValidInput_Deserialises(string input, CalendarType expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<CalendarType>(response);
-
+            var actual = await deserializer.Deserialize<CalendarType>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void CalendarType_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task CalendarType_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<CalendarType>(response);
-
+            var actual = await deserializer.Deserialize<CalendarType>(response);
             Assert.Equal(0, (int)actual);
         }
 

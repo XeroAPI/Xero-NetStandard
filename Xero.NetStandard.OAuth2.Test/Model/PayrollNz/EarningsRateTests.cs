@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -93,27 +96,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [InlineData("TipsDirect", EarningsRate.EarningsTypeEnum.TipsDirect)]
         [InlineData("TipsNonDirect", EarningsRate.EarningsTypeEnum.TipsNonDirect)]
         [InlineData("WithholdingIncome", EarningsRate.EarningsTypeEnum.WithholdingIncome)]
-        public void EarningsTypeEnum_ValidInput_Deserialises(string input, EarningsRate.EarningsTypeEnum expected)
+        public async Task EarningsTypeEnum_ValidInput_Deserialises(string input, EarningsRate.EarningsTypeEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EarningsRate.EarningsTypeEnum>(response);
-
+            var actual = await deserializer.Deserialize<EarningsRate.EarningsTypeEnum>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void EarningsTypeEnum_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task EarningsTypeEnum_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EarningsRate.EarningsTypeEnum>(response);
-
+            var actual = await deserializer.Deserialize<EarningsRate.EarningsTypeEnum>(response);
             Assert.Equal(0, (int)actual);
         }
         /// <summary>
@@ -123,29 +128,31 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [InlineData("FixedAmount", EarningsRate.RateTypeEnum.FixedAmount)]
         [InlineData("MultipleOfOrdinaryEarningsRate", EarningsRate.RateTypeEnum.MultipleOfOrdinaryEarningsRate)]
         [InlineData("RatePerUnit", EarningsRate.RateTypeEnum.RatePerUnit)]
-        public void RateTypeTest(string input, EarningsRate.RateTypeEnum expected)
+        public async Task RateTypeTest(string input, EarningsRate.RateTypeEnum expected)
         {     
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EarningsRate.RateTypeEnum>(response);
-
+            var actual = await deserializer.Deserialize<EarningsRate.RateTypeEnum>(response);
             Assert.Equal(expected, actual);
         }
 
 
         [Fact]
-        public void RateTypeEnum_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task RateTypeEnum_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<EarningsRate.RateTypeEnum>(response);
-
-            Assert.Equal(0, (int)actual);    
+            var actual = await deserializer.Deserialize<EarningsRate.RateTypeEnum>(response);
+            Assert.Equal(0, (int)actual);
         }
         /// <summary>
         /// Test the property 'TypeOfUnits'

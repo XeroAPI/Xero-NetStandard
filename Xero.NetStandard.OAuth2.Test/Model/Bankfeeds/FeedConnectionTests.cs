@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -77,22 +80,25 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'Error' deserialises from an Error object
         /// </summary>
         [Fact]
-        public void Error_GivenValidInput_Deserialises()
+        public async Task Error_GivenValidInput_Deserialises()
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent($@"{{
                 ""Error"": {{
                     ""type"": ""invalid-end-balance"",
                     ""title"": ""Invalid End Balance"",
                     ""status"": 422,
                     ""detail"": ""Detail""
                 }}
-            }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            }}", Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<FeedConnection>(response);
-
+            var actual = await deserializer.Deserialize<FeedConnection>(response);
+            
             Assert.Equal(Error.TypeEnum.InvalidEndBalance, actual.Error.Type);
             Assert.Equal("Invalid End Balance", actual.Error.Title);
             Assert.Equal(422, actual.Error.Status);

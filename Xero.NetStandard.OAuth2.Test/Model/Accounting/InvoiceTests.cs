@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 using Xero.NetStandard.OAuth2.Model.Accounting;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Accounting
@@ -193,16 +196,22 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Accounting
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void CISDeduction_IsNumber_DeserializesCorrectly(string number)
+        public async Task CISDeduction_IsNumber_DeserializesCorrectly(string number)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            string jsonContent = $@"{{
                 ""CISDeduction"": {number}
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+
+            response.EnsureSuccessStatusCode();
             
             var deserializer = new CustomJsonCodec(new Configuration());
-            var invoices = deserializer.Deserialize<Invoice>(response);
+            var invoices = await deserializer.Deserialize<Invoice>(response);
+            
 
             Assert.Equal(20, invoices.CISDeduction);
         }

@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -120,28 +123,30 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [Theory]
         [InlineData("Balance", BankAccount.CalculationTypeEnum.Balance)]
         [InlineData("FixedAmount", BankAccount.CalculationTypeEnum.FixedAmount)]
-        public void CalculationType_ValidInput_Deserialises(string input, BankAccount.CalculationTypeEnum expected)
+        public async Task CalculationType_ValidInput_Deserialises(string input, BankAccount.CalculationTypeEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
-
+            var actual = await deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void CalculationType_NullInput_Deserialises()
+        public async Task CalculationType_NullInput_Deserialises()
         {
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
-
+            var actual = await deserializer.Deserialize<BankAccount.CalculationTypeEnum>(response);
             Assert.Equal(0, (int)actual);
         }
 

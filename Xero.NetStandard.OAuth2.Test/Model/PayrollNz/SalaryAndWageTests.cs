@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollNz;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 {
@@ -128,27 +131,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [Theory]
         [InlineData("Active", SalaryAndWage.StatusEnum.Active)]
         [InlineData("Pending", SalaryAndWage.StatusEnum.Pending)]
-        public void StatusEnum_ValidInput_Deserialises(string input, SalaryAndWage.StatusEnum expected)
+        public async Task StatusEnum_ValidInput_Deserialises(string input, SalaryAndWage.StatusEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<SalaryAndWage.StatusEnum>(response);
-
+            var actual = await deserializer.Deserialize<SalaryAndWage.StatusEnum>(response);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void StatusEnum_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task StatusEnum_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<SalaryAndWage.StatusEnum>(response);
-
+            var actual = await deserializer.Deserialize<SalaryAndWage.StatusEnum>(response);
             Assert.Equal(0, (int)actual);
         }
         /// <summary>
@@ -157,27 +162,29 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [Theory]
         [InlineData("Hourly", SalaryAndWage.PaymentTypeEnum.Hourly)]
         [InlineData("Salary", SalaryAndWage.PaymentTypeEnum.Salary)]
-        public void PaymentTypeEnum_ValidInput_Deserialises(string input, SalaryAndWage.PaymentTypeEnum expected)
+        public async Task PaymentTypeEnum_ValidInput_Deserialises(string input, SalaryAndWage.PaymentTypeEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var jsonContent = $@"""{input}""";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<SalaryAndWage.PaymentTypeEnum>(response);
-
-            Assert.Equal(expected, actual);        
+            var actual = await deserializer.Deserialize<SalaryAndWage.PaymentTypeEnum>(response);
+            Assert.Equal(expected, actual);      
         }
 
         [Fact]
-        public void PaymentTypeEnum_NullInput_Deserialises(){
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+        public async Task PaymentTypeEnum_NullInput_Deserialises(){
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<SalaryAndWage.PaymentTypeEnum>(response);
-
+            var actual = await deserializer.Deserialize<SalaryAndWage.PaymentTypeEnum>(response);
             Assert.Equal(0, (int)actual);
         }
 

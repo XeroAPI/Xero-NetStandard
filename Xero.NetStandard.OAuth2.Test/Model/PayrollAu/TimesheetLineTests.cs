@@ -15,10 +15,14 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
@@ -41,21 +45,22 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'NumberOfUnits'
         /// </summary>
         [Fact]
-        public void NumberOfUnitsTest()
+        public async Task NumberOfUnitsTest()
         {
-            var response = new RestSharp.RestResponse();
-            response.Content = $@"{{
+            var jsonContent = $@"{{
                 ""NumberOfUnits"": [
                     20.00,
                     20,
                     123.123123
                 ]
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<TimesheetLine>(response);
-
+            var actual = await deserializer.Deserialize<TimesheetLine>(response);
             Assert.Equal(20f, actual.NumberOfUnits[0]);
             Assert.Equal(20f, actual.NumberOfUnits[1]);
             Assert.Equal(123.123123, actual.NumberOfUnits[2], precision: 6);

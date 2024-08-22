@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -50,15 +53,20 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [Theory]
         [InlineData("AUD", CurrencyCode.AUD)]
         [InlineData("NZD", CurrencyCode.NZD)]
-        public void CurrencyCode_ValidInput_Deserialises(string input, CurrencyCode expected)
+        public async Task CurrencyCode_ValidInput_Deserialises(string input, CurrencyCode expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"""{input}""";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            string jsonContent = $@"""{input}""";
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<CurrencyCode>(response);
-
+            var actual = await deserializer.Deserialize<CurrencyCode>(response);
+            
             Assert.Equal(expected, actual);
         }
 
@@ -66,15 +74,20 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test that CurrencyCode can be deserialised from null into 0
         /// </summary>
         [Fact]
-        public void CurrencyCode_NullInput_Deserialises()
+        public async Task CurrencyCode_NullInput_Deserialises()
         {
-            var response = new RestResponse();
-            response.Content = "null";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            string jsonContent = "null";
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<CurrencyCode>(response);
-
+            var actual = await deserializer.Deserialize<CurrencyCode>(response);
+            
             Assert.Equal(0, (int)actual);
         }
 

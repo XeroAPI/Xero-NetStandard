@@ -15,12 +15,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -51,59 +54,73 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [InlineData("PENDING", Statement.StatusEnum.PENDING)]
         [InlineData("REJECTED", Statement.StatusEnum.REJECTED)]
         [InlineData("DELIVERED", Statement.StatusEnum.DELIVERED)]
-        public void Status_ValidInput_Deserialises(string input, Statement.StatusEnum expected)
+        public async Task Status_ValidInput_Deserialises(string input, Statement.StatusEnum expected)
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            string jsonContent = $@"{{
                 ""Status"": ""{input}""
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Statement>(response);
-
+            var actual = await deserializer.Deserialize<Statement>(response);
+            
             Assert.Equal(expected, actual.Status);
         }
         /// <summary>
         /// Test the property 'Status' deserialises from null input to 0
         /// </summary>
         [Fact]
-        public void Status_NullInput_DeserialisesTo0()
+        public async Task Status_NullInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            string jsonContent = $@"{{
                 ""Status"": null
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Statement>(response);
-
-            Assert.Equal(0, (int) actual.Status);
+            var actual = await deserializer.Deserialize<Statement>(response);
+            
+            Assert.Equal(0, (int)actual.Status);
         }
         /// <summary>
         /// Test the property 'Status' deserialises to 0 when not present
         /// </summary>
         [Fact]
-        public void Status_NotPresentInInput_DeserialisesTo0()
+        public async Task Status_NotPresentInInput_DeserialisesTo0()
         {
-            var response = new RestResponse();
-            response.Content = "{}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            string jsonContent = "{}";
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Statement>(response);
-
-            Assert.Equal(0, (int) actual.Status);
+            var actual = await deserializer.Deserialize<Statement>(response);
+            
+            Assert.Equal(0, (int)actual.Status);
         }
         /// <summary>
         /// Test the property 'Errors' deserialises from an array of Error objects
         /// </summary>
         [Fact]
-        public void Errors_GivenValidInput_Deserialises()
+        public async Task Errors_GivenValidInput_Deserialises()
         {
-            var response = new RestResponse();
-            response.Content = $@"{{
+            string jsonContent = $@"{{
                 ""Errors"": [
                     {{
                         ""type"": ""invalid-end-balance"",
@@ -113,11 +130,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
                     }}
                 ]
             }}";
-            response.StatusCode = System.Net.HttpStatusCode.OK;
-
+            
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            
+            response.EnsureSuccessStatusCode();
+            
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = deserializer.Deserialize<Statement>(response);
-
+            var actual = await deserializer.Deserialize<Statement>(response);
+            
             Assert.Single(actual.Errors);
             var error = actual.Errors.First();
 
