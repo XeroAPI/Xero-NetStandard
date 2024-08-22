@@ -12,19 +12,12 @@
 using Xunit;
 
 using System;
-using System.Linq;
-using System.IO;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using Xero.NetStandard.OAuth2.Api;
 using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {

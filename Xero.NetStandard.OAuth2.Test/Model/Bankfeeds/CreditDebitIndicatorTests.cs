@@ -86,7 +86,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             response.EnsureSuccessStatusCode();
             
             var deserializer = new CustomJsonCodec(new Configuration());
-            var actual = await deserializer.Deserialize<CountryCode>(response);
+            var actual = await deserializer.Deserialize<CreditDebitIndicator>(response);
             
             Assert.Equal(0, (int)actual);
         }

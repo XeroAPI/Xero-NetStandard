@@ -96,17 +96,5 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Cookies to be sent along with the request.
         /// </summary>
         List<Cookie> Cookies { get; set; }
-
-        /// <summary>
-        /// Gets certificate collection to be sent with requests.
-        /// </summary>
-        /// <value>X509 Certificate collection.</value>
-        X509CertificateCollection ClientCertificates { get; }
-
-        /// <summary>
-        /// Gets the proxy.
-        /// </summary>
-        /// <value>Proxy.</value>
-        WebProxy Proxy { get; }
     }
 }

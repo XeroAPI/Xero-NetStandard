@@ -129,7 +129,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>Object representation of the JSON string.</returns>
         internal async Task<object> Deserialize(HttpResponseMessage response, Type type)
         {
-            IList<string> headers = response.Headers.Select(x => x.Key + "=" + x.Value).ToList();
+            IList<string> headers = response.Headers.Select(x => $"{x.Key}={x.Value}").ToList();
 
             if (type == typeof(byte[])) // return byte array
             {
@@ -237,43 +237,6 @@ namespace Xero.NetStandard.OAuth2.Client
         private readonly HttpClientHandler _httpClientHandler;
         private readonly HttpClient _httpClient;
         private readonly bool _disposeClient;
-
-        /// <summary>
-        /// Specifies the settings on a <see cref="JsonSerializer" /> object.
-        /// These settings can be adjusted to accommodate custom serialization rules.
-        /// </summary>
-        public JsonSerializerSettings SerializerSettings { get; set; } = new JsonSerializerSettings
-        {
-            // OpenAPI generated types generally hide default constructors.
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-            ContractResolver = new DefaultContractResolver
-            {
-                NamingStrategy = new DefaultNamingStrategy()
-                {
-                    OverrideSpecifiedNames = true
-                }
-            },
-            DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-            CheckAdditionalContent = false,
-            Culture = CultureInfo.InvariantCulture,
-            DateFormatHandling = DateFormatHandling.IsoDateFormat,
-            DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK",
-        	DateParseHandling = DateParseHandling.DateTime,
-            DefaultValueHandling = DefaultValueHandling.Include,
-        	FloatFormatHandling = FloatFormatHandling.String,
-            FloatParseHandling = FloatParseHandling.Double,
-            Formatting = Formatting.None,
-            MaxDepth = null,
-            MetadataPropertyHandling = MetadataPropertyHandling.Default,
-            MissingMemberHandling = MissingMemberHandling.Ignore,
-        	NullValueHandling = NullValueHandling.Include,
-            ObjectCreationHandling = ObjectCreationHandling.Auto,
-            PreserveReferencesHandling = PreserveReferencesHandling.None,
-            ReferenceLoopHandling = ReferenceLoopHandling.Error,
-        	StringEscapeHandling = StringEscapeHandling.Default,
-            TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
-            TypeNameHandling = TypeNameHandling.None
-        };
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" />, defaulting to the global configurations' base url.
@@ -482,7 +445,7 @@ namespace Xero.NetStandard.OAuth2.Client
                     }
                     else
                     {
-                        var serializer = new CustomJsonCodec(SerializerSettings, configuration);
+                        var serializer = new CustomJsonCodec(configuration);
                         request.Content = new StringContent(serializer.Serialize(options.Data), new UTF8Encoding(),
                             "application/json");
                     }
@@ -559,7 +522,7 @@ namespace Xero.NetStandard.OAuth2.Client
             IReadableConfiguration configuration,
             System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var deserializer = new CustomJsonCodec(SerializerSettings, configuration);
+            var deserializer = new CustomJsonCodec(configuration);
 
             var finalToken = cancellationToken;
 
@@ -567,18 +530,6 @@ namespace Xero.NetStandard.OAuth2.Client
             {
                 var tokenSource = new CancellationTokenSource(configuration.Timeout);
                 finalToken = CancellationTokenSource.CreateLinkedTokenSource(finalToken, tokenSource.Token).Token;
-            }
-
-            if (configuration.Proxy != null)
-            {
-                if(_httpClientHandler == null) throw new InvalidOperationException("Configuration `Proxy` not supported when the client is explicitly created without an HttpClientHandler, use the proper constructor.");
-                _httpClientHandler.Proxy = configuration.Proxy;
-            }
-
-            if (configuration.ClientCertificates != null)
-            {
-                if(_httpClientHandler == null) throw new InvalidOperationException("Configuration `ClientCertificates` not supported when the client is explicitly created without an HttpClientHandler, use the proper constructor.");
-                _httpClientHandler.ClientCertificates.AddRange(configuration.ClientCertificates);
             }
 
             var cookieContainer = req.Properties.ContainsKey("CookieContainer") ? req.Properties["CookieContainer"] as List<Cookie> : null;

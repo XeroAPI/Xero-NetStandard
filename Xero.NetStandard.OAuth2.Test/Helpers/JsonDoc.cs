@@ -78,7 +78,7 @@ namespace Xero.NetStandard.OAuth2.Test
             }
         }
 
-        public static void Assert<TModel, TProperty>(IJsonValue input, Func<TModel, TProperty> toProperty, TProperty shouldBe)
+        public static async Task Assert<TModel, TProperty>(IJsonValue input, Func<TModel, TProperty> toProperty, TProperty shouldBe)
         {
             HttpResponseMessage response;
             if (input is NotPresent)
@@ -103,7 +103,7 @@ namespace Xero.NetStandard.OAuth2.Test
             response.EnsureSuccessStatusCode();
             
             var deserializer = new CustomJsonCodec(new Configuration());
-            var output = deserializer.Deserialize<TModel>(response).Result;
+            var output = await deserializer.Deserialize<TModel>(response);
 
             Xunit.Assert.Equal(shouldBe, toProperty(output));
         }

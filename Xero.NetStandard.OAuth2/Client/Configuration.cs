@@ -199,9 +199,6 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         public virtual List<Cookie> Cookies { get; set; }
 
-        public X509CertificateCollection ClientCertificates { get; }
-        public WebProxy Proxy { get; }
-
         /// <summary>
         /// Gets the API key with prefix.
         /// </summary>
