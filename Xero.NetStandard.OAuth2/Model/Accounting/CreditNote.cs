@@ -217,9 +217,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string Reference { get; set; }
 
         /// <summary>
-        /// boolean to indicate if a credit note has been sent to a contact via  the Xero app (currently read only)
+        /// Boolean to set whether the credit note in the Xero app should be marked as “sent”. This can be set only on credit notes that have been approved
         /// </summary>
-        /// <value>boolean to indicate if a credit note has been sent to a contact via  the Xero app (currently read only)</value>
+        /// <value>Boolean to set whether the credit note in the Xero app should be marked as “sent”. This can be set only on credit notes that have been approved</value>
         [DataMember(Name="SentToContact", EmitDefaultValue=false)]
         public bool? SentToContact { get; private set; }
 
