@@ -25,7 +25,7 @@ namespace Xero.NetStandard.OAuth2.Api
 {
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    /// Represents a collection of functions to interact with the API endpoints test
     /// </summary>
     public interface IIdentityApiAsync : IApiAccessor
     {
@@ -84,7 +84,7 @@ namespace Xero.NetStandard.OAuth2.Api
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    /// Represents a collection of functions to interact with the API endpoints test
     /// </summary>
     public interface IIdentityApi : IIdentityApiAsync
     {
@@ -92,7 +92,7 @@ namespace Xero.NetStandard.OAuth2.Api
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    /// Represents a collection of functions to interact with the API endpoints test
     /// </summary>
     public partial class IdentityApi : IIdentityApi
     {
