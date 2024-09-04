@@ -25,7 +25,7 @@ namespace Xero.NetStandard.OAuth2.Api
 {
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints test
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public interface IAssetApiAsync : IApiAccessor
     {
@@ -206,7 +206,7 @@ namespace Xero.NetStandard.OAuth2.Api
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints test
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public interface IAssetApi : IAssetApiAsync
     {
@@ -214,7 +214,7 @@ namespace Xero.NetStandard.OAuth2.Api
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints test
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public partial class AssetApi : IAssetApi
     {

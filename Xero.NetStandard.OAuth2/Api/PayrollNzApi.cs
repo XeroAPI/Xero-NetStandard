@@ -25,7 +25,7 @@ namespace Xero.NetStandard.OAuth2.Api
 {
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints test
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public interface IPayrollNzApiAsync : IApiAccessor
     {
@@ -2118,7 +2118,7 @@ namespace Xero.NetStandard.OAuth2.Api
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints test
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public interface IPayrollNzApi : IPayrollNzApiAsync
     {
@@ -2126,7 +2126,7 @@ namespace Xero.NetStandard.OAuth2.Api
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints test
+    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public partial class PayrollNzApi : IPayrollNzApi
     {
