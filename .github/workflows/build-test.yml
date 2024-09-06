@@ -5,8 +5,6 @@ on:
       paths:
         - '**'
     push:
-      branches:
-        - master
 
 jobs:
     build-test-lint:
@@ -29,4 +27,3 @@ jobs:
 
             - name: Run Test
               run: dotnet test
-              
