@@ -24,6 +24,8 @@ jobs:
 
             - name: Build post generation
               run: dotnet build
+              working-directory: Xero-NetStandard
+
 
             - name: Run Test
               run: dotnet test
