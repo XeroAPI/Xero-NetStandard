@@ -7779,7 +7779,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -8791,7 +8791,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -9181,7 +9181,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -9831,7 +9831,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -10026,7 +10026,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -11410,7 +11410,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -16858,7 +16858,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (includeArchived != null)
             {
-              requestOptions.QueryParameters.Add("includeArchived", includeArchived.ToString());
+              requestOptions.QueryParameters.Add("includeArchived", includeArchived.ToString().ToLower());
             }
 
 
@@ -18855,13 +18855,13 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (includeArchived != null)
             {
-              requestOptions.QueryParameters.Add("includeArchived", includeArchived.ToString());
+              requestOptions.QueryParameters.Add("includeArchived", includeArchived.ToString().ToLower());
             }
 
 
             if (createdByMyApp != null)
             {
-              requestOptions.QueryParameters.Add("createdByMyApp", createdByMyApp.ToString());
+              requestOptions.QueryParameters.Add("createdByMyApp", createdByMyApp.ToString().ToLower());
             }
 
 
@@ -19439,7 +19439,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (paymentsOnly != null)
             {
-              requestOptions.QueryParameters.Add("paymentsOnly", paymentsOnly.ToString());
+              requestOptions.QueryParameters.Add("paymentsOnly", paymentsOnly.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -24689,6 +24689,7 @@ namespace Xero.NetStandard.OAuth2.Api
                     }
                 }
             }
+                
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("xero-tenant-id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
@@ -25132,7 +25133,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (paymentsOnly != null)
             {
-              requestOptions.QueryParameters.Add("paymentsOnly", paymentsOnly.ToString());
+              requestOptions.QueryParameters.Add("paymentsOnly", paymentsOnly.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -25484,7 +25485,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (includeArchived != null)
             {
-              requestOptions.QueryParameters.Add("includeArchived", includeArchived.ToString());
+              requestOptions.QueryParameters.Add("includeArchived", includeArchived.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -27571,7 +27572,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -27673,7 +27674,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -27766,7 +27767,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -27961,7 +27962,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -28065,7 +28066,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
 
@@ -28258,7 +28259,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
