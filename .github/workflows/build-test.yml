@@ -29,3 +29,4 @@ jobs:
 
             - name: Run Test
               run: dotnet test
+              working-directory: Xero-NetStandard
