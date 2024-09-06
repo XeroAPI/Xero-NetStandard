@@ -1,0 +1,24 @@
+name: Dotnet Build, Test and Deploy
+
+on:
+    push
+
+jobs:
+    build-test-lint:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Checkout Xero-NetStandard repo
+              uses: actions/checkout@v4
+              with:
+                repository: XeroAPI/Xero-NetStandard
+                path: Xero-NetStandard
+            
+            - name: Set up .NET environment
+              uses: actions/setup-dotnet@v4
+              with: 
+                dotnet-version: '8'
+
+            - name: Build post generation
+              run: dotnet build
+              working-directory: Xero-NetStandard
