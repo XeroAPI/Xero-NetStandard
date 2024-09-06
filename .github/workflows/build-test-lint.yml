@@ -1,4 +1,4 @@
-name: Dotnet Build, Test
+name: Dotnet Build, Lint and Test
 
 on:
     push:
