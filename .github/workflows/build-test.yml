@@ -1,9 +1,12 @@
-name: Dotnet Build, Test and Deploy
+name: Dotnet Build, Test
 
 on:
+    pull_request:
+      paths:
+        - '**'
     push:
-    repository_dispatch:
-        types: [trigger-from-public-repo]
+      branches:
+        - master
 
 jobs:
     build-test-lint:
@@ -23,4 +26,6 @@ jobs:
 
             - name: Build post generation
               run: dotnet build
-              working-directory: Xero-NetStandard
+
+            - name: Run Test
+              run: dotnet test
