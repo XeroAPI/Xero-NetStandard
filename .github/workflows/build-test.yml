@@ -17,10 +17,14 @@ jobs:
             - name: Set up .NET environment
               uses: actions/setup-dotnet@v4
               with: 
-                dotnet-version: '8'
+                dotnet-version: '3.1'
 
             - name: Build post generation
               run: dotnet build
+              working-directory: Xero-NetStandard
+
+            - name: Validate Lint
+              run: dotnet format --verify-no-changes
               working-directory: Xero-NetStandard
 
 
