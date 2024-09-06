@@ -1,7 +1,9 @@
 name: Dotnet Build, Test and Deploy
 
 on:
-    push
+    push:
+    repository_dispatch:
+        types: [trigger-from-public-repo]
 
 jobs:
     build-test-lint:
