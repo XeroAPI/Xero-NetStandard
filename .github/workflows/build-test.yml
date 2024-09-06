@@ -1,9 +1,6 @@
 name: Dotnet Build, Test
 
 on:
-    pull_request:
-      paths:
-        - '**'
     push:
 
 jobs:
