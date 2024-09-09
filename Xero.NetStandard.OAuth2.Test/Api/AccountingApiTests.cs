@@ -87,7 +87,6 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       var response = await instance.CreateAccountAsync(accessToken, xeroTenantId, account);//.ConfigureAwait(false);
       Assert.IsType<Accounts>(response);
     }
-    
 
     // /// <summary>
     // /// Test CreateAccountAttachmentByFileName
