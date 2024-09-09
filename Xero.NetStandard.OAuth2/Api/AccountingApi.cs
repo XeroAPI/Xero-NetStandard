@@ -8154,7 +8154,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summarizeErrors != null)
             {
-              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString());
+              requestOptions.QueryParameters.Add("summarizeErrors", summarizeErrors.ToString().ToLower());
             }
 
             if (xeroTenantId != null)

@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>CIS Deduction rate for the organisation</value>
         [DataMember(Name="Rate", EmitDefaultValue=false)]
-        public decimal? Rate { get; private set; }
+        public double? Rate { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object

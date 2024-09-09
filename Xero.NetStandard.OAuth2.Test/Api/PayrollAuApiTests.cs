@@ -77,9 +77,13 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreateEmployeeTest()
         {
-            List<Employee> employee =
-                new List<Employee> { new Employee() };
-            var response = await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employee);
+            List<Employee> employees = new List<Employee> { new Employee()
+            {
+                FirstName = "Adam",
+                LastName = "Adamson",
+                DateOfBirth = new DateTime(2000, 10, 10)
+            }};
+            var response = await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employees);
             Assert.IsType<Employees>(response);
         }
         
@@ -112,7 +116,10 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreatePayRunTest()
         {
-            List<PayRun> payRun = new List<PayRun> { new PayRun() };
+            List<PayRun> payRun = new List<PayRun> { new PayRun()
+            {
+                PayrollCalendarID = Guid.Parse("00000000-0000-0000-0000-000000000000")
+            }};
             var response = await instance.CreatePayRunAsync(accessToken, xeroTenantId, payRun);
             Assert.IsType<PayRuns>(response);
         }
@@ -134,7 +141,10 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreateSuperfundTest()
         {
-            List<SuperFund> superFund = new List<SuperFund> { new SuperFund() };
+            List<SuperFund> superFund = new List<SuperFund> { new SuperFund()
+            {
+                Type = SuperFundType.REGULATED
+            }};
             var response = await instance.CreateSuperfundAsync(accessToken, xeroTenantId, superFund);
             Assert.IsType<SuperFunds>(response);
         }
@@ -145,7 +155,14 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreateTimesheetTest()
         {
-            List<Timesheet> timesheet = new List<Timesheet> { new Timesheet() };
+            var startDate = new DateTime(2020, 10, 23);
+            var endDate = new DateTime(2020, 10, 30);
+            List<Timesheet> timesheet = new List<Timesheet> { new Timesheet()
+            {
+                EmployeeID = Guid.Parse("00000000-0000-0000-0000-000000000000"),
+                StartDate = startDate,
+                EndDate = endDate,
+            }};
             var response = await instance.CreateTimesheetAsync(accessToken, xeroTenantId, timesheet);
             Assert.IsType<Timesheets>(response);
         }
