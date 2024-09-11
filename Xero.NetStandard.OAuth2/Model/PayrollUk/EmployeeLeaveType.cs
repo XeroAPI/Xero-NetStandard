@@ -113,6 +113,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         public double? RateAccruedHourly { get; set; }
 
         /// <summary>
+        /// The date when an employee becomes entitled to their accrual. Only applicable when scheduleOfAccrual is \&quot;OnAnniversaryDate\&quot;
+        /// </summary>
+        /// <value>The date when an employee becomes entitled to their accrual. Only applicable when scheduleOfAccrual is \&quot;OnAnniversaryDate\&quot;</value>
+        [DataMember(Name="scheduleOfAccrualDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? ScheduleOfAccrualDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -126,6 +134,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("  MaximumToAccrue: ").Append(MaximumToAccrue).Append("\n");
             sb.Append("  OpeningBalance: ").Append(OpeningBalance).Append("\n");
             sb.Append("  RateAccruedHourly: ").Append(RateAccruedHourly).Append("\n");
+            sb.Append("  ScheduleOfAccrualDate: ").Append(ScheduleOfAccrualDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -188,6 +197,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                     this.RateAccruedHourly == input.RateAccruedHourly ||
                     (this.RateAccruedHourly != null &&
                     this.RateAccruedHourly.Equals(input.RateAccruedHourly))
+                ) && 
+                (
+                    this.ScheduleOfAccrualDate == input.ScheduleOfAccrualDate ||
+                    (this.ScheduleOfAccrualDate != null &&
+                    this.ScheduleOfAccrualDate.Equals(input.ScheduleOfAccrualDate))
                 );
         }
 
@@ -211,6 +225,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                     hashCode = hashCode * 59 + this.OpeningBalance.GetHashCode();
                 if (this.RateAccruedHourly != null)
                     hashCode = hashCode * 59 + this.RateAccruedHourly.GetHashCode();
+                if (this.ScheduleOfAccrualDate != null)
+                    hashCode = hashCode * 59 + this.ScheduleOfAccrualDate.GetHashCode();
                 return hashCode;
             }
         }
