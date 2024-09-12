@@ -4970,7 +4970,7 @@ namespace Example
             employeeLeaveType.LeaveTypeID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             employeeLeaveType.ScheduleOfAccrual = EmployeeLeaveType.ScheduleOfAccrualEnum.BeginningOfCalendarYear;
             employeeLeaveType.OpeningBalance = 5.25;
-            employeeLeaveType.ScheduleOfAccrualDate = ;
+            employeeLeaveType.ScheduleOfAccrualDate = 2024-05-01;
             
             try {
                 var result = await apiInstance.CreateEmployeeLeaveTypeAsync(accessToken, xeroTenantId, employeeID, employeeLeaveType, idempotencyKey);
