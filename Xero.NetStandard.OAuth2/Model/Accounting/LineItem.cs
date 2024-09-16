@@ -30,6 +30,51 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     [DataContract]
     public partial class LineItem :  IEquatable<LineItem>, IValidatableObject
     {
+        /// <summary>
+        /// The type of taxability
+        /// </summary>
+        /// <value>The type of taxability</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum TaxabilityEnum
+        {
+            /// <summary>
+            /// Enum TAXABLE for value: TAXABLE
+            /// </summary>
+            [EnumMember(Value = "TAXABLE")]
+            TAXABLE = 1,
+
+            /// <summary>
+            /// Enum NONTAXABLE for value: NON_TAXABLE
+            /// </summary>
+            [EnumMember(Value = "NON_TAXABLE")]
+            NONTAXABLE = 2,
+
+            /// <summary>
+            /// Enum EXEMPT for value: EXEMPT
+            /// </summary>
+            [EnumMember(Value = "EXEMPT")]
+            EXEMPT = 3,
+
+            /// <summary>
+            /// Enum PARTTAXABLE for value: PART_TAXABLE
+            /// </summary>
+            [EnumMember(Value = "PART_TAXABLE")]
+            PARTTAXABLE = 4,
+
+            /// <summary>
+            /// Enum NOTAPPLICABLE for value: NOT_APPLICABLE
+            /// </summary>
+            [EnumMember(Value = "NOT_APPLICABLE")]
+            NOTAPPLICABLE = 5
+
+        }
+
+        /// <summary>
+        /// The type of taxability
+        /// </summary>
+        /// <value>The type of taxability</value>
+        [DataMember(Name="Taxability", EmitDefaultValue=false)]
+        public TaxabilityEnum Taxability { get; set; }
         
         /// <summary>
         /// LineItem unique ID
@@ -136,6 +181,20 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public Guid? RepeatingInvoiceID { get; set; }
 
         /// <summary>
+        /// The ID of the sales tax code
+        /// </summary>
+        /// <value>The ID of the sales tax code</value>
+        [DataMember(Name="SalesTaxCodeId", EmitDefaultValue=false)]
+        public decimal? SalesTaxCodeId { get; set; }
+
+        /// <summary>
+        /// An array of tax components defined for this line item
+        /// </summary>
+        /// <value>An array of tax components defined for this line item</value>
+        [DataMember(Name="TaxBreakdown", EmitDefaultValue=false)]
+        public List<TaxBreakdownComponent> TaxBreakdown { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -158,6 +217,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  DiscountRate: ").Append(DiscountRate).Append("\n");
             sb.Append("  DiscountAmount: ").Append(DiscountAmount).Append("\n");
             sb.Append("  RepeatingInvoiceID: ").Append(RepeatingInvoiceID).Append("\n");
+            sb.Append("  Taxability: ").Append(Taxability).Append("\n");
+            sb.Append("  SalesTaxCodeId: ").Append(SalesTaxCodeId).Append("\n");
+            sb.Append("  TaxBreakdown: ").Append(TaxBreakdown).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -267,6 +329,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.RepeatingInvoiceID == input.RepeatingInvoiceID ||
                     (this.RepeatingInvoiceID != null &&
                     this.RepeatingInvoiceID.Equals(input.RepeatingInvoiceID))
+                ) && 
+                (
+                    this.Taxability == input.Taxability ||
+                    this.Taxability.Equals(input.Taxability)
+                ) && 
+                (
+                    this.SalesTaxCodeId == input.SalesTaxCodeId ||
+                    (this.SalesTaxCodeId != null &&
+                    this.SalesTaxCodeId.Equals(input.SalesTaxCodeId))
+                ) && 
+                (
+                    this.TaxBreakdown == input.TaxBreakdown ||
+                    this.TaxBreakdown != null &&
+                    input.TaxBreakdown != null &&
+                    this.TaxBreakdown.SequenceEqual(input.TaxBreakdown)
                 );
         }
 
@@ -309,6 +386,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.DiscountAmount.GetHashCode();
                 if (this.RepeatingInvoiceID != null)
                     hashCode = hashCode * 59 + this.RepeatingInvoiceID.GetHashCode();
+                hashCode = hashCode * 59 + this.Taxability.GetHashCode();
+                if (this.SalesTaxCodeId != null)
+                    hashCode = hashCode * 59 + this.SalesTaxCodeId.GetHashCode();
+                if (this.TaxBreakdown != null)
+                    hashCode = hashCode * 59 + this.TaxBreakdown.GetHashCode();
                 return hashCode;
             }
         }
