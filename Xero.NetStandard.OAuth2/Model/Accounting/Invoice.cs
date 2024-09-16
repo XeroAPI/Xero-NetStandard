@@ -407,6 +407,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
+        /// An array of addresses used to auto calculate sales tax
+        /// </summary>
+        /// <value>An array of addresses used to auto calculate sales tax</value>
+        [DataMember(Name="InvoiceAddresses", EmitDefaultValue=false)]
+        public List<InvoiceAddress> InvoiceAddresses { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -454,6 +461,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  StatusAttributeString: ").Append(StatusAttributeString).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
+            sb.Append("  InvoiceAddresses: ").Append(InvoiceAddresses).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -691,6 +699,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Warnings != null &&
                     input.Warnings != null &&
                     this.Warnings.SequenceEqual(input.Warnings)
+                ) && 
+                (
+                    this.InvoiceAddresses == input.InvoiceAddresses ||
+                    this.InvoiceAddresses != null &&
+                    input.InvoiceAddresses != null &&
+                    this.InvoiceAddresses.SequenceEqual(input.InvoiceAddresses)
                 );
         }
 
@@ -779,6 +793,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 if (this.Warnings != null)
                     hashCode = hashCode * 59 + this.Warnings.GetHashCode();
+                if (this.InvoiceAddresses != null)
+                    hashCode = hashCode * 59 + this.InvoiceAddresses.GetHashCode();
                 return hashCode;
             }
         }
