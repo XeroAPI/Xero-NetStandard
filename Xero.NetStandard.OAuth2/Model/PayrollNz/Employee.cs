@@ -57,6 +57,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// <value>The employee’s gender</value>
         [DataMember(Name="gender", EmitDefaultValue=false)]
         public GenderEnum Gender { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Employee" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public Employee() 
+        { 
+        }
         
         /// <summary>
         /// Xero unique identifier for the employee
