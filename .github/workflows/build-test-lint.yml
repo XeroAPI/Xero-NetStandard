@@ -27,12 +27,12 @@ jobs:
               run: |
                 dotnet list package --outdated
               working-directory: Xero-NetStandard
-              
+
             - name: Check for Vulnerable Packages
               run: |
+                set -e
                 dotnet list package --vulnerable
               working-directory: Xero-NetStandard
-              continue-on-error: false
 
 
 
