@@ -30,7 +30,7 @@ jobs:
 
             - name: Check for Vulnerable Packages
               run: |
-                dotnet list package --outdated
+                dotnet list package --vulnerable
               working-directory: Xero-NetStandard
 
             # - name: Validate Lint
