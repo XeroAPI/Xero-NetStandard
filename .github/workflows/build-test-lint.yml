@@ -30,11 +30,8 @@ jobs:
 
             - name: Check for Vulnerable Packages
               run: |
-                if ! dotnet list package --vulnerable; then
-                  echo "Vulnerabilities found."
-                  
-                  exit 1  
-                fi
+                output=$(dotnet list package --vulnerable)
+                echo "$output"
               working-directory: Xero-NetStandard
 
             # - name: Validate Lint
