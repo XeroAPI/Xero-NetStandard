@@ -32,6 +32,7 @@ jobs:
               run: |
                 if ! dotnet list package --vulnerable; then
                   echo "Vulnerabilities found."
+                  
                   exit 1  
                 fi
               working-directory: Xero-NetStandard
