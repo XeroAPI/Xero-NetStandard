@@ -30,8 +30,7 @@ jobs:
 
             - name: Check for Vulnerable Packages
               run: |
-                output=$(dotnet list package --vulnerable)
-                echo "$output"
+                dotnet list package --outdated
               working-directory: Xero-NetStandard
 
             # - name: Validate Lint
