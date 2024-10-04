@@ -23,6 +23,11 @@ jobs:
               run: dotnet build
               working-directory: Xero-NetStandard
 
+            - name: Check for Outdated Packages
+              run: |
+                dotnet list package --outdated
+              working-directory: Xero-NetStandard
+
             # - name: Validate Lint
             #   run: dotnet format --verify-no-changes
             #   working-directory: Xero-NetStandard
