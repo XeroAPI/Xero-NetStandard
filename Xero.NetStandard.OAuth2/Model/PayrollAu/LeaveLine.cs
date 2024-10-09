@@ -28,57 +28,57 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeaveLine
     /// </summary>
     [DataContract]
-    public partial class LeaveLine :  IEquatable<LeaveLine>, IValidatableObject
+    public partial class LeaveLine : IEquatable<LeaveLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets CalculationType
         /// </summary>
-        [DataMember(Name="CalculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "CalculationType", EmitDefaultValue = false)]
         public LeaveLineCalculationType CalculationType { get; set; }
         /// <summary>
         /// Gets or Sets EntitlementFinalPayPayoutType
         /// </summary>
-        [DataMember(Name="EntitlementFinalPayPayoutType", EmitDefaultValue=false)]
+        [DataMember(Name = "EntitlementFinalPayPayoutType", EmitDefaultValue = false)]
         public EntitlementFinalPayPayoutType EntitlementFinalPayPayoutType { get; set; }
         /// <summary>
         /// Gets or Sets EmploymentTerminationPaymentType
         /// </summary>
-        [DataMember(Name="EmploymentTerminationPaymentType", EmitDefaultValue=false)]
+        [DataMember(Name = "EmploymentTerminationPaymentType", EmitDefaultValue = false)]
         public EmploymentTerminationPaymentType EmploymentTerminationPaymentType { get; set; }
-        
+
         /// <summary>
         /// Xero leave type identifier
         /// </summary>
         /// <value>Xero leave type identifier</value>
-        [DataMember(Name="LeaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// amount of leave line
         /// </summary>
         /// <value>amount of leave line</value>
-        [DataMember(Name="IncludeSuperannuationGuaranteeContribution", EmitDefaultValue=false)]
+        [DataMember(Name = "IncludeSuperannuationGuaranteeContribution", EmitDefaultValue = false)]
         public bool? IncludeSuperannuationGuaranteeContribution { get; set; }
 
         /// <summary>
         /// Number of units for leave line.
         /// </summary>
         /// <value>Number of units for leave line.</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
         /// Hours of leave accrued each year
         /// </summary>
         /// <value>Hours of leave accrued each year</value>
-        [DataMember(Name="AnnualNumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "AnnualNumberOfUnits", EmitDefaultValue = false)]
         public decimal? AnnualNumberOfUnits { get; set; }
 
         /// <summary>
         /// Normal ordinary earnings number of units for leave line.
         /// </summary>
         /// <value>Normal ordinary earnings number of units for leave line.</value>
-        [DataMember(Name="FullTimeNumberOfUnitsPerPeriod", EmitDefaultValue=false)]
+        [DataMember(Name = "FullTimeNumberOfUnitsPerPeriod", EmitDefaultValue = false)]
         public decimal? FullTimeNumberOfUnitsPerPeriod { get; set; }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -130,39 +130,39 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)
-                ) && 
+                ) &&
                 (
                     this.EntitlementFinalPayPayoutType == input.EntitlementFinalPayPayoutType ||
                     this.EntitlementFinalPayPayoutType.Equals(input.EntitlementFinalPayPayoutType)
-                ) && 
+                ) &&
                 (
                     this.EmploymentTerminationPaymentType == input.EmploymentTerminationPaymentType ||
                     this.EmploymentTerminationPaymentType.Equals(input.EmploymentTerminationPaymentType)
-                ) && 
+                ) &&
                 (
                     this.IncludeSuperannuationGuaranteeContribution == input.IncludeSuperannuationGuaranteeContribution ||
                     (this.IncludeSuperannuationGuaranteeContribution != null &&
                     this.IncludeSuperannuationGuaranteeContribution.Equals(input.IncludeSuperannuationGuaranteeContribution))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.AnnualNumberOfUnits == input.AnnualNumberOfUnits ||
                     (this.AnnualNumberOfUnits != null &&
                     this.AnnualNumberOfUnits.Equals(input.AnnualNumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.FullTimeNumberOfUnitsPerPeriod == input.FullTimeNumberOfUnitsPerPeriod ||
                     (this.FullTimeNumberOfUnitsPerPeriod != null &&

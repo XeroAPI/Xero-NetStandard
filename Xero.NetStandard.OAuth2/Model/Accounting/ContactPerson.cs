@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ContactPerson
     /// </summary>
     [DataContract]
-    public partial class ContactPerson :  IEquatable<ContactPerson>, IValidatableObject
+    public partial class ContactPerson : IEquatable<ContactPerson>, IValidatableObject
     {
-        
+
         /// <summary>
         /// First name of person
         /// </summary>
         /// <value>First name of person</value>
-        [DataMember(Name="FirstName", EmitDefaultValue=false)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Last name of person
         /// </summary>
         /// <value>Last name of person</value>
-        [DataMember(Name="LastName", EmitDefaultValue=false)]
+        [DataMember(Name = "LastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Email address of person
         /// </summary>
         /// <value>Email address of person</value>
-        [DataMember(Name="EmailAddress", EmitDefaultValue=false)]
+        [DataMember(Name = "EmailAddress", EmitDefaultValue = false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// boolean to indicate whether contact should be included on emails with invoices etc.
         /// </summary>
         /// <value>boolean to indicate whether contact should be included on emails with invoices etc.</value>
-        [DataMember(Name="IncludeInEmails", EmitDefaultValue=false)]
+        [DataMember(Name = "IncludeInEmails", EmitDefaultValue = false)]
         public bool? IncludeInEmails { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
-                ) && 
+                ) &&
                 (
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
-                ) && 
+                ) &&
                 (
                     this.EmailAddress == input.EmailAddress ||
                     (this.EmailAddress != null &&
                     this.EmailAddress.Equals(input.EmailAddress))
-                ) && 
+                ) &&
                 (
                     this.IncludeInEmails == input.IncludeInEmails ||
                     (this.IncludeInEmails != null &&

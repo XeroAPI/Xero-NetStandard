@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
     /// AccessToken
     /// </summary>
     [DataContract]
-    public partial class AccessToken :  IEquatable<AccessToken>, IValidatableObject
+    public partial class AccessToken : IEquatable<AccessToken>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero unique identifier
         /// </summary>
         /// <value>Xero unique identifier</value>
-        [DataMember(Name="id_token", EmitDefaultValue=false)]
+        [DataMember(Name = "id_token", EmitDefaultValue = false)]
         public string IdToken { get; set; }
 
         /// <summary>
         /// access token provided during authentication flow
         /// </summary>
         /// <value>access token provided during authentication flow</value>
-        [DataMember(Name="access_token", EmitDefaultValue=false)]
+        [DataMember(Name = "access_token", EmitDefaultValue = false)]
         public string _AccessToken { get; set; }
 
         /// <summary>
         /// time in seconds until access token expires.
         /// </summary>
         /// <value>time in seconds until access token expires.</value>
-        [DataMember(Name="expires_in", EmitDefaultValue=false)]
+        [DataMember(Name = "expires_in", EmitDefaultValue = false)]
         public long? ExpiresIn { get; set; }
 
         /// <summary>
         /// type of token i.e. Bearer
         /// </summary>
         /// <value>type of token i.e. Bearer</value>
-        [DataMember(Name="token_type", EmitDefaultValue=false)]
+        [DataMember(Name = "token_type", EmitDefaultValue = false)]
         public string TokenType { get; set; }
 
         /// <summary>
         /// token used to refresh an expired access token
         /// </summary>
         /// <value>token used to refresh an expired access token</value>
-        [DataMember(Name="refresh_token", EmitDefaultValue=false)]
+        [DataMember(Name = "refresh_token", EmitDefaultValue = false)]
         public string RefreshToken { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.IdToken == input.IdToken ||
                     (this.IdToken != null &&
                     this.IdToken.Equals(input.IdToken))
-                ) && 
+                ) &&
                 (
                     this._AccessToken == input._AccessToken ||
                     (this._AccessToken != null &&
                     this._AccessToken.Equals(input._AccessToken))
-                ) && 
+                ) &&
                 (
                     this.ExpiresIn == input.ExpiresIn ||
                     (this.ExpiresIn != null &&
                     this.ExpiresIn.Equals(input.ExpiresIn))
-                ) && 
+                ) &&
                 (
                     this.TokenType == input.TokenType ||
                     (this.TokenType != null &&
                     this.TokenType.Equals(input.TokenType))
-                ) && 
+                ) &&
                 (
                     this.RefreshToken == input.RefreshToken ||
                     (this.RefreshToken != null &&

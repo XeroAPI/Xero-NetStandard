@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// AccountsReceivable
     /// </summary>
     [DataContract]
-    public partial class AccountsReceivable :  IEquatable<AccountsReceivable>, IValidatableObject
+    public partial class AccountsReceivable : IEquatable<AccountsReceivable>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Outstanding
         /// </summary>
-        [DataMember(Name="Outstanding", EmitDefaultValue=false)]
+        [DataMember(Name = "Outstanding", EmitDefaultValue = false)]
         public decimal? Outstanding { get; set; }
 
         /// <summary>
         /// Gets or Sets Overdue
         /// </summary>
-        [DataMember(Name="Overdue", EmitDefaultValue=false)]
+        [DataMember(Name = "Overdue", EmitDefaultValue = false)]
         public decimal? Overdue { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Outstanding == input.Outstanding ||
                     (this.Outstanding != null &&
                     this.Outstanding.Equals(input.Outstanding))
-                ) && 
+                ) &&
                 (
                     this.Overdue == input.Overdue ||
                     (this.Overdue != null &&

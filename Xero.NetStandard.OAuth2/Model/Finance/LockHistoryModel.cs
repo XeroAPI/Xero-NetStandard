@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// LockHistoryModel
     /// </summary>
     [DataContract]
-    public partial class LockHistoryModel :  IEquatable<LockHistoryModel>, IValidatableObject
+    public partial class LockHistoryModel : IEquatable<LockHistoryModel>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Date the account hard lock was set
         /// </summary>
         /// <value>Date the account hard lock was set</value>
-        [DataMember(Name="hardLockDate", EmitDefaultValue=false)]
+        [DataMember(Name = "hardLockDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? HardLockDate { get; set; }
 
@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Date the account soft lock was set
         /// </summary>
         /// <value>Date the account soft lock was set</value>
-        [DataMember(Name="softLockDate", EmitDefaultValue=false)]
+        [DataMember(Name = "softLockDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? SoftLockDate { get; set; }
 
@@ -51,7 +51,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// The system date time that the lock was updated
         /// </summary>
         /// <value>The system date time that the lock was updated</value>
-        [DataMember(Name="updatedDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedDateUtc", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUtc { get; set; }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -98,17 +98,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.HardLockDate == input.HardLockDate ||
                     (this.HardLockDate != null &&
                     this.HardLockDate.Equals(input.HardLockDate))
-                ) && 
+                ) &&
                 (
                     this.SoftLockDate == input.SoftLockDate ||
                     (this.SoftLockDate != null &&
                     this.SoftLockDate.Equals(input.SoftLockDate))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUtc == input.UpdatedDateUtc ||
                     (this.UpdatedDateUtc != null &&

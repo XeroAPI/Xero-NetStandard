@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Calendar type of the pay run
     /// </summary>
     /// <value>Calendar type of the pay run</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum CalendarType
     {
         /// <summary>

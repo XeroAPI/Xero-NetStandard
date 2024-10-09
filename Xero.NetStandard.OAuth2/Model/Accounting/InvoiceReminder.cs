@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// InvoiceReminder
     /// </summary>
     [DataContract]
-    public partial class InvoiceReminder :  IEquatable<InvoiceReminder>, IValidatableObject
+    public partial class InvoiceReminder : IEquatable<InvoiceReminder>, IValidatableObject
     {
-        
+
         /// <summary>
         /// setting for on or off
         /// </summary>
         /// <value>setting for on or off</value>
-        [DataMember(Name="Enabled", EmitDefaultValue=false)]
+        [DataMember(Name = "Enabled", EmitDefaultValue = false)]
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Enabled == input.Enabled ||
                     (this.Enabled != null &&

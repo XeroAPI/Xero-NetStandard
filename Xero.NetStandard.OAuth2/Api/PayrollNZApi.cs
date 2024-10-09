@@ -2136,7 +2136,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// Initializes a new instance of the <see cref="PayrollNzApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public PayrollNzApi() : this((string) null)
+        public PayrollNzApi() : this((string)null)
         {
             this.Configuration = Xero.NetStandard.OAuth2.Client.Configuration.MergeConfigurations(
                 Xero.NetStandard.OAuth2.Client.GlobalConfiguration.Instance,
@@ -2185,11 +2185,11 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public PayrollNzApi(Xero.NetStandard.OAuth2.Client.ISynchronousClient client,Xero.NetStandard.OAuth2.Client.IAsynchronousClient asyncClient, Xero.NetStandard.OAuth2.Client.IReadableConfiguration configuration)
+        public PayrollNzApi(Xero.NetStandard.OAuth2.Client.ISynchronousClient client, Xero.NetStandard.OAuth2.Client.IAsynchronousClient asyncClient, Xero.NetStandard.OAuth2.Client.IReadableConfiguration configuration)
         {
-            if(client == null) throw new ArgumentNullException("client");
-            if(asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if(configuration == null) throw new ArgumentNullException("configuration");
+            if (client == null) throw new ArgumentNullException("client");
+            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+            if (configuration == null) throw new ArgumentNullException("configuration");
 
             this.AsynchronousClient = asyncClient;
             this.Configuration = configuration;
@@ -2214,7 +2214,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Xero.NetStandard.OAuth2.Client.IReadableConfiguration Configuration {get; set;}
+        public Xero.NetStandard.OAuth2.Client.IReadableConfiguration Configuration { get; set; }
 
 
         /// <summary>
@@ -2244,10 +2244,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        public async System.Threading.Tasks.Task<TimesheetObject> ApproveTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetObject> ApproveTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await ApproveTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await ApproveTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2281,13 +2281,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (timesheetID != null)
                 requestOptions.PathParameters.Add("TimesheetID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(timesheetID)); // path parameter
             if (xeroTenantId != null)
@@ -2303,7 +2303,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<TimesheetObject>("/Timesheets/{TimesheetID}/Approve", requestOptions, this.Configuration, cancellationToken);
 
@@ -2327,10 +2327,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of DeductionObject</returns>
-        public async System.Threading.Tasks.Task<DeductionObject> CreateDeductionAsync (string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DeductionObject> CreateDeductionAsync(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject> localVarResponse = await CreateDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, deduction, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject> localVarResponse = await CreateDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, deduction, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2365,13 +2365,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -2386,7 +2386,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<DeductionObject>("/Deductions", requestOptions, this.Configuration, cancellationToken);
 
@@ -2410,10 +2410,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsRateObject</returns>
-        public async System.Threading.Tasks.Task<EarningsRateObject> CreateEarningsRateAsync (string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EarningsRateObject> CreateEarningsRateAsync(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject> localVarResponse = await CreateEarningsRateAsyncWithHttpInfo(accessToken, xeroTenantId, earningsRate, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject> localVarResponse = await CreateEarningsRateAsyncWithHttpInfo(accessToken, xeroTenantId, earningsRate, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2448,13 +2448,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -2469,7 +2469,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EarningsRateObject>("/EarningsRates", requestOptions, this.Configuration, cancellationToken);
 
@@ -2493,10 +2493,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeObject> CreateEmployeeAsync (string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeObject> CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject> localVarResponse = await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject> localVarResponse = await CreateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employee, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2531,13 +2531,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -2552,7 +2552,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeObject>("/Employees", requestOptions, this.Configuration, cancellationToken);
 
@@ -2577,10 +2577,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsTemplateObject</returns>
-        public async System.Threading.Tasks.Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject> localVarResponse = await CreateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject> localVarResponse = await CreateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2620,13 +2620,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -2643,7 +2643,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EarningsTemplateObject>("/Employees/{EmployeeID}/PayTemplates/Earnings", requestOptions, this.Configuration, cancellationToken);
 
@@ -2668,10 +2668,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await CreateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await CreateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeave, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2711,13 +2711,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -2734,7 +2734,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeLeaveObject>("/Employees/{EmployeeID}/Leave", requestOptions, this.Configuration, cancellationToken);
 
@@ -2759,10 +2759,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveSetupObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveSetupObject> CreateEmployeeLeaveSetupAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveSetup employeeLeaveSetup, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveSetupObject> CreateEmployeeLeaveSetupAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveSetup employeeLeaveSetup, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveSetupObject> localVarResponse = await CreateEmployeeLeaveSetupAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeaveSetup, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveSetupObject> localVarResponse = await CreateEmployeeLeaveSetupAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeaveSetup, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2802,13 +2802,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -2825,7 +2825,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeLeaveSetupObject>("/Employees/{EmployeeID}/LeaveSetup", requestOptions, this.Configuration, cancellationToken);
 
@@ -2850,10 +2850,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveTypeObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypeObject> localVarResponse = await CreateEmployeeLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypeObject> localVarResponse = await CreateEmployeeLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeLeaveType, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2893,13 +2893,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -2916,7 +2916,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeLeaveTypeObject>("/Employees/{EmployeeID}/LeaveTypes", requestOptions, this.Configuration, cancellationToken);
 
@@ -2941,10 +2941,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeOpeningBalancesObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, List<EmployeeOpeningBalance> employeeOpeningBalance, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EmployeeOpeningBalance> employeeOpeningBalance, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject> localVarResponse = await CreateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeOpeningBalance, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject> localVarResponse = await CreateEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeOpeningBalance, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -2984,13 +2984,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -3007,7 +3007,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeOpeningBalancesObject>("/Employees/{EmployeeID}/OpeningBalances", requestOptions, this.Configuration, cancellationToken);
 
@@ -3032,10 +3032,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PaymentMethodObject</returns>
-        public async System.Threading.Tasks.Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync (string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject> localVarResponse = await CreateEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject> localVarResponse = await CreateEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, paymentMethod, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3075,13 +3075,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -3098,7 +3098,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<PaymentMethodObject>("/Employees/{EmployeeID}/PaymentMethods", requestOptions, this.Configuration, cancellationToken);
 
@@ -3123,10 +3123,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWageObject</returns>
-        public async System.Threading.Tasks.Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject> localVarResponse = await CreateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject> localVarResponse = await CreateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWage, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3166,13 +3166,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -3189,7 +3189,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<SalaryAndWageObject>("/Employees/{EmployeeID}/SalaryAndWages", requestOptions, this.Configuration, cancellationToken);
 
@@ -3214,10 +3214,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeWorkingPatternWithWorkingWeeksObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeksObject> CreateEmployeeWorkingPatternAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeksObject> CreateEmployeeWorkingPatternAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeWorkingPatternWithWorkingWeeksRequest employeeWorkingPatternWithWorkingWeeksRequest, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject> localVarResponse = await CreateEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternWithWorkingWeeksRequest, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject> localVarResponse = await CreateEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternWithWorkingWeeksRequest, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3257,13 +3257,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -3280,7 +3280,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeWorkingPatternWithWorkingWeeksObject>("/Employees/{EmployeeID}/Working-Patterns", requestOptions, this.Configuration, cancellationToken);
 
@@ -3305,10 +3305,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmploymentObject</returns>
-        public async System.Threading.Tasks.Task<EmploymentObject> CreateEmploymentAsync (string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmploymentObject> CreateEmploymentAsync(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmploymentObject> localVarResponse = await CreateEmploymentAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employment, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmploymentObject> localVarResponse = await CreateEmploymentAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employment, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3348,13 +3348,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -3371,7 +3371,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmploymentObject>("/Employees/{EmployeeID}/Employment", requestOptions, this.Configuration, cancellationToken);
 
@@ -3395,10 +3395,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeaveTypeObject</returns>
-        public async System.Threading.Tasks.Task<LeaveTypeObject> CreateLeaveTypeAsync (string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeaveTypeObject> CreateLeaveTypeAsync(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject> localVarResponse = await CreateLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, leaveType, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject> localVarResponse = await CreateLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, leaveType, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3433,13 +3433,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -3454,7 +3454,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<LeaveTypeObject>("/LeaveTypes", requestOptions, this.Configuration, cancellationToken);
 
@@ -3479,10 +3479,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeEarningsTemplates</returns>
-        public async System.Threading.Tasks.Task<EmployeeEarningsTemplates> CreateMultipleEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeEarningsTemplates> CreateMultipleEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeEarningsTemplates> localVarResponse = await CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeEarningsTemplates> localVarResponse = await CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, earningsTemplate, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3522,13 +3522,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -3545,7 +3545,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeEarningsTemplates>("/Employees/{EmployeeID}/PayTemplateEarnings", requestOptions, this.Configuration, cancellationToken);
 
@@ -3569,10 +3569,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunObject</returns>
-        public async System.Threading.Tasks.Task<PayRunObject> CreatePayRunAsync (string accessToken, string xeroTenantId, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PayRunObject> CreatePayRunAsync(string accessToken, string xeroTenantId, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject> localVarResponse = await CreatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRun, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject> localVarResponse = await CreatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRun, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3607,13 +3607,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -3628,7 +3628,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<PayRunObject>("/PayRuns", requestOptions, this.Configuration, cancellationToken);
 
@@ -3652,10 +3652,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunCalendarObject</returns>
-        public async System.Threading.Tasks.Task<PayRunCalendarObject> CreatePayRunCalendarAsync (string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PayRunCalendarObject> CreatePayRunCalendarAsync(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject> localVarResponse = await CreatePayRunCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payRunCalendar, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject> localVarResponse = await CreatePayRunCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payRunCalendar, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3690,13 +3690,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -3711,7 +3711,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<PayRunCalendarObject>("/PayRunCalendars", requestOptions, this.Configuration, cancellationToken);
 
@@ -3735,10 +3735,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ReimbursementObject</returns>
-        public async System.Threading.Tasks.Task<ReimbursementObject> CreateReimbursementAsync (string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ReimbursementObject> CreateReimbursementAsync(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject> localVarResponse = await CreateReimbursementAsyncWithHttpInfo(accessToken, xeroTenantId, reimbursement, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject> localVarResponse = await CreateReimbursementAsyncWithHttpInfo(accessToken, xeroTenantId, reimbursement, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3773,13 +3773,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -3794,7 +3794,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<ReimbursementObject>("/Reimbursements", requestOptions, this.Configuration, cancellationToken);
 
@@ -3818,10 +3818,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SuperannuationObject</returns>
-        public async System.Threading.Tasks.Task<SuperannuationObject> CreateSuperannuationAsync (string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SuperannuationObject> CreateSuperannuationAsync(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<SuperannuationObject> localVarResponse = await CreateSuperannuationAsyncWithHttpInfo(accessToken, xeroTenantId, benefit, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<SuperannuationObject> localVarResponse = await CreateSuperannuationAsyncWithHttpInfo(accessToken, xeroTenantId, benefit, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3856,13 +3856,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -3877,7 +3877,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<SuperannuationObject>("/Superannuations", requestOptions, this.Configuration, cancellationToken);
 
@@ -3901,10 +3901,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        public async System.Threading.Tasks.Task<TimesheetObject> CreateTimesheetAsync (string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetObject> CreateTimesheetAsync(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await CreateTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheet, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await CreateTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheet, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -3939,13 +3939,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
             if (idempotencyKey != null)
@@ -3960,7 +3960,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<TimesheetObject>("/Timesheets", requestOptions, this.Configuration, cancellationToken);
 
@@ -3985,10 +3985,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLineObject</returns>
-        public async System.Threading.Tasks.Task<TimesheetLineObject> CreateTimesheetLineAsync (string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetLineObject> CreateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject> localVarResponse = await CreateTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject> localVarResponse = await CreateTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLine, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4028,13 +4028,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (timesheetID != null)
                 requestOptions.PathParameters.Add("TimesheetID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(timesheetID)); // path parameter
             if (xeroTenantId != null)
@@ -4051,7 +4051,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<TimesheetLineObject>("/Timesheets/{TimesheetID}/Lines", requestOptions, this.Configuration, cancellationToken);
 
@@ -4075,10 +4075,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payTemplateEarningID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsTemplateObject</returns>
-        public async System.Threading.Tasks.Task<EarningsTemplateObject> DeleteEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EarningsTemplateObject> DeleteEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject> localVarResponse = await DeleteEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, payTemplateEarningID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject> localVarResponse = await DeleteEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, payTemplateEarningID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4116,13 +4116,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (payTemplateEarningID != null)
@@ -4138,7 +4138,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.DeleteAsync<EarningsTemplateObject>("/Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4162,10 +4162,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveID">Leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveObject> DeleteEmployeeLeaveAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveObject> DeleteEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await DeleteEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await DeleteEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4203,13 +4203,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (leaveID != null)
@@ -4225,7 +4225,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.DeleteAsync<EmployeeLeaveObject>("/Employees/{EmployeeID}/Leave/{LeaveID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4249,10 +4249,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single salary and wages object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWageObject</returns>
-        public async System.Threading.Tasks.Task<SalaryAndWageObject> DeleteEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SalaryAndWageObject> DeleteEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject> localVarResponse = await DeleteEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject> localVarResponse = await DeleteEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4290,13 +4290,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (salaryAndWagesID != null)
@@ -4312,7 +4312,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.DeleteAsync<SalaryAndWageObject>("/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4336,10 +4336,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeWorkingPatternID">Employee working pattern id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveObject> DeleteEmployeeWorkingPatternAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveObject> DeleteEmployeeWorkingPatternAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await DeleteEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await DeleteEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4377,13 +4377,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (employeeWorkingPatternID != null)
@@ -4399,7 +4399,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.DeleteAsync<EmployeeLeaveObject>("/Employees/{EmployeeID}/Working-Patterns/{EmployeeWorkingPatternID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4422,10 +4422,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLine</returns>
-        public async System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine> localVarResponse = await DeleteTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine> localVarResponse = await DeleteTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4458,13 +4458,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (timesheetID != null)
                 requestOptions.PathParameters.Add("TimesheetID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(timesheetID)); // path parameter
             if (xeroTenantId != null)
@@ -4478,7 +4478,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.DeleteAsync<TimesheetLine>("/Timesheets/{TimesheetID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4502,10 +4502,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetLineID">Identifier for the timesheet line</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLine</returns>
-        public async System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetLineAsync (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine> localVarResponse = await DeleteTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLineID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine> localVarResponse = await DeleteTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLineID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4543,13 +4543,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (timesheetID != null)
                 requestOptions.PathParameters.Add("TimesheetID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(timesheetID)); // path parameter
             if (timesheetLineID != null)
@@ -4565,7 +4565,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.DeleteAsync<TimesheetLine>("/Timesheets/{TimesheetID}/Lines/{TimesheetLineID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4588,10 +4588,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="deductionId">Identifier for the deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of DeductionObject</returns>
-        public async System.Threading.Tasks.Task<DeductionObject> GetDeductionAsync (string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DeductionObject> GetDeductionAsync(string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject> localVarResponse = await GetDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, deductionId, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject> localVarResponse = await GetDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, deductionId, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4624,13 +4624,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (deductionId != null)
                 requestOptions.PathParameters.Add("deductionId", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(deductionId)); // path parameter
             if (xeroTenantId != null)
@@ -4644,7 +4644,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<DeductionObject>("/Deductions/{deductionId}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4667,10 +4667,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Deductions</returns>
-        public async System.Threading.Tasks.Task<Deductions> GetDeductionsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Deductions> GetDeductionsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Deductions> localVarResponse = await GetDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<Deductions> localVarResponse = await GetDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4699,13 +4699,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -4728,7 +4728,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<Deductions>("/Deductions", requestOptions, this.Configuration, cancellationToken);
 
@@ -4751,10 +4751,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="earningsRateID">Identifier for the earnings rate</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsRateObject</returns>
-        public async System.Threading.Tasks.Task<EarningsRateObject> GetEarningsRateAsync (string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EarningsRateObject> GetEarningsRateAsync(string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject> localVarResponse = await GetEarningsRateAsyncWithHttpInfo(accessToken, xeroTenantId, earningsRateID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject> localVarResponse = await GetEarningsRateAsyncWithHttpInfo(accessToken, xeroTenantId, earningsRateID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4787,13 +4787,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (earningsRateID != null)
                 requestOptions.PathParameters.Add("EarningsRateID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(earningsRateID)); // path parameter
             if (xeroTenantId != null)
@@ -4807,7 +4807,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EarningsRateObject>("/EarningsRates/{EarningsRateID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4830,10 +4830,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsRates</returns>
-        public async System.Threading.Tasks.Task<EarningsRates> GetEarningsRatesAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EarningsRates> GetEarningsRatesAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRates> localVarResponse = await GetEarningsRatesAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRates> localVarResponse = await GetEarningsRatesAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4862,13 +4862,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -4891,7 +4891,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EarningsRates>("/EarningsRates", requestOptions, this.Configuration, cancellationToken);
 
@@ -4914,10 +4914,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeObject> GetEmployeeAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeObject> GetEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject> localVarResponse = await GetEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject> localVarResponse = await GetEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -4950,13 +4950,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -4970,7 +4970,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeObject>("/Employees/{EmployeeID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -4993,10 +4993,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveBalances</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveBalances> GetEmployeeLeaveBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveBalances> GetEmployeeLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveBalances> localVarResponse = await GetEmployeeLeaveBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveBalances> localVarResponse = await GetEmployeeLeaveBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5029,13 +5029,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5049,7 +5049,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeLeaveBalances>("/Employees/{EmployeeID}/LeaveBalances", requestOptions, this.Configuration, cancellationToken);
 
@@ -5074,10 +5074,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Filter by end date (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeavePeriods</returns>
-        public async System.Threading.Tasks.Task<LeavePeriods> GetEmployeeLeavePeriodsAsync (string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeavePeriods> GetEmployeeLeavePeriodsAsync(string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<LeavePeriods> localVarResponse = await GetEmployeeLeavePeriodsAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, startDate, endDate, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<LeavePeriods> localVarResponse = await GetEmployeeLeavePeriodsAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, startDate, endDate, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5112,13 +5112,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
 
@@ -5154,7 +5154,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<LeavePeriods>("/Employees/{EmployeeID}/LeavePeriods", requestOptions, this.Configuration, cancellationToken);
 
@@ -5177,10 +5177,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveTypes</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveTypes> GetEmployeeLeaveTypesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveTypes> GetEmployeeLeaveTypesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypes> localVarResponse = await GetEmployeeLeaveTypesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypes> localVarResponse = await GetEmployeeLeaveTypesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5213,13 +5213,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5233,7 +5233,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeLeaveTypes>("/Employees/{EmployeeID}/LeaveTypes", requestOptions, this.Configuration, cancellationToken);
 
@@ -5256,10 +5256,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaves</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaves> GetEmployeeLeavesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaves> GetEmployeeLeavesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaves> localVarResponse = await GetEmployeeLeavesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaves> localVarResponse = await GetEmployeeLeavesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5292,13 +5292,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5312,7 +5312,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeLeaves>("/Employees/{EmployeeID}/Leave", requestOptions, this.Configuration, cancellationToken);
 
@@ -5335,10 +5335,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeOpeningBalancesObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> GetEmployeeOpeningBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> GetEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject> localVarResponse = await GetEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject> localVarResponse = await GetEmployeeOpeningBalancesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5371,13 +5371,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5391,7 +5391,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeOpeningBalancesObject>("/Employees/{EmployeeID}/OpeningBalances", requestOptions, this.Configuration, cancellationToken);
 
@@ -5414,10 +5414,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeePayTemplates</returns>
-        public async System.Threading.Tasks.Task<EmployeePayTemplates> GetEmployeePayTemplatesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeePayTemplates> GetEmployeePayTemplatesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeePayTemplates> localVarResponse = await GetEmployeePayTemplatesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeePayTemplates> localVarResponse = await GetEmployeePayTemplatesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5450,13 +5450,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5470,7 +5470,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeePayTemplates>("/Employees/{EmployeeID}/PayTemplates", requestOptions, this.Configuration, cancellationToken);
 
@@ -5493,10 +5493,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PaymentMethodObject</returns>
-        public async System.Threading.Tasks.Task<PaymentMethodObject> GetEmployeePaymentMethodAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PaymentMethodObject> GetEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject> localVarResponse = await GetEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject> localVarResponse = await GetEmployeePaymentMethodAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5529,13 +5529,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5549,7 +5549,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<PaymentMethodObject>("/Employees/{EmployeeID}/PaymentMethods", requestOptions, this.Configuration, cancellationToken);
 
@@ -5573,10 +5573,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWages</returns>
-        public async System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages> localVarResponse = await GetEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages> localVarResponse = await GetEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5614,13 +5614,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (salaryAndWagesID != null)
@@ -5636,7 +5636,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<SalaryAndWages>("/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -5660,10 +5660,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWages</returns>
-        public async System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWagesAsync (string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWagesAsync(string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages> localVarResponse = await GetEmployeeSalaryAndWagesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages> localVarResponse = await GetEmployeeSalaryAndWagesAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5697,13 +5697,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
 
@@ -5728,7 +5728,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<SalaryAndWages>("/Employees/{EmployeeID}/SalaryAndWages", requestOptions, this.Configuration, cancellationToken);
 
@@ -5751,10 +5751,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeTaxObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeTaxObject> GetEmployeeTaxAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeTaxObject> GetEmployeeTaxAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeTaxObject> localVarResponse = await GetEmployeeTaxAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeTaxObject> localVarResponse = await GetEmployeeTaxAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5787,13 +5787,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5807,7 +5807,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeTaxObject>("/Employees/{EmployeeID}/Tax", requestOptions, this.Configuration, cancellationToken);
 
@@ -5831,10 +5831,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeWorkingPatternID">Employee working pattern id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeWorkingPatternWithWorkingWeeksObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeksObject> GetEmployeeWorkingPatternAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeWorkingPatternWithWorkingWeeksObject> GetEmployeeWorkingPatternAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid employeeWorkingPatternID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject> localVarResponse = await GetEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternWithWorkingWeeksObject> localVarResponse = await GetEmployeeWorkingPatternAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeWorkingPatternID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5872,13 +5872,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (employeeWorkingPatternID != null)
@@ -5894,7 +5894,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeWorkingPatternWithWorkingWeeksObject>("/Employees/{EmployeeID}/Working-Patterns/{EmployeeWorkingPatternID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -5917,10 +5917,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeWorkingPatternsObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeWorkingPatternsObject> GetEmployeeWorkingPatternsAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeWorkingPatternsObject> GetEmployeeWorkingPatternsAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternsObject> localVarResponse = await GetEmployeeWorkingPatternsAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeWorkingPatternsObject> localVarResponse = await GetEmployeeWorkingPatternsAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -5953,13 +5953,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -5973,7 +5973,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<EmployeeWorkingPatternsObject>("/Employees/{EmployeeID}/Working-Patterns", requestOptions, this.Configuration, cancellationToken);
 
@@ -5997,10 +5997,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Employees</returns>
-        public async System.Threading.Tasks.Task<Employees> GetEmployeesAsync (string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Employees> GetEmployeesAsync(string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Employees> localVarResponse = await GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<Employees> localVarResponse = await GetEmployeesAsyncWithHttpInfo(accessToken, xeroTenantId, filter, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6030,13 +6030,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (filter != null)
             {
@@ -6070,7 +6070,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<Employees>("/Employees", requestOptions, this.Configuration, cancellationToken);
 
@@ -6093,10 +6093,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveTypeID">Identifier for the leave type</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeaveTypeObject</returns>
-        public async System.Threading.Tasks.Task<LeaveTypeObject> GetLeaveTypeAsync (string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeaveTypeObject> GetLeaveTypeAsync(string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject> localVarResponse = await GetLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, leaveTypeID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject> localVarResponse = await GetLeaveTypeAsyncWithHttpInfo(accessToken, xeroTenantId, leaveTypeID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6129,13 +6129,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (leaveTypeID != null)
                 requestOptions.PathParameters.Add("LeaveTypeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(leaveTypeID)); // path parameter
             if (xeroTenantId != null)
@@ -6149,7 +6149,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<LeaveTypeObject>("/LeaveTypes/{LeaveTypeID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -6173,10 +6173,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="activeOnly">Filters leave types by active status. By default the API returns all leave types. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeaveTypes</returns>
-        public async System.Threading.Tasks.Task<LeaveTypes> GetLeaveTypesAsync (string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<LeaveTypes> GetLeaveTypesAsync(string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypes> localVarResponse = await GetLeaveTypesAsyncWithHttpInfo(accessToken, xeroTenantId, page, activeOnly, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypes> localVarResponse = await GetLeaveTypesAsyncWithHttpInfo(accessToken, xeroTenantId, page, activeOnly, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6206,13 +6206,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -6227,7 +6227,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (activeOnly != null)
             {
-              requestOptions.QueryParameters.Add("ActiveOnly", activeOnly.ToString().ToLower());
+                requestOptions.QueryParameters.Add("ActiveOnly", activeOnly.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -6241,7 +6241,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<LeaveTypes>("/LeaveTypes", requestOptions, this.Configuration, cancellationToken);
 
@@ -6264,10 +6264,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payRunID">Identifier for the pay run</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunObject</returns>
-        public async System.Threading.Tasks.Task<PayRunObject> GetPayRunAsync (string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PayRunObject> GetPayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject> localVarResponse = await GetPayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject> localVarResponse = await GetPayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6300,13 +6300,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (payRunID != null)
                 requestOptions.PathParameters.Add("PayRunID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(payRunID)); // path parameter
             if (xeroTenantId != null)
@@ -6320,7 +6320,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<PayRunObject>("/PayRuns/{PayRunID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -6343,10 +6343,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payrollCalendarID">Identifier for the payrun calendars</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunCalendarObject</returns>
-        public async System.Threading.Tasks.Task<PayRunCalendarObject> GetPayRunCalendarAsync (string accessToken, string xeroTenantId, Guid payrollCalendarID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PayRunCalendarObject> GetPayRunCalendarAsync(string accessToken, string xeroTenantId, Guid payrollCalendarID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject> localVarResponse = await GetPayRunCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payrollCalendarID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject> localVarResponse = await GetPayRunCalendarAsyncWithHttpInfo(accessToken, xeroTenantId, payrollCalendarID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6379,13 +6379,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (payrollCalendarID != null)
                 requestOptions.PathParameters.Add("PayrollCalendarID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(payrollCalendarID)); // path parameter
             if (xeroTenantId != null)
@@ -6399,7 +6399,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<PayRunCalendarObject>("/PayRunCalendars/{PayrollCalendarID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -6422,10 +6422,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunCalendars</returns>
-        public async System.Threading.Tasks.Task<PayRunCalendars> GetPayRunCalendarsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PayRunCalendars> GetPayRunCalendarsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendars> localVarResponse = await GetPayRunCalendarsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendars> localVarResponse = await GetPayRunCalendarsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6454,13 +6454,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -6483,7 +6483,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<PayRunCalendars>("/PayRunCalendars", requestOptions, this.Configuration, cancellationToken);
 
@@ -6507,10 +6507,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="status">By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu&#x3D;{PayRunStatus} to filter the payruns by status. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRuns</returns>
-        public async System.Threading.Tasks.Task<PayRuns> GetPayRunsAsync (string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PayRuns> GetPayRunsAsync(string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PayRuns> localVarResponse = await GetPayRunsAsyncWithHttpInfo(accessToken, xeroTenantId, page, status, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PayRuns> localVarResponse = await GetPayRunsAsyncWithHttpInfo(accessToken, xeroTenantId, page, status, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6540,13 +6540,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -6580,7 +6580,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<PayRuns>("/PayRuns", requestOptions, this.Configuration, cancellationToken);
 
@@ -6603,10 +6603,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="paySlipID">Identifier for the payslip</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PaySlipObject</returns>
-        public async System.Threading.Tasks.Task<PaySlipObject> GetPaySlipAsync (string accessToken, string xeroTenantId, Guid paySlipID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PaySlipObject> GetPaySlipAsync(string accessToken, string xeroTenantId, Guid paySlipID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PaySlipObject> localVarResponse = await GetPaySlipAsyncWithHttpInfo(accessToken, xeroTenantId, paySlipID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PaySlipObject> localVarResponse = await GetPaySlipAsyncWithHttpInfo(accessToken, xeroTenantId, paySlipID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6639,13 +6639,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (paySlipID != null)
                 requestOptions.PathParameters.Add("PaySlipID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(paySlipID)); // path parameter
             if (xeroTenantId != null)
@@ -6659,7 +6659,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<PaySlipObject>("/PaySlips/{PaySlipID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -6683,10 +6683,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PaySlips</returns>
-        public async System.Threading.Tasks.Task<PaySlips> GetPaySlipsAsync (string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PaySlips> GetPaySlipsAsync(string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PaySlips> localVarResponse = await GetPaySlipsAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PaySlips> localVarResponse = await GetPaySlipsAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6720,13 +6720,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -6760,7 +6760,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<PaySlips>("/PaySlips", requestOptions, this.Configuration, cancellationToken);
 
@@ -6783,10 +6783,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="reimbursementID">Identifier for the reimbursement</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ReimbursementObject</returns>
-        public async System.Threading.Tasks.Task<ReimbursementObject> GetReimbursementAsync (string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ReimbursementObject> GetReimbursementAsync(string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject> localVarResponse = await GetReimbursementAsyncWithHttpInfo(accessToken, xeroTenantId, reimbursementID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject> localVarResponse = await GetReimbursementAsyncWithHttpInfo(accessToken, xeroTenantId, reimbursementID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6819,13 +6819,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (reimbursementID != null)
                 requestOptions.PathParameters.Add("ReimbursementID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(reimbursementID)); // path parameter
             if (xeroTenantId != null)
@@ -6839,7 +6839,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<ReimbursementObject>("/Reimbursements/{ReimbursementID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -6862,10 +6862,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Reimbursements</returns>
-        public async System.Threading.Tasks.Task<Reimbursements> GetReimbursementsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Reimbursements> GetReimbursementsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Reimbursements> localVarResponse = await GetReimbursementsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<Reimbursements> localVarResponse = await GetReimbursementsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6894,13 +6894,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -6923,7 +6923,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<Reimbursements>("/Reimbursements", requestOptions, this.Configuration, cancellationToken);
 
@@ -6945,10 +6945,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Settings</returns>
-        public async System.Threading.Tasks.Task<Settings> GetSettingsAsync (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Settings> GetSettingsAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Settings> localVarResponse = await GetSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<Settings> localVarResponse = await GetSettingsAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -6976,13 +6976,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
@@ -6994,7 +6994,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<Settings>("/Settings", requestOptions, this.Configuration, cancellationToken);
 
@@ -7017,10 +7017,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Identifier for the statutory deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of StatutoryDeductionObject</returns>
-        public async System.Threading.Tasks.Task<StatutoryDeductionObject> GetStatutoryDeductionAsync (string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<StatutoryDeductionObject> GetStatutoryDeductionAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<StatutoryDeductionObject> localVarResponse = await GetStatutoryDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<StatutoryDeductionObject> localVarResponse = await GetStatutoryDeductionAsyncWithHttpInfo(accessToken, xeroTenantId, id, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7053,13 +7053,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (id != null)
                 requestOptions.PathParameters.Add("id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(id)); // path parameter
             if (xeroTenantId != null)
@@ -7073,7 +7073,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<StatutoryDeductionObject>("/StatutoryDeductions/{id}", requestOptions, this.Configuration, cancellationToken);
 
@@ -7096,10 +7096,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of StatutoryDeductions</returns>
-        public async System.Threading.Tasks.Task<StatutoryDeductions> GetStatutoryDeductionsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<StatutoryDeductions> GetStatutoryDeductionsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<StatutoryDeductions> localVarResponse = await GetStatutoryDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<StatutoryDeductions> localVarResponse = await GetStatutoryDeductionsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7128,13 +7128,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -7157,7 +7157,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<StatutoryDeductions>("/StatutoryDeductions", requestOptions, this.Configuration, cancellationToken);
 
@@ -7180,10 +7180,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="superannuationID">Identifier for the superannuation</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SuperannuationObject</returns>
-        public async System.Threading.Tasks.Task<SuperannuationObject> GetSuperannuationAsync (string accessToken, string xeroTenantId, Guid superannuationID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SuperannuationObject> GetSuperannuationAsync(string accessToken, string xeroTenantId, Guid superannuationID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<SuperannuationObject> localVarResponse = await GetSuperannuationAsyncWithHttpInfo(accessToken, xeroTenantId, superannuationID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<SuperannuationObject> localVarResponse = await GetSuperannuationAsyncWithHttpInfo(accessToken, xeroTenantId, superannuationID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7216,13 +7216,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (superannuationID != null)
                 requestOptions.PathParameters.Add("SuperannuationID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(superannuationID)); // path parameter
             if (xeroTenantId != null)
@@ -7236,7 +7236,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<SuperannuationObject>("/Superannuations/{SuperannuationID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -7259,10 +7259,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Superannuations</returns>
-        public async System.Threading.Tasks.Task<Superannuations> GetSuperannuationsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Superannuations> GetSuperannuationsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Superannuations> localVarResponse = await GetSuperannuationsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<Superannuations> localVarResponse = await GetSuperannuationsAsyncWithHttpInfo(accessToken, xeroTenantId, page, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7291,13 +7291,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -7320,7 +7320,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<Superannuations>("/Superannuations", requestOptions, this.Configuration, cancellationToken);
 
@@ -7343,10 +7343,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        public async System.Threading.Tasks.Task<TimesheetObject> GetTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetObject> GetTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await GetTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await GetTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7379,13 +7379,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (timesheetID != null)
                 requestOptions.PathParameters.Add("TimesheetID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(timesheetID)); // path parameter
             if (xeroTenantId != null)
@@ -7399,7 +7399,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<TimesheetObject>("/Timesheets/{TimesheetID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -7427,10 +7427,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Timesheets</returns>
-        public async System.Threading.Tasks.Task<Timesheets> GetTimesheetsAsync (string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Timesheets> GetTimesheetsAsync(string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<Timesheets> localVarResponse = await GetTimesheetsAsyncWithHttpInfo(accessToken, xeroTenantId, page, filter, status, startDate, endDate, sort, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<Timesheets> localVarResponse = await GetTimesheetsAsyncWithHttpInfo(accessToken, xeroTenantId, page, filter, status, startDate, endDate, sort, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7464,13 +7464,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (page != null)
             {
@@ -7548,7 +7548,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<Timesheets>("/Timesheets", requestOptions, this.Configuration, cancellationToken);
 
@@ -7570,10 +7570,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TrackingCategories</returns>
-        public async System.Threading.Tasks.Task<TrackingCategories> GetTrackingCategoriesAsync (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TrackingCategories> GetTrackingCategoriesAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TrackingCategories> localVarResponse = await GetTrackingCategoriesAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TrackingCategories> localVarResponse = await GetTrackingCategoriesAsyncWithHttpInfo(accessToken, xeroTenantId, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7601,13 +7601,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (xeroTenantId != null)
                 requestOptions.HeaderParameters.Add("Xero-Tenant-Id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(xeroTenantId)); // header parameter
 
@@ -7619,7 +7619,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<TrackingCategories>("/Settings/TrackingCategories", requestOptions, this.Configuration, cancellationToken);
 
@@ -7643,10 +7643,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        public async System.Threading.Tasks.Task<TimesheetObject> RevertTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetObject> RevertTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await RevertTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject> localVarResponse = await RevertTimesheetAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7680,13 +7680,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (timesheetID != null)
                 requestOptions.PathParameters.Add("TimesheetID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(timesheetID)); // path parameter
             if (xeroTenantId != null)
@@ -7702,7 +7702,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<TimesheetObject>("/Timesheets/{TimesheetID}/RevertToDraft", requestOptions, this.Configuration, cancellationToken);
 
@@ -7727,10 +7727,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeObject> UpdateEmployeeAsync (string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeObject> UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject> localVarResponse = await UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employee, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject> localVarResponse = await UpdateEmployeeAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employee, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7770,13 +7770,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -7793,7 +7793,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PutAsync<EmployeeObject>("/Employees/{EmployeeID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -7819,10 +7819,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsTemplateObject</returns>
-        public async System.Threading.Tasks.Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject> localVarResponse = await UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject> localVarResponse = await UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, payTemplateEarningID, earningsTemplate, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7867,13 +7867,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (payTemplateEarningID != null)
@@ -7892,7 +7892,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PutAsync<EarningsTemplateObject>("/Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -7918,10 +7918,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await UpdateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject> localVarResponse = await UpdateEmployeeLeaveAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, leaveID, employeeLeave, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -7966,13 +7966,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (leaveID != null)
@@ -7991,7 +7991,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PutAsync<EmployeeLeaveObject>("/Employees/{EmployeeID}/Leave/{LeaveID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -8017,10 +8017,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWageObject</returns>
-        public async System.Threading.Tasks.Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject> localVarResponse = await UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject> localVarResponse = await UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, salaryAndWagesID, salaryAndWage, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -8065,13 +8065,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (salaryAndWagesID != null)
@@ -8090,7 +8090,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PutAsync<SalaryAndWageObject>("/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -8115,10 +8115,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeTaxObject</returns>
-        public async System.Threading.Tasks.Task<EmployeeTaxObject> UpdateEmployeeTaxAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeTax employeeTax, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EmployeeTaxObject> UpdateEmployeeTaxAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeTax employeeTax, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeTaxObject> localVarResponse = await UpdateEmployeeTaxAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeTax, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeTaxObject> localVarResponse = await UpdateEmployeeTaxAsyncWithHttpInfo(accessToken, xeroTenantId, employeeID, employeeTax, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -8158,13 +8158,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (employeeID != null)
                 requestOptions.PathParameters.Add("EmployeeID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(employeeID)); // path parameter
             if (xeroTenantId != null)
@@ -8181,7 +8181,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PostAsync<EmployeeTaxObject>("/Employees/{EmployeeID}/Tax", requestOptions, this.Configuration, cancellationToken);
 
@@ -8206,10 +8206,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunObject</returns>
-        public async System.Threading.Tasks.Task<PayRunObject> UpdatePayRunAsync (string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PayRunObject> UpdatePayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject> localVarResponse = await UpdatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, payRun, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject> localVarResponse = await UpdatePayRunAsyncWithHttpInfo(accessToken, xeroTenantId, payRunID, payRun, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -8249,13 +8249,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (payRunID != null)
                 requestOptions.PathParameters.Add("PayRunID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(payRunID)); // path parameter
             if (xeroTenantId != null)
@@ -8272,7 +8272,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PutAsync<PayRunObject>("/PayRuns/{PayRunID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -8297,10 +8297,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PaySlipObject</returns>
-        public async System.Threading.Tasks.Task<PaySlipObject> UpdatePaySlipLineItemsAsync (string accessToken, string xeroTenantId, Guid paySlipID, PaySlip paySlip, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PaySlipObject> UpdatePaySlipLineItemsAsync(string accessToken, string xeroTenantId, Guid paySlipID, PaySlip paySlip, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<PaySlipObject> localVarResponse = await UpdatePaySlipLineItemsAsyncWithHttpInfo(accessToken, xeroTenantId, paySlipID, paySlip, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<PaySlipObject> localVarResponse = await UpdatePaySlipLineItemsAsyncWithHttpInfo(accessToken, xeroTenantId, paySlipID, paySlip, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -8340,13 +8340,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (paySlipID != null)
                 requestOptions.PathParameters.Add("PaySlipID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(paySlipID)); // path parameter
             if (xeroTenantId != null)
@@ -8363,7 +8363,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PutAsync<PaySlipObject>("/PaySlips/{PaySlipID}", requestOptions, this.Configuration, cancellationToken);
 
@@ -8389,10 +8389,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLineObject</returns>
-        public async System.Threading.Tasks.Task<TimesheetLineObject> UpdateTimesheetLineAsync (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<TimesheetLineObject> UpdateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject> localVarResponse = await UpdateTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLineID, timesheetLine, idempotencyKey, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject> localVarResponse = await UpdateTimesheetLineAsyncWithHttpInfo(accessToken, xeroTenantId, timesheetID, timesheetLineID, timesheetLine, idempotencyKey, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -8437,13 +8437,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (timesheetID != null)
                 requestOptions.PathParameters.Add("TimesheetID", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(timesheetID)); // path parameter
             if (timesheetLineID != null)
@@ -8462,7 +8462,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.PutAsync<TimesheetLineObject>("/Timesheets/{TimesheetID}/Lines/{TimesheetLineID}", requestOptions, this.Configuration, cancellationToken);
 

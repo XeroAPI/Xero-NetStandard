@@ -28,34 +28,34 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// PrepaymentResponse
     /// </summary>
     [DataContract]
-    public partial class PrepaymentResponse :  IEquatable<PrepaymentResponse>, IValidatableObject
+    public partial class PrepaymentResponse : IEquatable<PrepaymentResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of prepayment
         /// </summary>
         /// <value>Xero Identifier of prepayment</value>
-        [DataMember(Name="prepaymentId", EmitDefaultValue=false)]
+        [DataMember(Name = "prepaymentId", EmitDefaultValue = false)]
         public Guid? PrepaymentId { get; set; }
 
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="contact", EmitDefaultValue=false)]
+        [DataMember(Name = "contact", EmitDefaultValue = false)]
         public ContactResponse Contact { get; set; }
 
         /// <summary>
         /// Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode
         /// </summary>
         /// <value>Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Not included in summary mode
         /// </summary>
         /// <value>Not included in summary mode</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "lineItems", EmitDefaultValue = false)]
         public List<LineItemResponse> LineItems { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,22 +103,22 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PrepaymentId == input.PrepaymentId ||
                     (this.PrepaymentId != null &&
                     this.PrepaymentId.Equals(input.PrepaymentId))
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&

@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// ReportHistoryResponse
     /// </summary>
     [DataContract]
-    public partial class ReportHistoryResponse :  IEquatable<ReportHistoryResponse>, IValidatableObject
+    public partial class ReportHistoryResponse : IEquatable<ReportHistoryResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The requested Organisation to which the data pertains
         /// </summary>
         /// <value>The requested Organisation to which the data pertains</value>
-        [DataMember(Name="organisationId", EmitDefaultValue=false)]
+        [DataMember(Name = "organisationId", EmitDefaultValue = false)]
         public Guid? OrganisationId { get; set; }
 
         /// <summary>
         /// The end date of the report
         /// </summary>
         /// <value>The end date of the report</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Reports
         /// </summary>
-        [DataMember(Name="reports", EmitDefaultValue=false)]
+        [DataMember(Name = "reports", EmitDefaultValue = false)]
         public List<ReportHistoryModel> Reports { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.OrganisationId == input.OrganisationId ||
                     (this.OrganisationId != null &&
                     this.OrganisationId.Equals(input.OrganisationId))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Reports == input.Reports ||
                     this.Reports != null &&

@@ -28,31 +28,31 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// PayItem
     /// </summary>
     [DataContract]
-    public partial class PayItem :  IEquatable<PayItem>, IValidatableObject
+    public partial class PayItem : IEquatable<PayItem>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets EarningsRates
         /// </summary>
-        [DataMember(Name="EarningsRates", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsRates", EmitDefaultValue = false)]
         public List<EarningsRate> EarningsRates { get; set; }
 
         /// <summary>
         /// Gets or Sets DeductionTypes
         /// </summary>
-        [DataMember(Name="DeductionTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "DeductionTypes", EmitDefaultValue = false)]
         public List<DeductionType> DeductionTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveTypes
         /// </summary>
-        [DataMember(Name="LeaveTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveTypes", EmitDefaultValue = false)]
         public List<LeaveType> LeaveTypes { get; set; }
 
         /// <summary>
         /// Gets or Sets ReimbursementTypes
         /// </summary>
-        [DataMember(Name="ReimbursementTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "ReimbursementTypes", EmitDefaultValue = false)]
         public List<ReimbursementType> ReimbursementTypes { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -100,25 +100,25 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsRates == input.EarningsRates ||
                     this.EarningsRates != null &&
                     input.EarningsRates != null &&
                     this.EarningsRates.SequenceEqual(input.EarningsRates)
-                ) && 
+                ) &&
                 (
                     this.DeductionTypes == input.DeductionTypes ||
                     this.DeductionTypes != null &&
                     input.DeductionTypes != null &&
                     this.DeductionTypes.SequenceEqual(input.DeductionTypes)
-                ) && 
+                ) &&
                 (
                     this.LeaveTypes == input.LeaveTypes ||
                     this.LeaveTypes != null &&
                     input.LeaveTypes != null &&
                     this.LeaveTypes.SequenceEqual(input.LeaveTypes)
-                ) && 
+                ) &&
                 (
                     this.ReimbursementTypes == input.ReimbursementTypes ||
                     this.ReimbursementTypes != null &&

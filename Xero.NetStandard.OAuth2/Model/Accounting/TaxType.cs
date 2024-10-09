@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// See Tax Types – can only be used on update calls
     /// </summary>
     /// <value>See Tax Types – can only be used on update calls</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum TaxType
     {
         /// <summary>

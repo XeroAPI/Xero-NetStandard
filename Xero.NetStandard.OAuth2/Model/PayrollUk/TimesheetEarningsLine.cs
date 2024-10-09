@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// TimesheetEarningsLine
     /// </summary>
     [DataContract]
-    public partial class TimesheetEarningsLine :  IEquatable<TimesheetEarningsLine>, IValidatableObject
+    public partial class TimesheetEarningsLine : IEquatable<TimesheetEarningsLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll timesheet earnings rate
         /// </summary>
         /// <value>Xero identifier for payroll timesheet earnings rate</value>
-        [DataMember(Name="earningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// Rate per unit for timesheet earnings line
         /// </summary>
         /// <value>Rate per unit for timesheet earnings line</value>
-        [DataMember(Name="ratePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "ratePerUnit", EmitDefaultValue = false)]
         public double? RatePerUnit { get; set; }
 
         /// <summary>
         /// Timesheet earnings number of units
         /// </summary>
         /// <value>Timesheet earnings number of units</value>
-        [DataMember(Name="numberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
         public double? NumberOfUnits { get; set; }
 
         /// <summary>
         /// Timesheet earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed
         /// </summary>
         /// <value>Timesheet earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed</value>
-        [DataMember(Name="fixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAmount", EmitDefaultValue = false)]
         public double? FixedAmount { get; set; }
 
         /// <summary>
         /// The amount of the timesheet earnings line.
         /// </summary>
         /// <value>The amount of the timesheet earnings line.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public double? Amount { get; set; }
 
         /// <summary>
         /// Identifies if the timesheet earnings is taken from the timesheet. False for leave earnings line
         /// </summary>
         /// <value>Identifies if the timesheet earnings is taken from the timesheet. False for leave earnings line</value>
-        [DataMember(Name="isLinkedToTimesheet", EmitDefaultValue=false)]
+        [DataMember(Name = "isLinkedToTimesheet", EmitDefaultValue = false)]
         public bool? IsLinkedToTimesheet { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&
                     this.FixedAmount.Equals(input.FixedAmount))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.IsLinkedToTimesheet == input.IsLinkedToTimesheet ||
                     (this.IsLinkedToTimesheet != null &&

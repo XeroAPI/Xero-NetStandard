@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// Address
     /// </summary>
     [DataContract]
-    public partial class Address :  IEquatable<Address>, IValidatableObject
+    public partial class Address : IEquatable<Address>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Address() 
-        { 
+        public Address()
+        {
         }
-        
+
         /// <summary>
         /// Address line 1 for employee home address
         /// </summary>
         /// <value>Address line 1 for employee home address</value>
-        [DataMember(Name="addressLine1", EmitDefaultValue=false)]
+        [DataMember(Name = "addressLine1", EmitDefaultValue = false)]
         public string AddressLine1 { get; set; }
 
         /// <summary>
         /// Address line 2 for employee home address
         /// </summary>
         /// <value>Address line 2 for employee home address</value>
-        [DataMember(Name="addressLine2", EmitDefaultValue=false)]
+        [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// Suburb for employee home address
         /// </summary>
         /// <value>Suburb for employee home address</value>
-        [DataMember(Name="city", EmitDefaultValue=false)]
+        [DataMember(Name = "city", EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// PostCode for employee home address
         /// </summary>
         /// <value>PostCode for employee home address</value>
-        [DataMember(Name="postCode", EmitDefaultValue=false)]
+        [DataMember(Name = "postCode", EmitDefaultValue = false)]
         public string PostCode { get; set; }
 
         /// <summary>
         /// Country of HomeAddress
         /// </summary>
         /// <value>Country of HomeAddress</value>
-        [DataMember(Name="countryName", EmitDefaultValue=false)]
+        [DataMember(Name = "countryName", EmitDefaultValue = false)]
         public string CountryName { get; set; }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -119,27 +119,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AddressLine1 == input.AddressLine1 ||
                     (this.AddressLine1 != null &&
                     this.AddressLine1.Equals(input.AddressLine1))
-                ) && 
+                ) &&
                 (
                     this.AddressLine2 == input.AddressLine2 ||
                     (this.AddressLine2 != null &&
                     this.AddressLine2.Equals(input.AddressLine2))
-                ) && 
+                ) &&
                 (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
-                ) && 
+                ) &&
                 (
                     this.PostCode == input.PostCode ||
                     (this.PostCode != null &&
                     this.PostCode.Equals(input.PostCode))
-                ) && 
+                ) &&
                 (
                     this.CountryName == input.CountryName ||
                     (this.CountryName != null &&

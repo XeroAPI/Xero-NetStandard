@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BankTransaction
     /// </summary>
     [DataContract]
-    public partial class BankTransaction :  IEquatable<BankTransaction>, IValidatableObject
+    public partial class BankTransaction : IEquatable<BankTransaction>, IValidatableObject
     {
         /// <summary>
         /// See Bank Transaction Types
@@ -91,12 +91,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Bank Transaction Types
         /// </summary>
         /// <value>See Bank Transaction Types</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
         /// <summary>
         /// See Bank Transaction Status Codes
@@ -129,145 +129,145 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Bank Transaction Status Codes
         /// </summary>
         /// <value>See Bank Transaction Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankTransaction" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public BankTransaction() 
-        {  
-          LineItems = new List<LineItem>();  
-          ValidationErrors = new List<ValidationError>(); 
+        public BankTransaction()
+        {
+            LineItems = new List<LineItem>();
+            ValidationErrors = new List<ValidationError>();
         }
-        
+
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// See LineItems
         /// </summary>
         /// <value>See LineItems</value>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Gets or Sets BankAccount
         /// </summary>
-        [DataMember(Name="BankAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAccount", EmitDefaultValue = false)]
         public Account BankAccount { get; set; }
 
         /// <summary>
         /// Boolean to show if transaction is reconciled
         /// </summary>
         /// <value>Boolean to show if transaction is reconciled</value>
-        [DataMember(Name="IsReconciled", EmitDefaultValue=false)]
+        [DataMember(Name = "IsReconciled", EmitDefaultValue = false)]
         public bool? IsReconciled { get; set; }
 
         /// <summary>
         /// Date of transaction – YYYY-MM-DD
         /// </summary>
         /// <value>Date of transaction – YYYY-MM-DD</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// Reference for the transaction. Only supported for SPEND and RECEIVE transactions.
         /// </summary>
         /// <value>Reference for the transaction. Only supported for SPEND and RECEIVE transactions.</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Exchange rate to base currency when money is spent or received. e.g.0.7500 Only used for bank transactions in non base currency. If this isn’t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.
         /// </summary>
         /// <value>Exchange rate to base currency when money is spent or received. e.g.0.7500 Only used for bank transactions in non base currency. If this isn’t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
 
         /// <summary>
         /// URL link to a source document – shown as “Go to App Name”
         /// </summary>
         /// <value>URL link to a source document – shown as “Go to App Name”</value>
-        [DataMember(Name="Url", EmitDefaultValue=false)]
+        [DataMember(Name = "Url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
         /// Total of bank transaction excluding taxes
         /// </summary>
         /// <value>Total of bank transaction excluding taxes</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; set; }
 
         /// <summary>
         /// Total tax on bank transaction
         /// </summary>
         /// <value>Total tax on bank transaction</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; set; }
 
         /// <summary>
         /// Total of bank transaction tax inclusive
         /// </summary>
         /// <value>Total of bank transaction tax inclusive</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for bank transaction
         /// </summary>
         /// <value>Xero generated unique identifier for bank transaction</value>
-        [DataMember(Name="BankTransactionID", EmitDefaultValue=false)]
+        [DataMember(Name = "BankTransactionID", EmitDefaultValue = false)]
         public Guid? BankTransactionID { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for a Prepayment. This will be returned on BankTransactions with a Type of SPEND-PREPAYMENT or RECEIVE-PREPAYMENT
         /// </summary>
         /// <value>Xero generated unique identifier for a Prepayment. This will be returned on BankTransactions with a Type of SPEND-PREPAYMENT or RECEIVE-PREPAYMENT</value>
-        [DataMember(Name="PrepaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "PrepaymentID", EmitDefaultValue = false)]
         public Guid? PrepaymentID { get; private set; }
 
         /// <summary>
         /// Xero generated unique identifier for an Overpayment. This will be returned on BankTransactions with a Type of SPEND-OVERPAYMENT or RECEIVE-OVERPAYMENT
         /// </summary>
         /// <value>Xero generated unique identifier for an Overpayment. This will be returned on BankTransactions with a Type of SPEND-OVERPAYMENT or RECEIVE-OVERPAYMENT</value>
-        [DataMember(Name="OverpaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "OverpaymentID", EmitDefaultValue = false)]
         public Guid? OverpaymentID { get; private set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Boolean to indicate if a bank transaction has an attachment
         /// </summary>
         /// <value>Boolean to indicate if a bank transaction has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -333,109 +333,109 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.BankAccount == input.BankAccount ||
                     (this.BankAccount != null &&
                     this.BankAccount.Equals(input.BankAccount))
-                ) && 
+                ) &&
                 (
                     this.IsReconciled == input.IsReconciled ||
                     (this.IsReconciled != null &&
                     this.IsReconciled.Equals(input.IsReconciled))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.BankTransactionID == input.BankTransactionID ||
                     (this.BankTransactionID != null &&
                     this.BankTransactionID.Equals(input.BankTransactionID))
-                ) && 
+                ) &&
                 (
                     this.PrepaymentID == input.PrepaymentID ||
                     (this.PrepaymentID != null &&
                     this.PrepaymentID.Equals(input.PrepaymentID))
-                ) && 
+                ) &&
                 (
                     this.OverpaymentID == input.OverpaymentID ||
                     (this.OverpaymentID != null &&
                     this.OverpaymentID.Equals(input.OverpaymentID))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

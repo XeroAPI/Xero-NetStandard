@@ -28,27 +28,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// UserActivitiesResponse
     /// </summary>
     [DataContract]
-    public partial class UserActivitiesResponse :  IEquatable<UserActivitiesResponse>, IValidatableObject
+    public partial class UserActivitiesResponse : IEquatable<UserActivitiesResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The requested Organisation to which the data pertains
         /// </summary>
         /// <value>The requested Organisation to which the data pertains</value>
-        [DataMember(Name="organisationId", EmitDefaultValue=false)]
+        [DataMember(Name = "organisationId", EmitDefaultValue = false)]
         public Guid? OrganisationId { get; set; }
 
         /// <summary>
         /// The month of the report
         /// </summary>
         /// <value>The month of the report</value>
-        [DataMember(Name="dataMonth", EmitDefaultValue=false)]
+        [DataMember(Name = "dataMonth", EmitDefaultValue = false)]
         public string DataMonth { get; set; }
 
         /// <summary>
         /// Gets or Sets Users
         /// </summary>
-        [DataMember(Name="users", EmitDefaultValue=false)]
+        [DataMember(Name = "users", EmitDefaultValue = false)]
         public List<UserResponse> Users { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -95,17 +95,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.OrganisationId == input.OrganisationId ||
                     (this.OrganisationId != null &&
                     this.OrganisationId.Equals(input.OrganisationId))
-                ) && 
+                ) &&
                 (
                     this.DataMonth == input.DataMonth ||
                     (this.DataMonth != null &&
                     this.DataMonth.Equals(input.DataMonth))
-                ) && 
+                ) &&
                 (
                     this.Users == input.Users ||
                     this.Users != null &&

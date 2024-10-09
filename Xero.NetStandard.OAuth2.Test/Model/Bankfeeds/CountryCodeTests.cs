@@ -56,17 +56,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         public async Task CountryCode_ValidInput_Deserialises(string input, CountryCode expected)
         {
             string jsonContent = $@"""{input}""";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<CountryCode>(response);
-            
+
             Assert.Equal(expected, actual);
         }
 
@@ -77,17 +77,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         public async Task CountryCode_NullInput_Deserialises()
         {
             string jsonContent = "null";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<CountryCode>(response);
-            
+
             Assert.Equal(0, (int)actual);
         }
 

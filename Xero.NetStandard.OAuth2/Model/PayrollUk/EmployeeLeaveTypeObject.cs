@@ -28,25 +28,25 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EmployeeLeaveTypeObject
     /// </summary>
     [DataContract]
-    public partial class EmployeeLeaveTypeObject :  IEquatable<EmployeeLeaveTypeObject>, IValidatableObject
+    public partial class EmployeeLeaveTypeObject : IEquatable<EmployeeLeaveTypeObject>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
         public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets Problem
         /// </summary>
-        [DataMember(Name="problem", EmitDefaultValue=false)]
+        [DataMember(Name = "problem", EmitDefaultValue = false)]
         public Problem Problem { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveType
         /// </summary>
-        [DataMember(Name="leaveType", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveType", EmitDefaultValue = false)]
         public EmployeeLeaveType LeaveType { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -93,17 +93,17 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Pagination == input.Pagination ||
                     (this.Pagination != null &&
                     this.Pagination.Equals(input.Pagination))
-                ) && 
+                ) &&
                 (
                     this.Problem == input.Problem ||
                     (this.Problem != null &&
                     this.Problem.Equals(input.Problem))
-                ) && 
+                ) &&
                 (
                     this.LeaveType == input.LeaveType ||
                     (this.LeaveType != null &&

@@ -28,70 +28,70 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EarningsLine
     /// </summary>
     [DataContract]
-    public partial class EarningsLine :  IEquatable<EarningsLine>, IValidatableObject
+    public partial class EarningsLine : IEquatable<EarningsLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll earnings line
         /// </summary>
         /// <value>Xero identifier for payroll earnings line</value>
-        [DataMember(Name="earningsLineID", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsLineID", EmitDefaultValue = false)]
         public Guid? EarningsLineID { get; set; }
 
         /// <summary>
         /// Xero identifier for payroll earnings rate
         /// </summary>
         /// <value>Xero identifier for payroll earnings rate</value>
-        [DataMember(Name="earningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// name of earnings rate for display in UI
         /// </summary>
         /// <value>name of earnings rate for display in UI</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Rate per unit for earnings line
         /// </summary>
         /// <value>Rate per unit for earnings line</value>
-        [DataMember(Name="ratePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "ratePerUnit", EmitDefaultValue = false)]
         public double? RatePerUnit { get; set; }
 
         /// <summary>
         /// Earnings number of units
         /// </summary>
         /// <value>Earnings number of units</value>
-        [DataMember(Name="numberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
         public double? NumberOfUnits { get; set; }
 
         /// <summary>
         /// Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed
         /// </summary>
         /// <value>Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed</value>
-        [DataMember(Name="fixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAmount", EmitDefaultValue = false)]
         public double? FixedAmount { get; set; }
 
         /// <summary>
         /// The amount of the earnings line.
         /// </summary>
         /// <value>The amount of the earnings line.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public double? Amount { get; set; }
 
         /// <summary>
         /// Identifies if the earnings is taken from the timesheet. False for earnings line
         /// </summary>
         /// <value>Identifies if the earnings is taken from the timesheet. False for earnings line</value>
-        [DataMember(Name="isLinkedToTimesheet", EmitDefaultValue=false)]
+        [DataMember(Name = "isLinkedToTimesheet", EmitDefaultValue = false)]
         public bool? IsLinkedToTimesheet { get; set; }
 
         /// <summary>
         /// Identifies if the earnings is using an average daily pay rate
         /// </summary>
         /// <value>Identifies if the earnings is using an average daily pay rate</value>
-        [DataMember(Name="isAverageDailyPayRate", EmitDefaultValue=false)]
+        [DataMember(Name = "isAverageDailyPayRate", EmitDefaultValue = false)]
         public bool? IsAverageDailyPayRate { get; set; }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -144,47 +144,47 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsLineID == input.EarningsLineID ||
                     (this.EarningsLineID != null &&
                     this.EarningsLineID.Equals(input.EarningsLineID))
-                ) && 
+                ) &&
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&
                     this.FixedAmount.Equals(input.FixedAmount))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.IsLinkedToTimesheet == input.IsLinkedToTimesheet ||
                     (this.IsLinkedToTimesheet != null &&
                     this.IsLinkedToTimesheet.Equals(input.IsLinkedToTimesheet))
-                ) && 
+                ) &&
                 (
                     this.IsAverageDailyPayRate == input.IsAverageDailyPayRate ||
                     (this.IsAverageDailyPayRate != null &&

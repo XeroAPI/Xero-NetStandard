@@ -28,70 +28,70 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeLeaveSetup
     /// </summary>
     [DataContract]
-    public partial class EmployeeLeaveSetup :  IEquatable<EmployeeLeaveSetup>, IValidatableObject
+    public partial class EmployeeLeaveSetup : IEquatable<EmployeeLeaveSetup>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Identifier if holiday pay will be included in each payslip
         /// </summary>
         /// <value>Identifier if holiday pay will be included in each payslip</value>
-        [DataMember(Name="includeHolidayPay", EmitDefaultValue=false)]
+        [DataMember(Name = "includeHolidayPay", EmitDefaultValue = false)]
         public bool? IncludeHolidayPay { get; set; }
 
         /// <summary>
         /// Initial holiday pay balance. A percentage — usually 8% — of gross earnings since their last work anniversary.
         /// </summary>
         /// <value>Initial holiday pay balance. A percentage — usually 8% — of gross earnings since their last work anniversary.</value>
-        [DataMember(Name="holidayPayOpeningBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "holidayPayOpeningBalance", EmitDefaultValue = false)]
         public decimal? HolidayPayOpeningBalance { get; set; }
 
         /// <summary>
         /// Initial annual leave balance. The balance at their last anniversary, less any leave taken since then and excluding accrued annual leave.
         /// </summary>
         /// <value>Initial annual leave balance. The balance at their last anniversary, less any leave taken since then and excluding accrued annual leave.</value>
-        [DataMember(Name="annualLeaveOpeningBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "annualLeaveOpeningBalance", EmitDefaultValue = false)]
         public decimal? AnnualLeaveOpeningBalance { get; set; }
 
         /// <summary>
         /// The dollar value of annual leave opening balance if negative.
         /// </summary>
         /// <value>The dollar value of annual leave opening balance if negative.</value>
-        [DataMember(Name="negativeAnnualLeaveBalancePaidAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "negativeAnnualLeaveBalancePaidAmount", EmitDefaultValue = false)]
         public decimal? NegativeAnnualLeaveBalancePaidAmount { get; set; }
 
         /// <summary>
         /// Number of hours accrued annually for sick leave. Multiply the number of days they&#39;re entitled to by the hours worked per day
         /// </summary>
         /// <value>Number of hours accrued annually for sick leave. Multiply the number of days they&#39;re entitled to by the hours worked per day</value>
-        [DataMember(Name="sickLeaveHoursToAccrueAnnually", EmitDefaultValue=false)]
+        [DataMember(Name = "sickLeaveHoursToAccrueAnnually", EmitDefaultValue = false)]
         public decimal? SickLeaveHoursToAccrueAnnually { get; set; }
 
         /// <summary>
         /// Maximum number of hours accrued annually for sick leave. Multiply the maximum days they can accrue by the hours worked per day
         /// </summary>
         /// <value>Maximum number of hours accrued annually for sick leave. Multiply the maximum days they can accrue by the hours worked per day</value>
-        [DataMember(Name="sickLeaveMaximumHoursToAccrue", EmitDefaultValue=false)]
+        [DataMember(Name = "sickLeaveMaximumHoursToAccrue", EmitDefaultValue = false)]
         public decimal? SickLeaveMaximumHoursToAccrue { get; set; }
 
         /// <summary>
         /// Initial sick leave balance. This will be positive unless they&#39;ve taken sick leave in advance
         /// </summary>
         /// <value>Initial sick leave balance. This will be positive unless they&#39;ve taken sick leave in advance</value>
-        [DataMember(Name="sickLeaveOpeningBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "sickLeaveOpeningBalance", EmitDefaultValue = false)]
         public decimal? SickLeaveOpeningBalance { get; set; }
 
         /// <summary>
         /// Set Schedule of Accrual Type for Sick Leave
         /// </summary>
         /// <value>Set Schedule of Accrual Type for Sick Leave</value>
-        [DataMember(Name="SickLeaveScheduleOfAccrual", EmitDefaultValue=false)]
+        [DataMember(Name = "SickLeaveScheduleOfAccrual", EmitDefaultValue = false)]
         public string SickLeaveScheduleOfAccrual { get; set; }
 
         /// <summary>
         /// If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave
         /// </summary>
         /// <value>If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave</value>
-        [DataMember(Name="SickLeaveAnniversaryDate", EmitDefaultValue=false)]
+        [DataMember(Name = "SickLeaveAnniversaryDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? SickLeaveAnniversaryDate { get; set; }
 
@@ -115,7 +115,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -145,47 +145,47 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.IncludeHolidayPay == input.IncludeHolidayPay ||
                     (this.IncludeHolidayPay != null &&
                     this.IncludeHolidayPay.Equals(input.IncludeHolidayPay))
-                ) && 
+                ) &&
                 (
                     this.HolidayPayOpeningBalance == input.HolidayPayOpeningBalance ||
                     (this.HolidayPayOpeningBalance != null &&
                     this.HolidayPayOpeningBalance.Equals(input.HolidayPayOpeningBalance))
-                ) && 
+                ) &&
                 (
                     this.AnnualLeaveOpeningBalance == input.AnnualLeaveOpeningBalance ||
                     (this.AnnualLeaveOpeningBalance != null &&
                     this.AnnualLeaveOpeningBalance.Equals(input.AnnualLeaveOpeningBalance))
-                ) && 
+                ) &&
                 (
                     this.NegativeAnnualLeaveBalancePaidAmount == input.NegativeAnnualLeaveBalancePaidAmount ||
                     (this.NegativeAnnualLeaveBalancePaidAmount != null &&
                     this.NegativeAnnualLeaveBalancePaidAmount.Equals(input.NegativeAnnualLeaveBalancePaidAmount))
-                ) && 
+                ) &&
                 (
                     this.SickLeaveHoursToAccrueAnnually == input.SickLeaveHoursToAccrueAnnually ||
                     (this.SickLeaveHoursToAccrueAnnually != null &&
                     this.SickLeaveHoursToAccrueAnnually.Equals(input.SickLeaveHoursToAccrueAnnually))
-                ) && 
+                ) &&
                 (
                     this.SickLeaveMaximumHoursToAccrue == input.SickLeaveMaximumHoursToAccrue ||
                     (this.SickLeaveMaximumHoursToAccrue != null &&
                     this.SickLeaveMaximumHoursToAccrue.Equals(input.SickLeaveMaximumHoursToAccrue))
-                ) && 
+                ) &&
                 (
                     this.SickLeaveOpeningBalance == input.SickLeaveOpeningBalance ||
                     (this.SickLeaveOpeningBalance != null &&
                     this.SickLeaveOpeningBalance.Equals(input.SickLeaveOpeningBalance))
-                ) && 
+                ) &&
                 (
                     this.SickLeaveScheduleOfAccrual == input.SickLeaveScheduleOfAccrual ||
                     (this.SickLeaveScheduleOfAccrual != null &&
                     this.SickLeaveScheduleOfAccrual.Equals(input.SickLeaveScheduleOfAccrual))
-                ) && 
+                ) &&
                 (
                     this.SickLeaveAnniversaryDate == input.SickLeaveAnniversaryDate ||
                     (this.SickLeaveAnniversaryDate != null &&

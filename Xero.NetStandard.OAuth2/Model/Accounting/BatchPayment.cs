@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BatchPayment
     /// </summary>
     [DataContract]
-    public partial class BatchPayment :  IEquatable<BatchPayment>, IValidatableObject
+    public partial class BatchPayment : IEquatable<BatchPayment>, IValidatableObject
     {
         /// <summary>
         /// PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)
         /// </summary>
         /// <value>PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.
@@ -82,111 +82,111 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.
         /// </summary>
         /// <value>AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Account
         /// </summary>
-        [DataMember(Name="Account", EmitDefaultValue=false)]
+        [DataMember(Name = "Account", EmitDefaultValue = false)]
         public Account Account { get; set; }
 
         /// <summary>
         /// (NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.
         /// </summary>
         /// <value>(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// (NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.
         /// </summary>
         /// <value>(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.</value>
-        [DataMember(Name="Particulars", EmitDefaultValue=false)]
+        [DataMember(Name = "Particulars", EmitDefaultValue = false)]
         public string Particulars { get; set; }
 
         /// <summary>
         /// (NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.
         /// </summary>
         /// <value>(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.</value>
-        [DataMember(Name="Code", EmitDefaultValue=false)]
+        [DataMember(Name = "Code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// (Non-NZ Only) These details are sent to the org’s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero. Maximum field length &#x3D; 18
         /// </summary>
         /// <value>(Non-NZ Only) These details are sent to the org’s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero. Maximum field length &#x3D; 18</value>
-        [DataMember(Name="Details", EmitDefaultValue=false)]
+        [DataMember(Name = "Details", EmitDefaultValue = false)]
         public string Details { get; set; }
 
         /// <summary>
         /// (UK Only) Only shows on the statement line in Xero. Max length &#x3D;18
         /// </summary>
         /// <value>(UK Only) Only shows on the statement line in Xero. Max length &#x3D;18</value>
-        [DataMember(Name="Narrative", EmitDefaultValue=false)]
+        [DataMember(Name = "Narrative", EmitDefaultValue = false)]
         public string Narrative { get; set; }
 
         /// <summary>
         /// The Xero generated unique identifier for the bank transaction (read-only)
         /// </summary>
         /// <value>The Xero generated unique identifier for the bank transaction (read-only)</value>
-        [DataMember(Name="BatchPaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "BatchPaymentID", EmitDefaultValue = false)]
         public Guid? BatchPaymentID { get; private set; }
 
         /// <summary>
         /// Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06
         /// </summary>
         /// <value>Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06</value>
-        [DataMember(Name="DateString", EmitDefaultValue=false)]
+        [DataMember(Name = "DateString", EmitDefaultValue = false)]
         public string DateString { get; set; }
 
         /// <summary>
         /// Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06
         /// </summary>
         /// <value>Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00
         /// </summary>
         /// <value>The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// An array of payments
         /// </summary>
         /// <value>An array of payments</value>
-        [DataMember(Name="Payments", EmitDefaultValue=false)]
+        [DataMember(Name = "Payments", EmitDefaultValue = false)]
         public List<Payment> Payments { get; set; }
 
         /// <summary>
         /// The total of the payments that make up the batch (read-only)
         /// </summary>
         /// <value>The total of the payments that make up the batch (read-only)</value>
-        [DataMember(Name="TotalAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalAmount", EmitDefaultValue = false)]
         public decimal? TotalAmount { get; private set; }
 
         /// <summary>
         /// UTC timestamp of last update to the payment
         /// </summary>
         /// <value>UTC timestamp of last update to the payment</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Booelan that tells you if the batch payment has been reconciled (read-only)
         /// </summary>
         /// <value>Booelan that tells you if the batch payment has been reconciled (read-only)</value>
-        [DataMember(Name="IsReconciled", EmitDefaultValue=false)]
+        [DataMember(Name = "IsReconciled", EmitDefaultValue = false)]
         public bool? IsReconciled { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -247,86 +247,86 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Account == input.Account ||
                     (this.Account != null &&
                     this.Account.Equals(input.Account))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.Particulars == input.Particulars ||
                     (this.Particulars != null &&
                     this.Particulars.Equals(input.Particulars))
-                ) && 
+                ) &&
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.Details == input.Details ||
                     (this.Details != null &&
                     this.Details.Equals(input.Details))
-                ) && 
+                ) &&
                 (
                     this.Narrative == input.Narrative ||
                     (this.Narrative != null &&
                     this.Narrative.Equals(input.Narrative))
-                ) && 
+                ) &&
                 (
                     this.BatchPaymentID == input.BatchPaymentID ||
                     (this.BatchPaymentID != null &&
                     this.BatchPaymentID.Equals(input.BatchPaymentID))
-                ) && 
+                ) &&
                 (
                     this.DateString == input.DateString ||
                     (this.DateString != null &&
                     this.DateString.Equals(input.DateString))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.Payments == input.Payments ||
                     this.Payments != null &&
                     input.Payments != null &&
                     this.Payments.SequenceEqual(input.Payments)
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.TotalAmount == input.TotalAmount ||
                     (this.TotalAmount != null &&
                     this.TotalAmount.Equals(input.TotalAmount))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.IsReconciled == input.IsReconciled ||
                     (this.IsReconciled != null &&
                     this.IsReconciled.Equals(input.IsReconciled))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
@@ -388,27 +388,27 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Reference (string) maxLength
-            if(this.Reference != null && this.Reference.Length > 255)
+            if (this.Reference != null && this.Reference.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, length must be less than 255.", new [] { "Reference" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, length must be less than 255.", new[] { "Reference" });
             }
 
             // Particulars (string) maxLength
-            if(this.Particulars != null && this.Particulars.Length > 12)
+            if (this.Particulars != null && this.Particulars.Length > 12)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Particulars, length must be less than 12.", new [] { "Particulars" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Particulars, length must be less than 12.", new[] { "Particulars" });
             }
 
             // Code (string) maxLength
-            if(this.Code != null && this.Code.Length > 12)
+            if (this.Code != null && this.Code.Length > 12)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 12.", new [] { "Code" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 12.", new[] { "Code" });
             }
 
             // Narrative (string) maxLength
-            if(this.Narrative != null && this.Narrative.Length > 18)
+            if (this.Narrative != null && this.Narrative.Length > 18)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Narrative, length must be less than 18.", new [] { "Narrative" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Narrative, length must be less than 18.", new[] { "Narrative" });
             }
 
             yield break;

@@ -58,14 +58,14 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             var jsonContent = $@"{{
                 ""Amount"": {input}
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<EndBalance>(response);
 
@@ -82,9 +82,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<EndBalance>(response);
 

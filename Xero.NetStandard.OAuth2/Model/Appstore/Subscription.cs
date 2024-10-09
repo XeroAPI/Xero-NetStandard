@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// Subscription
     /// </summary>
     [DataContract]
-    public partial class Subscription :  IEquatable<Subscription>, IValidatableObject
+    public partial class Subscription : IEquatable<Subscription>, IValidatableObject
     {
         /// <summary>
         /// Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.
@@ -61,64 +61,64 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
         /// Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.
         /// </summary>
         /// <value>Status of the subscription. Available statuses are ACTIVE, CANCELED, and PAST_DUE.</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Subscription" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Subscription() 
-        {  
-          Plans = new List<Plan>(); 
+        public Subscription()
+        {
+            Plans = new List<Plan>();
         }
-        
+
         /// <summary>
         /// End of the current period that the subscription has been invoiced for. 
         /// </summary>
         /// <value>End of the current period that the subscription has been invoiced for. </value>
-        [DataMember(Name="currentPeriodEnd", EmitDefaultValue=false)]
+        [DataMember(Name = "currentPeriodEnd", EmitDefaultValue = false)]
         public DateTime? CurrentPeriodEnd { get; set; }
 
         /// <summary>
         /// If the subscription has been canceled, this is the date when the subscription ends. If null, the subscription is active and has not been cancelled
         /// </summary>
         /// <value>If the subscription has been canceled, this is the date when the subscription ends. If null, the subscription is active and has not been cancelled</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// The unique identifier of the subscription
         /// </summary>
         /// <value>The unique identifier of the subscription</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// The Xero generated unique identifier for the organisation
         /// </summary>
         /// <value>The Xero generated unique identifier for the organisation</value>
-        [DataMember(Name="organisationId", EmitDefaultValue=false)]
+        [DataMember(Name = "organisationId", EmitDefaultValue = false)]
         public Guid? OrganisationId { get; set; }
 
         /// <summary>
         /// List of plans for the subscription.
         /// </summary>
         /// <value>List of plans for the subscription.</value>
-        [DataMember(Name="plans", EmitDefaultValue=false)]
+        [DataMember(Name = "plans", EmitDefaultValue = false)]
         public List<Plan> Plans { get; set; }
 
         /// <summary>
         /// Date when the subscription was first created.
         /// </summary>
         /// <value>Date when the subscription was first created.</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// Boolean used to indicate if the subscription is in test mode
         /// </summary>
         /// <value>Boolean used to indicate if the subscription is in test mode</value>
-        [DataMember(Name="testMode", EmitDefaultValue=false)]
+        [DataMember(Name = "testMode", EmitDefaultValue = false)]
         public bool? TestMode { get; set; }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -170,42 +170,42 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CurrentPeriodEnd == input.CurrentPeriodEnd ||
                     (this.CurrentPeriodEnd != null &&
                     this.CurrentPeriodEnd.Equals(input.CurrentPeriodEnd))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.OrganisationId == input.OrganisationId ||
                     (this.OrganisationId != null &&
                     this.OrganisationId.Equals(input.OrganisationId))
-                ) && 
+                ) &&
                 (
                     this.Plans == input.Plans ||
                     this.Plans != null &&
                     input.Plans != null &&
                     this.Plans.SequenceEqual(input.Plans)
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.TestMode == input.TestMode ||
                     (this.TestMode != null &&

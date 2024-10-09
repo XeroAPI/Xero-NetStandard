@@ -28,142 +28,142 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// TaxDeclaration
     /// </summary>
     [DataContract]
-    public partial class TaxDeclaration :  IEquatable<TaxDeclaration>, IValidatableObject
+    public partial class TaxDeclaration : IEquatable<TaxDeclaration>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets EmploymentBasis
         /// </summary>
-        [DataMember(Name="EmploymentBasis", EmitDefaultValue=false)]
+        [DataMember(Name = "EmploymentBasis", EmitDefaultValue = false)]
         public EmploymentBasis EmploymentBasis { get; set; }
         /// <summary>
         /// Gets or Sets TFNExemptionType
         /// </summary>
-        [DataMember(Name="TFNExemptionType", EmitDefaultValue=false)]
+        [DataMember(Name = "TFNExemptionType", EmitDefaultValue = false)]
         public TFNExemptionType TFNExemptionType { get; set; }
         /// <summary>
         /// Gets or Sets ResidencyStatus
         /// </summary>
-        [DataMember(Name="ResidencyStatus", EmitDefaultValue=false)]
+        [DataMember(Name = "ResidencyStatus", EmitDefaultValue = false)]
         public ResidencyStatus ResidencyStatus { get; set; }
         /// <summary>
         /// Gets or Sets TaxScaleType
         /// </summary>
-        [DataMember(Name="TaxScaleType", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxScaleType", EmitDefaultValue = false)]
         public TaxScaleType TaxScaleType { get; set; }
         /// <summary>
         /// Gets or Sets WorkCondition
         /// </summary>
-        [DataMember(Name="WorkCondition", EmitDefaultValue=false)]
+        [DataMember(Name = "WorkCondition", EmitDefaultValue = false)]
         public WorkCondition WorkCondition { get; set; }
         /// <summary>
         /// Gets or Sets SeniorMaritalStatus
         /// </summary>
-        [DataMember(Name="SeniorMaritalStatus", EmitDefaultValue=false)]
+        [DataMember(Name = "SeniorMaritalStatus", EmitDefaultValue = false)]
         public SeniorMaritalStatus SeniorMaritalStatus { get; set; }
-        
+
         /// <summary>
         /// Address line 1 for employee home address
         /// </summary>
         /// <value>Address line 1 for employee home address</value>
-        [DataMember(Name="EmployeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// The tax file number e.g 123123123.
         /// </summary>
         /// <value>The tax file number e.g 123123123.</value>
-        [DataMember(Name="TaxFileNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxFileNumber", EmitDefaultValue = false)]
         public string TaxFileNumber { get; set; }
 
         /// <summary>
         /// 11-digit Australian Business Number e.g 21006819692 or an empty string (\&quot;\&quot;) to unset a previously set value. Only applicable, and mandatory if income type is NONEMPLOYEE.
         /// </summary>
         /// <value>11-digit Australian Business Number e.g 21006819692 or an empty string (\&quot;\&quot;) to unset a previously set value. Only applicable, and mandatory if income type is NONEMPLOYEE.</value>
-        [DataMember(Name="ABN", EmitDefaultValue=false)]
+        [DataMember(Name = "ABN", EmitDefaultValue = false)]
         public string ABN { get; set; }
 
         /// <summary>
         /// If the employee is Australian resident for tax purposes. e.g true or false
         /// </summary>
         /// <value>If the employee is Australian resident for tax purposes. e.g true or false</value>
-        [DataMember(Name="AustralianResidentForTaxPurposes", EmitDefaultValue=false)]
+        [DataMember(Name = "AustralianResidentForTaxPurposes", EmitDefaultValue = false)]
         public bool? AustralianResidentForTaxPurposes { get; set; }
 
         /// <summary>
         /// If tax free threshold claimed. e.g true or false
         /// </summary>
         /// <value>If tax free threshold claimed. e.g true or false</value>
-        [DataMember(Name="TaxFreeThresholdClaimed", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxFreeThresholdClaimed", EmitDefaultValue = false)]
         public bool? TaxFreeThresholdClaimed { get; set; }
 
         /// <summary>
         /// If has tax offset estimated then the tax offset estimated amount. e.g 100
         /// </summary>
         /// <value>If has tax offset estimated then the tax offset estimated amount. e.g 100</value>
-        [DataMember(Name="TaxOffsetEstimatedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxOffsetEstimatedAmount", EmitDefaultValue = false)]
         public decimal? TaxOffsetEstimatedAmount { get; set; }
 
         /// <summary>
         /// If employee has HECS or HELP debt. e.g true or false
         /// </summary>
         /// <value>If employee has HECS or HELP debt. e.g true or false</value>
-        [DataMember(Name="HasHELPDebt", EmitDefaultValue=false)]
+        [DataMember(Name = "HasHELPDebt", EmitDefaultValue = false)]
         public bool? HasHELPDebt { get; set; }
 
         /// <summary>
         /// If employee has financial supplement debt. e.g true or false
         /// </summary>
         /// <value>If employee has financial supplement debt. e.g true or false</value>
-        [DataMember(Name="HasSFSSDebt", EmitDefaultValue=false)]
+        [DataMember(Name = "HasSFSSDebt", EmitDefaultValue = false)]
         public bool? HasSFSSDebt { get; set; }
 
         /// <summary>
         /// If employee has trade support loan. e.g true or false
         /// </summary>
         /// <value>If employee has trade support loan. e.g true or false</value>
-        [DataMember(Name="HasTradeSupportLoanDebt", EmitDefaultValue=false)]
+        [DataMember(Name = "HasTradeSupportLoanDebt", EmitDefaultValue = false)]
         public bool? HasTradeSupportLoanDebt { get; set; }
 
         /// <summary>
         /// If the employee has requested that additional tax be withheld each pay run. e.g 50
         /// </summary>
         /// <value>If the employee has requested that additional tax be withheld each pay run. e.g 50</value>
-        [DataMember(Name="UpwardVariationTaxWithholdingAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "UpwardVariationTaxWithholdingAmount", EmitDefaultValue = false)]
         public decimal? UpwardVariationTaxWithholdingAmount { get; set; }
 
         /// <summary>
         /// If the employee is eligible to receive an additional percentage on top of ordinary earnings when they take leave (typically 17.5%). e.g true or false
         /// </summary>
         /// <value>If the employee is eligible to receive an additional percentage on top of ordinary earnings when they take leave (typically 17.5%). e.g true or false</value>
-        [DataMember(Name="EligibleToReceiveLeaveLoading", EmitDefaultValue=false)]
+        [DataMember(Name = "EligibleToReceiveLeaveLoading", EmitDefaultValue = false)]
         public bool? EligibleToReceiveLeaveLoading { get; set; }
 
         /// <summary>
         /// If the employee has approved withholding variation. e.g (0 - 100)
         /// </summary>
         /// <value>If the employee has approved withholding variation. e.g (0 - 100)</value>
-        [DataMember(Name="ApprovedWithholdingVariationPercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "ApprovedWithholdingVariationPercentage", EmitDefaultValue = false)]
         public decimal? ApprovedWithholdingVariationPercentage { get; set; }
 
         /// <summary>
         /// If the employee is eligible for student startup loan rules
         /// </summary>
         /// <value>If the employee is eligible for student startup loan rules</value>
-        [DataMember(Name="HasStudentStartupLoan", EmitDefaultValue=false)]
+        [DataMember(Name = "HasStudentStartupLoan", EmitDefaultValue = false)]
         public bool? HasStudentStartupLoan { get; set; }
 
         /// <summary>
         /// If the employee has any of the following loans or debts: Higher Education Loan Program (HELP/HECS), VET Student Loan (VSL), Financial Supplement (FS), Student Start-up Loan (SSL), or Trade Support Loan (TSL)
         /// </summary>
         /// <value>If the employee has any of the following loans or debts: Higher Education Loan Program (HELP/HECS), VET Student Loan (VSL), Financial Supplement (FS), Student Start-up Loan (SSL), or Trade Support Loan (TSL)</value>
-        [DataMember(Name="HasLoanOrStudentDebt", EmitDefaultValue=false)]
+        [DataMember(Name = "HasLoanOrStudentDebt", EmitDefaultValue = false)]
         public bool? HasLoanOrStudentDebt { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -228,101 +228,101 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.EmploymentBasis == input.EmploymentBasis ||
                     this.EmploymentBasis.Equals(input.EmploymentBasis)
-                ) && 
+                ) &&
                 (
                     this.TFNExemptionType == input.TFNExemptionType ||
                     this.TFNExemptionType.Equals(input.TFNExemptionType)
-                ) && 
+                ) &&
                 (
                     this.TaxFileNumber == input.TaxFileNumber ||
                     (this.TaxFileNumber != null &&
                     this.TaxFileNumber.Equals(input.TaxFileNumber))
-                ) && 
+                ) &&
                 (
                     this.ABN == input.ABN ||
                     (this.ABN != null &&
                     this.ABN.Equals(input.ABN))
-                ) && 
+                ) &&
                 (
                     this.AustralianResidentForTaxPurposes == input.AustralianResidentForTaxPurposes ||
                     (this.AustralianResidentForTaxPurposes != null &&
                     this.AustralianResidentForTaxPurposes.Equals(input.AustralianResidentForTaxPurposes))
-                ) && 
+                ) &&
                 (
                     this.ResidencyStatus == input.ResidencyStatus ||
                     this.ResidencyStatus.Equals(input.ResidencyStatus)
-                ) && 
+                ) &&
                 (
                     this.TaxScaleType == input.TaxScaleType ||
                     this.TaxScaleType.Equals(input.TaxScaleType)
-                ) && 
+                ) &&
                 (
                     this.WorkCondition == input.WorkCondition ||
                     this.WorkCondition.Equals(input.WorkCondition)
-                ) && 
+                ) &&
                 (
                     this.SeniorMaritalStatus == input.SeniorMaritalStatus ||
                     this.SeniorMaritalStatus.Equals(input.SeniorMaritalStatus)
-                ) && 
+                ) &&
                 (
                     this.TaxFreeThresholdClaimed == input.TaxFreeThresholdClaimed ||
                     (this.TaxFreeThresholdClaimed != null &&
                     this.TaxFreeThresholdClaimed.Equals(input.TaxFreeThresholdClaimed))
-                ) && 
+                ) &&
                 (
                     this.TaxOffsetEstimatedAmount == input.TaxOffsetEstimatedAmount ||
                     (this.TaxOffsetEstimatedAmount != null &&
                     this.TaxOffsetEstimatedAmount.Equals(input.TaxOffsetEstimatedAmount))
-                ) && 
+                ) &&
                 (
                     this.HasHELPDebt == input.HasHELPDebt ||
                     (this.HasHELPDebt != null &&
                     this.HasHELPDebt.Equals(input.HasHELPDebt))
-                ) && 
+                ) &&
                 (
                     this.HasSFSSDebt == input.HasSFSSDebt ||
                     (this.HasSFSSDebt != null &&
                     this.HasSFSSDebt.Equals(input.HasSFSSDebt))
-                ) && 
+                ) &&
                 (
                     this.HasTradeSupportLoanDebt == input.HasTradeSupportLoanDebt ||
                     (this.HasTradeSupportLoanDebt != null &&
                     this.HasTradeSupportLoanDebt.Equals(input.HasTradeSupportLoanDebt))
-                ) && 
+                ) &&
                 (
                     this.UpwardVariationTaxWithholdingAmount == input.UpwardVariationTaxWithholdingAmount ||
                     (this.UpwardVariationTaxWithholdingAmount != null &&
                     this.UpwardVariationTaxWithholdingAmount.Equals(input.UpwardVariationTaxWithholdingAmount))
-                ) && 
+                ) &&
                 (
                     this.EligibleToReceiveLeaveLoading == input.EligibleToReceiveLeaveLoading ||
                     (this.EligibleToReceiveLeaveLoading != null &&
                     this.EligibleToReceiveLeaveLoading.Equals(input.EligibleToReceiveLeaveLoading))
-                ) && 
+                ) &&
                 (
                     this.ApprovedWithholdingVariationPercentage == input.ApprovedWithholdingVariationPercentage ||
                     (this.ApprovedWithholdingVariationPercentage != null &&
                     this.ApprovedWithholdingVariationPercentage.Equals(input.ApprovedWithholdingVariationPercentage))
-                ) && 
+                ) &&
                 (
                     this.HasStudentStartupLoan == input.HasStudentStartupLoan ||
                     (this.HasStudentStartupLoan != null &&
                     this.HasStudentStartupLoan.Equals(input.HasStudentStartupLoan))
-                ) && 
+                ) &&
                 (
                     this.HasLoanOrStudentDebt == input.HasLoanOrStudentDebt ||
                     (this.HasLoanOrStudentDebt != null &&
                     this.HasLoanOrStudentDebt.Equals(input.HasLoanOrStudentDebt))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&

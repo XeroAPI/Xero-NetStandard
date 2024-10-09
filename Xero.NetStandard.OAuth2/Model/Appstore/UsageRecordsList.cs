@@ -28,22 +28,22 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// Response to get usage record
     /// </summary>
     [DataContract]
-    public partial class UsageRecordsList :  IEquatable<UsageRecordsList>, IValidatableObject
+    public partial class UsageRecordsList : IEquatable<UsageRecordsList>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UsageRecordsList" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public UsageRecordsList() 
-        {  
-          UsageRecords = new List<UsageRecord>(); 
+        public UsageRecordsList()
+        {
+            UsageRecords = new List<UsageRecord>();
         }
-        
+
         /// <summary>
         /// A collection of usage records
         /// </summary>
         /// <value>A collection of usage records</value>
-        [DataMember(Name="usageRecords", EmitDefaultValue=false)]
+        [DataMember(Name = "usageRecords", EmitDefaultValue = false)]
         public List<UsageRecord> UsageRecords { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,7 +88,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UsageRecords == input.UsageRecords ||
                     this.UsageRecords != null &&

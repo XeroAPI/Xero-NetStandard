@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EmployeeStatutorySickLeave
     /// </summary>
     [DataContract]
-    public partial class EmployeeStatutorySickLeave :  IEquatable<EmployeeStatutorySickLeave>, IValidatableObject
+    public partial class EmployeeStatutorySickLeave : IEquatable<EmployeeStatutorySickLeave>, IValidatableObject
     {
         /// <summary>
         /// Defines EntitlementFailureReasons
@@ -79,44 +79,44 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// If the leave requested was considered \&quot;not entitled\&quot;, the reasons why are listed here.
         /// </summary>
         /// <value>If the leave requested was considered \&quot;not entitled\&quot;, the reasons why are listed here.</value>
-        [DataMember(Name="entitlementFailureReasons", EmitDefaultValue=false)]
+        [DataMember(Name = "entitlementFailureReasons", EmitDefaultValue = false)]
         public List<EntitlementFailureReasonsEnum> EntitlementFailureReasons { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeStatutorySickLeave" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EmployeeStatutorySickLeave() 
-        {  
-          WorkPattern = new List<string>();  
-          EntitlementFailureReasons = new List<EntitlementFailureReasonsEnum>(); 
+        public EmployeeStatutorySickLeave()
+        {
+            WorkPattern = new List<string>();
+            EntitlementFailureReasons = new List<EntitlementFailureReasonsEnum>();
         }
-        
+
         /// <summary>
         /// The unique identifier (guid) of a statutory leave
         /// </summary>
         /// <value>The unique identifier (guid) of a statutory leave</value>
-        [DataMember(Name="statutoryLeaveID", EmitDefaultValue=false)]
+        [DataMember(Name = "statutoryLeaveID", EmitDefaultValue = false)]
         public Guid? StatutoryLeaveID { get; set; }
 
         /// <summary>
         /// The unique identifier (guid) of the employee
         /// </summary>
         /// <value>The unique identifier (guid) of the employee</value>
-        [DataMember(Name="employeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "employeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// The unique identifier (guid) of the \&quot;Statutory Sick Leave (non-pensionable)\&quot; pay item
         /// </summary>
         /// <value>The unique identifier (guid) of the \&quot;Statutory Sick Leave (non-pensionable)\&quot; pay item</value>
-        [DataMember(Name="leaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// The date when the leave starts
         /// </summary>
         /// <value>The date when the leave starts</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -124,7 +124,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The date when the leave ends
         /// </summary>
         /// <value>The date when the leave ends</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -132,70 +132,70 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// the type of statutory leave
         /// </summary>
         /// <value>the type of statutory leave</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// the type of statutory leave
         /// </summary>
         /// <value>the type of statutory leave</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
         /// The days of the work week the employee is scheduled to work at the time the leave is taken
         /// </summary>
         /// <value>The days of the work week the employee is scheduled to work at the time the leave is taken</value>
-        [DataMember(Name="workPattern", EmitDefaultValue=false)]
+        [DataMember(Name = "workPattern", EmitDefaultValue = false)]
         public List<string> WorkPattern { get; set; }
 
         /// <summary>
         /// Whether the sick leave was pregnancy related
         /// </summary>
         /// <value>Whether the sick leave was pregnancy related</value>
-        [DataMember(Name="isPregnancyRelated", EmitDefaultValue=false)]
+        [DataMember(Name = "isPregnancyRelated", EmitDefaultValue = false)]
         public bool? IsPregnancyRelated { get; set; }
 
         /// <summary>
         /// Whether the employee provided sufficient notice and documentation as required by the employer supporting the sick leave request
         /// </summary>
         /// <value>Whether the employee provided sufficient notice and documentation as required by the employer supporting the sick leave request</value>
-        [DataMember(Name="sufficientNotice", EmitDefaultValue=false)]
+        [DataMember(Name = "sufficientNotice", EmitDefaultValue = false)]
         public bool? SufficientNotice { get; set; }
 
         /// <summary>
         /// Whether the leave was entitled to receive payment
         /// </summary>
         /// <value>Whether the leave was entitled to receive payment</value>
-        [DataMember(Name="isEntitled", EmitDefaultValue=false)]
+        [DataMember(Name = "isEntitled", EmitDefaultValue = false)]
         public bool? IsEntitled { get; set; }
 
         /// <summary>
         /// The amount of requested time (in weeks)
         /// </summary>
         /// <value>The amount of requested time (in weeks)</value>
-        [DataMember(Name="entitlementWeeksRequested", EmitDefaultValue=false)]
+        [DataMember(Name = "entitlementWeeksRequested", EmitDefaultValue = false)]
         public double? EntitlementWeeksRequested { get; set; }
 
         /// <summary>
         /// The amount of statutory sick leave time off (in weeks) that is available to take at the time the leave was requested
         /// </summary>
         /// <value>The amount of statutory sick leave time off (in weeks) that is available to take at the time the leave was requested</value>
-        [DataMember(Name="entitlementWeeksQualified", EmitDefaultValue=false)]
+        [DataMember(Name = "entitlementWeeksQualified", EmitDefaultValue = false)]
         public double? EntitlementWeeksQualified { get; set; }
 
         /// <summary>
         /// A calculated amount of time (in weeks) that remains for the statutory sick leave period
         /// </summary>
         /// <value>A calculated amount of time (in weeks) that remains for the statutory sick leave period</value>
-        [DataMember(Name="entitlementWeeksRemaining", EmitDefaultValue=false)]
+        [DataMember(Name = "entitlementWeeksRemaining", EmitDefaultValue = false)]
         public double? EntitlementWeeksRemaining { get; set; }
 
         /// <summary>
         /// Whether another leave (Paternity, Shared Parental specifically) occurs during the requested leave&#39;s period. While this is allowed it could affect payment amounts
         /// </summary>
         /// <value>Whether another leave (Paternity, Shared Parental specifically) occurs during the requested leave&#39;s period. While this is allowed it could affect payment amounts</value>
-        [DataMember(Name="overlapsWithOtherLeave", EmitDefaultValue=false)]
+        [DataMember(Name = "overlapsWithOtherLeave", EmitDefaultValue = false)]
         public bool? OverlapsWithOtherLeave { get; set; }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -255,83 +255,83 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatutoryLeaveID == input.StatutoryLeaveID ||
                     (this.StatutoryLeaveID != null &&
                     this.StatutoryLeaveID.Equals(input.StatutoryLeaveID))
-                ) && 
+                ) &&
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.WorkPattern == input.WorkPattern ||
                     this.WorkPattern != null &&
                     input.WorkPattern != null &&
                     this.WorkPattern.SequenceEqual(input.WorkPattern)
-                ) && 
+                ) &&
                 (
                     this.IsPregnancyRelated == input.IsPregnancyRelated ||
                     (this.IsPregnancyRelated != null &&
                     this.IsPregnancyRelated.Equals(input.IsPregnancyRelated))
-                ) && 
+                ) &&
                 (
                     this.SufficientNotice == input.SufficientNotice ||
                     (this.SufficientNotice != null &&
                     this.SufficientNotice.Equals(input.SufficientNotice))
-                ) && 
+                ) &&
                 (
                     this.IsEntitled == input.IsEntitled ||
                     (this.IsEntitled != null &&
                     this.IsEntitled.Equals(input.IsEntitled))
-                ) && 
+                ) &&
                 (
                     this.EntitlementWeeksRequested == input.EntitlementWeeksRequested ||
                     (this.EntitlementWeeksRequested != null &&
                     this.EntitlementWeeksRequested.Equals(input.EntitlementWeeksRequested))
-                ) && 
+                ) &&
                 (
                     this.EntitlementWeeksQualified == input.EntitlementWeeksQualified ||
                     (this.EntitlementWeeksQualified != null &&
                     this.EntitlementWeeksQualified.Equals(input.EntitlementWeeksQualified))
-                ) && 
+                ) &&
                 (
                     this.EntitlementWeeksRemaining == input.EntitlementWeeksRemaining ||
                     (this.EntitlementWeeksRemaining != null &&
                     this.EntitlementWeeksRemaining.Equals(input.EntitlementWeeksRemaining))
-                ) && 
+                ) &&
                 (
                     this.OverlapsWithOtherLeave == input.OverlapsWithOtherLeave ||
                     (this.OverlapsWithOtherLeave != null &&
                     this.OverlapsWithOtherLeave.Equals(input.OverlapsWithOtherLeave))
-                ) && 
+                ) &&
                 (
                     this.EntitlementFailureReasons == input.EntitlementFailureReasons ||
                     this.EntitlementFailureReasons != null &&

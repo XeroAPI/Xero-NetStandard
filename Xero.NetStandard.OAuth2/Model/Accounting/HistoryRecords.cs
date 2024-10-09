@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// HistoryRecords
     /// </summary>
     [DataContract]
-    public partial class HistoryRecords :  IEquatable<HistoryRecords>, IValidatableObject
+    public partial class HistoryRecords : IEquatable<HistoryRecords>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _HistoryRecords
         /// </summary>
-        [DataMember(Name="HistoryRecords", EmitDefaultValue=false)]
+        [DataMember(Name = "HistoryRecords", EmitDefaultValue = false)]
         public List<HistoryRecord> _HistoryRecords { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._HistoryRecords == input._HistoryRecords ||
                     this._HistoryRecords != null &&

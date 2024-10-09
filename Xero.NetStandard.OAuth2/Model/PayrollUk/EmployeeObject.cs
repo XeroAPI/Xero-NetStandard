@@ -28,25 +28,25 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EmployeeObject
     /// </summary>
     [DataContract]
-    public partial class EmployeeObject :  IEquatable<EmployeeObject>, IValidatableObject
+    public partial class EmployeeObject : IEquatable<EmployeeObject>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
         public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets Employee
         /// </summary>
-        [DataMember(Name="employee", EmitDefaultValue=false)]
+        [DataMember(Name = "employee", EmitDefaultValue = false)]
         public Employee Employee { get; set; }
 
         /// <summary>
         /// Gets or Sets Problem
         /// </summary>
-        [DataMember(Name="problem", EmitDefaultValue=false)]
+        [DataMember(Name = "problem", EmitDefaultValue = false)]
         public Problem Problem { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -93,17 +93,17 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Pagination == input.Pagination ||
                     (this.Pagination != null &&
                     this.Pagination.Equals(input.Pagination))
-                ) && 
+                ) &&
                 (
                     this.Employee == input.Employee ||
                     (this.Employee != null &&
                     this.Employee.Equals(input.Employee))
-                ) && 
+                ) &&
                 (
                     this.Problem == input.Problem ||
                     (this.Problem != null &&

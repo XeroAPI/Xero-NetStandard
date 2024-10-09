@@ -44,7 +44,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         }
 
         // Methods are async but may not require it in specific cases
-        #pragma warning disable CS1998 // This async method lacks 'await' operators
+#pragma warning disable CS1998 // This async method lacks 'await' operators
         public async Task InitializeAsync()
         {
             var directory = Directory.GetCurrentDirectory();
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         {
             // Cleanup when everything is done.
         }
-        #pragma warning restore CS1998 // This async method lacks 'await' operators
+#pragma warning restore CS1998 // This async method lacks 'await' operators
 
         /// <summary>
         /// Test an instance of PayrollAuApi
@@ -69,7 +69,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             Assert.IsType<PayrollAuApi>(instance);
         }
 
-        
+
         /// <summary>
         /// Test CreateEmployee
         /// </summary>
@@ -85,7 +85,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employees);
             Assert.IsType<Employees>(response);
         }
-        
+
         /// <summary>
         /// Test CreateLeaveApplication
         /// </summary>
@@ -97,7 +97,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.CreateLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplication);
             Assert.IsType<LeaveApplications>(response);
         }
-        
+
         /// <summary>
         /// Test CreatePayItem
         /// </summary>
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.CreatePayItemAsync(accessToken, xeroTenantId, payItem);
             Assert.IsType<PayItems>(response);
         }
-        
+
         /// <summary>
         /// Test CreatePayRun
         /// </summary>
@@ -122,7 +122,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.CreatePayRunAsync(accessToken, xeroTenantId, payRun);
             Assert.IsType<PayRuns>(response);
         }
-        
+
         /// <summary>
         /// Test CreatePayrollCalendar
         /// </summary>
@@ -133,7 +133,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.CreatePayrollCalendarAsync(accessToken, xeroTenantId, payrollCalendar);
             Assert.IsType<PayrollCalendars>(response);
         }
-        
+
         /// <summary>
         /// Test CreateSuperfund
         /// </summary>
@@ -147,7 +147,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.CreateSuperfundAsync(accessToken, xeroTenantId, superFund);
             Assert.IsType<SuperFunds>(response);
         }
-        
+
         /// <summary>
         /// Test CreateTimesheet
         /// </summary>
@@ -165,7 +165,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.CreateTimesheetAsync(accessToken, xeroTenantId, timesheet);
             Assert.IsType<Timesheets>(response);
         }
-        
+
         /// <summary>
         /// Test GetEmployee
         /// </summary>
@@ -176,7 +176,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetEmployeeAsync(accessToken, xeroTenantId, employeeId);
             Assert.IsType<Employees>(response);
         }
-        
+
         /// <summary>
         /// Test GetEmployees
         /// </summary>
@@ -190,7 +190,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetEmployeesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             Assert.IsType<Employees>(response);
         }
-        
+
         /// <summary>
         /// Test GetLeaveApplication
         /// </summary>
@@ -201,7 +201,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationId);
             Assert.IsType<LeaveApplications>(response);
         }
-        
+
         /// <summary>
         /// Test GetLeaveApplications
         /// </summary>
@@ -215,7 +215,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetLeaveApplicationsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             Assert.IsType<LeaveApplications>(response);
         }
-        
+
         /// <summary>
         /// Test GetPayItems
         /// </summary>
@@ -229,7 +229,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetPayItemsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             Assert.IsType<PayItems>(response);
         }
-        
+
         /// <summary>
         /// Test GetPayRun
         /// </summary>
@@ -240,7 +240,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetPayRunAsync(accessToken, xeroTenantId, payRunID);
             Assert.IsType<PayRuns>(response);
         }
-        
+
         /// <summary>
         /// Test GetPayRuns
         /// </summary>
@@ -254,7 +254,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetPayRunsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             Assert.IsType<PayRuns>(response);
         }
-        
+
         /// <summary>
         /// Test GetPayrollCalendar
         /// </summary>
@@ -265,7 +265,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetPayrollCalendarAsync(accessToken, xeroTenantId, payrollCalendarID);
             Assert.IsType<PayrollCalendars>(response);
         }
-        
+
         /// <summary>
         /// Test GetPayrollCalendars
         /// </summary>
@@ -279,7 +279,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetPayrollCalendarsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             Assert.IsType<PayrollCalendars>(response);
         }
-        
+
         /// <summary>
         /// Test GetPayslip
         /// </summary>
@@ -290,7 +290,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetPayslipAsync(accessToken, xeroTenantId, payslipID);
             Assert.IsType<PayslipObject>(response);
         }
-        
+
         /// <summary>
         /// Test GetSettings
         /// </summary>
@@ -300,7 +300,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetSettingsAsync(accessToken, xeroTenantId);
             Assert.IsType<SettingsObject>(response);
         }
-        
+
         /// <summary>
         /// Test GetSuperfund
         /// </summary>
@@ -311,7 +311,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetSuperfundAsync(accessToken, xeroTenantId, superFundID);
             Assert.IsType<SuperFunds>(response);
         }
-        
+
         /// <summary>
         /// Test GetSuperfundProducts
         /// </summary>
@@ -323,7 +323,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetSuperfundProductsAsync(accessToken, xeroTenantId, ABN, USI);
             Assert.IsType<SuperFundProducts>(response);
         }
-        
+
         /// <summary>
         /// Test GetSuperfunds
         /// </summary>
@@ -337,7 +337,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetSuperfundsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             Assert.IsType<SuperFunds>(response);
         }
-        
+
         /// <summary>
         /// Test GetTimesheet
         /// </summary>
@@ -348,7 +348,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetTimesheetAsync(accessToken, xeroTenantId, timesheetID);
             Assert.IsType<TimesheetObject>(response);
         }
-        
+
         /// <summary>
         /// Test GetTimesheets
         /// </summary>
@@ -362,7 +362,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.GetTimesheetsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page);
             Assert.IsType<Timesheets>(response);
         }
-        
+
         /// <summary>
         /// Test UpdateEmployee
         /// </summary>
@@ -380,7 +380,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeId, employee, idempotencyKey);
             Assert.IsType<Employees>(response);
         }
-        
+
         /// <summary>
         /// Test UpdateLeaveApplication
         /// </summary>
@@ -392,7 +392,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.UpdateLeaveApplicationAsync(accessToken, xeroTenantId, leaveApplicationId, leaveApplication);
             Assert.IsType<LeaveApplications>(response);
         }
-        
+
         /// <summary>
         /// Test UpdatePayRun
         /// </summary>
@@ -408,7 +408,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.UpdatePayRunAsync(accessToken, xeroTenantId, payRunID, payRun, idempotencyKey);
             Assert.IsType<PayRuns>(response);
         }
-        
+
         /// <summary>
         /// Test UpdatePayslip
         /// </summary>
@@ -421,7 +421,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.UpdatePayslipAsync(accessToken, xeroTenantId, payslipID, payslipLines, idempotencyKey);
             Assert.IsType<Payslips>(response);
         }
-        
+
         /// <summary>
         /// Test UpdateSuperfund
         /// </summary>
@@ -437,7 +437,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.UpdateSuperfundAsync(accessToken, xeroTenantId, superFundID, superFund, idempotencyKey);
             Assert.IsType<SuperFunds>(response);
         }
-        
+
         /// <summary>
         /// Test UpdateTimesheet
         /// </summary>
@@ -457,7 +457,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
             var response = await instance.UpdateTimesheetAsync(accessToken, xeroTenantId, timesheetID, timesheet, idempotencyKey);
             Assert.IsType<Timesheets>(response);
         }
-        
+
     }
 
 }

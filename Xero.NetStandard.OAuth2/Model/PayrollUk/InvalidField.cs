@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// InvalidField
     /// </summary>
     [DataContract]
-    public partial class InvalidField :  IEquatable<InvalidField>, IValidatableObject
+    public partial class InvalidField : IEquatable<InvalidField>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The name of the field that caused the error
         /// </summary>
         /// <value>The name of the field that caused the error</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The reason the error occurred
         /// </summary>
         /// <value>The reason the error occurred</value>
-        [DataMember(Name="reason", EmitDefaultValue=false)]
+        [DataMember(Name = "reason", EmitDefaultValue = false)]
         public string Reason { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Reason == input.Reason ||
                     (this.Reason != null &&

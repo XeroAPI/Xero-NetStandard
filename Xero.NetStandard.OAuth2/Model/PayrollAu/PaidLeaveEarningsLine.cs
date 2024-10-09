@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// PaidLeaveEarningsLine
     /// </summary>
     [DataContract]
-    public partial class PaidLeaveEarningsLine :  IEquatable<PaidLeaveEarningsLine>, IValidatableObject
+    public partial class PaidLeaveEarningsLine : IEquatable<PaidLeaveEarningsLine>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PaidLeaveEarningsLine" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public PaidLeaveEarningsLine() 
-        { 
+        public PaidLeaveEarningsLine()
+        {
         }
-        
+
         /// <summary>
         /// Xero leave type identifier
         /// </summary>
         /// <value>Xero leave type identifier</value>
-        [DataMember(Name="LeaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// Paid leave amount
         /// </summary>
         /// <value>Paid leave amount</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The amount of leave loading applied for the leave type that is subject to Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories
         /// </summary>
         /// <value>The amount of leave loading applied for the leave type that is subject to Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories</value>
-        [DataMember(Name="SGCAppliedLeaveLoadingAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "SGCAppliedLeaveLoadingAmount", EmitDefaultValue = false)]
         public decimal? SGCAppliedLeaveLoadingAmount { get; set; }
 
         /// <summary>
         /// The amount of leave loading applied for the leave type that is exempt from Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories
         /// </summary>
         /// <value>The amount of leave loading applied for the leave type that is exempt from Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories</value>
-        [DataMember(Name="SGCExemptedLeaveLoadingAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "SGCExemptedLeaveLoadingAmount", EmitDefaultValue = false)]
         public decimal? SGCExemptedLeaveLoadingAmount { get; set; }
 
         /// <summary>
         /// Reset the STP categorisations for the leave type. *Only applicable for Leave Types with Annual Leave Categories
         /// </summary>
         /// <value>Reset the STP categorisations for the leave type. *Only applicable for Leave Types with Annual Leave Categories</value>
-        [DataMember(Name="ResetSTPCategorisation", EmitDefaultValue=false)]
+        [DataMember(Name = "ResetSTPCategorisation", EmitDefaultValue = false)]
         public bool? ResetSTPCategorisation { get; set; }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -119,27 +119,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.SGCAppliedLeaveLoadingAmount == input.SGCAppliedLeaveLoadingAmount ||
                     (this.SGCAppliedLeaveLoadingAmount != null &&
                     this.SGCAppliedLeaveLoadingAmount.Equals(input.SGCAppliedLeaveLoadingAmount))
-                ) && 
+                ) &&
                 (
                     this.SGCExemptedLeaveLoadingAmount == input.SGCExemptedLeaveLoadingAmount ||
                     (this.SGCExemptedLeaveLoadingAmount != null &&
                     this.SGCExemptedLeaveLoadingAmount.Equals(input.SGCExemptedLeaveLoadingAmount))
-                ) && 
+                ) &&
                 (
                     this.ResetSTPCategorisation == input.ResetSTPCategorisation ||
                     (this.ResetSTPCategorisation != null &&

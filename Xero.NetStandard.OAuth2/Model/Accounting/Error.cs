@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Error
     /// </summary>
     [DataContract]
-    public partial class Error :  IEquatable<Error>, IValidatableObject
+    public partial class Error : IEquatable<Error>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Exception number
         /// </summary>
         /// <value>Exception number</value>
-        [DataMember(Name="ErrorNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "ErrorNumber", EmitDefaultValue = false)]
         public int? ErrorNumber { get; set; }
 
         /// <summary>
         /// Exception type
         /// </summary>
         /// <value>Exception type</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// Exception message
         /// </summary>
         /// <value>Exception message</value>
-        [DataMember(Name="Message", EmitDefaultValue=false)]
+        [DataMember(Name = "Message", EmitDefaultValue = false)]
         public string Message { get; set; }
 
         /// <summary>
         /// Array of Elements of validation Errors
         /// </summary>
         /// <value>Array of Elements of validation Errors</value>
-        [DataMember(Name="Elements", EmitDefaultValue=false)]
+        [DataMember(Name = "Elements", EmitDefaultValue = false)]
         public List<Element> Elements { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ErrorNumber == input.ErrorNumber ||
                     (this.ErrorNumber != null &&
                     this.ErrorNumber.Equals(input.ErrorNumber))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Message == input.Message ||
                     (this.Message != null &&
                     this.Message.Equals(input.Message))
-                ) && 
+                ) &&
                 (
                     this.Elements == input.Elements ||
                     this.Elements != null &&

@@ -102,7 +102,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// Initializes a new instance of the <see cref="IdentityApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public IdentityApi() : this((string) null)
+        public IdentityApi() : this((string)null)
         {
             this.Configuration = Xero.NetStandard.OAuth2.Client.Configuration.MergeConfigurations(
                 Xero.NetStandard.OAuth2.Client.GlobalConfiguration.Instance,
@@ -151,11 +151,11 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public IdentityApi(Xero.NetStandard.OAuth2.Client.ISynchronousClient client,Xero.NetStandard.OAuth2.Client.IAsynchronousClient asyncClient, Xero.NetStandard.OAuth2.Client.IReadableConfiguration configuration)
+        public IdentityApi(Xero.NetStandard.OAuth2.Client.ISynchronousClient client, Xero.NetStandard.OAuth2.Client.IAsynchronousClient asyncClient, Xero.NetStandard.OAuth2.Client.IReadableConfiguration configuration)
         {
-            if(client == null) throw new ArgumentNullException("client");
-            if(asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if(configuration == null) throw new ArgumentNullException("configuration");
+            if (client == null) throw new ArgumentNullException("client");
+            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+            if (configuration == null) throw new ArgumentNullException("configuration");
 
             this.AsynchronousClient = asyncClient;
             this.Configuration = configuration;
@@ -180,7 +180,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Xero.NetStandard.OAuth2.Client.IReadableConfiguration Configuration {get; set;}
+        public Xero.NetStandard.OAuth2.Client.IReadableConfiguration Configuration { get; set; }
 
 
         /// <summary>
@@ -208,9 +208,9 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Unique identifier for retrieving single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteConnectionAsync (string accessToken, Guid id, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task DeleteConnectionAsync(string accessToken, Guid id, CancellationToken cancellationToken = default)
         {
-             await DeleteConnectionAsyncWithHttpInfo(accessToken, id);
+            await DeleteConnectionAsyncWithHttpInfo(accessToken, id);
 
         }
 
@@ -237,13 +237,13 @@ namespace Xero.NetStandard.OAuth2.Api
             // to determine the Accept header
             String[] @accepts = new String[] {
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
             if (id != null)
                 requestOptions.PathParameters.Add("id", Xero.NetStandard.OAuth2.Client.ClientUtils.ParameterToString(id)); // path parameter
 
@@ -255,7 +255,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.DeleteAsync<Object>("/Connections/{id}", requestOptions, this.Configuration, cancellationToken);
 
@@ -277,10 +277,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="authEventId">Filter by authEventId (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of List&lt;Connection&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Connection>> GetConnectionsAsync (string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<List<Connection>> GetConnectionsAsync(string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<List<Connection>> localVarResponse = await GetConnectionsAsyncWithHttpInfo(accessToken, authEventId, cancellationToken);
-             return localVarResponse.Data;
+            Xero.NetStandard.OAuth2.Client.ApiResponse<List<Connection>> localVarResponse = await GetConnectionsAsyncWithHttpInfo(accessToken, authEventId, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
@@ -304,13 +304,13 @@ namespace Xero.NetStandard.OAuth2.Api
             String[] @accepts = new String[] {
                 "application/json"
             };
-            
+
             foreach (var cType in @contentTypes)
                 requestOptions.HeaderParameters.Add("Content-Type", cType);
-            
+
             foreach (var accept in @accepts)
                 requestOptions.HeaderParameters.Add("Accept", accept);
-            
+
 
             if (authEventId != null)
             {
@@ -331,7 +331,7 @@ namespace Xero.NetStandard.OAuth2.Api
             }
             // make the HTTP request
 
-      
+
 
             var response = await this.AsynchronousClient.GetAsync<List<Connection>>("/Connections", requestOptions, this.Configuration, cancellationToken);
 

@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// PayrollCalendars
     /// </summary>
     [DataContract]
-    public partial class PayrollCalendars :  IEquatable<PayrollCalendars>, IValidatableObject
+    public partial class PayrollCalendars : IEquatable<PayrollCalendars>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _PayrollCalendars
         /// </summary>
-        [DataMember(Name="PayrollCalendars", EmitDefaultValue=false)]
+        [DataMember(Name = "PayrollCalendars", EmitDefaultValue = false)]
         public List<PayrollCalendar> _PayrollCalendars { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._PayrollCalendars == input._PayrollCalendars ||
                     this._PayrollCalendars != null &&

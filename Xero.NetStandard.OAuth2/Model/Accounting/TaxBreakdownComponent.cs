@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TaxBreakdownComponent
     /// </summary>
     [DataContract]
-    public partial class TaxBreakdownComponent :  IEquatable<TaxBreakdownComponent>, IValidatableObject
+    public partial class TaxBreakdownComponent : IEquatable<TaxBreakdownComponent>, IValidatableObject
     {
         /// <summary>
         /// The type of the jurisdiction
@@ -73,70 +73,70 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The type of the jurisdiction
         /// </summary>
         /// <value>The type of the jurisdiction</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
-        
+
         /// <summary>
         /// The unique ID number of this component
         /// </summary>
         /// <value>The unique ID number of this component</value>
-        [DataMember(Name="TaxComponentId", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxComponentId", EmitDefaultValue = false)]
         public Guid? TaxComponentId { get; set; }
 
         /// <summary>
         /// The name of the jurisdiction
         /// </summary>
         /// <value>The name of the jurisdiction</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The percentage of the tax
         /// </summary>
         /// <value>The percentage of the tax</value>
-        [DataMember(Name="TaxPercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxPercentage", EmitDefaultValue = false)]
         public decimal? TaxPercentage { get; set; }
 
         /// <summary>
         /// The amount of the tax
         /// </summary>
         /// <value>The amount of the tax</value>
-        [DataMember(Name="TaxAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxAmount", EmitDefaultValue = false)]
         public decimal? TaxAmount { get; set; }
 
         /// <summary>
         /// The amount that is taxable
         /// </summary>
         /// <value>The amount that is taxable</value>
-        [DataMember(Name="TaxableAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxableAmount", EmitDefaultValue = false)]
         public decimal? TaxableAmount { get; set; }
 
         /// <summary>
         /// The amount that is not taxable
         /// </summary>
         /// <value>The amount that is not taxable</value>
-        [DataMember(Name="NonTaxableAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "NonTaxableAmount", EmitDefaultValue = false)]
         public decimal? NonTaxableAmount { get; set; }
 
         /// <summary>
         /// The amount that is exempt
         /// </summary>
         /// <value>The amount that is exempt</value>
-        [DataMember(Name="ExemptAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "ExemptAmount", EmitDefaultValue = false)]
         public decimal? ExemptAmount { get; set; }
 
         /// <summary>
         /// The state assigned number of the jurisdiction
         /// </summary>
         /// <value>The state assigned number of the jurisdiction</value>
-        [DataMember(Name="StateAssignedNo", EmitDefaultValue=false)]
+        [DataMember(Name = "StateAssignedNo", EmitDefaultValue = false)]
         public string StateAssignedNo { get; set; }
 
         /// <summary>
         /// Name identifying the region within the country
         /// </summary>
         /// <value>Name identifying the region within the country</value>
-        [DataMember(Name="JurisdictionRegion", EmitDefaultValue=false)]
+        [DataMember(Name = "JurisdictionRegion", EmitDefaultValue = false)]
         public string JurisdictionRegion { get; set; }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -190,51 +190,51 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TaxComponentId == input.TaxComponentId ||
                     (this.TaxComponentId != null &&
                     this.TaxComponentId.Equals(input.TaxComponentId))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.TaxPercentage == input.TaxPercentage ||
                     (this.TaxPercentage != null &&
                     this.TaxPercentage.Equals(input.TaxPercentage))
-                ) && 
+                ) &&
                 (
                     this.TaxAmount == input.TaxAmount ||
                     (this.TaxAmount != null &&
                     this.TaxAmount.Equals(input.TaxAmount))
-                ) && 
+                ) &&
                 (
                     this.TaxableAmount == input.TaxableAmount ||
                     (this.TaxableAmount != null &&
                     this.TaxableAmount.Equals(input.TaxableAmount))
-                ) && 
+                ) &&
                 (
                     this.NonTaxableAmount == input.NonTaxableAmount ||
                     (this.NonTaxableAmount != null &&
                     this.NonTaxableAmount.Equals(input.NonTaxableAmount))
-                ) && 
+                ) &&
                 (
                     this.ExemptAmount == input.ExemptAmount ||
                     (this.ExemptAmount != null &&
                     this.ExemptAmount.Equals(input.ExemptAmount))
-                ) && 
+                ) &&
                 (
                     this.StateAssignedNo == input.StateAssignedNo ||
                     (this.StateAssignedNo != null &&
                     this.StateAssignedNo.Equals(input.StateAssignedNo))
-                ) && 
+                ) &&
                 (
                     this.JurisdictionRegion == input.JurisdictionRegion ||
                     (this.JurisdictionRegion != null &&

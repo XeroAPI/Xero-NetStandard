@@ -138,8 +138,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task PayRunStatusEnum_NullInput_Deserialises(){
-            var jsonContent ="null";
+        public async Task PayRunStatusEnum_NullInput_Deserialises()
+        {
+            var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
@@ -170,7 +171,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task PayRunTypeEnum_NullInput_Deserialise(){
+        public async Task PayRunTypeEnum_NullInput_Deserialise()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {

@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BatchPaymentDeleteByUrlParam
     /// </summary>
     [DataContract]
-    public partial class BatchPaymentDeleteByUrlParam :  IEquatable<BatchPaymentDeleteByUrlParam>, IValidatableObject
+    public partial class BatchPaymentDeleteByUrlParam : IEquatable<BatchPaymentDeleteByUrlParam>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchPaymentDeleteByUrlParam" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public BatchPaymentDeleteByUrlParam() 
-        { 
+        public BatchPaymentDeleteByUrlParam()
+        {
         }
-        
+
         /// <summary>
         /// The status of the batch payment.
         /// </summary>
         /// <value>The status of the batch payment.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,7 +87,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&

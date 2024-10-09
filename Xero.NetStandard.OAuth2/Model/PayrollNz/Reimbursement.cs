@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Reimbursement
     /// </summary>
     [DataContract]
-    public partial class Reimbursement :  IEquatable<Reimbursement>, IValidatableObject
+    public partial class Reimbursement : IEquatable<Reimbursement>, IValidatableObject
     {
         /// <summary>
         /// See Reimbursement Categories
@@ -61,7 +61,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// See Reimbursement Categories
         /// </summary>
         /// <value>See Reimbursement Categories</value>
-        [DataMember(Name="reimbursementCategory", EmitDefaultValue=false)]
+        [DataMember(Name = "reimbursementCategory", EmitDefaultValue = false)]
         public ReimbursementCategoryEnum ReimbursementCategory { get; set; }
         /// <summary>
         /// See Calculation Types
@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// See Calculation Types
         /// </summary>
         /// <value>See Calculation Types</value>
-        [DataMember(Name="calculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "calculationType", EmitDefaultValue = false)]
         public CalculationTypeEnum CalculationType { get; set; }
         /// <summary>
         /// Optional Type Of Units. Applicable when calculation type is Rate Per Unit
@@ -121,56 +121,56 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Optional Type Of Units. Applicable when calculation type is Rate Per Unit
         /// </summary>
         /// <value>Optional Type Of Units. Applicable when calculation type is Rate Per Unit</value>
-        [DataMember(Name="standardTypeOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "standardTypeOfUnits", EmitDefaultValue = false)]
         public StandardTypeOfUnitsEnum StandardTypeOfUnits { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Reimbursement" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Reimbursement() 
-        { 
+        public Reimbursement()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for a reimbursement
         /// </summary>
         /// <value>Xero unique identifier for a reimbursement</value>
-        [DataMember(Name="reimbursementID", EmitDefaultValue=false)]
+        [DataMember(Name = "reimbursementID", EmitDefaultValue = false)]
         public Guid? ReimbursementID { get; set; }
 
         /// <summary>
         /// Name of the reimbursement
         /// </summary>
         /// <value>Name of the reimbursement</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Xero unique identifier for the account used for the reimbursement
         /// </summary>
         /// <value>Xero unique identifier for the account used for the reimbursement</value>
-        [DataMember(Name="accountID", EmitDefaultValue=false)]
+        [DataMember(Name = "accountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// Indicates that whether the reimbursement is active
         /// </summary>
         /// <value>Indicates that whether the reimbursement is active</value>
-        [DataMember(Name="currentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "currentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
         /// Optional Fixed Rate Amount. Applicable when calculation type is Fixed Amount
         /// </summary>
         /// <value>Optional Fixed Rate Amount. Applicable when calculation type is Fixed Amount</value>
-        [DataMember(Name="standardAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "standardAmount", EmitDefaultValue = false)]
         public string StandardAmount { get; set; }
 
         /// <summary>
         /// Optional Rate Per Unit. Applicable when calculation type is Rate Per Unit
         /// </summary>
         /// <value>Optional Rate Per Unit. Applicable when calculation type is Rate Per Unit</value>
-        [DataMember(Name="standardRatePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "standardRatePerUnit", EmitDefaultValue = false)]
         public decimal? StandardRatePerUnit { get; set; }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -223,44 +223,44 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ReimbursementID == input.ReimbursementID ||
                     (this.ReimbursementID != null &&
                     this.ReimbursementID.Equals(input.ReimbursementID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
                     this.CurrentRecord.Equals(input.CurrentRecord))
-                ) && 
+                ) &&
                 (
                     this.ReimbursementCategory == input.ReimbursementCategory ||
                     this.ReimbursementCategory.Equals(input.ReimbursementCategory)
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)
-                ) && 
+                ) &&
                 (
                     this.StandardAmount == input.StandardAmount ||
                     (this.StandardAmount != null &&
                     this.StandardAmount.Equals(input.StandardAmount))
-                ) && 
+                ) &&
                 (
                     this.StandardTypeOfUnits == input.StandardTypeOfUnits ||
                     this.StandardTypeOfUnits.Equals(input.StandardTypeOfUnits)
-                ) && 
+                ) &&
                 (
                     this.StandardRatePerUnit == input.StandardRatePerUnit ||
                     (this.StandardRatePerUnit != null &&

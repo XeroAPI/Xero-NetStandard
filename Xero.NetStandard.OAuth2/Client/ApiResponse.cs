@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Client
     public class ApiResponse<T> : IApiResponse
     {
         #region Properties
-        
+
         /// <summary>
         /// Gets or sets the status code (HTTP status code)
         /// </summary>
@@ -98,12 +98,12 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <summary>
         /// The data type of <see cref="Content"/>
         /// </summary>
-        public object Content  { get; set; }
-        
+        public object Content { get; set; }
+
         #endregion Properties
-        
+
         #region Constructors
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiResponse{T}" /> class.
         /// </summary>

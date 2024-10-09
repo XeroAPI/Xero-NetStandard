@@ -28,55 +28,55 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// PayslipLines
     /// </summary>
     [DataContract]
-    public partial class PayslipLines :  IEquatable<PayslipLines>, IValidatableObject
+    public partial class PayslipLines : IEquatable<PayslipLines>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets EarningsLines
         /// </summary>
-        [DataMember(Name="EarningsLines", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsLines", EmitDefaultValue = false)]
         public List<EarningsLine> EarningsLines { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveEarningsLines
         /// </summary>
-        [DataMember(Name="LeaveEarningsLines", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveEarningsLines", EmitDefaultValue = false)]
         public List<LeaveEarningsLine> LeaveEarningsLines { get; set; }
 
         /// <summary>
         /// Gets or Sets TimesheetEarningsLines
         /// </summary>
-        [DataMember(Name="TimesheetEarningsLines", EmitDefaultValue=false)]
+        [DataMember(Name = "TimesheetEarningsLines", EmitDefaultValue = false)]
         public List<EarningsLine> TimesheetEarningsLines { get; set; }
 
         /// <summary>
         /// Gets or Sets DeductionLines
         /// </summary>
-        [DataMember(Name="DeductionLines", EmitDefaultValue=false)]
+        [DataMember(Name = "DeductionLines", EmitDefaultValue = false)]
         public List<DeductionLine> DeductionLines { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveAccrualLines
         /// </summary>
-        [DataMember(Name="LeaveAccrualLines", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveAccrualLines", EmitDefaultValue = false)]
         public List<LeaveAccrualLine> LeaveAccrualLines { get; set; }
 
         /// <summary>
         /// Gets or Sets ReimbursementLines
         /// </summary>
-        [DataMember(Name="ReimbursementLines", EmitDefaultValue=false)]
+        [DataMember(Name = "ReimbursementLines", EmitDefaultValue = false)]
         public List<ReimbursementLine> ReimbursementLines { get; set; }
 
         /// <summary>
         /// Gets or Sets SuperannuationLines
         /// </summary>
-        [DataMember(Name="SuperannuationLines", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperannuationLines", EmitDefaultValue = false)]
         public List<SuperannuationLine> SuperannuationLines { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxLines
         /// </summary>
-        [DataMember(Name="TaxLines", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxLines", EmitDefaultValue = false)]
         public List<TaxLine> TaxLines { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -128,49 +128,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsLines == input.EarningsLines ||
                     this.EarningsLines != null &&
                     input.EarningsLines != null &&
                     this.EarningsLines.SequenceEqual(input.EarningsLines)
-                ) && 
+                ) &&
                 (
                     this.LeaveEarningsLines == input.LeaveEarningsLines ||
                     this.LeaveEarningsLines != null &&
                     input.LeaveEarningsLines != null &&
                     this.LeaveEarningsLines.SequenceEqual(input.LeaveEarningsLines)
-                ) && 
+                ) &&
                 (
                     this.TimesheetEarningsLines == input.TimesheetEarningsLines ||
                     this.TimesheetEarningsLines != null &&
                     input.TimesheetEarningsLines != null &&
                     this.TimesheetEarningsLines.SequenceEqual(input.TimesheetEarningsLines)
-                ) && 
+                ) &&
                 (
                     this.DeductionLines == input.DeductionLines ||
                     this.DeductionLines != null &&
                     input.DeductionLines != null &&
                     this.DeductionLines.SequenceEqual(input.DeductionLines)
-                ) && 
+                ) &&
                 (
                     this.LeaveAccrualLines == input.LeaveAccrualLines ||
                     this.LeaveAccrualLines != null &&
                     input.LeaveAccrualLines != null &&
                     this.LeaveAccrualLines.SequenceEqual(input.LeaveAccrualLines)
-                ) && 
+                ) &&
                 (
                     this.ReimbursementLines == input.ReimbursementLines ||
                     this.ReimbursementLines != null &&
                     input.ReimbursementLines != null &&
                     this.ReimbursementLines.SequenceEqual(input.ReimbursementLines)
-                ) && 
+                ) &&
                 (
                     this.SuperannuationLines == input.SuperannuationLines ||
                     this.SuperannuationLines != null &&
                     input.SuperannuationLines != null &&
                     this.SuperannuationLines.SequenceEqual(input.SuperannuationLines)
-                ) && 
+                ) &&
                 (
                     this.TaxLines == input.TaxLines ||
                     this.TaxLines != null &&

@@ -28,25 +28,25 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeEarningsTemplates
     /// </summary>
     [DataContract]
-    public partial class EmployeeEarningsTemplates :  IEquatable<EmployeeEarningsTemplates>, IValidatableObject
+    public partial class EmployeeEarningsTemplates : IEquatable<EmployeeEarningsTemplates>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
         public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets Problem
         /// </summary>
-        [DataMember(Name="problem", EmitDefaultValue=false)]
+        [DataMember(Name = "problem", EmitDefaultValue = false)]
         public Problem Problem { get; set; }
 
         /// <summary>
         /// Gets or Sets EarningTemplates
         /// </summary>
-        [DataMember(Name="earningTemplates", EmitDefaultValue=false)]
+        [DataMember(Name = "earningTemplates", EmitDefaultValue = false)]
         public List<EarningsTemplate> EarningTemplates { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -93,17 +93,17 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Pagination == input.Pagination ||
                     (this.Pagination != null &&
                     this.Pagination.Equals(input.Pagination))
-                ) && 
+                ) &&
                 (
                     this.Problem == input.Problem ||
                     (this.Problem != null &&
                     this.Problem.Equals(input.Problem))
-                ) && 
+                ) &&
                 (
                     this.EarningTemplates == input.EarningTemplates ||
                     this.EarningTemplates != null &&

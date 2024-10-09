@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// Timesheet
     /// </summary>
     [DataContract]
-    public partial class Timesheet :  IEquatable<Timesheet>, IValidatableObject
+    public partial class Timesheet : IEquatable<Timesheet>, IValidatableObject
     {
         /// <summary>
         /// Status of the timesheet
@@ -61,43 +61,43 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Status of the timesheet
         /// </summary>
         /// <value>Status of the timesheet</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Timesheet" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Timesheet() 
-        {  
-          TimesheetLines = new List<TimesheetLine>(); 
+        public Timesheet()
+        {
+            TimesheetLines = new List<TimesheetLine>();
         }
-        
+
         /// <summary>
         /// The Xero identifier for a Timesheet
         /// </summary>
         /// <value>The Xero identifier for a Timesheet</value>
-        [DataMember(Name="timesheetID", EmitDefaultValue=false)]
+        [DataMember(Name = "timesheetID", EmitDefaultValue = false)]
         public Guid? TimesheetID { get; set; }
 
         /// <summary>
         /// The Xero identifier for the Payroll Calendar that the Timesheet applies to
         /// </summary>
         /// <value>The Xero identifier for the Payroll Calendar that the Timesheet applies to</value>
-        [DataMember(Name="payrollCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "payrollCalendarID", EmitDefaultValue = false)]
         public Guid? PayrollCalendarID { get; set; }
 
         /// <summary>
         /// The Xero identifier for the Employee that the Timesheet is for
         /// </summary>
         /// <value>The Xero identifier for the Employee that the Timesheet is for</value>
-        [DataMember(Name="employeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "employeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// The Start Date of the Timesheet period (YYYY-MM-DD)
         /// </summary>
         /// <value>The Start Date of the Timesheet period (YYYY-MM-DD)</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -105,7 +105,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The End Date of the Timesheet period (YYYY-MM-DD)
         /// </summary>
         /// <value>The End Date of the Timesheet period (YYYY-MM-DD)</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -113,20 +113,20 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The Total Hours of the Timesheet
         /// </summary>
         /// <value>The Total Hours of the Timesheet</value>
-        [DataMember(Name="totalHours", EmitDefaultValue=false)]
+        [DataMember(Name = "totalHours", EmitDefaultValue = false)]
         public double? TotalHours { get; set; }
 
         /// <summary>
         /// The UTC date time that the Timesheet was last updated
         /// </summary>
         /// <value>The UTC date time that the Timesheet was last updated</value>
-        [DataMember(Name="updatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; set; }
 
         /// <summary>
         /// Gets or Sets TimesheetLines
         /// </summary>
-        [DataMember(Name="timesheetLines", EmitDefaultValue=false)]
+        [DataMember(Name = "timesheetLines", EmitDefaultValue = false)]
         public List<TimesheetLine> TimesheetLines { get; set; }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -179,46 +179,46 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TimesheetID == input.TimesheetID ||
                     (this.TimesheetID != null &&
                     this.TimesheetID.Equals(input.TimesheetID))
-                ) && 
+                ) &&
                 (
                     this.PayrollCalendarID == input.PayrollCalendarID ||
                     (this.PayrollCalendarID != null &&
                     this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
+                ) &&
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.TotalHours == input.TotalHours ||
                     (this.TotalHours != null &&
                     this.TotalHours.Equals(input.TotalHours))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.TimesheetLines == input.TimesheetLines ||
                     this.TimesheetLines != null &&

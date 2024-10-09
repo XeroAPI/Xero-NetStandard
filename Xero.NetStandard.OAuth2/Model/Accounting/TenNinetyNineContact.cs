@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TenNinetyNineContact
     /// </summary>
     [DataContract]
-    public partial class TenNinetyNineContact :  IEquatable<TenNinetyNineContact>, IValidatableObject
+    public partial class TenNinetyNineContact : IEquatable<TenNinetyNineContact>, IValidatableObject
     {
         /// <summary>
         /// Contact federal tax classification
@@ -85,175 +85,175 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Contact federal tax classification
         /// </summary>
         /// <value>Contact federal tax classification</value>
-        [DataMember(Name="FederalTaxClassification", EmitDefaultValue=false)]
+        [DataMember(Name = "FederalTaxClassification", EmitDefaultValue = false)]
         public FederalTaxClassificationEnum FederalTaxClassification { get; set; }
-        
+
         /// <summary>
         /// Box 1 on 1099 Form
         /// </summary>
         /// <value>Box 1 on 1099 Form</value>
-        [DataMember(Name="Box1", EmitDefaultValue=false)]
+        [DataMember(Name = "Box1", EmitDefaultValue = false)]
         public decimal? Box1 { get; set; }
 
         /// <summary>
         /// Box 2 on 1099 Form
         /// </summary>
         /// <value>Box 2 on 1099 Form</value>
-        [DataMember(Name="Box2", EmitDefaultValue=false)]
+        [DataMember(Name = "Box2", EmitDefaultValue = false)]
         public decimal? Box2 { get; set; }
 
         /// <summary>
         /// Box 3 on 1099 Form
         /// </summary>
         /// <value>Box 3 on 1099 Form</value>
-        [DataMember(Name="Box3", EmitDefaultValue=false)]
+        [DataMember(Name = "Box3", EmitDefaultValue = false)]
         public decimal? Box3 { get; set; }
 
         /// <summary>
         /// Box 4 on 1099 Form
         /// </summary>
         /// <value>Box 4 on 1099 Form</value>
-        [DataMember(Name="Box4", EmitDefaultValue=false)]
+        [DataMember(Name = "Box4", EmitDefaultValue = false)]
         public decimal? Box4 { get; set; }
 
         /// <summary>
         /// Box 5 on 1099 Form
         /// </summary>
         /// <value>Box 5 on 1099 Form</value>
-        [DataMember(Name="Box5", EmitDefaultValue=false)]
+        [DataMember(Name = "Box5", EmitDefaultValue = false)]
         public decimal? Box5 { get; set; }
 
         /// <summary>
         /// Box 6 on 1099 Form
         /// </summary>
         /// <value>Box 6 on 1099 Form</value>
-        [DataMember(Name="Box6", EmitDefaultValue=false)]
+        [DataMember(Name = "Box6", EmitDefaultValue = false)]
         public decimal? Box6 { get; set; }
 
         /// <summary>
         /// Box 7 on 1099 Form
         /// </summary>
         /// <value>Box 7 on 1099 Form</value>
-        [DataMember(Name="Box7", EmitDefaultValue=false)]
+        [DataMember(Name = "Box7", EmitDefaultValue = false)]
         public decimal? Box7 { get; set; }
 
         /// <summary>
         /// Box 8 on 1099 Form
         /// </summary>
         /// <value>Box 8 on 1099 Form</value>
-        [DataMember(Name="Box8", EmitDefaultValue=false)]
+        [DataMember(Name = "Box8", EmitDefaultValue = false)]
         public decimal? Box8 { get; set; }
 
         /// <summary>
         /// Box 9 on 1099 Form
         /// </summary>
         /// <value>Box 9 on 1099 Form</value>
-        [DataMember(Name="Box9", EmitDefaultValue=false)]
+        [DataMember(Name = "Box9", EmitDefaultValue = false)]
         public decimal? Box9 { get; set; }
 
         /// <summary>
         /// Box 10 on 1099 Form
         /// </summary>
         /// <value>Box 10 on 1099 Form</value>
-        [DataMember(Name="Box10", EmitDefaultValue=false)]
+        [DataMember(Name = "Box10", EmitDefaultValue = false)]
         public decimal? Box10 { get; set; }
 
         /// <summary>
         /// Box 11 on 1099 Form
         /// </summary>
         /// <value>Box 11 on 1099 Form</value>
-        [DataMember(Name="Box11", EmitDefaultValue=false)]
+        [DataMember(Name = "Box11", EmitDefaultValue = false)]
         public decimal? Box11 { get; set; }
 
         /// <summary>
         /// Box 13 on 1099 Form
         /// </summary>
         /// <value>Box 13 on 1099 Form</value>
-        [DataMember(Name="Box13", EmitDefaultValue=false)]
+        [DataMember(Name = "Box13", EmitDefaultValue = false)]
         public decimal? Box13 { get; set; }
 
         /// <summary>
         /// Box 14 on 1099 Form
         /// </summary>
         /// <value>Box 14 on 1099 Form</value>
-        [DataMember(Name="Box14", EmitDefaultValue=false)]
+        [DataMember(Name = "Box14", EmitDefaultValue = false)]
         public decimal? Box14 { get; set; }
 
         /// <summary>
         /// Contact name on 1099 Form
         /// </summary>
         /// <value>Contact name on 1099 Form</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Contact Fed Tax ID type
         /// </summary>
         /// <value>Contact Fed Tax ID type</value>
-        [DataMember(Name="FederalTaxIDType", EmitDefaultValue=false)]
+        [DataMember(Name = "FederalTaxIDType", EmitDefaultValue = false)]
         public string FederalTaxIDType { get; set; }
 
         /// <summary>
         /// Contact city on 1099 Form
         /// </summary>
         /// <value>Contact city on 1099 Form</value>
-        [DataMember(Name="City", EmitDefaultValue=false)]
+        [DataMember(Name = "City", EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// Contact zip on 1099 Form
         /// </summary>
         /// <value>Contact zip on 1099 Form</value>
-        [DataMember(Name="Zip", EmitDefaultValue=false)]
+        [DataMember(Name = "Zip", EmitDefaultValue = false)]
         public string Zip { get; set; }
 
         /// <summary>
         /// Contact State on 1099 Form
         /// </summary>
         /// <value>Contact State on 1099 Form</value>
-        [DataMember(Name="State", EmitDefaultValue=false)]
+        [DataMember(Name = "State", EmitDefaultValue = false)]
         public string State { get; set; }
 
         /// <summary>
         /// Contact email on 1099 Form
         /// </summary>
         /// <value>Contact email on 1099 Form</value>
-        [DataMember(Name="Email", EmitDefaultValue=false)]
+        [DataMember(Name = "Email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>
         /// Contact address on 1099 Form
         /// </summary>
         /// <value>Contact address on 1099 Form</value>
-        [DataMember(Name="StreetAddress", EmitDefaultValue=false)]
+        [DataMember(Name = "StreetAddress", EmitDefaultValue = false)]
         public string StreetAddress { get; set; }
 
         /// <summary>
         /// Contact tax id on 1099 Form
         /// </summary>
         /// <value>Contact tax id on 1099 Form</value>
-        [DataMember(Name="TaxID", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxID", EmitDefaultValue = false)]
         public string TaxID { get; set; }
 
         /// <summary>
         /// Contact contact id
         /// </summary>
         /// <value>Contact contact id</value>
-        [DataMember(Name="ContactId", EmitDefaultValue=false)]
+        [DataMember(Name = "ContactId", EmitDefaultValue = false)]
         public Guid? ContactId { get; set; }
 
         /// <summary>
         /// Contact legal name
         /// </summary>
         /// <value>Contact legal name</value>
-        [DataMember(Name="LegalName", EmitDefaultValue=false)]
+        [DataMember(Name = "LegalName", EmitDefaultValue = false)]
         public string LegalName { get; set; }
 
         /// <summary>
         /// Contact business name
         /// </summary>
         /// <value>Contact business name</value>
-        [DataMember(Name="BusinessName", EmitDefaultValue=false)]
+        [DataMember(Name = "BusinessName", EmitDefaultValue = false)]
         public string BusinessName { get; set; }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -322,127 +322,127 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Box1 == input.Box1 ||
                     (this.Box1 != null &&
                     this.Box1.Equals(input.Box1))
-                ) && 
+                ) &&
                 (
                     this.Box2 == input.Box2 ||
                     (this.Box2 != null &&
                     this.Box2.Equals(input.Box2))
-                ) && 
+                ) &&
                 (
                     this.Box3 == input.Box3 ||
                     (this.Box3 != null &&
                     this.Box3.Equals(input.Box3))
-                ) && 
+                ) &&
                 (
                     this.Box4 == input.Box4 ||
                     (this.Box4 != null &&
                     this.Box4.Equals(input.Box4))
-                ) && 
+                ) &&
                 (
                     this.Box5 == input.Box5 ||
                     (this.Box5 != null &&
                     this.Box5.Equals(input.Box5))
-                ) && 
+                ) &&
                 (
                     this.Box6 == input.Box6 ||
                     (this.Box6 != null &&
                     this.Box6.Equals(input.Box6))
-                ) && 
+                ) &&
                 (
                     this.Box7 == input.Box7 ||
                     (this.Box7 != null &&
                     this.Box7.Equals(input.Box7))
-                ) && 
+                ) &&
                 (
                     this.Box8 == input.Box8 ||
                     (this.Box8 != null &&
                     this.Box8.Equals(input.Box8))
-                ) && 
+                ) &&
                 (
                     this.Box9 == input.Box9 ||
                     (this.Box9 != null &&
                     this.Box9.Equals(input.Box9))
-                ) && 
+                ) &&
                 (
                     this.Box10 == input.Box10 ||
                     (this.Box10 != null &&
                     this.Box10.Equals(input.Box10))
-                ) && 
+                ) &&
                 (
                     this.Box11 == input.Box11 ||
                     (this.Box11 != null &&
                     this.Box11.Equals(input.Box11))
-                ) && 
+                ) &&
                 (
                     this.Box13 == input.Box13 ||
                     (this.Box13 != null &&
                     this.Box13.Equals(input.Box13))
-                ) && 
+                ) &&
                 (
                     this.Box14 == input.Box14 ||
                     (this.Box14 != null &&
                     this.Box14.Equals(input.Box14))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.FederalTaxIDType == input.FederalTaxIDType ||
                     (this.FederalTaxIDType != null &&
                     this.FederalTaxIDType.Equals(input.FederalTaxIDType))
-                ) && 
+                ) &&
                 (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
-                ) && 
+                ) &&
                 (
                     this.Zip == input.Zip ||
                     (this.Zip != null &&
                     this.Zip.Equals(input.Zip))
-                ) && 
+                ) &&
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && 
+                ) &&
                 (
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
-                ) && 
+                ) &&
                 (
                     this.StreetAddress == input.StreetAddress ||
                     (this.StreetAddress != null &&
                     this.StreetAddress.Equals(input.StreetAddress))
-                ) && 
+                ) &&
                 (
                     this.TaxID == input.TaxID ||
                     (this.TaxID != null &&
                     this.TaxID.Equals(input.TaxID))
-                ) && 
+                ) &&
                 (
                     this.ContactId == input.ContactId ||
                     (this.ContactId != null &&
                     this.ContactId.Equals(input.ContactId))
-                ) && 
+                ) &&
                 (
                     this.LegalName == input.LegalName ||
                     (this.LegalName != null &&
                     this.LegalName.Equals(input.LegalName))
-                ) && 
+                ) &&
                 (
                     this.BusinessName == input.BusinessName ||
                     (this.BusinessName != null &&
                     this.BusinessName.Equals(input.BusinessName))
-                ) && 
+                ) &&
                 (
                     this.FederalTaxClassification == input.FederalTaxClassification ||
                     this.FederalTaxClassification.Equals(input.FederalTaxClassification)

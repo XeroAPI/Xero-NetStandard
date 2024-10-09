@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// Statement
     /// </summary>
     [DataContract]
-    public partial class Statement :  IEquatable<Statement>, IValidatableObject
+    public partial class Statement : IEquatable<Statement>, IValidatableObject
     {
         /// <summary>
         /// Current status of statements
@@ -61,28 +61,28 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         /// Current status of statements
         /// </summary>
         /// <value>Current status of statements</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// GUID used to identify the Statement.
         /// </summary>
         /// <value>GUID used to identify the Statement.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// The Xero generated feed connection Id that identifies the Xero Bank Account Container into which the statement should be delivered. This is obtained by calling GET FeedConnections.
         /// </summary>
         /// <value>The Xero generated feed connection Id that identifies the Xero Bank Account Container into which the statement should be delivered. This is obtained by calling GET FeedConnections.</value>
-        [DataMember(Name="feedConnectionId", EmitDefaultValue=false)]
+        [DataMember(Name = "feedConnectionId", EmitDefaultValue = false)]
         public Guid? FeedConnectionId { get; set; }
 
         /// <summary>
         /// Opening balance date (can be no older than one year from the current date) ISO-8601 YYYY-MM-DD
         /// </summary>
         /// <value>Opening balance date (can be no older than one year from the current date) ISO-8601 YYYY-MM-DD</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -90,38 +90,38 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         /// Closing balance date ISO-8601 YYYY-MM-DD
         /// </summary>
         /// <value>Closing balance date ISO-8601 YYYY-MM-DD</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets StartBalance
         /// </summary>
-        [DataMember(Name="startBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "startBalance", EmitDefaultValue = false)]
         public StartBalance StartBalance { get; set; }
 
         /// <summary>
         /// Gets or Sets EndBalance
         /// </summary>
-        [DataMember(Name="endBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "endBalance", EmitDefaultValue = false)]
         public EndBalance EndBalance { get; set; }
 
         /// <summary>
         /// Gets or Sets StatementLines
         /// </summary>
-        [DataMember(Name="statementLines", EmitDefaultValue=false)]
+        [DataMember(Name = "statementLines", EmitDefaultValue = false)]
         public List<StatementLine> StatementLines { get; set; }
 
         /// <summary>
         /// Gets or Sets Errors
         /// </summary>
-        [DataMember(Name="errors", EmitDefaultValue=false)]
+        [DataMember(Name = "errors", EmitDefaultValue = false)]
         public List<Error> Errors { get; set; }
 
         /// <summary>
         /// Gets or Sets StatementLineCount
         /// </summary>
-        [DataMember(Name="statementLineCount", EmitDefaultValue=false)]
+        [DataMember(Name = "statementLineCount", EmitDefaultValue = false)]
         public int? StatementLineCount { get; set; }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -175,53 +175,53 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.FeedConnectionId == input.FeedConnectionId ||
                     (this.FeedConnectionId != null &&
                     this.FeedConnectionId.Equals(input.FeedConnectionId))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.StartBalance == input.StartBalance ||
                     (this.StartBalance != null &&
                     this.StartBalance.Equals(input.StartBalance))
-                ) && 
+                ) &&
                 (
                     this.EndBalance == input.EndBalance ||
                     (this.EndBalance != null &&
                     this.EndBalance.Equals(input.EndBalance))
-                ) && 
+                ) &&
                 (
                     this.StatementLines == input.StatementLines ||
                     this.StatementLines != null &&
                     input.StatementLines != null &&
                     this.StatementLines.SequenceEqual(input.StatementLines)
-                ) && 
+                ) &&
                 (
                     this.Errors == input.Errors ||
                     this.Errors != null &&
                     input.Errors != null &&
                     this.Errors.SequenceEqual(input.Errors)
-                ) && 
+                ) &&
                 (
                     this.StatementLineCount == input.StatementLineCount ||
                     (this.StatementLineCount != null &&

@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// PaymentDelete
     /// </summary>
     [DataContract]
-    public partial class PaymentDelete :  IEquatable<PaymentDelete>, IValidatableObject
+    public partial class PaymentDelete : IEquatable<PaymentDelete>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentDelete" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public PaymentDelete() 
-        { 
+        public PaymentDelete()
+        {
         }
-        
+
         /// <summary>
         /// The status of the payment.
         /// </summary>
         /// <value>The status of the payment.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,7 +87,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&

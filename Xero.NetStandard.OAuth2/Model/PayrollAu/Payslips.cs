@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Payslips
     /// </summary>
     [DataContract]
-    public partial class Payslips :  IEquatable<Payslips>, IValidatableObject
+    public partial class Payslips : IEquatable<Payslips>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Payslips
         /// </summary>
-        [DataMember(Name="Payslips", EmitDefaultValue=false)]
+        [DataMember(Name = "Payslips", EmitDefaultValue = false)]
         public List<Payslip> _Payslips { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Payslips == input._Payslips ||
                     this._Payslips != null &&

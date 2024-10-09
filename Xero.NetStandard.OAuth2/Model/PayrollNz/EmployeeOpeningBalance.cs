@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeOpeningBalance
     /// </summary>
     [DataContract]
-    public partial class EmployeeOpeningBalance :  IEquatable<EmployeeOpeningBalance>, IValidatableObject
+    public partial class EmployeeOpeningBalance : IEquatable<EmployeeOpeningBalance>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The opening balance period end date.
         /// </summary>
         /// <value>The opening balance period end date.</value>
-        [DataMember(Name="periodEndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "periodEndDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PeriodEndDate { get; set; }
 
@@ -43,21 +43,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The paid number of days.
         /// </summary>
         /// <value>The paid number of days.</value>
-        [DataMember(Name="daysPaid", EmitDefaultValue=false)]
+        [DataMember(Name = "daysPaid", EmitDefaultValue = false)]
         public int? DaysPaid { get; set; }
 
         /// <summary>
         /// The number of unpaid weeks.
         /// </summary>
         /// <value>The number of unpaid weeks.</value>
-        [DataMember(Name="unpaidWeeks", EmitDefaultValue=false)]
+        [DataMember(Name = "unpaidWeeks", EmitDefaultValue = false)]
         public int? UnpaidWeeks { get; set; }
 
         /// <summary>
         /// The gross earnings during the period.
         /// </summary>
         /// <value>The gross earnings during the period.</value>
-        [DataMember(Name="grossEarnings", EmitDefaultValue=false)]
+        [DataMember(Name = "grossEarnings", EmitDefaultValue = false)]
         public decimal? GrossEarnings { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -105,22 +105,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PeriodEndDate == input.PeriodEndDate ||
                     (this.PeriodEndDate != null &&
                     this.PeriodEndDate.Equals(input.PeriodEndDate))
-                ) && 
+                ) &&
                 (
                     this.DaysPaid == input.DaysPaid ||
                     (this.DaysPaid != null &&
                     this.DaysPaid.Equals(input.DaysPaid))
-                ) && 
+                ) &&
                 (
                     this.UnpaidWeeks == input.UnpaidWeeks ||
                     (this.UnpaidWeeks != null &&
                     this.UnpaidWeeks.Equals(input.UnpaidWeeks))
-                ) && 
+                ) &&
                 (
                     this.GrossEarnings == input.GrossEarnings ||
                     (this.GrossEarnings != null &&

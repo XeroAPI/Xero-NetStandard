@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Timesheets
     /// </summary>
     [DataContract]
-    public partial class Timesheets :  IEquatable<Timesheets>, IValidatableObject
+    public partial class Timesheets : IEquatable<Timesheets>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Timesheets
         /// </summary>
-        [DataMember(Name="Timesheets", EmitDefaultValue=false)]
+        [DataMember(Name = "Timesheets", EmitDefaultValue = false)]
         public List<Timesheet> _Timesheets { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Timesheets == input._Timesheets ||
                     this._Timesheets != null &&

@@ -28,41 +28,41 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// ProjectCreateOrUpdate
     /// </summary>
     [DataContract]
-    public partial class ProjectCreateOrUpdate :  IEquatable<ProjectCreateOrUpdate>, IValidatableObject
+    public partial class ProjectCreateOrUpdate : IEquatable<ProjectCreateOrUpdate>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectCreateOrUpdate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ProjectCreateOrUpdate() 
-        { 
+        public ProjectCreateOrUpdate()
+        {
         }
-        
+
         /// <summary>
         /// Identifier of the contact this project was created for.
         /// </summary>
         /// <value>Identifier of the contact this project was created for.</value>
-        [DataMember(Name="contactId", EmitDefaultValue=false)]
+        [DataMember(Name = "contactId", EmitDefaultValue = false)]
         public Guid? ContactId { get; set; }
 
         /// <summary>
         /// Name of the project.
         /// </summary>
         /// <value>Name of the project.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets EstimateAmount
         /// </summary>
-        [DataMember(Name="estimateAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "estimateAmount", EmitDefaultValue = false)]
         public decimal? EstimateAmount { get; set; }
 
         /// <summary>
         /// Deadline for the project. UTC Date Time in ISO-8601 format.
         /// </summary>
         /// <value>Deadline for the project. UTC Date Time in ISO-8601 format.</value>
-        [DataMember(Name="deadlineUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "deadlineUtc", EmitDefaultValue = false)]
         public DateTime? DeadlineUtc { get; set; }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -110,22 +110,22 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ContactId == input.ContactId ||
                     (this.ContactId != null &&
                     this.ContactId.Equals(input.ContactId))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.EstimateAmount == input.EstimateAmount ||
                     (this.EstimateAmount != null &&
                     this.EstimateAmount.Equals(input.EstimateAmount))
-                ) && 
+                ) &&
                 (
                     this.DeadlineUtc == input.DeadlineUtc ||
                     (this.DeadlineUtc != null &&

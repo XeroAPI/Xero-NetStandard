@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// IncomeByContactResponse
     /// </summary>
     [DataContract]
-    public partial class IncomeByContactResponse :  IEquatable<IncomeByContactResponse>, IValidatableObject
+    public partial class IncomeByContactResponse : IEquatable<IncomeByContactResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Start date of the report
         /// </summary>
         /// <value>Start date of the report</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// End date of the report
         /// </summary>
         /// <value>End date of the report</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -51,31 +51,31 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Total value
         /// </summary>
         /// <value>Total value</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalDetail
         /// </summary>
-        [DataMember(Name="totalDetail", EmitDefaultValue=false)]
+        [DataMember(Name = "totalDetail", EmitDefaultValue = false)]
         public TotalDetail TotalDetail { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalOther
         /// </summary>
-        [DataMember(Name="totalOther", EmitDefaultValue=false)]
+        [DataMember(Name = "totalOther", EmitDefaultValue = false)]
         public TotalOther TotalOther { get; set; }
 
         /// <summary>
         /// Gets or Sets Contacts
         /// </summary>
-        [DataMember(Name="contacts", EmitDefaultValue=false)]
+        [DataMember(Name = "contacts", EmitDefaultValue = false)]
         public List<ContactDetail> Contacts { get; set; }
 
         /// <summary>
         /// Gets or Sets ManualJournals
         /// </summary>
-        [DataMember(Name="manualJournals", EmitDefaultValue=false)]
+        [DataMember(Name = "manualJournals", EmitDefaultValue = false)]
         public ManualJournalTotal ManualJournals { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -126,38 +126,38 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.TotalDetail == input.TotalDetail ||
                     (this.TotalDetail != null &&
                     this.TotalDetail.Equals(input.TotalDetail))
-                ) && 
+                ) &&
                 (
                     this.TotalOther == input.TotalOther ||
                     (this.TotalOther != null &&
                     this.TotalOther.Equals(input.TotalOther))
-                ) && 
+                ) &&
                 (
                     this.Contacts == input.Contacts ||
                     this.Contacts != null &&
                     input.Contacts != null &&
                     this.Contacts.SequenceEqual(input.Contacts)
-                ) && 
+                ) &&
                 (
                     this.ManualJournals == input.ManualJournals ||
                     (this.ManualJournals != null &&

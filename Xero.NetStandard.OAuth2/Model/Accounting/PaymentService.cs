@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// PaymentService
     /// </summary>
     [DataContract]
-    public partial class PaymentService :  IEquatable<PaymentService>, IValidatableObject
+    public partial class PaymentService : IEquatable<PaymentService>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="PaymentServiceID", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentServiceID", EmitDefaultValue = false)]
         public Guid? PaymentServiceID { get; set; }
 
         /// <summary>
         /// Name of payment service
         /// </summary>
         /// <value>Name of payment service</value>
-        [DataMember(Name="PaymentServiceName", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentServiceName", EmitDefaultValue = false)]
         public string PaymentServiceName { get; set; }
 
         /// <summary>
         /// The custom payment URL
         /// </summary>
         /// <value>The custom payment URL</value>
-        [DataMember(Name="PaymentServiceUrl", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentServiceUrl", EmitDefaultValue = false)]
         public string PaymentServiceUrl { get; set; }
 
         /// <summary>
         /// The text displayed on the Pay Now button in Xero Online Invoicing. If this is not set it will default to Pay by credit card
         /// </summary>
         /// <value>The text displayed on the Pay Now button in Xero Online Invoicing. If this is not set it will default to Pay by credit card</value>
-        [DataMember(Name="PayNowText", EmitDefaultValue=false)]
+        [DataMember(Name = "PayNowText", EmitDefaultValue = false)]
         public string PayNowText { get; set; }
 
         /// <summary>
         /// This will always be CUSTOM for payment services created via the API.
         /// </summary>
         /// <value>This will always be CUSTOM for payment services created via the API.</value>
-        [DataMember(Name="PaymentServiceType", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentServiceType", EmitDefaultValue = false)]
         public string PaymentServiceType { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PaymentServiceID == input.PaymentServiceID ||
                     (this.PaymentServiceID != null &&
                     this.PaymentServiceID.Equals(input.PaymentServiceID))
-                ) && 
+                ) &&
                 (
                     this.PaymentServiceName == input.PaymentServiceName ||
                     (this.PaymentServiceName != null &&
                     this.PaymentServiceName.Equals(input.PaymentServiceName))
-                ) && 
+                ) &&
                 (
                     this.PaymentServiceUrl == input.PaymentServiceUrl ||
                     (this.PaymentServiceUrl != null &&
                     this.PaymentServiceUrl.Equals(input.PaymentServiceUrl))
-                ) && 
+                ) &&
                 (
                     this.PayNowText == input.PayNowText ||
                     (this.PayNowText != null &&
                     this.PayNowText.Equals(input.PayNowText))
-                ) && 
+                ) &&
                 (
                     this.PaymentServiceType == input.PaymentServiceType ||
                     (this.PaymentServiceType != null &&
                     this.PaymentServiceType.Equals(input.PaymentServiceType))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// DeductionLine
     /// </summary>
     [DataContract]
-    public partial class DeductionLine :  IEquatable<DeductionLine>, IValidatableObject
+    public partial class DeductionLine : IEquatable<DeductionLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll deduction
         /// </summary>
         /// <value>Xero identifier for payroll deduction</value>
-        [DataMember(Name="deductionTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "deductionTypeID", EmitDefaultValue = false)]
         public Guid? DeductionTypeID { get; set; }
 
         /// <summary>
         /// name of earnings rate for display in UI
         /// </summary>
         /// <value>name of earnings rate for display in UI</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The amount of the deduction line
         /// </summary>
         /// <value>The amount of the deduction line</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Identifies if the deduction is subject to tax
         /// </summary>
         /// <value>Identifies if the deduction is subject to tax</value>
-        [DataMember(Name="subjectToTax", EmitDefaultValue=false)]
+        [DataMember(Name = "subjectToTax", EmitDefaultValue = false)]
         public bool? SubjectToTax { get; set; }
 
         /// <summary>
         /// Deduction rate percentage
         /// </summary>
         /// <value>Deduction rate percentage</value>
-        [DataMember(Name="percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "percentage", EmitDefaultValue = false)]
         public decimal? Percentage { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DeductionTypeID == input.DeductionTypeID ||
                     (this.DeductionTypeID != null &&
                     this.DeductionTypeID.Equals(input.DeductionTypeID))
-                ) && 
+                ) &&
                 (
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.SubjectToTax == input.SubjectToTax ||
                     (this.SubjectToTax != null &&
                     this.SubjectToTax.Equals(input.SubjectToTax))
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&

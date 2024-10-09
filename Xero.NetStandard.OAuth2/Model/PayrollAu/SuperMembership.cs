@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// SuperMembership
     /// </summary>
     [DataContract]
-    public partial class SuperMembership :  IEquatable<SuperMembership>, IValidatableObject
+    public partial class SuperMembership : IEquatable<SuperMembership>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SuperMembership" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public SuperMembership() 
-        { 
+        public SuperMembership()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for Super membership
         /// </summary>
         /// <value>Xero unique identifier for Super membership</value>
-        [DataMember(Name="SuperMembershipID", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperMembershipID", EmitDefaultValue = false)]
         public Guid? SuperMembershipID { get; set; }
 
         /// <summary>
         /// Xero identifier for super fund
         /// </summary>
         /// <value>Xero identifier for super fund</value>
-        [DataMember(Name="SuperFundID", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperFundID", EmitDefaultValue = false)]
         public Guid? SuperFundID { get; set; }
 
         /// <summary>
         /// The membership number assigned to the employee by the super fund.
         /// </summary>
         /// <value>The membership number assigned to the employee by the super fund.</value>
-        [DataMember(Name="EmployeeNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeNumber", EmitDefaultValue = false)]
         public string EmployeeNumber { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,17 +103,17 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.SuperMembershipID == input.SuperMembershipID ||
                     (this.SuperMembershipID != null &&
                     this.SuperMembershipID.Equals(input.SuperMembershipID))
-                ) && 
+                ) &&
                 (
                     this.SuperFundID == input.SuperFundID ||
                     (this.SuperFundID != null &&
                     this.SuperFundID.Equals(input.SuperFundID))
-                ) && 
+                ) &&
                 (
                     this.EmployeeNumber == input.EmployeeNumber ||
                     (this.EmployeeNumber != null &&

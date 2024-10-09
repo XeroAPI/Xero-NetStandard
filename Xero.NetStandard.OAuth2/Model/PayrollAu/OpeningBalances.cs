@@ -28,57 +28,57 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// OpeningBalances
     /// </summary>
     [DataContract]
-    public partial class OpeningBalances :  IEquatable<OpeningBalances>, IValidatableObject
+    public partial class OpeningBalances : IEquatable<OpeningBalances>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Opening Balance Date. (YYYY-MM-DD)
         /// </summary>
         /// <value>Opening Balance Date. (YYYY-MM-DD)</value>
-        [DataMember(Name="OpeningBalanceDate", EmitDefaultValue=false)]
+        [DataMember(Name = "OpeningBalanceDate", EmitDefaultValue = false)]
         public DateTime? OpeningBalanceDate { get; set; }
 
         /// <summary>
         /// Opening Balance tax
         /// </summary>
         /// <value>Opening Balance tax</value>
-        [DataMember(Name="Tax", EmitDefaultValue=false)]
+        [DataMember(Name = "Tax", EmitDefaultValue = false)]
         public string Tax { get; set; }
 
         /// <summary>
         /// Gets or Sets EarningsLines
         /// </summary>
-        [DataMember(Name="EarningsLines", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsLines", EmitDefaultValue = false)]
         public List<EarningsLine> EarningsLines { get; set; }
 
         /// <summary>
         /// Gets or Sets DeductionLines
         /// </summary>
-        [DataMember(Name="DeductionLines", EmitDefaultValue=false)]
+        [DataMember(Name = "DeductionLines", EmitDefaultValue = false)]
         public List<DeductionLine> DeductionLines { get; set; }
 
         /// <summary>
         /// Gets or Sets SuperLines
         /// </summary>
-        [DataMember(Name="SuperLines", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperLines", EmitDefaultValue = false)]
         public List<SuperLine> SuperLines { get; set; }
 
         /// <summary>
         /// Gets or Sets ReimbursementLines
         /// </summary>
-        [DataMember(Name="ReimbursementLines", EmitDefaultValue=false)]
+        [DataMember(Name = "ReimbursementLines", EmitDefaultValue = false)]
         public List<ReimbursementLine> ReimbursementLines { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveLines
         /// </summary>
-        [DataMember(Name="LeaveLines", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveLines", EmitDefaultValue = false)]
         public List<LeaveLine> LeaveLines { get; set; }
 
         /// <summary>
         /// Gets or Sets PaidLeaveEarningsLines
         /// </summary>
-        [DataMember(Name="PaidLeaveEarningsLines", EmitDefaultValue=false)]
+        [DataMember(Name = "PaidLeaveEarningsLines", EmitDefaultValue = false)]
         public List<PaidLeaveEarningsLine> PaidLeaveEarningsLines { get; set; }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -130,47 +130,47 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.OpeningBalanceDate == input.OpeningBalanceDate ||
                     (this.OpeningBalanceDate != null &&
                     this.OpeningBalanceDate.Equals(input.OpeningBalanceDate))
-                ) && 
+                ) &&
                 (
                     this.Tax == input.Tax ||
                     (this.Tax != null &&
                     this.Tax.Equals(input.Tax))
-                ) && 
+                ) &&
                 (
                     this.EarningsLines == input.EarningsLines ||
                     this.EarningsLines != null &&
                     input.EarningsLines != null &&
                     this.EarningsLines.SequenceEqual(input.EarningsLines)
-                ) && 
+                ) &&
                 (
                     this.DeductionLines == input.DeductionLines ||
                     this.DeductionLines != null &&
                     input.DeductionLines != null &&
                     this.DeductionLines.SequenceEqual(input.DeductionLines)
-                ) && 
+                ) &&
                 (
                     this.SuperLines == input.SuperLines ||
                     this.SuperLines != null &&
                     input.SuperLines != null &&
                     this.SuperLines.SequenceEqual(input.SuperLines)
-                ) && 
+                ) &&
                 (
                     this.ReimbursementLines == input.ReimbursementLines ||
                     this.ReimbursementLines != null &&
                     input.ReimbursementLines != null &&
                     this.ReimbursementLines.SequenceEqual(input.ReimbursementLines)
-                ) && 
+                ) &&
                 (
                     this.LeaveLines == input.LeaveLines ||
                     this.LeaveLines != null &&
                     input.LeaveLines != null &&
                     this.LeaveLines.SequenceEqual(input.LeaveLines)
-                ) && 
+                ) &&
                 (
                     this.PaidLeaveEarningsLines == input.PaidLeaveEarningsLines ||
                     this.PaidLeaveEarningsLines != null &&

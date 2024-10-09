@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// LineItemResponse
     /// </summary>
     [DataContract]
-    public partial class LineItemResponse :  IEquatable<LineItemResponse>, IValidatableObject
+    public partial class LineItemResponse : IEquatable<LineItemResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of account
         /// </summary>
         /// <value>Xero Identifier of account</value>
-        [DataMember(Name="accountId", EmitDefaultValue=false)]
+        [DataMember(Name = "accountId", EmitDefaultValue = false)]
         public Guid? AccountId { get; set; }
 
         /// <summary>
         /// Shown if set
         /// </summary>
         /// <value>Shown if set</value>
-        [DataMember(Name="reportingCode", EmitDefaultValue=false)]
+        [DataMember(Name = "reportingCode", EmitDefaultValue = false)]
         public string ReportingCode { get; set; }
 
         /// <summary>
         /// Amount of line item
         /// </summary>
         /// <value>Amount of line item</value>
-        [DataMember(Name="lineAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "lineAmount", EmitDefaultValue = false)]
         public decimal? LineAmount { get; set; }
 
         /// <summary>
         /// Account type
         /// </summary>
         /// <value>Account type</value>
-        [DataMember(Name="accountType", EmitDefaultValue=false)]
+        [DataMember(Name = "accountType", EmitDefaultValue = false)]
         public string AccountType { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountId == input.AccountId ||
                     (this.AccountId != null &&
                     this.AccountId.Equals(input.AccountId))
-                ) && 
+                ) &&
                 (
                     this.ReportingCode == input.ReportingCode ||
                     (this.ReportingCode != null &&
                     this.ReportingCode.Equals(input.ReportingCode))
-                ) && 
+                ) &&
                 (
                     this.LineAmount == input.LineAmount ||
                     (this.LineAmount != null &&
                     this.LineAmount.Equals(input.LineAmount))
-                ) && 
+                ) &&
                 (
                     this.AccountType == input.AccountType ||
                     (this.AccountType != null &&

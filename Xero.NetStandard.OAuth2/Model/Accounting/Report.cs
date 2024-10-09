@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Report
     /// </summary>
     [DataContract]
-    public partial class Report :  IEquatable<Report>, IValidatableObject
+    public partial class Report : IEquatable<Report>, IValidatableObject
     {
         /// <summary>
         /// See Prepayment Types
@@ -49,41 +49,41 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Prepayment Types
         /// </summary>
         /// <value>See Prepayment Types</value>
-        [DataMember(Name="ReportType", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportType", EmitDefaultValue = false)]
         public ReportTypeEnum ReportType { get; set; }
-        
+
         /// <summary>
         /// See Prepayment Types
         /// </summary>
         /// <value>See Prepayment Types</value>
-        [DataMember(Name="ReportName", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportName", EmitDefaultValue = false)]
         public string ReportName { get; set; }
 
         /// <summary>
         /// See Prepayment Types
         /// </summary>
         /// <value>See Prepayment Types</value>
-        [DataMember(Name="ReportTitle", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportTitle", EmitDefaultValue = false)]
         public string ReportTitle { get; set; }
 
         /// <summary>
         /// Date of report
         /// </summary>
         /// <value>Date of report</value>
-        [DataMember(Name="ReportDate", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportDate", EmitDefaultValue = false)]
         public string ReportDate { get; set; }
 
         /// <summary>
         /// Updated Date
         /// </summary>
         /// <value>Updated Date</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Gets or Sets Contacts
         /// </summary>
-        [DataMember(Name="Contacts", EmitDefaultValue=false)]
+        [DataMember(Name = "Contacts", EmitDefaultValue = false)]
         public List<TenNinetyNineContact> Contacts { get; set; }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -133,31 +133,31 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ReportName == input.ReportName ||
                     (this.ReportName != null &&
                     this.ReportName.Equals(input.ReportName))
-                ) && 
+                ) &&
                 (
                     this.ReportType == input.ReportType ||
                     this.ReportType.Equals(input.ReportType)
-                ) && 
+                ) &&
                 (
                     this.ReportTitle == input.ReportTitle ||
                     (this.ReportTitle != null &&
                     this.ReportTitle.Equals(input.ReportTitle))
-                ) && 
+                ) &&
                 (
                     this.ReportDate == input.ReportDate ||
                     (this.ReportDate != null &&
                     this.ReportDate.Equals(input.ReportDate))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.Contacts == input.Contacts ||
                     this.Contacts != null &&

@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// FileResponse204
     /// </summary>
     [DataContract]
-    public partial class FileResponse204 :  IEquatable<FileResponse204>, IValidatableObject
+    public partial class FileResponse204 : IEquatable<FileResponse204>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Status response for 204 no content
         /// </summary>
         /// <value>Status response for 204 no content</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&

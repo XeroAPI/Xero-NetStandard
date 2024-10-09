@@ -28,30 +28,30 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ReportRows
     /// </summary>
     [DataContract]
-    public partial class ReportRows :  IEquatable<ReportRows>, IValidatableObject
+    public partial class ReportRows : IEquatable<ReportRows>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets RowType
         /// </summary>
-        [DataMember(Name="RowType", EmitDefaultValue=false)]
+        [DataMember(Name = "RowType", EmitDefaultValue = false)]
         public RowType RowType { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="Title", EmitDefaultValue=false)]
+        [DataMember(Name = "Title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Cells
         /// </summary>
-        [DataMember(Name="Cells", EmitDefaultValue=false)]
+        [DataMember(Name = "Cells", EmitDefaultValue = false)]
         public List<ReportCell> Cells { get; set; }
 
         /// <summary>
         /// Gets or Sets Rows
         /// </summary>
-        [DataMember(Name="Rows", EmitDefaultValue=false)]
+        [DataMember(Name = "Rows", EmitDefaultValue = false)]
         public List<ReportRow> Rows { get; set; }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -99,22 +99,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.RowType == input.RowType ||
                     this.RowType.Equals(input.RowType)
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Cells == input.Cells ||
                     this.Cells != null &&
                     input.Cells != null &&
                     this.Cells.SequenceEqual(input.Cells)
-                ) && 
+                ) &&
                 (
                     this.Rows == input.Rows ||
                     this.Rows != null &&

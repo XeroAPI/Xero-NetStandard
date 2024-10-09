@@ -28,59 +28,59 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// SuperLine
     /// </summary>
     [DataContract]
-    public partial class SuperLine :  IEquatable<SuperLine>, IValidatableObject
+    public partial class SuperLine : IEquatable<SuperLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets ContributionType
         /// </summary>
-        [DataMember(Name="ContributionType", EmitDefaultValue=false)]
+        [DataMember(Name = "ContributionType", EmitDefaultValue = false)]
         public SuperannuationContributionType ContributionType { get; set; }
         /// <summary>
         /// Gets or Sets CalculationType
         /// </summary>
-        [DataMember(Name="CalculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "CalculationType", EmitDefaultValue = false)]
         public SuperannuationCalculationType CalculationType { get; set; }
-        
+
         /// <summary>
         /// Xero super membership ID
         /// </summary>
         /// <value>Xero super membership ID</value>
-        [DataMember(Name="SuperMembershipID", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperMembershipID", EmitDefaultValue = false)]
         public Guid? SuperMembershipID { get; set; }
 
         /// <summary>
         /// amount of minimum earnings
         /// </summary>
         /// <value>amount of minimum earnings</value>
-        [DataMember(Name="MinimumMonthlyEarnings", EmitDefaultValue=false)]
+        [DataMember(Name = "MinimumMonthlyEarnings", EmitDefaultValue = false)]
         public decimal? MinimumMonthlyEarnings { get; set; }
 
         /// <summary>
         /// expense account code
         /// </summary>
         /// <value>expense account code</value>
-        [DataMember(Name="ExpenseAccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "ExpenseAccountCode", EmitDefaultValue = false)]
         public string ExpenseAccountCode { get; set; }
 
         /// <summary>
         /// liabilty account code
         /// </summary>
         /// <value>liabilty account code</value>
-        [DataMember(Name="LiabilityAccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "LiabilityAccountCode", EmitDefaultValue = false)]
         public string LiabilityAccountCode { get; set; }
 
         /// <summary>
         /// percentage for super line
         /// </summary>
         /// <value>percentage for super line</value>
-        [DataMember(Name="Percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "Percentage", EmitDefaultValue = false)]
         public decimal? Percentage { get; set; }
 
         /// <summary>
         /// Super membership amount
         /// </summary>
         /// <value>Super membership amount</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -132,40 +132,40 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.SuperMembershipID == input.SuperMembershipID ||
                     (this.SuperMembershipID != null &&
                     this.SuperMembershipID.Equals(input.SuperMembershipID))
-                ) && 
+                ) &&
                 (
                     this.ContributionType == input.ContributionType ||
                     this.ContributionType.Equals(input.ContributionType)
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)
-                ) && 
+                ) &&
                 (
                     this.MinimumMonthlyEarnings == input.MinimumMonthlyEarnings ||
                     (this.MinimumMonthlyEarnings != null &&
                     this.MinimumMonthlyEarnings.Equals(input.MinimumMonthlyEarnings))
-                ) && 
+                ) &&
                 (
                     this.ExpenseAccountCode == input.ExpenseAccountCode ||
                     (this.ExpenseAccountCode != null &&
                     this.ExpenseAccountCode.Equals(input.ExpenseAccountCode))
-                ) && 
+                ) &&
                 (
                     this.LiabilityAccountCode == input.LiabilityAccountCode ||
                     (this.LiabilityAccountCode != null &&
                     this.LiabilityAccountCode.Equals(input.LiabilityAccountCode))
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&
                     this.Percentage.Equals(input.Percentage))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&

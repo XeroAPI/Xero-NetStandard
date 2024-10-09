@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// LeavePeriod
     /// </summary>
     [DataContract]
-    public partial class LeavePeriod :  IEquatable<LeavePeriod>, IValidatableObject
+    public partial class LeavePeriod : IEquatable<LeavePeriod>, IValidatableObject
     {
         /// <summary>
         /// Period Status
@@ -55,14 +55,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Period Status
         /// </summary>
         /// <value>Period Status</value>
-        [DataMember(Name="periodStatus", EmitDefaultValue=false)]
+        [DataMember(Name = "periodStatus", EmitDefaultValue = false)]
         public PeriodStatusEnum PeriodStatus { get; set; }
-        
+
         /// <summary>
         /// The Pay Period Start Date (YYYY-MM-DD)
         /// </summary>
         /// <value>The Pay Period Start Date (YYYY-MM-DD)</value>
-        [DataMember(Name="periodStartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "periodStartDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PeriodStartDate { get; set; }
 
@@ -70,7 +70,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The Pay Period End Date (YYYY-MM-DD)
         /// </summary>
         /// <value>The Pay Period End Date (YYYY-MM-DD)</value>
-        [DataMember(Name="periodEndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "periodEndDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PeriodEndDate { get; set; }
 
@@ -78,7 +78,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The Number of Units for the leave
         /// </summary>
         /// <value>The Number of Units for the leave</value>
-        [DataMember(Name="numberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
         public double? NumberOfUnits { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -126,22 +126,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PeriodStartDate == input.PeriodStartDate ||
                     (this.PeriodStartDate != null &&
                     this.PeriodStartDate.Equals(input.PeriodStartDate))
-                ) && 
+                ) &&
                 (
                     this.PeriodEndDate == input.PeriodEndDate ||
                     (this.PeriodEndDate != null &&
                     this.PeriodEndDate.Equals(input.PeriodEndDate))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.PeriodStatus == input.PeriodStatus ||
                     this.PeriodStatus.Equals(input.PeriodStatus)

@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// PnlAccountClass
     /// </summary>
     [DataContract]
-    public partial class PnlAccountClass :  IEquatable<PnlAccountClass>, IValidatableObject
+    public partial class PnlAccountClass : IEquatable<PnlAccountClass>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Total revenue/expense value
         /// </summary>
         /// <value>Total revenue/expense value</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Contains trading income and other income for revenue section / operating expenses and direct cost for expense section if the data is available for each section. Refer to the account type element below
         /// </summary>
         /// <value>Contains trading income and other income for revenue section / operating expenses and direct cost for expense section if the data is available for each section. Refer to the account type element below</value>
-        [DataMember(Name="accountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "accountTypes", EmitDefaultValue = false)]
         public List<PnlAccountType> AccountTypes { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.AccountTypes == input.AccountTypes ||
                     this.AccountTypes != null &&

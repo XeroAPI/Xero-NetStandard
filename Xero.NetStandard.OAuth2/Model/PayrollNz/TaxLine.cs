@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// TaxLine
     /// </summary>
     [DataContract]
-    public partial class TaxLine :  IEquatable<TaxLine>, IValidatableObject
+    public partial class TaxLine : IEquatable<TaxLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll tax line
         /// </summary>
         /// <value>Xero identifier for payroll tax line</value>
-        [DataMember(Name="taxLineID", EmitDefaultValue=false)]
+        [DataMember(Name = "taxLineID", EmitDefaultValue = false)]
         public Guid? TaxLineID { get; set; }
 
         /// <summary>
         /// Tax line description
         /// </summary>
         /// <value>Tax line description</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// The amount of the tax line
         /// </summary>
         /// <value>The amount of the tax line</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Tax type ID
         /// </summary>
         /// <value>Tax type ID</value>
-        [DataMember(Name="globalTaxTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "globalTaxTypeID", EmitDefaultValue = false)]
         public string GlobalTaxTypeID { get; set; }
 
         /// <summary>
         /// Identifies if the tax line is a manual adjustment
         /// </summary>
         /// <value>Identifies if the tax line is a manual adjustment</value>
-        [DataMember(Name="manualAdjustment", EmitDefaultValue=false)]
+        [DataMember(Name = "manualAdjustment", EmitDefaultValue = false)]
         public bool? ManualAdjustment { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TaxLineID == input.TaxLineID ||
                     (this.TaxLineID != null &&
                     this.TaxLineID.Equals(input.TaxLineID))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.GlobalTaxTypeID == input.GlobalTaxTypeID ||
                     (this.GlobalTaxTypeID != null &&
                     this.GlobalTaxTypeID.Equals(input.GlobalTaxTypeID))
-                ) && 
+                ) &&
                 (
                     this.ManualAdjustment == input.ManualAdjustment ||
                     (this.ManualAdjustment != null &&

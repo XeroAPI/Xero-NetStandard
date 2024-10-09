@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// ProjectUser
     /// </summary>
     [DataContract]
-    public partial class ProjectUser :  IEquatable<ProjectUser>, IValidatableObject
+    public partial class ProjectUser : IEquatable<ProjectUser>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Identifier of the user of the project.
         /// </summary>
         /// <value>Identifier of the user of the project.</value>
-        [DataMember(Name="userId", EmitDefaultValue=false)]
+        [DataMember(Name = "userId", EmitDefaultValue = false)]
         public Guid? UserId { get; set; }
 
         /// <summary>
         /// Full name of the user.
         /// </summary>
         /// <value>Full name of the user.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Email address of the user.
         /// </summary>
         /// <value>Email address of the user.</value>
-        [DataMember(Name="email", EmitDefaultValue=false)]
+        [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UserId == input.UserId ||
                     (this.UserId != null &&
                     this.UserId.Equals(input.UserId))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Email == input.Email ||
                     (this.Email != null &&

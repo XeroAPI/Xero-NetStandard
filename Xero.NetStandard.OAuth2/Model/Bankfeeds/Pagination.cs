@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// Pagination
     /// </summary>
     [DataContract]
-    public partial class Pagination :  IEquatable<Pagination>, IValidatableObject
+    public partial class Pagination : IEquatable<Pagination>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Page number which specifies the set of records to retrieve. Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?page&#x3D;2 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.
         /// </summary>
         /// <value>Page number which specifies the set of records to retrieve. Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?page&#x3D;2 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.</value>
-        [DataMember(Name="page", EmitDefaultValue=false)]
+        [DataMember(Name = "page", EmitDefaultValue = false)]
         public int? Page { get; set; }
 
         /// <summary>
         /// Page size which specifies how many records per page will be returned (default 50). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize&#x3D;100 to specify page size of 100.
         /// </summary>
         /// <value>Page size which specifies how many records per page will be returned (default 50). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize&#x3D;100 to specify page size of 100.</value>
-        [DataMember(Name="pageSize", EmitDefaultValue=false)]
+        [DataMember(Name = "pageSize", EmitDefaultValue = false)]
         public int? PageSize { get; set; }
 
         /// <summary>
         /// Number of pages available
         /// </summary>
         /// <value>Number of pages available</value>
-        [DataMember(Name="pageCount", EmitDefaultValue=false)]
+        [DataMember(Name = "pageCount", EmitDefaultValue = false)]
         public int? PageCount { get; set; }
 
         /// <summary>
         /// Number of items returned
         /// </summary>
         /// <value>Number of items returned</value>
-        [DataMember(Name="itemCount", EmitDefaultValue=false)]
+        [DataMember(Name = "itemCount", EmitDefaultValue = false)]
         public int? ItemCount { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Page == input.Page ||
                     (this.Page != null &&
                     this.Page.Equals(input.Page))
-                ) && 
+                ) &&
                 (
                     this.PageSize == input.PageSize ||
                     (this.PageSize != null &&
                     this.PageSize.Equals(input.PageSize))
-                ) && 
+                ) &&
                 (
                     this.PageCount == input.PageCount ||
                     (this.PageCount != null &&
                     this.PageCount.Equals(input.PageCount))
-                ) && 
+                ) &&
                 (
                     this.ItemCount == input.ItemCount ||
                     (this.ItemCount != null &&

@@ -44,14 +44,14 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             string jsonContent = @"{
                 ""AccountID"": ""12345678-abcd-abcd-abcd-1234567890ab""
             }";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Account>(response);
 
@@ -66,22 +66,22 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             string jsonContent = @"{
                 ""AccountID"": ""12345678-abcd-abcd-abcd-invalidvalue""
             }";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
 
             var deserializer = new CustomJsonCodec(new Configuration());
-            
-                await Assert.ThrowsAsync<ApiException>(async () =>
-    {
-        var account = await deserializer.Deserialize<Account>(response);
-    });
+
+            await Assert.ThrowsAsync<ApiException>(async () =>
+{
+    var account = await deserializer.Deserialize<Account>(response);
+});
         }
-        
+
         /// <summary>
         /// Test the property 'Type' deserialises correctly from valid inputs
         /// </summary>
@@ -132,14 +132,14 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             string jsonContent = @"{
                 ""Type"": null
             }";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Account>(response);
 
@@ -159,7 +159,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
             response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Account>(response);
-            Assert.Equal(0, (int) actual.Type);
+            Assert.Equal(0, (int)actual.Type);
         }
     }
 

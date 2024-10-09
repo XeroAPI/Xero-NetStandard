@@ -201,21 +201,21 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Accounting
             string jsonContent = $@"{{
                 ""CISDeduction"": {number}
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
 
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var invoices = await deserializer.Deserialize<Invoice>(response);
-            
+
 
             Assert.Equal(20, invoices.CISDeduction);
         }
-        
+
         /// <summary>
         /// Test the property 'SubTotal'
         /// </summary>

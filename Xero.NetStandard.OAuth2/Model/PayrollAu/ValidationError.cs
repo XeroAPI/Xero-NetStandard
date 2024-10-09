@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// ValidationError
     /// </summary>
     [DataContract]
-    public partial class ValidationError :  IEquatable<ValidationError>, IValidatableObject
+    public partial class ValidationError : IEquatable<ValidationError>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Validation error message
         /// </summary>
         /// <value>Validation error message</value>
-        [DataMember(Name="Message", EmitDefaultValue=false)]
+        [DataMember(Name = "Message", EmitDefaultValue = false)]
         public string Message { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Message == input.Message ||
                     (this.Message != null &&

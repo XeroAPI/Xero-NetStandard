@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// Folders
     /// </summary>
     [DataContract]
-    public partial class Folders :  IEquatable<Folders>, IValidatableObject
+    public partial class Folders : IEquatable<Folders>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Folders
         /// </summary>
-        [DataMember(Name="Folders", EmitDefaultValue=false)]
+        [DataMember(Name = "Folders", EmitDefaultValue = false)]
         public List<Folder> _Folders { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Folders == input._Folders ||
                     this._Folders != null &&

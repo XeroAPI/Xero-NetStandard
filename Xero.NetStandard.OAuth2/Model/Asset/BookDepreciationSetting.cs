@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// BookDepreciationSetting
     /// </summary>
     [DataContract]
-    public partial class BookDepreciationSetting :  IEquatable<BookDepreciationSetting>, IValidatableObject
+    public partial class BookDepreciationSetting : IEquatable<BookDepreciationSetting>, IValidatableObject
     {
         /// <summary>
         /// The method of depreciation applied to this asset. See Depreciation Methods
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The method of depreciation applied to this asset. See Depreciation Methods
         /// </summary>
         /// <value>The method of depreciation applied to this asset. See Depreciation Methods</value>
-        [DataMember(Name="depreciationMethod", EmitDefaultValue=false)]
+        [DataMember(Name = "depreciationMethod", EmitDefaultValue = false)]
         public DepreciationMethodEnum DepreciationMethod { get; set; }
         /// <summary>
         /// The method of averaging applied to this asset. See Averaging Methods
@@ -106,7 +106,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The method of averaging applied to this asset. See Averaging Methods
         /// </summary>
         /// <value>The method of averaging applied to this asset. See Averaging Methods</value>
-        [DataMember(Name="averagingMethod", EmitDefaultValue=false)]
+        [DataMember(Name = "averagingMethod", EmitDefaultValue = false)]
         public AveragingMethodEnum AveragingMethod { get; set; }
         /// <summary>
         /// See Depreciation Calculation Methods
@@ -139,42 +139,42 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// See Depreciation Calculation Methods
         /// </summary>
         /// <value>See Depreciation Calculation Methods</value>
-        [DataMember(Name="depreciationCalculationMethod", EmitDefaultValue=false)]
+        [DataMember(Name = "depreciationCalculationMethod", EmitDefaultValue = false)]
         public DepreciationCalculationMethodEnum DepreciationCalculationMethod { get; set; }
-        
+
         /// <summary>
         /// The rate of depreciation (e.g. 0.05)
         /// </summary>
         /// <value>The rate of depreciation (e.g. 0.05)</value>
-        [DataMember(Name="depreciationRate", EmitDefaultValue=false)]
+        [DataMember(Name = "depreciationRate", EmitDefaultValue = false)]
         public decimal? DepreciationRate { get; set; }
 
         /// <summary>
         /// Effective life of the asset in years (e.g. 5)
         /// </summary>
         /// <value>Effective life of the asset in years (e.g. 5)</value>
-        [DataMember(Name="effectiveLifeYears", EmitDefaultValue=false)]
+        [DataMember(Name = "effectiveLifeYears", EmitDefaultValue = false)]
         public int? EffectiveLifeYears { get; set; }
 
         /// <summary>
         /// Unique Xero identifier for the depreciable object
         /// </summary>
         /// <value>Unique Xero identifier for the depreciable object</value>
-        [DataMember(Name="depreciableObjectId", EmitDefaultValue=false)]
+        [DataMember(Name = "depreciableObjectId", EmitDefaultValue = false)]
         public Guid? DepreciableObjectId { get; set; }
 
         /// <summary>
         /// The type of asset object
         /// </summary>
         /// <value>The type of asset object</value>
-        [DataMember(Name="depreciableObjectType", EmitDefaultValue=false)]
+        [DataMember(Name = "depreciableObjectType", EmitDefaultValue = false)]
         public string DepreciableObjectType { get; set; }
 
         /// <summary>
         /// Unique Xero identifier for the effective date change
         /// </summary>
         /// <value>Unique Xero identifier for the effective date change</value>
-        [DataMember(Name="bookEffectiveDateOfChangeId", EmitDefaultValue=false)]
+        [DataMember(Name = "bookEffectiveDateOfChangeId", EmitDefaultValue = false)]
         public Guid? BookEffectiveDateOfChangeId { get; set; }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -226,39 +226,39 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DepreciationMethod == input.DepreciationMethod ||
                     this.DepreciationMethod.Equals(input.DepreciationMethod)
-                ) && 
+                ) &&
                 (
                     this.AveragingMethod == input.AveragingMethod ||
                     this.AveragingMethod.Equals(input.AveragingMethod)
-                ) && 
+                ) &&
                 (
                     this.DepreciationRate == input.DepreciationRate ||
                     (this.DepreciationRate != null &&
                     this.DepreciationRate.Equals(input.DepreciationRate))
-                ) && 
+                ) &&
                 (
                     this.EffectiveLifeYears == input.EffectiveLifeYears ||
                     (this.EffectiveLifeYears != null &&
                     this.EffectiveLifeYears.Equals(input.EffectiveLifeYears))
-                ) && 
+                ) &&
                 (
                     this.DepreciationCalculationMethod == input.DepreciationCalculationMethod ||
                     this.DepreciationCalculationMethod.Equals(input.DepreciationCalculationMethod)
-                ) && 
+                ) &&
                 (
                     this.DepreciableObjectId == input.DepreciableObjectId ||
                     (this.DepreciableObjectId != null &&
                     this.DepreciableObjectId.Equals(input.DepreciableObjectId))
-                ) && 
+                ) &&
                 (
                     this.DepreciableObjectType == input.DepreciableObjectType ||
                     (this.DepreciableObjectType != null &&
                     this.DepreciableObjectType.Equals(input.DepreciableObjectType))
-                ) && 
+                ) &&
                 (
                     this.BookEffectiveDateOfChangeId == input.BookEffectiveDateOfChangeId ||
                     (this.BookEffectiveDateOfChangeId != null &&

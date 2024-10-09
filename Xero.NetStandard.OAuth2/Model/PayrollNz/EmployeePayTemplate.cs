@@ -28,20 +28,20 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeePayTemplate
     /// </summary>
     [DataContract]
-    public partial class EmployeePayTemplate :  IEquatable<EmployeePayTemplate>, IValidatableObject
+    public partial class EmployeePayTemplate : IEquatable<EmployeePayTemplate>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Unique identifier for the employee
         /// </summary>
         /// <value>Unique identifier for the employee</value>
-        [DataMember(Name="employeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "employeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// Gets or Sets EarningTemplates
         /// </summary>
-        [DataMember(Name="earningTemplates", EmitDefaultValue=false)]
+        [DataMember(Name = "earningTemplates", EmitDefaultValue = false)]
         public List<EarningsTemplate> EarningTemplates { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,12 +87,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.EarningTemplates == input.EarningTemplates ||
                     this.EarningTemplates != null &&

@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// TimesheetLine
     /// </summary>
     [DataContract]
-    public partial class TimesheetLine :  IEquatable<TimesheetLine>, IValidatableObject
+    public partial class TimesheetLine : IEquatable<TimesheetLine>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TimesheetLine" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public TimesheetLine() 
-        { 
+        public TimesheetLine()
+        {
         }
-        
+
         /// <summary>
         /// The Xero identifier for a Timesheet Line
         /// </summary>
         /// <value>The Xero identifier for a Timesheet Line</value>
-        [DataMember(Name="timesheetLineID", EmitDefaultValue=false)]
+        [DataMember(Name = "timesheetLineID", EmitDefaultValue = false)]
         public Guid? TimesheetLineID { get; set; }
 
         /// <summary>
         /// The Date that this Timesheet Line is for (YYYY-MM-DD)
         /// </summary>
         /// <value>The Date that this Timesheet Line is for (YYYY-MM-DD)</value>
-        [DataMember(Name="date", EmitDefaultValue=false)]
+        [DataMember(Name = "date", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
@@ -57,21 +57,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The Xero identifier for the Earnings Rate that the Timesheet is for
         /// </summary>
         /// <value>The Xero identifier for the Earnings Rate that the Timesheet is for</value>
-        [DataMember(Name="earningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// The Xero identifier for the Tracking Item that the Timesheet is for
         /// </summary>
         /// <value>The Xero identifier for the Tracking Item that the Timesheet is for</value>
-        [DataMember(Name="trackingItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "trackingItemID", EmitDefaultValue = false)]
         public Guid? TrackingItemID { get; set; }
 
         /// <summary>
         /// The Number of Units of the Timesheet Line
         /// </summary>
         /// <value>The Number of Units of the Timesheet Line</value>
-        [DataMember(Name="numberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,27 +120,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TimesheetLineID == input.TimesheetLineID ||
                     (this.TimesheetLineID != null &&
                     this.TimesheetLineID.Equals(input.TimesheetLineID))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.TrackingItemID == input.TrackingItemID ||
                     (this.TrackingItemID != null &&
                     this.TrackingItemID.Equals(input.TrackingItemID))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&

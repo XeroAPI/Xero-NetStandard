@@ -59,17 +59,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             string jsonContent = $@"{{
                 ""Status"": ""{input}""
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Statement>(response);
-            
+
             Assert.Equal(expected, actual.Status);
         }
         /// <summary>
@@ -81,17 +81,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             string jsonContent = $@"{{
                 ""Status"": null
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Statement>(response);
-            
+
             Assert.Equal(0, (int)actual.Status);
         }
         /// <summary>
@@ -101,17 +101,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         public async Task Status_NotPresentInInput_DeserialisesTo0()
         {
             string jsonContent = "{}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Statement>(response);
-            
+
             Assert.Equal(0, (int)actual.Status);
         }
         /// <summary>
@@ -130,17 +130,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
                     }}
                 ]
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Statement>(response);
-            
+
             Assert.Single(actual.Errors);
             var error = actual.Errors.First();
 

@@ -28,56 +28,56 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// CashflowAccount
     /// </summary>
     [DataContract]
-    public partial class CashflowAccount :  IEquatable<CashflowAccount>, IValidatableObject
+    public partial class CashflowAccount : IEquatable<CashflowAccount>, IValidatableObject
     {
-        
+
         /// <summary>
         /// ID of the account
         /// </summary>
         /// <value>ID of the account</value>
-        [DataMember(Name="accountId", EmitDefaultValue=false)]
+        [DataMember(Name = "accountId", EmitDefaultValue = false)]
         public Guid? AccountId { get; set; }
 
         /// <summary>
         /// The type of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountTypes&#39;&gt;Account Types&lt;/a&gt;
         /// </summary>
         /// <value>The type of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountTypes&#39;&gt;Account Types&lt;/a&gt;</value>
-        [DataMember(Name="accountType", EmitDefaultValue=false)]
+        [DataMember(Name = "accountType", EmitDefaultValue = false)]
         public string AccountType { get; set; }
 
         /// <summary>
         /// The class of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountClassTypes&#39;&gt;Account Class Types&lt;/a&gt;
         /// </summary>
         /// <value>The class of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountClassTypes&#39;&gt;Account Class Types&lt;/a&gt;</value>
-        [DataMember(Name="accountClass", EmitDefaultValue=false)]
+        [DataMember(Name = "accountClass", EmitDefaultValue = false)]
         public string AccountClass { get; set; }
 
         /// <summary>
         /// Account code
         /// </summary>
         /// <value>Account code</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
+        [DataMember(Name = "code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// Account name
         /// </summary>
         /// <value>Account name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Reporting code used for cash flow classification
         /// </summary>
         /// <value>Reporting code used for cash flow classification</value>
-        [DataMember(Name="reportingCode", EmitDefaultValue=false)]
+        [DataMember(Name = "reportingCode", EmitDefaultValue = false)]
         public string ReportingCode { get; set; }
 
         /// <summary>
         /// Total amount for the account
         /// </summary>
         /// <value>Total amount for the account</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -128,37 +128,37 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountId == input.AccountId ||
                     (this.AccountId != null &&
                     this.AccountId.Equals(input.AccountId))
-                ) && 
+                ) &&
                 (
                     this.AccountType == input.AccountType ||
                     (this.AccountType != null &&
                     this.AccountType.Equals(input.AccountType))
-                ) && 
+                ) &&
                 (
                     this.AccountClass == input.AccountClass ||
                     (this.AccountClass != null &&
                     this.AccountClass.Equals(input.AccountClass))
-                ) && 
+                ) &&
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.ReportingCode == input.ReportingCode ||
                     (this.ReportingCode != null &&
                     this.ReportingCode.Equals(input.ReportingCode))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&

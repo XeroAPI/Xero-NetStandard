@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// InvoiceAddress
     /// </summary>
     [DataContract]
-    public partial class InvoiceAddress :  IEquatable<InvoiceAddress>, IValidatableObject
+    public partial class InvoiceAddress : IEquatable<InvoiceAddress>, IValidatableObject
     {
         /// <summary>
         /// Indicates whether the address is defined as origin (FROM) or destination (TO)
@@ -55,63 +55,63 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Indicates whether the address is defined as origin (FROM) or destination (TO)
         /// </summary>
         /// <value>Indicates whether the address is defined as origin (FROM) or destination (TO)</value>
-        [DataMember(Name="InvoiceAddressType", EmitDefaultValue=false)]
+        [DataMember(Name = "InvoiceAddressType", EmitDefaultValue = false)]
         public InvoiceAddressTypeEnum InvoiceAddressType { get; set; }
-        
+
         /// <summary>
         /// First line of a physical address
         /// </summary>
         /// <value>First line of a physical address</value>
-        [DataMember(Name="AddressLine1", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine1", EmitDefaultValue = false)]
         public string AddressLine1 { get; set; }
 
         /// <summary>
         /// Second line of a physical address
         /// </summary>
         /// <value>Second line of a physical address</value>
-        [DataMember(Name="AddressLine2", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine2", EmitDefaultValue = false)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// Third line of a physical address
         /// </summary>
         /// <value>Third line of a physical address</value>
-        [DataMember(Name="AddressLine3", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine3", EmitDefaultValue = false)]
         public string AddressLine3 { get; set; }
 
         /// <summary>
         /// Fourth line of a physical address
         /// </summary>
         /// <value>Fourth line of a physical address</value>
-        [DataMember(Name="AddressLine4", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine4", EmitDefaultValue = false)]
         public string AddressLine4 { get; set; }
 
         /// <summary>
         /// City of a physical address
         /// </summary>
         /// <value>City of a physical address</value>
-        [DataMember(Name="City", EmitDefaultValue=false)]
+        [DataMember(Name = "City", EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// Region or state of a physical address
         /// </summary>
         /// <value>Region or state of a physical address</value>
-        [DataMember(Name="Region", EmitDefaultValue=false)]
+        [DataMember(Name = "Region", EmitDefaultValue = false)]
         public string Region { get; set; }
 
         /// <summary>
         /// Postal code of a physical address
         /// </summary>
         /// <value>Postal code of a physical address</value>
-        [DataMember(Name="PostalCode", EmitDefaultValue=false)]
+        [DataMember(Name = "PostalCode", EmitDefaultValue = false)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// Country of a physical address
         /// </summary>
         /// <value>Country of a physical address</value>
-        [DataMember(Name="Country", EmitDefaultValue=false)]
+        [DataMember(Name = "Country", EmitDefaultValue = false)]
         public string Country { get; set; }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -164,46 +164,46 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.InvoiceAddressType == input.InvoiceAddressType ||
                     this.InvoiceAddressType.Equals(input.InvoiceAddressType)
-                ) && 
+                ) &&
                 (
                     this.AddressLine1 == input.AddressLine1 ||
                     (this.AddressLine1 != null &&
                     this.AddressLine1.Equals(input.AddressLine1))
-                ) && 
+                ) &&
                 (
                     this.AddressLine2 == input.AddressLine2 ||
                     (this.AddressLine2 != null &&
                     this.AddressLine2.Equals(input.AddressLine2))
-                ) && 
+                ) &&
                 (
                     this.AddressLine3 == input.AddressLine3 ||
                     (this.AddressLine3 != null &&
                     this.AddressLine3.Equals(input.AddressLine3))
-                ) && 
+                ) &&
                 (
                     this.AddressLine4 == input.AddressLine4 ||
                     (this.AddressLine4 != null &&
                     this.AddressLine4.Equals(input.AddressLine4))
-                ) && 
+                ) &&
                 (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
-                ) && 
+                ) &&
                 (
                     this.Region == input.Region ||
                     (this.Region != null &&
                     this.Region.Equals(input.Region))
-                ) && 
+                ) &&
                 (
                     this.PostalCode == input.PostalCode ||
                     (this.PostalCode != null &&
                     this.PostalCode.Equals(input.PostalCode))
-                ) && 
+                ) &&
                 (
                     this.Country == input.Country ||
                     (this.Country != null &&

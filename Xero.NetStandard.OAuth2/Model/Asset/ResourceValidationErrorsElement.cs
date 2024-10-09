@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// ResourceValidationErrorsElement
     /// </summary>
     [DataContract]
-    public partial class ResourceValidationErrorsElement :  IEquatable<ResourceValidationErrorsElement>, IValidatableObject
+    public partial class ResourceValidationErrorsElement : IEquatable<ResourceValidationErrorsElement>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The field name of the erroneous field
         /// </summary>
         /// <value>The field name of the erroneous field</value>
-        [DataMember(Name="resourceName", EmitDefaultValue=false)]
+        [DataMember(Name = "resourceName", EmitDefaultValue = false)]
         public string ResourceName { get; set; }
 
         /// <summary>
         /// Explanation of the resource validation error
         /// </summary>
         /// <value>Explanation of the resource validation error</value>
-        [DataMember(Name="localisedMessage", EmitDefaultValue=false)]
+        [DataMember(Name = "localisedMessage", EmitDefaultValue = false)]
         public string LocalisedMessage { get; set; }
 
         /// <summary>
         /// Internal type of the resource error message
         /// </summary>
         /// <value>Internal type of the resource error message</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// Title of the resource validation error
         /// </summary>
         /// <value>Title of the resource validation error</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Detail of the resource validation error
         /// </summary>
         /// <value>Detail of the resource validation error</value>
-        [DataMember(Name="detail", EmitDefaultValue=false)]
+        [DataMember(Name = "detail", EmitDefaultValue = false)]
         public string Detail { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ResourceName == input.ResourceName ||
                     (this.ResourceName != null &&
                     this.ResourceName.Equals(input.ResourceName))
-                ) && 
+                ) &&
                 (
                     this.LocalisedMessage == input.LocalisedMessage ||
                     (this.LocalisedMessage != null &&
                     this.LocalisedMessage.Equals(input.LocalisedMessage))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Detail == input.Detail ||
                     (this.Detail != null &&
