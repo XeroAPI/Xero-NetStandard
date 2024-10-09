@@ -37,7 +37,6 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         private const string accessToken = "XeroNetStandardTestAccessToken";
         private const string xeroTenantId = "XeroNetStandardTestTenantId";
         private PayrollAuApi instance;
-        private readonly ITestOutputHelper output;
 
         public PayrollAuApiTests()
         {
