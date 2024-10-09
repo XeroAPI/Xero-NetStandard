@@ -44,7 +44,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Association</returns>
-        System.Threading.Tasks.Task<Association> CreateFileAssociationAsync (string accessToken, string xeroTenantId, Guid fileId, Association association, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Association> CreateFileAssociationAsync(string accessToken, string xeroTenantId, Guid fileId, Association association, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new file association
@@ -60,7 +60,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Association)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Association>> CreateFileAssociationAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, Association association, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Association>> CreateFileAssociationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, Association association, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new folder
         /// </summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Folder</returns>
-        System.Threading.Tasks.Task<Folder> CreateFolderAsync (string accessToken, string xeroTenantId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Folder> CreateFolderAsync(string accessToken, string xeroTenantId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new folder
@@ -89,7 +89,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Folder>> CreateFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Folder>> CreateFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a specific file
         /// </summary>
@@ -102,7 +102,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteFileAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteFileAsync(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a specific file
@@ -116,7 +116,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes an existing file association
         /// </summary>
@@ -130,7 +130,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="objectId">Object id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteFileAssociationAsync (string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteFileAssociationAsync(string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes an existing file association
@@ -145,7 +145,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="objectId">Object id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFileAssociationAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFileAssociationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a folder
         /// </summary>
@@ -158,7 +158,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="folderId">Folder id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteFolderAsync (string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteFolderAsync(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a folder
@@ -172,7 +172,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="folderId">Folder id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves an association object using a unique object ID
         /// </summary>
@@ -189,7 +189,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="direction">direction to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of List&lt;Association&gt;</returns>
-        System.Threading.Tasks.Task<List<Association>> GetAssociationsByObjectAsync (string accessToken, string xeroTenantId, Guid objectId, int? pagesize = null, int? page = null, string sort = null, string direction = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<List<Association>> GetAssociationsByObjectAsync(string accessToken, string xeroTenantId, Guid objectId, int? pagesize = null, int? page = null, string sort = null, string direction = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves an association object using a unique object ID
@@ -207,7 +207,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="direction">direction to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Association&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Association>>> GetAssociationsByObjectAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid objectId, int? pagesize = null, int? page = null, string sort = null, string direction = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<List<Association>>> GetAssociationsByObjectAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid objectId, int? pagesize = null, int? page = null, string sort = null, string direction = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a count of associations for a list of objects.
         /// </summary>
@@ -220,7 +220,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="objectIds">A comma-separated list of object ids</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetAssociationsCountAsync (string accessToken, string xeroTenantId, List<Guid> objectIds, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Object> GetAssociationsCountAsync(string accessToken, string xeroTenantId, List<Guid> objectIds, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a count of associations for a list of objects.
@@ -234,7 +234,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="objectIds">A comma-separated list of object ids</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetAssociationsCountAsyncWithHttpInfo (string accessToken, string xeroTenantId, List<Guid> objectIds, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetAssociationsCountAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> objectIds, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a file by a unique file ID
         /// </summary>
@@ -247,7 +247,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of FileObject</returns>
-        System.Threading.Tasks.Task<FileObject> GetFileAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FileObject> GetFileAsync(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a file by a unique file ID
@@ -261,7 +261,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileObject>> GetFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FileObject>> GetFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific file associations
         /// </summary>
@@ -274,7 +274,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of List&lt;Association&gt;</returns>
-        System.Threading.Tasks.Task<List<Association>> GetFileAssociationsAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<List<Association>> GetFileAssociationsAsync(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific file associations
@@ -288,7 +288,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Association&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Association>>> GetFileAssociationsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<List<Association>>> GetFileAssociationsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves the content of a specific file
         /// </summary>
@@ -301,7 +301,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of System.IO.Stream</returns>
-        System.Threading.Tasks.Task<System.IO.Stream> GetFileContentAsync (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<System.IO.Stream> GetFileContentAsync(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves the content of a specific file
@@ -315,7 +315,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetFileContentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetFileContentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves files
         /// </summary>
@@ -330,7 +330,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">values to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Files</returns>
-        System.Threading.Tasks.Task<Files> GetFilesAsync (string accessToken, string xeroTenantId, int? pagesize = null, int? page = null, string sort = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Files> GetFilesAsync(string accessToken, string xeroTenantId, int? pagesize = null, int? page = null, string sort = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves files
@@ -346,7 +346,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">values to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Files)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Files>> GetFilesAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? pagesize = null, int? page = null, string sort = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Files>> GetFilesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? pagesize = null, int? page = null, string sort = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves specific folder by using a unique folder ID
         /// </summary>
@@ -359,7 +359,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="folderId">Folder id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Folder</returns>
-        System.Threading.Tasks.Task<Folder> GetFolderAsync (string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Folder> GetFolderAsync(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves specific folder by using a unique folder ID
@@ -373,7 +373,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="folderId">Folder id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Folder>> GetFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Folder>> GetFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves folders
         /// </summary>
@@ -386,7 +386,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">values to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of List&lt;Folder&gt;</returns>
-        System.Threading.Tasks.Task<List<Folder>> GetFoldersAsync (string accessToken, string xeroTenantId, string sort = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<List<Folder>> GetFoldersAsync(string accessToken, string xeroTenantId, string sort = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves folders
@@ -400,7 +400,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">values to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Folder&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Folder>>> GetFoldersAsyncWithHttpInfo (string accessToken, string xeroTenantId, string sort = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<List<Folder>>> GetFoldersAsyncWithHttpInfo(string accessToken, string xeroTenantId, string sort = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves inbox folder
         /// </summary>
@@ -412,7 +412,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Folder</returns>
-        System.Threading.Tasks.Task<Folder> GetInboxAsync (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Folder> GetInboxAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves inbox folder
@@ -425,7 +425,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Folder>> GetInboxAsyncWithHttpInfo (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Folder>> GetInboxAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a file
         /// </summary>
@@ -440,7 +440,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of FileObject</returns>
-        System.Threading.Tasks.Task<FileObject> UpdateFileAsync (string accessToken, string xeroTenantId, Guid fileId, FileObject fileObject, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FileObject> UpdateFileAsync(string accessToken, string xeroTenantId, Guid fileId, FileObject fileObject, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a file
@@ -456,7 +456,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileObject>> UpdateFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, FileObject fileObject, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FileObject>> UpdateFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, FileObject fileObject, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates an existing folder
         /// </summary>
@@ -471,7 +471,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Folder</returns>
-        System.Threading.Tasks.Task<Folder> UpdateFolderAsync (string accessToken, string xeroTenantId, Guid folderId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Folder> UpdateFolderAsync(string accessToken, string xeroTenantId, Guid folderId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates an existing folder
@@ -487,7 +487,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Folder>> UpdateFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Folder>> UpdateFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Uploads a File to the inbox
         /// </summary>
@@ -504,7 +504,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="mimeType"> (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of FileObject</returns>
-        System.Threading.Tasks.Task<FileObject> UploadFileAsync (string accessToken, string xeroTenantId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FileObject> UploadFileAsync(string accessToken, string xeroTenantId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Uploads a File to the inbox
@@ -522,7 +522,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="mimeType"> (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileObject>> UploadFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FileObject>> UploadFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Uploads a File to a specific folder
         /// </summary>
@@ -540,7 +540,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="mimeType"> (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of FileObject</returns>
-        System.Threading.Tasks.Task<FileObject> UploadFileToFolderAsync (string accessToken, string xeroTenantId, Guid folderId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<FileObject> UploadFileToFolderAsync(string accessToken, string xeroTenantId, Guid folderId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Uploads a File to a specific folder
@@ -559,7 +559,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="mimeType"> (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FileObject>> UploadFileToFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<FileObject>> UploadFileToFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -709,7 +709,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Association)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Association>> CreateFileAssociationAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, Association association, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Association>> CreateFileAssociationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, Association association, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -798,7 +798,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> CreateFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> CreateFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -878,7 +878,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -957,7 +957,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="objectId">Object id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteFileAssociationAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteFileAssociationAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, Guid objectId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1040,7 +1040,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="folderId">Folder id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1126,7 +1126,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="direction">direction to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Association&gt;)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Association>>> GetAssociationsByObjectAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid objectId, int? pagesize = null, int? page = null, string sort = null, string direction = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Association>>> GetAssociationsByObjectAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid objectId, int? pagesize = null, int? page = null, string sort = null, string direction = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1249,7 +1249,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="objectIds">A comma-separated list of object ids</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> GetAssociationsCountAsyncWithHttpInfo (string accessToken, string xeroTenantId, List<Guid> objectIds, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> GetAssociationsCountAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> objectIds, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1337,7 +1337,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> GetFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> GetFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1416,7 +1416,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Association&gt;)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Association>>> GetFileAssociationsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Association>>> GetFileAssociationsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1495,7 +1495,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="fileId">File id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetFileContentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetFileContentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1578,7 +1578,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">values to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Files)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Files>> GetFilesAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? pagesize = null, int? page = null, string sort = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Files>> GetFilesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? pagesize = null, int? page = null, string sort = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1684,7 +1684,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="folderId">Folder id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> GetFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> GetFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1763,7 +1763,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">values to sort by (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Folder&gt;)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Folder>>> GetFoldersAsyncWithHttpInfo (string accessToken, string xeroTenantId, string sort = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Folder>>> GetFoldersAsyncWithHttpInfo(string accessToken, string xeroTenantId, string sort = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1845,7 +1845,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> GetInboxAsyncWithHttpInfo (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> GetInboxAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1922,7 +1922,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> UpdateFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid fileId, FileObject fileObject, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> UpdateFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid fileId, FileObject fileObject, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2013,7 +2013,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Folder)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> UpdateFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Folder>> UpdateFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, Folder folder, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2108,7 +2108,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="mimeType"> (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> UploadFileAsyncWithHttpInfo (string accessToken, string xeroTenantId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> UploadFileAsyncWithHttpInfo(string accessToken, string xeroTenantId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2223,7 +2223,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="mimeType"> (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (FileObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> UploadFileToFolderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid folderId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<FileObject>> UploadFileToFolderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid folderId, byte[] body, string name, string filename, string idempotencyKey = null, string mimeType = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)

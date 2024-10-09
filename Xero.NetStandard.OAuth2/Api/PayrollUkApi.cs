@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        System.Threading.Tasks.Task<TimesheetObject> ApproveTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetObject> ApproveTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Approves a specific timesheet
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> ApproveTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> ApproveTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new employee benefit
         /// </summary>
@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of BenefitObject</returns>
-        System.Threading.Tasks.Task<BenefitObject> CreateBenefitAsync (string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<BenefitObject> CreateBenefitAsync(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new employee benefit
@@ -87,7 +87,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BenefitObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BenefitObject>> CreateBenefitAsyncWithHttpInfo (string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<BenefitObject>> CreateBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new deduction
         /// </summary>
@@ -101,7 +101,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of DeductionObject</returns>
-        System.Threading.Tasks.Task<DeductionObject> CreateDeductionAsync (string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DeductionObject> CreateDeductionAsync(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new deduction
@@ -116,7 +116,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (DeductionObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo (string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new earnings rate
         /// </summary>
@@ -130,7 +130,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsRateObject</returns>
-        System.Threading.Tasks.Task<EarningsRateObject> CreateEarningsRateAsync (string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EarningsRateObject> CreateEarningsRateAsync(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new earnings rate
@@ -145,7 +145,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsRateObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo (string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates employees
         /// </summary>
@@ -159,7 +159,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeObject</returns>
-        System.Threading.Tasks.Task<EmployeeObject> CreateEmployeeAsync (string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeObject> CreateEmployeeAsync(string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates employees
@@ -174,7 +174,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates an earnings template records for a specific employee
         /// </summary>
@@ -189,7 +189,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsTemplateObject</returns>
-        System.Threading.Tasks.Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EarningsTemplateObject> CreateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an earnings template records for a specific employee
@@ -205,7 +205,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsTemplateObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates leave records for a specific employee
         /// </summary>
@@ -220,7 +220,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        System.Threading.Tasks.Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaveObject> CreateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates leave records for a specific employee
@@ -236,7 +236,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates employee leave type records
         /// </summary>
@@ -251,7 +251,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveTypeObject</returns>
-        System.Threading.Tasks.Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaveTypeObject> CreateEmployeeLeaveTypeAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates employee leave type records
@@ -267,7 +267,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveTypeObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates an opening balance for a specific employee
         /// </summary>
@@ -282,7 +282,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeOpeningBalancesObject</returns>
-        System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> CreateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an opening balance for a specific employee
@@ -298,7 +298,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeOpeningBalancesObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates an employee payment method
         /// </summary>
@@ -313,7 +313,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PaymentMethodObject</returns>
-        System.Threading.Tasks.Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync (string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PaymentMethodObject> CreateEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an employee payment method
@@ -329,7 +329,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PaymentMethodObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a salary and wage record for a specific employee
         /// </summary>
@@ -344,7 +344,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWageObject</returns>
-        System.Threading.Tasks.Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<SalaryAndWageObject> CreateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a salary and wage record for a specific employee
@@ -360,7 +360,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWageObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates statutory sick leave records
         /// </summary>
@@ -374,7 +374,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeStatutorySickLeaveObject</returns>
-        System.Threading.Tasks.Task<EmployeeStatutorySickLeaveObject> CreateEmployeeStatutorySickLeaveAsync (string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeStatutorySickLeaveObject> CreateEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates statutory sick leave records
@@ -389,7 +389,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutorySickLeaveObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutorySickLeaveObject>> CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutorySickLeaveObject>> CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates employment detail for a specific employee using a unique employee ID
         /// </summary>
@@ -404,7 +404,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmploymentObject</returns>
-        System.Threading.Tasks.Task<EmploymentObject> CreateEmploymentAsync (string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmploymentObject> CreateEmploymentAsync(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates employment detail for a specific employee using a unique employee ID
@@ -420,7 +420,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmploymentObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new leave type
         /// </summary>
@@ -434,7 +434,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeaveTypeObject</returns>
-        System.Threading.Tasks.Task<LeaveTypeObject> CreateLeaveTypeAsync (string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeaveTypeObject> CreateLeaveTypeAsync(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new leave type
@@ -449,7 +449,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeaveTypeObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates multiple earnings template records for a specific employee using a unique employee ID
         /// </summary>
@@ -464,7 +464,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeePayTemplates</returns>
-        System.Threading.Tasks.Task<EmployeePayTemplates> CreateMultipleEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeePayTemplates> CreateMultipleEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates multiple earnings template records for a specific employee using a unique employee ID
@@ -480,7 +480,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeePayTemplates)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeePayTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeePayTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new payrun calendar
         /// </summary>
@@ -494,7 +494,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunCalendarObject</returns>
-        System.Threading.Tasks.Task<PayRunCalendarObject> CreatePayRunCalendarAsync (string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PayRunCalendarObject> CreatePayRunCalendarAsync(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new payrun calendar
@@ -509,7 +509,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunCalendarObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo (string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new reimbursement
         /// </summary>
@@ -523,7 +523,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ReimbursementObject</returns>
-        System.Threading.Tasks.Task<ReimbursementObject> CreateReimbursementAsync (string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ReimbursementObject> CreateReimbursementAsync(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new reimbursement
@@ -538,7 +538,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ReimbursementObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo (string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new timesheet
         /// </summary>
@@ -552,7 +552,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        System.Threading.Tasks.Task<TimesheetObject> CreateTimesheetAsync (string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetObject> CreateTimesheetAsync(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new timesheet
@@ -567,7 +567,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a new timesheet line for a specific timesheet using a unique timesheet ID
         /// </summary>
@@ -582,7 +582,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLineObject</returns>
-        System.Threading.Tasks.Task<TimesheetLineObject> CreateTimesheetLineAsync (string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetLineObject> CreateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new timesheet line for a specific timesheet using a unique timesheet ID
@@ -598,7 +598,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLineObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a specific employee&#39;s earnings template record
         /// </summary>
@@ -612,7 +612,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payTemplateEarningID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a specific employee&#39;s earnings template record
@@ -627,7 +627,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payTemplateEarningID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a specific employee&#39;s leave record
         /// </summary>
@@ -641,7 +641,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveID">Leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        System.Threading.Tasks.Task<EmployeeLeaveObject> DeleteEmployeeLeaveAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaveObject> DeleteEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a specific employee&#39;s leave record
@@ -656,7 +656,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveID">Leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> DeleteEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> DeleteEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a salary and wages record for a specific employee
         /// </summary>
@@ -670,7 +670,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single salary and wages object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a salary and wages record for a specific employee
@@ -685,7 +685,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single salary and wages object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a specific timesheet
         /// </summary>
@@ -698,7 +698,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLine</returns>
-        System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a specific timesheet
@@ -712,7 +712,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLine)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetLine>> DeleteTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetLine>> DeleteTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a specific timesheet line
         /// </summary>
@@ -726,7 +726,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetLineID">Identifier for the timesheet line</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLine</returns>
-        System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetLineAsync (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetLine> DeleteTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a specific timesheet line
@@ -741,7 +741,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetLineID">Identifier for the timesheet line</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLine)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetLine>> DeleteTimesheetLineAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetLine>> DeleteTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific benefit by using a unique benefit ID
         /// </summary>
@@ -754,7 +754,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Identifier for the benefit</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of BenefitObject</returns>
-        System.Threading.Tasks.Task<BenefitObject> GetBenefitAsync (string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<BenefitObject> GetBenefitAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific benefit by using a unique benefit ID
@@ -768,7 +768,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Identifier for the benefit</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BenefitObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BenefitObject>> GetBenefitAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<BenefitObject>> GetBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves employee benefits
         /// </summary>
@@ -781,7 +781,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Benefits</returns>
-        System.Threading.Tasks.Task<Benefits> GetBenefitsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Benefits> GetBenefitsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves employee benefits
@@ -795,7 +795,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Benefits)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Benefits>> GetBenefitsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Benefits>> GetBenefitsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific deduction by using a unique deduction ID
         /// </summary>
@@ -808,7 +808,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="deductionId">Identifier for the deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of DeductionObject</returns>
-        System.Threading.Tasks.Task<DeductionObject> GetDeductionAsync (string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DeductionObject> GetDeductionAsync(string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific deduction by using a unique deduction ID
@@ -822,7 +822,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="deductionId">Identifier for the deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (DeductionObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeductionObject>> GetDeductionAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DeductionObject>> GetDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves deductions
         /// </summary>
@@ -835,7 +835,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Deductions</returns>
-        System.Threading.Tasks.Task<Deductions> GetDeductionsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Deductions> GetDeductionsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves deductions
@@ -849,7 +849,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Deductions)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deductions>> GetDeductionsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Deductions>> GetDeductionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific earnings orders by using a unique earnings orders id
         /// </summary>
@@ -862,7 +862,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Identifier for the deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsOrderObject</returns>
-        System.Threading.Tasks.Task<EarningsOrderObject> GetEarningsOrderAsync (string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EarningsOrderObject> GetEarningsOrderAsync(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific earnings orders by using a unique earnings orders id
@@ -876,7 +876,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Identifier for the deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsOrderObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EarningsOrderObject>> GetEarningsOrderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EarningsOrderObject>> GetEarningsOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves earnings orders
         /// </summary>
@@ -889,7 +889,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsOrders</returns>
-        System.Threading.Tasks.Task<EarningsOrders> GetEarningsOrdersAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EarningsOrders> GetEarningsOrdersAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves earnings orders
@@ -903,7 +903,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsOrders)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EarningsOrders>> GetEarningsOrdersAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EarningsOrders>> GetEarningsOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific earnings rates by using a unique earnings rate id
         /// </summary>
@@ -916,7 +916,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="earningsRateID">Identifier for the earnings rate</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsRateObject</returns>
-        System.Threading.Tasks.Task<EarningsRateObject> GetEarningsRateAsync (string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EarningsRateObject> GetEarningsRateAsync(string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific earnings rates by using a unique earnings rate id
@@ -930,7 +930,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="earningsRateID">Identifier for the earnings rate</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsRateObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EarningsRateObject>> GetEarningsRateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EarningsRateObject>> GetEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves earnings rates
         /// </summary>
@@ -943,7 +943,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsRates</returns>
-        System.Threading.Tasks.Task<EarningsRates> GetEarningsRatesAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EarningsRates> GetEarningsRatesAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves earnings rates
@@ -957,7 +957,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsRates)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EarningsRates>> GetEarningsRatesAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EarningsRates>> GetEarningsRatesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves specific employees by using a unique employee ID
         /// </summary>
@@ -970,7 +970,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeObject</returns>
-        System.Threading.Tasks.Task<EmployeeObject> GetEmployeeAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeObject> GetEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves specific employees by using a unique employee ID
@@ -984,7 +984,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeObject>> GetEmployeeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeObject>> GetEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s leave record using a unique employee ID
         /// </summary>
@@ -998,7 +998,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveID">Leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        System.Threading.Tasks.Task<EmployeeLeaveObject> GetEmployeeLeaveAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaveObject> GetEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s leave record using a unique employee ID
@@ -1013,7 +1013,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveID">Leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> GetEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> GetEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s leave balances using a unique employee ID
         /// </summary>
@@ -1026,7 +1026,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveBalances</returns>
-        System.Threading.Tasks.Task<EmployeeLeaveBalances> GetEmployeeLeaveBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaveBalances> GetEmployeeLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s leave balances using a unique employee ID
@@ -1040,7 +1040,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveBalances)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveBalances>> GetEmployeeLeaveBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveBalances>> GetEmployeeLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s leave periods using a unique employee ID
         /// </summary>
@@ -1055,7 +1055,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Filter by end date (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeavePeriods</returns>
-        System.Threading.Tasks.Task<LeavePeriods> GetEmployeeLeavePeriodsAsync (string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeavePeriods> GetEmployeeLeavePeriodsAsync(string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s leave periods using a unique employee ID
@@ -1071,7 +1071,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Filter by end date (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeavePeriods)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeavePeriods>> GetEmployeeLeavePeriodsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeavePeriods>> GetEmployeeLeavePeriodsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s leave types using a unique employee ID
         /// </summary>
@@ -1084,7 +1084,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveTypes</returns>
-        System.Threading.Tasks.Task<EmployeeLeaveTypes> GetEmployeeLeaveTypesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaveTypes> GetEmployeeLeaveTypesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s leave types using a unique employee ID
@@ -1098,7 +1098,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveTypes)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveTypes>> GetEmployeeLeaveTypesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveTypes>> GetEmployeeLeaveTypesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s leave records using a unique employee ID
         /// </summary>
@@ -1111,7 +1111,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaves</returns>
-        System.Threading.Tasks.Task<EmployeeLeaves> GetEmployeeLeavesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaves> GetEmployeeLeavesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s leave records using a unique employee ID
@@ -1125,7 +1125,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaves)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaves>> GetEmployeeLeavesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaves>> GetEmployeeLeavesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s openingbalances using a unique employee ID
         /// </summary>
@@ -1138,7 +1138,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeOpeningBalancesObject</returns>
-        System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> GetEmployeeOpeningBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> GetEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s openingbalances using a unique employee ID
@@ -1152,7 +1152,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeOpeningBalancesObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeOpeningBalancesObject>> GetEmployeeOpeningBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeOpeningBalancesObject>> GetEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee pay templates using a unique employee ID
         /// </summary>
@@ -1165,7 +1165,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeePayTemplateObject</returns>
-        System.Threading.Tasks.Task<EmployeePayTemplateObject> GetEmployeePayTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeePayTemplateObject> GetEmployeePayTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee pay templates using a unique employee ID
@@ -1179,7 +1179,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeePayTemplateObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeePayTemplateObject>> GetEmployeePayTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeePayTemplateObject>> GetEmployeePayTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s payment method using a unique employee ID
         /// </summary>
@@ -1192,7 +1192,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PaymentMethodObject</returns>
-        System.Threading.Tasks.Task<PaymentMethodObject> GetEmployeePaymentMethodAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PaymentMethodObject> GetEmployeePaymentMethodAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s payment method using a unique employee ID
@@ -1206,7 +1206,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PaymentMethodObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaymentMethodObject>> GetEmployeePaymentMethodAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PaymentMethodObject>> GetEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific salary and wages record for a specific employee using a unique salary and wage id
         /// </summary>
@@ -1220,7 +1220,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWages</returns>
-        System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific salary and wages record for a specific employee using a unique salary and wage id
@@ -1235,7 +1235,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWages)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s salary and wages by using a unique employee ID
         /// </summary>
@@ -1249,7 +1249,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWages</returns>
-        System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWagesAsync (string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<SalaryAndWages> GetEmployeeSalaryAndWagesAsync(string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s salary and wages by using a unique employee ID
@@ -1264,7 +1264,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWages)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWagesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWagesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s leave balances using a unique employee ID
         /// </summary>
@@ -1279,7 +1279,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="asOfDate">The date from which to calculate balance remaining. If not specified, current date UTC is used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeStatutoryLeaveBalanceObject</returns>
-        System.Threading.Tasks.Task<EmployeeStatutoryLeaveBalanceObject> GetEmployeeStatutoryLeaveBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeStatutoryLeaveBalanceObject> GetEmployeeStatutoryLeaveBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s leave balances using a unique employee ID
@@ -1295,7 +1295,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="asOfDate">The date from which to calculate balance remaining. If not specified, current date UTC is used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutoryLeaveBalanceObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutoryLeaveBalanceObject>> GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutoryLeaveBalanceObject>> GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a statutory sick leave for an employee
         /// </summary>
@@ -1308,7 +1308,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="statutorySickLeaveID">Statutory sick leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeStatutorySickLeaveObject</returns>
-        System.Threading.Tasks.Task<EmployeeStatutorySickLeaveObject> GetEmployeeStatutorySickLeaveAsync (string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeStatutorySickLeaveObject> GetEmployeeStatutorySickLeaveAsync(string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a statutory sick leave for an employee
@@ -1322,7 +1322,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="statutorySickLeaveID">Statutory sick leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutorySickLeaveObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutorySickLeaveObject>> GetEmployeeStatutorySickLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutorySickLeaveObject>> GetEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves tax records for a specific employee using a unique employee ID
         /// </summary>
@@ -1335,7 +1335,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeTaxObject</returns>
-        System.Threading.Tasks.Task<EmployeeTaxObject> GetEmployeeTaxAsync (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeTaxObject> GetEmployeeTaxAsync(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves tax records for a specific employee using a unique employee ID
@@ -1349,7 +1349,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeTaxObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeTaxObject>> GetEmployeeTaxAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeTaxObject>> GetEmployeeTaxAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves employees
         /// </summary>
@@ -1363,7 +1363,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Employees</returns>
-        System.Threading.Tasks.Task<Employees> GetEmployeesAsync (string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Employees> GetEmployeesAsync(string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves employees
@@ -1378,7 +1378,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Employees)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific leave type by using a unique leave type ID
         /// </summary>
@@ -1391,7 +1391,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveTypeID">Identifier for the leave type</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeaveTypeObject</returns>
-        System.Threading.Tasks.Task<LeaveTypeObject> GetLeaveTypeAsync (string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeaveTypeObject> GetLeaveTypeAsync(string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific leave type by using a unique leave type ID
@@ -1405,7 +1405,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveTypeID">Identifier for the leave type</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeaveTypeObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeaveTypeObject>> GetLeaveTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeaveTypeObject>> GetLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves leave types
         /// </summary>
@@ -1419,7 +1419,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="activeOnly">Filters leave types by active status. By default the API returns all leave types. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LeaveTypes</returns>
-        System.Threading.Tasks.Task<LeaveTypes> GetLeaveTypesAsync (string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LeaveTypes> GetLeaveTypesAsync(string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves leave types
@@ -1434,7 +1434,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="activeOnly">Filters leave types by active status. By default the API returns all leave types. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeaveTypes)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeaveTypes>> GetLeaveTypesAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LeaveTypes>> GetLeaveTypesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific pay run by using a unique pay run ID
         /// </summary>
@@ -1447,7 +1447,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payRunID">Identifier for the pay run</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunObject</returns>
-        System.Threading.Tasks.Task<PayRunObject> GetPayRunAsync (string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PayRunObject> GetPayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific pay run by using a unique pay run ID
@@ -1461,7 +1461,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payRunID">Identifier for the pay run</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayRunObject>> GetPayRunAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PayRunObject>> GetPayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific payrun calendar by using a unique payrun calendar ID
         /// </summary>
@@ -1474,7 +1474,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payRunCalendarID">Identifier for the payrun calendars</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunCalendarObject</returns>
-        System.Threading.Tasks.Task<PayRunCalendarObject> GetPayRunCalendarAsync (string accessToken, string xeroTenantId, Guid payRunCalendarID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PayRunCalendarObject> GetPayRunCalendarAsync(string accessToken, string xeroTenantId, Guid payRunCalendarID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific payrun calendar by using a unique payrun calendar ID
@@ -1488,7 +1488,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payRunCalendarID">Identifier for the payrun calendars</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunCalendarObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayRunCalendarObject>> GetPayRunCalendarAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunCalendarID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PayRunCalendarObject>> GetPayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunCalendarID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves payrun calendars
         /// </summary>
@@ -1501,7 +1501,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunCalendars</returns>
-        System.Threading.Tasks.Task<PayRunCalendars> GetPayRunCalendarsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PayRunCalendars> GetPayRunCalendarsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves payrun calendars
@@ -1515,7 +1515,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunCalendars)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayRunCalendars>> GetPayRunCalendarsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PayRunCalendars>> GetPayRunCalendarsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves pay runs
         /// </summary>
@@ -1529,7 +1529,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="status">By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu&#x3D;{PayRunStatus} to filter the payruns by status. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRuns</returns>
-        System.Threading.Tasks.Task<PayRuns> GetPayRunsAsync (string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PayRuns> GetPayRunsAsync(string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves pay runs
@@ -1544,7 +1544,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="status">By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu&#x3D;{PayRunStatus} to filter the payruns by status. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRuns)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayRuns>> GetPayRunsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PayRuns>> GetPayRunsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific payslip by using a unique payslip ID
         /// </summary>
@@ -1557,7 +1557,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payslipID">Identifier for the payslip</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayslipObject</returns>
-        System.Threading.Tasks.Task<PayslipObject> GetPaySlipAsync (string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PayslipObject> GetPaySlipAsync(string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific payslip by using a unique payslip ID
@@ -1571,7 +1571,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payslipID">Identifier for the payslip</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayslipObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayslipObject>> GetPaySlipAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PayslipObject>> GetPaySlipAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves payslips
         /// </summary>
@@ -1585,7 +1585,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Payslips</returns>
-        System.Threading.Tasks.Task<Payslips> GetPaySlipsAsync (string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Payslips> GetPaySlipsAsync(string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves payslips
@@ -1600,7 +1600,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Payslips)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Payslips>> GetPaySlipsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Payslips>> GetPaySlipsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific reimbursement by using a unique reimbursement id
         /// </summary>
@@ -1613,7 +1613,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="reimbursementID">Identifier for the reimbursement</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ReimbursementObject</returns>
-        System.Threading.Tasks.Task<ReimbursementObject> GetReimbursementAsync (string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ReimbursementObject> GetReimbursementAsync(string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific reimbursement by using a unique reimbursement id
@@ -1627,7 +1627,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="reimbursementID">Identifier for the reimbursement</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ReimbursementObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ReimbursementObject>> GetReimbursementAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ReimbursementObject>> GetReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves reimbursements
         /// </summary>
@@ -1640,7 +1640,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Reimbursements</returns>
-        System.Threading.Tasks.Task<Reimbursements> GetReimbursementsAsync (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Reimbursements> GetReimbursementsAsync(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves reimbursements
@@ -1654,7 +1654,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Reimbursements)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Reimbursements>> GetReimbursementsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Reimbursements>> GetReimbursementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves payroll settings
         /// </summary>
@@ -1666,7 +1666,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Settings</returns>
-        System.Threading.Tasks.Task<Settings> GetSettingsAsync (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Settings> GetSettingsAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves payroll settings
@@ -1679,7 +1679,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Settings)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Settings>> GetSettingsAsyncWithHttpInfo (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Settings>> GetSettingsAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves a specific employee&#39;s summary of statutory leaves using a unique employee ID
         /// </summary>
@@ -1693,7 +1693,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="activeOnly">Filter response with leaves that are currently active or yet to be taken. If not specified, all leaves (past, current, and future scheduled) are returned (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeStatutoryLeavesSummaries</returns>
-        System.Threading.Tasks.Task<EmployeeStatutoryLeavesSummaries> GetStatutoryLeaveSummaryAsync (string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeStatutoryLeavesSummaries> GetStatutoryLeaveSummaryAsync(string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a specific employee&#39;s summary of statutory leaves using a unique employee ID
@@ -1708,7 +1708,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="activeOnly">Filter response with leaves that are currently active or yet to be taken. If not specified, all leaves (past, current, and future scheduled) are returned (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutoryLeavesSummaries)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutoryLeavesSummaries>> GetStatutoryLeaveSummaryAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeStatutoryLeavesSummaries>> GetStatutoryLeaveSummaryAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve a specific timesheet by using a unique timesheet ID
         /// </summary>
@@ -1721,7 +1721,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        System.Threading.Tasks.Task<TimesheetObject> GetTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetObject> GetTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieve a specific timesheet by using a unique timesheet ID
@@ -1735,7 +1735,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> GetTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> GetTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves timesheets
         /// </summary>
@@ -1753,7 +1753,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Timesheets</returns>
-        System.Threading.Tasks.Task<Timesheets> GetTimesheetsAsync (string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Timesheets> GetTimesheetsAsync(string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves timesheets
@@ -1772,7 +1772,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Timesheets)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Timesheets>> GetTimesheetsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Timesheets>> GetTimesheetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves tracking categories
         /// </summary>
@@ -1784,7 +1784,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TrackingCategories</returns>
-        System.Threading.Tasks.Task<TrackingCategories> GetTrackingCategoriesAsync (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TrackingCategories> GetTrackingCategoriesAsync(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves tracking categories
@@ -1797,7 +1797,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TrackingCategories)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TrackingCategories>> GetTrackingCategoriesAsyncWithHttpInfo (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TrackingCategories>> GetTrackingCategoriesAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Reverts a specific timesheet to draft
         /// </summary>
@@ -1811,7 +1811,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetObject</returns>
-        System.Threading.Tasks.Task<TimesheetObject> RevertTimesheetAsync (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetObject> RevertTimesheetAsync(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Reverts a specific timesheet to draft
@@ -1826,7 +1826,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> RevertTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetObject>> RevertTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific employee&#39;s detail
         /// </summary>
@@ -1841,7 +1841,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeObject</returns>
-        System.Threading.Tasks.Task<EmployeeObject> UpdateEmployeeAsync (string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeObject> UpdateEmployeeAsync(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific employee&#39;s detail
@@ -1857,7 +1857,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific employee&#39;s earnings template records
         /// </summary>
@@ -1873,7 +1873,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EarningsTemplateObject</returns>
-        System.Threading.Tasks.Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EarningsTemplateObject> UpdateEmployeeEarningsTemplateAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific employee&#39;s earnings template records
@@ -1890,7 +1890,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsTemplateObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific employee&#39;s leave records
         /// </summary>
@@ -1906,7 +1906,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeLeaveObject</returns>
-        System.Threading.Tasks.Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeLeaveObject> UpdateEmployeeLeaveAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific employee&#39;s leave records
@@ -1923,7 +1923,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific employee&#39;s opening balances
         /// </summary>
@@ -1938,7 +1938,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of EmployeeOpeningBalancesObject</returns>
-        System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> UpdateEmployeeOpeningBalancesAsync (string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EmployeeOpeningBalancesObject> UpdateEmployeeOpeningBalancesAsync(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific employee&#39;s opening balances
@@ -1954,7 +1954,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeOpeningBalancesObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmployeeOpeningBalancesObject>> UpdateEmployeeOpeningBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EmployeeOpeningBalancesObject>> UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates salary and wages record for a specific employee
         /// </summary>
@@ -1970,7 +1970,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of SalaryAndWageObject</returns>
-        System.Threading.Tasks.Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<SalaryAndWageObject> UpdateEmployeeSalaryAndWageAsync(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates salary and wages record for a specific employee
@@ -1987,7 +1987,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWageObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific pay run
         /// </summary>
@@ -2002,7 +2002,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of PayRunObject</returns>
-        System.Threading.Tasks.Task<PayRunObject> UpdatePayRunAsync (string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PayRunObject> UpdatePayRunAsync(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific pay run
@@ -2018,7 +2018,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific timesheet line for a specific timesheet
         /// </summary>
@@ -2034,7 +2034,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TimesheetLineObject</returns>
-        System.Threading.Tasks.Task<TimesheetLineObject> UpdateTimesheetLineAsync (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TimesheetLineObject> UpdateTimesheetLineAsync(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific timesheet line for a specific timesheet
@@ -2051,7 +2051,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLineObject)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimesheetLineObject>> UpdateTimesheetLineAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TimesheetLineObject>> UpdateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -2199,7 +2199,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> ApproveTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> ApproveTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2282,7 +2282,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BenefitObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BenefitObject>> CreateBenefitAsyncWithHttpInfo (string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BenefitObject>> CreateBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Benefit benefit, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2365,7 +2365,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (DeductionObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo (string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject>> CreateDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Deduction deduction, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2448,7 +2448,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsRateObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo (string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject>> CreateEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, EarningsRate earningsRate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2531,7 +2531,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject>> CreateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2616,7 +2616,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsTemplateObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject>> CreateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2707,7 +2707,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> CreateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2798,7 +2798,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveTypeObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypeObject>> CreateEmployeeLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeLeaveType employeeLeaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2889,7 +2889,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeOpeningBalancesObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject>> CreateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -2980,7 +2980,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PaymentMethodObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject>> CreateEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, PaymentMethod paymentMethod, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3071,7 +3071,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWageObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject>> CreateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3160,7 +3160,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutorySickLeaveObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutorySickLeaveObject>> CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutorySickLeaveObject>> CreateEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, EmployeeStatutorySickLeave employeeStatutorySickLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3245,7 +3245,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmploymentObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmploymentObject>> CreateEmploymentAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employment employment, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3334,7 +3334,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeaveTypeObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject>> CreateLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, LeaveType leaveType, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3419,7 +3419,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeePayTemplates)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeePayTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeePayTemplates>> CreateMultipleEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, List<EarningsTemplate> earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3508,7 +3508,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunCalendarObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo (string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject>> CreatePayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, PayRunCalendar payRunCalendar, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3591,7 +3591,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ReimbursementObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo (string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject>> CreateReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Reimbursement reimbursement, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3674,7 +3674,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> CreateTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Timesheet timesheet, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3759,7 +3759,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLineObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject>> CreateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3847,7 +3847,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payTemplateEarningID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -3933,7 +3933,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveID">Leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> DeleteEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> DeleteEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4019,7 +4019,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single salary and wages object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4103,7 +4103,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLine)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine>> DeleteTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine>> DeleteTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4184,7 +4184,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetLineID">Identifier for the timesheet line</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLine)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine>> DeleteTimesheetLineAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLine>> DeleteTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4269,7 +4269,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Identifier for the benefit</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BenefitObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BenefitObject>> GetBenefitAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BenefitObject>> GetBenefitAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4348,7 +4348,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Benefits)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Benefits>> GetBenefitsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Benefits>> GetBenefitsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4432,7 +4432,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="deductionId">Identifier for the deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (DeductionObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject>> GetDeductionAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<DeductionObject>> GetDeductionAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid deductionId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4511,7 +4511,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Deductions)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Deductions>> GetDeductionsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Deductions>> GetDeductionsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4595,7 +4595,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Identifier for the deduction</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsOrderObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsOrderObject>> GetEarningsOrderAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsOrderObject>> GetEarningsOrderAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid id, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4674,7 +4674,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsOrders)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsOrders>> GetEarningsOrdersAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsOrders>> GetEarningsOrdersAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4758,7 +4758,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="earningsRateID">Identifier for the earnings rate</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsRateObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject>> GetEarningsRateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRateObject>> GetEarningsRateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid earningsRateID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4837,7 +4837,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsRates)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRates>> GetEarningsRatesAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsRates>> GetEarningsRatesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -4921,7 +4921,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject>> GetEmployeeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject>> GetEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5002,7 +5002,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveID">Leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> GetEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> GetEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5087,7 +5087,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveBalances)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveBalances>> GetEmployeeLeaveBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveBalances>> GetEmployeeLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5170,7 +5170,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Filter by end date (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeavePeriods)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeavePeriods>> GetEmployeeLeavePeriodsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeavePeriods>> GetEmployeeLeavePeriodsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5271,7 +5271,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveTypes)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypes>> GetEmployeeLeaveTypesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveTypes>> GetEmployeeLeaveTypesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5350,7 +5350,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaves)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaves>> GetEmployeeLeavesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaves>> GetEmployeeLeavesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5429,7 +5429,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeOpeningBalancesObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject>> GetEmployeeOpeningBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject>> GetEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5508,7 +5508,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeePayTemplateObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeePayTemplateObject>> GetEmployeePayTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeePayTemplateObject>> GetEmployeePayTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5587,7 +5587,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PaymentMethodObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject>> GetEmployeePaymentMethodAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PaymentMethodObject>> GetEmployeePaymentMethodAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5668,7 +5668,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="salaryAndWagesID">Id for single pay template earnings object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWages)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5755,7 +5755,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWages)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWagesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWages>> GetEmployeeSalaryAndWagesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5849,7 +5849,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="asOfDate">The date from which to calculate balance remaining. If not specified, current date UTC is used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutoryLeaveBalanceObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutoryLeaveBalanceObject>> GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutoryLeaveBalanceObject>> GetEmployeeStatutoryLeaveBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, string leaveType = null, DateTime? asOfDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -5950,7 +5950,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="statutorySickLeaveID">Statutory sick leave id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutorySickLeaveObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutorySickLeaveObject>> GetEmployeeStatutorySickLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutorySickLeaveObject>> GetEmployeeStatutorySickLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid statutorySickLeaveID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6029,7 +6029,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="employeeID">Employee id for single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeTaxObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeTaxObject>> GetEmployeeTaxAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeTaxObject>> GetEmployeeTaxAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6110,7 +6110,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Employees)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Employees>> GetEmployeesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string filter = null, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6205,7 +6205,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="leaveTypeID">Identifier for the leave type</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeaveTypeObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject>> GetLeaveTypeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypeObject>> GetLeaveTypeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid leaveTypeID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6286,7 +6286,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="activeOnly">Filters leave types by active status. By default the API returns all leave types. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LeaveTypes)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypes>> GetLeaveTypesAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LeaveTypes>> GetLeaveTypesAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, bool? activeOnly = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6376,7 +6376,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payRunID">Identifier for the pay run</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject>> GetPayRunAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject>> GetPayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6455,7 +6455,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payRunCalendarID">Identifier for the payrun calendars</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunCalendarObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject>> GetPayRunCalendarAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunCalendarID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendarObject>> GetPayRunCalendarAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunCalendarID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6534,7 +6534,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunCalendars)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendars>> GetPayRunCalendarsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunCalendars>> GetPayRunCalendarsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6620,7 +6620,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="status">By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu&#x3D;{PayRunStatus} to filter the payruns by status. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRuns)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRuns>> GetPayRunsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRuns>> GetPayRunsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, string status = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6715,7 +6715,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="payslipID">Identifier for the payslip</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayslipObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayslipObject>> GetPaySlipAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayslipObject>> GetPaySlipAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payslipID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6796,7 +6796,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Payslips)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Payslips>> GetPaySlipsAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Payslips>> GetPaySlipsAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6895,7 +6895,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="reimbursementID">Identifier for the reimbursement</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ReimbursementObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject>> GetReimbursementAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ReimbursementObject>> GetReimbursementAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid reimbursementID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -6974,7 +6974,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="page">Page number which specifies the set of records to retrieve. By default the number of the records per set is 100. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Reimbursements)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Reimbursements>> GetReimbursementsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Reimbursements>> GetReimbursementsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7056,7 +7056,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Settings)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Settings>> GetSettingsAsyncWithHttpInfo (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Settings>> GetSettingsAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7131,7 +7131,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="activeOnly">Filter response with leaves that are currently active or yet to be taken. If not specified, all leaves (past, current, and future scheduled) are returned (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeStatutoryLeavesSummaries)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutoryLeavesSummaries>> GetStatutoryLeaveSummaryAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeStatutoryLeavesSummaries>> GetStatutoryLeaveSummaryAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, bool? activeOnly = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7216,7 +7216,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="timesheetID">Identifier for the timesheet</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> GetTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> GetTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7305,7 +7305,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="sort">sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Timesheets)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Timesheets>> GetTimesheetsAsyncWithHttpInfo (string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Timesheets>> GetTimesheetsAsyncWithHttpInfo(string accessToken, string xeroTenantId, int? page = null, string filter = null, string status = null, string startDate = null, string endDate = null, string sort = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7442,7 +7442,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="xeroTenantId">Xero identifier for Tenant</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TrackingCategories)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TrackingCategories>> GetTrackingCategoriesAsyncWithHttpInfo (string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TrackingCategories>> GetTrackingCategoriesAsyncWithHttpInfo(string accessToken, string xeroTenantId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7517,7 +7517,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> RevertTimesheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetObject>> RevertTimesheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7602,7 +7602,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeObject>> UpdateEmployeeAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Employee employee, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7695,7 +7695,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EarningsTemplateObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EarningsTemplateObject>> UpdateEmployeeEarningsTemplateAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid payTemplateEarningID, EarningsTemplate earningsTemplate, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7794,7 +7794,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeLeaveObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeLeaveObject>> UpdateEmployeeLeaveAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid leaveID, EmployeeLeave employeeLeave, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7891,7 +7891,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (EmployeeOpeningBalancesObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject>> UpdateEmployeeOpeningBalancesAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<EmployeeOpeningBalancesObject>> UpdateEmployeeOpeningBalancesAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, EmployeeOpeningBalances employeeOpeningBalances, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7984,7 +7984,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (SalaryAndWageObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<SalaryAndWageObject>> UpdateEmployeeSalaryAndWageAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid employeeID, Guid salaryAndWagesID, SalaryAndWage salaryAndWage, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -8081,7 +8081,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (PayRunObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<PayRunObject>> UpdatePayRunAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid payRunID, PayRun payRun, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -8174,7 +8174,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TimesheetLineObject)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject>> UpdateTimesheetLineAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TimesheetLineObject>> UpdateTimesheetLineAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid timesheetID, Guid timesheetLineID, TimesheetLine timesheetLine, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)

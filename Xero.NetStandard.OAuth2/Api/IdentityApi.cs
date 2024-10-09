@@ -41,7 +41,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Unique identifier for retrieving single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteConnectionAsync (string accessToken, Guid id, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteConnectionAsync(string accessToken, Guid id, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Deletes a connection for this user (i.e. disconnect a tenant)
@@ -54,7 +54,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Unique identifier for retrieving single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteConnectionAsyncWithHttpInfo (string accessToken, Guid id, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteConnectionAsyncWithHttpInfo(string accessToken, Guid id, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves the connections for this user
         /// </summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="authEventId">Filter by authEventId (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of List&lt;Connection&gt;</returns>
-        System.Threading.Tasks.Task<List<Connection>> GetConnectionsAsync (string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<List<Connection>> GetConnectionsAsync(string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves the connections for this user
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="authEventId">Filter by authEventId (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Connection&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Connection>>> GetConnectionsAsyncWithHttpInfo (string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<List<Connection>>> GetConnectionsAsyncWithHttpInfo(string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -222,7 +222,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="id">Unique identifier for retrieving single object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteConnectionAsyncWithHttpInfo (string accessToken, Guid id, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Object>> DeleteConnectionAsyncWithHttpInfo(string accessToken, Guid id, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -292,7 +292,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="authEventId">Filter by authEventId (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;Connection&gt;)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Connection>>> GetConnectionsAsyncWithHttpInfo (string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<Connection>>> GetConnectionsAsyncWithHttpInfo(string accessToken, Guid? authEventId = null, CancellationToken cancellationToken = default)
         {
 
             Xero.NetStandard.OAuth2.Client.RequestOptions requestOptions = new Xero.NetStandard.OAuth2.Client.RequestOptions();

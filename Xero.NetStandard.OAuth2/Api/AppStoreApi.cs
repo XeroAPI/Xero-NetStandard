@@ -41,7 +41,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="subscriptionId">Unique identifier for Subscription object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Subscription</returns>
-        System.Threading.Tasks.Task<Subscription> GetSubscriptionAsync (string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Subscription> GetSubscriptionAsync(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a subscription for a given subscriptionId
@@ -54,7 +54,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="subscriptionId">Unique identifier for Subscription object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Subscription)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Subscription>> GetSubscriptionAsyncWithHttpInfo (string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Subscription>> GetSubscriptionAsyncWithHttpInfo(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets all usage records related to the subscription
         /// </summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="subscriptionId">Unique identifier for Subscription object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of UsageRecordsList</returns>
-        System.Threading.Tasks.Task<UsageRecordsList> GetUsageRecordsAsync (string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UsageRecordsList> GetUsageRecordsAsync(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Gets all usage records related to the subscription
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="subscriptionId">Unique identifier for Subscription object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UsageRecordsList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UsageRecordsList>> GetUsageRecordsAsyncWithHttpInfo (string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UsageRecordsList>> GetUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default);
         /// <summary>
         /// Send metered usage belonging to this subscription and subscription item
         /// </summary>
@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of UsageRecord</returns>
-        System.Threading.Tasks.Task<UsageRecord> PostUsageRecordsAsync (string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UsageRecord> PostUsageRecordsAsync(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Send metered usage belonging to this subscription and subscription item
@@ -110,7 +110,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UsageRecord)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo (string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Update and existing metered usage belonging to this subscription and subscription item
         /// </summary>
@@ -126,7 +126,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of UsageRecord</returns>
-        System.Threading.Tasks.Task<UsageRecord> PutUsageRecordsAsync (string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UsageRecord> PutUsageRecordsAsync(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update and existing metered usage belonging to this subscription and subscription item
@@ -143,7 +143,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UsageRecord)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo (string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -287,7 +287,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="subscriptionId">Unique identifier for Subscription object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Subscription)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Subscription>> GetSubscriptionAsyncWithHttpInfo (string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Subscription>> GetSubscriptionAsyncWithHttpInfo(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -358,7 +358,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="subscriptionId">Unique identifier for Subscription object</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UsageRecordsList)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UsageRecordsList>> GetUsageRecordsAsyncWithHttpInfo (string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UsageRecordsList>> GetUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -435,7 +435,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UsageRecord)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo (string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UsageRecord>> PostUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, CreateUsageRecord createUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)
@@ -528,7 +528,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UsageRecord)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo (string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UsageRecord>> PutUsageRecordsAsyncWithHttpInfo(string accessToken, Guid subscriptionId, Guid subscriptionItemId, Guid usageRecordId, UpdateUsageRecord updateUsageRecord, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'subscriptionId' is set
             if (subscriptionId == null)

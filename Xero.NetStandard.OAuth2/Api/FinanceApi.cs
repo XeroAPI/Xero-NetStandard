@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endMonth">date, yyyy-MM                 If no parameter is provided, the current month will be used.                Account usage for up to 12 months prior to this date will be returned. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of AccountUsageResponse</returns>
-        System.Threading.Tasks.Task<AccountUsageResponse> GetAccountingActivityAccountUsageAsync (string accessToken, string xeroTenantId, string startMonth = null, string endMonth = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<AccountUsageResponse> GetAccountingActivityAccountUsageAsync(string accessToken, string xeroTenantId, string startMonth = null, string endMonth = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get account usage
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endMonth">date, yyyy-MM                 If no parameter is provided, the current month will be used.                Account usage for up to 12 months prior to this date will be returned. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (AccountUsageResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountUsageResponse>> GetAccountingActivityAccountUsageAsyncWithHttpInfo (string accessToken, string xeroTenantId, string startMonth = null, string endMonth = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<AccountUsageResponse>> GetAccountingActivityAccountUsageAsyncWithHttpInfo(string accessToken, string xeroTenantId, string startMonth = null, string endMonth = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get lock history
         /// </summary>
@@ -71,7 +71,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any changes to hard or soft lock dates that were made within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a change is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of LockHistoryResponse</returns>
-        System.Threading.Tasks.Task<LockHistoryResponse> GetAccountingActivityLockHistoryAsync (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<LockHistoryResponse> GetAccountingActivityLockHistoryAsync(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get lock history
@@ -85,7 +85,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any changes to hard or soft lock dates that were made within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a change is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LockHistoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LockHistoryResponse>> GetAccountingActivityLockHistoryAsyncWithHttpInfo (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<LockHistoryResponse>> GetAccountingActivityLockHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get report history
         /// </summary>
@@ -98,7 +98,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any reports that were published within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a published report is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ReportHistoryResponse</returns>
-        System.Threading.Tasks.Task<ReportHistoryResponse> GetAccountingActivityReportHistoryAsync (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ReportHistoryResponse> GetAccountingActivityReportHistoryAsync(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get report history
@@ -112,7 +112,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any reports that were published within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a published report is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ReportHistoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ReportHistoryResponse>> GetAccountingActivityReportHistoryAsyncWithHttpInfo (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ReportHistoryResponse>> GetAccountingActivityReportHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get user activities
         /// </summary>
@@ -125,7 +125,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="dataMonth">date, yyyy-MM                 The specified month must be complete (in the past); The current month cannot be specified since it is not complete.                If no parameter is provided, the month immediately previous to the current month will be used.                Any user activities occurring within the specified month will be returned.                Please be aware that there may be a delay of up to 3 days before a user activity is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of UserActivitiesResponse</returns>
-        System.Threading.Tasks.Task<UserActivitiesResponse> GetAccountingActivityUserActivitiesAsync (string accessToken, string xeroTenantId, string dataMonth = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UserActivitiesResponse> GetAccountingActivityUserActivitiesAsync(string accessToken, string xeroTenantId, string dataMonth = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get user activities
@@ -139,7 +139,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="dataMonth">date, yyyy-MM                 The specified month must be complete (in the past); The current month cannot be specified since it is not complete.                If no parameter is provided, the month immediately previous to the current month will be used.                Any user activities occurring within the specified month will be returned.                Please be aware that there may be a delay of up to 3 days before a user activity is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UserActivitiesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserActivitiesResponse>> GetAccountingActivityUserActivitiesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string dataMonth = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UserActivitiesResponse>> GetAccountingActivityUserActivitiesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string dataMonth = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Bank Statement Accounting
         /// </summary>
@@ -155,7 +155,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="summaryOnly">boolean, true/false    The default value is true if no parameter is provided.    In summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of BankStatementAccountingResponse</returns>
-        System.Threading.Tasks.Task<BankStatementAccountingResponse> GetBankStatementAccountingAsync (string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<BankStatementAccountingResponse> GetBankStatementAccountingAsync(string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Bank Statement Accounting
@@ -172,7 +172,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="summaryOnly">boolean, true/false    The default value is true if no parameter is provided.    In summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BankStatementAccountingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankStatementAccountingResponse>> GetBankStatementAccountingAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<BankStatementAccountingResponse>> GetBankStatementAccountingAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get cash validation
         /// </summary>
@@ -187,7 +187,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="beginDate">date, yyyy-MM-dd     If no parameter is provided, the aggregate results will be drawn from the user’s total history.    The ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.  The user has discretion as to which accounting period the transaction relates to. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of List&lt;CashValidationResponse&gt;</returns>
-        System.Threading.Tasks.Task<List<CashValidationResponse>> GetCashValidationAsync (string accessToken, string xeroTenantId, string balanceDate = null, string asAtSystemDate = null, string beginDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<List<CashValidationResponse>> GetCashValidationAsync(string accessToken, string xeroTenantId, string balanceDate = null, string asAtSystemDate = null, string beginDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get cash validation
@@ -203,7 +203,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="beginDate">date, yyyy-MM-dd     If no parameter is provided, the aggregate results will be drawn from the user’s total history.    The ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.  The user has discretion as to which accounting period the transaction relates to. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;CashValidationResponse&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<CashValidationResponse>>> GetCashValidationAsyncWithHttpInfo (string accessToken, string xeroTenantId, string balanceDate = null, string asAtSystemDate = null, string beginDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<List<CashValidationResponse>>> GetCashValidationAsyncWithHttpInfo(string accessToken, string xeroTenantId, string balanceDate = null, string asAtSystemDate = null, string beginDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Balance Sheet report
         /// </summary>
@@ -216,7 +216,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="balanceDate">Specifies the date for balance sheet report.    Format yyyy-MM-dd. If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of BalanceSheetResponse</returns>
-        System.Threading.Tasks.Task<BalanceSheetResponse> GetFinancialStatementBalanceSheetAsync (string accessToken, string xeroTenantId, string balanceDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<BalanceSheetResponse> GetFinancialStatementBalanceSheetAsync(string accessToken, string xeroTenantId, string balanceDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Balance Sheet report
@@ -230,7 +230,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="balanceDate">Specifies the date for balance sheet report.    Format yyyy-MM-dd. If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BalanceSheetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BalanceSheetResponse>> GetFinancialStatementBalanceSheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, string balanceDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<BalanceSheetResponse>> GetFinancialStatementBalanceSheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, string balanceDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Cash flow report
         /// </summary>
@@ -244,7 +244,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd    Specifies the end date for cash flow report.    If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of CashflowResponse</returns>
-        System.Threading.Tasks.Task<CashflowResponse> GetFinancialStatementCashflowAsync (string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CashflowResponse> GetFinancialStatementCashflowAsync(string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Cash flow report
@@ -259,7 +259,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd    Specifies the end date for cash flow report.    If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (CashflowResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CashflowResponse>> GetFinancialStatementCashflowAsyncWithHttpInfo (string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CashflowResponse>> GetFinancialStatementCashflowAsyncWithHttpInfo(string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get expense by contacts report
         /// </summary>
@@ -275,7 +275,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of IncomeByContactResponse</returns>
-        System.Threading.Tasks.Task<IncomeByContactResponse> GetFinancialStatementContactsExpenseAsync (string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<IncomeByContactResponse> GetFinancialStatementContactsExpenseAsync(string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get expense by contacts report
@@ -292,7 +292,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (IncomeByContactResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsExpenseAsyncWithHttpInfo (string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsExpenseAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get revenue by contacts report
         /// </summary>
@@ -308,7 +308,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of IncomeByContactResponse</returns>
-        System.Threading.Tasks.Task<IncomeByContactResponse> GetFinancialStatementContactsRevenueAsync (string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<IncomeByContactResponse> GetFinancialStatementContactsRevenueAsync(string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get revenue by contacts report
@@ -325,7 +325,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (IncomeByContactResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsRevenueAsyncWithHttpInfo (string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsRevenueAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Profit &amp; Loss report
         /// </summary>
@@ -339,7 +339,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd    Specifies the end date for profit and loss report     If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ProfitAndLossResponse</returns>
-        System.Threading.Tasks.Task<ProfitAndLossResponse> GetFinancialStatementProfitAndLossAsync (string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ProfitAndLossResponse> GetFinancialStatementProfitAndLossAsync(string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Profit &amp; Loss report
@@ -354,7 +354,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd    Specifies the end date for profit and loss report     If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ProfitAndLossResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProfitAndLossResponse>> GetFinancialStatementProfitAndLossAsyncWithHttpInfo (string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ProfitAndLossResponse>> GetFinancialStatementProfitAndLossAsyncWithHttpInfo(string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Trial Balance report
         /// </summary>
@@ -367,7 +367,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd     Specifies the end date for trial balance report     If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of TrialBalanceResponse</returns>
-        System.Threading.Tasks.Task<TrialBalanceResponse> GetFinancialStatementTrialBalanceAsync (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<TrialBalanceResponse> GetFinancialStatementTrialBalanceAsync(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Trial Balance report
@@ -381,7 +381,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd     Specifies the end date for trial balance report     If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TrialBalanceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TrialBalanceResponse>> GetFinancialStatementTrialBalanceAsyncWithHttpInfo (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<TrialBalanceResponse>> GetFinancialStatementTrialBalanceAsyncWithHttpInfo(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -529,7 +529,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endMonth">date, yyyy-MM                 If no parameter is provided, the current month will be used.                Account usage for up to 12 months prior to this date will be returned. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (AccountUsageResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<AccountUsageResponse>> GetAccountingActivityAccountUsageAsyncWithHttpInfo (string accessToken, string xeroTenantId, string startMonth = null, string endMonth = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<AccountUsageResponse>> GetAccountingActivityAccountUsageAsyncWithHttpInfo(string accessToken, string xeroTenantId, string startMonth = null, string endMonth = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -624,7 +624,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any changes to hard or soft lock dates that were made within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a change is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (LockHistoryResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LockHistoryResponse>> GetAccountingActivityLockHistoryAsyncWithHttpInfo (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<LockHistoryResponse>> GetAccountingActivityLockHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -708,7 +708,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">date, yyyy-MM-dd                 If no parameter is provided, the current date will be used.                Any reports that were published within the period up to 12 months before this date will be returned.                Please be aware that there may be a delay of up to 3 days before a published report is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ReportHistoryResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ReportHistoryResponse>> GetAccountingActivityReportHistoryAsyncWithHttpInfo (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ReportHistoryResponse>> GetAccountingActivityReportHistoryAsyncWithHttpInfo(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -792,7 +792,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="dataMonth">date, yyyy-MM                 The specified month must be complete (in the past); The current month cannot be specified since it is not complete.                If no parameter is provided, the month immediately previous to the current month will be used.                Any user activities occurring within the specified month will be returned.                Please be aware that there may be a delay of up to 3 days before a user activity is visible from this API. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (UserActivitiesResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UserActivitiesResponse>> GetAccountingActivityUserActivitiesAsyncWithHttpInfo (string accessToken, string xeroTenantId, string dataMonth = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<UserActivitiesResponse>> GetAccountingActivityUserActivitiesAsyncWithHttpInfo(string accessToken, string xeroTenantId, string dataMonth = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -882,7 +882,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="summaryOnly">boolean, true/false    The default value is true if no parameter is provided.    In summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BankStatementAccountingResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BankStatementAccountingResponse>> GetBankStatementAccountingAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BankStatementAccountingResponse>> GetBankStatementAccountingAsyncWithHttpInfo(string accessToken, string xeroTenantId, Guid bankAccountID, string fromDate, string toDate, bool? summaryOnly = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1010,7 +1010,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="beginDate">date, yyyy-MM-dd     If no parameter is provided, the aggregate results will be drawn from the user’s total history.    The ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.  The user has discretion as to which accounting period the transaction relates to. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (List&lt;CashValidationResponse&gt;)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<CashValidationResponse>>> GetCashValidationAsyncWithHttpInfo (string accessToken, string xeroTenantId, string balanceDate = null, string asAtSystemDate = null, string beginDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<List<CashValidationResponse>>> GetCashValidationAsyncWithHttpInfo(string accessToken, string xeroTenantId, string balanceDate = null, string asAtSystemDate = null, string beginDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1116,7 +1116,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="balanceDate">Specifies the date for balance sheet report.    Format yyyy-MM-dd. If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (BalanceSheetResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BalanceSheetResponse>> GetFinancialStatementBalanceSheetAsyncWithHttpInfo (string accessToken, string xeroTenantId, string balanceDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<BalanceSheetResponse>> GetFinancialStatementBalanceSheetAsyncWithHttpInfo(string accessToken, string xeroTenantId, string balanceDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1202,7 +1202,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd    Specifies the end date for cash flow report.    If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (CashflowResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<CashflowResponse>> GetFinancialStatementCashflowAsyncWithHttpInfo (string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<CashflowResponse>> GetFinancialStatementCashflowAsyncWithHttpInfo(string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1303,7 +1303,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (IncomeByContactResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsExpenseAsyncWithHttpInfo (string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsExpenseAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1421,7 +1421,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date yyyy-MM-dd    Specifies the end date for the report.    If no parameter is provided, the current date will be used.                It is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (IncomeByContactResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsRevenueAsyncWithHttpInfo (string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<IncomeByContactResponse>> GetFinancialStatementContactsRevenueAsyncWithHttpInfo(string accessToken, string xeroTenantId, List<Guid> contactIds = null, bool? includeManualJournals = null, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1535,7 +1535,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd    Specifies the end date for profit and loss report     If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (ProfitAndLossResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ProfitAndLossResponse>> GetFinancialStatementProfitAndLossAsyncWithHttpInfo (string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<ProfitAndLossResponse>> GetFinancialStatementProfitAndLossAsyncWithHttpInfo(string accessToken, string xeroTenantId, string startDate = null, string endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -1630,7 +1630,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="endDate">Date e.g. yyyy-MM-dd     Specifies the end date for trial balance report     If no parameter is provided, the current date will be used. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (TrialBalanceResponse)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TrialBalanceResponse>> GetFinancialStatementTrialBalanceAsyncWithHttpInfo (string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<TrialBalanceResponse>> GetFinancialStatementTrialBalanceAsyncWithHttpInfo(string accessToken, string xeroTenantId, string endDate = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
