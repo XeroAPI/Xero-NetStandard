@@ -20,7 +20,6 @@ using System.Net.Mime;
 using Xero.NetStandard.OAuth2.Client;
 using Xero.NetStandard.OAuth2.Model.Asset;
 using System.Threading;
-#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
 
 namespace Xero.NetStandard.OAuth2.Api
 {
