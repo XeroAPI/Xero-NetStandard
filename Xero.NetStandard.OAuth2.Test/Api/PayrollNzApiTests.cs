@@ -53,7 +53,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //Assert.IsType(typeof(PayrollNzApi), instance, "instance is a PayrollNzApi");
         }
 
-        
+
         /// <summary>
         /// Test ApproveTimesheet
         /// </summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.ApproveTimesheetAsync(xeroTenantId, timesheetID);
             //Assert.IsType<TimesheetObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateDeduction
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateDeductionAsync(xeroTenantId, deduction);
             //Assert.IsType<DeductionObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEarningsRate
         /// </summary>
@@ -92,7 +92,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEarningsRateAsync(xeroTenantId, earningsRate);
             //Assert.IsType<EarningsRateObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployee
         /// </summary>
@@ -105,7 +105,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeeAsync(xeroTenantId, employee);
             //Assert.IsType<EmployeeObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployeeEarningsTemplate
         /// </summary>
@@ -119,7 +119,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeeEarningsTemplateAsync(xeroTenantId, employeeId, earningsTemplate);
             //Assert.IsType<EarningsTemplateObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployeeLeave
         /// </summary>
@@ -133,7 +133,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeeLeaveAsync(xeroTenantId, employeeId, employeeLeave);
             //Assert.IsType<EmployeeLeaveObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployeeLeaveSetup
         /// </summary>
@@ -147,7 +147,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeeLeaveSetupAsync(xeroTenantId, employeeId, employeeLeaveSetup);
             //Assert.IsType<EmployeeLeaveSetupObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployeeLeaveType
         /// </summary>
@@ -161,7 +161,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeeLeaveTypeAsync(xeroTenantId, employeeId, employeeLeaveType);
             //Assert.IsType<EmployeeLeaveTypeObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployeeOpeningBalances
         /// </summary>
@@ -175,7 +175,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeeOpeningBalancesAsync(xeroTenantId, employeeId, employeeOpeningBalance);
             //Assert.IsType<EmployeeOpeningBalancesObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployeePaymentMethod
         /// </summary>
@@ -189,7 +189,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeePaymentMethodAsync(xeroTenantId, employeeId, paymentMethod);
             //Assert.IsType<PaymentMethodObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployeeSalaryAndWage
         /// </summary>
@@ -203,7 +203,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmployeeSalaryAndWageAsync(xeroTenantId, employeeId, salaryAndWage);
             //Assert.IsType<SalaryAndWageObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateEmployment
         /// </summary>
@@ -217,7 +217,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateEmploymentAsync(xeroTenantId, employeeId, employment);
             //Assert.IsType<EmploymentObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateLeaveType
         /// </summary>
@@ -230,7 +230,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateLeaveTypeAsync(xeroTenantId, leaveType);
             //Assert.IsType<LeaveTypeObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateMultipleEmployeeEarningsTemplate
         /// </summary>
@@ -244,7 +244,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateMultipleEmployeeEarningsTemplateAsync(xeroTenantId, employeeId, earningsTemplate);
             //Assert.IsType<EmployeeEarningsTemplates> (response);
         }
-        
+
         /// <summary>
         /// Test CreatePayRun
         /// </summary>
@@ -257,7 +257,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreatePayRunAsync(xeroTenantId, payRun);
             //Assert.IsType<PayRunObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreatePayRunCalendar
         /// </summary>
@@ -270,7 +270,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreatePayRunCalendarAsync(xeroTenantId, payRunCalendar);
             //Assert.IsType<PayRunCalendarObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateReimbursement
         /// </summary>
@@ -283,7 +283,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateReimbursementAsync(xeroTenantId, reimbursement);
             //Assert.IsType<ReimbursementObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateSuperannuation
         /// </summary>
@@ -296,7 +296,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateSuperannuationAsync(xeroTenantId, benefit);
             //Assert.IsType<SuperannuationObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateTimesheet
         /// </summary>
@@ -309,7 +309,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateTimesheetAsync(xeroTenantId, timesheet);
             //Assert.IsType<TimesheetObject> (response);
         }
-        
+
         /// <summary>
         /// Test CreateTimesheetLine
         /// </summary>
@@ -323,7 +323,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.CreateTimesheetLineAsync(xeroTenantId, timesheetID, timesheetLine);
             //Assert.IsType<TimesheetLineObject> (response);
         }
-        
+
         /// <summary>
         /// Test DeleteEmployeeEarningsTemplate
         /// </summary>
@@ -337,7 +337,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.DeleteEmployeeEarningsTemplateAsync(xeroTenantId, employeeId, payTemplateEarningID);
             //Assert.IsType<EarningsTemplateObject> (response);
         }
-        
+
         /// <summary>
         /// Test DeleteEmployeeLeave
         /// </summary>
@@ -351,7 +351,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.DeleteEmployeeLeaveAsync(xeroTenantId, employeeId, leaveID);
             //Assert.IsType<EmployeeLeaveObject> (response);
         }
-        
+
         /// <summary>
         /// Test DeleteEmployeeSalaryAndWage
         /// </summary>
@@ -365,7 +365,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.DeleteEmployeeSalaryAndWageAsync(xeroTenantId, employeeId, salaryAndWagesID);
             //Assert.IsType<SalaryAndWageObject> (response);
         }
-        
+
         /// <summary>
         /// Test DeleteTimesheet
         /// </summary>
@@ -378,7 +378,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.DeleteTimesheetAsync(xeroTenantId, timesheetID);
             //Assert.IsType<TimesheetLine> (response);
         }
-        
+
         /// <summary>
         /// Test DeleteTimesheetLine
         /// </summary>
@@ -392,7 +392,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.DeleteTimesheetLineAsync(xeroTenantId, timesheetID, timesheetLineID);
             //Assert.IsType<TimesheetLine> (response);
         }
-        
+
         /// <summary>
         /// Test GetDeduction
         /// </summary>
@@ -405,7 +405,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetDeductionAsync(xeroTenantId, deductionId);
             //Assert.IsType<DeductionObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetDeductions
         /// </summary>
@@ -418,7 +418,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetDeductionsAsync(xeroTenantId, page);
             //Assert.IsType<Deductions> (response);
         }
-        
+
         /// <summary>
         /// Test GetEarningsRate
         /// </summary>
@@ -431,7 +431,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEarningsRateAsync(xeroTenantId, earningsRateID);
             //Assert.IsType<EarningsRateObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetEarningsRates
         /// </summary>
@@ -444,7 +444,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEarningsRatesAsync(xeroTenantId, page);
             //Assert.IsType<EarningsRates> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployee
         /// </summary>
@@ -457,7 +457,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeAsync(xeroTenantId, employeeId);
             //Assert.IsType<EmployeeObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeLeaveBalances
         /// </summary>
@@ -470,7 +470,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeLeaveBalancesAsync(xeroTenantId, employeeId);
             //Assert.IsType<EmployeeLeaveBalances> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeLeavePeriods
         /// </summary>
@@ -485,7 +485,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeLeavePeriodsAsync(xeroTenantId, employeeId, startDate, endDate);
             //Assert.IsType<LeavePeriods> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeLeaveTypes
         /// </summary>
@@ -498,7 +498,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeLeaveTypesAsync(xeroTenantId, employeeId);
             //Assert.IsType<EmployeeLeaveTypes> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeLeaves
         /// </summary>
@@ -511,7 +511,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeLeavesAsync(xeroTenantId, employeeId);
             //Assert.IsType<EmployeeLeaves> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeOpeningBalances
         /// </summary>
@@ -524,7 +524,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeOpeningBalancesAsync(xeroTenantId, employeeId);
             //Assert.IsType<EmployeeOpeningBalancesObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeePayTemplates
         /// </summary>
@@ -537,7 +537,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeePayTemplatesAsync(xeroTenantId, employeeId);
             //Assert.IsType<EmployeePayTemplates> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeePaymentMethod
         /// </summary>
@@ -550,7 +550,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeePaymentMethodAsync(xeroTenantId, employeeId);
             //Assert.IsType<PaymentMethodObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeSalaryAndWage
         /// </summary>
@@ -564,7 +564,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeSalaryAndWageAsync(xeroTenantId, employeeId, salaryAndWagesID);
             //Assert.IsType<SalaryAndWages> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeSalaryAndWages
         /// </summary>
@@ -578,7 +578,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeSalaryAndWagesAsync(xeroTenantId, employeeId, page);
             //Assert.IsType<SalaryAndWages> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployeeTax
         /// </summary>
@@ -591,7 +591,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeeTaxAsync(xeroTenantId, employeeId);
             //Assert.IsType<EmployeeTaxObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetEmployees
         /// </summary>
@@ -606,7 +606,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetEmployeesAsync(xeroTenantId, firstName, lastName, page);
             //Assert.IsType<Employees> (response);
         }
-        
+
         /// <summary>
         /// Test GetLeaveType
         /// </summary>
@@ -619,7 +619,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetLeaveTypeAsync(xeroTenantId, leaveTypeID);
             //Assert.IsType<LeaveTypeObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetLeaveTypes
         /// </summary>
@@ -633,7 +633,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetLeaveTypesAsync(xeroTenantId, page, activeOnly);
             //Assert.IsType<LeaveTypes> (response);
         }
-        
+
         /// <summary>
         /// Test GetPayRun
         /// </summary>
@@ -646,7 +646,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetPayRunAsync(xeroTenantId, payRunID);
             //Assert.IsType<PayRunObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetPayRunCalendar
         /// </summary>
@@ -659,7 +659,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetPayRunCalendarAsync(xeroTenantId, payrollCalendarID);
             //Assert.IsType<PayRunCalendarObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetPayRunCalendars
         /// </summary>
@@ -672,7 +672,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetPayRunCalendarsAsync(xeroTenantId, page);
             //Assert.IsType<PayRunCalendars> (response);
         }
-        
+
         /// <summary>
         /// Test GetPayRuns
         /// </summary>
@@ -686,7 +686,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetPayRunsAsync(xeroTenantId, page, status);
             //Assert.IsType<PayRuns> (response);
         }
-        
+
         /// <summary>
         /// Test GetPaySlip
         /// </summary>
@@ -699,7 +699,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetPaySlipAsync(xeroTenantId, paySlipID);
             //Assert.IsType<PaySlipObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetPaySlips
         /// </summary>
@@ -713,7 +713,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetPaySlipsAsync(xeroTenantId, payRunID, page);
             //Assert.IsType<PaySlips> (response);
         }
-        
+
         /// <summary>
         /// Test GetReimbursement
         /// </summary>
@@ -726,7 +726,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetReimbursementAsync(xeroTenantId, reimbursementID);
             //Assert.IsType<ReimbursementObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetReimbursements
         /// </summary>
@@ -739,7 +739,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetReimbursementsAsync(xeroTenantId, page);
             //Assert.IsType<Reimbursements> (response);
         }
-        
+
         /// <summary>
         /// Test GetSettings
         /// </summary>
@@ -751,7 +751,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetSettingsAsync(xeroTenantId);
             //Assert.IsType<Settings> (response);
         }
-        
+
         /// <summary>
         /// Test GetStatutoryDeduction
         /// </summary>
@@ -764,7 +764,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetStatutoryDeductionAsync(xeroTenantId, id);
             //Assert.IsType<StatutoryDeductionObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetStatutoryDeductions
         /// </summary>
@@ -777,7 +777,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetStatutoryDeductionsAsync(xeroTenantId, page);
             //Assert.IsType<StatutoryDeductions> (response);
         }
-        
+
         /// <summary>
         /// Test GetSuperannuation
         /// </summary>
@@ -790,7 +790,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetSuperannuationAsync(xeroTenantId, superannuationID);
             //Assert.IsType<SuperannuationObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetSuperannuations
         /// </summary>
@@ -803,7 +803,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetSuperannuationsAsync(xeroTenantId, page);
             //Assert.IsType<Superannuations> (response);
         }
-        
+
         /// <summary>
         /// Test GetTimesheet
         /// </summary>
@@ -816,7 +816,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetTimesheetAsync(xeroTenantId, timesheetID);
             //Assert.IsType<TimesheetObject> (response);
         }
-        
+
         /// <summary>
         /// Test GetTimesheets
         /// </summary>
@@ -831,7 +831,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetTimesheetsAsync(xeroTenantId, page, employeeId, payrollCalendarId);
             //Assert.IsType<Timesheets> (response);
         }
-        
+
         /// <summary>
         /// Test GetTrackingCategories
         /// </summary>
@@ -843,7 +843,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.GetTrackingCategoriesAsync(xeroTenantId);
             //Assert.IsType<TrackingCategories> (response);
         }
-        
+
         /// <summary>
         /// Test RevertTimesheet
         /// </summary>
@@ -856,7 +856,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.RevertTimesheetAsync(xeroTenantId, timesheetID);
             //Assert.IsType<TimesheetObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdateEmployee
         /// </summary>
@@ -870,7 +870,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdateEmployeeAsync(xeroTenantId, employeeId, employee);
             //Assert.IsType<EmployeeObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdateEmployeeEarningsTemplate
         /// </summary>
@@ -885,7 +885,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdateEmployeeEarningsTemplateAsync(xeroTenantId, employeeId, payTemplateEarningID, earningsTemplate);
             //Assert.IsType<EarningsTemplateObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdateEmployeeLeave
         /// </summary>
@@ -900,7 +900,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdateEmployeeLeaveAsync(xeroTenantId, employeeId, leaveID, employeeLeave);
             //Assert.IsType<EmployeeLeaveObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdateEmployeeSalaryAndWage
         /// </summary>
@@ -915,7 +915,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdateEmployeeSalaryAndWageAsync(xeroTenantId, employeeId, salaryAndWagesID, salaryAndWage);
             //Assert.IsType<SalaryAndWageObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdateEmployeeTax
         /// </summary>
@@ -929,7 +929,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdateEmployeeTaxAsync(xeroTenantId, employeeId, employeeTax);
             //Assert.IsType<EmployeeTaxObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdatePayRun
         /// </summary>
@@ -943,7 +943,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdatePayRunAsync(xeroTenantId, payRunID, payRun);
             //Assert.IsType<PayRunObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdatePaySlipLineItems
         /// </summary>
@@ -957,7 +957,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdatePaySlipLineItemsAsync(xeroTenantId, paySlipID, paySlip);
             //Assert.IsType<PaySlipObject> (response);
         }
-        
+
         /// <summary>
         /// Test UpdateTimesheetLine
         /// </summary>
@@ -972,7 +972,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollNz
             //var response = instance.UpdateTimesheetLineAsync(xeroTenantId, timesheetID, timesheetLineID, timesheetLine);
             //Assert.IsType<TimesheetLineObject> (response);
         }
-        
+
     }
 
 }

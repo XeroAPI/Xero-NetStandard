@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BatchPayments
     /// </summary>
     [DataContract]
-    public partial class BatchPayments :  IEquatable<BatchPayments>, IValidatableObject
+    public partial class BatchPayments : IEquatable<BatchPayments>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _BatchPayments
         /// </summary>
-        [DataMember(Name="BatchPayments", EmitDefaultValue=false)]
+        [DataMember(Name = "BatchPayments", EmitDefaultValue = false)]
         public List<BatchPayment> _BatchPayments { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._BatchPayments == input._BatchPayments ||
                     this._BatchPayments != null &&

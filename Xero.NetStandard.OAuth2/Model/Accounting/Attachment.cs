@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Attachment
     /// </summary>
     [DataContract]
-    public partial class Attachment :  IEquatable<Attachment>, IValidatableObject
+    public partial class Attachment : IEquatable<Attachment>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Unique ID for the file
         /// </summary>
         /// <value>Unique ID for the file</value>
-        [DataMember(Name="AttachmentID", EmitDefaultValue=false)]
+        [DataMember(Name = "AttachmentID", EmitDefaultValue = false)]
         public Guid? AttachmentID { get; set; }
 
         /// <summary>
         /// Name of the file
         /// </summary>
         /// <value>Name of the file</value>
-        [DataMember(Name="FileName", EmitDefaultValue=false)]
+        [DataMember(Name = "FileName", EmitDefaultValue = false)]
         public string FileName { get; set; }
 
         /// <summary>
         /// URL to the file on xero.com
         /// </summary>
         /// <value>URL to the file on xero.com</value>
-        [DataMember(Name="Url", EmitDefaultValue=false)]
+        [DataMember(Name = "Url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
         /// Type of file
         /// </summary>
         /// <value>Type of file</value>
-        [DataMember(Name="MimeType", EmitDefaultValue=false)]
+        [DataMember(Name = "MimeType", EmitDefaultValue = false)]
         public string MimeType { get; set; }
 
         /// <summary>
         /// Length of the file content
         /// </summary>
         /// <value>Length of the file content</value>
-        [DataMember(Name="ContentLength", EmitDefaultValue=false)]
+        [DataMember(Name = "ContentLength", EmitDefaultValue = false)]
         public int? ContentLength { get; set; }
 
         /// <summary>
         /// Include the file with the online invoice
         /// </summary>
         /// <value>Include the file with the online invoice</value>
-        [DataMember(Name="IncludeOnline", EmitDefaultValue=false)]
+        [DataMember(Name = "IncludeOnline", EmitDefaultValue = false)]
         public bool? IncludeOnline { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AttachmentID == input.AttachmentID ||
                     (this.AttachmentID != null &&
                     this.AttachmentID.Equals(input.AttachmentID))
-                ) && 
+                ) &&
                 (
                     this.FileName == input.FileName ||
                     (this.FileName != null &&
                     this.FileName.Equals(input.FileName))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.MimeType == input.MimeType ||
                     (this.MimeType != null &&
                     this.MimeType.Equals(input.MimeType))
-                ) && 
+                ) &&
                 (
                     this.ContentLength == input.ContentLength ||
                     (this.ContentLength != null &&
                     this.ContentLength.Equals(input.ContentLength))
-                ) && 
+                ) &&
                 (
                     this.IncludeOnline == input.IncludeOnline ||
                     (this.IncludeOnline != null &&

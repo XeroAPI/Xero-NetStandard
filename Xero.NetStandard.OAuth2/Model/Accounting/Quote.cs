@@ -28,168 +28,168 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Quote
     /// </summary>
     [DataContract]
-    public partial class Quote :  IEquatable<Quote>, IValidatableObject
+    public partial class Quote : IEquatable<Quote>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public QuoteStatusCodes Status { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public QuoteLineAmountTypes LineAmountTypes { get; set; }
-        
+
         /// <summary>
         /// QuoteID GUID is automatically generated and is returned after create or GET.
         /// </summary>
         /// <value>QuoteID GUID is automatically generated and is returned after create or GET.</value>
-        [DataMember(Name="QuoteID", EmitDefaultValue=false)]
+        [DataMember(Name = "QuoteID", EmitDefaultValue = false)]
         public Guid? QuoteID { get; set; }
 
         /// <summary>
         /// Unique alpha numeric code identifying a quote (Max Length &#x3D; 255)
         /// </summary>
         /// <value>Unique alpha numeric code identifying a quote (Max Length &#x3D; 255)</value>
-        [DataMember(Name="QuoteNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "QuoteNumber", EmitDefaultValue = false)]
         public string QuoteNumber { get; set; }
 
         /// <summary>
         /// Additional reference number
         /// </summary>
         /// <value>Additional reference number</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Terms of the quote
         /// </summary>
         /// <value>Terms of the quote</value>
-        [DataMember(Name="Terms", EmitDefaultValue=false)]
+        [DataMember(Name = "Terms", EmitDefaultValue = false)]
         public string Terms { get; set; }
 
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// See LineItems
         /// </summary>
         /// <value>See LineItems</value>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Date quote was issued – YYYY-MM-DD. If the Date element is not specified it will default to the current date based on the timezone setting of the organisation
         /// </summary>
         /// <value>Date quote was issued – YYYY-MM-DD. If the Date element is not specified it will default to the current date based on the timezone setting of the organisation</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// Date the quote was issued (YYYY-MM-DD)
         /// </summary>
         /// <value>Date the quote was issued (YYYY-MM-DD)</value>
-        [DataMember(Name="DateString", EmitDefaultValue=false)]
+        [DataMember(Name = "DateString", EmitDefaultValue = false)]
         public string DateString { get; set; }
 
         /// <summary>
         /// Date the quote expires – YYYY-MM-DD.
         /// </summary>
         /// <value>Date the quote expires – YYYY-MM-DD.</value>
-        [DataMember(Name="ExpiryDate", EmitDefaultValue=false)]
+        [DataMember(Name = "ExpiryDate", EmitDefaultValue = false)]
         public DateTime? ExpiryDate { get; set; }
 
         /// <summary>
         /// Date the quote expires – YYYY-MM-DD.
         /// </summary>
         /// <value>Date the quote expires – YYYY-MM-DD.</value>
-        [DataMember(Name="ExpiryDateString", EmitDefaultValue=false)]
+        [DataMember(Name = "ExpiryDateString", EmitDefaultValue = false)]
         public string ExpiryDateString { get; set; }
 
         /// <summary>
         /// The currency rate for a multicurrency quote
         /// </summary>
         /// <value>The currency rate for a multicurrency quote</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public double? CurrencyRate { get; set; }
 
         /// <summary>
         /// Total of quote excluding taxes.
         /// </summary>
         /// <value>Total of quote excluding taxes.</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; private set; }
 
         /// <summary>
         /// Total tax on quote
         /// </summary>
         /// <value>Total tax on quote</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; private set; }
 
         /// <summary>
         /// Total of Quote tax inclusive (i.e. SubTotal + TotalTax). This will be ignored if it doesn’t equal the sum of the LineAmounts
         /// </summary>
         /// <value>Total of Quote tax inclusive (i.e. SubTotal + TotalTax). This will be ignored if it doesn’t equal the sum of the LineAmounts</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; private set; }
 
         /// <summary>
         /// Total of discounts applied on the quote line items
         /// </summary>
         /// <value>Total of discounts applied on the quote line items</value>
-        [DataMember(Name="TotalDiscount", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalDiscount", EmitDefaultValue = false)]
         public decimal? TotalDiscount { get; private set; }
 
         /// <summary>
         /// Title text for the quote
         /// </summary>
         /// <value>Title text for the quote</value>
-        [DataMember(Name="Title", EmitDefaultValue=false)]
+        [DataMember(Name = "Title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Summary text for the quote
         /// </summary>
         /// <value>Summary text for the quote</value>
-        [DataMember(Name="Summary", EmitDefaultValue=false)]
+        [DataMember(Name = "Summary", EmitDefaultValue = false)]
         public string Summary { get; set; }
 
         /// <summary>
         /// See BrandingThemes
         /// </summary>
         /// <value>See BrandingThemes</value>
-        [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
+        [DataMember(Name = "BrandingThemeID", EmitDefaultValue = false)]
         public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -257,120 +257,120 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.QuoteID == input.QuoteID ||
                     (this.QuoteID != null &&
                     this.QuoteID.Equals(input.QuoteID))
-                ) && 
+                ) &&
                 (
                     this.QuoteNumber == input.QuoteNumber ||
                     (this.QuoteNumber != null &&
                     this.QuoteNumber.Equals(input.QuoteNumber))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.Terms == input.Terms ||
                     (this.Terms != null &&
                     this.Terms.Equals(input.Terms))
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.DateString == input.DateString ||
                     (this.DateString != null &&
                     this.DateString.Equals(input.DateString))
-                ) && 
+                ) &&
                 (
                     this.ExpiryDate == input.ExpiryDate ||
                     (this.ExpiryDate != null &&
                     this.ExpiryDate.Equals(input.ExpiryDate))
-                ) && 
+                ) &&
                 (
                     this.ExpiryDateString == input.ExpiryDateString ||
                     (this.ExpiryDateString != null &&
                     this.ExpiryDateString.Equals(input.ExpiryDateString))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.TotalDiscount == input.TotalDiscount ||
                     (this.TotalDiscount != null &&
                     this.TotalDiscount.Equals(input.TotalDiscount))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Summary == input.Summary ||
                     (this.Summary != null &&
                     this.Summary.Equals(input.Summary))
-                ) && 
+                ) &&
                 (
                     this.BrandingThemeID == input.BrandingThemeID ||
                     (this.BrandingThemeID != null &&
                     this.BrandingThemeID.Equals(input.BrandingThemeID))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
@@ -445,33 +445,33 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // QuoteNumber (string) maxLength
-            if(this.QuoteNumber != null && this.QuoteNumber.Length > 255)
+            if (this.QuoteNumber != null && this.QuoteNumber.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for QuoteNumber, length must be less than 255.", new [] { "QuoteNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for QuoteNumber, length must be less than 255.", new[] { "QuoteNumber" });
             }
 
             // Reference (string) maxLength
-            if(this.Reference != null && this.Reference.Length > 4000)
+            if (this.Reference != null && this.Reference.Length > 4000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, length must be less than 4000.", new [] { "Reference" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, length must be less than 4000.", new[] { "Reference" });
             }
 
             // Terms (string) maxLength
-            if(this.Terms != null && this.Terms.Length > 4000)
+            if (this.Terms != null && this.Terms.Length > 4000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Terms, length must be less than 4000.", new [] { "Terms" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Terms, length must be less than 4000.", new[] { "Terms" });
             }
 
             // Title (string) maxLength
-            if(this.Title != null && this.Title.Length > 100)
+            if (this.Title != null && this.Title.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Title, length must be less than 100.", new [] { "Title" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Title, length must be less than 100.", new[] { "Title" });
             }
 
             // Summary (string) maxLength
-            if(this.Summary != null && this.Summary.Length > 3000)
+            if (this.Summary != null && this.Summary.Length > 3000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Summary, length must be less than 3000.", new [] { "Summary" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Summary, length must be less than 3000.", new[] { "Summary" });
             }
 
             yield break;

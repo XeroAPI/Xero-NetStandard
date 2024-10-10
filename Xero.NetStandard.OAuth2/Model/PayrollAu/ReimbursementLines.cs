@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// The reimbursement type lines
     /// </summary>
     [DataContract]
-    public partial class ReimbursementLines :  IEquatable<ReimbursementLines>, IValidatableObject
+    public partial class ReimbursementLines : IEquatable<ReimbursementLines>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _ReimbursementLines
         /// </summary>
-        [DataMember(Name="ReimbursementLines", EmitDefaultValue=false)]
+        [DataMember(Name = "ReimbursementLines", EmitDefaultValue = false)]
         public List<ReimbursementLine> _ReimbursementLines { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._ReimbursementLines == input._ReimbursementLines ||
                     this._ReimbursementLines != null &&

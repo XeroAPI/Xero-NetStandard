@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// CISSetting
     /// </summary>
     [DataContract]
-    public partial class CISSetting :  IEquatable<CISSetting>, IValidatableObject
+    public partial class CISSetting : IEquatable<CISSetting>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Boolean that describes if the contact is a CIS Subcontractor
         /// </summary>
         /// <value>Boolean that describes if the contact is a CIS Subcontractor</value>
-        [DataMember(Name="CISEnabled", EmitDefaultValue=false)]
+        [DataMember(Name = "CISEnabled", EmitDefaultValue = false)]
         public bool? CISEnabled { get; set; }
 
         /// <summary>
         /// CIS Deduction rate for the contact if he is a subcontractor. If the contact is not CISEnabled, then the rate is not returned
         /// </summary>
         /// <value>CIS Deduction rate for the contact if he is a subcontractor. If the contact is not CISEnabled, then the rate is not returned</value>
-        [DataMember(Name="Rate", EmitDefaultValue=false)]
+        [DataMember(Name = "Rate", EmitDefaultValue = false)]
         public decimal? Rate { get; private set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CISEnabled == input.CISEnabled ||
                     (this.CISEnabled != null &&
                     this.CISEnabled.Equals(input.CISEnabled))
-                ) && 
+                ) &&
                 (
                     this.Rate == input.Rate ||
                     (this.Rate != null &&

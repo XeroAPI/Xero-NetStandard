@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// TimeEntryCreateOrUpdate
     /// </summary>
     [DataContract]
-    public partial class TimeEntryCreateOrUpdate :  IEquatable<TimeEntryCreateOrUpdate>, IValidatableObject
+    public partial class TimeEntryCreateOrUpdate : IEquatable<TimeEntryCreateOrUpdate>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeEntryCreateOrUpdate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public TimeEntryCreateOrUpdate() 
-        { 
+        public TimeEntryCreateOrUpdate()
+        {
         }
-        
+
         /// <summary>
         /// The xero user identifier of the person logging the time.
         /// </summary>
         /// <value>The xero user identifier of the person logging the time.</value>
-        [DataMember(Name="userId", EmitDefaultValue=false)]
+        [DataMember(Name = "userId", EmitDefaultValue = false)]
         public Guid? UserId { get; set; }
 
         /// <summary>
         /// Identifier of the task that time entry is logged against.
         /// </summary>
         /// <value>Identifier of the task that time entry is logged against.</value>
-        [DataMember(Name="taskId", EmitDefaultValue=false)]
+        [DataMember(Name = "taskId", EmitDefaultValue = false)]
         public Guid? TaskId { get; set; }
 
         /// <summary>
         /// Date time entry is logged on. UTC Date Time in ISO-8601 format.
         /// </summary>
         /// <value>Date time entry is logged on. UTC Date Time in ISO-8601 format.</value>
-        [DataMember(Name="dateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "dateUtc", EmitDefaultValue = false)]
         public DateTime? DateUtc { get; set; }
 
         /// <summary>
         /// Number of minutes to be logged. Duration is between 1 and 59940 inclusively.
         /// </summary>
         /// <value>Number of minutes to be logged. Duration is between 1 and 59940 inclusively.</value>
-        [DataMember(Name="duration", EmitDefaultValue=false)]
+        [DataMember(Name = "duration", EmitDefaultValue = false)]
         public int? Duration { get; set; }
 
         /// <summary>
         /// An optional description of the time entry, will be set to null if not provided during update.
         /// </summary>
         /// <value>An optional description of the time entry, will be set to null if not provided during update.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -119,27 +119,27 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UserId == input.UserId ||
                     (this.UserId != null &&
                     this.UserId.Equals(input.UserId))
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.DateUtc == input.DateUtc ||
                     (this.DateUtc != null &&
                     this.DateUtc.Equals(input.DateUtc))
-                ) && 
+                ) &&
                 (
                     this.Duration == input.Duration ||
                     (this.Duration != null &&
                     this.Duration.Equals(input.Duration))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&

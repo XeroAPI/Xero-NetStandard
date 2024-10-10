@@ -28,68 +28,68 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ReportWithRow
     /// </summary>
     [DataContract]
-    public partial class ReportWithRow :  IEquatable<ReportWithRow>, IValidatableObject
+    public partial class ReportWithRow : IEquatable<ReportWithRow>, IValidatableObject
     {
-        
+
         /// <summary>
         /// ID of the Report
         /// </summary>
         /// <value>ID of the Report</value>
-        [DataMember(Name="ReportID", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportID", EmitDefaultValue = false)]
         public string ReportID { get; set; }
 
         /// <summary>
         /// Name of the report
         /// </summary>
         /// <value>Name of the report</value>
-        [DataMember(Name="ReportName", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportName", EmitDefaultValue = false)]
         public string ReportName { get; set; }
 
         /// <summary>
         /// Title of the report
         /// </summary>
         /// <value>Title of the report</value>
-        [DataMember(Name="ReportTitle", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportTitle", EmitDefaultValue = false)]
         public string ReportTitle { get; set; }
 
         /// <summary>
         /// The type of report (BalanceSheet,ProfitLoss, etc)
         /// </summary>
         /// <value>The type of report (BalanceSheet,ProfitLoss, etc)</value>
-        [DataMember(Name="ReportType", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportType", EmitDefaultValue = false)]
         public string ReportType { get; set; }
 
         /// <summary>
         /// Report titles array (3 to 4 strings with the report name, orgnisation name and time frame of report)
         /// </summary>
         /// <value>Report titles array (3 to 4 strings with the report name, orgnisation name and time frame of report)</value>
-        [DataMember(Name="ReportTitles", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportTitles", EmitDefaultValue = false)]
         public List<string> ReportTitles { get; set; }
 
         /// <summary>
         /// Date of report
         /// </summary>
         /// <value>Date of report</value>
-        [DataMember(Name="ReportDate", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportDate", EmitDefaultValue = false)]
         public string ReportDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Rows
         /// </summary>
-        [DataMember(Name="Rows", EmitDefaultValue=false)]
+        [DataMember(Name = "Rows", EmitDefaultValue = false)]
         public List<ReportRows> Rows { get; set; }
 
         /// <summary>
         /// Updated Date
         /// </summary>
         /// <value>Updated Date</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Gets or Sets Fields
         /// </summary>
-        [DataMember(Name="Fields", EmitDefaultValue=false)]
+        [DataMember(Name = "Fields", EmitDefaultValue = false)]
         public List<ReportFields> Fields { get; set; }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -142,49 +142,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ReportID == input.ReportID ||
                     (this.ReportID != null &&
                     this.ReportID.Equals(input.ReportID))
-                ) && 
+                ) &&
                 (
                     this.ReportName == input.ReportName ||
                     (this.ReportName != null &&
                     this.ReportName.Equals(input.ReportName))
-                ) && 
+                ) &&
                 (
                     this.ReportTitle == input.ReportTitle ||
                     (this.ReportTitle != null &&
                     this.ReportTitle.Equals(input.ReportTitle))
-                ) && 
+                ) &&
                 (
                     this.ReportType == input.ReportType ||
                     (this.ReportType != null &&
                     this.ReportType.Equals(input.ReportType))
-                ) && 
+                ) &&
                 (
                     this.ReportTitles == input.ReportTitles ||
                     this.ReportTitles != null &&
                     input.ReportTitles != null &&
                     this.ReportTitles.SequenceEqual(input.ReportTitles)
-                ) && 
+                ) &&
                 (
                     this.ReportDate == input.ReportDate ||
                     (this.ReportDate != null &&
                     this.ReportDate.Equals(input.ReportDate))
-                ) && 
+                ) &&
                 (
                     this.Rows == input.Rows ||
                     this.Rows != null &&
                     input.Rows != null &&
                     this.Rows.SequenceEqual(input.Rows)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.Fields == input.Fields ||
                     this.Fields != null &&

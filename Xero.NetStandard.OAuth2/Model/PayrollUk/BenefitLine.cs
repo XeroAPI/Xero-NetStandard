@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// BenefitLine
     /// </summary>
     [DataContract]
-    public partial class BenefitLine :  IEquatable<BenefitLine>, IValidatableObject
+    public partial class BenefitLine : IEquatable<BenefitLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll benefit type
         /// </summary>
         /// <value>Xero identifier for payroll benefit type</value>
-        [DataMember(Name="benefitTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "benefitTypeID", EmitDefaultValue = false)]
         public Guid? BenefitTypeID { get; set; }
 
         /// <summary>
         /// Benefit display name
         /// </summary>
         /// <value>Benefit display name</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The amount of the benefit line.
         /// </summary>
         /// <value>The amount of the benefit line.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public double? Amount { get; set; }
 
         /// <summary>
         /// Benefit fixed amount
         /// </summary>
         /// <value>Benefit fixed amount</value>
-        [DataMember(Name="fixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAmount", EmitDefaultValue = false)]
         public double? FixedAmount { get; set; }
 
         /// <summary>
         /// Benefit rate percentage
         /// </summary>
         /// <value>Benefit rate percentage</value>
-        [DataMember(Name="percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "percentage", EmitDefaultValue = false)]
         public double? Percentage { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BenefitTypeID == input.BenefitTypeID ||
                     (this.BenefitTypeID != null &&
                     this.BenefitTypeID.Equals(input.BenefitTypeID))
-                ) && 
+                ) &&
                 (
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&
                     this.FixedAmount.Equals(input.FixedAmount))
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&

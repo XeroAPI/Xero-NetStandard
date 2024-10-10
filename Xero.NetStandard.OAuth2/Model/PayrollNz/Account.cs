@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Account
     /// </summary>
     [DataContract]
-    public partial class Account :  IEquatable<Account>, IValidatableObject
+    public partial class Account : IEquatable<Account>, IValidatableObject
     {
         /// <summary>
         /// The assigned AccountType
@@ -67,28 +67,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The assigned AccountType
         /// </summary>
         /// <value>The assigned AccountType</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
-        
+
         /// <summary>
         /// The Xero identifier for Settings.
         /// </summary>
         /// <value>The Xero identifier for Settings.</value>
-        [DataMember(Name="accountID", EmitDefaultValue=false)]
+        [DataMember(Name = "accountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// A unique 3 digit number for each Account
         /// </summary>
         /// <value>A unique 3 digit number for each Account</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
+        [DataMember(Name = "code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// Name of the Account.
         /// </summary>
         /// <value>Name of the Account.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -136,21 +136,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

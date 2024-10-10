@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// LineItemTracking
     /// </summary>
     [DataContract]
-    public partial class LineItemTracking :  IEquatable<LineItemTracking>, IValidatableObject
+    public partial class LineItemTracking : IEquatable<LineItemTracking>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Xero identifier for a tracking category
         /// </summary>
         /// <value>The Xero identifier for a tracking category</value>
-        [DataMember(Name="TrackingCategoryID", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategoryID", EmitDefaultValue = false)]
         public Guid? TrackingCategoryID { get; set; }
 
         /// <summary>
         /// The Xero identifier for a tracking category option
         /// </summary>
         /// <value>The Xero identifier for a tracking category option</value>
-        [DataMember(Name="TrackingOptionID", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingOptionID", EmitDefaultValue = false)]
         public Guid? TrackingOptionID { get; set; }
 
         /// <summary>
         /// The name of the tracking category
         /// </summary>
         /// <value>The name of the tracking category</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// See Tracking Options
         /// </summary>
         /// <value>See Tracking Options</value>
-        [DataMember(Name="Option", EmitDefaultValue=false)]
+        [DataMember(Name = "Option", EmitDefaultValue = false)]
         public string Option { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TrackingCategoryID == input.TrackingCategoryID ||
                     (this.TrackingCategoryID != null &&
                     this.TrackingCategoryID.Equals(input.TrackingCategoryID))
-                ) && 
+                ) &&
                 (
                     this.TrackingOptionID == input.TrackingOptionID ||
                     (this.TrackingOptionID != null &&
                     this.TrackingOptionID.Equals(input.TrackingOptionID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Option == input.Option ||
                     (this.Option != null &&
@@ -156,9 +156,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 100)
+            if (this.Name != null && this.Name.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new[] { "Name" });
             }
 
             yield break;

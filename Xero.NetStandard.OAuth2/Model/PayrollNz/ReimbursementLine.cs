@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// ReimbursementLine
     /// </summary>
     [DataContract]
-    public partial class ReimbursementLine :  IEquatable<ReimbursementLine>, IValidatableObject
+    public partial class ReimbursementLine : IEquatable<ReimbursementLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll reimbursement
         /// </summary>
         /// <value>Xero identifier for payroll reimbursement</value>
-        [DataMember(Name="reimbursementTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "reimbursementTypeID", EmitDefaultValue = false)]
         public Guid? ReimbursementTypeID { get; set; }
 
         /// <summary>
         /// Reimbursement line description
         /// </summary>
         /// <value>Reimbursement line description</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Reimbursement amount
         /// </summary>
         /// <value>Reimbursement amount</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Rate per unit for leave earnings line
         /// </summary>
         /// <value>Rate per unit for leave earnings line</value>
-        [DataMember(Name="ratePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "ratePerUnit", EmitDefaultValue = false)]
         public decimal? RatePerUnit { get; set; }
 
         /// <summary>
         /// Leave earnings number of units
         /// </summary>
         /// <value>Leave earnings number of units</value>
-        [DataMember(Name="numberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ReimbursementTypeID == input.ReimbursementTypeID ||
                     (this.ReimbursementTypeID != null &&
                     this.ReimbursementTypeID.Equals(input.ReimbursementTypeID))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&

@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// Pagination
     /// </summary>
     [DataContract]
-    public partial class Pagination :  IEquatable<Pagination>, IValidatableObject
+    public partial class Pagination : IEquatable<Pagination>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.
         /// </summary>
         /// <value>Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.</value>
-        [DataMember(Name="page", EmitDefaultValue=false)]
+        [DataMember(Name = "page", EmitDefaultValue = false)]
         public int? Page { get; set; }
 
         /// <summary>
         /// Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.
         /// </summary>
         /// <value>Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.</value>
-        [DataMember(Name="pageSize", EmitDefaultValue=false)]
+        [DataMember(Name = "pageSize", EmitDefaultValue = false)]
         public int? PageSize { get; set; }
 
         /// <summary>
         /// Number of pages available
         /// </summary>
         /// <value>Number of pages available</value>
-        [DataMember(Name="pageCount", EmitDefaultValue=false)]
+        [DataMember(Name = "pageCount", EmitDefaultValue = false)]
         public int? PageCount { get; set; }
 
         /// <summary>
         /// Number of items returned
         /// </summary>
         /// <value>Number of items returned</value>
-        [DataMember(Name="itemCount", EmitDefaultValue=false)]
+        [DataMember(Name = "itemCount", EmitDefaultValue = false)]
         public int? ItemCount { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Page == input.Page ||
                     (this.Page != null &&
                     this.Page.Equals(input.Page))
-                ) && 
+                ) &&
                 (
                     this.PageSize == input.PageSize ||
                     (this.PageSize != null &&
                     this.PageSize.Equals(input.PageSize))
-                ) && 
+                ) &&
                 (
                     this.PageCount == input.PageCount ||
                     (this.PageCount != null &&
                     this.PageCount.Equals(input.PageCount))
-                ) && 
+                ) &&
                 (
                     this.ItemCount == input.ItemCount ||
                     (this.ItemCount != null &&

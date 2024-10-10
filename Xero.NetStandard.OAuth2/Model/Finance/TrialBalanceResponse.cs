@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// TrialBalanceResponse
     /// </summary>
     [DataContract]
-    public partial class TrialBalanceResponse :  IEquatable<TrialBalanceResponse>, IValidatableObject
+    public partial class TrialBalanceResponse : IEquatable<TrialBalanceResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Start date of the report
         /// </summary>
         /// <value>Start date of the report</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// End date of the report
         /// </summary>
         /// <value>End date of the report</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -51,7 +51,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Refer to the accounts section below
         /// </summary>
         /// <value>Refer to the accounts section below</value>
-        [DataMember(Name="accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "accounts", EmitDefaultValue = false)]
         public List<TrialBalanceAccount> Accounts { get; set; }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -98,17 +98,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Accounts == input.Accounts ||
                     this.Accounts != null &&

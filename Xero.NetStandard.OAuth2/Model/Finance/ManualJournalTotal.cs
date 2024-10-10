@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// ManualJournalTotal
     /// </summary>
     [DataContract]
-    public partial class ManualJournalTotal :  IEquatable<ManualJournalTotal>, IValidatableObject
+    public partial class ManualJournalTotal : IEquatable<ManualJournalTotal>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Total value of manual journals.
         /// </summary>
         /// <value>Total value of manual journals.</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&

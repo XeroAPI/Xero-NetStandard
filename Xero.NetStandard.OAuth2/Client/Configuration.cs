@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Client
         #endregion Constants
 
         #region Static Members
-        
+
         /// <summary>
         /// Default creation of exceptions for a given method name and response object
         /// </summary>
@@ -76,7 +76,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Example: http://localhost:3000/v1/
         /// </summary>
         private String _basePath;
-        
+
         /// <summary>
         /// Gets or sets the API key based on the authentication name.
         /// This is the key and value comprising the "secret" for acessing an API.
@@ -158,9 +158,11 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath {
+        public virtual string BasePath
+        {
             get { return _basePath; }
-            set {
+            set
+            {
                 _basePath = value;
             }
         }
@@ -206,13 +208,13 @@ namespace Xero.NetStandard.OAuth2.Client
         public string GetApiKeyWithPrefix(string apiKeyIdentifier)
         {
             string apiKeyValue;
-            ApiKey.TryGetValue (apiKeyIdentifier, out apiKeyValue);
+            ApiKey.TryGetValue(apiKeyIdentifier, out apiKeyValue);
             string apiKeyPrefix;
             if (ApiKeyPrefix.TryGetValue(apiKeyIdentifier, out apiKeyPrefix))
             {
                 return apiKeyPrefix + " " + apiKeyValue;
             }
-            
+
             return apiKeyValue;
         }
 
@@ -380,11 +382,11 @@ namespace Xero.NetStandard.OAuth2.Client
         public static IReadableConfiguration MergeConfigurations(IReadableConfiguration first, IReadableConfiguration second)
         {
             if (second == null) return first ?? GlobalConfiguration.Instance;
-            
+
             Dictionary<string, string> apiKey = first.ApiKey.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
             Dictionary<string, string> apiKeyPrefix = first.ApiKeyPrefix.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
             Dictionary<string, string> defaultHeader = first.DefaultHeader.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            
+
             foreach (var kvp in second.ApiKey) apiKey[kvp.Key] = kvp.Value;
             foreach (var kvp in second.ApiKeyPrefix) apiKeyPrefix[kvp.Key] = kvp.Value;
             foreach (var kvp in second.DefaultHeader) defaultHeader[kvp.Key] = kvp.Value;

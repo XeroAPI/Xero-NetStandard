@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// The object returned for a bad request
     /// </summary>
     [DataContract]
-    public partial class APIException :  IEquatable<APIException>, IValidatableObject
+    public partial class APIException : IEquatable<APIException>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The error number
         /// </summary>
         /// <value>The error number</value>
-        [DataMember(Name="ErrorNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "ErrorNumber", EmitDefaultValue = false)]
         public decimal? ErrorNumber { get; set; }
 
         /// <summary>
         /// The type of error
         /// </summary>
         /// <value>The type of error</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// The message describing the error
         /// </summary>
         /// <value>The message describing the error</value>
-        [DataMember(Name="Message", EmitDefaultValue=false)]
+        [DataMember(Name = "Message", EmitDefaultValue = false)]
         public string Message { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ErrorNumber == input.ErrorNumber ||
                     (this.ErrorNumber != null &&
                     this.ErrorNumber.Equals(input.ErrorNumber))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Message == input.Message ||
                     (this.Message != null &&

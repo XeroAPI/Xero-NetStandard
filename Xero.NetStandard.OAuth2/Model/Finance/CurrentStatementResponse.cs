@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// CurrentStatementResponse
     /// </summary>
     [DataContract]
-    public partial class CurrentStatementResponse :  IEquatable<CurrentStatementResponse>, IValidatableObject
+    public partial class CurrentStatementResponse : IEquatable<CurrentStatementResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Looking at the most recent bank statement, this field indicates the first date which transactions on this statement pertain to. This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>Looking at the most recent bank statement, this field indicates the first date which transactions on this statement pertain to. This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Looking at the most recent bank statement, this field indicates the last date which transactions on this statement pertain to. This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>Looking at the most recent bank statement, this field indicates the last date which transactions on this statement pertain to. This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -51,28 +51,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Looking at the most recent bank statement, this field indicates the balance before the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).
         /// </summary>
         /// <value>Looking at the most recent bank statement, this field indicates the balance before the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).</value>
-        [DataMember(Name="startBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "startBalance", EmitDefaultValue = false)]
         public decimal? StartBalance { get; set; }
 
         /// <summary>
         /// Looking at the most recent bank statement, this field indicates the balance after the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).
         /// </summary>
         /// <value>Looking at the most recent bank statement, this field indicates the balance after the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).</value>
-        [DataMember(Name="endBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "endBalance", EmitDefaultValue = false)]
         public decimal? EndBalance { get; set; }
 
         /// <summary>
         /// Looking at the most recent bank statement, this field indicates when the document was imported into Xero.  This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>Looking at the most recent bank statement, this field indicates when the document was imported into Xero.  This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="importedDateTimeUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "importedDateTimeUtc", EmitDefaultValue = false)]
         public DateTime? ImportedDateTimeUtc { get; set; }
 
         /// <summary>
         /// Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, indirect bank feed, file upload, or manual keying).
         /// </summary>
         /// <value>Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, indirect bank feed, file upload, or manual keying).</value>
-        [DataMember(Name="importSourceType", EmitDefaultValue=false)]
+        [DataMember(Name = "importSourceType", EmitDefaultValue = false)]
         public string ImportSourceType { get; set; }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -122,32 +122,32 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.StartBalance == input.StartBalance ||
                     (this.StartBalance != null &&
                     this.StartBalance.Equals(input.StartBalance))
-                ) && 
+                ) &&
                 (
                     this.EndBalance == input.EndBalance ||
                     (this.EndBalance != null &&
                     this.EndBalance.Equals(input.EndBalance))
-                ) && 
+                ) &&
                 (
                     this.ImportedDateTimeUtc == input.ImportedDateTimeUtc ||
                     (this.ImportedDateTimeUtc != null &&
                     this.ImportedDateTimeUtc.Equals(input.ImportedDateTimeUtc))
-                ) && 
+                ) &&
                 (
                     this.ImportSourceType == input.ImportSourceType ||
                     (this.ImportSourceType != null &&

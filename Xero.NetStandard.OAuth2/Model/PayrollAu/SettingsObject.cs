@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// SettingsObject
     /// </summary>
     [DataContract]
-    public partial class SettingsObject :  IEquatable<SettingsObject>, IValidatableObject
+    public partial class SettingsObject : IEquatable<SettingsObject>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Settings
         /// </summary>
-        [DataMember(Name="Settings", EmitDefaultValue=false)]
+        [DataMember(Name = "Settings", EmitDefaultValue = false)]
         public Settings Settings { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Settings == input.Settings ||
                     (this.Settings != null &&

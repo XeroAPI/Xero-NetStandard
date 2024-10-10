@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             return parameters;
         }
-        
+
         /// <summary>
         /// If parameter is DateTime, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
         /// If parameter is a list, join the list with ",".
@@ -103,11 +103,11 @@ namespace Xero.NetStandard.OAuth2.Client
                     }
                     return flattenedString.ToString();
                 }
-                
-                return Convert.ToString (obj);
+
+                return Convert.ToString(obj);
             }
         }
-        
+
         /// <summary>
         /// Check if generic object is a collection.
         /// </summary>
@@ -117,7 +117,7 @@ namespace Xero.NetStandard.OAuth2.Client
         {
             return value is IList || value is ICollection;
         }
-        
+
         /// <summary>
         /// URL encode a string
         /// Credit/Ref: https://github.com/restsharp/RestSharp/blob/master/RestSharp/Extensions/StringExtensions.cs#L50
@@ -170,7 +170,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>Byte array</returns>
         public static byte[] ReadAsBytes(Stream inputStream)
         {
-            byte[] buf = new byte[16*1024];
+            byte[] buf = new byte[16 * 1024];
             using (MemoryStream ms = new MemoryStream())
             {
                 int count;

@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// PaymentResponse
     /// </summary>
     [DataContract]
-    public partial class PaymentResponse :  IEquatable<PaymentResponse>, IValidatableObject
+    public partial class PaymentResponse : IEquatable<PaymentResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of payment
         /// </summary>
         /// <value>Xero Identifier of payment</value>
-        [DataMember(Name="paymentId", EmitDefaultValue=false)]
+        [DataMember(Name = "paymentId", EmitDefaultValue = false)]
         public Guid? PaymentId { get; set; }
 
         /// <summary>
         /// Xero Identifier of batch payment. Present if the payment was created as part of a batch.
         /// </summary>
         /// <value>Xero Identifier of batch payment. Present if the payment was created as part of a batch.</value>
-        [DataMember(Name="batchPaymentId", EmitDefaultValue=false)]
+        [DataMember(Name = "batchPaymentId", EmitDefaultValue = false)]
         public Guid? BatchPaymentId { get; set; }
 
         /// <summary>
         /// Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06
         /// </summary>
         /// <value>Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06</value>
-        [DataMember(Name="date", EmitDefaultValue=false)]
+        [DataMember(Name = "date", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
@@ -57,45 +57,45 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// The amount of the payment
         /// </summary>
         /// <value>The amount of the payment</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The bank amount of the payment
         /// </summary>
         /// <value>The bank amount of the payment</value>
-        [DataMember(Name="bankAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "bankAmount", EmitDefaultValue = false)]
         public decimal? BankAmount { get; set; }
 
         /// <summary>
         /// Exchange rate when payment is received. Only used for non base currency invoices and credit notes e.g. 0.7500
         /// </summary>
         /// <value>Exchange rate when payment is received. Only used for non base currency invoices and credit notes e.g. 0.7500</value>
-        [DataMember(Name="currencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "currencyRate", EmitDefaultValue = false)]
         public double? CurrencyRate { get; set; }
 
         /// <summary>
         /// Gets or Sets Invoice
         /// </summary>
-        [DataMember(Name="invoice", EmitDefaultValue=false)]
+        [DataMember(Name = "invoice", EmitDefaultValue = false)]
         public InvoiceResponse Invoice { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditNote
         /// </summary>
-        [DataMember(Name="creditNote", EmitDefaultValue=false)]
+        [DataMember(Name = "creditNote", EmitDefaultValue = false)]
         public CreditNoteResponse CreditNote { get; set; }
 
         /// <summary>
         /// Gets or Sets Prepayment
         /// </summary>
-        [DataMember(Name="prepayment", EmitDefaultValue=false)]
+        [DataMember(Name = "prepayment", EmitDefaultValue = false)]
         public PrepaymentResponse Prepayment { get; set; }
 
         /// <summary>
         /// Gets or Sets Overpayment
         /// </summary>
-        [DataMember(Name="overpayment", EmitDefaultValue=false)]
+        [DataMember(Name = "overpayment", EmitDefaultValue = false)]
         public OverpaymentResponse Overpayment { get; set; }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -149,52 +149,52 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PaymentId == input.PaymentId ||
                     (this.PaymentId != null &&
                     this.PaymentId.Equals(input.PaymentId))
-                ) && 
+                ) &&
                 (
                     this.BatchPaymentId == input.BatchPaymentId ||
                     (this.BatchPaymentId != null &&
                     this.BatchPaymentId.Equals(input.BatchPaymentId))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.BankAmount == input.BankAmount ||
                     (this.BankAmount != null &&
                     this.BankAmount.Equals(input.BankAmount))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.Invoice == input.Invoice ||
                     (this.Invoice != null &&
                     this.Invoice.Equals(input.Invoice))
-                ) && 
+                ) &&
                 (
                     this.CreditNote == input.CreditNote ||
                     (this.CreditNote != null &&
                     this.CreditNote.Equals(input.CreditNote))
-                ) && 
+                ) &&
                 (
                     this.Prepayment == input.Prepayment ||
                     (this.Prepayment != null &&
                     this.Prepayment.Equals(input.Prepayment))
-                ) && 
+                ) &&
                 (
                     this.Overpayment == input.Overpayment ||
                     (this.Overpayment != null &&

@@ -28,62 +28,62 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// AssetType
     /// </summary>
     [DataContract]
-    public partial class AssetType :  IEquatable<AssetType>, IValidatableObject
+    public partial class AssetType : IEquatable<AssetType>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AssetType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public AssetType() 
-        { 
+        public AssetType()
+        {
         }
-        
+
         /// <summary>
         /// Xero generated unique identifier for asset types
         /// </summary>
         /// <value>Xero generated unique identifier for asset types</value>
-        [DataMember(Name="assetTypeId", EmitDefaultValue=false)]
+        [DataMember(Name = "assetTypeId", EmitDefaultValue = false)]
         public Guid? AssetTypeId { get; set; }
 
         /// <summary>
         /// The name of the asset type
         /// </summary>
         /// <value>The name of the asset type</value>
-        [DataMember(Name="assetTypeName", EmitDefaultValue=false)]
+        [DataMember(Name = "assetTypeName", EmitDefaultValue = false)]
         public string AssetTypeName { get; set; }
 
         /// <summary>
         /// The asset account for fixed assets of this type
         /// </summary>
         /// <value>The asset account for fixed assets of this type</value>
-        [DataMember(Name="fixedAssetAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAssetAccountId", EmitDefaultValue = false)]
         public Guid? FixedAssetAccountId { get; set; }
 
         /// <summary>
         /// The expense account for the depreciation of fixed assets of this type
         /// </summary>
         /// <value>The expense account for the depreciation of fixed assets of this type</value>
-        [DataMember(Name="depreciationExpenseAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "depreciationExpenseAccountId", EmitDefaultValue = false)]
         public Guid? DepreciationExpenseAccountId { get; set; }
 
         /// <summary>
         /// The account for accumulated depreciation of fixed assets of this type
         /// </summary>
         /// <value>The account for accumulated depreciation of fixed assets of this type</value>
-        [DataMember(Name="accumulatedDepreciationAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "accumulatedDepreciationAccountId", EmitDefaultValue = false)]
         public Guid? AccumulatedDepreciationAccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets BookDepreciationSetting
         /// </summary>
-        [DataMember(Name="bookDepreciationSetting", EmitDefaultValue=false)]
+        [DataMember(Name = "bookDepreciationSetting", EmitDefaultValue = false)]
         public BookDepreciationSetting BookDepreciationSetting { get; set; }
 
         /// <summary>
         /// All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed.
         /// </summary>
         /// <value>All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed.</value>
-        [DataMember(Name="locks", EmitDefaultValue=false)]
+        [DataMember(Name = "locks", EmitDefaultValue = false)]
         public int? Locks { get; set; }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -134,37 +134,37 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AssetTypeId == input.AssetTypeId ||
                     (this.AssetTypeId != null &&
                     this.AssetTypeId.Equals(input.AssetTypeId))
-                ) && 
+                ) &&
                 (
                     this.AssetTypeName == input.AssetTypeName ||
                     (this.AssetTypeName != null &&
                     this.AssetTypeName.Equals(input.AssetTypeName))
-                ) && 
+                ) &&
                 (
                     this.FixedAssetAccountId == input.FixedAssetAccountId ||
                     (this.FixedAssetAccountId != null &&
                     this.FixedAssetAccountId.Equals(input.FixedAssetAccountId))
-                ) && 
+                ) &&
                 (
                     this.DepreciationExpenseAccountId == input.DepreciationExpenseAccountId ||
                     (this.DepreciationExpenseAccountId != null &&
                     this.DepreciationExpenseAccountId.Equals(input.DepreciationExpenseAccountId))
-                ) && 
+                ) &&
                 (
                     this.AccumulatedDepreciationAccountId == input.AccumulatedDepreciationAccountId ||
                     (this.AccumulatedDepreciationAccountId != null &&
                     this.AccumulatedDepreciationAccountId.Equals(input.AccumulatedDepreciationAccountId))
-                ) && 
+                ) &&
                 (
                     this.BookDepreciationSetting == input.BookDepreciationSetting ||
                     (this.BookDepreciationSetting != null &&
                     this.BookDepreciationSetting.Equals(input.BookDepreciationSetting))
-                ) && 
+                ) &&
                 (
                     this.Locks == input.Locks ||
                     (this.Locks != null &&

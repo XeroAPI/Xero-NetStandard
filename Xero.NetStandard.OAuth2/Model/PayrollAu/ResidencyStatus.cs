@@ -27,9 +27,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// <summary>
     /// Defines ResidencyStatus
     /// </summary>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum ResidencyStatus
     {
         /// <summary>

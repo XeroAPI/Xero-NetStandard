@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// CISOrgSetting
     /// </summary>
     [DataContract]
-    public partial class CISOrgSetting :  IEquatable<CISOrgSetting>, IValidatableObject
+    public partial class CISOrgSetting : IEquatable<CISOrgSetting>, IValidatableObject
     {
-        
+
         /// <summary>
         /// true or false - Boolean that describes if the organisation is a CIS Contractor
         /// </summary>
         /// <value>true or false - Boolean that describes if the organisation is a CIS Contractor</value>
-        [DataMember(Name="CISContractorEnabled", EmitDefaultValue=false)]
+        [DataMember(Name = "CISContractorEnabled", EmitDefaultValue = false)]
         public bool? CISContractorEnabled { get; set; }
 
         /// <summary>
         /// true or false - Boolean that describes if the organisation is a CIS SubContractor
         /// </summary>
         /// <value>true or false - Boolean that describes if the organisation is a CIS SubContractor</value>
-        [DataMember(Name="CISSubContractorEnabled", EmitDefaultValue=false)]
+        [DataMember(Name = "CISSubContractorEnabled", EmitDefaultValue = false)]
         public bool? CISSubContractorEnabled { get; set; }
 
         /// <summary>
         /// CIS Deduction rate for the organisation
         /// </summary>
         /// <value>CIS Deduction rate for the organisation</value>
-        [DataMember(Name="Rate", EmitDefaultValue=false)]
+        [DataMember(Name = "Rate", EmitDefaultValue = false)]
         public decimal? Rate { get; private set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CISContractorEnabled == input.CISContractorEnabled ||
                     (this.CISContractorEnabled != null &&
                     this.CISContractorEnabled.Equals(input.CISContractorEnabled))
-                ) && 
+                ) &&
                 (
                     this.CISSubContractorEnabled == input.CISSubContractorEnabled ||
                     (this.CISSubContractorEnabled != null &&
                     this.CISSubContractorEnabled.Equals(input.CISSubContractorEnabled))
-                ) && 
+                ) &&
                 (
                     this.Rate == input.Rate ||
                     (this.Rate != null &&

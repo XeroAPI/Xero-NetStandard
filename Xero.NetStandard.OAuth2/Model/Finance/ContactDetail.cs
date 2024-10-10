@@ -28,47 +28,47 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// ContactDetail
     /// </summary>
     [DataContract]
-    public partial class ContactDetail :  IEquatable<ContactDetail>, IValidatableObject
+    public partial class ContactDetail : IEquatable<ContactDetail>, IValidatableObject
     {
-        
+
         /// <summary>
         /// ID of the contact associated with the transactions.    Transactions with no contact will be grouped under the special ID: 86793108-198C-46D8-90A3-43C1D12686CE.    Transactions that are receive or spend bank transfers will be grouped under the special ID: 207322B3-6A58-4BE7-80F1-430123914AD6
         /// </summary>
         /// <value>ID of the contact associated with the transactions.    Transactions with no contact will be grouped under the special ID: 86793108-198C-46D8-90A3-43C1D12686CE.    Transactions that are receive or spend bank transfers will be grouped under the special ID: 207322B3-6A58-4BE7-80F1-430123914AD6</value>
-        [DataMember(Name="contactId", EmitDefaultValue=false)]
+        [DataMember(Name = "contactId", EmitDefaultValue = false)]
         public Guid? ContactId { get; set; }
 
         /// <summary>
         /// Name of the contact associated with the transactions.    If no contact is associated with the transactions this will appear as “None Provided”,    For receive or spend bank transfer transactions, this will appear as “Bank Transfer”.
         /// </summary>
         /// <value>Name of the contact associated with the transactions.    If no contact is associated with the transactions this will appear as “None Provided”,    For receive or spend bank transfer transactions, this will appear as “Bank Transfer”.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Total value for the contact
         /// </summary>
         /// <value>Total value for the contact</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalDetail
         /// </summary>
-        [DataMember(Name="totalDetail", EmitDefaultValue=false)]
+        [DataMember(Name = "totalDetail", EmitDefaultValue = false)]
         public ContactTotalDetail TotalDetail { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalOther
         /// </summary>
-        [DataMember(Name="totalOther", EmitDefaultValue=false)]
+        [DataMember(Name = "totalOther", EmitDefaultValue = false)]
         public ContactTotalOther TotalOther { get; set; }
 
         /// <summary>
         /// A list of account codes involved in transactions.
         /// </summary>
         /// <value>A list of account codes involved in transactions.</value>
-        [DataMember(Name="accountCodes", EmitDefaultValue=false)]
+        [DataMember(Name = "accountCodes", EmitDefaultValue = false)]
         public List<string> AccountCodes { get; set; }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -118,32 +118,32 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ContactId == input.ContactId ||
                     (this.ContactId != null &&
                     this.ContactId.Equals(input.ContactId))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.TotalDetail == input.TotalDetail ||
                     (this.TotalDetail != null &&
                     this.TotalDetail.Equals(input.TotalDetail))
-                ) && 
+                ) &&
                 (
                     this.TotalOther == input.TotalOther ||
                     (this.TotalOther != null &&
                     this.TotalOther.Equals(input.TotalOther))
-                ) && 
+                ) &&
                 (
                     this.AccountCodes == input.AccountCodes ||
                     this.AccountCodes != null &&

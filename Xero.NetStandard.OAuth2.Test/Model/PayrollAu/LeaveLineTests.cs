@@ -62,11 +62,11 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("PAIDOUT", EntitlementFinalPayPayoutType.PAIDOUT)]
         public async Task EntitlementFinalPayPayoutTypeTest(string input, EntitlementFinalPayPayoutType expected)
         {
-           await JsonDoc.Assert<LeaveLine, EntitlementFinalPayPayoutType>(
-                input: new JsonDoc.String(nameof(LeaveLine.EntitlementFinalPayPayoutType), input),
-                toProperty: x => x.EntitlementFinalPayPayoutType,
-                shouldBe: expected
-            );
+            await JsonDoc.Assert<LeaveLine, EntitlementFinalPayPayoutType>(
+                 input: new JsonDoc.String(nameof(LeaveLine.EntitlementFinalPayPayoutType), input),
+                 toProperty: x => x.EntitlementFinalPayPayoutType,
+                 shouldBe: expected
+             );
         }
         /// <summary>
         /// Test the property 'EmploymentTerminationPaymentType'

@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// PaymentTerm
     /// </summary>
     [DataContract]
-    public partial class PaymentTerm :  IEquatable<PaymentTerm>, IValidatableObject
+    public partial class PaymentTerm : IEquatable<PaymentTerm>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Bills
         /// </summary>
-        [DataMember(Name="Bills", EmitDefaultValue=false)]
+        [DataMember(Name = "Bills", EmitDefaultValue = false)]
         public Bill Bills { get; set; }
 
         /// <summary>
         /// Gets or Sets Sales
         /// </summary>
-        [DataMember(Name="Sales", EmitDefaultValue=false)]
+        [DataMember(Name = "Sales", EmitDefaultValue = false)]
         public Bill Sales { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Bills == input.Bills ||
                     (this.Bills != null &&
                     this.Bills.Equals(input.Bills))
-                ) && 
+                ) &&
                 (
                     this.Sales == input.Sales ||
                     (this.Sales != null &&

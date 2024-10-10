@@ -28,91 +28,91 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// PayslipSummary
     /// </summary>
     [DataContract]
-    public partial class PayslipSummary :  IEquatable<PayslipSummary>, IValidatableObject
+    public partial class PayslipSummary : IEquatable<PayslipSummary>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Xero identifier for an employee
         /// </summary>
         /// <value>The Xero identifier for an employee</value>
-        [DataMember(Name="EmployeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// Xero identifier for the payslip
         /// </summary>
         /// <value>Xero identifier for the payslip</value>
-        [DataMember(Name="PayslipID", EmitDefaultValue=false)]
+        [DataMember(Name = "PayslipID", EmitDefaultValue = false)]
         public Guid? PayslipID { get; set; }
 
         /// <summary>
         /// First name of employee
         /// </summary>
         /// <value>First name of employee</value>
-        [DataMember(Name="FirstName", EmitDefaultValue=false)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Last name of employee
         /// </summary>
         /// <value>Last name of employee</value>
-        [DataMember(Name="LastName", EmitDefaultValue=false)]
+        [DataMember(Name = "LastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Employee group name
         /// </summary>
         /// <value>Employee group name</value>
-        [DataMember(Name="EmployeeGroup", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeGroup", EmitDefaultValue = false)]
         public string EmployeeGroup { get; set; }
 
         /// <summary>
         /// The Wages for the Payslip
         /// </summary>
         /// <value>The Wages for the Payslip</value>
-        [DataMember(Name="Wages", EmitDefaultValue=false)]
+        [DataMember(Name = "Wages", EmitDefaultValue = false)]
         public decimal? Wages { get; set; }
 
         /// <summary>
         /// The Deductions for the Payslip
         /// </summary>
         /// <value>The Deductions for the Payslip</value>
-        [DataMember(Name="Deductions", EmitDefaultValue=false)]
+        [DataMember(Name = "Deductions", EmitDefaultValue = false)]
         public decimal? Deductions { get; set; }
 
         /// <summary>
         /// The Tax for the Payslip
         /// </summary>
         /// <value>The Tax for the Payslip</value>
-        [DataMember(Name="Tax", EmitDefaultValue=false)]
+        [DataMember(Name = "Tax", EmitDefaultValue = false)]
         public decimal? Tax { get; set; }
 
         /// <summary>
         /// The Super for the Payslip
         /// </summary>
         /// <value>The Super for the Payslip</value>
-        [DataMember(Name="Super", EmitDefaultValue=false)]
+        [DataMember(Name = "Super", EmitDefaultValue = false)]
         public decimal? Super { get; set; }
 
         /// <summary>
         /// The Reimbursements for the Payslip
         /// </summary>
         /// <value>The Reimbursements for the Payslip</value>
-        [DataMember(Name="Reimbursements", EmitDefaultValue=false)]
+        [DataMember(Name = "Reimbursements", EmitDefaultValue = false)]
         public decimal? Reimbursements { get; set; }
 
         /// <summary>
         /// The NetPay for the Payslip
         /// </summary>
         /// <value>The NetPay for the Payslip</value>
-        [DataMember(Name="NetPay", EmitDefaultValue=false)]
+        [DataMember(Name = "NetPay", EmitDefaultValue = false)]
         public decimal? NetPay { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -168,62 +168,62 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.PayslipID == input.PayslipID ||
                     (this.PayslipID != null &&
                     this.PayslipID.Equals(input.PayslipID))
-                ) && 
+                ) &&
                 (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
-                ) && 
+                ) &&
                 (
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
-                ) && 
+                ) &&
                 (
                     this.EmployeeGroup == input.EmployeeGroup ||
                     (this.EmployeeGroup != null &&
                     this.EmployeeGroup.Equals(input.EmployeeGroup))
-                ) && 
+                ) &&
                 (
                     this.Wages == input.Wages ||
                     (this.Wages != null &&
                     this.Wages.Equals(input.Wages))
-                ) && 
+                ) &&
                 (
                     this.Deductions == input.Deductions ||
                     (this.Deductions != null &&
                     this.Deductions.Equals(input.Deductions))
-                ) && 
+                ) &&
                 (
                     this.Tax == input.Tax ||
                     (this.Tax != null &&
                     this.Tax.Equals(input.Tax))
-                ) && 
+                ) &&
                 (
                     this.Super == input.Super ||
                     (this.Super != null &&
                     this.Super.Equals(input.Super))
-                ) && 
+                ) &&
                 (
                     this.Reimbursements == input.Reimbursements ||
                     (this.Reimbursements != null &&
                     this.Reimbursements.Equals(input.Reimbursements))
-                ) && 
+                ) &&
                 (
                     this.NetPay == input.NetPay ||
                     (this.NetPay != null &&
                     this.NetPay.Equals(input.NetPay))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&

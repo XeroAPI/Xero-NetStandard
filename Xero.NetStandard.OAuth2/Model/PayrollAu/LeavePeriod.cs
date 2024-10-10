@@ -28,33 +28,33 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeavePeriod
     /// </summary>
     [DataContract]
-    public partial class LeavePeriod :  IEquatable<LeavePeriod>, IValidatableObject
+    public partial class LeavePeriod : IEquatable<LeavePeriod>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets LeavePeriodStatus
         /// </summary>
-        [DataMember(Name="LeavePeriodStatus", EmitDefaultValue=false)]
+        [DataMember(Name = "LeavePeriodStatus", EmitDefaultValue = false)]
         public LeavePeriodStatus LeavePeriodStatus { get; set; }
-        
+
         /// <summary>
         /// The Number of Units for the leave
         /// </summary>
         /// <value>The Number of Units for the leave</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
         /// The Pay Period End Date (YYYY-MM-DD)
         /// </summary>
         /// <value>The Pay Period End Date (YYYY-MM-DD)</value>
-        [DataMember(Name="PayPeriodEndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "PayPeriodEndDate", EmitDefaultValue = false)]
         public DateTime? PayPeriodEndDate { get; set; }
 
         /// <summary>
         /// The Pay Period Start Date (YYYY-MM-DD)
         /// </summary>
         /// <value>The Pay Period Start Date (YYYY-MM-DD)</value>
-        [DataMember(Name="PayPeriodStartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "PayPeriodStartDate", EmitDefaultValue = false)]
         public DateTime? PayPeriodStartDate { get; set; }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -102,22 +102,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.PayPeriodEndDate == input.PayPeriodEndDate ||
                     (this.PayPeriodEndDate != null &&
                     this.PayPeriodEndDate.Equals(input.PayPeriodEndDate))
-                ) && 
+                ) &&
                 (
                     this.PayPeriodStartDate == input.PayPeriodStartDate ||
                     (this.PayPeriodStartDate != null &&
                     this.PayPeriodStartDate.Equals(input.PayPeriodStartDate))
-                ) && 
+                ) &&
                 (
                     this.LeavePeriodStatus == input.LeavePeriodStatus ||
                     this.LeavePeriodStatus.Equals(input.LeavePeriodStatus)

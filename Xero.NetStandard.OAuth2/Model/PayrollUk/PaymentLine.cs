@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// PaymentLine
     /// </summary>
     [DataContract]
-    public partial class PaymentLine :  IEquatable<PaymentLine>, IValidatableObject
+    public partial class PaymentLine : IEquatable<PaymentLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll payment line
         /// </summary>
         /// <value>Xero identifier for payroll payment line</value>
-        [DataMember(Name="paymentLineID", EmitDefaultValue=false)]
+        [DataMember(Name = "paymentLineID", EmitDefaultValue = false)]
         public Guid? PaymentLineID { get; set; }
 
         /// <summary>
         /// The amount of the payment line
         /// </summary>
         /// <value>The amount of the payment line</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public double? Amount { get; set; }
 
         /// <summary>
         /// The account number
         /// </summary>
         /// <value>The account number</value>
-        [DataMember(Name="accountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "accountNumber", EmitDefaultValue = false)]
         public string AccountNumber { get; set; }
 
         /// <summary>
         /// The account sort code
         /// </summary>
         /// <value>The account sort code</value>
-        [DataMember(Name="sortCode", EmitDefaultValue=false)]
+        [DataMember(Name = "sortCode", EmitDefaultValue = false)]
         public string SortCode { get; set; }
 
         /// <summary>
         /// The account name
         /// </summary>
         /// <value>The account name</value>
-        [DataMember(Name="accountName", EmitDefaultValue=false)]
+        [DataMember(Name = "accountName", EmitDefaultValue = false)]
         public string AccountName { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PaymentLineID == input.PaymentLineID ||
                     (this.PaymentLineID != null &&
                     this.PaymentLineID.Equals(input.PaymentLineID))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.AccountNumber == input.AccountNumber ||
                     (this.AccountNumber != null &&
                     this.AccountNumber.Equals(input.AccountNumber))
-                ) && 
+                ) &&
                 (
                     this.SortCode == input.SortCode ||
                     (this.SortCode != null &&
                     this.SortCode.Equals(input.SortCode))
-                ) && 
+                ) &&
                 (
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&

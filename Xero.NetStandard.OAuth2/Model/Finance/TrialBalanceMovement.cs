@@ -28,34 +28,34 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// TrialBalanceMovement
     /// </summary>
     [DataContract]
-    public partial class TrialBalanceMovement :  IEquatable<TrialBalanceMovement>, IValidatableObject
+    public partial class TrialBalanceMovement : IEquatable<TrialBalanceMovement>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Debit amount
         /// </summary>
         /// <value>Debit amount</value>
-        [DataMember(Name="debits", EmitDefaultValue=false)]
+        [DataMember(Name = "debits", EmitDefaultValue = false)]
         public decimal? Debits { get; set; }
 
         /// <summary>
         /// Credit amount
         /// </summary>
         /// <value>Credit amount</value>
-        [DataMember(Name="credits", EmitDefaultValue=false)]
+        [DataMember(Name = "credits", EmitDefaultValue = false)]
         public decimal? Credits { get; set; }
 
         /// <summary>
         /// Gets or Sets Movement
         /// </summary>
-        [DataMember(Name="movement", EmitDefaultValue=false)]
+        [DataMember(Name = "movement", EmitDefaultValue = false)]
         public TrialBalanceEntry Movement { get; set; }
 
         /// <summary>
         /// Value of movement. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative
         /// </summary>
         /// <value>Value of movement. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative</value>
-        [DataMember(Name="signedMovement", EmitDefaultValue=false)]
+        [DataMember(Name = "signedMovement", EmitDefaultValue = false)]
         public decimal? SignedMovement { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,22 +103,22 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Debits == input.Debits ||
                     (this.Debits != null &&
                     this.Debits.Equals(input.Debits))
-                ) && 
+                ) &&
                 (
                     this.Credits == input.Credits ||
                     (this.Credits != null &&
                     this.Credits.Equals(input.Credits))
-                ) && 
+                ) &&
                 (
                     this.Movement == input.Movement ||
                     (this.Movement != null &&
                     this.Movement.Equals(input.Movement))
-                ) && 
+                ) &&
                 (
                     this.SignedMovement == input.SignedMovement ||
                     (this.SignedMovement != null &&

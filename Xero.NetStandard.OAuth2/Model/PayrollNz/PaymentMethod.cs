@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// PaymentMethod
     /// </summary>
     [DataContract]
-    public partial class PaymentMethod :  IEquatable<PaymentMethod>, IValidatableObject
+    public partial class PaymentMethod : IEquatable<PaymentMethod>, IValidatableObject
     {
         /// <summary>
         /// The payment method code
@@ -61,13 +61,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The payment method code
         /// </summary>
         /// <value>The payment method code</value>
-        [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
+        [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
         public PaymentMethodEnum _PaymentMethod { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets BankAccounts
         /// </summary>
-        [DataMember(Name="bankAccounts", EmitDefaultValue=false)]
+        [DataMember(Name = "bankAccounts", EmitDefaultValue = false)]
         public List<BankAccount> BankAccounts { get; set; }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -113,11 +113,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._PaymentMethod == input._PaymentMethod ||
                     this._PaymentMethod.Equals(input._PaymentMethod)
-                ) && 
+                ) &&
                 (
                     this.BankAccounts == input.BankAccounts ||
                     this.BankAccounts != null &&

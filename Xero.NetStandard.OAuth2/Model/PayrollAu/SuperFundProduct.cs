@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// SuperFundProduct
     /// </summary>
     [DataContract]
-    public partial class SuperFundProduct :  IEquatable<SuperFundProduct>, IValidatableObject
+    public partial class SuperFundProduct : IEquatable<SuperFundProduct>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The ABN of the Regulated SuperFund
         /// </summary>
         /// <value>The ABN of the Regulated SuperFund</value>
-        [DataMember(Name="ABN", EmitDefaultValue=false)]
+        [DataMember(Name = "ABN", EmitDefaultValue = false)]
         public string ABN { get; set; }
 
         /// <summary>
         /// The USI of the Regulated SuperFund
         /// </summary>
         /// <value>The USI of the Regulated SuperFund</value>
-        [DataMember(Name="USI", EmitDefaultValue=false)]
+        [DataMember(Name = "USI", EmitDefaultValue = false)]
         public string USI { get; set; }
 
         /// <summary>
         /// The SPIN of the Regulated SuperFund. This field has been deprecated. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN
         /// </summary>
         /// <value>The SPIN of the Regulated SuperFund. This field has been deprecated. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN</value>
-        [DataMember(Name="SPIN", EmitDefaultValue=false)]
+        [DataMember(Name = "SPIN", EmitDefaultValue = false)]
         public string SPIN { get; set; }
 
         /// <summary>
         /// The name of the Regulated SuperFund
         /// </summary>
         /// <value>The name of the Regulated SuperFund</value>
-        [DataMember(Name="ProductName", EmitDefaultValue=false)]
+        [DataMember(Name = "ProductName", EmitDefaultValue = false)]
         public string ProductName { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ABN == input.ABN ||
                     (this.ABN != null &&
                     this.ABN.Equals(input.ABN))
-                ) && 
+                ) &&
                 (
                     this.USI == input.USI ||
                     (this.USI != null &&
                     this.USI.Equals(input.USI))
-                ) && 
+                ) &&
                 (
                     this.SPIN == input.SPIN ||
                     (this.SPIN != null &&
                     this.SPIN.Equals(input.SPIN))
-                ) && 
+                ) &&
                 (
                     this.ProductName == input.ProductName ||
                     (this.ProductName != null &&

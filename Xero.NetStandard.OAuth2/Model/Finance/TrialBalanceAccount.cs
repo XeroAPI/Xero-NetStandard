@@ -28,75 +28,75 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// TrialBalanceAccount
     /// </summary>
     [DataContract]
-    public partial class TrialBalanceAccount :  IEquatable<TrialBalanceAccount>, IValidatableObject
+    public partial class TrialBalanceAccount : IEquatable<TrialBalanceAccount>, IValidatableObject
     {
-        
+
         /// <summary>
         /// ID of the account
         /// </summary>
         /// <value>ID of the account</value>
-        [DataMember(Name="accountId", EmitDefaultValue=false)]
+        [DataMember(Name = "accountId", EmitDefaultValue = false)]
         public Guid? AccountId { get; set; }
 
         /// <summary>
         /// The type of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountTypes&#39;&gt;Account Types&lt;/a&gt;
         /// </summary>
         /// <value>The type of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountTypes&#39;&gt;Account Types&lt;/a&gt;</value>
-        [DataMember(Name="accountType", EmitDefaultValue=false)]
+        [DataMember(Name = "accountType", EmitDefaultValue = false)]
         public string AccountType { get; set; }
 
         /// <summary>
         /// Customer defined alpha numeric account code e.g 200 or SALES
         /// </summary>
         /// <value>Customer defined alpha numeric account code e.g 200 or SALES</value>
-        [DataMember(Name="accountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "accountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// The class of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountClassTypes&#39;&gt;Account Class Types&lt;/a&gt;
         /// </summary>
         /// <value>The class of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountClassTypes&#39;&gt;Account Class Types&lt;/a&gt;</value>
-        [DataMember(Name="accountClass", EmitDefaultValue=false)]
+        [DataMember(Name = "accountClass", EmitDefaultValue = false)]
         public string AccountClass { get; set; }
 
         /// <summary>
         /// Accounts with a status of ACTIVE can be updated to ARCHIVED. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountStatusCodes&#39;&gt;Account Status Codes&lt;/a&gt;
         /// </summary>
         /// <value>Accounts with a status of ACTIVE can be updated to ARCHIVED. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountStatusCodes&#39;&gt;Account Status Codes&lt;/a&gt;</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
         /// Reporting code (Shown if set)
         /// </summary>
         /// <value>Reporting code (Shown if set)</value>
-        [DataMember(Name="reportingCode", EmitDefaultValue=false)]
+        [DataMember(Name = "reportingCode", EmitDefaultValue = false)]
         public string ReportingCode { get; set; }
 
         /// <summary>
         /// Name of the account
         /// </summary>
         /// <value>Name of the account</value>
-        [DataMember(Name="accountName", EmitDefaultValue=false)]
+        [DataMember(Name = "accountName", EmitDefaultValue = false)]
         public string AccountName { get; set; }
 
         /// <summary>
         /// Gets or Sets Balance
         /// </summary>
-        [DataMember(Name="balance", EmitDefaultValue=false)]
+        [DataMember(Name = "balance", EmitDefaultValue = false)]
         public TrialBalanceEntry Balance { get; set; }
 
         /// <summary>
         /// Value of balance. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative
         /// </summary>
         /// <value>Value of balance. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative</value>
-        [DataMember(Name="signedBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "signedBalance", EmitDefaultValue = false)]
         public decimal? SignedBalance { get; set; }
 
         /// <summary>
         /// Gets or Sets AccountMovement
         /// </summary>
-        [DataMember(Name="accountMovement", EmitDefaultValue=false)]
+        [DataMember(Name = "accountMovement", EmitDefaultValue = false)]
         public TrialBalanceMovement AccountMovement { get; set; }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -150,52 +150,52 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountId == input.AccountId ||
                     (this.AccountId != null &&
                     this.AccountId.Equals(input.AccountId))
-                ) && 
+                ) &&
                 (
                     this.AccountType == input.AccountType ||
                     (this.AccountType != null &&
                     this.AccountType.Equals(input.AccountType))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.AccountClass == input.AccountClass ||
                     (this.AccountClass != null &&
                     this.AccountClass.Equals(input.AccountClass))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.ReportingCode == input.ReportingCode ||
                     (this.ReportingCode != null &&
                     this.ReportingCode.Equals(input.ReportingCode))
-                ) && 
+                ) &&
                 (
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&
                     this.AccountName.Equals(input.AccountName))
-                ) && 
+                ) &&
                 (
                     this.Balance == input.Balance ||
                     (this.Balance != null &&
                     this.Balance.Equals(input.Balance))
-                ) && 
+                ) &&
                 (
                     this.SignedBalance == input.SignedBalance ||
                     (this.SignedBalance != null &&
                     this.SignedBalance.Equals(input.SignedBalance))
-                ) && 
+                ) &&
                 (
                     this.AccountMovement == input.AccountMovement ||
                     (this.AccountMovement != null &&

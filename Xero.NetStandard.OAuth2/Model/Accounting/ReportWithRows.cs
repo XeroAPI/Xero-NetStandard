@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ReportWithRows
     /// </summary>
     [DataContract]
-    public partial class ReportWithRows :  IEquatable<ReportWithRows>, IValidatableObject
+    public partial class ReportWithRows : IEquatable<ReportWithRows>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Reports
         /// </summary>
-        [DataMember(Name="Reports", EmitDefaultValue=false)]
+        [DataMember(Name = "Reports", EmitDefaultValue = false)]
         public List<ReportWithRow> Reports { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Reports == input.Reports ||
                     this.Reports != null &&

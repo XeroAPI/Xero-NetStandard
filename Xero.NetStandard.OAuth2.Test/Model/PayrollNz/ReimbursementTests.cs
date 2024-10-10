@@ -114,7 +114,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task ReimbursementCategoryEnum_NullInput_Deserialises(){
+        public async Task ReimbursementCategoryEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -146,7 +147,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task CalculationTypeEnum_NullInput_Deserialises(){
+        public async Task CalculationTypeEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -185,7 +187,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task StandardTypeOfUnitsEnum_NullInput_Deserialises(){
+        public async Task StandardTypeOfUnitsEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {

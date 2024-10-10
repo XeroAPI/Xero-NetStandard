@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// How the requested leave will be paid out, e.g. cashed out.
     /// </summary>
     /// <value>How the requested leave will be paid out, e.g. cashed out.</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum PayOutType
     {
         /// <summary>

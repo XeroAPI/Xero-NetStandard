@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// Setting
     /// </summary>
     [DataContract]
-    public partial class Setting :  IEquatable<Setting>, IValidatableObject
+    public partial class Setting : IEquatable<Setting>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The prefix used for fixed asset numbers (“FA-” by default)
         /// </summary>
         /// <value>The prefix used for fixed asset numbers (“FA-” by default)</value>
-        [DataMember(Name="assetNumberPrefix", EmitDefaultValue=false)]
+        [DataMember(Name = "assetNumberPrefix", EmitDefaultValue = false)]
         public string AssetNumberPrefix { get; set; }
 
         /// <summary>
         /// The next available sequence number
         /// </summary>
         /// <value>The next available sequence number</value>
-        [DataMember(Name="assetNumberSequence", EmitDefaultValue=false)]
+        [DataMember(Name = "assetNumberSequence", EmitDefaultValue = false)]
         public string AssetNumberSequence { get; set; }
 
         /// <summary>
         /// The date depreciation calculations started on registered fixed assets in Xero
         /// </summary>
         /// <value>The date depreciation calculations started on registered fixed assets in Xero</value>
-        [DataMember(Name="assetStartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "assetStartDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? AssetStartDate { get; set; }
 
@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The last depreciation date
         /// </summary>
         /// <value>The last depreciation date</value>
-        [DataMember(Name="lastDepreciationDate", EmitDefaultValue=false)]
+        [DataMember(Name = "lastDepreciationDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? LastDepreciationDate { get; set; }
 
@@ -65,28 +65,28 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// Default account that gains are posted to
         /// </summary>
         /// <value>Default account that gains are posted to</value>
-        [DataMember(Name="defaultGainOnDisposalAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultGainOnDisposalAccountId", EmitDefaultValue = false)]
         public Guid? DefaultGainOnDisposalAccountId { get; set; }
 
         /// <summary>
         /// Default account that losses are posted to
         /// </summary>
         /// <value>Default account that losses are posted to</value>
-        [DataMember(Name="defaultLossOnDisposalAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultLossOnDisposalAccountId", EmitDefaultValue = false)]
         public Guid? DefaultLossOnDisposalAccountId { get; set; }
 
         /// <summary>
         /// Default account that capital gains are posted to
         /// </summary>
         /// <value>Default account that capital gains are posted to</value>
-        [DataMember(Name="defaultCapitalGainOnDisposalAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "defaultCapitalGainOnDisposalAccountId", EmitDefaultValue = false)]
         public Guid? DefaultCapitalGainOnDisposalAccountId { get; set; }
 
         /// <summary>
         /// opt in for tax calculation
         /// </summary>
         /// <value>opt in for tax calculation</value>
-        [DataMember(Name="optInForTax", EmitDefaultValue=false)]
+        [DataMember(Name = "optInForTax", EmitDefaultValue = false)]
         public bool? OptInForTax { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -138,42 +138,42 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AssetNumberPrefix == input.AssetNumberPrefix ||
                     (this.AssetNumberPrefix != null &&
                     this.AssetNumberPrefix.Equals(input.AssetNumberPrefix))
-                ) && 
+                ) &&
                 (
                     this.AssetNumberSequence == input.AssetNumberSequence ||
                     (this.AssetNumberSequence != null &&
                     this.AssetNumberSequence.Equals(input.AssetNumberSequence))
-                ) && 
+                ) &&
                 (
                     this.AssetStartDate == input.AssetStartDate ||
                     (this.AssetStartDate != null &&
                     this.AssetStartDate.Equals(input.AssetStartDate))
-                ) && 
+                ) &&
                 (
                     this.LastDepreciationDate == input.LastDepreciationDate ||
                     (this.LastDepreciationDate != null &&
                     this.LastDepreciationDate.Equals(input.LastDepreciationDate))
-                ) && 
+                ) &&
                 (
                     this.DefaultGainOnDisposalAccountId == input.DefaultGainOnDisposalAccountId ||
                     (this.DefaultGainOnDisposalAccountId != null &&
                     this.DefaultGainOnDisposalAccountId.Equals(input.DefaultGainOnDisposalAccountId))
-                ) && 
+                ) &&
                 (
                     this.DefaultLossOnDisposalAccountId == input.DefaultLossOnDisposalAccountId ||
                     (this.DefaultLossOnDisposalAccountId != null &&
                     this.DefaultLossOnDisposalAccountId.Equals(input.DefaultLossOnDisposalAccountId))
-                ) && 
+                ) &&
                 (
                     this.DefaultCapitalGainOnDisposalAccountId == input.DefaultCapitalGainOnDisposalAccountId ||
                     (this.DefaultCapitalGainOnDisposalAccountId != null &&
                     this.DefaultCapitalGainOnDisposalAccountId.Equals(input.DefaultCapitalGainOnDisposalAccountId))
-                ) && 
+                ) &&
                 (
                     this.OptInForTax == input.OptInForTax ||
                     (this.OptInForTax != null &&

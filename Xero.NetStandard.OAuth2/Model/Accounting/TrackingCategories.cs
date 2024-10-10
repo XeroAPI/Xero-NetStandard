@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TrackingCategories
     /// </summary>
     [DataContract]
-    public partial class TrackingCategories :  IEquatable<TrackingCategories>, IValidatableObject
+    public partial class TrackingCategories : IEquatable<TrackingCategories>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _TrackingCategories
         /// </summary>
-        [DataMember(Name="TrackingCategories", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategories", EmitDefaultValue = false)]
         public List<TrackingCategory> _TrackingCategories { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._TrackingCategories == input._TrackingCategories ||
                     this._TrackingCategories != null &&

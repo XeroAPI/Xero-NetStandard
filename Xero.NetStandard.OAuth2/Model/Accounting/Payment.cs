@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Payment
     /// </summary>
     [DataContract]
-    public partial class Payment :  IEquatable<Payment>, IValidatableObject
+    public partial class Payment : IEquatable<Payment>, IValidatableObject
     {
         /// <summary>
         /// The status of the payment.
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The status of the payment.
         /// </summary>
         /// <value>The status of the payment.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// See Payment Types.
@@ -118,183 +118,183 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Payment Types.
         /// </summary>
         /// <value>See Payment Types.</value>
-        [DataMember(Name="PaymentType", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentType", EmitDefaultValue = false)]
         public PaymentTypeEnum PaymentType { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Invoice
         /// </summary>
-        [DataMember(Name="Invoice", EmitDefaultValue=false)]
+        [DataMember(Name = "Invoice", EmitDefaultValue = false)]
         public Invoice Invoice { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditNote
         /// </summary>
-        [DataMember(Name="CreditNote", EmitDefaultValue=false)]
+        [DataMember(Name = "CreditNote", EmitDefaultValue = false)]
         public CreditNote CreditNote { get; set; }
 
         /// <summary>
         /// Gets or Sets Prepayment
         /// </summary>
-        [DataMember(Name="Prepayment", EmitDefaultValue=false)]
+        [DataMember(Name = "Prepayment", EmitDefaultValue = false)]
         public Prepayment Prepayment { get; set; }
 
         /// <summary>
         /// Gets or Sets Overpayment
         /// </summary>
-        [DataMember(Name="Overpayment", EmitDefaultValue=false)]
+        [DataMember(Name = "Overpayment", EmitDefaultValue = false)]
         public Overpayment Overpayment { get; set; }
 
         /// <summary>
         /// Number of invoice or credit note you are applying payment to e.g.INV-4003
         /// </summary>
         /// <value>Number of invoice or credit note you are applying payment to e.g.INV-4003</value>
-        [DataMember(Name="InvoiceNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "InvoiceNumber", EmitDefaultValue = false)]
         public string InvoiceNumber { get; set; }
 
         /// <summary>
         /// Number of invoice or credit note you are applying payment to e.g. INV-4003
         /// </summary>
         /// <value>Number of invoice or credit note you are applying payment to e.g. INV-4003</value>
-        [DataMember(Name="CreditNoteNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "CreditNoteNumber", EmitDefaultValue = false)]
         public string CreditNoteNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets BatchPayment
         /// </summary>
-        [DataMember(Name="BatchPayment", EmitDefaultValue=false)]
+        [DataMember(Name = "BatchPayment", EmitDefaultValue = false)]
         public BatchPayment BatchPayment { get; set; }
 
         /// <summary>
         /// Gets or Sets Account
         /// </summary>
-        [DataMember(Name="Account", EmitDefaultValue=false)]
+        [DataMember(Name = "Account", EmitDefaultValue = false)]
         public Account Account { get; set; }
 
         /// <summary>
         /// Code of account you are using to make the payment e.g. 001 (note- not all accounts have a code value)
         /// </summary>
         /// <value>Code of account you are using to make the payment e.g. 001 (note- not all accounts have a code value)</value>
-        [DataMember(Name="Code", EmitDefaultValue=false)]
+        [DataMember(Name = "Code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06
         /// </summary>
         /// <value>Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// Exchange rate when payment is received. Only used for non base currency invoices and credit notes e.g. 0.7500
         /// </summary>
         /// <value>Exchange rate when payment is received. Only used for non base currency invoices and credit notes e.g. 0.7500</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
 
         /// <summary>
         /// The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00
         /// </summary>
         /// <value>The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The amount of the payment in the currency of the bank account.
         /// </summary>
         /// <value>The amount of the payment in the currency of the bank account.</value>
-        [DataMember(Name="BankAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAmount", EmitDefaultValue = false)]
         public decimal? BankAmount { get; set; }
 
         /// <summary>
         /// An optional description for the payment e.g. Direct Debit
         /// </summary>
         /// <value>An optional description for the payment e.g. Direct Debit</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// An optional parameter for the payment. A boolean indicating whether you would like the payment to be created as reconciled when using PUT, or whether a payment has been reconciled when using GET
         /// </summary>
         /// <value>An optional parameter for the payment. A boolean indicating whether you would like the payment to be created as reconciled when using PUT, or whether a payment has been reconciled when using GET</value>
-        [DataMember(Name="IsReconciled", EmitDefaultValue=false)]
+        [DataMember(Name = "IsReconciled", EmitDefaultValue = false)]
         public bool? IsReconciled { get; set; }
 
         /// <summary>
         /// UTC timestamp of last update to the payment
         /// </summary>
         /// <value>UTC timestamp of last update to the payment</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// The Xero identifier for an Payment e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>The Xero identifier for an Payment e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
-        [DataMember(Name="PaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentID", EmitDefaultValue = false)]
         public Guid? PaymentID { get; set; }
 
         /// <summary>
         /// Present if the payment was created as part of a batch.
         /// </summary>
         /// <value>Present if the payment was created as part of a batch.</value>
-        [DataMember(Name="BatchPaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "BatchPaymentID", EmitDefaultValue = false)]
         public Guid? BatchPaymentID { get; set; }
 
         /// <summary>
         /// The suppliers bank account number the payment is being made to
         /// </summary>
         /// <value>The suppliers bank account number the payment is being made to</value>
-        [DataMember(Name="BankAccountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAccountNumber", EmitDefaultValue = false)]
         public string BankAccountNumber { get; set; }
 
         /// <summary>
         /// The suppliers bank account number the payment is being made to
         /// </summary>
         /// <value>The suppliers bank account number the payment is being made to</value>
-        [DataMember(Name="Particulars", EmitDefaultValue=false)]
+        [DataMember(Name = "Particulars", EmitDefaultValue = false)]
         public string Particulars { get; set; }
 
         /// <summary>
         /// The information to appear on the supplier&#39;s bank account
         /// </summary>
         /// <value>The information to appear on the supplier&#39;s bank account</value>
-        [DataMember(Name="Details", EmitDefaultValue=false)]
+        [DataMember(Name = "Details", EmitDefaultValue = false)]
         public string Details { get; set; }
 
         /// <summary>
         /// A boolean to indicate if a contact has an validation errors
         /// </summary>
         /// <value>A boolean to indicate if a contact has an validation errors</value>
-        [DataMember(Name="HasAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAccount", EmitDefaultValue = false)]
         public bool? HasAccount { get; set; }
 
         /// <summary>
         /// A boolean to indicate if a contact has an validation errors
         /// </summary>
         /// <value>A boolean to indicate if a contact has an validation errors</value>
-        [DataMember(Name="HasValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "HasValidationErrors", EmitDefaultValue = false)]
         public bool? HasValidationErrors { get; set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
         /// Displays array of warning messages from the API
         /// </summary>
         /// <value>Displays array of warning messages from the API</value>
-        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -366,141 +366,141 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Invoice == input.Invoice ||
                     (this.Invoice != null &&
                     this.Invoice.Equals(input.Invoice))
-                ) && 
+                ) &&
                 (
                     this.CreditNote == input.CreditNote ||
                     (this.CreditNote != null &&
                     this.CreditNote.Equals(input.CreditNote))
-                ) && 
+                ) &&
                 (
                     this.Prepayment == input.Prepayment ||
                     (this.Prepayment != null &&
                     this.Prepayment.Equals(input.Prepayment))
-                ) && 
+                ) &&
                 (
                     this.Overpayment == input.Overpayment ||
                     (this.Overpayment != null &&
                     this.Overpayment.Equals(input.Overpayment))
-                ) && 
+                ) &&
                 (
                     this.InvoiceNumber == input.InvoiceNumber ||
                     (this.InvoiceNumber != null &&
                     this.InvoiceNumber.Equals(input.InvoiceNumber))
-                ) && 
+                ) &&
                 (
                     this.CreditNoteNumber == input.CreditNoteNumber ||
                     (this.CreditNoteNumber != null &&
                     this.CreditNoteNumber.Equals(input.CreditNoteNumber))
-                ) && 
+                ) &&
                 (
                     this.BatchPayment == input.BatchPayment ||
                     (this.BatchPayment != null &&
                     this.BatchPayment.Equals(input.BatchPayment))
-                ) && 
+                ) &&
                 (
                     this.Account == input.Account ||
                     (this.Account != null &&
                     this.Account.Equals(input.Account))
-                ) && 
+                ) &&
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.BankAmount == input.BankAmount ||
                     (this.BankAmount != null &&
                     this.BankAmount.Equals(input.BankAmount))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.IsReconciled == input.IsReconciled ||
                     (this.IsReconciled != null &&
                     this.IsReconciled.Equals(input.IsReconciled))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.PaymentType == input.PaymentType ||
                     this.PaymentType.Equals(input.PaymentType)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.PaymentID == input.PaymentID ||
                     (this.PaymentID != null &&
                     this.PaymentID.Equals(input.PaymentID))
-                ) && 
+                ) &&
                 (
                     this.BatchPaymentID == input.BatchPaymentID ||
                     (this.BatchPaymentID != null &&
                     this.BatchPaymentID.Equals(input.BatchPaymentID))
-                ) && 
+                ) &&
                 (
                     this.BankAccountNumber == input.BankAccountNumber ||
                     (this.BankAccountNumber != null &&
                     this.BankAccountNumber.Equals(input.BankAccountNumber))
-                ) && 
+                ) &&
                 (
                     this.Particulars == input.Particulars ||
                     (this.Particulars != null &&
                     this.Particulars.Equals(input.Particulars))
-                ) && 
+                ) &&
                 (
                     this.Details == input.Details ||
                     (this.Details != null &&
                     this.Details.Equals(input.Details))
-                ) && 
+                ) &&
                 (
                     this.HasAccount == input.HasAccount ||
                     (this.HasAccount != null &&
                     this.HasAccount.Equals(input.HasAccount))
-                ) && 
+                ) &&
                 (
                     this.HasValidationErrors == input.HasValidationErrors ||
                     (this.HasValidationErrors != null &&
                     this.HasValidationErrors.Equals(input.HasValidationErrors))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
                     this.ValidationErrors.SequenceEqual(input.ValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&

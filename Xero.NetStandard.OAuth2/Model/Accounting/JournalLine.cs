@@ -28,89 +28,89 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// JournalLine
     /// </summary>
     [DataContract]
-    public partial class JournalLine :  IEquatable<JournalLine>, IValidatableObject
+    public partial class JournalLine : IEquatable<JournalLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets AccountType
         /// </summary>
-        [DataMember(Name="AccountType", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountType", EmitDefaultValue = false)]
         public AccountType AccountType { get; set; }
-        
+
         /// <summary>
         /// Xero identifier for Journal
         /// </summary>
         /// <value>Xero identifier for Journal</value>
-        [DataMember(Name="JournalLineID", EmitDefaultValue=false)]
+        [DataMember(Name = "JournalLineID", EmitDefaultValue = false)]
         public Guid? JournalLineID { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountID", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// See AccountCodes
         /// </summary>
         /// <value>See AccountCodes</value>
-        [DataMember(Name="AccountName", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountName", EmitDefaultValue = false)]
         public string AccountName { get; set; }
 
         /// <summary>
         /// The description from the source transaction line item. Only returned if populated.
         /// </summary>
         /// <value>The description from the source transaction line item. Only returned if populated.</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Net amount of journal line. This will be a positive value for a debit and negative for a credit
         /// </summary>
         /// <value>Net amount of journal line. This will be a positive value for a debit and negative for a credit</value>
-        [DataMember(Name="NetAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "NetAmount", EmitDefaultValue = false)]
         public decimal? NetAmount { get; set; }
 
         /// <summary>
         /// Gross amount of journal line (NetAmount + TaxAmount).
         /// </summary>
         /// <value>Gross amount of journal line (NetAmount + TaxAmount).</value>
-        [DataMember(Name="GrossAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "GrossAmount", EmitDefaultValue = false)]
         public decimal? GrossAmount { get; set; }
 
         /// <summary>
         /// Total tax on a journal line
         /// </summary>
         /// <value>Total tax on a journal line</value>
-        [DataMember(Name="TaxAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxAmount", EmitDefaultValue = false)]
         public decimal? TaxAmount { get; private set; }
 
         /// <summary>
         /// The tax type from taxRates
         /// </summary>
         /// <value>The tax type from taxRates</value>
-        [DataMember(Name="TaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxType", EmitDefaultValue = false)]
         public string TaxType { get; set; }
 
         /// <summary>
         /// see TaxRates
         /// </summary>
         /// <value>see TaxRates</value>
-        [DataMember(Name="TaxName", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxName", EmitDefaultValue = false)]
         public string TaxName { get; set; }
 
         /// <summary>
         /// Optional Tracking Category – see Tracking. Any JournalLine can have a maximum of 2 &lt;TrackingCategory&gt; elements.
         /// </summary>
         /// <value>Optional Tracking Category – see Tracking. Any JournalLine can have a maximum of 2 &lt;TrackingCategory&gt; elements.</value>
-        [DataMember(Name="TrackingCategories", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategories", EmitDefaultValue = false)]
         public List<TrackingCategory> TrackingCategories { get; set; }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -166,61 +166,61 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.JournalLineID == input.JournalLineID ||
                     (this.JournalLineID != null &&
                     this.JournalLineID.Equals(input.JournalLineID))
-                ) && 
+                ) &&
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.AccountType == input.AccountType ||
                     this.AccountType.Equals(input.AccountType)
-                ) && 
+                ) &&
                 (
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&
                     this.AccountName.Equals(input.AccountName))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.NetAmount == input.NetAmount ||
                     (this.NetAmount != null &&
                     this.NetAmount.Equals(input.NetAmount))
-                ) && 
+                ) &&
                 (
                     this.GrossAmount == input.GrossAmount ||
                     (this.GrossAmount != null &&
                     this.GrossAmount.Equals(input.GrossAmount))
-                ) && 
+                ) &&
                 (
                     this.TaxAmount == input.TaxAmount ||
                     (this.TaxAmount != null &&
                     this.TaxAmount.Equals(input.TaxAmount))
-                ) && 
+                ) &&
                 (
                     this.TaxType == input.TaxType ||
                     (this.TaxType != null &&
                     this.TaxType.Equals(input.TaxType))
-                ) && 
+                ) &&
                 (
                     this.TaxName == input.TaxName ||
                     (this.TaxName != null &&
                     this.TaxName.Equals(input.TaxName))
-                ) && 
+                ) &&
                 (
                     this.TrackingCategories == input.TrackingCategories ||
                     this.TrackingCategories != null &&

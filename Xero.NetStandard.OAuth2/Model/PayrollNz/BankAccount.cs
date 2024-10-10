@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// BankAccount
     /// </summary>
     [DataContract]
-    public partial class BankAccount :  IEquatable<BankAccount>, IValidatableObject
+    public partial class BankAccount : IEquatable<BankAccount>, IValidatableObject
     {
         /// <summary>
         /// Calculation type for the transaction can be &#39;Fixed Amount&#39; or &#39;Balance&#39;
@@ -55,63 +55,63 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Calculation type for the transaction can be &#39;Fixed Amount&#39; or &#39;Balance&#39;
         /// </summary>
         /// <value>Calculation type for the transaction can be &#39;Fixed Amount&#39; or &#39;Balance&#39;</value>
-        [DataMember(Name="calculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "calculationType", EmitDefaultValue = false)]
         public CalculationTypeEnum CalculationType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccount" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public BankAccount() 
-        { 
+        public BankAccount()
+        {
         }
-        
+
         /// <summary>
         /// Bank account name (max length &#x3D; 32)
         /// </summary>
         /// <value>Bank account name (max length &#x3D; 32)</value>
-        [DataMember(Name="accountName", EmitDefaultValue=false)]
+        [DataMember(Name = "accountName", EmitDefaultValue = false)]
         public string AccountName { get; set; }
 
         /// <summary>
         /// Bank account number (digits only; max length &#x3D; 8)
         /// </summary>
         /// <value>Bank account number (digits only; max length &#x3D; 8)</value>
-        [DataMember(Name="accountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "accountNumber", EmitDefaultValue = false)]
         public string AccountNumber { get; set; }
 
         /// <summary>
         /// Bank account sort code (6 digits)
         /// </summary>
         /// <value>Bank account sort code (6 digits)</value>
-        [DataMember(Name="sortCode", EmitDefaultValue=false)]
+        [DataMember(Name = "sortCode", EmitDefaultValue = false)]
         public string SortCode { get; set; }
 
         /// <summary>
         /// Particulars that appear on the statement.
         /// </summary>
         /// <value>Particulars that appear on the statement.</value>
-        [DataMember(Name="particulars", EmitDefaultValue=false)]
+        [DataMember(Name = "particulars", EmitDefaultValue = false)]
         public string Particulars { get; set; }
 
         /// <summary>
         /// Code of a transaction that appear on the statement.
         /// </summary>
         /// <value>Code of a transaction that appear on the statement.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
+        [DataMember(Name = "code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// Dollar amount of a transaction.
         /// </summary>
         /// <value>Dollar amount of a transaction.</value>
-        [DataMember(Name="dollarAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "dollarAmount", EmitDefaultValue = false)]
         public decimal? DollarAmount { get; set; }
 
         /// <summary>
         /// Statement Text/reference for a transaction that appear on the statement.
         /// </summary>
         /// <value>Statement Text/reference for a transaction that appear on the statement.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name = "reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -163,42 +163,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&
                     this.AccountName.Equals(input.AccountName))
-                ) && 
+                ) &&
                 (
                     this.AccountNumber == input.AccountNumber ||
                     (this.AccountNumber != null &&
                     this.AccountNumber.Equals(input.AccountNumber))
-                ) && 
+                ) &&
                 (
                     this.SortCode == input.SortCode ||
                     (this.SortCode != null &&
                     this.SortCode.Equals(input.SortCode))
-                ) && 
+                ) &&
                 (
                     this.Particulars == input.Particulars ||
                     (this.Particulars != null &&
                     this.Particulars.Equals(input.Particulars))
-                ) && 
+                ) &&
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.DollarAmount == input.DollarAmount ||
                     (this.DollarAmount != null &&
                     this.DollarAmount.Equals(input.DollarAmount))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)

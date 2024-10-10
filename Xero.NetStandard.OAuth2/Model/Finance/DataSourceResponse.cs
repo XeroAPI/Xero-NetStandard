@@ -28,112 +28,112 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// DataSourceResponse
     /// </summary>
     [DataContract]
-    public partial class DataSourceResponse :  IEquatable<DataSourceResponse>, IValidatableObject
+    public partial class DataSourceResponse : IEquatable<DataSourceResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.</value>
-        [DataMember(Name="directBankFeed", EmitDefaultValue=false)]
+        [DataMember(Name = "directBankFeed", EmitDefaultValue = false)]
         public decimal? DirectBankFeed { get; set; }
 
         /// <summary>
         /// No longer in use.
         /// </summary>
         /// <value>No longer in use.</value>
-        [DataMember(Name="indirectBankFeed", EmitDefaultValue=false)]
+        [DataMember(Name = "indirectBankFeed", EmitDefaultValue = false)]
         public decimal? IndirectBankFeed { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
-        [DataMember(Name="fileUpload", EmitDefaultValue=false)]
+        [DataMember(Name = "fileUpload", EmitDefaultValue = false)]
         public decimal? FileUpload { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
-        [DataMember(Name="manual", EmitDefaultValue=false)]
+        [DataMember(Name = "manual", EmitDefaultValue = false)]
         public decimal? Manual { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.</value>
-        [DataMember(Name="directBankFeedPos", EmitDefaultValue=false)]
+        [DataMember(Name = "directBankFeedPos", EmitDefaultValue = false)]
         public decimal? DirectBankFeedPos { get; set; }
 
         /// <summary>
         /// No longer in use.
         /// </summary>
         /// <value>No longer in use.</value>
-        [DataMember(Name="indirectBankFeedPos", EmitDefaultValue=false)]
+        [DataMember(Name = "indirectBankFeedPos", EmitDefaultValue = false)]
         public decimal? IndirectBankFeedPos { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
-        [DataMember(Name="fileUploadPos", EmitDefaultValue=false)]
+        [DataMember(Name = "fileUploadPos", EmitDefaultValue = false)]
         public decimal? FileUploadPos { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
-        [DataMember(Name="manualPos", EmitDefaultValue=false)]
+        [DataMember(Name = "manualPos", EmitDefaultValue = false)]
         public decimal? ManualPos { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
-        [DataMember(Name="directBankFeedNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "directBankFeedNeg", EmitDefaultValue = false)]
         public decimal? DirectBankFeedNeg { get; set; }
 
         /// <summary>
         /// No longer in use.
         /// </summary>
         /// <value>No longer in use.</value>
-        [DataMember(Name="indirectBankFeedNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "indirectBankFeedNeg", EmitDefaultValue = false)]
         public decimal? IndirectBankFeedNeg { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
-        [DataMember(Name="fileUploadNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "fileUploadNeg", EmitDefaultValue = false)]
         public decimal? FileUploadNeg { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
-        [DataMember(Name="manualNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "manualNeg", EmitDefaultValue = false)]
         public decimal? ManualNeg { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.</value>
-        [DataMember(Name="otherPos", EmitDefaultValue=false)]
+        [DataMember(Name = "otherPos", EmitDefaultValue = false)]
         public decimal? OtherPos { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
-        [DataMember(Name="otherNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "otherNeg", EmitDefaultValue = false)]
         public decimal? OtherNeg { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.</value>
-        [DataMember(Name="other", EmitDefaultValue=false)]
+        [DataMember(Name = "other", EmitDefaultValue = false)]
         public decimal? Other { get; set; }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -192,77 +192,77 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DirectBankFeed == input.DirectBankFeed ||
                     (this.DirectBankFeed != null &&
                     this.DirectBankFeed.Equals(input.DirectBankFeed))
-                ) && 
+                ) &&
                 (
                     this.IndirectBankFeed == input.IndirectBankFeed ||
                     (this.IndirectBankFeed != null &&
                     this.IndirectBankFeed.Equals(input.IndirectBankFeed))
-                ) && 
+                ) &&
                 (
                     this.FileUpload == input.FileUpload ||
                     (this.FileUpload != null &&
                     this.FileUpload.Equals(input.FileUpload))
-                ) && 
+                ) &&
                 (
                     this.Manual == input.Manual ||
                     (this.Manual != null &&
                     this.Manual.Equals(input.Manual))
-                ) && 
+                ) &&
                 (
                     this.DirectBankFeedPos == input.DirectBankFeedPos ||
                     (this.DirectBankFeedPos != null &&
                     this.DirectBankFeedPos.Equals(input.DirectBankFeedPos))
-                ) && 
+                ) &&
                 (
                     this.IndirectBankFeedPos == input.IndirectBankFeedPos ||
                     (this.IndirectBankFeedPos != null &&
                     this.IndirectBankFeedPos.Equals(input.IndirectBankFeedPos))
-                ) && 
+                ) &&
                 (
                     this.FileUploadPos == input.FileUploadPos ||
                     (this.FileUploadPos != null &&
                     this.FileUploadPos.Equals(input.FileUploadPos))
-                ) && 
+                ) &&
                 (
                     this.ManualPos == input.ManualPos ||
                     (this.ManualPos != null &&
                     this.ManualPos.Equals(input.ManualPos))
-                ) && 
+                ) &&
                 (
                     this.DirectBankFeedNeg == input.DirectBankFeedNeg ||
                     (this.DirectBankFeedNeg != null &&
                     this.DirectBankFeedNeg.Equals(input.DirectBankFeedNeg))
-                ) && 
+                ) &&
                 (
                     this.IndirectBankFeedNeg == input.IndirectBankFeedNeg ||
                     (this.IndirectBankFeedNeg != null &&
                     this.IndirectBankFeedNeg.Equals(input.IndirectBankFeedNeg))
-                ) && 
+                ) &&
                 (
                     this.FileUploadNeg == input.FileUploadNeg ||
                     (this.FileUploadNeg != null &&
                     this.FileUploadNeg.Equals(input.FileUploadNeg))
-                ) && 
+                ) &&
                 (
                     this.ManualNeg == input.ManualNeg ||
                     (this.ManualNeg != null &&
                     this.ManualNeg.Equals(input.ManualNeg))
-                ) && 
+                ) &&
                 (
                     this.OtherPos == input.OtherPos ||
                     (this.OtherPos != null &&
                     this.OtherPos.Equals(input.OtherPos))
-                ) && 
+                ) &&
                 (
                     this.OtherNeg == input.OtherNeg ||
                     (this.OtherNeg != null &&
                     this.OtherNeg.Equals(input.OtherNeg))
-                ) && 
+                ) &&
                 (
                     this.Other == input.Other ||
                     (this.Other != null &&

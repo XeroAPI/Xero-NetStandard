@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// SalaryAndWage
     /// </summary>
     [DataContract]
-    public partial class SalaryAndWage :  IEquatable<SalaryAndWage>, IValidatableObject
+    public partial class SalaryAndWage : IEquatable<SalaryAndWage>, IValidatableObject
     {
         /// <summary>
         /// The current status of the corresponding salary and wages
@@ -61,7 +61,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The current status of the corresponding salary and wages
         /// </summary>
         /// <value>The current status of the corresponding salary and wages</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// The type of the payment of the corresponding salary and wages
@@ -88,56 +88,56 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The type of the payment of the corresponding salary and wages
         /// </summary>
         /// <value>The type of the payment of the corresponding salary and wages</value>
-        [DataMember(Name="paymentType", EmitDefaultValue=false)]
+        [DataMember(Name = "paymentType", EmitDefaultValue = false)]
         public PaymentTypeEnum PaymentType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SalaryAndWage" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public SalaryAndWage() 
-        { 
+        public SalaryAndWage()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for a salary and wages record
         /// </summary>
         /// <value>Xero unique identifier for a salary and wages record</value>
-        [DataMember(Name="salaryAndWagesID", EmitDefaultValue=false)]
+        [DataMember(Name = "salaryAndWagesID", EmitDefaultValue = false)]
         public Guid? SalaryAndWagesID { get; set; }
 
         /// <summary>
         /// Xero unique identifier for an earnings rate
         /// </summary>
         /// <value>Xero unique identifier for an earnings rate</value>
-        [DataMember(Name="earningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// The Number of Units per week for the corresponding salary and wages
         /// </summary>
         /// <value>The Number of Units per week for the corresponding salary and wages</value>
-        [DataMember(Name="numberOfUnitsPerWeek", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnitsPerWeek", EmitDefaultValue = false)]
         public double? NumberOfUnitsPerWeek { get; set; }
 
         /// <summary>
         /// The rate of each unit for the corresponding salary and wages
         /// </summary>
         /// <value>The rate of each unit for the corresponding salary and wages</value>
-        [DataMember(Name="ratePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "ratePerUnit", EmitDefaultValue = false)]
         public double? RatePerUnit { get; set; }
 
         /// <summary>
         /// The Number of Units per day for the corresponding salary and wages
         /// </summary>
         /// <value>The Number of Units per day for the corresponding salary and wages</value>
-        [DataMember(Name="numberOfUnitsPerDay", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnitsPerDay", EmitDefaultValue = false)]
         public double? NumberOfUnitsPerDay { get; set; }
 
         /// <summary>
         /// The effective date of the corresponding salary and wages
         /// </summary>
         /// <value>The effective date of the corresponding salary and wages</value>
-        [DataMember(Name="effectiveFrom", EmitDefaultValue=false)]
+        [DataMember(Name = "effectiveFrom", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EffectiveFrom { get; set; }
 
@@ -145,7 +145,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The annual salary
         /// </summary>
         /// <value>The annual salary</value>
-        [DataMember(Name="annualSalary", EmitDefaultValue=false)]
+        [DataMember(Name = "annualSalary", EmitDefaultValue = false)]
         public double? AnnualSalary { get; set; }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -198,46 +198,46 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.SalaryAndWagesID == input.SalaryAndWagesID ||
                     (this.SalaryAndWagesID != null &&
                     this.SalaryAndWagesID.Equals(input.SalaryAndWagesID))
-                ) && 
+                ) &&
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnitsPerWeek == input.NumberOfUnitsPerWeek ||
                     (this.NumberOfUnitsPerWeek != null &&
                     this.NumberOfUnitsPerWeek.Equals(input.NumberOfUnitsPerWeek))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnitsPerDay == input.NumberOfUnitsPerDay ||
                     (this.NumberOfUnitsPerDay != null &&
                     this.NumberOfUnitsPerDay.Equals(input.NumberOfUnitsPerDay))
-                ) && 
+                ) &&
                 (
                     this.EffectiveFrom == input.EffectiveFrom ||
                     (this.EffectiveFrom != null &&
                     this.EffectiveFrom.Equals(input.EffectiveFrom))
-                ) && 
+                ) &&
                 (
                     this.AnnualSalary == input.AnnualSalary ||
                     (this.AnnualSalary != null &&
                     this.AnnualSalary.Equals(input.AnnualSalary))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.PaymentType == input.PaymentType ||
                     this.PaymentType.Equals(input.PaymentType)

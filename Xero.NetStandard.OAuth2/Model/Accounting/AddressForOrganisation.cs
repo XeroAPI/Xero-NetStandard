@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// AddressForOrganisation
     /// </summary>
     [DataContract]
-    public partial class AddressForOrganisation :  IEquatable<AddressForOrganisation>, IValidatableObject
+    public partial class AddressForOrganisation : IEquatable<AddressForOrganisation>, IValidatableObject
     {
         /// <summary>
         /// define the type of address
@@ -61,70 +61,70 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// define the type of address
         /// </summary>
         /// <value>define the type of address</value>
-        [DataMember(Name="AddressType", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressType", EmitDefaultValue = false)]
         public AddressTypeEnum AddressType { get; set; }
-        
+
         /// <summary>
         /// max length &#x3D; 500
         /// </summary>
         /// <value>max length &#x3D; 500</value>
-        [DataMember(Name="AddressLine1", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine1", EmitDefaultValue = false)]
         public string AddressLine1 { get; set; }
 
         /// <summary>
         /// max length &#x3D; 500
         /// </summary>
         /// <value>max length &#x3D; 500</value>
-        [DataMember(Name="AddressLine2", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine2", EmitDefaultValue = false)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// max length &#x3D; 500
         /// </summary>
         /// <value>max length &#x3D; 500</value>
-        [DataMember(Name="AddressLine3", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine3", EmitDefaultValue = false)]
         public string AddressLine3 { get; set; }
 
         /// <summary>
         /// max length &#x3D; 500
         /// </summary>
         /// <value>max length &#x3D; 500</value>
-        [DataMember(Name="AddressLine4", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine4", EmitDefaultValue = false)]
         public string AddressLine4 { get; set; }
 
         /// <summary>
         /// max length &#x3D; 255
         /// </summary>
         /// <value>max length &#x3D; 255</value>
-        [DataMember(Name="City", EmitDefaultValue=false)]
+        [DataMember(Name = "City", EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// max length &#x3D; 255
         /// </summary>
         /// <value>max length &#x3D; 255</value>
-        [DataMember(Name="Region", EmitDefaultValue=false)]
+        [DataMember(Name = "Region", EmitDefaultValue = false)]
         public string Region { get; set; }
 
         /// <summary>
         /// max length &#x3D; 50
         /// </summary>
         /// <value>max length &#x3D; 50</value>
-        [DataMember(Name="PostalCode", EmitDefaultValue=false)]
+        [DataMember(Name = "PostalCode", EmitDefaultValue = false)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// max length &#x3D; 50, [A-Z], [a-z] only
         /// </summary>
         /// <value>max length &#x3D; 50, [A-Z], [a-z] only</value>
-        [DataMember(Name="Country", EmitDefaultValue=false)]
+        [DataMember(Name = "Country", EmitDefaultValue = false)]
         public string Country { get; set; }
 
         /// <summary>
         /// max length &#x3D; 255
         /// </summary>
         /// <value>max length &#x3D; 255</value>
-        [DataMember(Name="AttentionTo", EmitDefaultValue=false)]
+        [DataMember(Name = "AttentionTo", EmitDefaultValue = false)]
         public string AttentionTo { get; set; }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -178,51 +178,51 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AddressType == input.AddressType ||
                     this.AddressType.Equals(input.AddressType)
-                ) && 
+                ) &&
                 (
                     this.AddressLine1 == input.AddressLine1 ||
                     (this.AddressLine1 != null &&
                     this.AddressLine1.Equals(input.AddressLine1))
-                ) && 
+                ) &&
                 (
                     this.AddressLine2 == input.AddressLine2 ||
                     (this.AddressLine2 != null &&
                     this.AddressLine2.Equals(input.AddressLine2))
-                ) && 
+                ) &&
                 (
                     this.AddressLine3 == input.AddressLine3 ||
                     (this.AddressLine3 != null &&
                     this.AddressLine3.Equals(input.AddressLine3))
-                ) && 
+                ) &&
                 (
                     this.AddressLine4 == input.AddressLine4 ||
                     (this.AddressLine4 != null &&
                     this.AddressLine4.Equals(input.AddressLine4))
-                ) && 
+                ) &&
                 (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
-                ) && 
+                ) &&
                 (
                     this.Region == input.Region ||
                     (this.Region != null &&
                     this.Region.Equals(input.Region))
-                ) && 
+                ) &&
                 (
                     this.PostalCode == input.PostalCode ||
                     (this.PostalCode != null &&
                     this.PostalCode.Equals(input.PostalCode))
-                ) && 
+                ) &&
                 (
                     this.Country == input.Country ||
                     (this.Country != null &&
                     this.Country.Equals(input.Country))
-                ) && 
+                ) &&
                 (
                     this.AttentionTo == input.AttentionTo ||
                     (this.AttentionTo != null &&
@@ -270,57 +270,57 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // AddressLine1 (string) maxLength
-            if(this.AddressLine1 != null && this.AddressLine1.Length > 500)
+            if (this.AddressLine1 != null && this.AddressLine1.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine1, length must be less than 500.", new [] { "AddressLine1" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine1, length must be less than 500.", new[] { "AddressLine1" });
             }
 
             // AddressLine2 (string) maxLength
-            if(this.AddressLine2 != null && this.AddressLine2.Length > 500)
+            if (this.AddressLine2 != null && this.AddressLine2.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine2, length must be less than 500.", new [] { "AddressLine2" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine2, length must be less than 500.", new[] { "AddressLine2" });
             }
 
             // AddressLine3 (string) maxLength
-            if(this.AddressLine3 != null && this.AddressLine3.Length > 500)
+            if (this.AddressLine3 != null && this.AddressLine3.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine3, length must be less than 500.", new [] { "AddressLine3" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine3, length must be less than 500.", new[] { "AddressLine3" });
             }
 
             // AddressLine4 (string) maxLength
-            if(this.AddressLine4 != null && this.AddressLine4.Length > 500)
+            if (this.AddressLine4 != null && this.AddressLine4.Length > 500)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine4, length must be less than 500.", new [] { "AddressLine4" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressLine4, length must be less than 500.", new[] { "AddressLine4" });
             }
 
             // City (string) maxLength
-            if(this.City != null && this.City.Length > 255)
+            if (this.City != null && this.City.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 255.", new [] { "City" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for City, length must be less than 255.", new[] { "City" });
             }
 
             // Region (string) maxLength
-            if(this.Region != null && this.Region.Length > 255)
+            if (this.Region != null && this.Region.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Region, length must be less than 255.", new [] { "Region" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Region, length must be less than 255.", new[] { "Region" });
             }
 
             // PostalCode (string) maxLength
-            if(this.PostalCode != null && this.PostalCode.Length > 50)
+            if (this.PostalCode != null && this.PostalCode.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostalCode, length must be less than 50.", new [] { "PostalCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostalCode, length must be less than 50.", new[] { "PostalCode" });
             }
 
             // Country (string) maxLength
-            if(this.Country != null && this.Country.Length > 50)
+            if (this.Country != null && this.Country.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Country, length must be less than 50.", new [] { "Country" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Country, length must be less than 50.", new[] { "Country" });
             }
 
             // AttentionTo (string) maxLength
-            if(this.AttentionTo != null && this.AttentionTo.Length > 255)
+            if (this.AttentionTo != null && this.AttentionTo.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AttentionTo, length must be less than 255.", new [] { "AttentionTo" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AttentionTo, length must be less than 255.", new[] { "AttentionTo" });
             }
 
             yield break;

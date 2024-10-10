@@ -27,9 +27,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// <summary>
     /// Defines DeductionTypeCalculationType
     /// </summary>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum DeductionTypeCalculationType
     {
         /// <summary>

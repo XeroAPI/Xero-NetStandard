@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TaxRates
     /// </summary>
     [DataContract]
-    public partial class TaxRates :  IEquatable<TaxRates>, IValidatableObject
+    public partial class TaxRates : IEquatable<TaxRates>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _TaxRates
         /// </summary>
-        [DataMember(Name="TaxRates", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxRates", EmitDefaultValue = false)]
         public List<TaxRate> _TaxRates { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._TaxRates == input._TaxRates ||
                     this._TaxRates != null &&

@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Overpayment
     /// </summary>
     [DataContract]
-    public partial class Overpayment :  IEquatable<Overpayment>, IValidatableObject
+    public partial class Overpayment : IEquatable<Overpayment>, IValidatableObject
     {
         /// <summary>
         /// See Overpayment Types
@@ -61,7 +61,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Overpayment Types
         /// </summary>
         /// <value>See Overpayment Types</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// See Overpayment Status Codes
@@ -94,121 +94,121 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Overpayment Status Codes
         /// </summary>
         /// <value>See Overpayment Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// The date the overpayment is created YYYY-MM-DD
         /// </summary>
         /// <value>The date the overpayment is created YYYY-MM-DD</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// See Overpayment Line Items
         /// </summary>
         /// <value>See Overpayment Line Items</value>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// The subtotal of the overpayment excluding taxes
         /// </summary>
         /// <value>The subtotal of the overpayment excluding taxes</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; set; }
 
         /// <summary>
         /// The total tax on the overpayment
         /// </summary>
         /// <value>The total tax on the overpayment</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; set; }
 
         /// <summary>
         /// The total of the overpayment (subtotal + total tax)
         /// </summary>
         /// <value>The total of the overpayment (subtotal + total tax)</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// UTC timestamp of last update to the overpayment
         /// </summary>
         /// <value>UTC timestamp of last update to the overpayment</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Xero generated unique identifier
         /// </summary>
         /// <value>Xero generated unique identifier</value>
-        [DataMember(Name="OverpaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "OverpaymentID", EmitDefaultValue = false)]
         public Guid? OverpaymentID { get; set; }
 
         /// <summary>
         /// The currency rate for a multicurrency overpayment. If no rate is specified, the XE.com day rate is used
         /// </summary>
         /// <value>The currency rate for a multicurrency overpayment. If no rate is specified, the XE.com day rate is used</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
 
         /// <summary>
         /// The remaining credit balance on the overpayment
         /// </summary>
         /// <value>The remaining credit balance on the overpayment</value>
-        [DataMember(Name="RemainingCredit", EmitDefaultValue=false)]
+        [DataMember(Name = "RemainingCredit", EmitDefaultValue = false)]
         public decimal? RemainingCredit { get; set; }
 
         /// <summary>
         /// See Allocations
         /// </summary>
         /// <value>See Allocations</value>
-        [DataMember(Name="Allocations", EmitDefaultValue=false)]
+        [DataMember(Name = "Allocations", EmitDefaultValue = false)]
         public List<Allocation> Allocations { get; set; }
 
         /// <summary>
         /// The amount of applied to an invoice
         /// </summary>
         /// <value>The amount of applied to an invoice</value>
-        [DataMember(Name="AppliedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "AppliedAmount", EmitDefaultValue = false)]
         public double? AppliedAmount { get; set; }
 
         /// <summary>
         /// See Payments
         /// </summary>
         /// <value>See Payments</value>
-        [DataMember(Name="Payments", EmitDefaultValue=false)]
+        [DataMember(Name = "Payments", EmitDefaultValue = false)]
         public List<Payment> Payments { get; set; }
 
         /// <summary>
         /// boolean to indicate if a overpayment has an attachment
         /// </summary>
         /// <value>boolean to indicate if a overpayment has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// See Attachments
         /// </summary>
         /// <value>See Attachments</value>
-        [DataMember(Name="Attachments", EmitDefaultValue=false)]
+        [DataMember(Name = "Attachments", EmitDefaultValue = false)]
         public List<Attachment> Attachments { get; set; }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -271,96 +271,96 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.OverpaymentID == input.OverpaymentID ||
                     (this.OverpaymentID != null &&
                     this.OverpaymentID.Equals(input.OverpaymentID))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.RemainingCredit == input.RemainingCredit ||
                     (this.RemainingCredit != null &&
                     this.RemainingCredit.Equals(input.RemainingCredit))
-                ) && 
+                ) &&
                 (
                     this.Allocations == input.Allocations ||
                     this.Allocations != null &&
                     input.Allocations != null &&
                     this.Allocations.SequenceEqual(input.Allocations)
-                ) && 
+                ) &&
                 (
                     this.AppliedAmount == input.AppliedAmount ||
                     (this.AppliedAmount != null &&
                     this.AppliedAmount.Equals(input.AppliedAmount))
-                ) && 
+                ) &&
                 (
                     this.Payments == input.Payments ||
                     this.Payments != null &&
                     input.Payments != null &&
                     this.Payments.SequenceEqual(input.Payments)
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&

@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TrackingOptions
     /// </summary>
     [DataContract]
-    public partial class TrackingOptions :  IEquatable<TrackingOptions>, IValidatableObject
+    public partial class TrackingOptions : IEquatable<TrackingOptions>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Options
         /// </summary>
-        [DataMember(Name="Options", EmitDefaultValue=false)]
+        [DataMember(Name = "Options", EmitDefaultValue = false)]
         public List<TrackingOption> Options { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Options == input.Options ||
                     this.Options != null &&

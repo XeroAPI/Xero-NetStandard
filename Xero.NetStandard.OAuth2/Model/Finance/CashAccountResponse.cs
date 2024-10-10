@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// CashAccountResponse
     /// </summary>
     [DataContract]
-    public partial class CashAccountResponse :  IEquatable<CashAccountResponse>, IValidatableObject
+    public partial class CashAccountResponse : IEquatable<CashAccountResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Total value of transactions in the journals which are not reconciled to bank statement lines, and have a positive (debit) value.
         /// </summary>
         /// <value>Total value of transactions in the journals which are not reconciled to bank statement lines, and have a positive (debit) value.</value>
-        [DataMember(Name="unreconciledAmountPos", EmitDefaultValue=false)]
+        [DataMember(Name = "unreconciledAmountPos", EmitDefaultValue = false)]
         public decimal? UnreconciledAmountPos { get; set; }
 
         /// <summary>
         /// Total value of transactions in the journals which are not reconciled to bank statement lines, and have a negative (credit) value.
         /// </summary>
         /// <value>Total value of transactions in the journals which are not reconciled to bank statement lines, and have a negative (credit) value.</value>
-        [DataMember(Name="unreconciledAmountNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "unreconciledAmountNeg", EmitDefaultValue = false)]
         public decimal? UnreconciledAmountNeg { get; set; }
 
         /// <summary>
         /// Starting (or historic) balance from the journals (manually keyed in by users on account creation - unverified).
         /// </summary>
         /// <value>Starting (or historic) balance from the journals (manually keyed in by users on account creation - unverified).</value>
-        [DataMember(Name="startingBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "startingBalance", EmitDefaultValue = false)]
         public decimal? StartingBalance { get; set; }
 
         /// <summary>
         /// Current cash at bank accounting value from the journals.
         /// </summary>
         /// <value>Current cash at bank accounting value from the journals.</value>
-        [DataMember(Name="accountBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "accountBalance", EmitDefaultValue = false)]
         public decimal? AccountBalance { get; set; }
 
         /// <summary>
         /// Currency which the cashAccount transactions relate to.
         /// </summary>
         /// <value>Currency which the cashAccount transactions relate to.</value>
-        [DataMember(Name="balanceCurrency", EmitDefaultValue=false)]
+        [DataMember(Name = "balanceCurrency", EmitDefaultValue = false)]
         public string BalanceCurrency { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UnreconciledAmountPos == input.UnreconciledAmountPos ||
                     (this.UnreconciledAmountPos != null &&
                     this.UnreconciledAmountPos.Equals(input.UnreconciledAmountPos))
-                ) && 
+                ) &&
                 (
                     this.UnreconciledAmountNeg == input.UnreconciledAmountNeg ||
                     (this.UnreconciledAmountNeg != null &&
                     this.UnreconciledAmountNeg.Equals(input.UnreconciledAmountNeg))
-                ) && 
+                ) &&
                 (
                     this.StartingBalance == input.StartingBalance ||
                     (this.StartingBalance != null &&
                     this.StartingBalance.Equals(input.StartingBalance))
-                ) && 
+                ) &&
                 (
                     this.AccountBalance == input.AccountBalance ||
                     (this.AccountBalance != null &&
                     this.AccountBalance.Equals(input.AccountBalance))
-                ) && 
+                ) &&
                 (
                     this.BalanceCurrency == input.BalanceCurrency ||
                     (this.BalanceCurrency != null &&

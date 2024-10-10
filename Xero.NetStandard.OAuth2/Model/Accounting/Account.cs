@@ -28,12 +28,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Account
     /// </summary>
     [DataContract]
-    public partial class Account :  IEquatable<Account>, IValidatableObject
+    public partial class Account : IEquatable<Account>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public AccountType Type { get; set; }
         /// <summary>
         /// Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes
         /// </summary>
         /// <value>Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// For bank accounts only. See Bank Account types
@@ -111,12 +111,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// For bank accounts only. See Bank Account types
         /// </summary>
         /// <value>For bank accounts only. See Bank Account types</value>
-        [DataMember(Name="BankAccountType", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAccountType", EmitDefaultValue = false)]
         public BankAccountTypeEnum BankAccountType { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
         /// <summary>
         /// See Account Class Types
@@ -161,7 +161,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Account Class Types
         /// </summary>
         /// <value>See Account Class Types</value>
-        [DataMember(Name="Class", EmitDefaultValue=false)]
+        [DataMember(Name = "Class", EmitDefaultValue = false)]
         public ClassEnum Class { get; set; }
         /// <summary>
         /// If this is a system account then this element is returned. See System Account types. Note that non-system accounts may have this element set as either “” or null.
@@ -302,105 +302,105 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// If this is a system account then this element is returned. See System Account types. Note that non-system accounts may have this element set as either “” or null.
         /// </summary>
         /// <value>If this is a system account then this element is returned. See System Account types. Note that non-system accounts may have this element set as either “” or null.</value>
-        [DataMember(Name="SystemAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "SystemAccount", EmitDefaultValue = false)]
         public SystemAccountEnum SystemAccount { get; set; }
-        
+
         /// <summary>
         /// Customer defined alpha numeric account code e.g 200 or SALES (max length &#x3D; 10)
         /// </summary>
         /// <value>Customer defined alpha numeric account code e.g 200 or SALES (max length &#x3D; 10)</value>
-        [DataMember(Name="Code", EmitDefaultValue=false)]
+        [DataMember(Name = "Code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// Name of account (max length &#x3D; 150)
         /// </summary>
         /// <value>Name of account (max length &#x3D; 150)</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The Xero identifier for an account – specified as a string following  the endpoint name   e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>The Xero identifier for an account – specified as a string following  the endpoint name   e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
-        [DataMember(Name="AccountID", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// For bank accounts only (Account Type BANK)
         /// </summary>
         /// <value>For bank accounts only (Account Type BANK)</value>
-        [DataMember(Name="BankAccountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAccountNumber", EmitDefaultValue = false)]
         public string BankAccountNumber { get; set; }
 
         /// <summary>
         /// Description of the Account. Valid for all types of accounts except bank accounts (max length &#x3D; 4000)
         /// </summary>
         /// <value>Description of the Account. Valid for all types of accounts except bank accounts (max length &#x3D; 4000)</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// The tax type from taxRates
         /// </summary>
         /// <value>The tax type from taxRates</value>
-        [DataMember(Name="TaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxType", EmitDefaultValue = false)]
         public string TaxType { get; set; }
 
         /// <summary>
         /// Boolean – describes whether account can have payments applied to it
         /// </summary>
         /// <value>Boolean – describes whether account can have payments applied to it</value>
-        [DataMember(Name="EnablePaymentsToAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "EnablePaymentsToAccount", EmitDefaultValue = false)]
         public bool? EnablePaymentsToAccount { get; set; }
 
         /// <summary>
         /// Boolean – describes whether account code is available for use with expense claims
         /// </summary>
         /// <value>Boolean – describes whether account code is available for use with expense claims</value>
-        [DataMember(Name="ShowInExpenseClaims", EmitDefaultValue=false)]
+        [DataMember(Name = "ShowInExpenseClaims", EmitDefaultValue = false)]
         public bool? ShowInExpenseClaims { get; set; }
 
         /// <summary>
         /// Shown if set
         /// </summary>
         /// <value>Shown if set</value>
-        [DataMember(Name="ReportingCode", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportingCode", EmitDefaultValue = false)]
         public string ReportingCode { get; set; }
 
         /// <summary>
         /// Shown if set
         /// </summary>
         /// <value>Shown if set</value>
-        [DataMember(Name="ReportingCodeName", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportingCodeName", EmitDefaultValue = false)]
         public string ReportingCodeName { get; private set; }
 
         /// <summary>
         /// boolean to indicate if an account has an attachment (read only)
         /// </summary>
         /// <value>boolean to indicate if an account has an attachment (read only)</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Boolean – describes whether the account is shown in the watchlist widget on the dashboard
         /// </summary>
         /// <value>Boolean – describes whether the account is shown in the watchlist widget on the dashboard</value>
-        [DataMember(Name="AddToWatchlist", EmitDefaultValue=false)]
+        [DataMember(Name = "AddToWatchlist", EmitDefaultValue = false)]
         public bool? AddToWatchlist { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -464,96 +464,96 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.BankAccountNumber == input.BankAccountNumber ||
                     (this.BankAccountNumber != null &&
                     this.BankAccountNumber.Equals(input.BankAccountNumber))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.BankAccountType == input.BankAccountType ||
                     this.BankAccountType.Equals(input.BankAccountType)
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.TaxType == input.TaxType ||
                     (this.TaxType != null &&
                     this.TaxType.Equals(input.TaxType))
-                ) && 
+                ) &&
                 (
                     this.EnablePaymentsToAccount == input.EnablePaymentsToAccount ||
                     (this.EnablePaymentsToAccount != null &&
                     this.EnablePaymentsToAccount.Equals(input.EnablePaymentsToAccount))
-                ) && 
+                ) &&
                 (
                     this.ShowInExpenseClaims == input.ShowInExpenseClaims ||
                     (this.ShowInExpenseClaims != null &&
                     this.ShowInExpenseClaims.Equals(input.ShowInExpenseClaims))
-                ) && 
+                ) &&
                 (
                     this.Class == input.Class ||
                     this.Class.Equals(input.Class)
-                ) && 
+                ) &&
                 (
                     this.SystemAccount == input.SystemAccount ||
                     this.SystemAccount.Equals(input.SystemAccount)
-                ) && 
+                ) &&
                 (
                     this.ReportingCode == input.ReportingCode ||
                     (this.ReportingCode != null &&
                     this.ReportingCode.Equals(input.ReportingCode))
-                ) && 
+                ) &&
                 (
                     this.ReportingCodeName == input.ReportingCodeName ||
                     (this.ReportingCodeName != null &&
                     this.ReportingCodeName.Equals(input.ReportingCodeName))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.AddToWatchlist == input.AddToWatchlist ||
                     (this.AddToWatchlist != null &&
                     this.AddToWatchlist.Equals(input.AddToWatchlist))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
@@ -617,9 +617,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 150)
+            if (this.Name != null && this.Name.Length > 150)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 150.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 150.", new[] { "Name" });
             }
 
             yield break;

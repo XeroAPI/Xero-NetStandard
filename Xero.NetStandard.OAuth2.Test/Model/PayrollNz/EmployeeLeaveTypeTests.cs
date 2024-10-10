@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [Fact]
         public void EmployeeLeaveTypeInstanceTest()
         {
-        
+
             // TODO uncomment below to test "IsInstanceOfType" EmployeeLeaveType
             //Assert.IsInstanceOfType<EmployeeLeaveType> (instance, "variable 'instance' is a EmployeeLeaveType");
         }
@@ -88,11 +88,12 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
             response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<EmployeeLeaveType.ScheduleOfAccrualEnum>(response);
-            Assert.Equal(expected, actual);   
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public async Task ScheduleOfAccrualEnum_NullInput_Deserialises(){
+        public async Task ScheduleOfAccrualEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {

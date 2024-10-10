@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// OnlineInvoices
     /// </summary>
     [DataContract]
-    public partial class OnlineInvoices :  IEquatable<OnlineInvoices>, IValidatableObject
+    public partial class OnlineInvoices : IEquatable<OnlineInvoices>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _OnlineInvoices
         /// </summary>
-        [DataMember(Name="OnlineInvoices", EmitDefaultValue=false)]
+        [DataMember(Name = "OnlineInvoices", EmitDefaultValue = false)]
         public List<OnlineInvoice> _OnlineInvoices { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._OnlineInvoices == input._OnlineInvoices ||
                     this._OnlineInvoices != null &&

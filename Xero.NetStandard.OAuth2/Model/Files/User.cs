@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// User
     /// </summary>
     [DataContract]
-    public partial class User :  IEquatable<User>, IValidatableObject
+    public partial class User : IEquatable<User>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="User" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public User() 
-        { 
+        public User()
+        {
         }
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="Id", EmitDefaultValue=false)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Key is Name, but returns Email address of user who created the file
         /// </summary>
         /// <value>Key is Name, but returns Email address of user who created the file</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// First name of user
         /// </summary>
         /// <value>First name of user</value>
-        [DataMember(Name="FirstName", EmitDefaultValue=false)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Last name of user
         /// </summary>
         /// <value>Last name of user</value>
-        [DataMember(Name="LastName", EmitDefaultValue=false)]
+        [DataMember(Name = "LastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Last name of user
         /// </summary>
         /// <value>Last name of user</value>
-        [DataMember(Name="FullName", EmitDefaultValue=false)]
+        [DataMember(Name = "FullName", EmitDefaultValue = false)]
         public string FullName { get; set; }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -119,27 +119,27 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
-                ) && 
+                ) &&
                 (
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
-                ) && 
+                ) &&
                 (
                     this.FullName == input.FullName ||
                     (this.FullName != null &&

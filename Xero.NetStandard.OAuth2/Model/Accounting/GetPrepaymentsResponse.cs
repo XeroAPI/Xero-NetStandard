@@ -28,43 +28,43 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// GetPrepaymentsResponse
     /// </summary>
     [DataContract]
-    public partial class GetPrepaymentsResponse :  IEquatable<GetPrepaymentsResponse>, IValidatableObject
+    public partial class GetPrepaymentsResponse : IEquatable<GetPrepaymentsResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="Id", EmitDefaultValue=false)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets ProviderName
         /// </summary>
-        [DataMember(Name="ProviderName", EmitDefaultValue=false)]
+        [DataMember(Name = "ProviderName", EmitDefaultValue = false)]
         public string ProviderName { get; set; }
 
         /// <summary>
         /// Gets or Sets DateTimeUTC
         /// </summary>
-        [DataMember(Name="DateTimeUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "DateTimeUTC", EmitDefaultValue = false)]
         public string DateTimeUTC { get; set; }
 
         /// <summary>
         /// Gets or Sets PageInfo
         /// </summary>
-        [DataMember(Name="PageInfo", EmitDefaultValue=false)]
+        [DataMember(Name = "PageInfo", EmitDefaultValue = false)]
         public PageInfo PageInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets Prepayments
         /// </summary>
-        [DataMember(Name="Prepayments", EmitDefaultValue=false)]
+        [DataMember(Name = "Prepayments", EmitDefaultValue = false)]
         public List<Prepayment> Prepayments { get; set; }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -114,32 +114,32 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.ProviderName == input.ProviderName ||
                     (this.ProviderName != null &&
                     this.ProviderName.Equals(input.ProviderName))
-                ) && 
+                ) &&
                 (
                     this.DateTimeUTC == input.DateTimeUTC ||
                     (this.DateTimeUTC != null &&
                     this.DateTimeUTC.Equals(input.DateTimeUTC))
-                ) && 
+                ) &&
                 (
                     this.PageInfo == input.PageInfo ||
                     (this.PageInfo != null &&
                     this.PageInfo.Equals(input.PageInfo))
-                ) && 
+                ) &&
                 (
                     this.Prepayments == input.Prepayments ||
                     this.Prepayments != null &&
