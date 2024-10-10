@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -55,9 +56,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("TAS", State.TAS)]
         [InlineData("VIC", State.VIC)]
         [InlineData("WA", State.WA)]
-        public void RegionTest(string input, State expected)
+        public async Task RegionTest(string input, State expected)
         {
-            JsonDoc.Assert<HomeAddress, State>(
+            await JsonDoc.Assert<HomeAddress, State>(
                 input: new JsonDoc.String(nameof(HomeAddress.Region), input),
                 toProperty: x => x.Region,
                 shouldBe: expected
