@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -49,9 +50,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void AnnualSalaryTest(string input)
+        public async Task AnnualSalaryTest(string input)
         {
-            JsonDoc.Assert<EarningsLine, decimal?>(
+            await JsonDoc.Assert<EarningsLine, decimal?>(
                 input: new JsonDoc.Number(nameof(EarningsLine.AnnualSalary), input),
                 toProperty: x => x.AnnualSalary,
                 shouldBe: 20m
@@ -63,9 +64,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void NumberOfUnitsPerWeekTest(string input)
+        public async Task NumberOfUnitsPerWeekTest(string input)
         {
-            JsonDoc.Assert<EarningsLine, decimal?>(
+            await JsonDoc.Assert<EarningsLine, decimal?>(
                 input: new JsonDoc.Number(nameof(EarningsLine.NumberOfUnitsPerWeek), input),
                 toProperty: x => x.NumberOfUnitsPerWeek,
                 shouldBe: 20m
@@ -77,9 +78,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void RatePerUnitTest(string input)
+        public async Task RatePerUnitTest(string input)
         {
-            JsonDoc.Assert<EarningsLine, decimal?>(
+            await JsonDoc.Assert<EarningsLine, decimal?>(
                 input: new JsonDoc.Number(nameof(EarningsLine.RatePerUnit), input),
                 toProperty: x => x.RatePerUnit,
                 shouldBe: 20m
@@ -91,9 +92,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void NormalNumberOfUnitsTest(string input)
+        public async Task NormalNumberOfUnitsTest(string input)
         {
-            JsonDoc.Assert<EarningsLine, decimal?>(
+            await JsonDoc.Assert<EarningsLine, decimal?>(
                 input: new JsonDoc.Number(nameof(EarningsLine.NormalNumberOfUnits), input),
                 toProperty: x => x.NormalNumberOfUnits,
                 shouldBe: 20m
@@ -105,9 +106,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void AmountTest(string input)
+        public async Task AmountTest(string input)
         {
-            JsonDoc.Assert<EarningsLine, decimal?>(
+            await JsonDoc.Assert<EarningsLine, decimal?>(
                 input: new JsonDoc.Number(nameof(EarningsLine.Amount), input),
                 toProperty: x => x.Amount,
                 shouldBe: 20m
@@ -119,9 +120,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void NumberOfUnitsTest(string input)
+        public async Task NumberOfUnitsTest(string input)
         {
-            JsonDoc.Assert<EarningsLine, decimal?>(
+            await JsonDoc.Assert<EarningsLine, decimal?>(
                 input: new JsonDoc.Number(nameof(EarningsLine.NumberOfUnits), input),
                 toProperty: x => x.NumberOfUnits,
                 shouldBe: 20m
@@ -133,9 +134,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void FixedAmountTest(string input)
+        public async Task FixedAmountTest(string input)
         {
-            JsonDoc.Assert<EarningsLine, decimal?>(
+            await JsonDoc.Assert<EarningsLine, decimal?>(
                 input: new JsonDoc.Number(nameof(EarningsLine.FixedAmount), input),
                 toProperty: x => x.FixedAmount,
                 shouldBe: 20m
@@ -148,9 +149,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("USEEARNINGSRATE", EarningsRateCalculationType.USEEARNINGSRATE)]
         [InlineData("ANNUALSALARY", EarningsRateCalculationType.ANNUALSALARY)]
         [InlineData("ENTEREARNINGSRATE", EarningsRateCalculationType.ENTEREARNINGSRATE)]
-        public void CalculationType_ValidInputs_Deserialises(string input, EarningsRateCalculationType expected)
+        public async Task CalculationType_ValidInputs_Deserialises(string input, EarningsRateCalculationType expected)
         {
-            JsonDoc.Assert<EarningsLine, EarningsRateCalculationType>(
+            await JsonDoc.Assert<EarningsLine, EarningsRateCalculationType>(
                 input: new JsonDoc.String(nameof(EarningsLine.CalculationType), input),
                 toProperty: x => x.CalculationType,
                 shouldBe: expected
@@ -160,9 +161,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'CalculationType' deserialises from null
         /// </summary>
         [Fact]
-        public void CalculationType_NullInput_DeserialisesTo0()
+        public async Task CalculationType_NullInput_DeserialisesTo0()
         {
-            JsonDoc.Assert<EarningsLine, EarningsRateCalculationType>(
+            await JsonDoc.Assert<EarningsLine, EarningsRateCalculationType>(
                 input: new JsonDoc.Null(nameof(EarningsLine.CalculationType)),
                 toProperty: x => x.CalculationType,
                 shouldBe: 0
@@ -172,9 +173,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'CalculationType' deserialises when not present
         /// </summary>
         [Fact]
-        public void CalculationType_NotPresent_DeserialisesTo0()
+        public async Task CalculationType_NotPresent_DeserialisesTo0()
         {
-            JsonDoc.Assert<EarningsLine, EarningsRateCalculationType>(
+            await JsonDoc.Assert<EarningsLine, EarningsRateCalculationType>(
                 input: new JsonDoc.NotPresent(nameof(EarningsLine.CalculationType)),
                 toProperty: x => x.CalculationType,
                 shouldBe: 0

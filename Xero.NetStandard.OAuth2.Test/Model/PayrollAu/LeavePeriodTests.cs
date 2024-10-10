@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -43,9 +44,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void NumberOfUnitsTest(string input)
+        public async Task NumberOfUnitsTest(string input)
         {
-            JsonDoc.Assert<LeavePeriod, decimal?>(
+            await JsonDoc.Assert<LeavePeriod, decimal?>(
                 input: new JsonDoc.Number(nameof(LeavePeriod.NumberOfUnits), input),
                 toProperty: x => x.NumberOfUnits,
                 shouldBe: 20
@@ -57,9 +58,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("PROCESSED", LeavePeriodStatus.PROCESSED)]
         [InlineData("SCHEDULED", LeavePeriodStatus.SCHEDULED)]
-        public void LeavePeriodStatusTest(string input, LeavePeriodStatus expected)
+        public async Task LeavePeriodStatusTest(string input, LeavePeriodStatus expected)
         {
-            JsonDoc.Assert<LeavePeriod, LeavePeriodStatus>(
+            await JsonDoc.Assert<LeavePeriod, LeavePeriodStatus>(
                 input: new JsonDoc.String(nameof(LeavePeriod.LeavePeriodStatus), input),
                 toProperty: x => x.LeavePeriodStatus,
                 shouldBe: expected
