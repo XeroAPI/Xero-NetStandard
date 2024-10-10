@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// HistoryRecordResponse
     /// </summary>
     [DataContract]
-    public partial class HistoryRecordResponse :  IEquatable<HistoryRecordResponse>, IValidatableObject
+    public partial class HistoryRecordResponse : IEquatable<HistoryRecordResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The type of change recorded against the document
         /// </summary>
         /// <value>The type of change recorded against the document</value>
-        [DataMember(Name="changes", EmitDefaultValue=false)]
+        [DataMember(Name = "changes", EmitDefaultValue = false)]
         public string Changes { get; set; }
 
         /// <summary>
         /// UTC date that the history record was created
         /// </summary>
         /// <value>UTC date that the history record was created</value>
-        [DataMember(Name="dateUTCString", EmitDefaultValue=false)]
+        [DataMember(Name = "dateUTCString", EmitDefaultValue = false)]
         public string DateUTCString { get; set; }
 
         /// <summary>
         /// UTC date that the history record was created
         /// </summary>
         /// <value>UTC date that the history record was created</value>
-        [DataMember(Name="dateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "dateUTC", EmitDefaultValue = false)]
         public DateTime? DateUTC { get; set; }
 
         /// <summary>
         /// The users first and last name
         /// </summary>
         /// <value>The users first and last name</value>
-        [DataMember(Name="user", EmitDefaultValue=false)]
+        [DataMember(Name = "user", EmitDefaultValue = false)]
         public string User { get; set; }
 
         /// <summary>
         /// Description of the change event or transaction
         /// </summary>
         /// <value>Description of the change event or transaction</value>
-        [DataMember(Name="details", EmitDefaultValue=false)]
+        [DataMember(Name = "details", EmitDefaultValue = false)]
         public string Details { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Changes == input.Changes ||
                     (this.Changes != null &&
                     this.Changes.Equals(input.Changes))
-                ) && 
+                ) &&
                 (
                     this.DateUTCString == input.DateUTCString ||
                     (this.DateUTCString != null &&
                     this.DateUTCString.Equals(input.DateUTCString))
-                ) && 
+                ) &&
                 (
                     this.DateUTC == input.DateUTC ||
                     (this.DateUTC != null &&
                     this.DateUTC.Equals(input.DateUTC))
-                ) && 
+                ) &&
                 (
                     this.User == input.User ||
                     (this.User != null &&
                     this.User.Equals(input.User))
-                ) && 
+                ) &&
                 (
                     this.Details == input.Details ||
                     (this.Details != null &&

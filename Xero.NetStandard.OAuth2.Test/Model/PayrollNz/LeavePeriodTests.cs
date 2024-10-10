@@ -104,18 +104,19 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
             Assert.Equal(expected, actual);
         }
 
-    [Fact]
-    public async Task PeriodStatusEnum_NullInput_Deserialises(){
-        var jsonContent ="null";
-        var response = new HttpResponseMessage(HttpStatusCode.OK)
+        [Fact]
+        public async Task PeriodStatusEnum_NullInput_Deserialises()
         {
-            Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
-        };
-        response.EnsureSuccessStatusCode();
-        var deserializer = new CustomJsonCodec(new Configuration());
-        var actual = await deserializer.Deserialize<PaymentMethod.PaymentMethodEnum>(response);
-        Assert.Equal(0, (int)actual);
-    }
+            var jsonContent = "null";
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+            };
+            response.EnsureSuccessStatusCode();
+            var deserializer = new CustomJsonCodec(new Configuration());
+            var actual = await deserializer.Deserialize<PaymentMethod.PaymentMethodEnum>(response);
+            Assert.Equal(0, (int)actual);
+        }
 
 
     }

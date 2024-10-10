@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Timezone specifications
     /// </summary>
     /// <value>Timezone specifications</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum TimeZone
     {
         /// <summary>

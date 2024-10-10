@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ImportSummaryOrganisation
     /// </summary>
     [DataContract]
-    public partial class ImportSummaryOrganisation :  IEquatable<ImportSummaryOrganisation>, IValidatableObject
+    public partial class ImportSummaryOrganisation : IEquatable<ImportSummaryOrganisation>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Present
         /// </summary>
-        [DataMember(Name="Present", EmitDefaultValue=false)]
+        [DataMember(Name = "Present", EmitDefaultValue = false)]
         public bool? Present { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Present == input.Present ||
                     (this.Present != null &&

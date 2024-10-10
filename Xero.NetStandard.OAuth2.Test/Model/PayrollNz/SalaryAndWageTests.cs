@@ -145,7 +145,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task StatusEnum_NullInput_Deserialises(){
+        public async Task StatusEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -172,11 +173,12 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
             response.EnsureSuccessStatusCode();
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<SalaryAndWage.PaymentTypeEnum>(response);
-            Assert.Equal(expected, actual);      
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public async Task PaymentTypeEnum_NullInput_Deserialises(){
+        public async Task PaymentTypeEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {

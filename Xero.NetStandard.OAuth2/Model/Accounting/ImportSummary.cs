@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// A summary of the import from setup endpoint
     /// </summary>
     [DataContract]
-    public partial class ImportSummary :  IEquatable<ImportSummary>, IValidatableObject
+    public partial class ImportSummary : IEquatable<ImportSummary>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Accounts
         /// </summary>
-        [DataMember(Name="Accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "Accounts", EmitDefaultValue = false)]
         public ImportSummaryAccounts Accounts { get; set; }
 
         /// <summary>
         /// Gets or Sets Organisation
         /// </summary>
-        [DataMember(Name="Organisation", EmitDefaultValue=false)]
+        [DataMember(Name = "Organisation", EmitDefaultValue = false)]
         public ImportSummaryOrganisation Organisation { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Accounts == input.Accounts ||
                     (this.Accounts != null &&
                     this.Accounts.Equals(input.Accounts))
-                ) && 
+                ) &&
                 (
                     this.Organisation == input.Organisation ||
                     (this.Organisation != null &&

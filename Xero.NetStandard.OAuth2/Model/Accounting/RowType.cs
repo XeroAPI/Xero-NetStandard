@@ -27,9 +27,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// <summary>
     /// Defines RowType
     /// </summary>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum RowType
     {
         /// <summary>

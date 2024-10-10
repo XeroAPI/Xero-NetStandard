@@ -28,70 +28,70 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// UsageRecord
     /// </summary>
     [DataContract]
-    public partial class UsageRecord :  IEquatable<UsageRecord>, IValidatableObject
+    public partial class UsageRecord : IEquatable<UsageRecord>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UsageRecord" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public UsageRecord() 
-        { 
+        public UsageRecord()
+        {
         }
-        
+
         /// <summary>
         /// The quantity recorded
         /// </summary>
         /// <value>The quantity recorded</value>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name = "quantity", EmitDefaultValue = false)]
         public int? Quantity { get; set; }
 
         /// <summary>
         /// The unique identifier of the Subscription.
         /// </summary>
         /// <value>The unique identifier of the Subscription.</value>
-        [DataMember(Name="subscriptionId", EmitDefaultValue=false)]
+        [DataMember(Name = "subscriptionId", EmitDefaultValue = false)]
         public string SubscriptionId { get; set; }
 
         /// <summary>
         /// The unique identifier of the SubscriptionItem.
         /// </summary>
         /// <value>The unique identifier of the SubscriptionItem.</value>
-        [DataMember(Name="subscriptionItemId", EmitDefaultValue=false)]
+        [DataMember(Name = "subscriptionItemId", EmitDefaultValue = false)]
         public string SubscriptionItemId { get; set; }
 
         /// <summary>
         /// If the subscription is a test subscription
         /// </summary>
         /// <value>If the subscription is a test subscription</value>
-        [DataMember(Name="testMode", EmitDefaultValue=false)]
+        [DataMember(Name = "testMode", EmitDefaultValue = false)]
         public bool? TestMode { get; set; }
 
         /// <summary>
         /// The time when this usage was recorded in UTC
         /// </summary>
         /// <value>The time when this usage was recorded in UTC</value>
-        [DataMember(Name="recordedAt", EmitDefaultValue=false)]
+        [DataMember(Name = "recordedAt", EmitDefaultValue = false)]
         public DateTime? RecordedAt { get; set; }
 
         /// <summary>
         /// The unique identifier of the usageRecord.
         /// </summary>
         /// <value>The unique identifier of the usageRecord.</value>
-        [DataMember(Name="usageRecordId", EmitDefaultValue=false)]
+        [DataMember(Name = "usageRecordId", EmitDefaultValue = false)]
         public string UsageRecordId { get; set; }
 
         /// <summary>
         /// The price per unit
         /// </summary>
         /// <value>The price per unit</value>
-        [DataMember(Name="pricePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "pricePerUnit", EmitDefaultValue = false)]
         public decimal? PricePerUnit { get; set; }
 
         /// <summary>
         /// The unique identifier of the linked Product
         /// </summary>
         /// <value>The unique identifier of the linked Product</value>
-        [DataMember(Name="productId", EmitDefaultValue=false)]
+        [DataMember(Name = "productId", EmitDefaultValue = false)]
         public string ProductId { get; set; }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -143,42 +143,42 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
-                ) && 
+                ) &&
                 (
                     this.SubscriptionId == input.SubscriptionId ||
                     (this.SubscriptionId != null &&
                     this.SubscriptionId.Equals(input.SubscriptionId))
-                ) && 
+                ) &&
                 (
                     this.SubscriptionItemId == input.SubscriptionItemId ||
                     (this.SubscriptionItemId != null &&
                     this.SubscriptionItemId.Equals(input.SubscriptionItemId))
-                ) && 
+                ) &&
                 (
                     this.TestMode == input.TestMode ||
                     (this.TestMode != null &&
                     this.TestMode.Equals(input.TestMode))
-                ) && 
+                ) &&
                 (
                     this.RecordedAt == input.RecordedAt ||
                     (this.RecordedAt != null &&
                     this.RecordedAt.Equals(input.RecordedAt))
-                ) && 
+                ) &&
                 (
                     this.UsageRecordId == input.UsageRecordId ||
                     (this.UsageRecordId != null &&
                     this.UsageRecordId.Equals(input.UsageRecordId))
-                ) && 
+                ) &&
                 (
                     this.PricePerUnit == input.PricePerUnit ||
                     (this.PricePerUnit != null &&
                     this.PricePerUnit.Equals(input.PricePerUnit))
-                ) && 
+                ) &&
                 (
                     this.ProductId == input.ProductId ||
                     (this.ProductId != null &&

@@ -17,37 +17,37 @@ namespace Xero.NetStandard.OAuth2.Client
     /// </summary>
     class WebRequestPathBuilder
     {
-            private string _baseUrl;
-            private string _path;
-            private string _query = "?";
-            public WebRequestPathBuilder(string baseUrl, string path)
-            {
-                _baseUrl = baseUrl;
-                _path = path;
-            }
+        private string _baseUrl;
+        private string _path;
+        private string _query = "?";
+        public WebRequestPathBuilder(string baseUrl, string path)
+        {
+            _baseUrl = baseUrl;
+            _path = path;
+        }
 
-            public void AddPathParameters(Dictionary<string, string> parameters)
+        public void AddPathParameters(Dictionary<string, string> parameters)
+        {
+            foreach (var parameter in parameters)
             {
-                foreach (var parameter in parameters)
+                _path = _path.Replace("{" + parameter.Key + "}", HttpUtility.UrlEncode(parameter.Value));
+            }
+        }
+
+        public void AddQueryParameters(Multimap<string, string> parameters)
+        {
+            foreach (var parameter in parameters)
+            {
+                foreach (var value in parameter.Value)
                 {
-                    _path = _path.Replace("{" + parameter.Key + "}", HttpUtility.UrlEncode(parameter.Value));
+                    _query = _query + parameter.Key + "=" + HttpUtility.UrlEncode(value) + "&";
                 }
             }
+        }
 
-            public void AddQueryParameters(Multimap<string, string> parameters)
-            {
-                foreach (var parameter in parameters)
-                {
-                    foreach (var value in parameter.Value)
-                    {
-                        _query = _query + parameter.Key + "=" + HttpUtility.UrlEncode(value) + "&";
-                    }
-                }
-            }
-
-            public string GetFullUri()
-            {
-                return _baseUrl + _path + _query.Substring(0, _query.Length - 1);
-            }
+        public string GetFullUri()
+        {
+            return _baseUrl + _path + _query.Substring(0, _query.Length - 1);
+        }
     }
 }

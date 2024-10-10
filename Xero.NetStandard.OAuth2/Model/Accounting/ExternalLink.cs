@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ExternalLink
     /// </summary>
     [DataContract]
-    public partial class ExternalLink :  IEquatable<ExternalLink>, IValidatableObject
+    public partial class ExternalLink : IEquatable<ExternalLink>, IValidatableObject
     {
         /// <summary>
         /// See External link types
@@ -73,20 +73,20 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See External link types
         /// </summary>
         /// <value>See External link types</value>
-        [DataMember(Name="LinkType", EmitDefaultValue=false)]
+        [DataMember(Name = "LinkType", EmitDefaultValue = false)]
         public LinkTypeEnum LinkType { get; set; }
-        
+
         /// <summary>
         /// URL for service e.g. http://twitter.com/xeroapi
         /// </summary>
         /// <value>URL for service e.g. http://twitter.com/xeroapi</value>
-        [DataMember(Name="Url", EmitDefaultValue=false)]
+        [DataMember(Name = "Url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -133,16 +133,16 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LinkType == input.LinkType ||
                     this.LinkType.Equals(input.LinkType)
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&

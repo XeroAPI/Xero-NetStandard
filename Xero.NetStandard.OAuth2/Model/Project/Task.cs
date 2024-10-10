@@ -28,12 +28,12 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// Task
     /// </summary>
     [DataContract]
-    public partial class Task :  IEquatable<Task>, IValidatableObject
+    public partial class Task : IEquatable<Task>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets ChargeType
         /// </summary>
-        [DataMember(Name="chargeType", EmitDefaultValue=false)]
+        [DataMember(Name = "chargeType", EmitDefaultValue = false)]
         public ChargeType ChargeType { get; set; }
         /// <summary>
         /// Status of the task. When a task of ChargeType is &#x60;FIXED&#x60; and the rate amount is invoiced the status will be set to &#x60;INVOICED&#x60; and can&#39;t be modified. A task with ChargeType of &#x60;TIME&#x60; or &#x60;NON_CHARGEABLE&#x60; cannot have a status of &#x60;INVOICED&#x60;. A &#x60;LOCKED&#x60; state indicates that the task is currently changing state (for example being invoiced) and can&#39;t be modified.
@@ -66,94 +66,94 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         /// Status of the task. When a task of ChargeType is &#x60;FIXED&#x60; and the rate amount is invoiced the status will be set to &#x60;INVOICED&#x60; and can&#39;t be modified. A task with ChargeType of &#x60;TIME&#x60; or &#x60;NON_CHARGEABLE&#x60; cannot have a status of &#x60;INVOICED&#x60;. A &#x60;LOCKED&#x60; state indicates that the task is currently changing state (for example being invoiced) and can&#39;t be modified.
         /// </summary>
         /// <value>Status of the task. When a task of ChargeType is &#x60;FIXED&#x60; and the rate amount is invoiced the status will be set to &#x60;INVOICED&#x60; and can&#39;t be modified. A task with ChargeType of &#x60;TIME&#x60; or &#x60;NON_CHARGEABLE&#x60; cannot have a status of &#x60;INVOICED&#x60;. A &#x60;LOCKED&#x60; state indicates that the task is currently changing state (for example being invoiced) and can&#39;t be modified.</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// Identifier of the task.
         /// </summary>
         /// <value>Identifier of the task.</value>
-        [DataMember(Name="taskId", EmitDefaultValue=false)]
+        [DataMember(Name = "taskId", EmitDefaultValue = false)]
         public Guid? TaskId { get; set; }
 
         /// <summary>
         /// Name of the task.
         /// </summary>
         /// <value>Name of the task.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Rate
         /// </summary>
-        [DataMember(Name="rate", EmitDefaultValue=false)]
+        [DataMember(Name = "rate", EmitDefaultValue = false)]
         public Amount Rate { get; set; }
 
         /// <summary>
         /// An estimated time to perform the task
         /// </summary>
         /// <value>An estimated time to perform the task</value>
-        [DataMember(Name="estimateMinutes", EmitDefaultValue=false)]
+        [DataMember(Name = "estimateMinutes", EmitDefaultValue = false)]
         public int? EstimateMinutes { get; set; }
 
         /// <summary>
         /// Identifier of the project task belongs to.
         /// </summary>
         /// <value>Identifier of the project task belongs to.</value>
-        [DataMember(Name="projectId", EmitDefaultValue=false)]
+        [DataMember(Name = "projectId", EmitDefaultValue = false)]
         public Guid? ProjectId { get; set; }
 
         /// <summary>
         /// Total minutes which have been logged against the task. Logged by assigning a time entry to a task
         /// </summary>
         /// <value>Total minutes which have been logged against the task. Logged by assigning a time entry to a task</value>
-        [DataMember(Name="totalMinutes", EmitDefaultValue=false)]
+        [DataMember(Name = "totalMinutes", EmitDefaultValue = false)]
         public int? TotalMinutes { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
-        [DataMember(Name="totalAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "totalAmount", EmitDefaultValue = false)]
         public Amount TotalAmount { get; set; }
 
         /// <summary>
         /// Minutes on this task which have been invoiced.
         /// </summary>
         /// <value>Minutes on this task which have been invoiced.</value>
-        [DataMember(Name="minutesInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "minutesInvoiced", EmitDefaultValue = false)]
         public int? MinutesInvoiced { get; set; }
 
         /// <summary>
         /// Minutes on this task which have not been invoiced.
         /// </summary>
         /// <value>Minutes on this task which have not been invoiced.</value>
-        [DataMember(Name="minutesToBeInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "minutesToBeInvoiced", EmitDefaultValue = false)]
         public int? MinutesToBeInvoiced { get; set; }
 
         /// <summary>
         /// Minutes logged against this task if its charge type is &#x60;FIXED&#x60;.
         /// </summary>
         /// <value>Minutes logged against this task if its charge type is &#x60;FIXED&#x60;.</value>
-        [DataMember(Name="fixedMinutes", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedMinutes", EmitDefaultValue = false)]
         public int? FixedMinutes { get; set; }
 
         /// <summary>
         /// Minutes logged against this task if its charge type is &#x60;NON_CHARGEABLE&#x60;.
         /// </summary>
         /// <value>Minutes logged against this task if its charge type is &#x60;NON_CHARGEABLE&#x60;.</value>
-        [DataMember(Name="nonChargeableMinutes", EmitDefaultValue=false)]
+        [DataMember(Name = "nonChargeableMinutes", EmitDefaultValue = false)]
         public int? NonChargeableMinutes { get; set; }
 
         /// <summary>
         /// Gets or Sets AmountToBeInvoiced
         /// </summary>
-        [DataMember(Name="amountToBeInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "amountToBeInvoiced", EmitDefaultValue = false)]
         public Amount AmountToBeInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets AmountInvoiced
         /// </summary>
-        [DataMember(Name="amountInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "amountInvoiced", EmitDefaultValue = false)]
         public Amount AmountInvoiced { get; set; }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -212,76 +212,76 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Rate == input.Rate ||
                     (this.Rate != null &&
                     this.Rate.Equals(input.Rate))
-                ) && 
+                ) &&
                 (
                     this.ChargeType == input.ChargeType ||
                     this.ChargeType.Equals(input.ChargeType)
-                ) && 
+                ) &&
                 (
                     this.EstimateMinutes == input.EstimateMinutes ||
                     (this.EstimateMinutes != null &&
                     this.EstimateMinutes.Equals(input.EstimateMinutes))
-                ) && 
+                ) &&
                 (
                     this.ProjectId == input.ProjectId ||
                     (this.ProjectId != null &&
                     this.ProjectId.Equals(input.ProjectId))
-                ) && 
+                ) &&
                 (
                     this.TotalMinutes == input.TotalMinutes ||
                     (this.TotalMinutes != null &&
                     this.TotalMinutes.Equals(input.TotalMinutes))
-                ) && 
+                ) &&
                 (
                     this.TotalAmount == input.TotalAmount ||
                     (this.TotalAmount != null &&
                     this.TotalAmount.Equals(input.TotalAmount))
-                ) && 
+                ) &&
                 (
                     this.MinutesInvoiced == input.MinutesInvoiced ||
                     (this.MinutesInvoiced != null &&
                     this.MinutesInvoiced.Equals(input.MinutesInvoiced))
-                ) && 
+                ) &&
                 (
                     this.MinutesToBeInvoiced == input.MinutesToBeInvoiced ||
                     (this.MinutesToBeInvoiced != null &&
                     this.MinutesToBeInvoiced.Equals(input.MinutesToBeInvoiced))
-                ) && 
+                ) &&
                 (
                     this.FixedMinutes == input.FixedMinutes ||
                     (this.FixedMinutes != null &&
                     this.FixedMinutes.Equals(input.FixedMinutes))
-                ) && 
+                ) &&
                 (
                     this.NonChargeableMinutes == input.NonChargeableMinutes ||
                     (this.NonChargeableMinutes != null &&
                     this.NonChargeableMinutes.Equals(input.NonChargeableMinutes))
-                ) && 
+                ) &&
                 (
                     this.AmountToBeInvoiced == input.AmountToBeInvoiced ||
                     (this.AmountToBeInvoiced != null &&
                     this.AmountToBeInvoiced.Equals(input.AmountToBeInvoiced))
-                ) && 
+                ) &&
                 (
                     this.AmountInvoiced == input.AmountInvoiced ||
                     (this.AmountInvoiced != null &&
                     this.AmountInvoiced.Equals(input.AmountInvoiced))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)

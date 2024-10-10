@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// StatementLinesResponse
     /// </summary>
     [DataContract]
-    public partial class StatementLinesResponse :  IEquatable<StatementLinesResponse>, IValidatableObject
+    public partial class StatementLinesResponse : IEquatable<StatementLinesResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is positive.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is positive.</value>
-        [DataMember(Name="unreconciledAmountPos", EmitDefaultValue=false)]
+        [DataMember(Name = "unreconciledAmountPos", EmitDefaultValue = false)]
         public decimal? UnreconciledAmountPos { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is negative.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is negative.</value>
-        [DataMember(Name="unreconciledAmountNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "unreconciledAmountNeg", EmitDefaultValue = false)]
         public decimal? UnreconciledAmountNeg { get; set; }
 
         /// <summary>
         /// Count of all statement lines where the reconciled flag is set to FALSE.
         /// </summary>
         /// <value>Count of all statement lines where the reconciled flag is set to FALSE.</value>
-        [DataMember(Name="unreconciledLines", EmitDefaultValue=false)]
+        [DataMember(Name = "unreconciledLines", EmitDefaultValue = false)]
         public int? UnreconciledLines { get; set; }
 
         /// <summary>
         /// Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is positive. Provides an indication of the age of unreconciled transactions.
         /// </summary>
         /// <value>Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is positive. Provides an indication of the age of unreconciled transactions.</value>
-        [DataMember(Name="avgDaysUnreconciledPos", EmitDefaultValue=false)]
+        [DataMember(Name = "avgDaysUnreconciledPos", EmitDefaultValue = false)]
         public decimal? AvgDaysUnreconciledPos { get; set; }
 
         /// <summary>
         /// Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is negative. Provides an indication of the age of unreconciled transactions.
         /// </summary>
         /// <value>Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is negative. Provides an indication of the age of unreconciled transactions.</value>
-        [DataMember(Name="avgDaysUnreconciledNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "avgDaysUnreconciledNeg", EmitDefaultValue = false)]
         public decimal? AvgDaysUnreconciledNeg { get; set; }
 
         /// <summary>
         /// UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="earliestUnreconciledTransaction", EmitDefaultValue=false)]
+        [DataMember(Name = "earliestUnreconciledTransaction", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EarliestUnreconciledTransaction { get; set; }
 
@@ -78,7 +78,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="latestUnreconciledTransaction", EmitDefaultValue=false)]
+        [DataMember(Name = "latestUnreconciledTransaction", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? LatestUnreconciledTransaction { get; set; }
 
@@ -86,27 +86,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Sum of the amounts of all deleted statement lines.  Transactions may be deleted due to duplication or otherwise.
         /// </summary>
         /// <value>Sum of the amounts of all deleted statement lines.  Transactions may be deleted due to duplication or otherwise.</value>
-        [DataMember(Name="deletedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "deletedAmount", EmitDefaultValue = false)]
         public decimal? DeletedAmount { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines.  This is used as a metric of comparison to the unreconciled figures above.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines.  This is used as a metric of comparison to the unreconciled figures above.</value>
-        [DataMember(Name="totalAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "totalAmount", EmitDefaultValue = false)]
         public decimal? TotalAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets DataSource
         /// </summary>
-        [DataMember(Name="dataSource", EmitDefaultValue=false)]
+        [DataMember(Name = "dataSource", EmitDefaultValue = false)]
         public DataSourceResponse DataSource { get; set; }
 
         /// <summary>
         /// UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="earliestReconciledTransaction", EmitDefaultValue=false)]
+        [DataMember(Name = "earliestReconciledTransaction", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EarliestReconciledTransaction { get; set; }
 
@@ -114,7 +114,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="latestReconciledTransaction", EmitDefaultValue=false)]
+        [DataMember(Name = "latestReconciledTransaction", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? LatestReconciledTransaction { get; set; }
 
@@ -122,35 +122,35 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is positive.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is positive.</value>
-        [DataMember(Name="reconciledAmountPos", EmitDefaultValue=false)]
+        [DataMember(Name = "reconciledAmountPos", EmitDefaultValue = false)]
         public decimal? ReconciledAmountPos { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is negative.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is negative.</value>
-        [DataMember(Name="reconciledAmountNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "reconciledAmountNeg", EmitDefaultValue = false)]
         public decimal? ReconciledAmountNeg { get; set; }
 
         /// <summary>
         /// Count of all statement lines where the reconciled flag is set to TRUE
         /// </summary>
         /// <value>Count of all statement lines where the reconciled flag is set to TRUE</value>
-        [DataMember(Name="reconciledLines", EmitDefaultValue=false)]
+        [DataMember(Name = "reconciledLines", EmitDefaultValue = false)]
         public int? ReconciledLines { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the amount is positive
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the amount is positive</value>
-        [DataMember(Name="totalAmountPos", EmitDefaultValue=false)]
+        [DataMember(Name = "totalAmountPos", EmitDefaultValue = false)]
         public decimal? TotalAmountPos { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the amount is negative.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the amount is negative.</value>
-        [DataMember(Name="totalAmountNeg", EmitDefaultValue=false)]
+        [DataMember(Name = "totalAmountNeg", EmitDefaultValue = false)]
         public decimal? TotalAmountNeg { get; set; }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -211,87 +211,87 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UnreconciledAmountPos == input.UnreconciledAmountPos ||
                     (this.UnreconciledAmountPos != null &&
                     this.UnreconciledAmountPos.Equals(input.UnreconciledAmountPos))
-                ) && 
+                ) &&
                 (
                     this.UnreconciledAmountNeg == input.UnreconciledAmountNeg ||
                     (this.UnreconciledAmountNeg != null &&
                     this.UnreconciledAmountNeg.Equals(input.UnreconciledAmountNeg))
-                ) && 
+                ) &&
                 (
                     this.UnreconciledLines == input.UnreconciledLines ||
                     (this.UnreconciledLines != null &&
                     this.UnreconciledLines.Equals(input.UnreconciledLines))
-                ) && 
+                ) &&
                 (
                     this.AvgDaysUnreconciledPos == input.AvgDaysUnreconciledPos ||
                     (this.AvgDaysUnreconciledPos != null &&
                     this.AvgDaysUnreconciledPos.Equals(input.AvgDaysUnreconciledPos))
-                ) && 
+                ) &&
                 (
                     this.AvgDaysUnreconciledNeg == input.AvgDaysUnreconciledNeg ||
                     (this.AvgDaysUnreconciledNeg != null &&
                     this.AvgDaysUnreconciledNeg.Equals(input.AvgDaysUnreconciledNeg))
-                ) && 
+                ) &&
                 (
                     this.EarliestUnreconciledTransaction == input.EarliestUnreconciledTransaction ||
                     (this.EarliestUnreconciledTransaction != null &&
                     this.EarliestUnreconciledTransaction.Equals(input.EarliestUnreconciledTransaction))
-                ) && 
+                ) &&
                 (
                     this.LatestUnreconciledTransaction == input.LatestUnreconciledTransaction ||
                     (this.LatestUnreconciledTransaction != null &&
                     this.LatestUnreconciledTransaction.Equals(input.LatestUnreconciledTransaction))
-                ) && 
+                ) &&
                 (
                     this.DeletedAmount == input.DeletedAmount ||
                     (this.DeletedAmount != null &&
                     this.DeletedAmount.Equals(input.DeletedAmount))
-                ) && 
+                ) &&
                 (
                     this.TotalAmount == input.TotalAmount ||
                     (this.TotalAmount != null &&
                     this.TotalAmount.Equals(input.TotalAmount))
-                ) && 
+                ) &&
                 (
                     this.DataSource == input.DataSource ||
                     (this.DataSource != null &&
                     this.DataSource.Equals(input.DataSource))
-                ) && 
+                ) &&
                 (
                     this.EarliestReconciledTransaction == input.EarliestReconciledTransaction ||
                     (this.EarliestReconciledTransaction != null &&
                     this.EarliestReconciledTransaction.Equals(input.EarliestReconciledTransaction))
-                ) && 
+                ) &&
                 (
                     this.LatestReconciledTransaction == input.LatestReconciledTransaction ||
                     (this.LatestReconciledTransaction != null &&
                     this.LatestReconciledTransaction.Equals(input.LatestReconciledTransaction))
-                ) && 
+                ) &&
                 (
                     this.ReconciledAmountPos == input.ReconciledAmountPos ||
                     (this.ReconciledAmountPos != null &&
                     this.ReconciledAmountPos.Equals(input.ReconciledAmountPos))
-                ) && 
+                ) &&
                 (
                     this.ReconciledAmountNeg == input.ReconciledAmountNeg ||
                     (this.ReconciledAmountNeg != null &&
                     this.ReconciledAmountNeg.Equals(input.ReconciledAmountNeg))
-                ) && 
+                ) &&
                 (
                     this.ReconciledLines == input.ReconciledLines ||
                     (this.ReconciledLines != null &&
                     this.ReconciledLines.Equals(input.ReconciledLines))
-                ) && 
+                ) &&
                 (
                     this.TotalAmountPos == input.TotalAmountPos ||
                     (this.TotalAmountPos != null &&
                     this.TotalAmountPos.Equals(input.TotalAmountPos))
-                ) && 
+                ) &&
                 (
                     this.TotalAmountNeg == input.TotalAmountNeg ||
                     (this.TotalAmountNeg != null &&

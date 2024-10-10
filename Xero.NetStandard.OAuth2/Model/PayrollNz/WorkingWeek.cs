@@ -28,63 +28,63 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// WorkingWeek
     /// </summary>
     [DataContract]
-    public partial class WorkingWeek :  IEquatable<WorkingWeek>, IValidatableObject
+    public partial class WorkingWeek : IEquatable<WorkingWeek>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkingWeek" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public WorkingWeek() 
-        { 
+        public WorkingWeek()
+        {
         }
-        
+
         /// <summary>
         /// The number of hours worked on a Monday
         /// </summary>
         /// <value>The number of hours worked on a Monday</value>
-        [DataMember(Name="monday", EmitDefaultValue=false)]
+        [DataMember(Name = "monday", EmitDefaultValue = false)]
         public decimal? Monday { get; set; }
 
         /// <summary>
         /// The number of hours worked on a Tuesday
         /// </summary>
         /// <value>The number of hours worked on a Tuesday</value>
-        [DataMember(Name="tuesday", EmitDefaultValue=false)]
+        [DataMember(Name = "tuesday", EmitDefaultValue = false)]
         public decimal? Tuesday { get; set; }
 
         /// <summary>
         /// The number of hours worked on a Wednesday
         /// </summary>
         /// <value>The number of hours worked on a Wednesday</value>
-        [DataMember(Name="wednesday", EmitDefaultValue=false)]
+        [DataMember(Name = "wednesday", EmitDefaultValue = false)]
         public decimal? Wednesday { get; set; }
 
         /// <summary>
         /// The number of hours worked on a Thursday
         /// </summary>
         /// <value>The number of hours worked on a Thursday</value>
-        [DataMember(Name="thursday", EmitDefaultValue=false)]
+        [DataMember(Name = "thursday", EmitDefaultValue = false)]
         public decimal? Thursday { get; set; }
 
         /// <summary>
         /// The number of hours worked on a Friday
         /// </summary>
         /// <value>The number of hours worked on a Friday</value>
-        [DataMember(Name="friday", EmitDefaultValue=false)]
+        [DataMember(Name = "friday", EmitDefaultValue = false)]
         public decimal? Friday { get; set; }
 
         /// <summary>
         /// The number of hours worked on a Saturday
         /// </summary>
         /// <value>The number of hours worked on a Saturday</value>
-        [DataMember(Name="saturday", EmitDefaultValue=false)]
+        [DataMember(Name = "saturday", EmitDefaultValue = false)]
         public decimal? Saturday { get; set; }
 
         /// <summary>
         /// The number of hours worked on a Sunday
         /// </summary>
         /// <value>The number of hours worked on a Sunday</value>
-        [DataMember(Name="sunday", EmitDefaultValue=false)]
+        [DataMember(Name = "sunday", EmitDefaultValue = false)]
         public decimal? Sunday { get; set; }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -135,37 +135,37 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Monday == input.Monday ||
                     (this.Monday != null &&
                     this.Monday.Equals(input.Monday))
-                ) && 
+                ) &&
                 (
                     this.Tuesday == input.Tuesday ||
                     (this.Tuesday != null &&
                     this.Tuesday.Equals(input.Tuesday))
-                ) && 
+                ) &&
                 (
                     this.Wednesday == input.Wednesday ||
                     (this.Wednesday != null &&
                     this.Wednesday.Equals(input.Wednesday))
-                ) && 
+                ) &&
                 (
                     this.Thursday == input.Thursday ||
                     (this.Thursday != null &&
                     this.Thursday.Equals(input.Thursday))
-                ) && 
+                ) &&
                 (
                     this.Friday == input.Friday ||
                     (this.Friday != null &&
                     this.Friday.Equals(input.Friday))
-                ) && 
+                ) &&
                 (
                     this.Saturday == input.Saturday ||
                     (this.Saturday != null &&
                     this.Saturday.Equals(input.Saturday))
-                ) && 
+                ) &&
                 (
                     this.Sunday == input.Sunday ||
                     (this.Sunday != null &&

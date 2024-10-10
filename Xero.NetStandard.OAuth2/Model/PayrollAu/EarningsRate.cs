@@ -28,137 +28,137 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// EarningsRate
     /// </summary>
     [DataContract]
-    public partial class EarningsRate :  IEquatable<EarningsRate>, IValidatableObject
+    public partial class EarningsRate : IEquatable<EarningsRate>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets EarningsType
         /// </summary>
-        [DataMember(Name="EarningsType", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsType", EmitDefaultValue = false)]
         public EarningsType EarningsType { get; set; }
         /// <summary>
         /// Gets or Sets RateType
         /// </summary>
-        [DataMember(Name="RateType", EmitDefaultValue=false)]
+        [DataMember(Name = "RateType", EmitDefaultValue = false)]
         public RateType RateType { get; set; }
         /// <summary>
         /// Gets or Sets EmploymentTerminationPaymentType
         /// </summary>
-        [DataMember(Name="EmploymentTerminationPaymentType", EmitDefaultValue=false)]
+        [DataMember(Name = "EmploymentTerminationPaymentType", EmitDefaultValue = false)]
         public EmploymentTerminationPaymentType EmploymentTerminationPaymentType { get; set; }
         /// <summary>
         /// Gets or Sets AllowanceType
         /// </summary>
-        [DataMember(Name="AllowanceType", EmitDefaultValue=false)]
+        [DataMember(Name = "AllowanceType", EmitDefaultValue = false)]
         public AllowanceType AllowanceType { get; set; }
         /// <summary>
         /// Gets or Sets AllowanceCategory
         /// </summary>
-        [DataMember(Name="AllowanceCategory", EmitDefaultValue=false)]
+        [DataMember(Name = "AllowanceCategory", EmitDefaultValue = false)]
         public AllowanceCategory AllowanceCategory { get; set; }
-        
+
         /// <summary>
         /// Name of the earnings rate (max length &#x3D; 100)
         /// </summary>
         /// <value>Name of the earnings rate (max length &#x3D; 100)</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// Type of units used to record earnings (max length &#x3D; 50). Only When RateType is RATEPERUNIT
         /// </summary>
         /// <value>Type of units used to record earnings (max length &#x3D; 50). Only When RateType is RATEPERUNIT</value>
-        [DataMember(Name="TypeOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "TypeOfUnits", EmitDefaultValue = false)]
         public string TypeOfUnits { get; set; }
 
         /// <summary>
         /// Most payments are subject to tax, so you should only set this value if you are sure that a payment is exempt from PAYG withholding
         /// </summary>
         /// <value>Most payments are subject to tax, so you should only set this value if you are sure that a payment is exempt from PAYG withholding</value>
-        [DataMember(Name="IsExemptFromTax", EmitDefaultValue=false)]
+        [DataMember(Name = "IsExemptFromTax", EmitDefaultValue = false)]
         public bool? IsExemptFromTax { get; set; }
 
         /// <summary>
         /// See the ATO website for details of which payments are exempt from SGC
         /// </summary>
         /// <value>See the ATO website for details of which payments are exempt from SGC</value>
-        [DataMember(Name="IsExemptFromSuper", EmitDefaultValue=false)]
+        [DataMember(Name = "IsExemptFromSuper", EmitDefaultValue = false)]
         public bool? IsExemptFromSuper { get; set; }
 
         /// <summary>
         /// Boolean to determine if the earnings rate is reportable or exempt from W1
         /// </summary>
         /// <value>Boolean to determine if the earnings rate is reportable or exempt from W1</value>
-        [DataMember(Name="IsReportableAsW1", EmitDefaultValue=false)]
+        [DataMember(Name = "IsReportableAsW1", EmitDefaultValue = false)]
         public bool? IsReportableAsW1 { get; set; }
 
         /// <summary>
         /// Boolean to determine if the allowance earnings rate contributes towards annual leave rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT
         /// </summary>
         /// <value>Boolean to determine if the allowance earnings rate contributes towards annual leave rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT</value>
-        [DataMember(Name="AllowanceContributesToAnnualLeaveRate", EmitDefaultValue=false)]
+        [DataMember(Name = "AllowanceContributesToAnnualLeaveRate", EmitDefaultValue = false)]
         public bool? AllowanceContributesToAnnualLeaveRate { get; set; }
 
         /// <summary>
         /// Boolean to determine if the allowance earnings rate contributes towards overtime allowance rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT
         /// </summary>
         /// <value>Boolean to determine if the allowance earnings rate contributes towards overtime allowance rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT</value>
-        [DataMember(Name="AllowanceContributesToOvertimeRate", EmitDefaultValue=false)]
+        [DataMember(Name = "AllowanceContributesToOvertimeRate", EmitDefaultValue = false)]
         public bool? AllowanceContributesToOvertimeRate { get; set; }
 
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="EarningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// Default rate per unit (optional). Only applicable if RateType is RATEPERUNIT.
         /// </summary>
         /// <value>Default rate per unit (optional). Only applicable if RateType is RATEPERUNIT.</value>
-        [DataMember(Name="RatePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "RatePerUnit", EmitDefaultValue = false)]
         public string RatePerUnit { get; set; }
 
         /// <summary>
         /// This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MULTIPLE
         /// </summary>
         /// <value>This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MULTIPLE</value>
-        [DataMember(Name="Multiplier", EmitDefaultValue=false)]
+        [DataMember(Name = "Multiplier", EmitDefaultValue = false)]
         public decimal? Multiplier { get; set; }
 
         /// <summary>
         /// Indicates that this earnings rate should accrue leave. Only applicable if RateType is MULTIPLE
         /// </summary>
         /// <value>Indicates that this earnings rate should accrue leave. Only applicable if RateType is MULTIPLE</value>
-        [DataMember(Name="AccrueLeave", EmitDefaultValue=false)]
+        [DataMember(Name = "AccrueLeave", EmitDefaultValue = false)]
         public bool? AccrueLeave { get; set; }
 
         /// <summary>
         /// Optional Amount for FIXEDAMOUNT RateType EarningsRate
         /// </summary>
         /// <value>Optional Amount for FIXEDAMOUNT RateType EarningsRate</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Is the current record
         /// </summary>
         /// <value>Is the current record</value>
-        [DataMember(Name="CurrentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -222,98 +222,98 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.TypeOfUnits == input.TypeOfUnits ||
                     (this.TypeOfUnits != null &&
                     this.TypeOfUnits.Equals(input.TypeOfUnits))
-                ) && 
+                ) &&
                 (
                     this.IsExemptFromTax == input.IsExemptFromTax ||
                     (this.IsExemptFromTax != null &&
                     this.IsExemptFromTax.Equals(input.IsExemptFromTax))
-                ) && 
+                ) &&
                 (
                     this.IsExemptFromSuper == input.IsExemptFromSuper ||
                     (this.IsExemptFromSuper != null &&
                     this.IsExemptFromSuper.Equals(input.IsExemptFromSuper))
-                ) && 
+                ) &&
                 (
                     this.IsReportableAsW1 == input.IsReportableAsW1 ||
                     (this.IsReportableAsW1 != null &&
                     this.IsReportableAsW1.Equals(input.IsReportableAsW1))
-                ) && 
+                ) &&
                 (
                     this.AllowanceContributesToAnnualLeaveRate == input.AllowanceContributesToAnnualLeaveRate ||
                     (this.AllowanceContributesToAnnualLeaveRate != null &&
                     this.AllowanceContributesToAnnualLeaveRate.Equals(input.AllowanceContributesToAnnualLeaveRate))
-                ) && 
+                ) &&
                 (
                     this.AllowanceContributesToOvertimeRate == input.AllowanceContributesToOvertimeRate ||
                     (this.AllowanceContributesToOvertimeRate != null &&
                     this.AllowanceContributesToOvertimeRate.Equals(input.AllowanceContributesToOvertimeRate))
-                ) && 
+                ) &&
                 (
                     this.EarningsType == input.EarningsType ||
                     this.EarningsType.Equals(input.EarningsType)
-                ) && 
+                ) &&
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.RateType == input.RateType ||
                     this.RateType.Equals(input.RateType)
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.Multiplier == input.Multiplier ||
                     (this.Multiplier != null &&
                     this.Multiplier.Equals(input.Multiplier))
-                ) && 
+                ) &&
                 (
                     this.AccrueLeave == input.AccrueLeave ||
                     (this.AccrueLeave != null &&
                     this.AccrueLeave.Equals(input.AccrueLeave))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.EmploymentTerminationPaymentType == input.EmploymentTerminationPaymentType ||
                     this.EmploymentTerminationPaymentType.Equals(input.EmploymentTerminationPaymentType)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
                     this.CurrentRecord.Equals(input.CurrentRecord))
-                ) && 
+                ) &&
                 (
                     this.AllowanceType == input.AllowanceType ||
                     this.AllowanceType.Equals(input.AllowanceType)
-                ) && 
+                ) &&
                 (
                     this.AllowanceCategory == input.AllowanceCategory ||
                     this.AllowanceCategory.Equals(input.AllowanceCategory)
@@ -376,15 +376,15 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 100)
+            if (this.Name != null && this.Name.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new[] { "Name" });
             }
 
             // TypeOfUnits (string) maxLength
-            if(this.TypeOfUnits != null && this.TypeOfUnits.Length > 50)
+            if (this.TypeOfUnits != null && this.TypeOfUnits.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TypeOfUnits, length must be less than 50.", new [] { "TypeOfUnits" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TypeOfUnits, length must be less than 50.", new[] { "TypeOfUnits" });
             }
 
             yield break;

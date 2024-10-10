@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Currencies
     /// </summary>
     [DataContract]
-    public partial class Currencies :  IEquatable<Currencies>, IValidatableObject
+    public partial class Currencies : IEquatable<Currencies>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Currencies
         /// </summary>
-        [DataMember(Name="Currencies", EmitDefaultValue=false)]
+        [DataMember(Name = "Currencies", EmitDefaultValue = false)]
         public List<Currency> _Currencies { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Currencies == input._Currencies ||
                     this._Currencies != null &&

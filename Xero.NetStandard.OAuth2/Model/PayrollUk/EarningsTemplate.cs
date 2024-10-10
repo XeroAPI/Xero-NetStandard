@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EarningsTemplate
     /// </summary>
     [DataContract]
-    public partial class EarningsTemplate :  IEquatable<EarningsTemplate>, IValidatableObject
+    public partial class EarningsTemplate : IEquatable<EarningsTemplate>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Xero identifier for the earnings template
         /// </summary>
         /// <value>The Xero identifier for the earnings template</value>
-        [DataMember(Name="payTemplateEarningID", EmitDefaultValue=false)]
+        [DataMember(Name = "payTemplateEarningID", EmitDefaultValue = false)]
         public Guid? PayTemplateEarningID { get; set; }
 
         /// <summary>
         /// The rate per unit
         /// </summary>
         /// <value>The rate per unit</value>
-        [DataMember(Name="ratePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "ratePerUnit", EmitDefaultValue = false)]
         public decimal? RatePerUnit { get; set; }
 
         /// <summary>
         /// The rate per unit
         /// </summary>
         /// <value>The rate per unit</value>
-        [DataMember(Name="numberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
         /// The fixed amount per period
         /// </summary>
         /// <value>The fixed amount per period</value>
-        [DataMember(Name="fixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAmount", EmitDefaultValue = false)]
         public decimal? FixedAmount { get; set; }
 
         /// <summary>
         /// The corresponding earnings rate identifier
         /// </summary>
         /// <value>The corresponding earnings rate identifier</value>
-        [DataMember(Name="earningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// The read-only name of the Earning Template.
         /// </summary>
         /// <value>The read-only name of the Earning Template.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PayTemplateEarningID == input.PayTemplateEarningID ||
                     (this.PayTemplateEarningID != null &&
                     this.PayTemplateEarningID.Equals(input.PayTemplateEarningID))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&
                     this.FixedAmount.Equals(input.FixedAmount))
-                ) && 
+                ) &&
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&

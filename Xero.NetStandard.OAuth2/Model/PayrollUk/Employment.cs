@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// Employment
     /// </summary>
     [DataContract]
-    public partial class Employment :  IEquatable<Employment>, IValidatableObject
+    public partial class Employment : IEquatable<Employment>, IValidatableObject
     {
         /// <summary>
         /// The NI Category of the employee
@@ -121,28 +121,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The NI Category of the employee
         /// </summary>
         /// <value>The NI Category of the employee</value>
-        [DataMember(Name="niCategory", EmitDefaultValue=false)]
+        [DataMember(Name = "niCategory", EmitDefaultValue = false)]
         public NiCategoryEnum NiCategory { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Employment" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Employment() 
-        { 
+        public Employment()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for the payroll calendar of the employee
         /// </summary>
         /// <value>Xero unique identifier for the payroll calendar of the employee</value>
-        [DataMember(Name="payrollCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "payrollCalendarID", EmitDefaultValue = false)]
         public Guid? PayrollCalendarID { get; set; }
 
         /// <summary>
         /// Start date of the employment (YYYY-MM-DD)
         /// </summary>
         /// <value>Start date of the employment (YYYY-MM-DD)</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -150,7 +150,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The employment number of the employee
         /// </summary>
         /// <value>The employment number of the employee</value>
-        [DataMember(Name="employeeNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "employeeNumber", EmitDefaultValue = false)]
         public string EmployeeNumber { get; set; }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -198,22 +198,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PayrollCalendarID == input.PayrollCalendarID ||
                     (this.PayrollCalendarID != null &&
                     this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EmployeeNumber == input.EmployeeNumber ||
                     (this.EmployeeNumber != null &&
                     this.EmployeeNumber.Equals(input.EmployeeNumber))
-                ) && 
+                ) &&
                 (
                     this.NiCategory == input.NiCategory ||
                     this.NiCategory.Equals(input.NiCategory)

@@ -28,77 +28,77 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EmployeeTax
     /// </summary>
     [DataContract]
-    public partial class EmployeeTax :  IEquatable<EmployeeTax>, IValidatableObject
+    public partial class EmployeeTax : IEquatable<EmployeeTax>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Starter type.
         /// </summary>
         /// <value>The Starter type.</value>
-        [DataMember(Name="starterType", EmitDefaultValue=false)]
+        [DataMember(Name = "starterType", EmitDefaultValue = false)]
         public string StarterType { get; set; }
 
         /// <summary>
         /// Starter declaration.
         /// </summary>
         /// <value>Starter declaration.</value>
-        [DataMember(Name="starterDeclaration", EmitDefaultValue=false)]
+        [DataMember(Name = "starterDeclaration", EmitDefaultValue = false)]
         public string StarterDeclaration { get; set; }
 
         /// <summary>
         /// The Tax code.
         /// </summary>
         /// <value>The Tax code.</value>
-        [DataMember(Name="taxCode", EmitDefaultValue=false)]
+        [DataMember(Name = "taxCode", EmitDefaultValue = false)]
         public string TaxCode { get; set; }
 
         /// <summary>
         /// Describes whether the tax settings is W1M1
         /// </summary>
         /// <value>Describes whether the tax settings is W1M1</value>
-        [DataMember(Name="w1M1", EmitDefaultValue=false)]
+        [DataMember(Name = "w1M1", EmitDefaultValue = false)]
         public bool? W1M1 { get; set; }
 
         /// <summary>
         /// The previous taxable pay
         /// </summary>
         /// <value>The previous taxable pay</value>
-        [DataMember(Name="previousTaxablePay", EmitDefaultValue=false)]
+        [DataMember(Name = "previousTaxablePay", EmitDefaultValue = false)]
         public decimal? PreviousTaxablePay { get; set; }
 
         /// <summary>
         /// The tax amount previously paid
         /// </summary>
         /// <value>The tax amount previously paid</value>
-        [DataMember(Name="previousTaxPaid", EmitDefaultValue=false)]
+        [DataMember(Name = "previousTaxPaid", EmitDefaultValue = false)]
         public decimal? PreviousTaxPaid { get; set; }
 
         /// <summary>
         /// The employee&#39;s student loan deduction type
         /// </summary>
         /// <value>The employee&#39;s student loan deduction type</value>
-        [DataMember(Name="studentLoanDeduction", EmitDefaultValue=false)]
+        [DataMember(Name = "studentLoanDeduction", EmitDefaultValue = false)]
         public string StudentLoanDeduction { get; set; }
 
         /// <summary>
         /// Describes whether the employee has post graduate loans
         /// </summary>
         /// <value>Describes whether the employee has post graduate loans</value>
-        [DataMember(Name="hasPostGraduateLoans", EmitDefaultValue=false)]
+        [DataMember(Name = "hasPostGraduateLoans", EmitDefaultValue = false)]
         public bool? HasPostGraduateLoans { get; set; }
 
         /// <summary>
         /// Describes whether the employee is director
         /// </summary>
         /// <value>Describes whether the employee is director</value>
-        [DataMember(Name="isDirector", EmitDefaultValue=false)]
+        [DataMember(Name = "isDirector", EmitDefaultValue = false)]
         public bool? IsDirector { get; set; }
 
         /// <summary>
         /// The directorship start date
         /// </summary>
         /// <value>The directorship start date</value>
-        [DataMember(Name="directorshipStartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "directorshipStartDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? DirectorshipStartDate { get; set; }
 
@@ -106,7 +106,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// NICs calculation method
         /// </summary>
         /// <value>NICs calculation method</value>
-        [DataMember(Name="nicCalculationMethod", EmitDefaultValue=false)]
+        [DataMember(Name = "nicCalculationMethod", EmitDefaultValue = false)]
         public string NicCalculationMethod { get; set; }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -161,57 +161,57 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StarterType == input.StarterType ||
                     (this.StarterType != null &&
                     this.StarterType.Equals(input.StarterType))
-                ) && 
+                ) &&
                 (
                     this.StarterDeclaration == input.StarterDeclaration ||
                     (this.StarterDeclaration != null &&
                     this.StarterDeclaration.Equals(input.StarterDeclaration))
-                ) && 
+                ) &&
                 (
                     this.TaxCode == input.TaxCode ||
                     (this.TaxCode != null &&
                     this.TaxCode.Equals(input.TaxCode))
-                ) && 
+                ) &&
                 (
                     this.W1M1 == input.W1M1 ||
                     (this.W1M1 != null &&
                     this.W1M1.Equals(input.W1M1))
-                ) && 
+                ) &&
                 (
                     this.PreviousTaxablePay == input.PreviousTaxablePay ||
                     (this.PreviousTaxablePay != null &&
                     this.PreviousTaxablePay.Equals(input.PreviousTaxablePay))
-                ) && 
+                ) &&
                 (
                     this.PreviousTaxPaid == input.PreviousTaxPaid ||
                     (this.PreviousTaxPaid != null &&
                     this.PreviousTaxPaid.Equals(input.PreviousTaxPaid))
-                ) && 
+                ) &&
                 (
                     this.StudentLoanDeduction == input.StudentLoanDeduction ||
                     (this.StudentLoanDeduction != null &&
                     this.StudentLoanDeduction.Equals(input.StudentLoanDeduction))
-                ) && 
+                ) &&
                 (
                     this.HasPostGraduateLoans == input.HasPostGraduateLoans ||
                     (this.HasPostGraduateLoans != null &&
                     this.HasPostGraduateLoans.Equals(input.HasPostGraduateLoans))
-                ) && 
+                ) &&
                 (
                     this.IsDirector == input.IsDirector ||
                     (this.IsDirector != null &&
                     this.IsDirector.Equals(input.IsDirector))
-                ) && 
+                ) &&
                 (
                     this.DirectorshipStartDate == input.DirectorshipStartDate ||
                     (this.DirectorshipStartDate != null &&
                     this.DirectorshipStartDate.Equals(input.DirectorshipStartDate))
-                ) && 
+                ) &&
                 (
                     this.NicCalculationMethod == input.NicCalculationMethod ||
                     (this.NicCalculationMethod != null &&

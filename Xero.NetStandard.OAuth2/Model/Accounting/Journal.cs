@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Journal
     /// </summary>
     [DataContract]
-    public partial class Journal :  IEquatable<Journal>, IValidatableObject
+    public partial class Journal : IEquatable<Journal>, IValidatableObject
     {
         /// <summary>
         /// The journal source type. The type of transaction that created the journal
@@ -193,56 +193,56 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The journal source type. The type of transaction that created the journal
         /// </summary>
         /// <value>The journal source type. The type of transaction that created the journal</value>
-        [DataMember(Name="SourceType", EmitDefaultValue=false)]
+        [DataMember(Name = "SourceType", EmitDefaultValue = false)]
         public SourceTypeEnum SourceType { get; set; }
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="JournalID", EmitDefaultValue=false)]
+        [DataMember(Name = "JournalID", EmitDefaultValue = false)]
         public Guid? JournalID { get; set; }
 
         /// <summary>
         /// Date the journal was posted
         /// </summary>
         /// <value>Date the journal was posted</value>
-        [DataMember(Name="JournalDate", EmitDefaultValue=false)]
+        [DataMember(Name = "JournalDate", EmitDefaultValue = false)]
         public DateTime? JournalDate { get; set; }
 
         /// <summary>
         /// Xero generated journal number
         /// </summary>
         /// <value>Xero generated journal number</value>
-        [DataMember(Name="JournalNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "JournalNumber", EmitDefaultValue = false)]
         public int? JournalNumber { get; set; }
 
         /// <summary>
         /// Created date UTC format
         /// </summary>
         /// <value>Created date UTC format</value>
-        [DataMember(Name="CreatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "CreatedDateUTC", EmitDefaultValue = false)]
         public DateTime? CreatedDateUTC { get; private set; }
 
         /// <summary>
         /// reference field for additional indetifying information
         /// </summary>
         /// <value>reference field for additional indetifying information</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// The identifier for the source transaction (e.g. InvoiceID)
         /// </summary>
         /// <value>The identifier for the source transaction (e.g. InvoiceID)</value>
-        [DataMember(Name="SourceID", EmitDefaultValue=false)]
+        [DataMember(Name = "SourceID", EmitDefaultValue = false)]
         public Guid? SourceID { get; set; }
 
         /// <summary>
         /// See JournalLines
         /// </summary>
         /// <value>See JournalLines</value>
-        [DataMember(Name="JournalLines", EmitDefaultValue=false)]
+        [DataMember(Name = "JournalLines", EmitDefaultValue = false)]
         public List<JournalLine> JournalLines { get; set; }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -294,41 +294,41 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.JournalID == input.JournalID ||
                     (this.JournalID != null &&
                     this.JournalID.Equals(input.JournalID))
-                ) && 
+                ) &&
                 (
                     this.JournalDate == input.JournalDate ||
                     (this.JournalDate != null &&
                     this.JournalDate.Equals(input.JournalDate))
-                ) && 
+                ) &&
                 (
                     this.JournalNumber == input.JournalNumber ||
                     (this.JournalNumber != null &&
                     this.JournalNumber.Equals(input.JournalNumber))
-                ) && 
+                ) &&
                 (
                     this.CreatedDateUTC == input.CreatedDateUTC ||
                     (this.CreatedDateUTC != null &&
                     this.CreatedDateUTC.Equals(input.CreatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.SourceID == input.SourceID ||
                     (this.SourceID != null &&
                     this.SourceID.Equals(input.SourceID))
-                ) && 
+                ) &&
                 (
                     this.SourceType == input.SourceType ||
                     this.SourceType.Equals(input.SourceType)
-                ) && 
+                ) &&
                 (
                     this.JournalLines == input.JournalLines ||
                     this.JournalLines != null &&

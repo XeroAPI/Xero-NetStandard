@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// TaxSettings
     /// </summary>
     [DataContract]
-    public partial class TaxSettings :  IEquatable<TaxSettings>, IValidatableObject
+    public partial class TaxSettings : IEquatable<TaxSettings>, IValidatableObject
     {
         /// <summary>
         /// The type of period (\&quot;weeks\&quot; or \&quot;months\&quot;)
@@ -55,40 +55,40 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The type of period (\&quot;weeks\&quot; or \&quot;months\&quot;)
         /// </summary>
         /// <value>The type of period (\&quot;weeks\&quot; or \&quot;months\&quot;)</value>
-        [DataMember(Name="periodType", EmitDefaultValue=false)]
+        [DataMember(Name = "periodType", EmitDefaultValue = false)]
         public PeriodTypeEnum PeriodType { get; set; }
         /// <summary>
         /// Gets or Sets TaxCode
         /// </summary>
-        [DataMember(Name="taxCode", EmitDefaultValue=false)]
+        [DataMember(Name = "taxCode", EmitDefaultValue = false)]
         public TaxCode TaxCode { get; set; }
-        
+
         /// <summary>
         /// The number of units for the period type
         /// </summary>
         /// <value>The number of units for the period type</value>
-        [DataMember(Name="periodUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "periodUnits", EmitDefaultValue = false)]
         public decimal? PeriodUnits { get; set; }
 
         /// <summary>
         /// Tax rate for STC and WT
         /// </summary>
         /// <value>Tax rate for STC and WT</value>
-        [DataMember(Name="specialTaxRate", EmitDefaultValue=false)]
+        [DataMember(Name = "specialTaxRate", EmitDefaultValue = false)]
         public string SpecialTaxRate { get; set; }
 
         /// <summary>
         /// Tax code for a lump sum amount
         /// </summary>
         /// <value>Tax code for a lump sum amount</value>
-        [DataMember(Name="lumpSumTaxCode", EmitDefaultValue=false)]
+        [DataMember(Name = "lumpSumTaxCode", EmitDefaultValue = false)]
         public string LumpSumTaxCode { get; set; }
 
         /// <summary>
         /// The total of the lump sum amount
         /// </summary>
         /// <value>The total of the lump sum amount</value>
-        [DataMember(Name="lumpSumAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "lumpSumAmount", EmitDefaultValue = false)]
         public string LumpSumAmount { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -138,30 +138,30 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PeriodUnits == input.PeriodUnits ||
                     (this.PeriodUnits != null &&
                     this.PeriodUnits.Equals(input.PeriodUnits))
-                ) && 
+                ) &&
                 (
                     this.PeriodType == input.PeriodType ||
                     this.PeriodType.Equals(input.PeriodType)
-                ) && 
+                ) &&
                 (
                     this.TaxCode == input.TaxCode ||
                     this.TaxCode.Equals(input.TaxCode)
-                ) && 
+                ) &&
                 (
                     this.SpecialTaxRate == input.SpecialTaxRate ||
                     (this.SpecialTaxRate != null &&
                     this.SpecialTaxRate.Equals(input.SpecialTaxRate))
-                ) && 
+                ) &&
                 (
                     this.LumpSumTaxCode == input.LumpSumTaxCode ||
                     (this.LumpSumTaxCode != null &&
                     this.LumpSumTaxCode.Equals(input.LumpSumTaxCode))
-                ) && 
+                ) &&
                 (
                     this.LumpSumAmount == input.LumpSumAmount ||
                     (this.LumpSumAmount != null &&

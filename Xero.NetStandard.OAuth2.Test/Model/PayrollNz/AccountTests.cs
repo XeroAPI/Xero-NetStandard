@@ -91,7 +91,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task TypeEnum_NullInput_Deserialises(){
+        public async Task TypeEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -104,15 +105,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public void TypeEnum_Empty_Deserialises(){
+        public void TypeEnum_Empty_Deserialises()
+        {
             // To be implemented
         }
 
         [Fact]
-        public void TypeEnum_InvalidInput_Deserialises(){
+        public void TypeEnum_InvalidInput_Deserialises()
+        {
             // To be implemented
         }
-        
+
         /// <summary>
         /// Test the property 'Code'
         /// </summary>

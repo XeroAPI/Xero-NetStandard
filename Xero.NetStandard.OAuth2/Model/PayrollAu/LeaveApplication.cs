@@ -28,81 +28,81 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeaveApplication
     /// </summary>
     [DataContract]
-    public partial class LeaveApplication :  IEquatable<LeaveApplication>, IValidatableObject
+    public partial class LeaveApplication : IEquatable<LeaveApplication>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets PayOutType
         /// </summary>
-        [DataMember(Name="PayOutType", EmitDefaultValue=false)]
+        [DataMember(Name = "PayOutType", EmitDefaultValue = false)]
         public PayOutType PayOutType { get; set; }
-        
+
         /// <summary>
         /// The Xero identifier for Payroll Employee
         /// </summary>
         /// <value>The Xero identifier for Payroll Employee</value>
-        [DataMember(Name="LeaveApplicationID", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveApplicationID", EmitDefaultValue = false)]
         public Guid? LeaveApplicationID { get; set; }
 
         /// <summary>
         /// The Xero identifier for Payroll Employee
         /// </summary>
         /// <value>The Xero identifier for Payroll Employee</value>
-        [DataMember(Name="EmployeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// The Xero identifier for Leave Type
         /// </summary>
         /// <value>The Xero identifier for Leave Type</value>
-        [DataMember(Name="LeaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// The title of the leave
         /// </summary>
         /// <value>The title of the leave</value>
-        [DataMember(Name="Title", EmitDefaultValue=false)]
+        [DataMember(Name = "Title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Start date of the leave (YYYY-MM-DD)
         /// </summary>
         /// <value>Start date of the leave (YYYY-MM-DD)</value>
-        [DataMember(Name="StartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "StartDate", EmitDefaultValue = false)]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// End date of the leave (YYYY-MM-DD)
         /// </summary>
         /// <value>End date of the leave (YYYY-MM-DD)</value>
-        [DataMember(Name="EndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "EndDate", EmitDefaultValue = false)]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// The Description of the Leave
         /// </summary>
         /// <value>The Description of the Leave</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets LeavePeriods
         /// </summary>
-        [DataMember(Name="LeavePeriods", EmitDefaultValue=false)]
+        [DataMember(Name = "LeavePeriods", EmitDefaultValue = false)]
         public List<LeavePeriod> LeavePeriods { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -157,57 +157,57 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveApplicationID == input.LeaveApplicationID ||
                     (this.LeaveApplicationID != null &&
                     this.LeaveApplicationID.Equals(input.LeaveApplicationID))
-                ) && 
+                ) &&
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.PayOutType == input.PayOutType ||
                     this.PayOutType.Equals(input.PayOutType)
-                ) && 
+                ) &&
                 (
                     this.LeavePeriods == input.LeavePeriods ||
                     this.LeavePeriods != null &&
                     input.LeavePeriods != null &&
                     this.LeavePeriods.SequenceEqual(input.LeavePeriods)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

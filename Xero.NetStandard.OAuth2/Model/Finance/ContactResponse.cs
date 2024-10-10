@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// ContactResponse
     /// </summary>
     [DataContract]
-    public partial class ContactResponse :  IEquatable<ContactResponse>, IValidatableObject
+    public partial class ContactResponse : IEquatable<ContactResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of contact
         /// </summary>
         /// <value>Xero Identifier of contact</value>
-        [DataMember(Name="contactId", EmitDefaultValue=false)]
+        [DataMember(Name = "contactId", EmitDefaultValue = false)]
         public Guid? ContactId { get; set; }
 
         /// <summary>
         /// Full name of contact/organisation
         /// </summary>
         /// <value>Full name of contact/organisation</value>
-        [DataMember(Name="contactName", EmitDefaultValue=false)]
+        [DataMember(Name = "contactName", EmitDefaultValue = false)]
         public string ContactName { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ContactId == input.ContactId ||
                     (this.ContactId != null &&
                     this.ContactId.Equals(input.ContactId))
-                ) && 
+                ) &&
                 (
                     this.ContactName == input.ContactName ||
                     (this.ContactName != null &&

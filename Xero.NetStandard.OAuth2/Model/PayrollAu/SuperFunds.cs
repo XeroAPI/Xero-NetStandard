@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// SuperFunds
     /// </summary>
     [DataContract]
-    public partial class SuperFunds :  IEquatable<SuperFunds>, IValidatableObject
+    public partial class SuperFunds : IEquatable<SuperFunds>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _SuperFunds
         /// </summary>
-        [DataMember(Name="SuperFunds", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperFunds", EmitDefaultValue = false)]
         public List<SuperFund> _SuperFunds { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._SuperFunds == input._SuperFunds ||
                     this._SuperFunds != null &&

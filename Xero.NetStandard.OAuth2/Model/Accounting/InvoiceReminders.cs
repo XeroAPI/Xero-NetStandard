@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// InvoiceReminders
     /// </summary>
     [DataContract]
-    public partial class InvoiceReminders :  IEquatable<InvoiceReminders>, IValidatableObject
+    public partial class InvoiceReminders : IEquatable<InvoiceReminders>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _InvoiceReminders
         /// </summary>
-        [DataMember(Name="InvoiceReminders", EmitDefaultValue=false)]
+        [DataMember(Name = "InvoiceReminders", EmitDefaultValue = false)]
         public List<InvoiceReminder> _InvoiceReminders { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._InvoiceReminders == input._InvoiceReminders ||
                     this._InvoiceReminders != null &&

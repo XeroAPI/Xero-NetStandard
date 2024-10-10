@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Statutory Deduction Category
     /// </summary>
     /// <value>Statutory Deduction Category</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum StatutoryDeductionCategory
     {
         /// <summary>

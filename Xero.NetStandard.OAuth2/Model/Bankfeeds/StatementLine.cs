@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// the lines details for a statement
     /// </summary>
     [DataContract]
-    public partial class StatementLine :  IEquatable<StatementLine>, IValidatableObject
+    public partial class StatementLine : IEquatable<StatementLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets CreditDebitIndicator
         /// </summary>
-        [DataMember(Name="creditDebitIndicator", EmitDefaultValue=false)]
+        [DataMember(Name = "creditDebitIndicator", EmitDefaultValue = false)]
         public CreditDebitIndicator CreditDebitIndicator { get; set; }
-        
+
         /// <summary>
         /// The date that the transaction was processed or cleared as seen in internet banking ISO-8601 YYYY-MM-DD
         /// </summary>
         /// <value>The date that the transaction was processed or cleared as seen in internet banking ISO-8601 YYYY-MM-DD</value>
-        [DataMember(Name="postedDate", EmitDefaultValue=false)]
+        [DataMember(Name = "postedDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PostedDate { get; set; }
 
@@ -48,49 +48,49 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         /// Transaction description
         /// </summary>
         /// <value>Transaction description</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Transaction amount
         /// </summary>
         /// <value>Transaction amount</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Financial institute&#39;s internal transaction identifier. If provided this field is factored into duplicate detection.
         /// </summary>
         /// <value>Financial institute&#39;s internal transaction identifier. If provided this field is factored into duplicate detection.</value>
-        [DataMember(Name="transactionId", EmitDefaultValue=false)]
+        [DataMember(Name = "transactionId", EmitDefaultValue = false)]
         public string TransactionId { get; set; }
 
         /// <summary>
         /// Typically the merchant or payee name
         /// </summary>
         /// <value>Typically the merchant or payee name</value>
-        [DataMember(Name="payeeName", EmitDefaultValue=false)]
+        [DataMember(Name = "payeeName", EmitDefaultValue = false)]
         public string PayeeName { get; set; }
 
         /// <summary>
         /// Optional field to enhance the Description
         /// </summary>
         /// <value>Optional field to enhance the Description</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name = "reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// The cheque/check number
         /// </summary>
         /// <value>The cheque/check number</value>
-        [DataMember(Name="chequeNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "chequeNumber", EmitDefaultValue = false)]
         public string ChequeNumber { get; set; }
 
         /// <summary>
         /// Descriptive transaction type
         /// </summary>
         /// <value>Descriptive transaction type</value>
-        [DataMember(Name="transactionType", EmitDefaultValue=false)]
+        [DataMember(Name = "transactionType", EmitDefaultValue = false)]
         public string TransactionType { get; set; }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -143,46 +143,46 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PostedDate == input.PostedDate ||
                     (this.PostedDate != null &&
                     this.PostedDate.Equals(input.PostedDate))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.CreditDebitIndicator == input.CreditDebitIndicator ||
                     this.CreditDebitIndicator.Equals(input.CreditDebitIndicator)
-                ) && 
+                ) &&
                 (
                     this.TransactionId == input.TransactionId ||
                     (this.TransactionId != null &&
                     this.TransactionId.Equals(input.TransactionId))
-                ) && 
+                ) &&
                 (
                     this.PayeeName == input.PayeeName ||
                     (this.PayeeName != null &&
                     this.PayeeName.Equals(input.PayeeName))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.ChequeNumber == input.ChequeNumber ||
                     (this.ChequeNumber != null &&
                     this.ChequeNumber.Equals(input.ChequeNumber))
-                ) && 
+                ) &&
                 (
                     this.TransactionType == input.TransactionType ||
                     (this.TransactionType != null &&

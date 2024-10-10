@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// CreditNote
     /// </summary>
     [DataContract]
-    public partial class CreditNote :  IEquatable<CreditNote>, IValidatableObject
+    public partial class CreditNote : IEquatable<CreditNote>, IValidatableObject
     {
         /// <summary>
         /// See Credit Note Types
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Credit Note Types
         /// </summary>
         /// <value>See Credit Note Types</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// See Credit Note Status Codes
@@ -106,205 +106,205 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Credit Note Status Codes
         /// </summary>
         /// <value>See Credit Note Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// The date the credit note is issued YYYY-MM-DD. If the Date element is not specified then it will default to the current date based on the timezone setting of the organisation
         /// </summary>
         /// <value>The date the credit note is issued YYYY-MM-DD. If the Date element is not specified then it will default to the current date based on the timezone setting of the organisation</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// Date invoice is due – YYYY-MM-DD
         /// </summary>
         /// <value>Date invoice is due – YYYY-MM-DD</value>
-        [DataMember(Name="DueDate", EmitDefaultValue=false)]
+        [DataMember(Name = "DueDate", EmitDefaultValue = false)]
         public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// See Invoice Line Items
         /// </summary>
         /// <value>See Invoice Line Items</value>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// The subtotal of the credit note excluding taxes
         /// </summary>
         /// <value>The subtotal of the credit note excluding taxes</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; set; }
 
         /// <summary>
         /// The total tax on the credit note
         /// </summary>
         /// <value>The total tax on the credit note</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; set; }
 
         /// <summary>
         /// The total of the Credit Note(subtotal + total tax)
         /// </summary>
         /// <value>The total of the Credit Note(subtotal + total tax)</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// CIS deduction for UK contractors
         /// </summary>
         /// <value>CIS deduction for UK contractors</value>
-        [DataMember(Name="CISDeduction", EmitDefaultValue=false)]
+        [DataMember(Name = "CISDeduction", EmitDefaultValue = false)]
         public decimal? CISDeduction { get; private set; }
 
         /// <summary>
         /// CIS Deduction rate for the organisation
         /// </summary>
         /// <value>CIS Deduction rate for the organisation</value>
-        [DataMember(Name="CISRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CISRate", EmitDefaultValue = false)]
         public decimal? CISRate { get; private set; }
 
         /// <summary>
         /// UTC timestamp of last update to the credit note
         /// </summary>
         /// <value>UTC timestamp of last update to the credit note</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Date when credit note was fully paid(UTC format)
         /// </summary>
         /// <value>Date when credit note was fully paid(UTC format)</value>
-        [DataMember(Name="FullyPaidOnDate", EmitDefaultValue=false)]
+        [DataMember(Name = "FullyPaidOnDate", EmitDefaultValue = false)]
         public DateTime? FullyPaidOnDate { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier
         /// </summary>
         /// <value>Xero generated unique identifier</value>
-        [DataMember(Name="CreditNoteID", EmitDefaultValue=false)]
+        [DataMember(Name = "CreditNoteID", EmitDefaultValue = false)]
         public Guid? CreditNoteID { get; set; }
 
         /// <summary>
         /// ACCRECCREDIT – Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings)
         /// </summary>
         /// <value>ACCRECCREDIT – Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings)</value>
-        [DataMember(Name="CreditNoteNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "CreditNoteNumber", EmitDefaultValue = false)]
         public string CreditNoteNumber { get; set; }
 
         /// <summary>
         /// ACCRECCREDIT only – additional reference number
         /// </summary>
         /// <value>ACCRECCREDIT only – additional reference number</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Boolean to set whether the credit note in the Xero app should be marked as “sent”. This can be set only on credit notes that have been approved
         /// </summary>
         /// <value>Boolean to set whether the credit note in the Xero app should be marked as “sent”. This can be set only on credit notes that have been approved</value>
-        [DataMember(Name="SentToContact", EmitDefaultValue=false)]
+        [DataMember(Name = "SentToContact", EmitDefaultValue = false)]
         public bool? SentToContact { get; private set; }
 
         /// <summary>
         /// The currency rate for a multicurrency invoice. If no rate is specified, the XE.com day rate is used
         /// </summary>
         /// <value>The currency rate for a multicurrency invoice. If no rate is specified, the XE.com day rate is used</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
 
         /// <summary>
         /// The remaining credit balance on the Credit Note
         /// </summary>
         /// <value>The remaining credit balance on the Credit Note</value>
-        [DataMember(Name="RemainingCredit", EmitDefaultValue=false)]
+        [DataMember(Name = "RemainingCredit", EmitDefaultValue = false)]
         public decimal? RemainingCredit { get; set; }
 
         /// <summary>
         /// See Allocations
         /// </summary>
         /// <value>See Allocations</value>
-        [DataMember(Name="Allocations", EmitDefaultValue=false)]
+        [DataMember(Name = "Allocations", EmitDefaultValue = false)]
         public List<Allocation> Allocations { get; set; }
 
         /// <summary>
         /// The amount of applied to an invoice
         /// </summary>
         /// <value>The amount of applied to an invoice</value>
-        [DataMember(Name="AppliedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "AppliedAmount", EmitDefaultValue = false)]
         public decimal? AppliedAmount { get; set; }
 
         /// <summary>
         /// See Payments
         /// </summary>
         /// <value>See Payments</value>
-        [DataMember(Name="Payments", EmitDefaultValue=false)]
+        [DataMember(Name = "Payments", EmitDefaultValue = false)]
         public List<Payment> Payments { get; set; }
 
         /// <summary>
         /// See BrandingThemes
         /// </summary>
         /// <value>See BrandingThemes</value>
-        [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
+        [DataMember(Name = "BrandingThemeID", EmitDefaultValue = false)]
         public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// boolean to indicate if a credit note has an attachment
         /// </summary>
         /// <value>boolean to indicate if a credit note has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; set; }
 
         /// <summary>
         /// A boolean to indicate if a credit note has an validation errors
         /// </summary>
         /// <value>A boolean to indicate if a credit note has an validation errors</value>
-        [DataMember(Name="HasErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "HasErrors", EmitDefaultValue = false)]
         public bool? HasErrors { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
         /// Displays array of warning messages from the API
         /// </summary>
         /// <value>Displays array of warning messages from the API</value>
-        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
         /// An array of addresses used to auto calculate sales tax
         /// </summary>
         /// <value>An array of addresses used to auto calculate sales tax</value>
-        [DataMember(Name="InvoiceAddresses", EmitDefaultValue=false)]
+        [DataMember(Name = "InvoiceAddresses", EmitDefaultValue = false)]
         public List<InvoiceAddress> InvoiceAddresses { get; set; }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -379,158 +379,158 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.DueDate == input.DueDate ||
                     (this.DueDate != null &&
                     this.DueDate.Equals(input.DueDate))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.CISDeduction == input.CISDeduction ||
                     (this.CISDeduction != null &&
                     this.CISDeduction.Equals(input.CISDeduction))
-                ) && 
+                ) &&
                 (
                     this.CISRate == input.CISRate ||
                     (this.CISRate != null &&
                     this.CISRate.Equals(input.CISRate))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.FullyPaidOnDate == input.FullyPaidOnDate ||
                     (this.FullyPaidOnDate != null &&
                     this.FullyPaidOnDate.Equals(input.FullyPaidOnDate))
-                ) && 
+                ) &&
                 (
                     this.CreditNoteID == input.CreditNoteID ||
                     (this.CreditNoteID != null &&
                     this.CreditNoteID.Equals(input.CreditNoteID))
-                ) && 
+                ) &&
                 (
                     this.CreditNoteNumber == input.CreditNoteNumber ||
                     (this.CreditNoteNumber != null &&
                     this.CreditNoteNumber.Equals(input.CreditNoteNumber))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.SentToContact == input.SentToContact ||
                     (this.SentToContact != null &&
                     this.SentToContact.Equals(input.SentToContact))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.RemainingCredit == input.RemainingCredit ||
                     (this.RemainingCredit != null &&
                     this.RemainingCredit.Equals(input.RemainingCredit))
-                ) && 
+                ) &&
                 (
                     this.Allocations == input.Allocations ||
                     this.Allocations != null &&
                     input.Allocations != null &&
                     this.Allocations.SequenceEqual(input.Allocations)
-                ) && 
+                ) &&
                 (
                     this.AppliedAmount == input.AppliedAmount ||
                     (this.AppliedAmount != null &&
                     this.AppliedAmount.Equals(input.AppliedAmount))
-                ) && 
+                ) &&
                 (
                     this.Payments == input.Payments ||
                     this.Payments != null &&
                     input.Payments != null &&
                     this.Payments.SequenceEqual(input.Payments)
-                ) && 
+                ) &&
                 (
                     this.BrandingThemeID == input.BrandingThemeID ||
                     (this.BrandingThemeID != null &&
                     this.BrandingThemeID.Equals(input.BrandingThemeID))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.HasErrors == input.HasErrors ||
                     (this.HasErrors != null &&
                     this.HasErrors.Equals(input.HasErrors))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
                     this.ValidationErrors.SequenceEqual(input.ValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&
                     input.Warnings != null &&
                     this.Warnings.SequenceEqual(input.Warnings)
-                ) && 
+                ) &&
                 (
                     this.InvoiceAddresses == input.InvoiceAddresses ||
                     this.InvoiceAddresses != null &&

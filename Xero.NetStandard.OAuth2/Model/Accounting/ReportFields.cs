@@ -28,25 +28,25 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ReportFields
     /// </summary>
     [DataContract]
-    public partial class ReportFields :  IEquatable<ReportFields>, IValidatableObject
+    public partial class ReportFields : IEquatable<ReportFields>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets FieldID
         /// </summary>
-        [DataMember(Name="FieldID", EmitDefaultValue=false)]
+        [DataMember(Name = "FieldID", EmitDefaultValue = false)]
         public string FieldID { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name="Value", EmitDefaultValue=false)]
+        [DataMember(Name = "Value", EmitDefaultValue = false)]
         public string Value { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -93,17 +93,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.FieldID == input.FieldID ||
                     (this.FieldID != null &&
                     this.FieldID.Equals(input.FieldID))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Value == input.Value ||
                     (this.Value != null &&

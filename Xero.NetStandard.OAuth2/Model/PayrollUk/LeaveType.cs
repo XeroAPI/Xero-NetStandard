@@ -28,70 +28,70 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// LeaveType
     /// </summary>
     [DataContract]
-    public partial class LeaveType :  IEquatable<LeaveType>, IValidatableObject
+    public partial class LeaveType : IEquatable<LeaveType>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LeaveType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public LeaveType() 
-        { 
+        public LeaveType()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for the leave
         /// </summary>
         /// <value>Xero unique identifier for the leave</value>
-        [DataMember(Name="leaveID", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveID", EmitDefaultValue = false)]
         public Guid? LeaveID { get; set; }
 
         /// <summary>
         /// Xero unique identifier for the leave type
         /// </summary>
         /// <value>Xero unique identifier for the leave type</value>
-        [DataMember(Name="leaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// Name of the leave type
         /// </summary>
         /// <value>Name of the leave type</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Indicate that an employee will be paid when taking this type of leave
         /// </summary>
         /// <value>Indicate that an employee will be paid when taking this type of leave</value>
-        [DataMember(Name="isPaidLeave", EmitDefaultValue=false)]
+        [DataMember(Name = "isPaidLeave", EmitDefaultValue = false)]
         public bool? IsPaidLeave { get; set; }
 
         /// <summary>
         /// Indicate that a balance for this leave type to be shown on the employee’s payslips
         /// </summary>
         /// <value>Indicate that a balance for this leave type to be shown on the employee’s payslips</value>
-        [DataMember(Name="showOnPayslip", EmitDefaultValue=false)]
+        [DataMember(Name = "showOnPayslip", EmitDefaultValue = false)]
         public bool? ShowOnPayslip { get; set; }
 
         /// <summary>
         /// UTC timestamp of last update to the leave type note
         /// </summary>
         /// <value>UTC timestamp of last update to the leave type note</value>
-        [DataMember(Name="updatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; set; }
 
         /// <summary>
         /// Shows whether the leave type is active or not
         /// </summary>
         /// <value>Shows whether the leave type is active or not</value>
-        [DataMember(Name="isActive", EmitDefaultValue=false)]
+        [DataMember(Name = "isActive", EmitDefaultValue = false)]
         public bool? IsActive { get; set; }
 
         /// <summary>
         /// Shows whether the leave type is a statutory leave type or not
         /// </summary>
         /// <value>Shows whether the leave type is a statutory leave type or not</value>
-        [DataMember(Name="isStatutoryLeave", EmitDefaultValue=false)]
+        [DataMember(Name = "isStatutoryLeave", EmitDefaultValue = false)]
         public bool? IsStatutoryLeave { get; set; }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -143,42 +143,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveID == input.LeaveID ||
                     (this.LeaveID != null &&
                     this.LeaveID.Equals(input.LeaveID))
-                ) && 
+                ) &&
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.IsPaidLeave == input.IsPaidLeave ||
                     (this.IsPaidLeave != null &&
                     this.IsPaidLeave.Equals(input.IsPaidLeave))
-                ) && 
+                ) &&
                 (
                     this.ShowOnPayslip == input.ShowOnPayslip ||
                     (this.ShowOnPayslip != null &&
                     this.ShowOnPayslip.Equals(input.ShowOnPayslip))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.IsActive == input.IsActive ||
                     (this.IsActive != null &&
                     this.IsActive.Equals(input.IsActive))
-                ) && 
+                ) &&
                 (
                     this.IsStatutoryLeave == input.IsStatutoryLeave ||
                     (this.IsStatutoryLeave != null &&

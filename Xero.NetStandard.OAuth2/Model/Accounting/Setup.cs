@@ -28,26 +28,26 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Setup
     /// </summary>
     [DataContract]
-    public partial class Setup :  IEquatable<Setup>, IValidatableObject
+    public partial class Setup : IEquatable<Setup>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets ConversionDate
         /// </summary>
-        [DataMember(Name="ConversionDate", EmitDefaultValue=false)]
+        [DataMember(Name = "ConversionDate", EmitDefaultValue = false)]
         public ConversionDate ConversionDate { get; set; }
 
         /// <summary>
         /// Balance supplied for each account that has a value as at the conversion date.
         /// </summary>
         /// <value>Balance supplied for each account that has a value as at the conversion date.</value>
-        [DataMember(Name="ConversionBalances", EmitDefaultValue=false)]
+        [DataMember(Name = "ConversionBalances", EmitDefaultValue = false)]
         public List<ConversionBalances> ConversionBalances { get; set; }
 
         /// <summary>
         /// Gets or Sets Accounts
         /// </summary>
-        [DataMember(Name="Accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "Accounts", EmitDefaultValue = false)]
         public List<Account> Accounts { get; set; }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -94,18 +94,18 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ConversionDate == input.ConversionDate ||
                     (this.ConversionDate != null &&
                     this.ConversionDate.Equals(input.ConversionDate))
-                ) && 
+                ) &&
                 (
                     this.ConversionBalances == input.ConversionBalances ||
                     this.ConversionBalances != null &&
                     input.ConversionBalances != null &&
                     this.ConversionBalances.SequenceEqual(input.ConversionBalances)
-                ) && 
+                ) &&
                 (
                     this.Accounts == input.Accounts ||
                     this.Accounts != null &&

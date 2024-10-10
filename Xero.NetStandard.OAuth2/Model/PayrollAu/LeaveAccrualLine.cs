@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeaveAccrualLine
     /// </summary>
     [DataContract]
-    public partial class LeaveAccrualLine :  IEquatable<LeaveAccrualLine>, IValidatableObject
+    public partial class LeaveAccrualLine : IEquatable<LeaveAccrualLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for the Leave type.
         /// </summary>
         /// <value>Xero identifier for the Leave type.</value>
-        [DataMember(Name="LeaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// Leave Accrual number of units
         /// </summary>
         /// <value>Leave Accrual number of units</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
         /// If you want to auto calculate leave.
         /// </summary>
         /// <value>If you want to auto calculate leave.</value>
-        [DataMember(Name="AutoCalculate", EmitDefaultValue=false)]
+        [DataMember(Name = "AutoCalculate", EmitDefaultValue = false)]
         public bool? AutoCalculate { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.AutoCalculate == input.AutoCalculate ||
                     (this.AutoCalculate != null &&

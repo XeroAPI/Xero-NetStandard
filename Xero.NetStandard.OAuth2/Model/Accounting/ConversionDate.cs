@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// The date when the organisation starts using Xero
     /// </summary>
     [DataContract]
-    public partial class ConversionDate :  IEquatable<ConversionDate>, IValidatableObject
+    public partial class ConversionDate : IEquatable<ConversionDate>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The month the organisation starts using Xero. Value is an integer between 1 and 12
         /// </summary>
         /// <value>The month the organisation starts using Xero. Value is an integer between 1 and 12</value>
-        [DataMember(Name="Month", EmitDefaultValue=false)]
+        [DataMember(Name = "Month", EmitDefaultValue = false)]
         public int? Month { get; set; }
 
         /// <summary>
         /// The year the organisation starts using Xero. Value is an integer greater than 2006
         /// </summary>
         /// <value>The year the organisation starts using Xero. Value is an integer greater than 2006</value>
-        [DataMember(Name="Year", EmitDefaultValue=false)]
+        [DataMember(Name = "Year", EmitDefaultValue = false)]
         public int? Year { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Month == input.Month ||
                     (this.Month != null &&
                     this.Month.Equals(input.Month))
-                ) && 
+                ) &&
                 (
                     this.Year == input.Year ||
                     (this.Year != null &&

@@ -28,33 +28,33 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// BalanceSheetResponse
     /// </summary>
     [DataContract]
-    public partial class BalanceSheetResponse :  IEquatable<BalanceSheetResponse>, IValidatableObject
+    public partial class BalanceSheetResponse : IEquatable<BalanceSheetResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Balance date of the report
         /// </summary>
         /// <value>Balance date of the report</value>
-        [DataMember(Name="balanceDate", EmitDefaultValue=false)]
+        [DataMember(Name = "balanceDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? BalanceDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Asset
         /// </summary>
-        [DataMember(Name="asset", EmitDefaultValue=false)]
+        [DataMember(Name = "asset", EmitDefaultValue = false)]
         public BalanceSheetAccountGroup Asset { get; set; }
 
         /// <summary>
         /// Gets or Sets Liability
         /// </summary>
-        [DataMember(Name="liability", EmitDefaultValue=false)]
+        [DataMember(Name = "liability", EmitDefaultValue = false)]
         public BalanceSheetAccountGroup Liability { get; set; }
 
         /// <summary>
         /// Gets or Sets Equity
         /// </summary>
-        [DataMember(Name="equity", EmitDefaultValue=false)]
+        [DataMember(Name = "equity", EmitDefaultValue = false)]
         public BalanceSheetAccountGroup Equity { get; set; }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -102,22 +102,22 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BalanceDate == input.BalanceDate ||
                     (this.BalanceDate != null &&
                     this.BalanceDate.Equals(input.BalanceDate))
-                ) && 
+                ) &&
                 (
                     this.Asset == input.Asset ||
                     (this.Asset != null &&
                     this.Asset.Equals(input.Asset))
-                ) && 
+                ) &&
                 (
                     this.Liability == input.Liability ||
                     (this.Liability != null &&
                     this.Liability.Equals(input.Liability))
-                ) && 
+                ) &&
                 (
                     this.Equity == input.Equity ||
                     (this.Equity != null &&

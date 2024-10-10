@@ -101,9 +101,12 @@ namespace Xero.NetStandard.OAuth2.Client
             string codeChallenge = null;
 
             /// Validating the code verifiier, read more at https://developer.xero.com/documentation/oauth2/pkce-flow
-            if (codeVerifier.Length < 43 || codeVerifier.Length > 128) {
+            if (codeVerifier.Length < 43 || codeVerifier.Length > 128)
+            {
                 throw new Exception("The code verifier must be between 43 and 128 characters.");
-            } else {
+            }
+            else
+            {
                 SHA256 sha256 = SHA256Managed.Create();
 
                 var codeVerifierTextBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(codeVerifier);
@@ -166,7 +169,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
         /// <returns></returns>
-        public async Task<IXeroToken> RequestClientCredentialsTokenAsync(bool fetchTenants=true)
+        public async Task<IXeroToken> RequestClientCredentialsTokenAsync(bool fetchTenants = true)
         {
 
             var response = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
@@ -187,7 +190,8 @@ namespace Xero.NetStandard.OAuth2.Client
                 AccessToken = response.AccessToken,
                 ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
             };
-            if(fetchTenants){
+            if (fetchTenants)
+            {
                 xeroToken.Tenants = await GetConnectionsAsync(xeroToken);
             }
             return xeroToken;
@@ -262,7 +266,7 @@ namespace Xero.NetStandard.OAuth2.Client
             {
                 throw new Exception(response.Error);
             }
-            
+
             return new XeroOAuth2Token()
             {
                 AccessToken = response.AccessToken,
@@ -344,7 +348,8 @@ namespace Xero.NetStandard.OAuth2.Client
                 throw new ArgumentNullException("xeroToken");
             }
 
-            var response = await _httpClient.RevokeTokenAsync(new TokenRevocationRequest {
+            var response = await _httpClient.RevokeTokenAsync(new TokenRevocationRequest
+            {
                 Address = $"{xeroConfiguration.XeroIdentityBaseUri}/connect/revocation",
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,

@@ -28,63 +28,63 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ManualJournalLine
     /// </summary>
     [DataContract]
-    public partial class ManualJournalLine :  IEquatable<ManualJournalLine>, IValidatableObject
+    public partial class ManualJournalLine : IEquatable<ManualJournalLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// total for line. Debits are positive, credits are negative value
         /// </summary>
         /// <value>total for line. Debits are positive, credits are negative value</value>
-        [DataMember(Name="LineAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmount", EmitDefaultValue = false)]
         public decimal? LineAmount { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountID", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// Description for journal line
         /// </summary>
         /// <value>Description for journal line</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// The tax type from TaxRates
         /// </summary>
         /// <value>The tax type from TaxRates</value>
-        [DataMember(Name="TaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxType", EmitDefaultValue = false)]
         public string TaxType { get; set; }
 
         /// <summary>
         /// Optional Tracking Category – see Tracking. Any JournalLine can have a maximum of 2 &lt;TrackingCategory&gt; elements.
         /// </summary>
         /// <value>Optional Tracking Category – see Tracking. Any JournalLine can have a maximum of 2 &lt;TrackingCategory&gt; elements.</value>
-        [DataMember(Name="Tracking", EmitDefaultValue=false)]
+        [DataMember(Name = "Tracking", EmitDefaultValue = false)]
         public List<TrackingCategory> Tracking { get; set; }
 
         /// <summary>
         /// The calculated tax amount based on the TaxType and LineAmount
         /// </summary>
         /// <value>The calculated tax amount based on the TaxType and LineAmount</value>
-        [DataMember(Name="TaxAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxAmount", EmitDefaultValue = false)]
         public decimal? TaxAmount { get; set; }
 
         /// <summary>
         /// is the line blank
         /// </summary>
         /// <value>is the line blank</value>
-        [DataMember(Name="IsBlank", EmitDefaultValue=false)]
+        [DataMember(Name = "IsBlank", EmitDefaultValue = false)]
         public bool? IsBlank { get; set; }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -136,43 +136,43 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LineAmount == input.LineAmount ||
                     (this.LineAmount != null &&
                     this.LineAmount.Equals(input.LineAmount))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.TaxType == input.TaxType ||
                     (this.TaxType != null &&
                     this.TaxType.Equals(input.TaxType))
-                ) && 
+                ) &&
                 (
                     this.Tracking == input.Tracking ||
                     this.Tracking != null &&
                     input.Tracking != null &&
                     this.Tracking.SequenceEqual(input.Tracking)
-                ) && 
+                ) &&
                 (
                     this.TaxAmount == input.TaxAmount ||
                     (this.TaxAmount != null &&
                     this.TaxAmount.Equals(input.TaxAmount))
-                ) && 
+                ) &&
                 (
                     this.IsBlank == input.IsBlank ||
                     (this.IsBlank != null &&

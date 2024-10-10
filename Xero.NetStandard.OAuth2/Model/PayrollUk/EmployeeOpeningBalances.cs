@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EmployeeOpeningBalances
     /// </summary>
     [DataContract]
-    public partial class EmployeeOpeningBalances :  IEquatable<EmployeeOpeningBalances>, IValidatableObject
+    public partial class EmployeeOpeningBalances : IEquatable<EmployeeOpeningBalances>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The total accumulated statutory adoption pay amount received by the employee for current fiscal year to date
         /// </summary>
         /// <value>The total accumulated statutory adoption pay amount received by the employee for current fiscal year to date</value>
-        [DataMember(Name="statutoryAdoptionPay", EmitDefaultValue=false)]
+        [DataMember(Name = "statutoryAdoptionPay", EmitDefaultValue = false)]
         public decimal? StatutoryAdoptionPay { get; set; }
 
         /// <summary>
         /// The total accumulated statutory maternity pay amount received by the employee for current fiscal year to date
         /// </summary>
         /// <value>The total accumulated statutory maternity pay amount received by the employee for current fiscal year to date</value>
-        [DataMember(Name="statutoryMaternityPay", EmitDefaultValue=false)]
+        [DataMember(Name = "statutoryMaternityPay", EmitDefaultValue = false)]
         public decimal? StatutoryMaternityPay { get; set; }
 
         /// <summary>
         /// The total accumulated statutory paternity pay amount received by the employee for current fiscal year to date
         /// </summary>
         /// <value>The total accumulated statutory paternity pay amount received by the employee for current fiscal year to date</value>
-        [DataMember(Name="statutoryPaternityPay", EmitDefaultValue=false)]
+        [DataMember(Name = "statutoryPaternityPay", EmitDefaultValue = false)]
         public decimal? StatutoryPaternityPay { get; set; }
 
         /// <summary>
         /// The total accumulated statutory shared parental pay amount received by the employee for current fiscal year to date
         /// </summary>
         /// <value>The total accumulated statutory shared parental pay amount received by the employee for current fiscal year to date</value>
-        [DataMember(Name="statutorySharedParentalPay", EmitDefaultValue=false)]
+        [DataMember(Name = "statutorySharedParentalPay", EmitDefaultValue = false)]
         public decimal? StatutorySharedParentalPay { get; set; }
 
         /// <summary>
         /// The total accumulated statutory sick pay amount received by the employee for current fiscal year to date
         /// </summary>
         /// <value>The total accumulated statutory sick pay amount received by the employee for current fiscal year to date</value>
-        [DataMember(Name="statutorySickPay", EmitDefaultValue=false)]
+        [DataMember(Name = "statutorySickPay", EmitDefaultValue = false)]
         public decimal? StatutorySickPay { get; set; }
 
         /// <summary>
         /// The unique employee number issued by the employee&#39;s former employer
         /// </summary>
         /// <value>The unique employee number issued by the employee&#39;s former employer</value>
-        [DataMember(Name="priorEmployeeNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "priorEmployeeNumber", EmitDefaultValue = false)]
         public double? PriorEmployeeNumber { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatutoryAdoptionPay == input.StatutoryAdoptionPay ||
                     (this.StatutoryAdoptionPay != null &&
                     this.StatutoryAdoptionPay.Equals(input.StatutoryAdoptionPay))
-                ) && 
+                ) &&
                 (
                     this.StatutoryMaternityPay == input.StatutoryMaternityPay ||
                     (this.StatutoryMaternityPay != null &&
                     this.StatutoryMaternityPay.Equals(input.StatutoryMaternityPay))
-                ) && 
+                ) &&
                 (
                     this.StatutoryPaternityPay == input.StatutoryPaternityPay ||
                     (this.StatutoryPaternityPay != null &&
                     this.StatutoryPaternityPay.Equals(input.StatutoryPaternityPay))
-                ) && 
+                ) &&
                 (
                     this.StatutorySharedParentalPay == input.StatutorySharedParentalPay ||
                     (this.StatutorySharedParentalPay != null &&
                     this.StatutorySharedParentalPay.Equals(input.StatutorySharedParentalPay))
-                ) && 
+                ) &&
                 (
                     this.StatutorySickPay == input.StatutorySickPay ||
                     (this.StatutorySickPay != null &&
                     this.StatutorySickPay.Equals(input.StatutorySickPay))
-                ) && 
+                ) &&
                 (
                     this.PriorEmployeeNumber == input.PriorEmployeeNumber ||
                     (this.PriorEmployeeNumber != null &&

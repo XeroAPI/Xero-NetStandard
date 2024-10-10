@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// The Object Type
     /// </summary>
     /// <value>The Object Type</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum ObjectType
     {
         /// <summary>

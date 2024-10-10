@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// StatutoryDeductionLine
     /// </summary>
     [DataContract]
-    public partial class StatutoryDeductionLine :  IEquatable<StatutoryDeductionLine>, IValidatableObject
+    public partial class StatutoryDeductionLine : IEquatable<StatutoryDeductionLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll statutory deduction type
         /// </summary>
         /// <value>Xero identifier for payroll statutory deduction type</value>
-        [DataMember(Name="statutoryDeductionTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "statutoryDeductionTypeID", EmitDefaultValue = false)]
         public Guid? StatutoryDeductionTypeID { get; set; }
 
         /// <summary>
         /// The amount of the statutory deduction line
         /// </summary>
         /// <value>The amount of the statutory deduction line</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Fixed Amount
         /// </summary>
         /// <value>Fixed Amount</value>
-        [DataMember(Name="fixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAmount", EmitDefaultValue = false)]
         public decimal? FixedAmount { get; set; }
 
         /// <summary>
         /// Identifies if the tax line is a manual adjustment
         /// </summary>
         /// <value>Identifies if the tax line is a manual adjustment</value>
-        [DataMember(Name="manualAdjustment", EmitDefaultValue=false)]
+        [DataMember(Name = "manualAdjustment", EmitDefaultValue = false)]
         public bool? ManualAdjustment { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatutoryDeductionTypeID == input.StatutoryDeductionTypeID ||
                     (this.StatutoryDeductionTypeID != null &&
                     this.StatutoryDeductionTypeID.Equals(input.StatutoryDeductionTypeID))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&
                     this.FixedAmount.Equals(input.FixedAmount))
-                ) && 
+                ) &&
                 (
                     this.ManualAdjustment == input.ManualAdjustment ||
                     (this.ManualAdjustment != null &&

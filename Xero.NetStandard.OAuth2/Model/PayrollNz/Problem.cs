@@ -28,47 +28,47 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// The object returned for a bad request
     /// </summary>
     [DataContract]
-    public partial class Problem :  IEquatable<Problem>, IValidatableObject
+    public partial class Problem : IEquatable<Problem>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The type of error format
         /// </summary>
         /// <value>The type of error format</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// The type of the error
         /// </summary>
         /// <value>The type of the error</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// The error status code
         /// </summary>
         /// <value>The error status code</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
         /// A description of the error
         /// </summary>
         /// <value>A description of the error</value>
-        [DataMember(Name="detail", EmitDefaultValue=false)]
+        [DataMember(Name = "detail", EmitDefaultValue = false)]
         public string Detail { get; set; }
 
         /// <summary>
         /// Gets or Sets Instance
         /// </summary>
-        [DataMember(Name="instance", EmitDefaultValue=false)]
+        [DataMember(Name = "instance", EmitDefaultValue = false)]
         public string Instance { get; set; }
 
         /// <summary>
         /// Gets or Sets InvalidFields
         /// </summary>
-        [DataMember(Name="invalidFields", EmitDefaultValue=false)]
+        [DataMember(Name = "invalidFields", EmitDefaultValue = false)]
         public List<InvalidField> InvalidFields { get; set; }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -118,32 +118,32 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Detail == input.Detail ||
                     (this.Detail != null &&
                     this.Detail.Equals(input.Detail))
-                ) && 
+                ) &&
                 (
                     this.Instance == input.Instance ||
                     (this.Instance != null &&
                     this.Instance.Equals(input.Instance))
-                ) && 
+                ) &&
                 (
                     this.InvalidFields == input.InvalidFields ||
                     this.InvalidFields != null &&

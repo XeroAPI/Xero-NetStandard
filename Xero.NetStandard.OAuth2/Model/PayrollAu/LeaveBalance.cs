@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeaveBalance
     /// </summary>
     [DataContract]
-    public partial class LeaveBalance :  IEquatable<LeaveBalance>, IValidatableObject
+    public partial class LeaveBalance : IEquatable<LeaveBalance>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The name of the leave type
         /// </summary>
         /// <value>The name of the leave type</value>
-        [DataMember(Name="LeaveName", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveName", EmitDefaultValue = false)]
         public string LeaveName { get; set; }
 
         /// <summary>
         /// Identifier of the leave type (see PayItems)
         /// </summary>
         /// <value>Identifier of the leave type (see PayItems)</value>
-        [DataMember(Name="LeaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveTypeID", EmitDefaultValue = false)]
         public string LeaveTypeID { get; set; }
 
         /// <summary>
         /// The balance of the leave available
         /// </summary>
         /// <value>The balance of the leave available</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
         /// The type of units as specified by the LeaveType (see PayItems)
         /// </summary>
         /// <value>The type of units as specified by the LeaveType (see PayItems)</value>
-        [DataMember(Name="TypeOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "TypeOfUnits", EmitDefaultValue = false)]
         public string TypeOfUnits { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveName == input.LeaveName ||
                     (this.LeaveName != null &&
                     this.LeaveName.Equals(input.LeaveName))
-                ) && 
+                ) &&
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.TypeOfUnits == input.TypeOfUnits ||
                     (this.TypeOfUnits != null &&

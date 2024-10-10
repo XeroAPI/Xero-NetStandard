@@ -28,61 +28,61 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// PayrollCalendar
     /// </summary>
     [DataContract]
-    public partial class PayrollCalendar :  IEquatable<PayrollCalendar>, IValidatableObject
+    public partial class PayrollCalendar : IEquatable<PayrollCalendar>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets CalendarType
         /// </summary>
-        [DataMember(Name="CalendarType", EmitDefaultValue=false)]
+        [DataMember(Name = "CalendarType", EmitDefaultValue = false)]
         public CalendarType CalendarType { get; set; }
-        
+
         /// <summary>
         /// Name of the Payroll Calendar
         /// </summary>
         /// <value>Name of the Payroll Calendar</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The start date of the upcoming pay period. The end date will be calculated based upon this date, and the calendar type selected (YYYY-MM-DD)
         /// </summary>
         /// <value>The start date of the upcoming pay period. The end date will be calculated based upon this date, and the calendar type selected (YYYY-MM-DD)</value>
-        [DataMember(Name="StartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "StartDate", EmitDefaultValue = false)]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD)
         /// </summary>
         /// <value>The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD)</value>
-        [DataMember(Name="PaymentDate", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentDate", EmitDefaultValue = false)]
         public DateTime? PaymentDate { get; set; }
 
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="PayrollCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "PayrollCalendarID", EmitDefaultValue = false)]
         public Guid? PayrollCalendarID { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Reference Date (YYYY-MM-DD)
         /// </summary>
         /// <value>Reference Date (YYYY-MM-DD)</value>
-        [DataMember(Name="ReferenceDate", EmitDefaultValue=false)]
+        [DataMember(Name = "ReferenceDate", EmitDefaultValue = false)]
         public DateTime? ReferenceDate { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -134,41 +134,41 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.CalendarType == input.CalendarType ||
                     this.CalendarType.Equals(input.CalendarType)
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.PaymentDate == input.PaymentDate ||
                     (this.PaymentDate != null &&
                     this.PaymentDate.Equals(input.PaymentDate))
-                ) && 
+                ) &&
                 (
                     this.PayrollCalendarID == input.PayrollCalendarID ||
                     (this.PayrollCalendarID != null &&
                     this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.ReferenceDate == input.ReferenceDate ||
                     (this.ReferenceDate != null &&
                     this.ReferenceDate.Equals(input.ReferenceDate))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// PnlAccountType
     /// </summary>
     [DataContract]
-    public partial class PnlAccountType :  IEquatable<PnlAccountType>, IValidatableObject
+    public partial class PnlAccountType : IEquatable<PnlAccountType>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Total movement on this account type
         /// </summary>
         /// <value>Total movement on this account type</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Name of this account type, it will be either Trading Income or Other Income for Revenue section / Direct Cost or Operating Expenses for Expense section
         /// </summary>
         /// <value>Name of this account type, it will be either Trading Income or Other Income for Revenue section / Direct Cost or Operating Expenses for Expense section</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// A list of the movement on each account detail during the query period. Refer to the account detail element below
         /// </summary>
         /// <value>A list of the movement on each account detail during the query period. Refer to the account detail element below</value>
-        [DataMember(Name="accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "accounts", EmitDefaultValue = false)]
         public List<PnlAccount> Accounts { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Accounts == input.Accounts ||
                     this.Accounts != null &&

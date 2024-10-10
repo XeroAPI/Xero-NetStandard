@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Employee
     /// </summary>
     [DataContract]
-    public partial class Employee :  IEquatable<Employee>, IValidatableObject
+    public partial class Employee : IEquatable<Employee>, IValidatableObject
     {
         /// <summary>
         /// The employee’s gender
@@ -55,77 +55,77 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The employee’s gender
         /// </summary>
         /// <value>The employee’s gender</value>
-        [DataMember(Name="gender", EmitDefaultValue=false)]
+        [DataMember(Name = "gender", EmitDefaultValue = false)]
         public GenderEnum Gender { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Employee" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Employee() 
-        { 
+        public Employee()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for the employee
         /// </summary>
         /// <value>Xero unique identifier for the employee</value>
-        [DataMember(Name="employeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "employeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// Title of the employee
         /// </summary>
         /// <value>Title of the employee</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// First name of employee
         /// </summary>
         /// <value>First name of employee</value>
-        [DataMember(Name="firstName", EmitDefaultValue=false)]
+        [DataMember(Name = "firstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Last name of employee
         /// </summary>
         /// <value>Last name of employee</value>
-        [DataMember(Name="lastName", EmitDefaultValue=false)]
+        [DataMember(Name = "lastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Date of birth of the employee (YYYY-MM-DD)
         /// </summary>
         /// <value>Date of birth of the employee (YYYY-MM-DD)</value>
-        [DataMember(Name="dateOfBirth", EmitDefaultValue=false)]
+        [DataMember(Name = "dateOfBirth", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name="address", EmitDefaultValue=false)]
+        [DataMember(Name = "address", EmitDefaultValue = false)]
         public Address Address { get; set; }
 
         /// <summary>
         /// The email address for the employee
         /// </summary>
         /// <value>The email address for the employee</value>
-        [DataMember(Name="email", EmitDefaultValue=false)]
+        [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>
         /// Employee phone number
         /// </summary>
         /// <value>Employee phone number</value>
-        [DataMember(Name="phoneNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "phoneNumber", EmitDefaultValue = false)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Employment start date of the employee at the time it was requested
         /// </summary>
         /// <value>Employment start date of the employee at the time it was requested</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -133,7 +133,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Employment end date of the employee at the time it was requested
         /// </summary>
         /// <value>Employment end date of the employee at the time it was requested</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -141,42 +141,42 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Xero unique identifier for the payroll calendar of the employee
         /// </summary>
         /// <value>Xero unique identifier for the payroll calendar of the employee</value>
-        [DataMember(Name="payrollCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "payrollCalendarID", EmitDefaultValue = false)]
         public Guid? PayrollCalendarID { get; set; }
 
         /// <summary>
         /// UTC timestamp of last update to the employee
         /// </summary>
         /// <value>UTC timestamp of last update to the employee</value>
-        [DataMember(Name="updatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; set; }
 
         /// <summary>
         /// UTC timestamp when the employee was created in Xero
         /// </summary>
         /// <value>UTC timestamp when the employee was created in Xero</value>
-        [DataMember(Name="createdDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "createdDateUTC", EmitDefaultValue = false)]
         public DateTime? CreatedDateUTC { get; set; }
 
         /// <summary>
         /// Employee&#39;s job title
         /// </summary>
         /// <value>Employee&#39;s job title</value>
-        [DataMember(Name="jobTitle", EmitDefaultValue=false)]
+        [DataMember(Name = "jobTitle", EmitDefaultValue = false)]
         public string JobTitle { get; set; }
 
         /// <summary>
         /// Engagement type of the employee
         /// </summary>
         /// <value>Engagement type of the employee</value>
-        [DataMember(Name="engagementType", EmitDefaultValue=false)]
+        [DataMember(Name = "engagementType", EmitDefaultValue = false)]
         public string EngagementType { get; set; }
 
         /// <summary>
         /// End date for an employee with a fixed-term engagement type
         /// </summary>
         /// <value>End date for an employee with a fixed-term engagement type</value>
-        [DataMember(Name="fixedTermEndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedTermEndDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? FixedTermEndDate { get; set; }
 
@@ -208,7 +208,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -238,86 +238,86 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
-                ) && 
+                ) &&
                 (
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
-                ) && 
+                ) &&
                 (
                     this.DateOfBirth == input.DateOfBirth ||
                     (this.DateOfBirth != null &&
                     this.DateOfBirth.Equals(input.DateOfBirth))
-                ) && 
+                ) &&
                 (
                     this.Address == input.Address ||
                     (this.Address != null &&
                     this.Address.Equals(input.Address))
-                ) && 
+                ) &&
                 (
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
-                ) && 
+                ) &&
                 (
                     this.Gender == input.Gender ||
                     this.Gender.Equals(input.Gender)
-                ) && 
+                ) &&
                 (
                     this.PhoneNumber == input.PhoneNumber ||
                     (this.PhoneNumber != null &&
                     this.PhoneNumber.Equals(input.PhoneNumber))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.PayrollCalendarID == input.PayrollCalendarID ||
                     (this.PayrollCalendarID != null &&
                     this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.CreatedDateUTC == input.CreatedDateUTC ||
                     (this.CreatedDateUTC != null &&
                     this.CreatedDateUTC.Equals(input.CreatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.JobTitle == input.JobTitle ||
                     (this.JobTitle != null &&
                     this.JobTitle.Equals(input.JobTitle))
-                ) && 
+                ) &&
                 (
                     this.EngagementType == input.EngagementType ||
                     (this.EngagementType != null &&
                     this.EngagementType.Equals(input.EngagementType))
-                ) && 
+                ) &&
                 (
                     this.FixedTermEndDate == input.FixedTermEndDate ||
                     (this.FixedTermEndDate != null &&

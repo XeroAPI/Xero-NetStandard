@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// 3 letter alpha code for the currency – see list of currency codes
     /// </summary>
     /// <value>3 letter alpha code for the currency – see list of currency codes</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum CurrencyCode
     {
         /// <summary>

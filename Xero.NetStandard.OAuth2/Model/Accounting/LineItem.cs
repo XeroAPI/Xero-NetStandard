@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// LineItem
     /// </summary>
     [DataContract]
-    public partial class LineItem :  IEquatable<LineItem>, IValidatableObject
+    public partial class LineItem : IEquatable<LineItem>, IValidatableObject
     {
         /// <summary>
         /// The type of taxability
@@ -73,125 +73,125 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The type of taxability
         /// </summary>
         /// <value>The type of taxability</value>
-        [DataMember(Name="Taxability", EmitDefaultValue=false)]
+        [DataMember(Name = "Taxability", EmitDefaultValue = false)]
         public TaxabilityEnum Taxability { get; set; }
-        
+
         /// <summary>
         /// LineItem unique ID
         /// </summary>
         /// <value>LineItem unique ID</value>
-        [DataMember(Name="LineItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItemID", EmitDefaultValue = false)]
         public Guid? LineItemID { get; set; }
 
         /// <summary>
         /// Description needs to be at least 1 char long. A line item with just a description (i.e no unit amount or quantity) can be created by specifying just a &lt;Description&gt; element that contains at least 1 character
         /// </summary>
         /// <value>Description needs to be at least 1 char long. A line item with just a description (i.e no unit amount or quantity) can be created by specifying just a &lt;Description&gt; element that contains at least 1 character</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// LineItem Quantity
         /// </summary>
         /// <value>LineItem Quantity</value>
-        [DataMember(Name="Quantity", EmitDefaultValue=false)]
+        [DataMember(Name = "Quantity", EmitDefaultValue = false)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
         /// LineItem Unit Amount
         /// </summary>
         /// <value>LineItem Unit Amount</value>
-        [DataMember(Name="UnitAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "UnitAmount", EmitDefaultValue = false)]
         public decimal? UnitAmount { get; set; }
 
         /// <summary>
         /// See Items
         /// </summary>
         /// <value>See Items</value>
-        [DataMember(Name="ItemCode", EmitDefaultValue=false)]
+        [DataMember(Name = "ItemCode", EmitDefaultValue = false)]
         public string ItemCode { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// The associated account ID related to this line item
         /// </summary>
         /// <value>The associated account ID related to this line item</value>
-        [DataMember(Name="AccountID", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// The tax type from TaxRates
         /// </summary>
         /// <value>The tax type from TaxRates</value>
-        [DataMember(Name="TaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxType", EmitDefaultValue = false)]
         public string TaxType { get; set; }
 
         /// <summary>
         /// The tax amount is auto calculated as a percentage of the line amount (see below) based on the tax rate. This value can be overriden if the calculated &lt;TaxAmount&gt; is not correct.
         /// </summary>
         /// <value>The tax amount is auto calculated as a percentage of the line amount (see below) based on the tax rate. This value can be overriden if the calculated &lt;TaxAmount&gt; is not correct.</value>
-        [DataMember(Name="TaxAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxAmount", EmitDefaultValue = false)]
         public decimal? TaxAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets Item
         /// </summary>
-        [DataMember(Name="Item", EmitDefaultValue=false)]
+        [DataMember(Name = "Item", EmitDefaultValue = false)]
         public LineItemItem Item { get; set; }
 
         /// <summary>
         /// If you wish to omit either the Quantity or UnitAmount you can provide a LineAmount and Xero will calculate the missing amount for you. The line amount reflects the discounted price if either a DiscountRate or DiscountAmount has been used i.e. LineAmount &#x3D; Quantity * Unit Amount * ((100 - DiscountRate)/100) or LineAmount &#x3D; (Quantity * UnitAmount) - DiscountAmount
         /// </summary>
         /// <value>If you wish to omit either the Quantity or UnitAmount you can provide a LineAmount and Xero will calculate the missing amount for you. The line amount reflects the discounted price if either a DiscountRate or DiscountAmount has been used i.e. LineAmount &#x3D; Quantity * Unit Amount * ((100 - DiscountRate)/100) or LineAmount &#x3D; (Quantity * UnitAmount) - DiscountAmount</value>
-        [DataMember(Name="LineAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmount", EmitDefaultValue = false)]
         public decimal? LineAmount { get; set; }
 
         /// <summary>
         /// Optional Tracking Category – see Tracking.  Any LineItem can have a  maximum of 2 &lt;TrackingCategory&gt; elements.
         /// </summary>
         /// <value>Optional Tracking Category – see Tracking.  Any LineItem can have a  maximum of 2 &lt;TrackingCategory&gt; elements.</value>
-        [DataMember(Name="Tracking", EmitDefaultValue=false)]
+        [DataMember(Name = "Tracking", EmitDefaultValue = false)]
         public List<LineItemTracking> Tracking { get; set; }
 
         /// <summary>
         /// Percentage discount being applied to a line item (only supported on  ACCREC invoices – ACC PAY invoices and credit notes in Xero do not support discounts
         /// </summary>
         /// <value>Percentage discount being applied to a line item (only supported on  ACCREC invoices – ACC PAY invoices and credit notes in Xero do not support discounts</value>
-        [DataMember(Name="DiscountRate", EmitDefaultValue=false)]
+        [DataMember(Name = "DiscountRate", EmitDefaultValue = false)]
         public decimal? DiscountRate { get; set; }
 
         /// <summary>
         /// Discount amount being applied to a line item. Only supported on ACCREC invoices and quotes. ACCPAY invoices and credit notes in Xero do not support discounts.
         /// </summary>
         /// <value>Discount amount being applied to a line item. Only supported on ACCREC invoices and quotes. ACCPAY invoices and credit notes in Xero do not support discounts.</value>
-        [DataMember(Name="DiscountAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "DiscountAmount", EmitDefaultValue = false)]
         public decimal? DiscountAmount { get; set; }
 
         /// <summary>
         /// The Xero identifier for a Repeating Invoice
         /// </summary>
         /// <value>The Xero identifier for a Repeating Invoice</value>
-        [DataMember(Name="RepeatingInvoiceID", EmitDefaultValue=false)]
+        [DataMember(Name = "RepeatingInvoiceID", EmitDefaultValue = false)]
         public Guid? RepeatingInvoiceID { get; set; }
 
         /// <summary>
         /// The ID of the sales tax code
         /// </summary>
         /// <value>The ID of the sales tax code</value>
-        [DataMember(Name="SalesTaxCodeId", EmitDefaultValue=false)]
+        [DataMember(Name = "SalesTaxCodeId", EmitDefaultValue = false)]
         public decimal? SalesTaxCodeId { get; set; }
 
         /// <summary>
         /// An array of tax components defined for this line item
         /// </summary>
         /// <value>An array of tax components defined for this line item</value>
-        [DataMember(Name="TaxBreakdown", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxBreakdown", EmitDefaultValue = false)]
         public List<TaxBreakdownComponent> TaxBreakdown { get; set; }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -253,92 +253,92 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LineItemID == input.LineItemID ||
                     (this.LineItemID != null &&
                     this.LineItemID.Equals(input.LineItemID))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
-                ) && 
+                ) &&
                 (
                     this.UnitAmount == input.UnitAmount ||
                     (this.UnitAmount != null &&
                     this.UnitAmount.Equals(input.UnitAmount))
-                ) && 
+                ) &&
                 (
                     this.ItemCode == input.ItemCode ||
                     (this.ItemCode != null &&
                     this.ItemCode.Equals(input.ItemCode))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.TaxType == input.TaxType ||
                     (this.TaxType != null &&
                     this.TaxType.Equals(input.TaxType))
-                ) && 
+                ) &&
                 (
                     this.TaxAmount == input.TaxAmount ||
                     (this.TaxAmount != null &&
                     this.TaxAmount.Equals(input.TaxAmount))
-                ) && 
+                ) &&
                 (
                     this.Item == input.Item ||
                     (this.Item != null &&
                     this.Item.Equals(input.Item))
-                ) && 
+                ) &&
                 (
                     this.LineAmount == input.LineAmount ||
                     (this.LineAmount != null &&
                     this.LineAmount.Equals(input.LineAmount))
-                ) && 
+                ) &&
                 (
                     this.Tracking == input.Tracking ||
                     this.Tracking != null &&
                     input.Tracking != null &&
                     this.Tracking.SequenceEqual(input.Tracking)
-                ) && 
+                ) &&
                 (
                     this.DiscountRate == input.DiscountRate ||
                     (this.DiscountRate != null &&
                     this.DiscountRate.Equals(input.DiscountRate))
-                ) && 
+                ) &&
                 (
                     this.DiscountAmount == input.DiscountAmount ||
                     (this.DiscountAmount != null &&
                     this.DiscountAmount.Equals(input.DiscountAmount))
-                ) && 
+                ) &&
                 (
                     this.RepeatingInvoiceID == input.RepeatingInvoiceID ||
                     (this.RepeatingInvoiceID != null &&
                     this.RepeatingInvoiceID.Equals(input.RepeatingInvoiceID))
-                ) && 
+                ) &&
                 (
                     this.Taxability == input.Taxability ||
                     this.Taxability.Equals(input.Taxability)
-                ) && 
+                ) &&
                 (
                     this.SalesTaxCodeId == input.SalesTaxCodeId ||
                     (this.SalesTaxCodeId != null &&
                     this.SalesTaxCodeId.Equals(input.SalesTaxCodeId))
-                ) && 
+                ) &&
                 (
                     this.TaxBreakdown == input.TaxBreakdown ||
                     this.TaxBreakdown != null &&

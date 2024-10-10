@@ -28,29 +28,29 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeWorkingPatternWithWorkingWeeksRequest
     /// </summary>
     [DataContract]
-    public partial class EmployeeWorkingPatternWithWorkingWeeksRequest :  IEquatable<EmployeeWorkingPatternWithWorkingWeeksRequest>, IValidatableObject
+    public partial class EmployeeWorkingPatternWithWorkingWeeksRequest : IEquatable<EmployeeWorkingPatternWithWorkingWeeksRequest>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeWorkingPatternWithWorkingWeeksRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EmployeeWorkingPatternWithWorkingWeeksRequest() 
-        {  
-          WorkingWeeks = new List<WorkingWeek>(); 
+        public EmployeeWorkingPatternWithWorkingWeeksRequest()
+        {
+            WorkingWeeks = new List<WorkingWeek>();
         }
-        
+
         /// <summary>
         /// The effective date of the corresponding salary and wages
         /// </summary>
         /// <value>The effective date of the corresponding salary and wages</value>
-        [DataMember(Name="effectiveFrom", EmitDefaultValue=false)]
+        [DataMember(Name = "effectiveFrom", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EffectiveFrom { get; set; }
 
         /// <summary>
         /// Gets or Sets WorkingWeeks
         /// </summary>
-        [DataMember(Name="workingWeeks", EmitDefaultValue=false)]
+        [DataMember(Name = "workingWeeks", EmitDefaultValue = false)]
         public List<WorkingWeek> WorkingWeeks { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,12 +96,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EffectiveFrom == input.EffectiveFrom ||
                     (this.EffectiveFrom != null &&
                     this.EffectiveFrom.Equals(input.EffectiveFrom))
-                ) && 
+                ) &&
                 (
                     this.WorkingWeeks == input.WorkingWeeks ||
                     this.WorkingWeeks != null &&

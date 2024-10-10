@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Employee Status Types
     /// </summary>
     /// <value>Employee Status Types</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum EmployeeStatus
     {
         /// <summary>

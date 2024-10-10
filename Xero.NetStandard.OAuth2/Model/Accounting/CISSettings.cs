@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// CISSettings
     /// </summary>
     [DataContract]
-    public partial class CISSettings :  IEquatable<CISSettings>, IValidatableObject
+    public partial class CISSettings : IEquatable<CISSettings>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _CISSettings
         /// </summary>
-        [DataMember(Name="CISSettings", EmitDefaultValue=false)]
+        [DataMember(Name = "CISSettings", EmitDefaultValue = false)]
         public List<CISSetting> _CISSettings { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._CISSettings == input._CISSettings ||
                     this._CISSettings != null &&

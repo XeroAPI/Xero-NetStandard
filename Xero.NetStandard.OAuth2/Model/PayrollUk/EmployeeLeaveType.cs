@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EmployeeLeaveType
     /// </summary>
     [DataContract]
-    public partial class EmployeeLeaveType :  IEquatable<EmployeeLeaveType>, IValidatableObject
+    public partial class EmployeeLeaveType : IEquatable<EmployeeLeaveType>, IValidatableObject
     {
         /// <summary>
         /// The schedule of accrual
@@ -67,56 +67,56 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// The schedule of accrual
         /// </summary>
         /// <value>The schedule of accrual</value>
-        [DataMember(Name="scheduleOfAccrual", EmitDefaultValue=false)]
+        [DataMember(Name = "scheduleOfAccrual", EmitDefaultValue = false)]
         public ScheduleOfAccrualEnum ScheduleOfAccrual { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeLeaveType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EmployeeLeaveType() 
-        { 
+        public EmployeeLeaveType()
+        {
         }
-        
+
         /// <summary>
         /// The Xero identifier for leave type
         /// </summary>
         /// <value>The Xero identifier for leave type</value>
-        [DataMember(Name="leaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;
         /// </summary>
         /// <value>The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;</value>
-        [DataMember(Name="hoursAccruedAnnually", EmitDefaultValue=false)]
+        [DataMember(Name = "hoursAccruedAnnually", EmitDefaultValue = false)]
         public double? HoursAccruedAnnually { get; set; }
 
         /// <summary>
         /// The maximum number of hours that can be accrued for the leave
         /// </summary>
         /// <value>The maximum number of hours that can be accrued for the leave</value>
-        [DataMember(Name="maximumToAccrue", EmitDefaultValue=false)]
+        [DataMember(Name = "maximumToAccrue", EmitDefaultValue = false)]
         public double? MaximumToAccrue { get; set; }
 
         /// <summary>
         /// The initial number of hours assigned when the leave was added to the employee
         /// </summary>
         /// <value>The initial number of hours assigned when the leave was added to the employee</value>
-        [DataMember(Name="openingBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "openingBalance", EmitDefaultValue = false)]
         public double? OpeningBalance { get; set; }
 
         /// <summary>
         /// The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;
         /// </summary>
         /// <value>The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;</value>
-        [DataMember(Name="rateAccruedHourly", EmitDefaultValue=false)]
+        [DataMember(Name = "rateAccruedHourly", EmitDefaultValue = false)]
         public double? RateAccruedHourly { get; set; }
 
         /// <summary>
         /// The date when an employee becomes entitled to their accrual. Only applicable when scheduleOfAccrual is \&quot;OnAnniversaryDate\&quot;
         /// </summary>
         /// <value>The date when an employee becomes entitled to their accrual. Only applicable when scheduleOfAccrual is \&quot;OnAnniversaryDate\&quot;</value>
-        [DataMember(Name="scheduleOfAccrualDate", EmitDefaultValue=false)]
+        [DataMember(Name = "scheduleOfAccrualDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? ScheduleOfAccrualDate { get; set; }
 
@@ -138,7 +138,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -168,36 +168,36 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.ScheduleOfAccrual == input.ScheduleOfAccrual ||
                     this.ScheduleOfAccrual.Equals(input.ScheduleOfAccrual)
-                ) && 
+                ) &&
                 (
                     this.HoursAccruedAnnually == input.HoursAccruedAnnually ||
                     (this.HoursAccruedAnnually != null &&
                     this.HoursAccruedAnnually.Equals(input.HoursAccruedAnnually))
-                ) && 
+                ) &&
                 (
                     this.MaximumToAccrue == input.MaximumToAccrue ||
                     (this.MaximumToAccrue != null &&
                     this.MaximumToAccrue.Equals(input.MaximumToAccrue))
-                ) && 
+                ) &&
                 (
                     this.OpeningBalance == input.OpeningBalance ||
                     (this.OpeningBalance != null &&
                     this.OpeningBalance.Equals(input.OpeningBalance))
-                ) && 
+                ) &&
                 (
                     this.RateAccruedHourly == input.RateAccruedHourly ||
                     (this.RateAccruedHourly != null &&
                     this.RateAccruedHourly.Equals(input.RateAccruedHourly))
-                ) && 
+                ) &&
                 (
                     this.ScheduleOfAccrualDate == input.ScheduleOfAccrualDate ||
                     (this.ScheduleOfAccrualDate != null &&

@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeStatutoryLeaveSummary
     /// </summary>
     [DataContract]
-    public partial class EmployeeStatutoryLeaveSummary :  IEquatable<EmployeeStatutoryLeaveSummary>, IValidatableObject
+    public partial class EmployeeStatutoryLeaveSummary : IEquatable<EmployeeStatutoryLeaveSummary>, IValidatableObject
     {
         /// <summary>
         /// The category of statutory leave
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The category of statutory leave
         /// </summary>
         /// <value>The category of statutory leave</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// The status of the leave
@@ -106,28 +106,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The status of the leave
         /// </summary>
         /// <value>The status of the leave</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// The unique identifier (guid) of a statutory leave.
         /// </summary>
         /// <value>The unique identifier (guid) of a statutory leave.</value>
-        [DataMember(Name="statutoryLeaveID", EmitDefaultValue=false)]
+        [DataMember(Name = "statutoryLeaveID", EmitDefaultValue = false)]
         public Guid? StatutoryLeaveID { get; set; }
 
         /// <summary>
         /// The unique identifier (guid) of the employee
         /// </summary>
         /// <value>The unique identifier (guid) of the employee</value>
-        [DataMember(Name="employeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "employeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// The date when the leave starts
         /// </summary>
         /// <value>The date when the leave starts</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -135,7 +135,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The date when the leave ends
         /// </summary>
         /// <value>The date when the leave ends</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -143,7 +143,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Whether the leave was entitled to receive payment
         /// </summary>
         /// <value>Whether the leave was entitled to receive payment</value>
-        [DataMember(Name="isEntitled", EmitDefaultValue=false)]
+        [DataMember(Name = "isEntitled", EmitDefaultValue = false)]
         public bool? IsEntitled { get; set; }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -194,36 +194,36 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatutoryLeaveID == input.StatutoryLeaveID ||
                     (this.StatutoryLeaveID != null &&
                     this.StatutoryLeaveID.Equals(input.StatutoryLeaveID))
-                ) && 
+                ) &&
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.IsEntitled == input.IsEntitled ||
                     (this.IsEntitled != null &&
                     this.IsEntitled.Equals(input.IsEntitled))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)

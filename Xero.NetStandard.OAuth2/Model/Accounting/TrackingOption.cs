@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TrackingOption
     /// </summary>
     [DataContract]
-    public partial class TrackingOption :  IEquatable<TrackingOption>, IValidatableObject
+    public partial class TrackingOption : IEquatable<TrackingOption>, IValidatableObject
     {
         /// <summary>
         /// The status of a tracking option
@@ -61,28 +61,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The status of a tracking option
         /// </summary>
         /// <value>The status of a tracking option</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// The Xero identifier for a tracking option e.g. ae777a87-5ef3-4fa0-a4f0-d10e1f13073a
         /// </summary>
         /// <value>The Xero identifier for a tracking option e.g. ae777a87-5ef3-4fa0-a4f0-d10e1f13073a</value>
-        [DataMember(Name="TrackingOptionID", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingOptionID", EmitDefaultValue = false)]
         public Guid? TrackingOptionID { get; set; }
 
         /// <summary>
         /// The name of the tracking option e.g. Marketing, East (max length &#x3D; 100)
         /// </summary>
         /// <value>The name of the tracking option e.g. Marketing, East (max length &#x3D; 100)</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Filter by a tracking category e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>Filter by a tracking category e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
-        [DataMember(Name="TrackingCategoryID", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategoryID", EmitDefaultValue = false)]
         public Guid? TrackingCategoryID { get; set; }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -130,21 +130,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TrackingOptionID == input.TrackingOptionID ||
                     (this.TrackingOptionID != null &&
                     this.TrackingOptionID.Equals(input.TrackingOptionID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.TrackingCategoryID == input.TrackingCategoryID ||
                     (this.TrackingCategoryID != null &&
@@ -180,9 +180,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 100)
+            if (this.Name != null && this.Name.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new[] { "Name" });
             }
 
             yield break;

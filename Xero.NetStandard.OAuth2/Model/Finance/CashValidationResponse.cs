@@ -28,40 +28,40 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// CashValidationResponse
     /// </summary>
     [DataContract]
-    public partial class CashValidationResponse :  IEquatable<CashValidationResponse>, IValidatableObject
+    public partial class CashValidationResponse : IEquatable<CashValidationResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Xero identifier for an account
         /// </summary>
         /// <value>The Xero identifier for an account</value>
-        [DataMember(Name="accountId", EmitDefaultValue=false)]
+        [DataMember(Name = "accountId", EmitDefaultValue = false)]
         public Guid? AccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets StatementBalance
         /// </summary>
-        [DataMember(Name="statementBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "statementBalance", EmitDefaultValue = false)]
         public StatementBalanceResponse StatementBalance { get; set; }
 
         /// <summary>
         /// UTC Date when the last bank statement item was entered into Xero. This date is represented in ISO 8601 format.
         /// </summary>
         /// <value>UTC Date when the last bank statement item was entered into Xero. This date is represented in ISO 8601 format.</value>
-        [DataMember(Name="statementBalanceDate", EmitDefaultValue=false)]
+        [DataMember(Name = "statementBalanceDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StatementBalanceDate { get; set; }
 
         /// <summary>
         /// Gets or Sets BankStatement
         /// </summary>
-        [DataMember(Name="bankStatement", EmitDefaultValue=false)]
+        [DataMember(Name = "bankStatement", EmitDefaultValue = false)]
         public BankStatementResponse BankStatement { get; set; }
 
         /// <summary>
         /// Gets or Sets CashAccount
         /// </summary>
-        [DataMember(Name="cashAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "cashAccount", EmitDefaultValue = false)]
         public CashAccountResponse CashAccount { get; set; }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -110,27 +110,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountId == input.AccountId ||
                     (this.AccountId != null &&
                     this.AccountId.Equals(input.AccountId))
-                ) && 
+                ) &&
                 (
                     this.StatementBalance == input.StatementBalance ||
                     (this.StatementBalance != null &&
                     this.StatementBalance.Equals(input.StatementBalance))
-                ) && 
+                ) &&
                 (
                     this.StatementBalanceDate == input.StatementBalanceDate ||
                     (this.StatementBalanceDate != null &&
                     this.StatementBalanceDate.Equals(input.StatementBalanceDate))
-                ) && 
+                ) &&
                 (
                     this.BankStatement == input.BankStatement ||
                     (this.BankStatement != null &&
                     this.BankStatement.Equals(input.BankStatement))
-                ) && 
+                ) &&
                 (
                     this.CashAccount == input.CashAccount ||
                     (this.CashAccount != null &&

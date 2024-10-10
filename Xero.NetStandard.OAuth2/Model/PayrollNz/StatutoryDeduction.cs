@@ -28,40 +28,40 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// StatutoryDeduction
     /// </summary>
     [DataContract]
-    public partial class StatutoryDeduction :  IEquatable<StatutoryDeduction>, IValidatableObject
+    public partial class StatutoryDeduction : IEquatable<StatutoryDeduction>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets StatutoryDeductionCategory
         /// </summary>
-        [DataMember(Name="statutoryDeductionCategory", EmitDefaultValue=false)]
+        [DataMember(Name = "statutoryDeductionCategory", EmitDefaultValue = false)]
         public StatutoryDeductionCategory StatutoryDeductionCategory { get; set; }
-        
+
         /// <summary>
         /// The Xero identifier for earnings order
         /// </summary>
         /// <value>The Xero identifier for earnings order</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Name of the earnings order
         /// </summary>
         /// <value>Name of the earnings order</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Xero identifier for Liability Account
         /// </summary>
         /// <value>Xero identifier for Liability Account</value>
-        [DataMember(Name="liabilityAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "liabilityAccountId", EmitDefaultValue = false)]
         public Guid? LiabilityAccountId { get; set; }
 
         /// <summary>
         /// Identifier of a record is active or not.
         /// </summary>
         /// <value>Identifier of a record is active or not.</value>
-        [DataMember(Name="currentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "currentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -110,26 +110,26 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.StatutoryDeductionCategory == input.StatutoryDeductionCategory ||
                     this.StatutoryDeductionCategory.Equals(input.StatutoryDeductionCategory)
-                ) && 
+                ) &&
                 (
                     this.LiabilityAccountId == input.LiabilityAccountId ||
                     (this.LiabilityAccountId != null &&
                     this.LiabilityAccountId.Equals(input.LiabilityAccountId))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&

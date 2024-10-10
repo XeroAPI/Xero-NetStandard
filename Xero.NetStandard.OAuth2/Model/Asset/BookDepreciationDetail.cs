@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// BookDepreciationDetail
     /// </summary>
     [DataContract]
-    public partial class BookDepreciationDetail :  IEquatable<BookDepreciationDetail>, IValidatableObject
+    public partial class BookDepreciationDetail : IEquatable<BookDepreciationDetail>, IValidatableObject
     {
-        
+
         /// <summary>
         /// When an asset is disposed, this will be the sell price minus the purchase price if a profit was made.
         /// </summary>
         /// <value>When an asset is disposed, this will be the sell price minus the purchase price if a profit was made.</value>
-        [DataMember(Name="currentCapitalGain", EmitDefaultValue=false)]
+        [DataMember(Name = "currentCapitalGain", EmitDefaultValue = false)]
         public decimal? CurrentCapitalGain { get; set; }
 
         /// <summary>
         /// When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value.
         /// </summary>
         /// <value>When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value.</value>
-        [DataMember(Name="currentGainLoss", EmitDefaultValue=false)]
+        [DataMember(Name = "currentGainLoss", EmitDefaultValue = false)]
         public decimal? CurrentGainLoss { get; set; }
 
         /// <summary>
         /// YYYY-MM-DD
         /// </summary>
         /// <value>YYYY-MM-DD</value>
-        [DataMember(Name="depreciationStartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "depreciationStartDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? DepreciationStartDate { get; set; }
 
@@ -57,28 +57,28 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The value of the asset you want to depreciate, if this is less than the cost of the asset.
         /// </summary>
         /// <value>The value of the asset you want to depreciate, if this is less than the cost of the asset.</value>
-        [DataMember(Name="costLimit", EmitDefaultValue=false)]
+        [DataMember(Name = "costLimit", EmitDefaultValue = false)]
         public decimal? CostLimit { get; set; }
 
         /// <summary>
         /// The value of the asset remaining when you&#39;ve fully depreciated it.
         /// </summary>
         /// <value>The value of the asset remaining when you&#39;ve fully depreciated it.</value>
-        [DataMember(Name="residualValue", EmitDefaultValue=false)]
+        [DataMember(Name = "residualValue", EmitDefaultValue = false)]
         public decimal? ResidualValue { get; set; }
 
         /// <summary>
         /// All depreciation prior to the current financial year.
         /// </summary>
         /// <value>All depreciation prior to the current financial year.</value>
-        [DataMember(Name="priorAccumDepreciationAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "priorAccumDepreciationAmount", EmitDefaultValue = false)]
         public decimal? PriorAccumDepreciationAmount { get; set; }
 
         /// <summary>
         /// All depreciation occurring in the current financial year.
         /// </summary>
         /// <value>All depreciation occurring in the current financial year.</value>
-        [DataMember(Name="currentAccumDepreciationAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "currentAccumDepreciationAmount", EmitDefaultValue = false)]
         public decimal? CurrentAccumDepreciationAmount { get; set; }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -129,37 +129,37 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CurrentCapitalGain == input.CurrentCapitalGain ||
                     (this.CurrentCapitalGain != null &&
                     this.CurrentCapitalGain.Equals(input.CurrentCapitalGain))
-                ) && 
+                ) &&
                 (
                     this.CurrentGainLoss == input.CurrentGainLoss ||
                     (this.CurrentGainLoss != null &&
                     this.CurrentGainLoss.Equals(input.CurrentGainLoss))
-                ) && 
+                ) &&
                 (
                     this.DepreciationStartDate == input.DepreciationStartDate ||
                     (this.DepreciationStartDate != null &&
                     this.DepreciationStartDate.Equals(input.DepreciationStartDate))
-                ) && 
+                ) &&
                 (
                     this.CostLimit == input.CostLimit ||
                     (this.CostLimit != null &&
                     this.CostLimit.Equals(input.CostLimit))
-                ) && 
+                ) &&
                 (
                     this.ResidualValue == input.ResidualValue ||
                     (this.ResidualValue != null &&
                     this.ResidualValue.Equals(input.ResidualValue))
-                ) && 
+                ) &&
                 (
                     this.PriorAccumDepreciationAmount == input.PriorAccumDepreciationAmount ||
                     (this.PriorAccumDepreciationAmount != null &&
                     this.PriorAccumDepreciationAmount.Equals(input.PriorAccumDepreciationAmount))
-                ) && 
+                ) &&
                 (
                     this.CurrentAccumDepreciationAmount == input.CurrentAccumDepreciationAmount ||
                     (this.CurrentAccumDepreciationAmount != null &&

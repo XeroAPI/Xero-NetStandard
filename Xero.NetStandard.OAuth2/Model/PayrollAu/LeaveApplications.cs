@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeaveApplications
     /// </summary>
     [DataContract]
-    public partial class LeaveApplications :  IEquatable<LeaveApplications>, IValidatableObject
+    public partial class LeaveApplications : IEquatable<LeaveApplications>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _LeaveApplications
         /// </summary>
-        [DataMember(Name="LeaveApplications", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveApplications", EmitDefaultValue = false)]
         public List<LeaveApplication> _LeaveApplications { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._LeaveApplications == input._LeaveApplications ||
                     this._LeaveApplications != null &&

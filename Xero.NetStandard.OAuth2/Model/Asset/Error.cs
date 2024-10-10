@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// Error
     /// </summary>
     [DataContract]
-    public partial class Error :  IEquatable<Error>, IValidatableObject
+    public partial class Error : IEquatable<Error>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Array of elements of resource validation errors
         /// </summary>
         /// <value>Array of elements of resource validation errors</value>
-        [DataMember(Name="resourceValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "resourceValidationErrors", EmitDefaultValue = false)]
         public List<ResourceValidationErrorsElement> ResourceValidationErrors { get; set; }
 
         /// <summary>
         /// Array of elements of field validation errors
         /// </summary>
         /// <value>Array of elements of field validation errors</value>
-        [DataMember(Name="fieldValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "fieldValidationErrors", EmitDefaultValue = false)]
         public List<FieldValidationErrorsElement> FieldValidationErrors { get; set; }
 
         /// <summary>
         /// The internal type of error, not accessible externally
         /// </summary>
         /// <value>The internal type of error, not accessible externally</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// Title of the error
         /// </summary>
         /// <value>Title of the error</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Detail of the error
         /// </summary>
         /// <value>Detail of the error</value>
-        [DataMember(Name="detail", EmitDefaultValue=false)]
+        [DataMember(Name = "detail", EmitDefaultValue = false)]
         public string Detail { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,29 +112,29 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ResourceValidationErrors == input.ResourceValidationErrors ||
                     this.ResourceValidationErrors != null &&
                     input.ResourceValidationErrors != null &&
                     this.ResourceValidationErrors.SequenceEqual(input.ResourceValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.FieldValidationErrors == input.FieldValidationErrors ||
                     this.FieldValidationErrors != null &&
                     input.FieldValidationErrors != null &&
                     this.FieldValidationErrors.SequenceEqual(input.FieldValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Detail == input.Detail ||
                     (this.Detail != null &&

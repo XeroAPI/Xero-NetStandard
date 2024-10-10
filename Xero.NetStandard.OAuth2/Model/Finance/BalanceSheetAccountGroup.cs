@@ -28,20 +28,20 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// BalanceSheetAccountGroup
     /// </summary>
     [DataContract]
-    public partial class BalanceSheetAccountGroup :  IEquatable<BalanceSheetAccountGroup>, IValidatableObject
+    public partial class BalanceSheetAccountGroup : IEquatable<BalanceSheetAccountGroup>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets AccountTypes
         /// </summary>
-        [DataMember(Name="accountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "accountTypes", EmitDefaultValue = false)]
         public List<BalanceSheetAccountType> AccountTypes { get; set; }
 
         /// <summary>
         /// Total value of all the accounts in this type
         /// </summary>
         /// <value>Total value of all the accounts in this type</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,13 +87,13 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountTypes == input.AccountTypes ||
                     this.AccountTypes != null &&
                     input.AccountTypes != null &&
                     this.AccountTypes.SequenceEqual(input.AccountTypes)
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&

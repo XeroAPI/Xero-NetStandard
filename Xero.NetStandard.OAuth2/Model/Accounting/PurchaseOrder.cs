@@ -28,17 +28,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// PurchaseOrder
     /// </summary>
     [DataContract]
-    public partial class PurchaseOrder :  IEquatable<PurchaseOrder>, IValidatableObject
+    public partial class PurchaseOrder : IEquatable<PurchaseOrder>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
         /// <summary>
         /// See Purchase Order Status Codes
@@ -83,181 +83,181 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Purchase Order Status Codes
         /// </summary>
         /// <value>See Purchase Order Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// See LineItems
         /// </summary>
         /// <value>See LineItems</value>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Date purchase order was issued – YYYY-MM-DD. If the Date element is not specified then it will default to the current date based on the timezone setting of the organisation
         /// </summary>
         /// <value>Date purchase order was issued – YYYY-MM-DD. If the Date element is not specified then it will default to the current date based on the timezone setting of the organisation</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// Date the goods are to be delivered – YYYY-MM-DD
         /// </summary>
         /// <value>Date the goods are to be delivered – YYYY-MM-DD</value>
-        [DataMember(Name="DeliveryDate", EmitDefaultValue=false)]
+        [DataMember(Name = "DeliveryDate", EmitDefaultValue = false)]
         public DateTime? DeliveryDate { get; set; }
 
         /// <summary>
         /// Unique alpha numeric code identifying purchase order (when missing will auto-generate from your Organisation Invoice Settings)
         /// </summary>
         /// <value>Unique alpha numeric code identifying purchase order (when missing will auto-generate from your Organisation Invoice Settings)</value>
-        [DataMember(Name="PurchaseOrderNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "PurchaseOrderNumber", EmitDefaultValue = false)]
         public string PurchaseOrderNumber { get; set; }
 
         /// <summary>
         /// Additional reference number
         /// </summary>
         /// <value>Additional reference number</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// See BrandingThemes
         /// </summary>
         /// <value>See BrandingThemes</value>
-        [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
+        [DataMember(Name = "BrandingThemeID", EmitDefaultValue = false)]
         public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// Boolean to set whether the purchase order should be marked as “sent”. This can be set only on purchase orders that have been approved or billed
         /// </summary>
         /// <value>Boolean to set whether the purchase order should be marked as “sent”. This can be set only on purchase orders that have been approved or billed</value>
-        [DataMember(Name="SentToContact", EmitDefaultValue=false)]
+        [DataMember(Name = "SentToContact", EmitDefaultValue = false)]
         public bool? SentToContact { get; set; }
 
         /// <summary>
         /// The address the goods are to be delivered to
         /// </summary>
         /// <value>The address the goods are to be delivered to</value>
-        [DataMember(Name="DeliveryAddress", EmitDefaultValue=false)]
+        [DataMember(Name = "DeliveryAddress", EmitDefaultValue = false)]
         public string DeliveryAddress { get; set; }
 
         /// <summary>
         /// The person that the delivery is going to
         /// </summary>
         /// <value>The person that the delivery is going to</value>
-        [DataMember(Name="AttentionTo", EmitDefaultValue=false)]
+        [DataMember(Name = "AttentionTo", EmitDefaultValue = false)]
         public string AttentionTo { get; set; }
 
         /// <summary>
         /// The phone number for the person accepting the delivery
         /// </summary>
         /// <value>The phone number for the person accepting the delivery</value>
-        [DataMember(Name="Telephone", EmitDefaultValue=false)]
+        [DataMember(Name = "Telephone", EmitDefaultValue = false)]
         public string Telephone { get; set; }
 
         /// <summary>
         /// A free text feild for instructions (500 characters max)
         /// </summary>
         /// <value>A free text feild for instructions (500 characters max)</value>
-        [DataMember(Name="DeliveryInstructions", EmitDefaultValue=false)]
+        [DataMember(Name = "DeliveryInstructions", EmitDefaultValue = false)]
         public string DeliveryInstructions { get; set; }
 
         /// <summary>
         /// The date the goods are expected to arrive.
         /// </summary>
         /// <value>The date the goods are expected to arrive.</value>
-        [DataMember(Name="ExpectedArrivalDate", EmitDefaultValue=false)]
+        [DataMember(Name = "ExpectedArrivalDate", EmitDefaultValue = false)]
         public DateTime? ExpectedArrivalDate { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for purchase order
         /// </summary>
         /// <value>Xero generated unique identifier for purchase order</value>
-        [DataMember(Name="PurchaseOrderID", EmitDefaultValue=false)]
+        [DataMember(Name = "PurchaseOrderID", EmitDefaultValue = false)]
         public Guid? PurchaseOrderID { get; set; }
 
         /// <summary>
         /// The currency rate for a multicurrency purchase order. If no rate is specified, the XE.com day rate is used.
         /// </summary>
         /// <value>The currency rate for a multicurrency purchase order. If no rate is specified, the XE.com day rate is used.</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
 
         /// <summary>
         /// Total of purchase order excluding taxes
         /// </summary>
         /// <value>Total of purchase order excluding taxes</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; private set; }
 
         /// <summary>
         /// Total tax on purchase order
         /// </summary>
         /// <value>Total tax on purchase order</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; private set; }
 
         /// <summary>
         /// Total of Purchase Order tax inclusive (i.e. SubTotal + TotalTax)
         /// </summary>
         /// <value>Total of Purchase Order tax inclusive (i.e. SubTotal + TotalTax)</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; private set; }
 
         /// <summary>
         /// Total of discounts applied on the purchase order line items
         /// </summary>
         /// <value>Total of discounts applied on the purchase order line items</value>
-        [DataMember(Name="TotalDiscount", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalDiscount", EmitDefaultValue = false)]
         public decimal? TotalDiscount { get; private set; }
 
         /// <summary>
         /// boolean to indicate if a purchase order has an attachment
         /// </summary>
         /// <value>boolean to indicate if a purchase order has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
         /// Displays array of warning messages from the API
         /// </summary>
         /// <value>Displays array of warning messages from the API</value>
-        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
         /// Displays array of attachments from the API
         /// </summary>
         /// <value>Displays array of attachments from the API</value>
-        [DataMember(Name="Attachments", EmitDefaultValue=false)]
+        [DataMember(Name = "Attachments", EmitDefaultValue = false)]
         public List<Attachment> Attachments { get; set; }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -329,142 +329,142 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.DeliveryDate == input.DeliveryDate ||
                     (this.DeliveryDate != null &&
                     this.DeliveryDate.Equals(input.DeliveryDate))
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.PurchaseOrderNumber == input.PurchaseOrderNumber ||
                     (this.PurchaseOrderNumber != null &&
                     this.PurchaseOrderNumber.Equals(input.PurchaseOrderNumber))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.BrandingThemeID == input.BrandingThemeID ||
                     (this.BrandingThemeID != null &&
                     this.BrandingThemeID.Equals(input.BrandingThemeID))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.SentToContact == input.SentToContact ||
                     (this.SentToContact != null &&
                     this.SentToContact.Equals(input.SentToContact))
-                ) && 
+                ) &&
                 (
                     this.DeliveryAddress == input.DeliveryAddress ||
                     (this.DeliveryAddress != null &&
                     this.DeliveryAddress.Equals(input.DeliveryAddress))
-                ) && 
+                ) &&
                 (
                     this.AttentionTo == input.AttentionTo ||
                     (this.AttentionTo != null &&
                     this.AttentionTo.Equals(input.AttentionTo))
-                ) && 
+                ) &&
                 (
                     this.Telephone == input.Telephone ||
                     (this.Telephone != null &&
                     this.Telephone.Equals(input.Telephone))
-                ) && 
+                ) &&
                 (
                     this.DeliveryInstructions == input.DeliveryInstructions ||
                     (this.DeliveryInstructions != null &&
                     this.DeliveryInstructions.Equals(input.DeliveryInstructions))
-                ) && 
+                ) &&
                 (
                     this.ExpectedArrivalDate == input.ExpectedArrivalDate ||
                     (this.ExpectedArrivalDate != null &&
                     this.ExpectedArrivalDate.Equals(input.ExpectedArrivalDate))
-                ) && 
+                ) &&
                 (
                     this.PurchaseOrderID == input.PurchaseOrderID ||
                     (this.PurchaseOrderID != null &&
                     this.PurchaseOrderID.Equals(input.PurchaseOrderID))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.TotalDiscount == input.TotalDiscount ||
                     (this.TotalDiscount != null &&
                     this.TotalDiscount.Equals(input.TotalDiscount))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
                     this.ValidationErrors.SequenceEqual(input.ValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&
                     input.Warnings != null &&
                     this.Warnings.SequenceEqual(input.Warnings)
-                ) && 
+                ) &&
                 (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&

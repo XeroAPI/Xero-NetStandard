@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// TrackingCategory
     /// </summary>
     [DataContract]
-    public partial class TrackingCategory :  IEquatable<TrackingCategory>, IValidatableObject
+    public partial class TrackingCategory : IEquatable<TrackingCategory>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Xero identifier for Employee groups tracking category.
         /// </summary>
         /// <value>The Xero identifier for Employee groups tracking category.</value>
-        [DataMember(Name="employeeGroupsTrackingCategoryID", EmitDefaultValue=false)]
+        [DataMember(Name = "employeeGroupsTrackingCategoryID", EmitDefaultValue = false)]
         public Guid? EmployeeGroupsTrackingCategoryID { get; set; }
 
         /// <summary>
         /// The Xero identifier for Timesheet tracking category.
         /// </summary>
         /// <value>The Xero identifier for Timesheet tracking category.</value>
-        [DataMember(Name="timesheetTrackingCategoryID", EmitDefaultValue=false)]
+        [DataMember(Name = "timesheetTrackingCategoryID", EmitDefaultValue = false)]
         public Guid? TimesheetTrackingCategoryID { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EmployeeGroupsTrackingCategoryID == input.EmployeeGroupsTrackingCategoryID ||
                     (this.EmployeeGroupsTrackingCategoryID != null &&
                     this.EmployeeGroupsTrackingCategoryID.Equals(input.EmployeeGroupsTrackingCategoryID))
-                ) && 
+                ) &&
                 (
                     this.TimesheetTrackingCategoryID == input.TimesheetTrackingCategoryID ||
                     (this.TimesheetTrackingCategoryID != null &&

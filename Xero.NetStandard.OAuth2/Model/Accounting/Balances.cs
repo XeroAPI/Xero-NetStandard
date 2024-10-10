@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// The raw AccountsReceivable(sales invoices) and AccountsPayable(bills) outstanding and overdue amounts, not converted to base currency (read only)
     /// </summary>
     [DataContract]
-    public partial class Balances :  IEquatable<Balances>, IValidatableObject
+    public partial class Balances : IEquatable<Balances>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets AccountsReceivable
         /// </summary>
-        [DataMember(Name="AccountsReceivable", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountsReceivable", EmitDefaultValue = false)]
         public AccountsReceivable AccountsReceivable { get; set; }
 
         /// <summary>
         /// Gets or Sets AccountsPayable
         /// </summary>
-        [DataMember(Name="AccountsPayable", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountsPayable", EmitDefaultValue = false)]
         public AccountsPayable AccountsPayable { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountsReceivable == input.AccountsReceivable ||
                     (this.AccountsReceivable != null &&
                     this.AccountsReceivable.Equals(input.AccountsReceivable))
-                ) && 
+                ) &&
                 (
                     this.AccountsPayable == input.AccountsPayable ||
                     (this.AccountsPayable != null &&

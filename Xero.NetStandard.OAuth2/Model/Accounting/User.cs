@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// User
     /// </summary>
     [DataContract]
-    public partial class User :  IEquatable<User>, IValidatableObject
+    public partial class User : IEquatable<User>, IValidatableObject
     {
         /// <summary>
         /// User role that defines permissions in Xero and via API (READONLY, INVOICEONLY, STANDARD, FINANCIALADVISER, etc)
@@ -85,49 +85,49 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// User role that defines permissions in Xero and via API (READONLY, INVOICEONLY, STANDARD, FINANCIALADVISER, etc)
         /// </summary>
         /// <value>User role that defines permissions in Xero and via API (READONLY, INVOICEONLY, STANDARD, FINANCIALADVISER, etc)</value>
-        [DataMember(Name="OrganisationRole", EmitDefaultValue=false)]
+        [DataMember(Name = "OrganisationRole", EmitDefaultValue = false)]
         public OrganisationRoleEnum OrganisationRole { get; set; }
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="UserID", EmitDefaultValue=false)]
+        [DataMember(Name = "UserID", EmitDefaultValue = false)]
         public Guid? UserID { get; set; }
 
         /// <summary>
         /// Email address of user
         /// </summary>
         /// <value>Email address of user</value>
-        [DataMember(Name="EmailAddress", EmitDefaultValue=false)]
+        [DataMember(Name = "EmailAddress", EmitDefaultValue = false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// First name of user
         /// </summary>
         /// <value>First name of user</value>
-        [DataMember(Name="FirstName", EmitDefaultValue=false)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Last name of user
         /// </summary>
         /// <value>Last name of user</value>
-        [DataMember(Name="LastName", EmitDefaultValue=false)]
+        [DataMember(Name = "LastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Timestamp of last change to user
         /// </summary>
         /// <value>Timestamp of last change to user</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Boolean to indicate if user is the subscriber
         /// </summary>
         /// <value>Boolean to indicate if user is the subscriber</value>
-        [DataMember(Name="IsSubscriber", EmitDefaultValue=false)]
+        [DataMember(Name = "IsSubscriber", EmitDefaultValue = false)]
         public bool? IsSubscriber { get; set; }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -178,37 +178,37 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UserID == input.UserID ||
                     (this.UserID != null &&
                     this.UserID.Equals(input.UserID))
-                ) && 
+                ) &&
                 (
                     this.EmailAddress == input.EmailAddress ||
                     (this.EmailAddress != null &&
                     this.EmailAddress.Equals(input.EmailAddress))
-                ) && 
+                ) &&
                 (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
-                ) && 
+                ) &&
                 (
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.IsSubscriber == input.IsSubscriber ||
                     (this.IsSubscriber != null &&
                     this.IsSubscriber.Equals(input.IsSubscriber))
-                ) && 
+                ) &&
                 (
                     this.OrganisationRole == input.OrganisationRole ||
                     this.OrganisationRole.Equals(input.OrganisationRole)

@@ -28,25 +28,25 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EmployeeStatutoryLeaveBalanceObject
     /// </summary>
     [DataContract]
-    public partial class EmployeeStatutoryLeaveBalanceObject :  IEquatable<EmployeeStatutoryLeaveBalanceObject>, IValidatableObject
+    public partial class EmployeeStatutoryLeaveBalanceObject : IEquatable<EmployeeStatutoryLeaveBalanceObject>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
         public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets Problem
         /// </summary>
-        [DataMember(Name="problem", EmitDefaultValue=false)]
+        [DataMember(Name = "problem", EmitDefaultValue = false)]
         public Problem Problem { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveBalance
         /// </summary>
-        [DataMember(Name="leaveBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveBalance", EmitDefaultValue = false)]
         public EmployeeStatutoryLeaveBalance LeaveBalance { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -93,17 +93,17 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Pagination == input.Pagination ||
                     (this.Pagination != null &&
                     this.Pagination.Equals(input.Pagination))
-                ) && 
+                ) &&
                 (
                     this.Problem == input.Problem ||
                     (this.Problem != null &&
                     this.Problem.Equals(input.Problem))
-                ) && 
+                ) &&
                 (
                     this.LeaveBalance == input.LeaveBalance ||
                     (this.LeaveBalance != null &&

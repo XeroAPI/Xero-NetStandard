@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// RequestEmpty
     /// </summary>
     [DataContract]
-    public partial class RequestEmpty :  IEquatable<RequestEmpty>, IValidatableObject
+    public partial class RequestEmpty : IEquatable<RequestEmpty>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Need at least one field to create an empty JSON payload
         /// </summary>
         /// <value>Need at least one field to create an empty JSON payload</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&

@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// The tracking category used for employees
     /// </summary>
     [DataContract]
-    public partial class SettingsTrackingCategoriesEmployeeGroups :  IEquatable<SettingsTrackingCategoriesEmployeeGroups>, IValidatableObject
+    public partial class SettingsTrackingCategoriesEmployeeGroups : IEquatable<SettingsTrackingCategoriesEmployeeGroups>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The identifier for the tracking category
         /// </summary>
         /// <value>The identifier for the tracking category</value>
-        [DataMember(Name="TrackingCategoryID", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategoryID", EmitDefaultValue = false)]
         public Guid? TrackingCategoryID { get; set; }
 
         /// <summary>
         /// Name of the tracking category
         /// </summary>
         /// <value>Name of the tracking category</value>
-        [DataMember(Name="TrackingCategoryName", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategoryName", EmitDefaultValue = false)]
         public string TrackingCategoryName { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TrackingCategoryID == input.TrackingCategoryID ||
                     (this.TrackingCategoryID != null &&
                     this.TrackingCategoryID.Equals(input.TrackingCategoryID))
-                ) && 
+                ) &&
                 (
                     this.TrackingCategoryName == input.TrackingCategoryName ||
                     (this.TrackingCategoryName != null &&

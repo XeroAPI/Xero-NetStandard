@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// EarningsRate
     /// </summary>
     [DataContract]
-    public partial class EarningsRate :  IEquatable<EarningsRate>, IValidatableObject
+    public partial class EarningsRate : IEquatable<EarningsRate>, IValidatableObject
     {
         /// <summary>
         /// Indicates how an employee will be paid when taking this type of earning
@@ -181,7 +181,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Indicates how an employee will be paid when taking this type of earning
         /// </summary>
         /// <value>Indicates how an employee will be paid when taking this type of earning</value>
-        [DataMember(Name="earningsType", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsType", EmitDefaultValue = false)]
         public EarningsTypeEnum EarningsType { get; set; }
         /// <summary>
         /// Indicates the type of the earning rate
@@ -214,70 +214,70 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Indicates the type of the earning rate
         /// </summary>
         /// <value>Indicates the type of the earning rate</value>
-        [DataMember(Name="rateType", EmitDefaultValue=false)]
+        [DataMember(Name = "rateType", EmitDefaultValue = false)]
         public RateTypeEnum RateType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EarningsRate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EarningsRate() 
-        { 
+        public EarningsRate()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for an earning rate
         /// </summary>
         /// <value>Xero unique identifier for an earning rate</value>
-        [DataMember(Name="earningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "earningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// Name of the earning rate
         /// </summary>
         /// <value>Name of the earning rate</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The type of units used to record earnings
         /// </summary>
         /// <value>The type of units used to record earnings</value>
-        [DataMember(Name="typeOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "typeOfUnits", EmitDefaultValue = false)]
         public string TypeOfUnits { get; set; }
 
         /// <summary>
         /// Indicates whether an earning type is active
         /// </summary>
         /// <value>Indicates whether an earning type is active</value>
-        [DataMember(Name="currentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "currentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
         /// The account that will be used for the earnings rate
         /// </summary>
         /// <value>The account that will be used for the earnings rate</value>
-        [DataMember(Name="expenseAccountID", EmitDefaultValue=false)]
+        [DataMember(Name = "expenseAccountID", EmitDefaultValue = false)]
         public Guid? ExpenseAccountID { get; set; }
 
         /// <summary>
         /// Default rate per unit (optional). Only applicable if RateType is RatePerUnit
         /// </summary>
         /// <value>Default rate per unit (optional). Only applicable if RateType is RatePerUnit</value>
-        [DataMember(Name="ratePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "ratePerUnit", EmitDefaultValue = false)]
         public decimal? RatePerUnit { get; set; }
 
         /// <summary>
         /// This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MultipleOfOrdinaryEarningsRate
         /// </summary>
         /// <value>This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MultipleOfOrdinaryEarningsRate</value>
-        [DataMember(Name="multipleOfOrdinaryEarningsRate", EmitDefaultValue=false)]
+        [DataMember(Name = "multipleOfOrdinaryEarningsRate", EmitDefaultValue = false)]
         public decimal? MultipleOfOrdinaryEarningsRate { get; set; }
 
         /// <summary>
         /// Optional Fixed Rate Amount. Applicable for FixedAmount Rate
         /// </summary>
         /// <value>Optional Fixed Rate Amount. Applicable for FixedAmount Rate</value>
-        [DataMember(Name="fixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAmount", EmitDefaultValue = false)]
         public decimal? FixedAmount { get; set; }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -331,50 +331,50 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.EarningsType == input.EarningsType ||
                     this.EarningsType.Equals(input.EarningsType)
-                ) && 
+                ) &&
                 (
                     this.RateType == input.RateType ||
                     this.RateType.Equals(input.RateType)
-                ) && 
+                ) &&
                 (
                     this.TypeOfUnits == input.TypeOfUnits ||
                     (this.TypeOfUnits != null &&
                     this.TypeOfUnits.Equals(input.TypeOfUnits))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
                     this.CurrentRecord.Equals(input.CurrentRecord))
-                ) && 
+                ) &&
                 (
                     this.ExpenseAccountID == input.ExpenseAccountID ||
                     (this.ExpenseAccountID != null &&
                     this.ExpenseAccountID.Equals(input.ExpenseAccountID))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.MultipleOfOrdinaryEarningsRate == input.MultipleOfOrdinaryEarningsRate ||
                     (this.MultipleOfOrdinaryEarningsRate != null &&
                     this.MultipleOfOrdinaryEarningsRate.Equals(input.MultipleOfOrdinaryEarningsRate))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&

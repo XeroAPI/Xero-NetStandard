@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// TimesheetLine
     /// </summary>
     [DataContract]
-    public partial class TimesheetLine :  IEquatable<TimesheetLine>, IValidatableObject
+    public partial class TimesheetLine : IEquatable<TimesheetLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Xero identifier for an Earnings Rate
         /// </summary>
         /// <value>The Xero identifier for an Earnings Rate</value>
-        [DataMember(Name="EarningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// The Xero identifier for a Tracking Category. The TrackingOptionID must belong to the TrackingCategory selected as TimesheetCategories under Payroll Settings.
         /// </summary>
         /// <value>The Xero identifier for a Tracking Category. The TrackingOptionID must belong to the TrackingCategory selected as TimesheetCategories under Payroll Settings.</value>
-        [DataMember(Name="TrackingItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingItemID", EmitDefaultValue = false)]
         public Guid? TrackingItemID { get; set; }
 
         /// <summary>
         /// The number of units on a timesheet line
         /// </summary>
         /// <value>The number of units on a timesheet line</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public List<double> NumberOfUnits { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,23 +104,23 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.TrackingItemID == input.TrackingItemID ||
                     (this.TrackingItemID != null &&
                     this.TrackingItemID.Equals(input.TrackingItemID))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     this.NumberOfUnits != null &&
                     input.NumberOfUnits != null &&
                     this.NumberOfUnits.SequenceEqual(input.NumberOfUnits)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&

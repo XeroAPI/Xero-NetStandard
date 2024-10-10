@@ -60,7 +60,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
                 toProperty: (x) => x.AccountType,
                 shouldBe: expected
             );
-                    }
+        }
 
         /// <summary>
         /// Test the property 'Status'
@@ -93,12 +93,12 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
                 }}
             }}", Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<FeedConnection>(response);
-            
+
             Assert.Equal(Error.TypeEnum.InvalidEndBalance, actual.Error.Type);
             Assert.Equal("Invalid End Balance", actual.Error.Title);
             Assert.Equal(422, actual.Error.Status);

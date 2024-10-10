@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// The leave type lines
     /// </summary>
     [DataContract]
-    public partial class LeaveLines :  IEquatable<LeaveLines>, IValidatableObject
+    public partial class LeaveLines : IEquatable<LeaveLines>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Employee
         /// </summary>
-        [DataMember(Name="Employee", EmitDefaultValue=false)]
+        [DataMember(Name = "Employee", EmitDefaultValue = false)]
         public List<LeaveLine> Employee { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Employee == input.Employee ||
                     this.Employee != null &&

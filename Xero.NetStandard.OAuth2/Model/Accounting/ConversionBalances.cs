@@ -28,27 +28,27 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Balance supplied for each account that has a value as at the conversion date.
     /// </summary>
     [DataContract]
-    public partial class ConversionBalances :  IEquatable<ConversionBalances>, IValidatableObject
+    public partial class ConversionBalances : IEquatable<ConversionBalances>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The account code for a account
         /// </summary>
         /// <value>The account code for a account</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// The opening balances of the account. Debits are positive, credits are negative values
         /// </summary>
         /// <value>The opening balances of the account. Debits are positive, credits are negative values</value>
-        [DataMember(Name="Balance", EmitDefaultValue=false)]
+        [DataMember(Name = "Balance", EmitDefaultValue = false)]
         public double? Balance { get; set; }
 
         /// <summary>
         /// Gets or Sets BalanceDetails
         /// </summary>
-        [DataMember(Name="BalanceDetails", EmitDefaultValue=false)]
+        [DataMember(Name = "BalanceDetails", EmitDefaultValue = false)]
         public List<BalanceDetails> BalanceDetails { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -95,17 +95,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.Balance == input.Balance ||
                     (this.Balance != null &&
                     this.Balance.Equals(input.Balance))
-                ) && 
+                ) &&
                 (
                     this.BalanceDetails == input.BalanceDetails ||
                     this.BalanceDetails != null &&

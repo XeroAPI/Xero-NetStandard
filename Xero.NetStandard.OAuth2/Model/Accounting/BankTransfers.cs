@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BankTransfers
     /// </summary>
     [DataContract]
-    public partial class BankTransfers :  IEquatable<BankTransfers>, IValidatableObject
+    public partial class BankTransfers : IEquatable<BankTransfers>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _BankTransfers
         /// </summary>
-        [DataMember(Name="BankTransfers", EmitDefaultValue=false)]
+        [DataMember(Name = "BankTransfers", EmitDefaultValue = false)]
         public List<BankTransfer> _BankTransfers { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._BankTransfers == input._BankTransfers ||
                     this._BankTransfers != null &&

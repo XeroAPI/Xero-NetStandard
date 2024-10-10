@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// TotalOther
     /// </summary>
     [DataContract]
-    public partial class TotalOther :  IEquatable<TotalOther>, IValidatableObject
+    public partial class TotalOther : IEquatable<TotalOther>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Total outstanding invoice value within the period where the invoices are more than 90 days old
         /// </summary>
         /// <value>Total outstanding invoice value within the period where the invoices are more than 90 days old</value>
-        [DataMember(Name="totalOutstandingAged", EmitDefaultValue=false)]
+        [DataMember(Name = "totalOutstandingAged", EmitDefaultValue = false)]
         public decimal? TotalOutstandingAged { get; set; }
 
         /// <summary>
         /// Total voided value.
         /// </summary>
         /// <value>Total voided value.</value>
-        [DataMember(Name="totalVoided", EmitDefaultValue=false)]
+        [DataMember(Name = "totalVoided", EmitDefaultValue = false)]
         public decimal? TotalVoided { get; set; }
 
         /// <summary>
         /// Total credited value.
         /// </summary>
         /// <value>Total credited value.</value>
-        [DataMember(Name="totalCredited", EmitDefaultValue=false)]
+        [DataMember(Name = "totalCredited", EmitDefaultValue = false)]
         public decimal? TotalCredited { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TotalOutstandingAged == input.TotalOutstandingAged ||
                     (this.TotalOutstandingAged != null &&
                     this.TotalOutstandingAged.Equals(input.TotalOutstandingAged))
-                ) && 
+                ) &&
                 (
                     this.TotalVoided == input.TotalVoided ||
                     (this.TotalVoided != null &&
                     this.TotalVoided.Equals(input.TotalVoided))
-                ) && 
+                ) &&
                 (
                     this.TotalCredited == input.TotalCredited ||
                     (this.TotalCredited != null &&

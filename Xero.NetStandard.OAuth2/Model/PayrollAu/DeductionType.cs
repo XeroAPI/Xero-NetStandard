@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// DeductionType
     /// </summary>
     [DataContract]
-    public partial class DeductionType :  IEquatable<DeductionType>, IValidatableObject
+    public partial class DeductionType : IEquatable<DeductionType>, IValidatableObject
     {
         /// <summary>
         /// Defines DeductionCategory
@@ -59,63 +59,63 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// <summary>
         /// Gets or Sets DeductionCategory
         /// </summary>
-        [DataMember(Name="DeductionCategory", EmitDefaultValue=false)]
+        [DataMember(Name = "DeductionCategory", EmitDefaultValue = false)]
         public DeductionCategoryEnum DeductionCategory { get; set; }
-        
+
         /// <summary>
         /// Name of the earnings rate (max length &#x3D; 100)
         /// </summary>
         /// <value>Name of the earnings rate (max length &#x3D; 100)</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// Indicates that this is a pre-tax deduction that will reduce the amount of tax you withhold from an employee.
         /// </summary>
         /// <value>Indicates that this is a pre-tax deduction that will reduce the amount of tax you withhold from an employee.</value>
-        [DataMember(Name="ReducesTax", EmitDefaultValue=false)]
+        [DataMember(Name = "ReducesTax", EmitDefaultValue = false)]
         public bool? ReducesTax { get; set; }
 
         /// <summary>
         /// Most deductions don’t reduce your superannuation guarantee contribution liability, so typically you will not set any value for this.
         /// </summary>
         /// <value>Most deductions don’t reduce your superannuation guarantee contribution liability, so typically you will not set any value for this.</value>
-        [DataMember(Name="ReducesSuper", EmitDefaultValue=false)]
+        [DataMember(Name = "ReducesSuper", EmitDefaultValue = false)]
         public bool? ReducesSuper { get; set; }
 
         /// <summary>
         /// Boolean to determine if the deduction type is reportable or exempt from W1
         /// </summary>
         /// <value>Boolean to determine if the deduction type is reportable or exempt from W1</value>
-        [DataMember(Name="IsExemptFromW1", EmitDefaultValue=false)]
+        [DataMember(Name = "IsExemptFromW1", EmitDefaultValue = false)]
         public bool? IsExemptFromW1 { get; set; }
 
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="DeductionTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "DeductionTypeID", EmitDefaultValue = false)]
         public Guid? DeductionTypeID { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Is the current record
         /// </summary>
         /// <value>Is the current record</value>
-        [DataMember(Name="CurrentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -168,46 +168,46 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.ReducesTax == input.ReducesTax ||
                     (this.ReducesTax != null &&
                     this.ReducesTax.Equals(input.ReducesTax))
-                ) && 
+                ) &&
                 (
                     this.ReducesSuper == input.ReducesSuper ||
                     (this.ReducesSuper != null &&
                     this.ReducesSuper.Equals(input.ReducesSuper))
-                ) && 
+                ) &&
                 (
                     this.IsExemptFromW1 == input.IsExemptFromW1 ||
                     (this.IsExemptFromW1 != null &&
                     this.IsExemptFromW1.Equals(input.IsExemptFromW1))
-                ) && 
+                ) &&
                 (
                     this.DeductionTypeID == input.DeductionTypeID ||
                     (this.DeductionTypeID != null &&
                     this.DeductionTypeID.Equals(input.DeductionTypeID))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.DeductionCategory == input.DeductionCategory ||
                     this.DeductionCategory.Equals(input.DeductionCategory)
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
@@ -253,9 +253,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 100)
+            if (this.Name != null && this.Name.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new[] { "Name" });
             }
 
             yield break;

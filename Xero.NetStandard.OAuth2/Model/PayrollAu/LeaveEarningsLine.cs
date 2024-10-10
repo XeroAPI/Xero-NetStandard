@@ -28,33 +28,33 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeaveEarningsLine
     /// </summary>
     [DataContract]
-    public partial class LeaveEarningsLine :  IEquatable<LeaveEarningsLine>, IValidatableObject
+    public partial class LeaveEarningsLine : IEquatable<LeaveEarningsLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets PayOutType
         /// </summary>
-        [DataMember(Name="PayOutType", EmitDefaultValue=false)]
+        [DataMember(Name = "PayOutType", EmitDefaultValue = false)]
         public PayOutType PayOutType { get; set; }
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="EarningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// Rate per unit of the EarningsLine.
         /// </summary>
         /// <value>Rate per unit of the EarningsLine.</value>
-        [DataMember(Name="RatePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "RatePerUnit", EmitDefaultValue = false)]
         public decimal? RatePerUnit { get; set; }
 
         /// <summary>
         /// Earnings rate number of units.
         /// </summary>
         /// <value>Earnings rate number of units.</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -102,22 +102,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.PayOutType == input.PayOutType ||
                     this.PayOutType.Equals(input.PayOutType)

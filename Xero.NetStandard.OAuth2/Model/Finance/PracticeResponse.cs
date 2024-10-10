@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// PracticeResponse
     /// </summary>
     [DataContract]
-    public partial class PracticeResponse :  IEquatable<PracticeResponse>, IValidatableObject
+    public partial class PracticeResponse : IEquatable<PracticeResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Year of becoming a partner.
         /// </summary>
         /// <value>Year of becoming a partner.</value>
-        [DataMember(Name="xeroPartnerSince", EmitDefaultValue=false)]
+        [DataMember(Name = "xeroPartnerSince", EmitDefaultValue = false)]
         public int? XeroPartnerSince { get; set; }
 
         /// <summary>
         /// Customer tier e.g. Silver
         /// </summary>
         /// <value>Customer tier e.g. Silver</value>
-        [DataMember(Name="tier", EmitDefaultValue=false)]
+        [DataMember(Name = "tier", EmitDefaultValue = false)]
         public string Tier { get; set; }
 
         /// <summary>
         /// Country of location.
         /// </summary>
         /// <value>Country of location.</value>
-        [DataMember(Name="location", EmitDefaultValue=false)]
+        [DataMember(Name = "location", EmitDefaultValue = false)]
         public string Location { get; set; }
 
         /// <summary>
         /// Organisation count.
         /// </summary>
         /// <value>Organisation count.</value>
-        [DataMember(Name="organisationCount", EmitDefaultValue=false)]
+        [DataMember(Name = "organisationCount", EmitDefaultValue = false)]
         public int? OrganisationCount { get; set; }
 
         /// <summary>
         /// Staff certified (true/false).
         /// </summary>
         /// <value>Staff certified (true/false).</value>
-        [DataMember(Name="staffCertified", EmitDefaultValue=false)]
+        [DataMember(Name = "staffCertified", EmitDefaultValue = false)]
         public bool? StaffCertified { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.XeroPartnerSince == input.XeroPartnerSince ||
                     (this.XeroPartnerSince != null &&
                     this.XeroPartnerSince.Equals(input.XeroPartnerSince))
-                ) && 
+                ) &&
                 (
                     this.Tier == input.Tier ||
                     (this.Tier != null &&
                     this.Tier.Equals(input.Tier))
-                ) && 
+                ) &&
                 (
                     this.Location == input.Location ||
                     (this.Location != null &&
                     this.Location.Equals(input.Location))
-                ) && 
+                ) &&
                 (
                     this.OrganisationCount == input.OrganisationCount ||
                     (this.OrganisationCount != null &&
                     this.OrganisationCount.Equals(input.OrganisationCount))
-                ) && 
+                ) &&
                 (
                     this.StaffCertified == input.StaffCertified ||
                     (this.StaffCertified != null &&

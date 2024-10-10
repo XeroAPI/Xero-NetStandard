@@ -28,81 +28,81 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Allocation
     /// </summary>
     [DataContract]
-    public partial class Allocation :  IEquatable<Allocation>, IValidatableObject
+    public partial class Allocation : IEquatable<Allocation>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Allocation" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Allocation() 
-        {  
-          ValidationErrors = new List<ValidationError>(); 
+        public Allocation()
+        {
+            ValidationErrors = new List<ValidationError>();
         }
-        
+
         /// <summary>
         /// Xero generated unique identifier
         /// </summary>
         /// <value>Xero generated unique identifier</value>
-        [DataMember(Name="AllocationID", EmitDefaultValue=false)]
+        [DataMember(Name = "AllocationID", EmitDefaultValue = false)]
         public Guid? AllocationID { get; set; }
 
         /// <summary>
         /// Gets or Sets Invoice
         /// </summary>
-        [DataMember(Name="Invoice", EmitDefaultValue=false)]
+        [DataMember(Name = "Invoice", EmitDefaultValue = false)]
         public Invoice Invoice { get; set; }
 
         /// <summary>
         /// Gets or Sets Overpayment
         /// </summary>
-        [DataMember(Name="Overpayment", EmitDefaultValue=false)]
+        [DataMember(Name = "Overpayment", EmitDefaultValue = false)]
         public Overpayment Overpayment { get; set; }
 
         /// <summary>
         /// Gets or Sets Prepayment
         /// </summary>
-        [DataMember(Name="Prepayment", EmitDefaultValue=false)]
+        [DataMember(Name = "Prepayment", EmitDefaultValue = false)]
         public Prepayment Prepayment { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditNote
         /// </summary>
-        [DataMember(Name="CreditNote", EmitDefaultValue=false)]
+        [DataMember(Name = "CreditNote", EmitDefaultValue = false)]
         public CreditNote CreditNote { get; set; }
 
         /// <summary>
         /// the amount being applied to the invoice
         /// </summary>
         /// <value>the amount being applied to the invoice</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// the date the allocation is applied YYYY-MM-DD.
         /// </summary>
         /// <value>the date the allocation is applied YYYY-MM-DD.</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// A flag that returns true when the allocation is succesfully deleted
         /// </summary>
         /// <value>A flag that returns true when the allocation is succesfully deleted</value>
-        [DataMember(Name="IsDeleted", EmitDefaultValue=false)]
+        [DataMember(Name = "IsDeleted", EmitDefaultValue = false)]
         public bool? IsDeleted { get; private set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -156,52 +156,52 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AllocationID == input.AllocationID ||
                     (this.AllocationID != null &&
                     this.AllocationID.Equals(input.AllocationID))
-                ) && 
+                ) &&
                 (
                     this.Invoice == input.Invoice ||
                     (this.Invoice != null &&
                     this.Invoice.Equals(input.Invoice))
-                ) && 
+                ) &&
                 (
                     this.Overpayment == input.Overpayment ||
                     (this.Overpayment != null &&
                     this.Overpayment.Equals(input.Overpayment))
-                ) && 
+                ) &&
                 (
                     this.Prepayment == input.Prepayment ||
                     (this.Prepayment != null &&
                     this.Prepayment.Equals(input.Prepayment))
-                ) && 
+                ) &&
                 (
                     this.CreditNote == input.CreditNote ||
                     (this.CreditNote != null &&
                     this.CreditNote.Equals(input.CreditNote))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.IsDeleted == input.IsDeleted ||
                     (this.IsDeleted != null &&
                     this.IsDeleted.Equals(input.IsDeleted))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

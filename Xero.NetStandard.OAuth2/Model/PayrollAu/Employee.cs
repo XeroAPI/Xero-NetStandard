@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Employee
     /// </summary>
     [DataContract]
-    public partial class Employee :  IEquatable<Employee>, IValidatableObject
+    public partial class Employee : IEquatable<Employee>, IValidatableObject
     {
         /// <summary>
         /// The employee’s gender. See Employee Gender
@@ -67,7 +67,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// The employee’s gender. See Employee Gender
         /// </summary>
         /// <value>The employee’s gender. See Employee Gender</value>
-        [DataMember(Name="Gender", EmitDefaultValue=false)]
+        [DataMember(Name = "Gender", EmitDefaultValue = false)]
         public GenderEnum Gender { get; set; }
         /// <summary>
         /// * &#x60;V&#x60; Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment * &#x60;I&#x60; Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability * &#x60;D&#x60; Deceased - The death of an employee * &#x60;R&#x60; Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme * &#x60;F&#x60; Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency * &#x60;C&#x60; Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required * &#x60;T&#x60; Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities. 
@@ -124,241 +124,241 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// * &#x60;V&#x60; Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment * &#x60;I&#x60; Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability * &#x60;D&#x60; Deceased - The death of an employee * &#x60;R&#x60; Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme * &#x60;F&#x60; Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency * &#x60;C&#x60; Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required * &#x60;T&#x60; Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities. 
         /// </summary>
         /// <value>* &#x60;V&#x60; Voluntary cessation - An employee resignation, retirement, domestic or pressing necessity or abandonment of employment * &#x60;I&#x60; Ill health - An employee resignation due to medical condition that prevents the continuation of employment, such as for illness, ill-health, medical unfitness or total permanent disability * &#x60;D&#x60; Deceased - The death of an employee * &#x60;R&#x60; Redundancy - An employer-initiated termination of employment due to a genuine redundancy or approved early retirement scheme * &#x60;F&#x60; Dismissal - An employer-initiated termination of employment due to dismissal, inability to perform the required work, misconduct or inefficiency * &#x60;C&#x60; Contract cessation - The natural conclusion of a limited employment relationship due to contract/engagement duration or task completion, seasonal work completion, or to cease casuals that are no longer required * &#x60;T&#x60; Transfer - The administrative arrangements performed to transfer employees across payroll systems, move them temporarily to another employer (machinery of government for public servants), transfer of business, move them to outsourcing arrangements or other such technical activities. </value>
-        [DataMember(Name="TerminationReason", EmitDefaultValue=false)]
+        [DataMember(Name = "TerminationReason", EmitDefaultValue = false)]
         public TerminationReasonEnum TerminationReason { get; set; }
         /// <summary>
         /// Gets or Sets IncomeType
         /// </summary>
-        [DataMember(Name="IncomeType", EmitDefaultValue=false)]
+        [DataMember(Name = "IncomeType", EmitDefaultValue = false)]
         public IncomeType IncomeType { get; set; }
         /// <summary>
         /// Gets or Sets EmploymentType
         /// </summary>
-        [DataMember(Name="EmploymentType", EmitDefaultValue=false)]
+        [DataMember(Name = "EmploymentType", EmitDefaultValue = false)]
         public EmploymentType EmploymentType { get; set; }
         /// <summary>
         /// Gets or Sets CountryOfResidence
         /// </summary>
-        [DataMember(Name="CountryOfResidence", EmitDefaultValue=false)]
+        [DataMember(Name = "CountryOfResidence", EmitDefaultValue = false)]
         public CountryOfResidence CountryOfResidence { get; set; }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public EmployeeStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Employee" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Employee() 
-        {  
-          BankAccounts = new List<BankAccount>();  
-          LeaveBalances = new List<LeaveBalance>();  
-          LeaveLines = new List<LeaveLine>();  
-          SuperMemberships = new List<SuperMembership>();  
-          ValidationErrors = new List<ValidationError>(); 
+        public Employee()
+        {
+            BankAccounts = new List<BankAccount>();
+            LeaveBalances = new List<LeaveBalance>();
+            LeaveLines = new List<LeaveLine>();
+            SuperMemberships = new List<SuperMembership>();
+            ValidationErrors = new List<ValidationError>();
         }
-        
+
         /// <summary>
         /// First name of employee
         /// </summary>
         /// <value>First name of employee</value>
-        [DataMember(Name="FirstName", EmitDefaultValue=false)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Last name of employee
         /// </summary>
         /// <value>Last name of employee</value>
-        [DataMember(Name="LastName", EmitDefaultValue=false)]
+        [DataMember(Name = "LastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Date of birth of the employee (YYYY-MM-DD)
         /// </summary>
         /// <value>Date of birth of the employee (YYYY-MM-DD)</value>
-        [DataMember(Name="DateOfBirth", EmitDefaultValue=false)]
+        [DataMember(Name = "DateOfBirth", EmitDefaultValue = false)]
         public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// Gets or Sets HomeAddress
         /// </summary>
-        [DataMember(Name="HomeAddress", EmitDefaultValue=false)]
+        [DataMember(Name = "HomeAddress", EmitDefaultValue = false)]
         public HomeAddress HomeAddress { get; set; }
 
         /// <summary>
         /// Start date for an employee (YYYY-MM-DD)
         /// </summary>
         /// <value>Start date for an employee (YYYY-MM-DD)</value>
-        [DataMember(Name="StartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "StartDate", EmitDefaultValue = false)]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// Title of the employee
         /// </summary>
         /// <value>Title of the employee</value>
-        [DataMember(Name="Title", EmitDefaultValue=false)]
+        [DataMember(Name = "Title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Middle name(s) of the employee
         /// </summary>
         /// <value>Middle name(s) of the employee</value>
-        [DataMember(Name="MiddleNames", EmitDefaultValue=false)]
+        [DataMember(Name = "MiddleNames", EmitDefaultValue = false)]
         public string MiddleNames { get; set; }
 
         /// <summary>
         /// The email address for the employee
         /// </summary>
         /// <value>The email address for the employee</value>
-        [DataMember(Name="Email", EmitDefaultValue=false)]
+        [DataMember(Name = "Email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>
         /// Employee phone number
         /// </summary>
         /// <value>Employee phone number</value>
-        [DataMember(Name="Phone", EmitDefaultValue=false)]
+        [DataMember(Name = "Phone", EmitDefaultValue = false)]
         public string Phone { get; set; }
 
         /// <summary>
         /// Employee mobile number
         /// </summary>
         /// <value>Employee mobile number</value>
-        [DataMember(Name="Mobile", EmitDefaultValue=false)]
+        [DataMember(Name = "Mobile", EmitDefaultValue = false)]
         public string Mobile { get; set; }
 
         /// <summary>
         /// Employee’s twitter name
         /// </summary>
         /// <value>Employee’s twitter name</value>
-        [DataMember(Name="TwitterUserName", EmitDefaultValue=false)]
+        [DataMember(Name = "TwitterUserName", EmitDefaultValue = false)]
         public string TwitterUserName { get; set; }
 
         /// <summary>
         /// Authorised to approve other employees&#39; leave requests
         /// </summary>
         /// <value>Authorised to approve other employees&#39; leave requests</value>
-        [DataMember(Name="IsAuthorisedToApproveLeave", EmitDefaultValue=false)]
+        [DataMember(Name = "IsAuthorisedToApproveLeave", EmitDefaultValue = false)]
         public bool? IsAuthorisedToApproveLeave { get; set; }
 
         /// <summary>
         /// Authorised to approve timesheets
         /// </summary>
         /// <value>Authorised to approve timesheets</value>
-        [DataMember(Name="IsAuthorisedToApproveTimesheets", EmitDefaultValue=false)]
+        [DataMember(Name = "IsAuthorisedToApproveTimesheets", EmitDefaultValue = false)]
         public bool? IsAuthorisedToApproveTimesheets { get; set; }
 
         /// <summary>
         /// JobTitle of the employee
         /// </summary>
         /// <value>JobTitle of the employee</value>
-        [DataMember(Name="JobTitle", EmitDefaultValue=false)]
+        [DataMember(Name = "JobTitle", EmitDefaultValue = false)]
         public string JobTitle { get; set; }
 
         /// <summary>
         /// Employees classification
         /// </summary>
         /// <value>Employees classification</value>
-        [DataMember(Name="Classification", EmitDefaultValue=false)]
+        [DataMember(Name = "Classification", EmitDefaultValue = false)]
         public string Classification { get; set; }
 
         /// <summary>
         /// Xero unique identifier for earnings rate
         /// </summary>
         /// <value>Xero unique identifier for earnings rate</value>
-        [DataMember(Name="OrdinaryEarningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "OrdinaryEarningsRateID", EmitDefaultValue = false)]
         public Guid? OrdinaryEarningsRateID { get; set; }
 
         /// <summary>
         /// Xero unique identifier for payroll calendar for the employee
         /// </summary>
         /// <value>Xero unique identifier for payroll calendar for the employee</value>
-        [DataMember(Name="PayrollCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "PayrollCalendarID", EmitDefaultValue = false)]
         public Guid? PayrollCalendarID { get; set; }
 
         /// <summary>
         /// The Employee Group allows you to report on payroll expenses and liabilities for each group of employees
         /// </summary>
         /// <value>The Employee Group allows you to report on payroll expenses and liabilities for each group of employees</value>
-        [DataMember(Name="EmployeeGroupName", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeGroupName", EmitDefaultValue = false)]
         public string EmployeeGroupName { get; set; }
 
         /// <summary>
         /// Xero unique identifier for an Employee
         /// </summary>
         /// <value>Xero unique identifier for an Employee</value>
-        [DataMember(Name="EmployeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// Employee Termination Date (YYYY-MM-DD)
         /// </summary>
         /// <value>Employee Termination Date (YYYY-MM-DD)</value>
-        [DataMember(Name="TerminationDate", EmitDefaultValue=false)]
+        [DataMember(Name = "TerminationDate", EmitDefaultValue = false)]
         public DateTime? TerminationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets BankAccounts
         /// </summary>
-        [DataMember(Name="BankAccounts", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAccounts", EmitDefaultValue = false)]
         public List<BankAccount> BankAccounts { get; set; }
 
         /// <summary>
         /// Gets or Sets PayTemplate
         /// </summary>
-        [DataMember(Name="PayTemplate", EmitDefaultValue=false)]
+        [DataMember(Name = "PayTemplate", EmitDefaultValue = false)]
         public PayTemplate PayTemplate { get; set; }
 
         /// <summary>
         /// Gets or Sets OpeningBalances
         /// </summary>
-        [DataMember(Name="OpeningBalances", EmitDefaultValue=false)]
+        [DataMember(Name = "OpeningBalances", EmitDefaultValue = false)]
         public OpeningBalances OpeningBalances { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxDeclaration
         /// </summary>
-        [DataMember(Name="TaxDeclaration", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxDeclaration", EmitDefaultValue = false)]
         public TaxDeclaration TaxDeclaration { get; set; }
 
         /// <summary>
         /// Indicates if the employee has been updated for STP Phase 2 compliance. Doesn&#39;t indicate that the employee is payable.
         /// </summary>
         /// <value>Indicates if the employee has been updated for STP Phase 2 compliance. Doesn&#39;t indicate that the employee is payable.</value>
-        [DataMember(Name="IsSTP2Qualified", EmitDefaultValue=false)]
+        [DataMember(Name = "IsSTP2Qualified", EmitDefaultValue = false)]
         public bool? IsSTP2Qualified { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveBalances
         /// </summary>
-        [DataMember(Name="LeaveBalances", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveBalances", EmitDefaultValue = false)]
         public List<LeaveBalance> LeaveBalances { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveLines
         /// </summary>
-        [DataMember(Name="LeaveLines", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveLines", EmitDefaultValue = false)]
         public List<LeaveLine> LeaveLines { get; set; }
 
         /// <summary>
         /// Gets or Sets SuperMemberships
         /// </summary>
-        [DataMember(Name="SuperMemberships", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperMemberships", EmitDefaultValue = false)]
         public List<SuperMembership> SuperMemberships { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -438,180 +438,180 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
-                ) && 
+                ) &&
                 (
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
-                ) && 
+                ) &&
                 (
                     this.DateOfBirth == input.DateOfBirth ||
                     (this.DateOfBirth != null &&
                     this.DateOfBirth.Equals(input.DateOfBirth))
-                ) && 
+                ) &&
                 (
                     this.HomeAddress == input.HomeAddress ||
                     (this.HomeAddress != null &&
                     this.HomeAddress.Equals(input.HomeAddress))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.MiddleNames == input.MiddleNames ||
                     (this.MiddleNames != null &&
                     this.MiddleNames.Equals(input.MiddleNames))
-                ) && 
+                ) &&
                 (
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
-                ) && 
+                ) &&
                 (
                     this.Gender == input.Gender ||
                     this.Gender.Equals(input.Gender)
-                ) && 
+                ) &&
                 (
                     this.Phone == input.Phone ||
                     (this.Phone != null &&
                     this.Phone.Equals(input.Phone))
-                ) && 
+                ) &&
                 (
                     this.Mobile == input.Mobile ||
                     (this.Mobile != null &&
                     this.Mobile.Equals(input.Mobile))
-                ) && 
+                ) &&
                 (
                     this.TwitterUserName == input.TwitterUserName ||
                     (this.TwitterUserName != null &&
                     this.TwitterUserName.Equals(input.TwitterUserName))
-                ) && 
+                ) &&
                 (
                     this.IsAuthorisedToApproveLeave == input.IsAuthorisedToApproveLeave ||
                     (this.IsAuthorisedToApproveLeave != null &&
                     this.IsAuthorisedToApproveLeave.Equals(input.IsAuthorisedToApproveLeave))
-                ) && 
+                ) &&
                 (
                     this.IsAuthorisedToApproveTimesheets == input.IsAuthorisedToApproveTimesheets ||
                     (this.IsAuthorisedToApproveTimesheets != null &&
                     this.IsAuthorisedToApproveTimesheets.Equals(input.IsAuthorisedToApproveTimesheets))
-                ) && 
+                ) &&
                 (
                     this.JobTitle == input.JobTitle ||
                     (this.JobTitle != null &&
                     this.JobTitle.Equals(input.JobTitle))
-                ) && 
+                ) &&
                 (
                     this.Classification == input.Classification ||
                     (this.Classification != null &&
                     this.Classification.Equals(input.Classification))
-                ) && 
+                ) &&
                 (
                     this.OrdinaryEarningsRateID == input.OrdinaryEarningsRateID ||
                     (this.OrdinaryEarningsRateID != null &&
                     this.OrdinaryEarningsRateID.Equals(input.OrdinaryEarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.PayrollCalendarID == input.PayrollCalendarID ||
                     (this.PayrollCalendarID != null &&
                     this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
+                ) &&
                 (
                     this.EmployeeGroupName == input.EmployeeGroupName ||
                     (this.EmployeeGroupName != null &&
                     this.EmployeeGroupName.Equals(input.EmployeeGroupName))
-                ) && 
+                ) &&
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.TerminationDate == input.TerminationDate ||
                     (this.TerminationDate != null &&
                     this.TerminationDate.Equals(input.TerminationDate))
-                ) && 
+                ) &&
                 (
                     this.TerminationReason == input.TerminationReason ||
                     this.TerminationReason.Equals(input.TerminationReason)
-                ) && 
+                ) &&
                 (
                     this.BankAccounts == input.BankAccounts ||
                     this.BankAccounts != null &&
                     input.BankAccounts != null &&
                     this.BankAccounts.SequenceEqual(input.BankAccounts)
-                ) && 
+                ) &&
                 (
                     this.PayTemplate == input.PayTemplate ||
                     (this.PayTemplate != null &&
                     this.PayTemplate.Equals(input.PayTemplate))
-                ) && 
+                ) &&
                 (
                     this.OpeningBalances == input.OpeningBalances ||
                     (this.OpeningBalances != null &&
                     this.OpeningBalances.Equals(input.OpeningBalances))
-                ) && 
+                ) &&
                 (
                     this.TaxDeclaration == input.TaxDeclaration ||
                     (this.TaxDeclaration != null &&
                     this.TaxDeclaration.Equals(input.TaxDeclaration))
-                ) && 
+                ) &&
                 (
                     this.IncomeType == input.IncomeType ||
                     this.IncomeType.Equals(input.IncomeType)
-                ) && 
+                ) &&
                 (
                     this.EmploymentType == input.EmploymentType ||
                     this.EmploymentType.Equals(input.EmploymentType)
-                ) && 
+                ) &&
                 (
                     this.CountryOfResidence == input.CountryOfResidence ||
                     this.CountryOfResidence.Equals(input.CountryOfResidence)
-                ) && 
+                ) &&
                 (
                     this.IsSTP2Qualified == input.IsSTP2Qualified ||
                     (this.IsSTP2Qualified != null &&
                     this.IsSTP2Qualified.Equals(input.IsSTP2Qualified))
-                ) && 
+                ) &&
                 (
                     this.LeaveBalances == input.LeaveBalances ||
                     this.LeaveBalances != null &&
                     input.LeaveBalances != null &&
                     this.LeaveBalances.SequenceEqual(input.LeaveBalances)
-                ) && 
+                ) &&
                 (
                     this.LeaveLines == input.LeaveLines ||
                     this.LeaveLines != null &&
                     input.LeaveLines != null &&
                     this.LeaveLines.SequenceEqual(input.LeaveLines)
-                ) && 
+                ) &&
                 (
                     this.SuperMemberships == input.SuperMemberships ||
                     this.SuperMemberships != null &&
                     input.SuperMemberships != null &&
                     this.SuperMemberships.SequenceEqual(input.SuperMemberships)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

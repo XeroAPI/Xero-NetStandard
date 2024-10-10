@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// Benefit
     /// </summary>
     [DataContract]
-    public partial class Benefit :  IEquatable<Benefit>, IValidatableObject
+    public partial class Benefit : IEquatable<Benefit>, IValidatableObject
     {
         /// <summary>
         /// Category type of the employer pension
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Category type of the employer pension
         /// </summary>
         /// <value>Category type of the employer pension</value>
-        [DataMember(Name="category", EmitDefaultValue=false)]
+        [DataMember(Name = "category", EmitDefaultValue = false)]
         public CategoryEnum Category { get; set; }
         /// <summary>
         /// Calculation Type of the employer pension (FixedAmount or PercentageOfGross).
@@ -82,98 +82,98 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Calculation Type of the employer pension (FixedAmount or PercentageOfGross).
         /// </summary>
         /// <value>Calculation Type of the employer pension (FixedAmount or PercentageOfGross).</value>
-        [DataMember(Name="calculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "calculationType", EmitDefaultValue = false)]
         public CalculationTypeEnum CalculationType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Benefit" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Benefit() 
-        { 
+        public Benefit()
+        {
         }
-        
+
         /// <summary>
         /// unique identifier in Xero
         /// </summary>
         /// <value>unique identifier in Xero</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Name of the employer pension
         /// </summary>
         /// <value>Name of the employer pension</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Xero identifier for Liability Account
         /// </summary>
         /// <value>Xero identifier for Liability Account</value>
-        [DataMember(Name="liabilityAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "liabilityAccountId", EmitDefaultValue = false)]
         public Guid? LiabilityAccountId { get; set; }
 
         /// <summary>
         /// Xero identifier for Expense Account
         /// </summary>
         /// <value>Xero identifier for Expense Account</value>
-        [DataMember(Name="expenseAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "expenseAccountId", EmitDefaultValue = false)]
         public Guid? ExpenseAccountId { get; set; }
 
         /// <summary>
         /// Standard amount of the employer pension
         /// </summary>
         /// <value>Standard amount of the employer pension</value>
-        [DataMember(Name="standardAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "standardAmount", EmitDefaultValue = false)]
         public decimal? StandardAmount { get; set; }
 
         /// <summary>
         /// Percentage of gross of the employer pension
         /// </summary>
         /// <value>Percentage of gross of the employer pension</value>
-        [DataMember(Name="percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "percentage", EmitDefaultValue = false)]
         public decimal? Percentage { get; set; }
 
         /// <summary>
         /// Identifier of a record is active or not.
         /// </summary>
         /// <value>Identifier of a record is active or not.</value>
-        [DataMember(Name="currentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "currentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
         /// Identifier of subject To NIC
         /// </summary>
         /// <value>Identifier of subject To NIC</value>
-        [DataMember(Name="subjectToNIC", EmitDefaultValue=false)]
+        [DataMember(Name = "subjectToNIC", EmitDefaultValue = false)]
         public bool? SubjectToNIC { get; set; }
 
         /// <summary>
         /// Identifier of subject To pension
         /// </summary>
         /// <value>Identifier of subject To pension</value>
-        [DataMember(Name="subjectToPension", EmitDefaultValue=false)]
+        [DataMember(Name = "subjectToPension", EmitDefaultValue = false)]
         public bool? SubjectToPension { get; set; }
 
         /// <summary>
         /// Identifier of subject To Tax
         /// </summary>
         /// <value>Identifier of subject To Tax</value>
-        [DataMember(Name="subjectToTax", EmitDefaultValue=false)]
+        [DataMember(Name = "subjectToTax", EmitDefaultValue = false)]
         public bool? SubjectToTax { get; set; }
 
         /// <summary>
         /// Identifier of calculating on qualifying earnings
         /// </summary>
         /// <value>Identifier of calculating on qualifying earnings</value>
-        [DataMember(Name="isCalculatingOnQualifyingEarnings", EmitDefaultValue=false)]
+        [DataMember(Name = "isCalculatingOnQualifyingEarnings", EmitDefaultValue = false)]
         public bool? IsCalculatingOnQualifyingEarnings { get; set; }
 
         /// <summary>
         /// display the balance to employee
         /// </summary>
         /// <value>display the balance to employee</value>
-        [DataMember(Name="showBalanceToEmployee", EmitDefaultValue=false)]
+        [DataMember(Name = "showBalanceToEmployee", EmitDefaultValue = false)]
         public bool? ShowBalanceToEmployee { get; set; }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -231,70 +231,70 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Category == input.Category ||
                     this.Category.Equals(input.Category)
-                ) && 
+                ) &&
                 (
                     this.LiabilityAccountId == input.LiabilityAccountId ||
                     (this.LiabilityAccountId != null &&
                     this.LiabilityAccountId.Equals(input.LiabilityAccountId))
-                ) && 
+                ) &&
                 (
                     this.ExpenseAccountId == input.ExpenseAccountId ||
                     (this.ExpenseAccountId != null &&
                     this.ExpenseAccountId.Equals(input.ExpenseAccountId))
-                ) && 
+                ) &&
                 (
                     this.StandardAmount == input.StandardAmount ||
                     (this.StandardAmount != null &&
                     this.StandardAmount.Equals(input.StandardAmount))
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&
                     this.Percentage.Equals(input.Percentage))
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
                     this.CurrentRecord.Equals(input.CurrentRecord))
-                ) && 
+                ) &&
                 (
                     this.SubjectToNIC == input.SubjectToNIC ||
                     (this.SubjectToNIC != null &&
                     this.SubjectToNIC.Equals(input.SubjectToNIC))
-                ) && 
+                ) &&
                 (
                     this.SubjectToPension == input.SubjectToPension ||
                     (this.SubjectToPension != null &&
                     this.SubjectToPension.Equals(input.SubjectToPension))
-                ) && 
+                ) &&
                 (
                     this.SubjectToTax == input.SubjectToTax ||
                     (this.SubjectToTax != null &&
                     this.SubjectToTax.Equals(input.SubjectToTax))
-                ) && 
+                ) &&
                 (
                     this.IsCalculatingOnQualifyingEarnings == input.IsCalculatingOnQualifyingEarnings ||
                     (this.IsCalculatingOnQualifyingEarnings != null &&
                     this.IsCalculatingOnQualifyingEarnings.Equals(input.IsCalculatingOnQualifyingEarnings))
-                ) && 
+                ) &&
                 (
                     this.ShowBalanceToEmployee == input.ShowBalanceToEmployee ||
                     (this.ShowBalanceToEmployee != null &&

@@ -28,43 +28,43 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// ProblemDetails
     /// </summary>
     [DataContract]
-    public partial class ProblemDetails :  IEquatable<ProblemDetails>, IValidatableObject
+    public partial class ProblemDetails : IEquatable<ProblemDetails>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Detail
         /// </summary>
-        [DataMember(Name="detail", EmitDefaultValue=false)]
+        [DataMember(Name = "detail", EmitDefaultValue = false)]
         public string Detail { get; set; }
 
         /// <summary>
         /// Gets or Sets Extensions
         /// </summary>
-        [DataMember(Name="extensions", EmitDefaultValue=false)]
+        [DataMember(Name = "extensions", EmitDefaultValue = false)]
         public Object Extensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Instance
         /// </summary>
-        [DataMember(Name="instance", EmitDefaultValue=false)]
+        [DataMember(Name = "instance", EmitDefaultValue = false)]
         public string Instance { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public int? Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -114,32 +114,32 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Detail == input.Detail ||
                     (this.Detail != null &&
                     this.Detail.Equals(input.Detail))
-                ) && 
+                ) &&
                 (
                     this.Extensions == input.Extensions ||
                     (this.Extensions != null &&
                     this.Extensions.Equals(input.Extensions))
-                ) && 
+                ) &&
                 (
                     this.Instance == input.Instance ||
                     (this.Instance != null &&
                     this.Instance.Equals(input.Instance))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&

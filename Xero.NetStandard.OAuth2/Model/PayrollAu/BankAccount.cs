@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// BankAccount
     /// </summary>
     [DataContract]
-    public partial class BankAccount :  IEquatable<BankAccount>, IValidatableObject
+    public partial class BankAccount : IEquatable<BankAccount>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The text that will appear on your employee&#39;s bank statement when they receive payment
         /// </summary>
         /// <value>The text that will appear on your employee&#39;s bank statement when they receive payment</value>
-        [DataMember(Name="StatementText", EmitDefaultValue=false)]
+        [DataMember(Name = "StatementText", EmitDefaultValue = false)]
         public string StatementText { get; set; }
 
         /// <summary>
         /// The name of the account
         /// </summary>
         /// <value>The name of the account</value>
-        [DataMember(Name="AccountName", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountName", EmitDefaultValue = false)]
         public string AccountName { get; set; }
 
         /// <summary>
         /// The BSB number of the account
         /// </summary>
         /// <value>The BSB number of the account</value>
-        [DataMember(Name="BSB", EmitDefaultValue=false)]
+        [DataMember(Name = "BSB", EmitDefaultValue = false)]
         public string BSB { get; set; }
 
         /// <summary>
         /// The account number
         /// </summary>
         /// <value>The account number</value>
-        [DataMember(Name="AccountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountNumber", EmitDefaultValue = false)]
         public string AccountNumber { get; set; }
 
         /// <summary>
         /// If this account is the Remaining bank account
         /// </summary>
         /// <value>If this account is the Remaining bank account</value>
-        [DataMember(Name="Remainder", EmitDefaultValue=false)]
+        [DataMember(Name = "Remainder", EmitDefaultValue = false)]
         public bool? Remainder { get; set; }
 
         /// <summary>
         /// Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)
         /// </summary>
         /// <value>Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatementText == input.StatementText ||
                     (this.StatementText != null &&
                     this.StatementText.Equals(input.StatementText))
-                ) && 
+                ) &&
                 (
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&
                     this.AccountName.Equals(input.AccountName))
-                ) && 
+                ) &&
                 (
                     this.BSB == input.BSB ||
                     (this.BSB != null &&
                     this.BSB.Equals(input.BSB))
-                ) && 
+                ) &&
                 (
                     this.AccountNumber == input.AccountNumber ||
                     (this.AccountNumber != null &&
                     this.AccountNumber.Equals(input.AccountNumber))
-                ) && 
+                ) &&
                 (
                     this.Remainder == input.Remainder ||
                     (this.Remainder != null &&
                     this.Remainder.Equals(input.Remainder))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&

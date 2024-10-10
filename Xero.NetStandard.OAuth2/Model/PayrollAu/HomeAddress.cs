@@ -28,54 +28,54 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// HomeAddress
     /// </summary>
     [DataContract]
-    public partial class HomeAddress :  IEquatable<HomeAddress>, IValidatableObject
+    public partial class HomeAddress : IEquatable<HomeAddress>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Region
         /// </summary>
-        [DataMember(Name="Region", EmitDefaultValue=false)]
+        [DataMember(Name = "Region", EmitDefaultValue = false)]
         public State Region { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeAddress" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public HomeAddress() 
-        { 
+        public HomeAddress()
+        {
         }
-        
+
         /// <summary>
         /// Address line 1 for employee home address
         /// </summary>
         /// <value>Address line 1 for employee home address</value>
-        [DataMember(Name="AddressLine1", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine1", EmitDefaultValue = false)]
         public string AddressLine1 { get; set; }
 
         /// <summary>
         /// Address line 2 for employee home address
         /// </summary>
         /// <value>Address line 2 for employee home address</value>
-        [DataMember(Name="AddressLine2", EmitDefaultValue=false)]
+        [DataMember(Name = "AddressLine2", EmitDefaultValue = false)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
         /// Suburb for employee home address
         /// </summary>
         /// <value>Suburb for employee home address</value>
-        [DataMember(Name="City", EmitDefaultValue=false)]
+        [DataMember(Name = "City", EmitDefaultValue = false)]
         public string City { get; set; }
 
         /// <summary>
         /// PostCode for employee home address
         /// </summary>
         /// <value>PostCode for employee home address</value>
-        [DataMember(Name="PostalCode", EmitDefaultValue=false)]
+        [DataMember(Name = "PostalCode", EmitDefaultValue = false)]
         public string PostalCode { get; set; }
 
         /// <summary>
         /// Country of HomeAddress
         /// </summary>
         /// <value>Country of HomeAddress</value>
-        [DataMember(Name="Country", EmitDefaultValue=false)]
+        [DataMember(Name = "Country", EmitDefaultValue = false)]
         public string Country { get; set; }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -125,31 +125,31 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AddressLine1 == input.AddressLine1 ||
                     (this.AddressLine1 != null &&
                     this.AddressLine1.Equals(input.AddressLine1))
-                ) && 
+                ) &&
                 (
                     this.AddressLine2 == input.AddressLine2 ||
                     (this.AddressLine2 != null &&
                     this.AddressLine2.Equals(input.AddressLine2))
-                ) && 
+                ) &&
                 (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
-                ) && 
+                ) &&
                 (
                     this.Region == input.Region ||
                     this.Region.Equals(input.Region)
-                ) && 
+                ) &&
                 (
                     this.PostalCode == input.PostalCode ||
                     (this.PostalCode != null &&
                     this.PostalCode.Equals(input.PostalCode))
-                ) && 
+                ) &&
                 (
                     this.Country == input.Country ||
                     (this.Country != null &&

@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// OnlineInvoice
     /// </summary>
     [DataContract]
-    public partial class OnlineInvoice :  IEquatable<OnlineInvoice>, IValidatableObject
+    public partial class OnlineInvoice : IEquatable<OnlineInvoice>, IValidatableObject
     {
-        
+
         /// <summary>
         /// the URL to an online invoice
         /// </summary>
         /// <value>the URL to an online invoice</value>
-        [DataMember(Name="OnlineInvoiceUrl", EmitDefaultValue=false)]
+        [DataMember(Name = "OnlineInvoiceUrl", EmitDefaultValue = false)]
         public string OnlineInvoiceUrl { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -80,7 +80,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.OnlineInvoiceUrl == input.OnlineInvoiceUrl ||
                     (this.OnlineInvoiceUrl != null &&

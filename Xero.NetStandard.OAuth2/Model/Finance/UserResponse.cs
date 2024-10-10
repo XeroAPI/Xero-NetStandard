@@ -28,89 +28,89 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// UserResponse
     /// </summary>
     [DataContract]
-    public partial class UserResponse :  IEquatable<UserResponse>, IValidatableObject
+    public partial class UserResponse : IEquatable<UserResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The Xero identifier for the user
         /// </summary>
         /// <value>The Xero identifier for the user</value>
-        [DataMember(Name="userId", EmitDefaultValue=false)]
+        [DataMember(Name = "userId", EmitDefaultValue = false)]
         public Guid? UserId { get; set; }
 
         /// <summary>
         /// Timestamp of user creation.
         /// </summary>
         /// <value>Timestamp of user creation.</value>
-        [DataMember(Name="userCreatedDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "userCreatedDateUtc", EmitDefaultValue = false)]
         public DateTime? UserCreatedDateUtc { get; set; }
 
         /// <summary>
         /// Timestamp of user last login
         /// </summary>
         /// <value>Timestamp of user last login</value>
-        [DataMember(Name="lastLoginDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "lastLoginDateUtc", EmitDefaultValue = false)]
         public DateTime? LastLoginDateUtc { get; set; }
 
         /// <summary>
         /// User is external partner.
         /// </summary>
         /// <value>User is external partner.</value>
-        [DataMember(Name="isExternalPartner", EmitDefaultValue=false)]
+        [DataMember(Name = "isExternalPartner", EmitDefaultValue = false)]
         public bool? IsExternalPartner { get; set; }
 
         /// <summary>
         /// User has Accountant role.
         /// </summary>
         /// <value>User has Accountant role.</value>
-        [DataMember(Name="hasAccountantRole", EmitDefaultValue=false)]
+        [DataMember(Name = "hasAccountantRole", EmitDefaultValue = false)]
         public bool? HasAccountantRole { get; set; }
 
         /// <summary>
         /// Month period in format  yyyy-MM.
         /// </summary>
         /// <value>Month period in format  yyyy-MM.</value>
-        [DataMember(Name="monthPeriod", EmitDefaultValue=false)]
+        [DataMember(Name = "monthPeriod", EmitDefaultValue = false)]
         public string MonthPeriod { get; set; }
 
         /// <summary>
         /// Number of times the user has logged in.
         /// </summary>
         /// <value>Number of times the user has logged in.</value>
-        [DataMember(Name="numberOfLogins", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfLogins", EmitDefaultValue = false)]
         public int? NumberOfLogins { get; set; }
 
         /// <summary>
         /// Number of documents created.
         /// </summary>
         /// <value>Number of documents created.</value>
-        [DataMember(Name="numberOfDocumentsCreated", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfDocumentsCreated", EmitDefaultValue = false)]
         public int? NumberOfDocumentsCreated { get; set; }
 
         /// <summary>
         /// Net value of documents created.
         /// </summary>
         /// <value>Net value of documents created.</value>
-        [DataMember(Name="netValueDocumentsCreated", EmitDefaultValue=false)]
+        [DataMember(Name = "netValueDocumentsCreated", EmitDefaultValue = false)]
         public decimal? NetValueDocumentsCreated { get; set; }
 
         /// <summary>
         /// Absolute value of documents created.
         /// </summary>
         /// <value>Absolute value of documents created.</value>
-        [DataMember(Name="absoluteValueDocumentsCreated", EmitDefaultValue=false)]
+        [DataMember(Name = "absoluteValueDocumentsCreated", EmitDefaultValue = false)]
         public decimal? AbsoluteValueDocumentsCreated { get; set; }
 
         /// <summary>
         /// Gets or Sets AttachedPractices
         /// </summary>
-        [DataMember(Name="attachedPractices", EmitDefaultValue=false)]
+        [DataMember(Name = "attachedPractices", EmitDefaultValue = false)]
         public List<PracticeResponse> AttachedPractices { get; set; }
 
         /// <summary>
         /// Gets or Sets HistoryRecords
         /// </summary>
-        [DataMember(Name="historyRecords", EmitDefaultValue=false)]
+        [DataMember(Name = "historyRecords", EmitDefaultValue = false)]
         public List<HistoryRecordResponse> HistoryRecords { get; set; }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -166,63 +166,63 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UserId == input.UserId ||
                     (this.UserId != null &&
                     this.UserId.Equals(input.UserId))
-                ) && 
+                ) &&
                 (
                     this.UserCreatedDateUtc == input.UserCreatedDateUtc ||
                     (this.UserCreatedDateUtc != null &&
                     this.UserCreatedDateUtc.Equals(input.UserCreatedDateUtc))
-                ) && 
+                ) &&
                 (
                     this.LastLoginDateUtc == input.LastLoginDateUtc ||
                     (this.LastLoginDateUtc != null &&
                     this.LastLoginDateUtc.Equals(input.LastLoginDateUtc))
-                ) && 
+                ) &&
                 (
                     this.IsExternalPartner == input.IsExternalPartner ||
                     (this.IsExternalPartner != null &&
                     this.IsExternalPartner.Equals(input.IsExternalPartner))
-                ) && 
+                ) &&
                 (
                     this.HasAccountantRole == input.HasAccountantRole ||
                     (this.HasAccountantRole != null &&
                     this.HasAccountantRole.Equals(input.HasAccountantRole))
-                ) && 
+                ) &&
                 (
                     this.MonthPeriod == input.MonthPeriod ||
                     (this.MonthPeriod != null &&
                     this.MonthPeriod.Equals(input.MonthPeriod))
-                ) && 
+                ) &&
                 (
                     this.NumberOfLogins == input.NumberOfLogins ||
                     (this.NumberOfLogins != null &&
                     this.NumberOfLogins.Equals(input.NumberOfLogins))
-                ) && 
+                ) &&
                 (
                     this.NumberOfDocumentsCreated == input.NumberOfDocumentsCreated ||
                     (this.NumberOfDocumentsCreated != null &&
                     this.NumberOfDocumentsCreated.Equals(input.NumberOfDocumentsCreated))
-                ) && 
+                ) &&
                 (
                     this.NetValueDocumentsCreated == input.NetValueDocumentsCreated ||
                     (this.NetValueDocumentsCreated != null &&
                     this.NetValueDocumentsCreated.Equals(input.NetValueDocumentsCreated))
-                ) && 
+                ) &&
                 (
                     this.AbsoluteValueDocumentsCreated == input.AbsoluteValueDocumentsCreated ||
                     (this.AbsoluteValueDocumentsCreated != null &&
                     this.AbsoluteValueDocumentsCreated.Equals(input.AbsoluteValueDocumentsCreated))
-                ) && 
+                ) &&
                 (
                     this.AttachedPractices == input.AttachedPractices ||
                     this.AttachedPractices != null &&
                     input.AttachedPractices != null &&
                     this.AttachedPractices.SequenceEqual(input.AttachedPractices)
-                ) && 
+                ) &&
                 (
                     this.HistoryRecords == input.HistoryRecords ||
                     this.HistoryRecords != null &&

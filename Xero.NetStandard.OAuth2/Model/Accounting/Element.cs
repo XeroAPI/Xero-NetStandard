@@ -28,57 +28,57 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Element
     /// </summary>
     [DataContract]
-    public partial class Element :  IEquatable<Element>, IValidatableObject
+    public partial class Element : IEquatable<Element>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Array of Validation Error message
         /// </summary>
         /// <value>Array of Validation Error message</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
         /// Unique ID for batch payment object with validation error
         /// </summary>
         /// <value>Unique ID for batch payment object with validation error</value>
-        [DataMember(Name="BatchPaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "BatchPaymentID", EmitDefaultValue = false)]
         public Guid? BatchPaymentID { get; set; }
 
         /// <summary>
         /// Gets or Sets BankTransactionID
         /// </summary>
-        [DataMember(Name="BankTransactionID", EmitDefaultValue=false)]
+        [DataMember(Name = "BankTransactionID", EmitDefaultValue = false)]
         public Guid? BankTransactionID { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditNoteID
         /// </summary>
-        [DataMember(Name="CreditNoteID", EmitDefaultValue=false)]
+        [DataMember(Name = "CreditNoteID", EmitDefaultValue = false)]
         public Guid? CreditNoteID { get; set; }
 
         /// <summary>
         /// Gets or Sets ContactID
         /// </summary>
-        [DataMember(Name="ContactID", EmitDefaultValue=false)]
+        [DataMember(Name = "ContactID", EmitDefaultValue = false)]
         public Guid? ContactID { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoiceID
         /// </summary>
-        [DataMember(Name="InvoiceID", EmitDefaultValue=false)]
+        [DataMember(Name = "InvoiceID", EmitDefaultValue = false)]
         public Guid? InvoiceID { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemID
         /// </summary>
-        [DataMember(Name="ItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "ItemID", EmitDefaultValue = false)]
         public Guid? ItemID { get; set; }
 
         /// <summary>
         /// Gets or Sets PurchaseOrderID
         /// </summary>
-        [DataMember(Name="PurchaseOrderID", EmitDefaultValue=false)]
+        [DataMember(Name = "PurchaseOrderID", EmitDefaultValue = false)]
         public Guid? PurchaseOrderID { get; set; }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -130,43 +130,43 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
                     this.ValidationErrors.SequenceEqual(input.ValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.BatchPaymentID == input.BatchPaymentID ||
                     (this.BatchPaymentID != null &&
                     this.BatchPaymentID.Equals(input.BatchPaymentID))
-                ) && 
+                ) &&
                 (
                     this.BankTransactionID == input.BankTransactionID ||
                     (this.BankTransactionID != null &&
                     this.BankTransactionID.Equals(input.BankTransactionID))
-                ) && 
+                ) &&
                 (
                     this.CreditNoteID == input.CreditNoteID ||
                     (this.CreditNoteID != null &&
                     this.CreditNoteID.Equals(input.CreditNoteID))
-                ) && 
+                ) &&
                 (
                     this.ContactID == input.ContactID ||
                     (this.ContactID != null &&
                     this.ContactID.Equals(input.ContactID))
-                ) && 
+                ) &&
                 (
                     this.InvoiceID == input.InvoiceID ||
                     (this.InvoiceID != null &&
                     this.InvoiceID.Equals(input.InvoiceID))
-                ) && 
+                ) &&
                 (
                     this.ItemID == input.ItemID ||
                     (this.ItemID != null &&
                     this.ItemID.Equals(input.ItemID))
-                ) && 
+                ) &&
                 (
                     this.PurchaseOrderID == input.PurchaseOrderID ||
                     (this.PurchaseOrderID != null &&

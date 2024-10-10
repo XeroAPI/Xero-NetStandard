@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TaxRate
     /// </summary>
     [DataContract]
-    public partial class TaxRate :  IEquatable<TaxRate>, IValidatableObject
+    public partial class TaxRate : IEquatable<TaxRate>, IValidatableObject
     {
         /// <summary>
         /// See Status Codes
@@ -67,7 +67,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Status Codes
         /// </summary>
         /// <value>See Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// See ReportTaxTypes
@@ -676,77 +676,77 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See ReportTaxTypes
         /// </summary>
         /// <value>See ReportTaxTypes</value>
-        [DataMember(Name="ReportTaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportTaxType", EmitDefaultValue = false)]
         public ReportTaxTypeEnum ReportTaxType { get; set; }
-        
+
         /// <summary>
         /// Name of tax rate
         /// </summary>
         /// <value>Name of tax rate</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The tax type
         /// </summary>
         /// <value>The tax type</value>
-        [DataMember(Name="TaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxType", EmitDefaultValue = false)]
         public string TaxType { get; set; }
 
         /// <summary>
         /// See TaxComponents
         /// </summary>
         /// <value>See TaxComponents</value>
-        [DataMember(Name="TaxComponents", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxComponents", EmitDefaultValue = false)]
         public List<TaxComponent> TaxComponents { get; set; }
 
         /// <summary>
         /// Boolean to describe if tax rate can be used for asset accounts i.e.  true,false
         /// </summary>
         /// <value>Boolean to describe if tax rate can be used for asset accounts i.e.  true,false</value>
-        [DataMember(Name="CanApplyToAssets", EmitDefaultValue=false)]
+        [DataMember(Name = "CanApplyToAssets", EmitDefaultValue = false)]
         public bool? CanApplyToAssets { get; private set; }
 
         /// <summary>
         /// Boolean to describe if tax rate can be used for equity accounts i.e true,false
         /// </summary>
         /// <value>Boolean to describe if tax rate can be used for equity accounts i.e true,false</value>
-        [DataMember(Name="CanApplyToEquity", EmitDefaultValue=false)]
+        [DataMember(Name = "CanApplyToEquity", EmitDefaultValue = false)]
         public bool? CanApplyToEquity { get; private set; }
 
         /// <summary>
         /// Boolean to describe if tax rate can be used for expense accounts  i.e. true,false
         /// </summary>
         /// <value>Boolean to describe if tax rate can be used for expense accounts  i.e. true,false</value>
-        [DataMember(Name="CanApplyToExpenses", EmitDefaultValue=false)]
+        [DataMember(Name = "CanApplyToExpenses", EmitDefaultValue = false)]
         public bool? CanApplyToExpenses { get; private set; }
 
         /// <summary>
         /// Boolean to describe if tax rate can be used for liability accounts  i.e. true,false
         /// </summary>
         /// <value>Boolean to describe if tax rate can be used for liability accounts  i.e. true,false</value>
-        [DataMember(Name="CanApplyToLiabilities", EmitDefaultValue=false)]
+        [DataMember(Name = "CanApplyToLiabilities", EmitDefaultValue = false)]
         public bool? CanApplyToLiabilities { get; private set; }
 
         /// <summary>
         /// Boolean to describe if tax rate can be used for revenue accounts i.e. true,false
         /// </summary>
         /// <value>Boolean to describe if tax rate can be used for revenue accounts i.e. true,false</value>
-        [DataMember(Name="CanApplyToRevenue", EmitDefaultValue=false)]
+        [DataMember(Name = "CanApplyToRevenue", EmitDefaultValue = false)]
         public bool? CanApplyToRevenue { get; private set; }
 
         /// <summary>
         /// Tax Rate (decimal to 4dp) e.g 12.5000
         /// </summary>
         /// <value>Tax Rate (decimal to 4dp) e.g 12.5000</value>
-        [DataMember(Name="DisplayTaxRate", EmitDefaultValue=false)]
+        [DataMember(Name = "DisplayTaxRate", EmitDefaultValue = false)]
         public decimal? DisplayTaxRate { get; private set; }
 
         /// <summary>
         /// Effective Tax Rate (decimal to 4dp) e.g 12.5000
         /// </summary>
         /// <value>Effective Tax Rate (decimal to 4dp) e.g 12.5000</value>
-        [DataMember(Name="EffectiveRate", EmitDefaultValue=false)]
+        [DataMember(Name = "EffectiveRate", EmitDefaultValue = false)]
         public decimal? EffectiveRate { get; private set; }
 
         /// <summary>
@@ -772,7 +772,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -802,61 +802,61 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.TaxType == input.TaxType ||
                     (this.TaxType != null &&
                     this.TaxType.Equals(input.TaxType))
-                ) && 
+                ) &&
                 (
                     this.TaxComponents == input.TaxComponents ||
                     this.TaxComponents != null &&
                     input.TaxComponents != null &&
                     this.TaxComponents.SequenceEqual(input.TaxComponents)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.ReportTaxType == input.ReportTaxType ||
                     this.ReportTaxType.Equals(input.ReportTaxType)
-                ) && 
+                ) &&
                 (
                     this.CanApplyToAssets == input.CanApplyToAssets ||
                     (this.CanApplyToAssets != null &&
                     this.CanApplyToAssets.Equals(input.CanApplyToAssets))
-                ) && 
+                ) &&
                 (
                     this.CanApplyToEquity == input.CanApplyToEquity ||
                     (this.CanApplyToEquity != null &&
                     this.CanApplyToEquity.Equals(input.CanApplyToEquity))
-                ) && 
+                ) &&
                 (
                     this.CanApplyToExpenses == input.CanApplyToExpenses ||
                     (this.CanApplyToExpenses != null &&
                     this.CanApplyToExpenses.Equals(input.CanApplyToExpenses))
-                ) && 
+                ) &&
                 (
                     this.CanApplyToLiabilities == input.CanApplyToLiabilities ||
                     (this.CanApplyToLiabilities != null &&
                     this.CanApplyToLiabilities.Equals(input.CanApplyToLiabilities))
-                ) && 
+                ) &&
                 (
                     this.CanApplyToRevenue == input.CanApplyToRevenue ||
                     (this.CanApplyToRevenue != null &&
                     this.CanApplyToRevenue.Equals(input.CanApplyToRevenue))
-                ) && 
+                ) &&
                 (
                     this.DisplayTaxRate == input.DisplayTaxRate ||
                     (this.DisplayTaxRate != null &&
                     this.DisplayTaxRate.Equals(input.DisplayTaxRate))
-                ) && 
+                ) &&
                 (
                     this.EffectiveRate == input.EffectiveRate ||
                     (this.EffectiveRate != null &&
