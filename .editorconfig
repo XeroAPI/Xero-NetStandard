@@ -1,2 +1,2 @@
-[*.cs]
-dotnet_diagnostic.CS0472.severity = none
+# [*.cs]
+# dotnet_diagnostic.CS0472.severity = none
