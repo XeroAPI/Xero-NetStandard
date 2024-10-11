@@ -22,4 +22,4 @@ jobs:
     - name: Create Package for Nuget.org\
       run: dotnet pack
     - name: Publish Package to Nuget.org
-      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Debug/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
