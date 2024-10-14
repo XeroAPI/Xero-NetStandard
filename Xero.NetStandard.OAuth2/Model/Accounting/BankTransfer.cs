@@ -28,111 +28,111 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BankTransfer
     /// </summary>
     [DataContract]
-    public partial class BankTransfer :  IEquatable<BankTransfer>, IValidatableObject
+    public partial class BankTransfer : IEquatable<BankTransfer>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BankTransfer" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public BankTransfer() 
-        {  
-          ValidationErrors = new List<ValidationError>(); 
+        public BankTransfer()
+        {
+            ValidationErrors = new List<ValidationError>();
         }
-        
+
         /// <summary>
         /// Gets or Sets FromBankAccount
         /// </summary>
-        [DataMember(Name="FromBankAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "FromBankAccount", EmitDefaultValue = false)]
         public Account FromBankAccount { get; set; }
 
         /// <summary>
         /// Gets or Sets ToBankAccount
         /// </summary>
-        [DataMember(Name="ToBankAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "ToBankAccount", EmitDefaultValue = false)]
         public Account ToBankAccount { get; set; }
 
         /// <summary>
         /// amount of the transaction
         /// </summary>
         /// <value>amount of the transaction</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The date of the Transfer YYYY-MM-DD
         /// </summary>
         /// <value>The date of the Transfer YYYY-MM-DD</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// The identifier of the Bank Transfer
         /// </summary>
         /// <value>The identifier of the Bank Transfer</value>
-        [DataMember(Name="BankTransferID", EmitDefaultValue=false)]
+        [DataMember(Name = "BankTransferID", EmitDefaultValue = false)]
         public Guid? BankTransferID { get; private set; }
 
         /// <summary>
         /// The currency rate
         /// </summary>
         /// <value>The currency rate</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; private set; }
 
         /// <summary>
         /// The Bank Transaction ID for the source account
         /// </summary>
         /// <value>The Bank Transaction ID for the source account</value>
-        [DataMember(Name="FromBankTransactionID", EmitDefaultValue=false)]
+        [DataMember(Name = "FromBankTransactionID", EmitDefaultValue = false)]
         public Guid? FromBankTransactionID { get; private set; }
 
         /// <summary>
         /// The Bank Transaction ID for the destination account
         /// </summary>
         /// <value>The Bank Transaction ID for the destination account</value>
-        [DataMember(Name="ToBankTransactionID", EmitDefaultValue=false)]
+        [DataMember(Name = "ToBankTransactionID", EmitDefaultValue = false)]
         public Guid? ToBankTransactionID { get; private set; }
 
         /// <summary>
         /// The Bank Transaction boolean to show if it is reconciled for the source account
         /// </summary>
         /// <value>The Bank Transaction boolean to show if it is reconciled for the source account</value>
-        [DataMember(Name="FromIsReconciled", EmitDefaultValue=false)]
+        [DataMember(Name = "FromIsReconciled", EmitDefaultValue = false)]
         public bool? FromIsReconciled { get; set; }
 
         /// <summary>
         /// The Bank Transaction boolean to show if it is reconciled for the destination account
         /// </summary>
         /// <value>The Bank Transaction boolean to show if it is reconciled for the destination account</value>
-        [DataMember(Name="ToIsReconciled", EmitDefaultValue=false)]
+        [DataMember(Name = "ToIsReconciled", EmitDefaultValue = false)]
         public bool? ToIsReconciled { get; set; }
 
         /// <summary>
         /// Reference for the transactions.
         /// </summary>
         /// <value>Reference for the transactions.</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Boolean to indicate if a Bank Transfer has an attachment
         /// </summary>
         /// <value>Boolean to indicate if a Bank Transfer has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// UTC timestamp of creation date of bank transfer
         /// </summary>
         /// <value>UTC timestamp of creation date of bank transfer</value>
-        [DataMember(Name="CreatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "CreatedDateUTC", EmitDefaultValue = false)]
         public DateTime? CreatedDateUTC { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -190,72 +190,72 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.FromBankAccount == input.FromBankAccount ||
                     (this.FromBankAccount != null &&
                     this.FromBankAccount.Equals(input.FromBankAccount))
-                ) && 
+                ) &&
                 (
                     this.ToBankAccount == input.ToBankAccount ||
                     (this.ToBankAccount != null &&
                     this.ToBankAccount.Equals(input.ToBankAccount))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.BankTransferID == input.BankTransferID ||
                     (this.BankTransferID != null &&
                     this.BankTransferID.Equals(input.BankTransferID))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.FromBankTransactionID == input.FromBankTransactionID ||
                     (this.FromBankTransactionID != null &&
                     this.FromBankTransactionID.Equals(input.FromBankTransactionID))
-                ) && 
+                ) &&
                 (
                     this.ToBankTransactionID == input.ToBankTransactionID ||
                     (this.ToBankTransactionID != null &&
                     this.ToBankTransactionID.Equals(input.ToBankTransactionID))
-                ) && 
+                ) &&
                 (
                     this.FromIsReconciled == input.FromIsReconciled ||
                     (this.FromIsReconciled != null &&
                     this.FromIsReconciled.Equals(input.FromIsReconciled))
-                ) && 
+                ) &&
                 (
                     this.ToIsReconciled == input.ToIsReconciled ||
                     (this.ToIsReconciled != null &&
                     this.ToIsReconciled.Equals(input.ToIsReconciled))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.CreatedDateUTC == input.CreatedDateUTC ||
                     (this.CreatedDateUTC != null &&
                     this.CreatedDateUTC.Equals(input.CreatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

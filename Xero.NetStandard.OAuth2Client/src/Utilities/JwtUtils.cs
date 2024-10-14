@@ -12,7 +12,7 @@ public static class JwtUtils
 
     public class JsonWebKeyList
     {
-      public List<JsonWebKey> keys {get; set;}
+        public List<JsonWebKey> keys { get; set; }
     }
 
     /// <summary>
@@ -22,10 +22,10 @@ public static class JwtUtils
     /// <returns>A decoded JwtSecurityToken with header, claim/payload and signature</returns>
     public static JwtSecurityToken decode(string jwt)
     {
-      var handler = new JwtSecurityTokenHandler();
-      var decodedJwt = handler.ReadJwtToken(jwt);
+        var handler = new JwtSecurityTokenHandler();
+        var decodedJwt = handler.ReadJwtToken(jwt);
 
-      return decodedJwt;
+        return decodedJwt;
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public static class JwtUtils
     /// <returns>Ture if vlaidation is sucessful, false if not</returns>
     public static bool validateAccessToken(string jwt)
     {
-      return validate(jwt, "https://identity.xero.com/resources");
+        return validate(jwt, "https://identity.xero.com/resources");
     }
 
     /// <summary>
@@ -46,39 +46,39 @@ public static class JwtUtils
     /// <returns>Ture if vlaidation is sucessful, false if not</returns>
     public static bool validateIdToken(string jwt, string ClientId)
     {
-      return validate(jwt, ClientId);
+        return validate(jwt, ClientId);
     }
 
     private static bool validate(string jwt, string audience)
     {
-      var jwk = new JsonWebKey();
-      var jwks = new JsonWebKeyList();
-      var validatedJwt = new JwtSecurityToken();
-      var issuer = "https://identity.xero.com";
-      var handler = new JwtSecurityTokenHandler();
+        var jwk = new JsonWebKey();
+        var jwks = new JsonWebKeyList();
+        var validatedJwt = new JwtSecurityToken();
+        var issuer = "https://identity.xero.com";
+        var handler = new JwtSecurityTokenHandler();
 
-      using (var client = new HttpClient())
-      {
-          jwks = client.GetFromJsonAsync<JsonWebKeyList>("https://identity.xero.com/.well-known/openid-configuration/jwks").Result;
-          jwk = jwks.keys[0];
-      }
-
-      try
-      {
-        var validationResult = handler.ValidateToken(jwt, new TokenValidationParameters
+        using (var client = new HttpClient())
         {
-          ValidateIssuerSigningKey = true,
-          ValidateIssuer = true,
-          ValidateAudience = true,
-          ValidIssuer = issuer,
-          ValidAudience = audience,
-          IssuerSigningKey = jwk
-        }, out SecurityToken validatedToken);
-      }
-      catch
-      {
-        return false;
-      }
-      return true;
+            jwks = client.GetFromJsonAsync<JsonWebKeyList>("https://identity.xero.com/.well-known/openid-configuration/jwks").Result;
+            jwk = jwks.keys[0];
+        }
+
+        try
+        {
+            var validationResult = handler.ValidateToken(jwt, new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidIssuer = issuer,
+                ValidAudience = audience,
+                IssuerSigningKey = jwk
+            }, out SecurityToken validatedToken);
+        }
+        catch
+        {
+            return false;
+        }
+        return true;
     }
 }

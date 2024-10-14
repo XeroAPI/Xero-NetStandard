@@ -209,7 +209,7 @@ namespace Xero.NetStandard.OAuth2.Client
         {
             get
             {
-              return _dictionary[key];
+                return _dictionary[key];
             }
             set { _dictionary[key] = value; }
         }
@@ -245,7 +245,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="index">The zero-based index in array at which copying begins.</param>
         public void CopyTo(Array array, int index)
         {
-            ((ICollection) _dictionary).CopyTo(array, index);
+            ((ICollection)_dictionary).CopyTo(array, index);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace Xero.NetStandard.OAuth2.Client
         private bool TryRemove(T key, out IList<TValue> value)
         {
             return _dictionary.TryRemove(key, out value);
-            
+
         }
 
         /**

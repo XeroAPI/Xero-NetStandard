@@ -28,37 +28,37 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// PayTemplate
     /// </summary>
     [DataContract]
-    public partial class PayTemplate :  IEquatable<PayTemplate>, IValidatableObject
+    public partial class PayTemplate : IEquatable<PayTemplate>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets EarningsLines
         /// </summary>
-        [DataMember(Name="EarningsLines", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsLines", EmitDefaultValue = false)]
         public List<EarningsLine> EarningsLines { get; set; }
 
         /// <summary>
         /// Gets or Sets DeductionLines
         /// </summary>
-        [DataMember(Name="DeductionLines", EmitDefaultValue=false)]
+        [DataMember(Name = "DeductionLines", EmitDefaultValue = false)]
         public List<DeductionLine> DeductionLines { get; set; }
 
         /// <summary>
         /// Gets or Sets SuperLines
         /// </summary>
-        [DataMember(Name="SuperLines", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperLines", EmitDefaultValue = false)]
         public List<SuperLine> SuperLines { get; set; }
 
         /// <summary>
         /// Gets or Sets ReimbursementLines
         /// </summary>
-        [DataMember(Name="ReimbursementLines", EmitDefaultValue=false)]
+        [DataMember(Name = "ReimbursementLines", EmitDefaultValue = false)]
         public List<ReimbursementLine> ReimbursementLines { get; set; }
 
         /// <summary>
         /// Gets or Sets LeaveLines
         /// </summary>
-        [DataMember(Name="LeaveLines", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveLines", EmitDefaultValue = false)]
         public List<LeaveLine> LeaveLines { get; set; }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -107,31 +107,31 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsLines == input.EarningsLines ||
                     this.EarningsLines != null &&
                     input.EarningsLines != null &&
                     this.EarningsLines.SequenceEqual(input.EarningsLines)
-                ) && 
+                ) &&
                 (
                     this.DeductionLines == input.DeductionLines ||
                     this.DeductionLines != null &&
                     input.DeductionLines != null &&
                     this.DeductionLines.SequenceEqual(input.DeductionLines)
-                ) && 
+                ) &&
                 (
                     this.SuperLines == input.SuperLines ||
                     this.SuperLines != null &&
                     input.SuperLines != null &&
                     this.SuperLines.SequenceEqual(input.SuperLines)
-                ) && 
+                ) &&
                 (
                     this.ReimbursementLines == input.ReimbursementLines ||
                     this.ReimbursementLines != null &&
                     input.ReimbursementLines != null &&
                     this.ReimbursementLines.SequenceEqual(input.ReimbursementLines)
-                ) && 
+                ) &&
                 (
                     this.LeaveLines == input.LeaveLines ||
                     this.LeaveLines != null &&

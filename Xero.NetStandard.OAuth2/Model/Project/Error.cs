@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// Error
     /// </summary>
     [DataContract]
-    public partial class Error :  IEquatable<Error>, IValidatableObject
+    public partial class Error : IEquatable<Error>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Exception message
         /// </summary>
         /// <value>Exception message</value>
-        [DataMember(Name="message", EmitDefaultValue=false)]
+        [DataMember(Name = "message", EmitDefaultValue = false)]
         public string Message { get; set; }
 
         /// <summary>
         /// Array of Elements of validation Errors
         /// </summary>
         /// <value>Array of Elements of validation Errors</value>
-        [DataMember(Name="modelState", EmitDefaultValue=false)]
+        [DataMember(Name = "modelState", EmitDefaultValue = false)]
         public Object ModelState { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Message == input.Message ||
                     (this.Message != null &&
                     this.Message.Equals(input.Message))
-                ) && 
+                ) &&
                 (
                     this.ModelState == input.ModelState ||
                     (this.ModelState != null &&

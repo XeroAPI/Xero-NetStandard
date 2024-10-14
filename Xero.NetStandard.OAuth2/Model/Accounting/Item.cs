@@ -28,125 +28,125 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Item
     /// </summary>
     [DataContract]
-    public partial class Item :  IEquatable<Item>, IValidatableObject
+    public partial class Item : IEquatable<Item>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Item" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Item() 
-        {  
-          ValidationErrors = new List<ValidationError>(); 
+        public Item()
+        {
+            ValidationErrors = new List<ValidationError>();
         }
-        
+
         /// <summary>
         /// User defined item code (max length &#x3D; 30)
         /// </summary>
         /// <value>User defined item code (max length &#x3D; 30)</value>
-        [DataMember(Name="Code", EmitDefaultValue=false)]
+        [DataMember(Name = "Code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// The inventory asset account for the item. The account must be of type INVENTORY. The  COGSAccountCode in PurchaseDetails is also required to create a tracked item
         /// </summary>
         /// <value>The inventory asset account for the item. The account must be of type INVENTORY. The  COGSAccountCode in PurchaseDetails is also required to create a tracked item</value>
-        [DataMember(Name="InventoryAssetAccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "InventoryAssetAccountCode", EmitDefaultValue = false)]
         public string InventoryAssetAccountCode { get; set; }
 
         /// <summary>
         /// The name of the item (max length &#x3D; 50)
         /// </summary>
         /// <value>The name of the item (max length &#x3D; 50)</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Boolean value, defaults to true. When IsSold is true the item will be available on sales transactions in the Xero UI. If IsSold is updated to false then Description and SalesDetails values will be nulled.
         /// </summary>
         /// <value>Boolean value, defaults to true. When IsSold is true the item will be available on sales transactions in the Xero UI. If IsSold is updated to false then Description and SalesDetails values will be nulled.</value>
-        [DataMember(Name="IsSold", EmitDefaultValue=false)]
+        [DataMember(Name = "IsSold", EmitDefaultValue = false)]
         public bool? IsSold { get; set; }
 
         /// <summary>
         /// Boolean value, defaults to true. When IsPurchased is true the item is available for purchase transactions in the Xero UI. If IsPurchased is updated to false then PurchaseDescription and PurchaseDetails values will be nulled.
         /// </summary>
         /// <value>Boolean value, defaults to true. When IsPurchased is true the item is available for purchase transactions in the Xero UI. If IsPurchased is updated to false then PurchaseDescription and PurchaseDetails values will be nulled.</value>
-        [DataMember(Name="IsPurchased", EmitDefaultValue=false)]
+        [DataMember(Name = "IsPurchased", EmitDefaultValue = false)]
         public bool? IsPurchased { get; set; }
 
         /// <summary>
         /// The sales description of the item (max length &#x3D; 4000)
         /// </summary>
         /// <value>The sales description of the item (max length &#x3D; 4000)</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// The purchase description of the item (max length &#x3D; 4000)
         /// </summary>
         /// <value>The purchase description of the item (max length &#x3D; 4000)</value>
-        [DataMember(Name="PurchaseDescription", EmitDefaultValue=false)]
+        [DataMember(Name = "PurchaseDescription", EmitDefaultValue = false)]
         public string PurchaseDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets PurchaseDetails
         /// </summary>
-        [DataMember(Name="PurchaseDetails", EmitDefaultValue=false)]
+        [DataMember(Name = "PurchaseDetails", EmitDefaultValue = false)]
         public Purchase PurchaseDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets SalesDetails
         /// </summary>
-        [DataMember(Name="SalesDetails", EmitDefaultValue=false)]
+        [DataMember(Name = "SalesDetails", EmitDefaultValue = false)]
         public Purchase SalesDetails { get; set; }
 
         /// <summary>
         /// True for items that are tracked as inventory. An item will be tracked as inventory if the InventoryAssetAccountCode and COGSAccountCode are set.
         /// </summary>
         /// <value>True for items that are tracked as inventory. An item will be tracked as inventory if the InventoryAssetAccountCode and COGSAccountCode are set.</value>
-        [DataMember(Name="IsTrackedAsInventory", EmitDefaultValue=false)]
+        [DataMember(Name = "IsTrackedAsInventory", EmitDefaultValue = false)]
         public bool? IsTrackedAsInventory { get; set; }
 
         /// <summary>
         /// The value of the item on hand. Calculated using average cost accounting.
         /// </summary>
         /// <value>The value of the item on hand. Calculated using average cost accounting.</value>
-        [DataMember(Name="TotalCostPool", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalCostPool", EmitDefaultValue = false)]
         public decimal? TotalCostPool { get; set; }
 
         /// <summary>
         /// The quantity of the item on hand
         /// </summary>
         /// <value>The quantity of the item on hand</value>
-        [DataMember(Name="QuantityOnHand", EmitDefaultValue=false)]
+        [DataMember(Name = "QuantityOnHand", EmitDefaultValue = false)]
         public decimal? QuantityOnHand { get; set; }
 
         /// <summary>
         /// Last modified date in UTC format
         /// </summary>
         /// <value>Last modified date in UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// The Xero identifier for an Item
         /// </summary>
         /// <value>The Xero identifier for an Item</value>
-        [DataMember(Name="ItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "ItemID", EmitDefaultValue = false)]
         public Guid? ItemID { get; set; }
 
         /// <summary>
         /// Status of object
         /// </summary>
         /// <value>Status of object</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -206,82 +206,82 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.InventoryAssetAccountCode == input.InventoryAssetAccountCode ||
                     (this.InventoryAssetAccountCode != null &&
                     this.InventoryAssetAccountCode.Equals(input.InventoryAssetAccountCode))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.IsSold == input.IsSold ||
                     (this.IsSold != null &&
                     this.IsSold.Equals(input.IsSold))
-                ) && 
+                ) &&
                 (
                     this.IsPurchased == input.IsPurchased ||
                     (this.IsPurchased != null &&
                     this.IsPurchased.Equals(input.IsPurchased))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.PurchaseDescription == input.PurchaseDescription ||
                     (this.PurchaseDescription != null &&
                     this.PurchaseDescription.Equals(input.PurchaseDescription))
-                ) && 
+                ) &&
                 (
                     this.PurchaseDetails == input.PurchaseDetails ||
                     (this.PurchaseDetails != null &&
                     this.PurchaseDetails.Equals(input.PurchaseDetails))
-                ) && 
+                ) &&
                 (
                     this.SalesDetails == input.SalesDetails ||
                     (this.SalesDetails != null &&
                     this.SalesDetails.Equals(input.SalesDetails))
-                ) && 
+                ) &&
                 (
                     this.IsTrackedAsInventory == input.IsTrackedAsInventory ||
                     (this.IsTrackedAsInventory != null &&
                     this.IsTrackedAsInventory.Equals(input.IsTrackedAsInventory))
-                ) && 
+                ) &&
                 (
                     this.TotalCostPool == input.TotalCostPool ||
                     (this.TotalCostPool != null &&
                     this.TotalCostPool.Equals(input.TotalCostPool))
-                ) && 
+                ) &&
                 (
                     this.QuantityOnHand == input.QuantityOnHand ||
                     (this.QuantityOnHand != null &&
                     this.QuantityOnHand.Equals(input.QuantityOnHand))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.ItemID == input.ItemID ||
                     (this.ItemID != null &&
                     this.ItemID.Equals(input.ItemID))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
@@ -343,27 +343,27 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Code (string) maxLength
-            if(this.Code != null && this.Code.Length > 30)
+            if (this.Code != null && this.Code.Length > 30)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 30.", new [] { "Code" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 30.", new[] { "Code" });
             }
 
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 50)
+            if (this.Name != null && this.Name.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 50.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 50.", new[] { "Name" });
             }
 
             // Description (string) maxLength
-            if(this.Description != null && this.Description.Length > 4000)
+            if (this.Description != null && this.Description.Length > 4000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 4000.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 4000.", new[] { "Description" });
             }
 
             // PurchaseDescription (string) maxLength
-            if(this.PurchaseDescription != null && this.PurchaseDescription.Length > 4000)
+            if (this.PurchaseDescription != null && this.PurchaseDescription.Length > 4000)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PurchaseDescription, length must be less than 4000.", new [] { "PurchaseDescription" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PurchaseDescription, length must be less than 4000.", new[] { "PurchaseDescription" });
             }
 
             yield break;

@@ -28,26 +28,26 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Payments
     /// </summary>
     [DataContract]
-    public partial class Payments :  IEquatable<Payments>, IValidatableObject
+    public partial class Payments : IEquatable<Payments>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
         public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Displays array of warning messages from the API
         /// </summary>
         /// <value>Displays array of warning messages from the API</value>
-        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
         /// Gets or Sets _Payments
         /// </summary>
-        [DataMember(Name="Payments", EmitDefaultValue=false)]
+        [DataMember(Name = "Payments", EmitDefaultValue = false)]
         public List<Payment> _Payments { get; set; }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -94,18 +94,18 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Pagination == input.Pagination ||
                     (this.Pagination != null &&
                     this.Pagination.Equals(input.Pagination))
-                ) && 
+                ) &&
                 (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&
                     input.Warnings != null &&
                     this.Warnings.SequenceEqual(input.Warnings)
-                ) && 
+                ) &&
                 (
                     this._Payments == input._Payments ||
                     this._Payments != null &&

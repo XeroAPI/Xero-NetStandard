@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// ReimbursementLine
     /// </summary>
     [DataContract]
-    public partial class ReimbursementLine :  IEquatable<ReimbursementLine>, IValidatableObject
+    public partial class ReimbursementLine : IEquatable<ReimbursementLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero reimbursement type identifier
         /// </summary>
         /// <value>Xero reimbursement type identifier</value>
-        [DataMember(Name="ReimbursementTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "ReimbursementTypeID", EmitDefaultValue = false)]
         public Guid? ReimbursementTypeID { get; set; }
 
         /// <summary>
         /// Reimbursement type amount
         /// </summary>
         /// <value>Reimbursement type amount</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Reimbursement lines description (max length 50)
         /// </summary>
         /// <value>Reimbursement lines description (max length 50)</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Reimbursement expense account. For posted pay run you should be able to see expense account code.
         /// </summary>
         /// <value>Reimbursement expense account. For posted pay run you should be able to see expense account code.</value>
-        [DataMember(Name="ExpenseAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "ExpenseAccount", EmitDefaultValue = false)]
         public string ExpenseAccount { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ReimbursementTypeID == input.ReimbursementTypeID ||
                     (this.ReimbursementTypeID != null &&
                     this.ReimbursementTypeID.Equals(input.ReimbursementTypeID))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.ExpenseAccount == input.ExpenseAccount ||
                     (this.ExpenseAccount != null &&
@@ -156,9 +156,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Description (string) maxLength
-            if(this.Description != null && this.Description.Length > 50)
+            if (this.Description != null && this.Description.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 50.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 50.", new[] { "Description" });
             }
 
             yield break;

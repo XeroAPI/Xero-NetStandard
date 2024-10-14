@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// LinkedTransactions
     /// </summary>
     [DataContract]
-    public partial class LinkedTransactions :  IEquatable<LinkedTransactions>, IValidatableObject
+    public partial class LinkedTransactions : IEquatable<LinkedTransactions>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _LinkedTransactions
         /// </summary>
-        [DataMember(Name="LinkedTransactions", EmitDefaultValue=false)]
+        [DataMember(Name = "LinkedTransactions", EmitDefaultValue = false)]
         public List<LinkedTransaction> _LinkedTransactions { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._LinkedTransactions == input._LinkedTransactions ||
                     this._LinkedTransactions != null &&

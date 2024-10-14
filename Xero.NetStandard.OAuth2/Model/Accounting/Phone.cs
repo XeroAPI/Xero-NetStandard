@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Phone
     /// </summary>
     [DataContract]
-    public partial class Phone :  IEquatable<Phone>, IValidatableObject
+    public partial class Phone : IEquatable<Phone>, IValidatableObject
     {
         /// <summary>
         /// Defines PhoneType
@@ -71,28 +71,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <summary>
         /// Gets or Sets PhoneType
         /// </summary>
-        [DataMember(Name="PhoneType", EmitDefaultValue=false)]
+        [DataMember(Name = "PhoneType", EmitDefaultValue = false)]
         public PhoneTypeEnum PhoneType { get; set; }
-        
+
         /// <summary>
         /// max length &#x3D; 50
         /// </summary>
         /// <value>max length &#x3D; 50</value>
-        [DataMember(Name="PhoneNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "PhoneNumber", EmitDefaultValue = false)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
         /// max length &#x3D; 10
         /// </summary>
         /// <value>max length &#x3D; 10</value>
-        [DataMember(Name="PhoneAreaCode", EmitDefaultValue=false)]
+        [DataMember(Name = "PhoneAreaCode", EmitDefaultValue = false)]
         public string PhoneAreaCode { get; set; }
 
         /// <summary>
         /// max length &#x3D; 20
         /// </summary>
         /// <value>max length &#x3D; 20</value>
-        [DataMember(Name="PhoneCountryCode", EmitDefaultValue=false)]
+        [DataMember(Name = "PhoneCountryCode", EmitDefaultValue = false)]
         public string PhoneCountryCode { get; set; }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -140,21 +140,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PhoneType == input.PhoneType ||
                     this.PhoneType.Equals(input.PhoneType)
-                ) && 
+                ) &&
                 (
                     this.PhoneNumber == input.PhoneNumber ||
                     (this.PhoneNumber != null &&
                     this.PhoneNumber.Equals(input.PhoneNumber))
-                ) && 
+                ) &&
                 (
                     this.PhoneAreaCode == input.PhoneAreaCode ||
                     (this.PhoneAreaCode != null &&
                     this.PhoneAreaCode.Equals(input.PhoneAreaCode))
-                ) && 
+                ) &&
                 (
                     this.PhoneCountryCode == input.PhoneCountryCode ||
                     (this.PhoneCountryCode != null &&
@@ -190,21 +190,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // PhoneNumber (string) maxLength
-            if(this.PhoneNumber != null && this.PhoneNumber.Length > 50)
+            if (this.PhoneNumber != null && this.PhoneNumber.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PhoneNumber, length must be less than 50.", new [] { "PhoneNumber" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PhoneNumber, length must be less than 50.", new[] { "PhoneNumber" });
             }
 
             // PhoneAreaCode (string) maxLength
-            if(this.PhoneAreaCode != null && this.PhoneAreaCode.Length > 10)
+            if (this.PhoneAreaCode != null && this.PhoneAreaCode.Length > 10)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PhoneAreaCode, length must be less than 10.", new [] { "PhoneAreaCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PhoneAreaCode, length must be less than 10.", new[] { "PhoneAreaCode" });
             }
 
             // PhoneCountryCode (string) maxLength
-            if(this.PhoneCountryCode != null && this.PhoneCountryCode.Length > 20)
+            if (this.PhoneCountryCode != null && this.PhoneCountryCode.Length > 20)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PhoneCountryCode, length must be less than 20.", new [] { "PhoneCountryCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PhoneCountryCode, length must be less than 20.", new[] { "PhoneCountryCode" });
             }
 
             yield break;

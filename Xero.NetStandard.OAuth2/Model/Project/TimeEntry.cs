@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// TimeEntry
     /// </summary>
     [DataContract]
-    public partial class TimeEntry :  IEquatable<TimeEntry>, IValidatableObject
+    public partial class TimeEntry : IEquatable<TimeEntry>, IValidatableObject
     {
         /// <summary>
         /// Status of the time entry. By default a time entry is created with status of &#x60;ACTIVE&#x60;. A &#x60;LOCKED&#x60; state indicates that the time entry is currently changing state (for example being invoiced). Updates are not allowed when in this state. It will have a status of INVOICED once it is invoiced.
@@ -61,63 +61,63 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         /// Status of the time entry. By default a time entry is created with status of &#x60;ACTIVE&#x60;. A &#x60;LOCKED&#x60; state indicates that the time entry is currently changing state (for example being invoiced). Updates are not allowed when in this state. It will have a status of INVOICED once it is invoiced.
         /// </summary>
         /// <value>Status of the time entry. By default a time entry is created with status of &#x60;ACTIVE&#x60;. A &#x60;LOCKED&#x60; state indicates that the time entry is currently changing state (for example being invoiced). Updates are not allowed when in this state. It will have a status of INVOICED once it is invoiced.</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// Identifier of the time entry.
         /// </summary>
         /// <value>Identifier of the time entry.</value>
-        [DataMember(Name="timeEntryId", EmitDefaultValue=false)]
+        [DataMember(Name = "timeEntryId", EmitDefaultValue = false)]
         public Guid? TimeEntryId { get; set; }
 
         /// <summary>
         /// The xero user identifier of the person who logged time.
         /// </summary>
         /// <value>The xero user identifier of the person who logged time.</value>
-        [DataMember(Name="userId", EmitDefaultValue=false)]
+        [DataMember(Name = "userId", EmitDefaultValue = false)]
         public Guid? UserId { get; set; }
 
         /// <summary>
         /// Identifier of the project, that the task (which the time entry is logged against) belongs to.
         /// </summary>
         /// <value>Identifier of the project, that the task (which the time entry is logged against) belongs to.</value>
-        [DataMember(Name="projectId", EmitDefaultValue=false)]
+        [DataMember(Name = "projectId", EmitDefaultValue = false)]
         public Guid? ProjectId { get; set; }
 
         /// <summary>
         /// Identifier of the task that time entry is logged against.
         /// </summary>
         /// <value>Identifier of the task that time entry is logged against.</value>
-        [DataMember(Name="taskId", EmitDefaultValue=false)]
+        [DataMember(Name = "taskId", EmitDefaultValue = false)]
         public Guid? TaskId { get; set; }
 
         /// <summary>
         /// The date time that time entry is logged on. UTC Date Time in ISO-8601 format.
         /// </summary>
         /// <value>The date time that time entry is logged on. UTC Date Time in ISO-8601 format.</value>
-        [DataMember(Name="dateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "dateUtc", EmitDefaultValue = false)]
         public DateTime? DateUtc { get; set; }
 
         /// <summary>
         /// The date time that time entry is created. UTC Date Time in ISO-8601 format. By default it is set to server time.
         /// </summary>
         /// <value>The date time that time entry is created. UTC Date Time in ISO-8601 format. By default it is set to server time.</value>
-        [DataMember(Name="dateEnteredUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "dateEnteredUtc", EmitDefaultValue = false)]
         public DateTime? DateEnteredUtc { get; set; }
 
         /// <summary>
         /// The duration of logged minutes.
         /// </summary>
         /// <value>The duration of logged minutes.</value>
-        [DataMember(Name="duration", EmitDefaultValue=false)]
+        [DataMember(Name = "duration", EmitDefaultValue = false)]
         public int? Duration { get; set; }
 
         /// <summary>
         /// A description of the time entry.
         /// </summary>
         /// <value>A description of the time entry.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -170,47 +170,47 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TimeEntryId == input.TimeEntryId ||
                     (this.TimeEntryId != null &&
                     this.TimeEntryId.Equals(input.TimeEntryId))
-                ) && 
+                ) &&
                 (
                     this.UserId == input.UserId ||
                     (this.UserId != null &&
                     this.UserId.Equals(input.UserId))
-                ) && 
+                ) &&
                 (
                     this.ProjectId == input.ProjectId ||
                     (this.ProjectId != null &&
                     this.ProjectId.Equals(input.ProjectId))
-                ) && 
+                ) &&
                 (
                     this.TaskId == input.TaskId ||
                     (this.TaskId != null &&
                     this.TaskId.Equals(input.TaskId))
-                ) && 
+                ) &&
                 (
                     this.DateUtc == input.DateUtc ||
                     (this.DateUtc != null &&
                     this.DateUtc.Equals(input.DateUtc))
-                ) && 
+                ) &&
                 (
                     this.DateEnteredUtc == input.DateEnteredUtc ||
                     (this.DateEnteredUtc != null &&
                     this.DateEnteredUtc.Equals(input.DateEnteredUtc))
-                ) && 
+                ) &&
                 (
                     this.Duration == input.Duration ||
                     (this.Duration != null &&
                     this.Duration.Equals(input.Duration))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)

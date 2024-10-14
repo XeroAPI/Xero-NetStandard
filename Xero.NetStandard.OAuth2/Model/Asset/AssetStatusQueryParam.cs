@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// See Asset Status Codes.
     /// </summary>
     /// <value>See Asset Status Codes.</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum AssetStatusQueryParam
     {
         /// <summary>

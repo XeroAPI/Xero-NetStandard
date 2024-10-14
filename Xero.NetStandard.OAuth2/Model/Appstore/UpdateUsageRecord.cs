@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// Data transfer object for public update usage end point
     /// </summary>
     [DataContract]
-    public partial class UpdateUsageRecord :  IEquatable<UpdateUsageRecord>, IValidatableObject
+    public partial class UpdateUsageRecord : IEquatable<UpdateUsageRecord>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateUsageRecord" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public UpdateUsageRecord() 
-        { 
+        public UpdateUsageRecord()
+        {
         }
-        
+
         /// <summary>
         /// The new quantity for the usage record. Must be a whole number that is greater than or equal to 0
         /// </summary>
         /// <value>The new quantity for the usage record. Must be a whole number that is greater than or equal to 0</value>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name = "quantity", EmitDefaultValue = false)]
         public int? Quantity { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,7 +87,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&

@@ -28,12 +28,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Receipt
     /// </summary>
     [DataContract]
-    public partial class Receipt :  IEquatable<Receipt>, IValidatableObject
+    public partial class Receipt : IEquatable<Receipt>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// Current status of receipt – see status types
@@ -78,116 +78,116 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Current status of receipt – see status types
         /// </summary>
         /// <value>Current status of receipt – see status types</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// Date of receipt – YYYY-MM-DD
         /// </summary>
         /// <value>Date of receipt – YYYY-MM-DD</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// Gets or Sets LineItems
         /// </summary>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Gets or Sets User
         /// </summary>
-        [DataMember(Name="User", EmitDefaultValue=false)]
+        [DataMember(Name = "User", EmitDefaultValue = false)]
         public User User { get; set; }
 
         /// <summary>
         /// Additional reference number
         /// </summary>
         /// <value>Additional reference number</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Total of receipt excluding taxes
         /// </summary>
         /// <value>Total of receipt excluding taxes</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; set; }
 
         /// <summary>
         /// Total tax on receipt
         /// </summary>
         /// <value>Total tax on receipt</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; set; }
 
         /// <summary>
         /// Total of receipt tax inclusive (i.e. SubTotal + TotalTax)
         /// </summary>
         /// <value>Total of receipt tax inclusive (i.e. SubTotal + TotalTax)</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for receipt
         /// </summary>
         /// <value>Xero generated unique identifier for receipt</value>
-        [DataMember(Name="ReceiptID", EmitDefaultValue=false)]
+        [DataMember(Name = "ReceiptID", EmitDefaultValue = false)]
         public Guid? ReceiptID { get; set; }
 
         /// <summary>
         /// Xero generated sequence number for receipt in current claim for a given user
         /// </summary>
         /// <value>Xero generated sequence number for receipt in current claim for a given user</value>
-        [DataMember(Name="ReceiptNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "ReceiptNumber", EmitDefaultValue = false)]
         public string ReceiptNumber { get; private set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// boolean to indicate if a receipt has an attachment
         /// </summary>
         /// <value>boolean to indicate if a receipt has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// URL link to a source document – shown as “Go to [appName]” in the Xero app
         /// </summary>
         /// <value>URL link to a source document – shown as “Go to [appName]” in the Xero app</value>
-        [DataMember(Name="Url", EmitDefaultValue=false)]
+        [DataMember(Name = "Url", EmitDefaultValue = false)]
         public string Url { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
         /// Displays array of warning messages from the API
         /// </summary>
         /// <value>Displays array of warning messages from the API</value>
-        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
         /// Displays array of attachments from the API
         /// </summary>
         /// <value>Displays array of attachments from the API</value>
-        [DataMember(Name="Attachments", EmitDefaultValue=false)]
+        [DataMember(Name = "Attachments", EmitDefaultValue = false)]
         public List<Attachment> Attachments { get; set; }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -249,93 +249,93 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.User == input.User ||
                     (this.User != null &&
                     this.User.Equals(input.User))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.ReceiptID == input.ReceiptID ||
                     (this.ReceiptID != null &&
                     this.ReceiptID.Equals(input.ReceiptID))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.ReceiptNumber == input.ReceiptNumber ||
                     (this.ReceiptNumber != null &&
                     this.ReceiptNumber.Equals(input.ReceiptNumber))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
                     this.ValidationErrors.SequenceEqual(input.ValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&
                     input.Warnings != null &&
                     this.Warnings.SequenceEqual(input.Warnings)
-                ) && 
+                ) &&
                 (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&

@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// ProfitAndLossResponse
     /// </summary>
     [DataContract]
-    public partial class ProfitAndLossResponse :  IEquatable<ProfitAndLossResponse>, IValidatableObject
+    public partial class ProfitAndLossResponse : IEquatable<ProfitAndLossResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Start date of the report
         /// </summary>
         /// <value>Start date of the report</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -43,7 +43,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// End date of the report
         /// </summary>
         /// <value>End date of the report</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -51,19 +51,19 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Net profit loss value
         /// </summary>
         /// <value>Net profit loss value</value>
-        [DataMember(Name="netProfitLoss", EmitDefaultValue=false)]
+        [DataMember(Name = "netProfitLoss", EmitDefaultValue = false)]
         public decimal? NetProfitLoss { get; set; }
 
         /// <summary>
         /// Gets or Sets Revenue
         /// </summary>
-        [DataMember(Name="revenue", EmitDefaultValue=false)]
+        [DataMember(Name = "revenue", EmitDefaultValue = false)]
         public PnlAccountClass Revenue { get; set; }
 
         /// <summary>
         /// Gets or Sets Expense
         /// </summary>
-        [DataMember(Name="expense", EmitDefaultValue=false)]
+        [DataMember(Name = "expense", EmitDefaultValue = false)]
         public PnlAccountClass Expense { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.NetProfitLoss == input.NetProfitLoss ||
                     (this.NetProfitLoss != null &&
                     this.NetProfitLoss.Equals(input.NetProfitLoss))
-                ) && 
+                ) &&
                 (
                     this.Revenue == input.Revenue ||
                     (this.Revenue != null &&
                     this.Revenue.Equals(input.Revenue))
-                ) && 
+                ) &&
                 (
                     this.Expense == input.Expense ||
                     (this.Expense != null &&

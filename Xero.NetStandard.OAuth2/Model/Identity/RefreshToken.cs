@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
     /// RefreshToken
     /// </summary>
     [DataContract]
-    public partial class RefreshToken :  IEquatable<RefreshToken>, IValidatableObject
+    public partial class RefreshToken : IEquatable<RefreshToken>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero grant type
         /// </summary>
         /// <value>Xero grant type</value>
-        [DataMember(Name="grant_type", EmitDefaultValue=false)]
+        [DataMember(Name = "grant_type", EmitDefaultValue = false)]
         public string GrantType { get; set; }
 
         /// <summary>
         /// refresh token provided during authentication flow
         /// </summary>
         /// <value>refresh token provided during authentication flow</value>
-        [DataMember(Name="refresh_token", EmitDefaultValue=false)]
+        [DataMember(Name = "refresh_token", EmitDefaultValue = false)]
         public string _RefreshToken { get; set; }
 
         /// <summary>
         /// client id for Xero app
         /// </summary>
         /// <value>client id for Xero app</value>
-        [DataMember(Name="client_id", EmitDefaultValue=false)]
+        [DataMember(Name = "client_id", EmitDefaultValue = false)]
         public string ClientId { get; set; }
 
         /// <summary>
         /// client secret for Xero app 2
         /// </summary>
         /// <value>client secret for Xero app 2</value>
-        [DataMember(Name="client_secret", EmitDefaultValue=false)]
+        [DataMember(Name = "client_secret", EmitDefaultValue = false)]
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.GrantType == input.GrantType ||
                     (this.GrantType != null &&
                     this.GrantType.Equals(input.GrantType))
-                ) && 
+                ) &&
                 (
                     this._RefreshToken == input._RefreshToken ||
                     (this._RefreshToken != null &&
                     this._RefreshToken.Equals(input._RefreshToken))
-                ) && 
+                ) &&
                 (
                     this.ClientId == input.ClientId ||
                     (this.ClientId != null &&
                     this.ClientId.Equals(input.ClientId))
-                ) && 
+                ) &&
                 (
                     this.ClientSecret == input.ClientSecret ||
                     (this.ClientSecret != null &&

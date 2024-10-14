@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// GrossEarningsHistory
     /// </summary>
     [DataContract]
-    public partial class GrossEarningsHistory :  IEquatable<GrossEarningsHistory>, IValidatableObject
+    public partial class GrossEarningsHistory : IEquatable<GrossEarningsHistory>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Number of days the employee worked in the pay period (0 - 365)
         /// </summary>
         /// <value>Number of days the employee worked in the pay period (0 - 365)</value>
-        [DataMember(Name="daysPaid", EmitDefaultValue=false)]
+        [DataMember(Name = "daysPaid", EmitDefaultValue = false)]
         public int? DaysPaid { get; set; }
 
         /// <summary>
         /// Number of full weeks the employee didn&#39;t work in the pay period (0 - 52)
         /// </summary>
         /// <value>Number of full weeks the employee didn&#39;t work in the pay period (0 - 52)</value>
-        [DataMember(Name="unpaidWeeks", EmitDefaultValue=false)]
+        [DataMember(Name = "unpaidWeeks", EmitDefaultValue = false)]
         public int? UnpaidWeeks { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DaysPaid == input.DaysPaid ||
                     (this.DaysPaid != null &&
                     this.DaysPaid.Equals(input.DaysPaid))
-                ) && 
+                ) &&
                 (
                     this.UnpaidWeeks == input.UnpaidWeeks ||
                     (this.UnpaidWeeks != null &&

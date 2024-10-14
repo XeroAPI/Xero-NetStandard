@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// FeedConnections
     /// </summary>
     [DataContract]
-    public partial class FeedConnections :  IEquatable<FeedConnections>, IValidatableObject
+    public partial class FeedConnections : IEquatable<FeedConnections>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [DataMember(Name="pagination", EmitDefaultValue=false)]
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
         public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets Items
         /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=false)]
+        [DataMember(Name = "items", EmitDefaultValue = false)]
         public List<FeedConnection> Items { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Pagination == input.Pagination ||
                     (this.Pagination != null &&
                     this.Pagination.Equals(input.Pagination))
-                ) && 
+                ) &&
                 (
                     this.Items == input.Items ||
                     this.Items != null &&

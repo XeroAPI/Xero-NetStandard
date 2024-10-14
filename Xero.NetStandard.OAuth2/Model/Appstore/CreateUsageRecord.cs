@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// Data transfer object for public create usage end point
     /// </summary>
     [DataContract]
-    public partial class CreateUsageRecord :  IEquatable<CreateUsageRecord>, IValidatableObject
+    public partial class CreateUsageRecord : IEquatable<CreateUsageRecord>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateUsageRecord" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public CreateUsageRecord() 
-        { 
+        public CreateUsageRecord()
+        {
         }
-        
+
         /// <summary>
         /// The initial quantity for the usage record. Must be a whole number that is greater than or equal to 0
         /// </summary>
         /// <value>The initial quantity for the usage record. Must be a whole number that is greater than or equal to 0</value>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name = "quantity", EmitDefaultValue = false)]
         public int? Quantity { get; set; }
 
         /// <summary>
         /// DateTime in UTC of when the the product was consumed/used
         /// </summary>
         /// <value>DateTime in UTC of when the the product was consumed/used</value>
-        [DataMember(Name="timestamp", EmitDefaultValue=false)]
+        [DataMember(Name = "timestamp", EmitDefaultValue = false)]
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -95,12 +95,12 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
-                ) && 
+                ) &&
                 (
                     this.Timestamp == input.Timestamp ||
                     (this.Timestamp != null &&

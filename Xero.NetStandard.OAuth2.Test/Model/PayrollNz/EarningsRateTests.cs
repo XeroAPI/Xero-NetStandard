@@ -110,7 +110,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public async Task EarningsTypeEnum_NullInput_Deserialises(){
+        public async Task EarningsTypeEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -129,7 +130,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         [InlineData("MultipleOfOrdinaryEarningsRate", EarningsRate.RateTypeEnum.MultipleOfOrdinaryEarningsRate)]
         [InlineData("RatePerUnit", EarningsRate.RateTypeEnum.RatePerUnit)]
         public async Task RateTypeTest(string input, EarningsRate.RateTypeEnum expected)
-        {     
+        {
             var jsonContent = $@"""{input}""";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
@@ -143,7 +144,8 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
 
 
         [Fact]
-        public async Task RateTypeEnum_NullInput_Deserialises(){
+        public async Task RateTypeEnum_NullInput_Deserialises()
+        {
             var jsonContent = "null";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {

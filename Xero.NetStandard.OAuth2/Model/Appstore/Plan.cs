@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// Plan
     /// </summary>
     [DataContract]
-    public partial class Plan :  IEquatable<Plan>, IValidatableObject
+    public partial class Plan : IEquatable<Plan>, IValidatableObject
     {
         /// <summary>
         /// Status of the plan. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. 
@@ -61,36 +61,36 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
         /// Status of the plan. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. 
         /// </summary>
         /// <value>Status of the plan. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. </value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Plan" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Plan() 
-        {  
-          SubscriptionItems = new List<SubscriptionItem>(); 
+        public Plan()
+        {
+            SubscriptionItems = new List<SubscriptionItem>();
         }
-        
+
         /// <summary>
         /// The unique identifier of the plan
         /// </summary>
         /// <value>The unique identifier of the plan</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// The name of the plan. It is used in the invoice line item description. 
         /// </summary>
         /// <value>The name of the plan. It is used in the invoice line item description. </value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// List of the subscription items belonging to the plan. It does not include cancelled subscription items. 
         /// </summary>
         /// <value>List of the subscription items belonging to the plan. It does not include cancelled subscription items. </value>
-        [DataMember(Name="subscriptionItems", EmitDefaultValue=false)]
+        [DataMember(Name = "subscriptionItems", EmitDefaultValue = false)]
         public List<SubscriptionItem> SubscriptionItems { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -138,21 +138,21 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.SubscriptionItems == input.SubscriptionItems ||
                     this.SubscriptionItems != null &&

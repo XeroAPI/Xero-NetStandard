@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.
     /// </summary>
     /// <value>The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum ObjectGroup
     {
         /// <summary>

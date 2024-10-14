@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Bill
     /// </summary>
     [DataContract]
-    public partial class Bill :  IEquatable<Bill>, IValidatableObject
+    public partial class Bill : IEquatable<Bill>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public PaymentTermType Type { get; set; }
-        
+
         /// <summary>
         /// Day of Month (0-31)
         /// </summary>
         /// <value>Day of Month (0-31)</value>
-        [DataMember(Name="Day", EmitDefaultValue=false)]
+        [DataMember(Name = "Day", EmitDefaultValue = false)]
         public int? Day { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Day == input.Day ||
                     (this.Day != null &&
                     this.Day.Equals(input.Day))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)

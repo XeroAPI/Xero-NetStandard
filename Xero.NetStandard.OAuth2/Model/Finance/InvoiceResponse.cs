@@ -28,34 +28,34 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// InvoiceResponse
     /// </summary>
     [DataContract]
-    public partial class InvoiceResponse :  IEquatable<InvoiceResponse>, IValidatableObject
+    public partial class InvoiceResponse : IEquatable<InvoiceResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of invoice
         /// </summary>
         /// <value>Xero Identifier of invoice</value>
-        [DataMember(Name="invoiceId", EmitDefaultValue=false)]
+        [DataMember(Name = "invoiceId", EmitDefaultValue = false)]
         public Guid? InvoiceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="contact", EmitDefaultValue=false)]
+        [DataMember(Name = "contact", EmitDefaultValue = false)]
         public ContactResponse Contact { get; set; }
 
         /// <summary>
         /// Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode
         /// </summary>
         /// <value>Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Not included in summary mode
         /// </summary>
         /// <value>Not included in summary mode</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "lineItems", EmitDefaultValue = false)]
         public List<LineItemResponse> LineItems { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,22 +103,22 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.InvoiceId == input.InvoiceId ||
                     (this.InvoiceId != null &&
                     this.InvoiceId.Equals(input.InvoiceId))
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&

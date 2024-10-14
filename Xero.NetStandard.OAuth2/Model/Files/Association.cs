@@ -28,52 +28,52 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// Association
     /// </summary>
     [DataContract]
-    public partial class Association :  IEquatable<Association>, IValidatableObject
+    public partial class Association : IEquatable<Association>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets ObjectGroup
         /// </summary>
-        [DataMember(Name="ObjectGroup", EmitDefaultValue=false)]
+        [DataMember(Name = "ObjectGroup", EmitDefaultValue = false)]
         public ObjectGroup ObjectGroup { get; set; }
         /// <summary>
         /// Gets or Sets ObjectType
         /// </summary>
-        [DataMember(Name="ObjectType", EmitDefaultValue=false)]
+        [DataMember(Name = "ObjectType", EmitDefaultValue = false)]
         public ObjectType ObjectType { get; set; }
-        
+
         /// <summary>
         /// Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.
         /// </summary>
         /// <value>Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.</value>
-        [DataMember(Name="SendWithObject", EmitDefaultValue=false)]
+        [DataMember(Name = "SendWithObject", EmitDefaultValue = false)]
         public bool? SendWithObject { get; set; }
 
         /// <summary>
         /// The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.
         /// </summary>
         /// <value>The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.
         /// </summary>
         /// <value>The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.</value>
-        [DataMember(Name="Size", EmitDefaultValue=false)]
+        [DataMember(Name = "Size", EmitDefaultValue = false)]
         public int? Size { get; set; }
 
         /// <summary>
         /// The unique identifier of the file
         /// </summary>
         /// <value>The unique identifier of the file</value>
-        [DataMember(Name="FileId", EmitDefaultValue=false)]
+        [DataMember(Name = "FileId", EmitDefaultValue = false)]
         public Guid? FileId { get; set; }
 
         /// <summary>
         /// The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)
         /// </summary>
         /// <value>The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)</value>
-        [DataMember(Name="ObjectId", EmitDefaultValue=false)]
+        [DataMember(Name = "ObjectId", EmitDefaultValue = false)]
         public Guid? ObjectId { get; set; }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -124,36 +124,36 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.SendWithObject == input.SendWithObject ||
                     (this.SendWithObject != null &&
                     this.SendWithObject.Equals(input.SendWithObject))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Size == input.Size ||
                     (this.Size != null &&
                     this.Size.Equals(input.Size))
-                ) && 
+                ) &&
                 (
                     this.FileId == input.FileId ||
                     (this.FileId != null &&
                     this.FileId.Equals(input.FileId))
-                ) && 
+                ) &&
                 (
                     this.ObjectId == input.ObjectId ||
                     (this.ObjectId != null &&
                     this.ObjectId.Equals(input.ObjectId))
-                ) && 
+                ) &&
                 (
                     this.ObjectGroup == input.ObjectGroup ||
                     this.ObjectGroup.Equals(input.ObjectGroup)
-                ) && 
+                ) &&
                 (
                     this.ObjectType == input.ObjectType ||
                     this.ObjectType.Equals(input.ObjectType)

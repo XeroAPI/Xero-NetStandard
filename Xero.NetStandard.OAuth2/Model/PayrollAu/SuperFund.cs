@@ -28,104 +28,104 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// SuperFund
     /// </summary>
     [DataContract]
-    public partial class SuperFund :  IEquatable<SuperFund>, IValidatableObject
+    public partial class SuperFund : IEquatable<SuperFund>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public SuperFundType Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SuperFund" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public SuperFund() 
-        {  
-          ValidationErrors = new List<ValidationError>(); 
+        public SuperFund()
+        {
+            ValidationErrors = new List<ValidationError>();
         }
-        
+
         /// <summary>
         /// Xero identifier for a super fund
         /// </summary>
         /// <value>Xero identifier for a super fund</value>
-        [DataMember(Name="SuperFundID", EmitDefaultValue=false)]
+        [DataMember(Name = "SuperFundID", EmitDefaultValue = false)]
         public Guid? SuperFundID { get; set; }
 
         /// <summary>
         /// Name of the super fund
         /// </summary>
         /// <value>Name of the super fund</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// ABN of the self managed super fund
         /// </summary>
         /// <value>ABN of the self managed super fund</value>
-        [DataMember(Name="ABN", EmitDefaultValue=false)]
+        [DataMember(Name = "ABN", EmitDefaultValue = false)]
         public string ABN { get; set; }
 
         /// <summary>
         /// BSB of the self managed super fund
         /// </summary>
         /// <value>BSB of the self managed super fund</value>
-        [DataMember(Name="BSB", EmitDefaultValue=false)]
+        [DataMember(Name = "BSB", EmitDefaultValue = false)]
         public string BSB { get; set; }
 
         /// <summary>
         /// The account number for the self managed super fund.
         /// </summary>
         /// <value>The account number for the self managed super fund.</value>
-        [DataMember(Name="AccountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountNumber", EmitDefaultValue = false)]
         public string AccountNumber { get; set; }
 
         /// <summary>
         /// The account name for the self managed super fund.
         /// </summary>
         /// <value>The account name for the self managed super fund.</value>
-        [DataMember(Name="AccountName", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountName", EmitDefaultValue = false)]
         public string AccountName { get; set; }
 
         /// <summary>
         /// The electronic service address for the self managed super fund.
         /// </summary>
         /// <value>The electronic service address for the self managed super fund.</value>
-        [DataMember(Name="ElectronicServiceAddress", EmitDefaultValue=false)]
+        [DataMember(Name = "ElectronicServiceAddress", EmitDefaultValue = false)]
         public string ElectronicServiceAddress { get; set; }
 
         /// <summary>
         /// Some funds assign a unique number to each employer
         /// </summary>
         /// <value>Some funds assign a unique number to each employer</value>
-        [DataMember(Name="EmployerNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployerNumber", EmitDefaultValue = false)]
         public string EmployerNumber { get; set; }
 
         /// <summary>
         /// The SPIN of the Regulated SuperFund. This field has been deprecated. It will only be present for legacy superfunds. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN.
         /// </summary>
         /// <value>The SPIN of the Regulated SuperFund. This field has been deprecated. It will only be present for legacy superfunds. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN.</value>
-        [DataMember(Name="SPIN", EmitDefaultValue=false)]
+        [DataMember(Name = "SPIN", EmitDefaultValue = false)]
         public string SPIN { get; set; }
 
         /// <summary>
         /// The USI of the Regulated SuperFund
         /// </summary>
         /// <value>The USI of the Regulated SuperFund</value>
-        [DataMember(Name="USI", EmitDefaultValue=false)]
+        [DataMember(Name = "USI", EmitDefaultValue = false)]
         public string USI { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -182,66 +182,66 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.SuperFundID == input.SuperFundID ||
                     (this.SuperFundID != null &&
                     this.SuperFundID.Equals(input.SuperFundID))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.ABN == input.ABN ||
                     (this.ABN != null &&
                     this.ABN.Equals(input.ABN))
-                ) && 
+                ) &&
                 (
                     this.BSB == input.BSB ||
                     (this.BSB != null &&
                     this.BSB.Equals(input.BSB))
-                ) && 
+                ) &&
                 (
                     this.AccountNumber == input.AccountNumber ||
                     (this.AccountNumber != null &&
                     this.AccountNumber.Equals(input.AccountNumber))
-                ) && 
+                ) &&
                 (
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&
                     this.AccountName.Equals(input.AccountName))
-                ) && 
+                ) &&
                 (
                     this.ElectronicServiceAddress == input.ElectronicServiceAddress ||
                     (this.ElectronicServiceAddress != null &&
                     this.ElectronicServiceAddress.Equals(input.ElectronicServiceAddress))
-                ) && 
+                ) &&
                 (
                     this.EmployerNumber == input.EmployerNumber ||
                     (this.EmployerNumber != null &&
                     this.EmployerNumber.Equals(input.EmployerNumber))
-                ) && 
+                ) &&
                 (
                     this.SPIN == input.SPIN ||
                     (this.SPIN != null &&
                     this.SPIN.Equals(input.SPIN))
-                ) && 
+                ) &&
                 (
                     this.USI == input.USI ||
                     (this.USI != null &&
                     this.USI.Equals(input.USI))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Prepayment
     /// </summary>
     [DataContract]
-    public partial class Prepayment :  IEquatable<Prepayment>, IValidatableObject
+    public partial class Prepayment : IEquatable<Prepayment>, IValidatableObject
     {
         /// <summary>
         /// See Prepayment Types
@@ -67,7 +67,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Prepayment Types
         /// </summary>
         /// <value>See Prepayment Types</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// See Prepayment Status Codes
@@ -100,128 +100,128 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Prepayment Status Codes
         /// </summary>
         /// <value>See Prepayment Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// The date the prepayment is created YYYY-MM-DD
         /// </summary>
         /// <value>The date the prepayment is created YYYY-MM-DD</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// See Prepayment Line Items
         /// </summary>
         /// <value>See Prepayment Line Items</value>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// The subtotal of the prepayment excluding taxes
         /// </summary>
         /// <value>The subtotal of the prepayment excluding taxes</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; set; }
 
         /// <summary>
         /// The total tax on the prepayment
         /// </summary>
         /// <value>The total tax on the prepayment</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; set; }
 
         /// <summary>
         /// The total of the prepayment(subtotal + total tax)
         /// </summary>
         /// <value>The total of the prepayment(subtotal + total tax)</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Returns Invoice number field. Reference field isn&#39;t available.
         /// </summary>
         /// <value>Returns Invoice number field. Reference field isn&#39;t available.</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; private set; }
 
         /// <summary>
         /// UTC timestamp of last update to the prepayment
         /// </summary>
         /// <value>UTC timestamp of last update to the prepayment</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Xero generated unique identifier
         /// </summary>
         /// <value>Xero generated unique identifier</value>
-        [DataMember(Name="PrepaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "PrepaymentID", EmitDefaultValue = false)]
         public Guid? PrepaymentID { get; set; }
 
         /// <summary>
         /// The currency rate for a multicurrency prepayment. If no rate is specified, the XE.com day rate is used
         /// </summary>
         /// <value>The currency rate for a multicurrency prepayment. If no rate is specified, the XE.com day rate is used</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
 
         /// <summary>
         /// The remaining credit balance on the prepayment
         /// </summary>
         /// <value>The remaining credit balance on the prepayment</value>
-        [DataMember(Name="RemainingCredit", EmitDefaultValue=false)]
+        [DataMember(Name = "RemainingCredit", EmitDefaultValue = false)]
         public decimal? RemainingCredit { get; set; }
 
         /// <summary>
         /// See Allocations
         /// </summary>
         /// <value>See Allocations</value>
-        [DataMember(Name="Allocations", EmitDefaultValue=false)]
+        [DataMember(Name = "Allocations", EmitDefaultValue = false)]
         public List<Allocation> Allocations { get; set; }
 
         /// <summary>
         /// See Payments
         /// </summary>
         /// <value>See Payments</value>
-        [DataMember(Name="Payments", EmitDefaultValue=false)]
+        [DataMember(Name = "Payments", EmitDefaultValue = false)]
         public List<Payment> Payments { get; set; }
 
         /// <summary>
         /// The amount of applied to an invoice
         /// </summary>
         /// <value>The amount of applied to an invoice</value>
-        [DataMember(Name="AppliedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "AppliedAmount", EmitDefaultValue = false)]
         public double? AppliedAmount { get; set; }
 
         /// <summary>
         /// boolean to indicate if a prepayment has an attachment
         /// </summary>
         /// <value>boolean to indicate if a prepayment has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// See Attachments
         /// </summary>
         /// <value>See Attachments</value>
-        [DataMember(Name="Attachments", EmitDefaultValue=false)]
+        [DataMember(Name = "Attachments", EmitDefaultValue = false)]
         public List<Attachment> Attachments { get; set; }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -285,101 +285,101 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.PrepaymentID == input.PrepaymentID ||
                     (this.PrepaymentID != null &&
                     this.PrepaymentID.Equals(input.PrepaymentID))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
-                ) && 
+                ) &&
                 (
                     this.RemainingCredit == input.RemainingCredit ||
                     (this.RemainingCredit != null &&
                     this.RemainingCredit.Equals(input.RemainingCredit))
-                ) && 
+                ) &&
                 (
                     this.Allocations == input.Allocations ||
                     this.Allocations != null &&
                     input.Allocations != null &&
                     this.Allocations.SequenceEqual(input.Allocations)
-                ) && 
+                ) &&
                 (
                     this.Payments == input.Payments ||
                     this.Payments != null &&
                     input.Payments != null &&
                     this.Payments.SequenceEqual(input.Payments)
-                ) && 
+                ) &&
                 (
                     this.AppliedAmount == input.AppliedAmount ||
                     (this.AppliedAmount != null &&
                     this.AppliedAmount.Equals(input.AppliedAmount))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&

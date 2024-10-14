@@ -27,9 +27,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// <summary>
     /// Defines PaymentTermType
     /// </summary>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum PaymentTermType
     {
         /// <summary>

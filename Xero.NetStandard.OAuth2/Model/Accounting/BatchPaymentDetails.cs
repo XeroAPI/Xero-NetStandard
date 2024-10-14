@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Bank details for use on a batch payment stored with each contact
     /// </summary>
     [DataContract]
-    public partial class BatchPaymentDetails :  IEquatable<BatchPaymentDetails>, IValidatableObject
+    public partial class BatchPaymentDetails : IEquatable<BatchPaymentDetails>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Bank account number for use with Batch Payments
         /// </summary>
         /// <value>Bank account number for use with Batch Payments</value>
-        [DataMember(Name="BankAccountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAccountNumber", EmitDefaultValue = false)]
         public string BankAccountNumber { get; set; }
 
         /// <summary>
         /// Name of bank for use with Batch Payments
         /// </summary>
         /// <value>Name of bank for use with Batch Payments</value>
-        [DataMember(Name="BankAccountName", EmitDefaultValue=false)]
+        [DataMember(Name = "BankAccountName", EmitDefaultValue = false)]
         public string BankAccountName { get; set; }
 
         /// <summary>
         /// (Non-NZ Only) These details are sent to the org’s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero. Maximum field length &#x3D; 18
         /// </summary>
         /// <value>(Non-NZ Only) These details are sent to the org’s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero. Maximum field length &#x3D; 18</value>
-        [DataMember(Name="Details", EmitDefaultValue=false)]
+        [DataMember(Name = "Details", EmitDefaultValue = false)]
         public string Details { get; set; }
 
         /// <summary>
         /// (NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.
         /// </summary>
         /// <value>(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.</value>
-        [DataMember(Name="Code", EmitDefaultValue=false)]
+        [DataMember(Name = "Code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// (NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.
         /// </summary>
         /// <value>(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find &amp; Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BankAccountNumber == input.BankAccountNumber ||
                     (this.BankAccountNumber != null &&
                     this.BankAccountNumber.Equals(input.BankAccountNumber))
-                ) && 
+                ) &&
                 (
                     this.BankAccountName == input.BankAccountName ||
                     (this.BankAccountName != null &&
                     this.BankAccountName.Equals(input.BankAccountName))
-                ) && 
+                ) &&
                 (
                     this.Details == input.Details ||
                     (this.Details != null &&
                     this.Details.Equals(input.Details))
-                ) && 
+                ) &&
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
@@ -171,15 +171,15 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Code (string) maxLength
-            if(this.Code != null && this.Code.Length > 12)
+            if (this.Code != null && this.Code.Length > 12)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 12.", new [] { "Code" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 12.", new[] { "Code" });
             }
 
             // Reference (string) maxLength
-            if(this.Reference != null && this.Reference.Length > 12)
+            if (this.Reference != null && this.Reference.Length > 12)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, length must be less than 12.", new [] { "Reference" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, length must be less than 12.", new[] { "Reference" });
             }
 
             yield break;

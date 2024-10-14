@@ -28,20 +28,20 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Journals
     /// </summary>
     [DataContract]
-    public partial class Journals :  IEquatable<Journals>, IValidatableObject
+    public partial class Journals : IEquatable<Journals>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Displays array of warning messages from the API
         /// </summary>
         /// <value>Displays array of warning messages from the API</value>
-        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
         /// Gets or Sets _Journals
         /// </summary>
-        [DataMember(Name="Journals", EmitDefaultValue=false)]
+        [DataMember(Name = "Journals", EmitDefaultValue = false)]
         public List<Journal> _Journals { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -87,13 +87,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&
                     input.Warnings != null &&
                     this.Warnings.SequenceEqual(input.Warnings)
-                ) && 
+                ) &&
                 (
                     this._Journals == input._Journals ||
                     this._Journals != null &&

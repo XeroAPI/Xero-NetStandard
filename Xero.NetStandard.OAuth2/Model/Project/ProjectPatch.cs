@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// ProjectPatch
     /// </summary>
     [DataContract]
-    public partial class ProjectPatch :  IEquatable<ProjectPatch>, IValidatableObject
+    public partial class ProjectPatch : IEquatable<ProjectPatch>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public ProjectStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectPatch" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ProjectPatch() 
-        { 
+        public ProjectPatch()
+        {
         }
-        
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -85,7 +85,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)

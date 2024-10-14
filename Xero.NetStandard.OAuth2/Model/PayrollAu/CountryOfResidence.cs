@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Country of residence as a valid ISO 3166-1 alpha-2 country code e.g. \&quot;AU\&quot;, \&quot;NZ\&quot;, \&quot;CA\&quot;. Only applicable, and mandatory if income type is WORKINGHOLIDAYMAKER.
     /// </summary>
     /// <value>Country of residence as a valid ISO 3166-1 alpha-2 country code e.g. \&quot;AU\&quot;, \&quot;NZ\&quot;, \&quot;CA\&quot;. Only applicable, and mandatory if income type is WORKINGHOLIDAYMAKER.</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum CountryOfResidence
     {
         /// <summary>

@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// Deduction
     /// </summary>
     [DataContract]
-    public partial class Deduction :  IEquatable<Deduction>, IValidatableObject
+    public partial class Deduction : IEquatable<Deduction>, IValidatableObject
     {
         /// <summary>
         /// Deduction Category type
@@ -103,7 +103,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Deduction Category type
         /// </summary>
         /// <value>Deduction Category type</value>
-        [DataMember(Name="deductionCategory", EmitDefaultValue=false)]
+        [DataMember(Name = "deductionCategory", EmitDefaultValue = false)]
         public DeductionCategoryEnum DeductionCategory { get; set; }
         /// <summary>
         /// determine the calculation type whether fixed amount or percentage of gross
@@ -130,112 +130,112 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// determine the calculation type whether fixed amount or percentage of gross
         /// </summary>
         /// <value>determine the calculation type whether fixed amount or percentage of gross</value>
-        [DataMember(Name="calculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "calculationType", EmitDefaultValue = false)]
         public CalculationTypeEnum CalculationType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Deduction" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Deduction() 
-        { 
+        public Deduction()
+        {
         }
-        
+
         /// <summary>
         /// The Xero identifier for Deduction
         /// </summary>
         /// <value>The Xero identifier for Deduction</value>
-        [DataMember(Name="deductionId", EmitDefaultValue=false)]
+        [DataMember(Name = "deductionId", EmitDefaultValue = false)]
         public Guid? DeductionId { get; set; }
 
         /// <summary>
         /// Name of the deduction
         /// </summary>
         /// <value>Name of the deduction</value>
-        [DataMember(Name="deductionName", EmitDefaultValue=false)]
+        [DataMember(Name = "deductionName", EmitDefaultValue = false)]
         public string DeductionName { get; set; }
 
         /// <summary>
         /// Xero identifier for Liability Account
         /// </summary>
         /// <value>Xero identifier for Liability Account</value>
-        [DataMember(Name="liabilityAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "liabilityAccountId", EmitDefaultValue = false)]
         public Guid? LiabilityAccountId { get; set; }
 
         /// <summary>
         /// Identifier of a record is active or not.
         /// </summary>
         /// <value>Identifier of a record is active or not.</value>
-        [DataMember(Name="currentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "currentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
         /// Standard amount of the deduction
         /// </summary>
         /// <value>Standard amount of the deduction</value>
-        [DataMember(Name="standardAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "standardAmount", EmitDefaultValue = false)]
         public decimal? StandardAmount { get; set; }
 
         /// <summary>
         /// Identifier of reduces super liability
         /// </summary>
         /// <value>Identifier of reduces super liability</value>
-        [DataMember(Name="reducesSuperLiability", EmitDefaultValue=false)]
+        [DataMember(Name = "reducesSuperLiability", EmitDefaultValue = false)]
         public bool? ReducesSuperLiability { get; set; }
 
         /// <summary>
         /// Identifier of reduces tax liability
         /// </summary>
         /// <value>Identifier of reduces tax liability</value>
-        [DataMember(Name="reducesTaxLiability", EmitDefaultValue=false)]
+        [DataMember(Name = "reducesTaxLiability", EmitDefaultValue = false)]
         public bool? ReducesTaxLiability { get; set; }
 
         /// <summary>
         /// Percentage of gross
         /// </summary>
         /// <value>Percentage of gross</value>
-        [DataMember(Name="percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "percentage", EmitDefaultValue = false)]
         public decimal? Percentage { get; set; }
 
         /// <summary>
         /// Identifier of subject To NIC
         /// </summary>
         /// <value>Identifier of subject To NIC</value>
-        [DataMember(Name="subjectToNIC", EmitDefaultValue=false)]
+        [DataMember(Name = "subjectToNIC", EmitDefaultValue = false)]
         public bool? SubjectToNIC { get; set; }
 
         /// <summary>
         /// Identifier of subject To Tax
         /// </summary>
         /// <value>Identifier of subject To Tax</value>
-        [DataMember(Name="subjectToTax", EmitDefaultValue=false)]
+        [DataMember(Name = "subjectToTax", EmitDefaultValue = false)]
         public bool? SubjectToTax { get; set; }
 
         /// <summary>
         /// Identifier of reduced by basic rate applicable or not
         /// </summary>
         /// <value>Identifier of reduced by basic rate applicable or not</value>
-        [DataMember(Name="isReducedByBasicRate", EmitDefaultValue=false)]
+        [DataMember(Name = "isReducedByBasicRate", EmitDefaultValue = false)]
         public bool? IsReducedByBasicRate { get; set; }
 
         /// <summary>
         /// Identifier for apply to pension calculations
         /// </summary>
         /// <value>Identifier for apply to pension calculations</value>
-        [DataMember(Name="applyToPensionCalculations", EmitDefaultValue=false)]
+        [DataMember(Name = "applyToPensionCalculations", EmitDefaultValue = false)]
         public bool? ApplyToPensionCalculations { get; set; }
 
         /// <summary>
         /// Identifier of calculating on qualifying earnings
         /// </summary>
         /// <value>Identifier of calculating on qualifying earnings</value>
-        [DataMember(Name="isCalculatingOnQualifyingEarnings", EmitDefaultValue=false)]
+        [DataMember(Name = "isCalculatingOnQualifyingEarnings", EmitDefaultValue = false)]
         public bool? IsCalculatingOnQualifyingEarnings { get; set; }
 
         /// <summary>
         /// Identifier of applicable for pension or not
         /// </summary>
         /// <value>Identifier of applicable for pension or not</value>
-        [DataMember(Name="isPension", EmitDefaultValue=false)]
+        [DataMember(Name = "isPension", EmitDefaultValue = false)]
         public bool? IsPension { get; set; }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -295,80 +295,80 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DeductionId == input.DeductionId ||
                     (this.DeductionId != null &&
                     this.DeductionId.Equals(input.DeductionId))
-                ) && 
+                ) &&
                 (
                     this.DeductionName == input.DeductionName ||
                     (this.DeductionName != null &&
                     this.DeductionName.Equals(input.DeductionName))
-                ) && 
+                ) &&
                 (
                     this.DeductionCategory == input.DeductionCategory ||
                     this.DeductionCategory.Equals(input.DeductionCategory)
-                ) && 
+                ) &&
                 (
                     this.LiabilityAccountId == input.LiabilityAccountId ||
                     (this.LiabilityAccountId != null &&
                     this.LiabilityAccountId.Equals(input.LiabilityAccountId))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
                     this.CurrentRecord.Equals(input.CurrentRecord))
-                ) && 
+                ) &&
                 (
                     this.StandardAmount == input.StandardAmount ||
                     (this.StandardAmount != null &&
                     this.StandardAmount.Equals(input.StandardAmount))
-                ) && 
+                ) &&
                 (
                     this.ReducesSuperLiability == input.ReducesSuperLiability ||
                     (this.ReducesSuperLiability != null &&
                     this.ReducesSuperLiability.Equals(input.ReducesSuperLiability))
-                ) && 
+                ) &&
                 (
                     this.ReducesTaxLiability == input.ReducesTaxLiability ||
                     (this.ReducesTaxLiability != null &&
                     this.ReducesTaxLiability.Equals(input.ReducesTaxLiability))
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&
                     this.Percentage.Equals(input.Percentage))
-                ) && 
+                ) &&
                 (
                     this.SubjectToNIC == input.SubjectToNIC ||
                     (this.SubjectToNIC != null &&
                     this.SubjectToNIC.Equals(input.SubjectToNIC))
-                ) && 
+                ) &&
                 (
                     this.SubjectToTax == input.SubjectToTax ||
                     (this.SubjectToTax != null &&
                     this.SubjectToTax.Equals(input.SubjectToTax))
-                ) && 
+                ) &&
                 (
                     this.IsReducedByBasicRate == input.IsReducedByBasicRate ||
                     (this.IsReducedByBasicRate != null &&
                     this.IsReducedByBasicRate.Equals(input.IsReducedByBasicRate))
-                ) && 
+                ) &&
                 (
                     this.ApplyToPensionCalculations == input.ApplyToPensionCalculations ||
                     (this.ApplyToPensionCalculations != null &&
                     this.ApplyToPensionCalculations.Equals(input.ApplyToPensionCalculations))
-                ) && 
+                ) &&
                 (
                     this.IsCalculatingOnQualifyingEarnings == input.IsCalculatingOnQualifyingEarnings ||
                     (this.IsCalculatingOnQualifyingEarnings != null &&
                     this.IsCalculatingOnQualifyingEarnings.Equals(input.IsCalculatingOnQualifyingEarnings))
-                ) && 
+                ) &&
                 (
                     this.IsPension == input.IsPension ||
                     (this.IsPension != null &&

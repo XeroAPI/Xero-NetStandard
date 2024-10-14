@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Benefit
     /// </summary>
     [DataContract]
-    public partial class Benefit :  IEquatable<Benefit>, IValidatableObject
+    public partial class Benefit : IEquatable<Benefit>, IValidatableObject
     {
         /// <summary>
         /// Superannuations Category type
@@ -61,7 +61,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Superannuations Category type
         /// </summary>
         /// <value>Superannuations Category type</value>
-        [DataMember(Name="category", EmitDefaultValue=false)]
+        [DataMember(Name = "category", EmitDefaultValue = false)]
         public CategoryEnum Category { get; set; }
         /// <summary>
         /// Calculation Type of the superannuation either FixedAmount or PercentageOfTaxableEarnings
@@ -88,70 +88,70 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Calculation Type of the superannuation either FixedAmount or PercentageOfTaxableEarnings
         /// </summary>
         /// <value>Calculation Type of the superannuation either FixedAmount or PercentageOfTaxableEarnings</value>
-        [DataMember(Name="calculationTypeNZ", EmitDefaultValue=false)]
+        [DataMember(Name = "calculationTypeNZ", EmitDefaultValue = false)]
         public CalculationTypeNZEnum CalculationTypeNZ { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Benefit" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Benefit() 
-        { 
+        public Benefit()
+        {
         }
-        
+
         /// <summary>
         /// The Xero identifier for superannuation
         /// </summary>
         /// <value>The Xero identifier for superannuation</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Name of the superannuations
         /// </summary>
         /// <value>Name of the superannuations</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Xero identifier for Liability Account
         /// </summary>
         /// <value>Xero identifier for Liability Account</value>
-        [DataMember(Name="liabilityAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "liabilityAccountId", EmitDefaultValue = false)]
         public Guid? LiabilityAccountId { get; set; }
 
         /// <summary>
         /// Xero identifier for Expense Account
         /// </summary>
         /// <value>Xero identifier for Expense Account</value>
-        [DataMember(Name="expenseAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "expenseAccountId", EmitDefaultValue = false)]
         public Guid? ExpenseAccountId { get; set; }
 
         /// <summary>
         /// Standard amount of the superannuation
         /// </summary>
         /// <value>Standard amount of the superannuation</value>
-        [DataMember(Name="standardAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "standardAmount", EmitDefaultValue = false)]
         public decimal? StandardAmount { get; set; }
 
         /// <summary>
         /// Percentage of Taxable Earnings of the superannuation
         /// </summary>
         /// <value>Percentage of Taxable Earnings of the superannuation</value>
-        [DataMember(Name="percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "percentage", EmitDefaultValue = false)]
         public decimal? Percentage { get; set; }
 
         /// <summary>
         /// Company Maximum amount of the superannuation
         /// </summary>
         /// <value>Company Maximum amount of the superannuation</value>
-        [DataMember(Name="companyMax", EmitDefaultValue=false)]
+        [DataMember(Name = "companyMax", EmitDefaultValue = false)]
         public decimal? CompanyMax { get; set; }
 
         /// <summary>
         /// Identifier of a record is active or not.
         /// </summary>
         /// <value>Identifier of a record is active or not.</value>
-        [DataMember(Name="currentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "currentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -205,50 +205,50 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Category == input.Category ||
                     this.Category.Equals(input.Category)
-                ) && 
+                ) &&
                 (
                     this.LiabilityAccountId == input.LiabilityAccountId ||
                     (this.LiabilityAccountId != null &&
                     this.LiabilityAccountId.Equals(input.LiabilityAccountId))
-                ) && 
+                ) &&
                 (
                     this.ExpenseAccountId == input.ExpenseAccountId ||
                     (this.ExpenseAccountId != null &&
                     this.ExpenseAccountId.Equals(input.ExpenseAccountId))
-                ) && 
+                ) &&
                 (
                     this.CalculationTypeNZ == input.CalculationTypeNZ ||
                     this.CalculationTypeNZ.Equals(input.CalculationTypeNZ)
-                ) && 
+                ) &&
                 (
                     this.StandardAmount == input.StandardAmount ||
                     (this.StandardAmount != null &&
                     this.StandardAmount.Equals(input.StandardAmount))
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&
                     this.Percentage.Equals(input.Percentage))
-                ) && 
+                ) &&
                 (
                     this.CompanyMax == input.CompanyMax ||
                     (this.CompanyMax != null &&
                     this.CompanyMax.Equals(input.CompanyMax))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&

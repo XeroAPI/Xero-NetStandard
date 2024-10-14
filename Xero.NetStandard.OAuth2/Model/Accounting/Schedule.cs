@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Schedule
     /// </summary>
     [DataContract]
-    public partial class Schedule :  IEquatable<Schedule>, IValidatableObject
+    public partial class Schedule : IEquatable<Schedule>, IValidatableObject
     {
         /// <summary>
         /// One of the following - WEEKLY or MONTHLY
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// One of the following - WEEKLY or MONTHLY
         /// </summary>
         /// <value>One of the following - WEEKLY or MONTHLY</value>
-        [DataMember(Name="Unit", EmitDefaultValue=false)]
+        [DataMember(Name = "Unit", EmitDefaultValue = false)]
         public UnitEnum Unit { get; set; }
         /// <summary>
         /// the payment terms
@@ -106,42 +106,42 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// the payment terms
         /// </summary>
         /// <value>the payment terms</value>
-        [DataMember(Name="DueDateType", EmitDefaultValue=false)]
+        [DataMember(Name = "DueDateType", EmitDefaultValue = false)]
         public DueDateTypeEnum DueDateType { get; set; }
-        
+
         /// <summary>
         /// Integer used with the unit e.g. 1 (every 1 week), 2 (every 2 months)
         /// </summary>
         /// <value>Integer used with the unit e.g. 1 (every 1 week), 2 (every 2 months)</value>
-        [DataMember(Name="Period", EmitDefaultValue=false)]
+        [DataMember(Name = "Period", EmitDefaultValue = false)]
         public int? Period { get; set; }
 
         /// <summary>
         /// Integer used with due date type e.g 20 (of following month), 31 (of current month)
         /// </summary>
         /// <value>Integer used with due date type e.g 20 (of following month), 31 (of current month)</value>
-        [DataMember(Name="DueDate", EmitDefaultValue=false)]
+        [DataMember(Name = "DueDate", EmitDefaultValue = false)]
         public int? DueDate { get; set; }
 
         /// <summary>
         /// Date the first invoice of the current version of the repeating schedule was generated (changes when repeating invoice is edited)
         /// </summary>
         /// <value>Date the first invoice of the current version of the repeating schedule was generated (changes when repeating invoice is edited)</value>
-        [DataMember(Name="StartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "StartDate", EmitDefaultValue = false)]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// The calendar date of the next invoice in the schedule to be generated
         /// </summary>
         /// <value>The calendar date of the next invoice in the schedule to be generated</value>
-        [DataMember(Name="NextScheduledDate", EmitDefaultValue=false)]
+        [DataMember(Name = "NextScheduledDate", EmitDefaultValue = false)]
         public DateTime? NextScheduledDate { get; set; }
 
         /// <summary>
         /// Invoice end date – only returned if the template has an end date set
         /// </summary>
         /// <value>Invoice end date – only returned if the template has an end date set</value>
-        [DataMember(Name="EndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "EndDate", EmitDefaultValue = false)]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -192,35 +192,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Period == input.Period ||
                     (this.Period != null &&
                     this.Period.Equals(input.Period))
-                ) && 
+                ) &&
                 (
                     this.Unit == input.Unit ||
                     this.Unit.Equals(input.Unit)
-                ) && 
+                ) &&
                 (
                     this.DueDate == input.DueDate ||
                     (this.DueDate != null &&
                     this.DueDate.Equals(input.DueDate))
-                ) && 
+                ) &&
                 (
                     this.DueDateType == input.DueDateType ||
                     this.DueDateType.Equals(input.DueDateType)
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.NextScheduledDate == input.NextScheduledDate ||
                     (this.NextScheduledDate != null &&
                     this.NextScheduledDate.Equals(input.NextScheduledDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&

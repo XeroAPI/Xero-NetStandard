@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// TaxComponent
     /// </summary>
     [DataContract]
-    public partial class TaxComponent :  IEquatable<TaxComponent>, IValidatableObject
+    public partial class TaxComponent : IEquatable<TaxComponent>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Name of Tax Component
         /// </summary>
         /// <value>Name of Tax Component</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Tax Rate (up to 4dp)
         /// </summary>
         /// <value>Tax Rate (up to 4dp)</value>
-        [DataMember(Name="Rate", EmitDefaultValue=false)]
+        [DataMember(Name = "Rate", EmitDefaultValue = false)]
         public decimal? Rate { get; set; }
 
         /// <summary>
         /// Boolean to describe if Tax rate is compounded.
         /// </summary>
         /// <value>Boolean to describe if Tax rate is compounded.</value>
-        [DataMember(Name="IsCompound", EmitDefaultValue=false)]
+        [DataMember(Name = "IsCompound", EmitDefaultValue = false)]
         public bool? IsCompound { get; set; }
 
         /// <summary>
         /// Boolean to describe if tax rate is non-recoverable. Non-recoverable rates are only applicable to Canadian organisations
         /// </summary>
         /// <value>Boolean to describe if tax rate is non-recoverable. Non-recoverable rates are only applicable to Canadian organisations</value>
-        [DataMember(Name="IsNonRecoverable", EmitDefaultValue=false)]
+        [DataMember(Name = "IsNonRecoverable", EmitDefaultValue = false)]
         public bool? IsNonRecoverable { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Rate == input.Rate ||
                     (this.Rate != null &&
                     this.Rate.Equals(input.Rate))
-                ) && 
+                ) &&
                 (
                     this.IsCompound == input.IsCompound ||
                     (this.IsCompound != null &&
                     this.IsCompound.Equals(input.IsCompound))
-                ) && 
+                ) &&
                 (
                     this.IsNonRecoverable == input.IsNonRecoverable ||
                     (this.IsNonRecoverable != null &&

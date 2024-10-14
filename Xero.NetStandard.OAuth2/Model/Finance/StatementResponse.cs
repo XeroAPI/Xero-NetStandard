@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// StatementResponse
     /// </summary>
     [DataContract]
-    public partial class StatementResponse :  IEquatable<StatementResponse>, IValidatableObject
+    public partial class StatementResponse : IEquatable<StatementResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of statement
         /// </summary>
         /// <value>Xero Identifier of statement</value>
-        [DataMember(Name="statementId", EmitDefaultValue=false)]
+        [DataMember(Name = "statementId", EmitDefaultValue = false)]
         public Guid? StatementId { get; set; }
 
         /// <summary>
         /// Start date of statement
         /// </summary>
         /// <value>Start date of statement</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -50,7 +50,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// End date of statement
         /// </summary>
         /// <value>End date of statement</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -58,49 +58,49 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Utc date time of when the statement was imported in Xero
         /// </summary>
         /// <value>Utc date time of when the statement was imported in Xero</value>
-        [DataMember(Name="importedDateTimeUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "importedDateTimeUtc", EmitDefaultValue = false)]
         public DateTime? ImportedDateTimeUtc { get; set; }
 
         /// <summary>
         /// Identifies where the statement data in Xero was sourced, 1) direct bank feed, automatically loaded from the bank (eg STMTIMPORTSRC/CBAFEED); 2) indirect bank feed, automatically loaded from a 3rd party provider (eg STMTIMPORTSRC/YODLEE); 3) manually uploaded bank feed (eg STMTIMPORTSRC/CSV) or 4) manually entered statement data (STMTIMPORTSRC/MANUAL).
         /// </summary>
         /// <value>Identifies where the statement data in Xero was sourced, 1) direct bank feed, automatically loaded from the bank (eg STMTIMPORTSRC/CBAFEED); 2) indirect bank feed, automatically loaded from a 3rd party provider (eg STMTIMPORTSRC/YODLEE); 3) manually uploaded bank feed (eg STMTIMPORTSRC/CSV) or 4) manually entered statement data (STMTIMPORTSRC/MANUAL).</value>
-        [DataMember(Name="importSource", EmitDefaultValue=false)]
+        [DataMember(Name = "importSource", EmitDefaultValue = false)]
         public string ImportSource { get; set; }
 
         /// <summary>
         /// Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.
         /// </summary>
         /// <value>Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.</value>
-        [DataMember(Name="startBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "startBalance", EmitDefaultValue = false)]
         public decimal? StartBalance { get; set; }
 
         /// <summary>
         /// Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.
         /// </summary>
         /// <value>Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.</value>
-        [DataMember(Name="endBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "endBalance", EmitDefaultValue = false)]
         public decimal? EndBalance { get; set; }
 
         /// <summary>
         /// Opening statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true 
         /// </summary>
         /// <value>Opening statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true </value>
-        [DataMember(Name="indicativeStartBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "indicativeStartBalance", EmitDefaultValue = false)]
         public decimal? IndicativeStartBalance { get; set; }
 
         /// <summary>
         /// Closing statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true  
         /// </summary>
         /// <value>Closing statement balance calculated in Xero (&#x3D; bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn&#39;t match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there&#39;s an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion&#x3D;true  </value>
-        [DataMember(Name="indicativeEndBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "indicativeEndBalance", EmitDefaultValue = false)]
         public decimal? IndicativeEndBalance { get; set; }
 
         /// <summary>
         /// List of statement lines
         /// </summary>
         /// <value>List of statement lines</value>
-        [DataMember(Name="statementLines", EmitDefaultValue=false)]
+        [DataMember(Name = "statementLines", EmitDefaultValue = false)]
         public List<StatementLineResponse> StatementLines { get; set; }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -154,52 +154,52 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatementId == input.StatementId ||
                     (this.StatementId != null &&
                     this.StatementId.Equals(input.StatementId))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.ImportedDateTimeUtc == input.ImportedDateTimeUtc ||
                     (this.ImportedDateTimeUtc != null &&
                     this.ImportedDateTimeUtc.Equals(input.ImportedDateTimeUtc))
-                ) && 
+                ) &&
                 (
                     this.ImportSource == input.ImportSource ||
                     (this.ImportSource != null &&
                     this.ImportSource.Equals(input.ImportSource))
-                ) && 
+                ) &&
                 (
                     this.StartBalance == input.StartBalance ||
                     (this.StartBalance != null &&
                     this.StartBalance.Equals(input.StartBalance))
-                ) && 
+                ) &&
                 (
                     this.EndBalance == input.EndBalance ||
                     (this.EndBalance != null &&
                     this.EndBalance.Equals(input.EndBalance))
-                ) && 
+                ) &&
                 (
                     this.IndicativeStartBalance == input.IndicativeStartBalance ||
                     (this.IndicativeStartBalance != null &&
                     this.IndicativeStartBalance.Equals(input.IndicativeStartBalance))
-                ) && 
+                ) &&
                 (
                     this.IndicativeEndBalance == input.IndicativeEndBalance ||
                     (this.IndicativeEndBalance != null &&
                     this.IndicativeEndBalance.Equals(input.IndicativeEndBalance))
-                ) && 
+                ) &&
                 (
                     this.StatementLines == input.StatementLines ||
                     this.StatementLines != null &&

@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Budgets
     /// </summary>
     [DataContract]
-    public partial class Budgets :  IEquatable<Budgets>, IValidatableObject
+    public partial class Budgets : IEquatable<Budgets>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Budgets
         /// </summary>
-        [DataMember(Name="Budgets", EmitDefaultValue=false)]
+        [DataMember(Name = "Budgets", EmitDefaultValue = false)]
         public List<Budget> _Budgets { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Budgets == input._Budgets ||
                     this._Budgets != null &&

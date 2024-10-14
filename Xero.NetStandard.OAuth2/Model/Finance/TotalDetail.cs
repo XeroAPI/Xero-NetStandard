@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// TotalDetail
     /// </summary>
     [DataContract]
-    public partial class TotalDetail :  IEquatable<TotalDetail>, IValidatableObject
+    public partial class TotalDetail : IEquatable<TotalDetail>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Total paid invoice and cash value within the period.
         /// </summary>
         /// <value>Total paid invoice and cash value within the period.</value>
-        [DataMember(Name="totalPaid", EmitDefaultValue=false)]
+        [DataMember(Name = "totalPaid", EmitDefaultValue = false)]
         public decimal? TotalPaid { get; set; }
 
         /// <summary>
         /// Total outstanding invoice value within the period.
         /// </summary>
         /// <value>Total outstanding invoice value within the period.</value>
-        [DataMember(Name="totalOutstanding", EmitDefaultValue=false)]
+        [DataMember(Name = "totalOutstanding", EmitDefaultValue = false)]
         public decimal? TotalOutstanding { get; set; }
 
         /// <summary>
         /// Total unapplied credited value within the period.
         /// </summary>
         /// <value>Total unapplied credited value within the period.</value>
-        [DataMember(Name="totalCreditedUnApplied", EmitDefaultValue=false)]
+        [DataMember(Name = "totalCreditedUnApplied", EmitDefaultValue = false)]
         public decimal? TotalCreditedUnApplied { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TotalPaid == input.TotalPaid ||
                     (this.TotalPaid != null &&
                     this.TotalPaid.Equals(input.TotalPaid))
-                ) && 
+                ) &&
                 (
                     this.TotalOutstanding == input.TotalOutstanding ||
                     (this.TotalOutstanding != null &&
                     this.TotalOutstanding.Equals(input.TotalOutstanding))
-                ) && 
+                ) &&
                 (
                     this.TotalCreditedUnApplied == input.TotalCreditedUnApplied ||
                     (this.TotalCreditedUnApplied != null &&

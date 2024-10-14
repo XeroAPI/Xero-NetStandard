@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// ReportHistoryModel
     /// </summary>
     [DataContract]
-    public partial class ReportHistoryModel :  IEquatable<ReportHistoryModel>, IValidatableObject
+    public partial class ReportHistoryModel : IEquatable<ReportHistoryModel>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Report code or report title
         /// </summary>
         /// <value>Report code or report title</value>
-        [DataMember(Name="reportName", EmitDefaultValue=false)]
+        [DataMember(Name = "reportName", EmitDefaultValue = false)]
         public string ReportName { get; set; }
 
         /// <summary>
         /// The date or date range of the report
         /// </summary>
         /// <value>The date or date range of the report</value>
-        [DataMember(Name="reportDateText", EmitDefaultValue=false)]
+        [DataMember(Name = "reportDateText", EmitDefaultValue = false)]
         public string ReportDateText { get; set; }
 
         /// <summary>
         /// The system date time that the report was published
         /// </summary>
         /// <value>The system date time that the report was published</value>
-        [DataMember(Name="publishedDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "publishedDateUtc", EmitDefaultValue = false)]
         public DateTime? PublishedDateUtc { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ReportName == input.ReportName ||
                     (this.ReportName != null &&
                     this.ReportName.Equals(input.ReportName))
-                ) && 
+                ) &&
                 (
                     this.ReportDateText == input.ReportDateText ||
                     (this.ReportDateText != null &&
                     this.ReportDateText.Equals(input.ReportDateText))
-                ) && 
+                ) &&
                 (
                     this.PublishedDateUtc == input.PublishedDateUtc ||
                     (this.PublishedDateUtc != null &&

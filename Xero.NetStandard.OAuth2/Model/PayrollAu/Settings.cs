@@ -28,34 +28,34 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Settings
     /// </summary>
     [DataContract]
-    public partial class Settings :  IEquatable<Settings>, IValidatableObject
+    public partial class Settings : IEquatable<Settings>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Payroll Account details for SuperExpense, SuperLiabilty, WagesExpense, PAYGLiability &amp; WagesPayable.
         /// </summary>
         /// <value>Payroll Account details for SuperExpense, SuperLiabilty, WagesExpense, PAYGLiability &amp; WagesPayable.</value>
-        [DataMember(Name="Accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "Accounts", EmitDefaultValue = false)]
         public List<Account> Accounts { get; set; }
 
         /// <summary>
         /// Gets or Sets TrackingCategories
         /// </summary>
-        [DataMember(Name="TrackingCategories", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategories", EmitDefaultValue = false)]
         public SettingsTrackingCategories TrackingCategories { get; set; }
 
         /// <summary>
         /// Number of days in the Payroll year
         /// </summary>
         /// <value>Number of days in the Payroll year</value>
-        [DataMember(Name="DaysInPayrollYear", EmitDefaultValue=false)]
+        [DataMember(Name = "DaysInPayrollYear", EmitDefaultValue = false)]
         public int? DaysInPayrollYear { get; set; }
 
         /// <summary>
         /// Indicates if the organisation has been enabled for STP Phase 2 editing of employees.
         /// </summary>
         /// <value>Indicates if the organisation has been enabled for STP Phase 2 editing of employees.</value>
-        [DataMember(Name="EmployeesAreSTP2", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeesAreSTP2", EmitDefaultValue = false)]
         public bool? EmployeesAreSTP2 { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,23 +103,23 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Accounts == input.Accounts ||
                     this.Accounts != null &&
                     input.Accounts != null &&
                     this.Accounts.SequenceEqual(input.Accounts)
-                ) && 
+                ) &&
                 (
                     this.TrackingCategories == input.TrackingCategories ||
                     (this.TrackingCategories != null &&
                     this.TrackingCategories.Equals(input.TrackingCategories))
-                ) && 
+                ) &&
                 (
                     this.DaysInPayrollYear == input.DaysInPayrollYear ||
                     (this.DaysInPayrollYear != null &&
                     this.DaysInPayrollYear.Equals(input.DaysInPayrollYear))
-                ) && 
+                ) &&
                 (
                     this.EmployeesAreSTP2 == input.EmployeesAreSTP2 ||
                     (this.EmployeesAreSTP2 != null &&

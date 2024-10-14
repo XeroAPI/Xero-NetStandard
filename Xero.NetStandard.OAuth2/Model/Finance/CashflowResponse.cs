@@ -28,14 +28,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// CashflowResponse
     /// </summary>
     [DataContract]
-    public partial class CashflowResponse :  IEquatable<CashflowResponse>, IValidatableObject
+    public partial class CashflowResponse : IEquatable<CashflowResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Start date of the report
         /// </summary>
         /// <value>Start date of the report</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -43,21 +43,21 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// End date of the report
         /// </summary>
         /// <value>End date of the report</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CashBalance
         /// </summary>
-        [DataMember(Name="cashBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "cashBalance", EmitDefaultValue = false)]
         public CashBalance CashBalance { get; set; }
 
         /// <summary>
         /// Break down of cash and cash equivalents for the period
         /// </summary>
         /// <value>Break down of cash and cash equivalents for the period</value>
-        [DataMember(Name="cashflowActivities", EmitDefaultValue=false)]
+        [DataMember(Name = "cashflowActivities", EmitDefaultValue = false)]
         public List<CashflowActivity> CashflowActivities { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -105,22 +105,22 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.CashBalance == input.CashBalance ||
                     (this.CashBalance != null &&
                     this.CashBalance.Equals(input.CashBalance))
-                ) && 
+                ) &&
                 (
                     this.CashflowActivities == input.CashflowActivities ||
                     this.CashflowActivities != null &&

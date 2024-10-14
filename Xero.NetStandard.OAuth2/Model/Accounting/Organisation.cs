@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Organisation
     /// </summary>
     [DataContract]
-    public partial class Organisation :  IEquatable<Organisation>, IValidatableObject
+    public partial class Organisation : IEquatable<Organisation>, IValidatableObject
     {
         /// <summary>
         /// See Version Types
@@ -103,7 +103,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Version Types
         /// </summary>
         /// <value>See Version Types</value>
-        [DataMember(Name="Version", EmitDefaultValue=false)]
+        [DataMember(Name = "Version", EmitDefaultValue = false)]
         public VersionEnum Version { get; set; }
         /// <summary>
         /// Organisation Type
@@ -196,17 +196,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Organisation Type
         /// </summary>
         /// <value>Organisation Type</value>
-        [DataMember(Name="OrganisationType", EmitDefaultValue=false)]
+        [DataMember(Name = "OrganisationType", EmitDefaultValue = false)]
         public OrganisationTypeEnum OrganisationType { get; set; }
         /// <summary>
         /// Gets or Sets BaseCurrency
         /// </summary>
-        [DataMember(Name="BaseCurrency", EmitDefaultValue=false)]
+        [DataMember(Name = "BaseCurrency", EmitDefaultValue = false)]
         public CurrencyCode BaseCurrency { get; set; }
         /// <summary>
         /// Gets or Sets CountryCode
         /// </summary>
-        [DataMember(Name="CountryCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CountryCode", EmitDefaultValue = false)]
         public CountryCode CountryCode { get; set; }
         /// <summary>
         /// The accounting basis used for tax returns. See Sales Tax Basis
@@ -269,7 +269,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The accounting basis used for tax returns. See Sales Tax Basis
         /// </summary>
         /// <value>The accounting basis used for tax returns. See Sales Tax Basis</value>
-        [DataMember(Name="SalesTaxBasis", EmitDefaultValue=false)]
+        [DataMember(Name = "SalesTaxBasis", EmitDefaultValue = false)]
         public SalesTaxBasisEnum SalesTaxBasis { get; set; }
         /// <summary>
         /// The frequency with which tax returns are processed. See Sales Tax Period
@@ -374,12 +374,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The frequency with which tax returns are processed. See Sales Tax Period
         /// </summary>
         /// <value>The frequency with which tax returns are processed. See Sales Tax Period</value>
-        [DataMember(Name="SalesTaxPeriod", EmitDefaultValue=false)]
+        [DataMember(Name = "SalesTaxPeriod", EmitDefaultValue = false)]
         public SalesTaxPeriodEnum SalesTaxPeriod { get; set; }
         /// <summary>
         /// Gets or Sets Timezone
         /// </summary>
-        [DataMember(Name="Timezone", EmitDefaultValue=false)]
+        [DataMember(Name = "Timezone", EmitDefaultValue = false)]
         public TimeZone Timezone { get; set; }
         /// <summary>
         /// Organisation Entity Type
@@ -472,7 +472,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Organisation Entity Type
         /// </summary>
         /// <value>Organisation Entity Type</value>
-        [DataMember(Name="OrganisationEntityType", EmitDefaultValue=false)]
+        [DataMember(Name = "OrganisationEntityType", EmitDefaultValue = false)]
         public OrganisationEntityTypeEnum OrganisationEntityType { get; set; }
         /// <summary>
         /// Organisation Classes describe which plan the Xero organisation is on (e.g. DEMO, TRIAL, PREMIUM)
@@ -607,7 +607,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Organisation Classes describe which plan the Xero organisation is on (e.g. DEMO, TRIAL, PREMIUM)
         /// </summary>
         /// <value>Organisation Classes describe which plan the Xero organisation is on (e.g. DEMO, TRIAL, PREMIUM)</value>
-        [DataMember(Name="Class", EmitDefaultValue=false)]
+        [DataMember(Name = "Class", EmitDefaultValue = false)]
         public ClassEnum Class { get; set; }
         /// <summary>
         /// BUSINESS or PARTNER. Partner edition organisations are sold exclusively through accounting partners and have restricted functionality (e.g. no access to invoicing)
@@ -634,167 +634,167 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// BUSINESS or PARTNER. Partner edition organisations are sold exclusively through accounting partners and have restricted functionality (e.g. no access to invoicing)
         /// </summary>
         /// <value>BUSINESS or PARTNER. Partner edition organisations are sold exclusively through accounting partners and have restricted functionality (e.g. no access to invoicing)</value>
-        [DataMember(Name="Edition", EmitDefaultValue=false)]
+        [DataMember(Name = "Edition", EmitDefaultValue = false)]
         public EditionEnum Edition { get; set; }
-        
+
         /// <summary>
         /// Unique Xero identifier
         /// </summary>
         /// <value>Unique Xero identifier</value>
-        [DataMember(Name="OrganisationID", EmitDefaultValue=false)]
+        [DataMember(Name = "OrganisationID", EmitDefaultValue = false)]
         public Guid? OrganisationID { get; set; }
 
         /// <summary>
         /// Display a unique key used for Xero-to-Xero transactions
         /// </summary>
         /// <value>Display a unique key used for Xero-to-Xero transactions</value>
-        [DataMember(Name="APIKey", EmitDefaultValue=false)]
+        [DataMember(Name = "APIKey", EmitDefaultValue = false)]
         public string APIKey { get; set; }
 
         /// <summary>
         /// Display name of organisation shown in Xero
         /// </summary>
         /// <value>Display name of organisation shown in Xero</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Organisation name shown on Reports
         /// </summary>
         /// <value>Organisation name shown on Reports</value>
-        [DataMember(Name="LegalName", EmitDefaultValue=false)]
+        [DataMember(Name = "LegalName", EmitDefaultValue = false)]
         public string LegalName { get; set; }
 
         /// <summary>
         /// Boolean to describe if organisation is registered with a local tax authority i.e. true, false
         /// </summary>
         /// <value>Boolean to describe if organisation is registered with a local tax authority i.e. true, false</value>
-        [DataMember(Name="PaysTax", EmitDefaultValue=false)]
+        [DataMember(Name = "PaysTax", EmitDefaultValue = false)]
         public bool? PaysTax { get; set; }
 
         /// <summary>
         /// Boolean to describe if organisation is a demo company.
         /// </summary>
         /// <value>Boolean to describe if organisation is a demo company.</value>
-        [DataMember(Name="IsDemoCompany", EmitDefaultValue=false)]
+        [DataMember(Name = "IsDemoCompany", EmitDefaultValue = false)]
         public bool? IsDemoCompany { get; set; }
 
         /// <summary>
         /// Will be set to ACTIVE if you can connect to organisation via the Xero API
         /// </summary>
         /// <value>Will be set to ACTIVE if you can connect to organisation via the Xero API</value>
-        [DataMember(Name="OrganisationStatus", EmitDefaultValue=false)]
+        [DataMember(Name = "OrganisationStatus", EmitDefaultValue = false)]
         public string OrganisationStatus { get; set; }
 
         /// <summary>
         /// Shows for New Zealand, Australian and UK organisations
         /// </summary>
         /// <value>Shows for New Zealand, Australian and UK organisations</value>
-        [DataMember(Name="RegistrationNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "RegistrationNumber", EmitDefaultValue = false)]
         public string RegistrationNumber { get; set; }
 
         /// <summary>
         /// Shown if set. US Only.
         /// </summary>
         /// <value>Shown if set. US Only.</value>
-        [DataMember(Name="EmployerIdentificationNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployerIdentificationNumber", EmitDefaultValue = false)]
         public string EmployerIdentificationNumber { get; set; }
 
         /// <summary>
         /// Shown if set. Displays in the Xero UI as Tax File Number (AU), GST Number (NZ), VAT Number (UK) and Tax ID Number (US &amp; Global).
         /// </summary>
         /// <value>Shown if set. Displays in the Xero UI as Tax File Number (AU), GST Number (NZ), VAT Number (UK) and Tax ID Number (US &amp; Global).</value>
-        [DataMember(Name="TaxNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxNumber", EmitDefaultValue = false)]
         public string TaxNumber { get; set; }
 
         /// <summary>
         /// Calendar day e.g. 0-31
         /// </summary>
         /// <value>Calendar day e.g. 0-31</value>
-        [DataMember(Name="FinancialYearEndDay", EmitDefaultValue=false)]
+        [DataMember(Name = "FinancialYearEndDay", EmitDefaultValue = false)]
         public int? FinancialYearEndDay { get; set; }
 
         /// <summary>
         /// Calendar Month e.g. 1-12
         /// </summary>
         /// <value>Calendar Month e.g. 1-12</value>
-        [DataMember(Name="FinancialYearEndMonth", EmitDefaultValue=false)]
+        [DataMember(Name = "FinancialYearEndMonth", EmitDefaultValue = false)]
         public int? FinancialYearEndMonth { get; set; }
 
         /// <summary>
         /// The default for LineAmountTypes on sales transactions
         /// </summary>
         /// <value>The default for LineAmountTypes on sales transactions</value>
-        [DataMember(Name="DefaultSalesTax", EmitDefaultValue=false)]
+        [DataMember(Name = "DefaultSalesTax", EmitDefaultValue = false)]
         public string DefaultSalesTax { get; set; }
 
         /// <summary>
         /// The default for LineAmountTypes on purchase transactions
         /// </summary>
         /// <value>The default for LineAmountTypes on purchase transactions</value>
-        [DataMember(Name="DefaultPurchasesTax", EmitDefaultValue=false)]
+        [DataMember(Name = "DefaultPurchasesTax", EmitDefaultValue = false)]
         public string DefaultPurchasesTax { get; set; }
 
         /// <summary>
         /// Shown if set. See lock dates
         /// </summary>
         /// <value>Shown if set. See lock dates</value>
-        [DataMember(Name="PeriodLockDate", EmitDefaultValue=false)]
+        [DataMember(Name = "PeriodLockDate", EmitDefaultValue = false)]
         public DateTime? PeriodLockDate { get; set; }
 
         /// <summary>
         /// Shown if set. See lock dates
         /// </summary>
         /// <value>Shown if set. See lock dates</value>
-        [DataMember(Name="EndOfYearLockDate", EmitDefaultValue=false)]
+        [DataMember(Name = "EndOfYearLockDate", EmitDefaultValue = false)]
         public DateTime? EndOfYearLockDate { get; set; }
 
         /// <summary>
         /// Timestamp when the organisation was created in Xero
         /// </summary>
         /// <value>Timestamp when the organisation was created in Xero</value>
-        [DataMember(Name="CreatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "CreatedDateUTC", EmitDefaultValue = false)]
         public DateTime? CreatedDateUTC { get; private set; }
 
         /// <summary>
         /// A unique identifier for the organisation. Potential uses.
         /// </summary>
         /// <value>A unique identifier for the organisation. Potential uses.</value>
-        [DataMember(Name="ShortCode", EmitDefaultValue=false)]
+        [DataMember(Name = "ShortCode", EmitDefaultValue = false)]
         public string ShortCode { get; set; }
 
         /// <summary>
         /// Description of business type as defined in Organisation settings
         /// </summary>
         /// <value>Description of business type as defined in Organisation settings</value>
-        [DataMember(Name="LineOfBusiness", EmitDefaultValue=false)]
+        [DataMember(Name = "LineOfBusiness", EmitDefaultValue = false)]
         public string LineOfBusiness { get; set; }
 
         /// <summary>
         /// Address details for organisation – see Addresses
         /// </summary>
         /// <value>Address details for organisation – see Addresses</value>
-        [DataMember(Name="Addresses", EmitDefaultValue=false)]
+        [DataMember(Name = "Addresses", EmitDefaultValue = false)]
         public List<AddressForOrganisation> Addresses { get; set; }
 
         /// <summary>
         /// Phones details for organisation – see Phones
         /// </summary>
         /// <value>Phones details for organisation – see Phones</value>
-        [DataMember(Name="Phones", EmitDefaultValue=false)]
+        [DataMember(Name = "Phones", EmitDefaultValue = false)]
         public List<Phone> Phones { get; set; }
 
         /// <summary>
         /// Organisation profile links for popular services such as Facebook,Twitter, GooglePlus and LinkedIn. You can also add link to your website here. Shown if Organisation settings  is updated in Xero. See ExternalLinks below
         /// </summary>
         /// <value>Organisation profile links for popular services such as Facebook,Twitter, GooglePlus and LinkedIn. You can also add link to your website here. Shown if Organisation settings  is updated in Xero. See ExternalLinks below</value>
-        [DataMember(Name="ExternalLinks", EmitDefaultValue=false)]
+        [DataMember(Name = "ExternalLinks", EmitDefaultValue = false)]
         public List<ExternalLink> ExternalLinks { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentTerms
         /// </summary>
-        [DataMember(Name="PaymentTerms", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentTerms", EmitDefaultValue = false)]
         public PaymentTerm PaymentTerms { get; set; }
 
         /// <summary>
@@ -841,7 +841,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -871,160 +871,160 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.OrganisationID == input.OrganisationID ||
                     (this.OrganisationID != null &&
                     this.OrganisationID.Equals(input.OrganisationID))
-                ) && 
+                ) &&
                 (
                     this.APIKey == input.APIKey ||
                     (this.APIKey != null &&
                     this.APIKey.Equals(input.APIKey))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.LegalName == input.LegalName ||
                     (this.LegalName != null &&
                     this.LegalName.Equals(input.LegalName))
-                ) && 
+                ) &&
                 (
                     this.PaysTax == input.PaysTax ||
                     (this.PaysTax != null &&
                     this.PaysTax.Equals(input.PaysTax))
-                ) && 
+                ) &&
                 (
                     this.Version == input.Version ||
                     this.Version.Equals(input.Version)
-                ) && 
+                ) &&
                 (
                     this.OrganisationType == input.OrganisationType ||
                     this.OrganisationType.Equals(input.OrganisationType)
-                ) && 
+                ) &&
                 (
                     this.BaseCurrency == input.BaseCurrency ||
                     this.BaseCurrency.Equals(input.BaseCurrency)
-                ) && 
+                ) &&
                 (
                     this.CountryCode == input.CountryCode ||
                     this.CountryCode.Equals(input.CountryCode)
-                ) && 
+                ) &&
                 (
                     this.IsDemoCompany == input.IsDemoCompany ||
                     (this.IsDemoCompany != null &&
                     this.IsDemoCompany.Equals(input.IsDemoCompany))
-                ) && 
+                ) &&
                 (
                     this.OrganisationStatus == input.OrganisationStatus ||
                     (this.OrganisationStatus != null &&
                     this.OrganisationStatus.Equals(input.OrganisationStatus))
-                ) && 
+                ) &&
                 (
                     this.RegistrationNumber == input.RegistrationNumber ||
                     (this.RegistrationNumber != null &&
                     this.RegistrationNumber.Equals(input.RegistrationNumber))
-                ) && 
+                ) &&
                 (
                     this.EmployerIdentificationNumber == input.EmployerIdentificationNumber ||
                     (this.EmployerIdentificationNumber != null &&
                     this.EmployerIdentificationNumber.Equals(input.EmployerIdentificationNumber))
-                ) && 
+                ) &&
                 (
                     this.TaxNumber == input.TaxNumber ||
                     (this.TaxNumber != null &&
                     this.TaxNumber.Equals(input.TaxNumber))
-                ) && 
+                ) &&
                 (
                     this.FinancialYearEndDay == input.FinancialYearEndDay ||
                     (this.FinancialYearEndDay != null &&
                     this.FinancialYearEndDay.Equals(input.FinancialYearEndDay))
-                ) && 
+                ) &&
                 (
                     this.FinancialYearEndMonth == input.FinancialYearEndMonth ||
                     (this.FinancialYearEndMonth != null &&
                     this.FinancialYearEndMonth.Equals(input.FinancialYearEndMonth))
-                ) && 
+                ) &&
                 (
                     this.SalesTaxBasis == input.SalesTaxBasis ||
                     this.SalesTaxBasis.Equals(input.SalesTaxBasis)
-                ) && 
+                ) &&
                 (
                     this.SalesTaxPeriod == input.SalesTaxPeriod ||
                     this.SalesTaxPeriod.Equals(input.SalesTaxPeriod)
-                ) && 
+                ) &&
                 (
                     this.DefaultSalesTax == input.DefaultSalesTax ||
                     (this.DefaultSalesTax != null &&
                     this.DefaultSalesTax.Equals(input.DefaultSalesTax))
-                ) && 
+                ) &&
                 (
                     this.DefaultPurchasesTax == input.DefaultPurchasesTax ||
                     (this.DefaultPurchasesTax != null &&
                     this.DefaultPurchasesTax.Equals(input.DefaultPurchasesTax))
-                ) && 
+                ) &&
                 (
                     this.PeriodLockDate == input.PeriodLockDate ||
                     (this.PeriodLockDate != null &&
                     this.PeriodLockDate.Equals(input.PeriodLockDate))
-                ) && 
+                ) &&
                 (
                     this.EndOfYearLockDate == input.EndOfYearLockDate ||
                     (this.EndOfYearLockDate != null &&
                     this.EndOfYearLockDate.Equals(input.EndOfYearLockDate))
-                ) && 
+                ) &&
                 (
                     this.CreatedDateUTC == input.CreatedDateUTC ||
                     (this.CreatedDateUTC != null &&
                     this.CreatedDateUTC.Equals(input.CreatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.Timezone == input.Timezone ||
                     this.Timezone.Equals(input.Timezone)
-                ) && 
+                ) &&
                 (
                     this.OrganisationEntityType == input.OrganisationEntityType ||
                     this.OrganisationEntityType.Equals(input.OrganisationEntityType)
-                ) && 
+                ) &&
                 (
                     this.ShortCode == input.ShortCode ||
                     (this.ShortCode != null &&
                     this.ShortCode.Equals(input.ShortCode))
-                ) && 
+                ) &&
                 (
                     this.Class == input.Class ||
                     this.Class.Equals(input.Class)
-                ) && 
+                ) &&
                 (
                     this.Edition == input.Edition ||
                     this.Edition.Equals(input.Edition)
-                ) && 
+                ) &&
                 (
                     this.LineOfBusiness == input.LineOfBusiness ||
                     (this.LineOfBusiness != null &&
                     this.LineOfBusiness.Equals(input.LineOfBusiness))
-                ) && 
+                ) &&
                 (
                     this.Addresses == input.Addresses ||
                     this.Addresses != null &&
                     input.Addresses != null &&
                     this.Addresses.SequenceEqual(input.Addresses)
-                ) && 
+                ) &&
                 (
                     this.Phones == input.Phones ||
                     this.Phones != null &&
                     input.Phones != null &&
                     this.Phones.SequenceEqual(input.Phones)
-                ) && 
+                ) &&
                 (
                     this.ExternalLinks == input.ExternalLinks ||
                     this.ExternalLinks != null &&
                     input.ExternalLinks != null &&
                     this.ExternalLinks.SequenceEqual(input.ExternalLinks)
-                ) && 
+                ) &&
                 (
                     this.PaymentTerms == input.PaymentTerms ||
                     (this.PaymentTerms != null &&

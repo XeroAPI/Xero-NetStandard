@@ -151,12 +151,14 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollNz
         }
 
         [Fact]
-        public void CalculationType_Empty_Deserialises(){
+        public void CalculationType_Empty_Deserialises()
+        {
             // To be implemented
         }
 
         [Fact]
-        public void CalculationType_InvalidInput_Deserialises(){
+        public void CalculationType_InvalidInput_Deserialises()
+        {
             // To be implemented
         }
 

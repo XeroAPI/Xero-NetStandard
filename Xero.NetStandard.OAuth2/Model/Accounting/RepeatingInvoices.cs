@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// RepeatingInvoices
     /// </summary>
     [DataContract]
-    public partial class RepeatingInvoices :  IEquatable<RepeatingInvoices>, IValidatableObject
+    public partial class RepeatingInvoices : IEquatable<RepeatingInvoices>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _RepeatingInvoices
         /// </summary>
-        [DataMember(Name="RepeatingInvoices", EmitDefaultValue=false)]
+        [DataMember(Name = "RepeatingInvoices", EmitDefaultValue = false)]
         public List<RepeatingInvoice> _RepeatingInvoices { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._RepeatingInvoices == input._RepeatingInvoices ||
                     this._RepeatingInvoices != null &&

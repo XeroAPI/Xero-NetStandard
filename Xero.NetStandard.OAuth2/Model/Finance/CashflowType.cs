@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// CashflowType
     /// </summary>
     [DataContract]
-    public partial class CashflowType :  IEquatable<CashflowType>, IValidatableObject
+    public partial class CashflowType : IEquatable<CashflowType>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Name of the activity
         /// </summary>
         /// <value>Name of the activity</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Total value of the activity
         /// </summary>
         /// <value>Total value of the activity</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// List of the accounts in this activity
         /// </summary>
         /// <value>List of the accounts in this activity</value>
-        [DataMember(Name="accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "accounts", EmitDefaultValue = false)]
         public List<CashflowAccount> Accounts { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.Accounts == input.Accounts ||
                     this.Accounts != null &&

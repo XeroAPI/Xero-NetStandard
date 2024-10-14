@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BatchPaymentDelete
     /// </summary>
     [DataContract]
-    public partial class BatchPaymentDelete :  IEquatable<BatchPaymentDelete>, IValidatableObject
+    public partial class BatchPaymentDelete : IEquatable<BatchPaymentDelete>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchPaymentDelete" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public BatchPaymentDelete() 
-        { 
+        public BatchPaymentDelete()
+        {
         }
-        
+
         /// <summary>
         /// The Xero generated unique identifier for the bank transaction (read-only)
         /// </summary>
         /// <value>The Xero generated unique identifier for the bank transaction (read-only)</value>
-        [DataMember(Name="BatchPaymentID", EmitDefaultValue=false)]
+        [DataMember(Name = "BatchPaymentID", EmitDefaultValue = false)]
         public Guid? BatchPaymentID { get; set; }
 
         /// <summary>
         /// The status of the batch payment.
         /// </summary>
         /// <value>The status of the batch payment.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public string Status { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -95,12 +95,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BatchPaymentID == input.BatchPaymentID ||
                     (this.BatchPaymentID != null &&
                     this.BatchPaymentID.Equals(input.BatchPaymentID))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&

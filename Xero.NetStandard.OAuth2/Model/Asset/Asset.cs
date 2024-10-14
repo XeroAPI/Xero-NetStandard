@@ -28,54 +28,54 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
     /// Asset
     /// </summary>
     [DataContract]
-    public partial class Asset :  IEquatable<Asset>, IValidatableObject
+    public partial class Asset : IEquatable<Asset>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets AssetStatus
         /// </summary>
-        [DataMember(Name="assetStatus", EmitDefaultValue=false)]
+        [DataMember(Name = "assetStatus", EmitDefaultValue = false)]
         public AssetStatus AssetStatus { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Asset" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Asset() 
-        { 
+        public Asset()
+        {
         }
-        
+
         /// <summary>
         /// The Xero-generated Id for the asset
         /// </summary>
         /// <value>The Xero-generated Id for the asset</value>
-        [DataMember(Name="assetId", EmitDefaultValue=false)]
+        [DataMember(Name = "assetId", EmitDefaultValue = false)]
         public Guid? AssetId { get; set; }
 
         /// <summary>
         /// The name of the asset
         /// </summary>
         /// <value>The name of the asset</value>
-        [DataMember(Name="assetName", EmitDefaultValue=false)]
+        [DataMember(Name = "assetName", EmitDefaultValue = false)]
         public string AssetName { get; set; }
 
         /// <summary>
         /// The Xero-generated Id for the asset type
         /// </summary>
         /// <value>The Xero-generated Id for the asset type</value>
-        [DataMember(Name="assetTypeId", EmitDefaultValue=false)]
+        [DataMember(Name = "assetTypeId", EmitDefaultValue = false)]
         public Guid? AssetTypeId { get; set; }
 
         /// <summary>
         /// Must be unique.
         /// </summary>
         /// <value>Must be unique.</value>
-        [DataMember(Name="assetNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "assetNumber", EmitDefaultValue = false)]
         public string AssetNumber { get; set; }
 
         /// <summary>
         /// The date the asset was purchased YYYY-MM-DD
         /// </summary>
         /// <value>The date the asset was purchased YYYY-MM-DD</value>
-        [DataMember(Name="purchaseDate", EmitDefaultValue=false)]
+        [DataMember(Name = "purchaseDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PurchaseDate { get; set; }
 
@@ -83,14 +83,14 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The purchase price of the asset
         /// </summary>
         /// <value>The purchase price of the asset</value>
-        [DataMember(Name="purchasePrice", EmitDefaultValue=false)]
+        [DataMember(Name = "purchasePrice", EmitDefaultValue = false)]
         public decimal? PurchasePrice { get; set; }
 
         /// <summary>
         /// The date the asset was disposed
         /// </summary>
         /// <value>The date the asset was disposed</value>
-        [DataMember(Name="disposalDate", EmitDefaultValue=false)]
+        [DataMember(Name = "disposalDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? DisposalDate { get; set; }
 
@@ -98,54 +98,54 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// The price the asset was disposed at
         /// </summary>
         /// <value>The price the asset was disposed at</value>
-        [DataMember(Name="disposalPrice", EmitDefaultValue=false)]
+        [DataMember(Name = "disposalPrice", EmitDefaultValue = false)]
         public decimal? DisposalPrice { get; set; }
 
         /// <summary>
         /// The date the asset’s warranty expires (if needed) YYYY-MM-DD
         /// </summary>
         /// <value>The date the asset’s warranty expires (if needed) YYYY-MM-DD</value>
-        [DataMember(Name="warrantyExpiryDate", EmitDefaultValue=false)]
+        [DataMember(Name = "warrantyExpiryDate", EmitDefaultValue = false)]
         public string WarrantyExpiryDate { get; set; }
 
         /// <summary>
         /// The asset&#39;s serial number
         /// </summary>
         /// <value>The asset&#39;s serial number</value>
-        [DataMember(Name="serialNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "serialNumber", EmitDefaultValue = false)]
         public string SerialNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets BookDepreciationSetting
         /// </summary>
-        [DataMember(Name="bookDepreciationSetting", EmitDefaultValue=false)]
+        [DataMember(Name = "bookDepreciationSetting", EmitDefaultValue = false)]
         public BookDepreciationSetting BookDepreciationSetting { get; set; }
 
         /// <summary>
         /// Gets or Sets BookDepreciationDetail
         /// </summary>
-        [DataMember(Name="bookDepreciationDetail", EmitDefaultValue=false)]
+        [DataMember(Name = "bookDepreciationDetail", EmitDefaultValue = false)]
         public BookDepreciationDetail BookDepreciationDetail { get; set; }
 
         /// <summary>
         /// Boolean to indicate whether depreciation can be rolled back for this asset individually. This is true if it doesn&#39;t have &#39;legacy&#39; journal entries and if there is no lock period that would prevent this asset from rolling back.
         /// </summary>
         /// <value>Boolean to indicate whether depreciation can be rolled back for this asset individually. This is true if it doesn&#39;t have &#39;legacy&#39; journal entries and if there is no lock period that would prevent this asset from rolling back.</value>
-        [DataMember(Name="canRollback", EmitDefaultValue=false)]
+        [DataMember(Name = "canRollback", EmitDefaultValue = false)]
         public bool? CanRollback { get; set; }
 
         /// <summary>
         /// The accounting value of the asset
         /// </summary>
         /// <value>The accounting value of the asset</value>
-        [DataMember(Name="accountingBookValue", EmitDefaultValue=false)]
+        [DataMember(Name = "accountingBookValue", EmitDefaultValue = false)]
         public decimal? AccountingBookValue { get; set; }
 
         /// <summary>
         /// Boolean to indicate whether delete is enabled
         /// </summary>
         /// <value>Boolean to indicate whether delete is enabled</value>
-        [DataMember(Name="isDeleteEnabledForDate", EmitDefaultValue=false)]
+        [DataMember(Name = "isDeleteEnabledForDate", EmitDefaultValue = false)]
         public bool? IsDeleteEnabledForDate { get; set; }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -205,81 +205,81 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AssetId == input.AssetId ||
                     (this.AssetId != null &&
                     this.AssetId.Equals(input.AssetId))
-                ) && 
+                ) &&
                 (
                     this.AssetName == input.AssetName ||
                     (this.AssetName != null &&
                     this.AssetName.Equals(input.AssetName))
-                ) && 
+                ) &&
                 (
                     this.AssetTypeId == input.AssetTypeId ||
                     (this.AssetTypeId != null &&
                     this.AssetTypeId.Equals(input.AssetTypeId))
-                ) && 
+                ) &&
                 (
                     this.AssetNumber == input.AssetNumber ||
                     (this.AssetNumber != null &&
                     this.AssetNumber.Equals(input.AssetNumber))
-                ) && 
+                ) &&
                 (
                     this.PurchaseDate == input.PurchaseDate ||
                     (this.PurchaseDate != null &&
                     this.PurchaseDate.Equals(input.PurchaseDate))
-                ) && 
+                ) &&
                 (
                     this.PurchasePrice == input.PurchasePrice ||
                     (this.PurchasePrice != null &&
                     this.PurchasePrice.Equals(input.PurchasePrice))
-                ) && 
+                ) &&
                 (
                     this.DisposalDate == input.DisposalDate ||
                     (this.DisposalDate != null &&
                     this.DisposalDate.Equals(input.DisposalDate))
-                ) && 
+                ) &&
                 (
                     this.DisposalPrice == input.DisposalPrice ||
                     (this.DisposalPrice != null &&
                     this.DisposalPrice.Equals(input.DisposalPrice))
-                ) && 
+                ) &&
                 (
                     this.AssetStatus == input.AssetStatus ||
                     this.AssetStatus.Equals(input.AssetStatus)
-                ) && 
+                ) &&
                 (
                     this.WarrantyExpiryDate == input.WarrantyExpiryDate ||
                     (this.WarrantyExpiryDate != null &&
                     this.WarrantyExpiryDate.Equals(input.WarrantyExpiryDate))
-                ) && 
+                ) &&
                 (
                     this.SerialNumber == input.SerialNumber ||
                     (this.SerialNumber != null &&
                     this.SerialNumber.Equals(input.SerialNumber))
-                ) && 
+                ) &&
                 (
                     this.BookDepreciationSetting == input.BookDepreciationSetting ||
                     (this.BookDepreciationSetting != null &&
                     this.BookDepreciationSetting.Equals(input.BookDepreciationSetting))
-                ) && 
+                ) &&
                 (
                     this.BookDepreciationDetail == input.BookDepreciationDetail ||
                     (this.BookDepreciationDetail != null &&
                     this.BookDepreciationDetail.Equals(input.BookDepreciationDetail))
-                ) && 
+                ) &&
                 (
                     this.CanRollback == input.CanRollback ||
                     (this.CanRollback != null &&
                     this.CanRollback.Equals(input.CanRollback))
-                ) && 
+                ) &&
                 (
                     this.AccountingBookValue == input.AccountingBookValue ||
                     (this.AccountingBookValue != null &&
                     this.AccountingBookValue.Equals(input.AccountingBookValue))
-                ) && 
+                ) &&
                 (
                     this.IsDeleteEnabledForDate == input.IsDeleteEnabledForDate ||
                     (this.IsDeleteEnabledForDate != null &&

@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// TrialBalanceEntry
     /// </summary>
     [DataContract]
-    public partial class TrialBalanceEntry :  IEquatable<TrialBalanceEntry>, IValidatableObject
+    public partial class TrialBalanceEntry : IEquatable<TrialBalanceEntry>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Net movement or net balance in the account
         /// </summary>
         /// <value>Net movement or net balance in the account</value>
-        [DataMember(Name="value", EmitDefaultValue=false)]
+        [DataMember(Name = "value", EmitDefaultValue = false)]
         public decimal? Value { get; set; }
 
         /// <summary>
         /// Sign (Debit/Credit) of the movement of balance in the account
         /// </summary>
         /// <value>Sign (Debit/Credit) of the movement of balance in the account</value>
-        [DataMember(Name="entryType", EmitDefaultValue=false)]
+        [DataMember(Name = "entryType", EmitDefaultValue = false)]
         public string EntryType { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
-                ) && 
+                ) &&
                 (
                     this.EntryType == input.EntryType ||
                     (this.EntryType != null &&

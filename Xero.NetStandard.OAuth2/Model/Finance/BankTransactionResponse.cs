@@ -28,34 +28,34 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// BankTransactionResponse
     /// </summary>
     [DataContract]
-    public partial class BankTransactionResponse :  IEquatable<BankTransactionResponse>, IValidatableObject
+    public partial class BankTransactionResponse : IEquatable<BankTransactionResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of transaction
         /// </summary>
         /// <value>Xero Identifier of transaction</value>
-        [DataMember(Name="bankTransactionId", EmitDefaultValue=false)]
+        [DataMember(Name = "bankTransactionId", EmitDefaultValue = false)]
         public Guid? BankTransactionId { get; set; }
 
         /// <summary>
         /// Xero Identifier of batch payment. Present if the transaction is part of a batch.
         /// </summary>
         /// <value>Xero Identifier of batch payment. Present if the transaction is part of a batch.</value>
-        [DataMember(Name="batchPaymentId", EmitDefaultValue=false)]
+        [DataMember(Name = "batchPaymentId", EmitDefaultValue = false)]
         public Guid? BatchPaymentId { get; set; }
 
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="contact", EmitDefaultValue=false)]
+        [DataMember(Name = "contact", EmitDefaultValue = false)]
         public ContactResponse Contact { get; set; }
 
         /// <summary>
         /// Date of transaction - YYYY-MM-DD
         /// </summary>
         /// <value>Date of transaction - YYYY-MM-DD</value>
-        [DataMember(Name="date", EmitDefaultValue=false)]
+        [DataMember(Name = "date", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? Date { get; set; }
 
@@ -63,14 +63,14 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Amount of transaction
         /// </summary>
         /// <value>Amount of transaction</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The LineItems element can contain any number of individual LineItem sub-elements. Not included in summary mode
         /// </summary>
         /// <value>The LineItems element can contain any number of individual LineItem sub-elements. Not included in summary mode</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "lineItems", EmitDefaultValue = false)]
         public List<LineItemResponse> LineItems { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BankTransactionId == input.BankTransactionId ||
                     (this.BankTransactionId != null &&
                     this.BankTransactionId.Equals(input.BankTransactionId))
-                ) && 
+                ) &&
                 (
                     this.BatchPaymentId == input.BatchPaymentId ||
                     (this.BatchPaymentId != null &&
                     this.BatchPaymentId.Equals(input.BatchPaymentId))
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&

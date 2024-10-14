@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// StatementBalanceResponse
     /// </summary>
     [DataContract]
-    public partial class StatementBalanceResponse :  IEquatable<StatementBalanceResponse>, IValidatableObject
+    public partial class StatementBalanceResponse : IEquatable<StatementBalanceResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Total closing balance of the account. This includes both reconciled and unreconciled bank statement lines. The closing balance will always be represented as a positive number, with it’s debit/credit status defined in the statementBalanceDebitCredit field.
         /// </summary>
         /// <value>Total closing balance of the account. This includes both reconciled and unreconciled bank statement lines. The closing balance will always be represented as a positive number, with it’s debit/credit status defined in the statementBalanceDebitCredit field.</value>
-        [DataMember(Name="value", EmitDefaultValue=false)]
+        [DataMember(Name = "value", EmitDefaultValue = false)]
         public decimal? Value { get; set; }
 
         /// <summary>
         /// The DEBIT or CREDIT status of the account. Cash accounts in credit have a negative balance.
         /// </summary>
         /// <value>The DEBIT or CREDIT status of the account. Cash accounts in credit have a negative balance.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Value == input.Value ||
                     (this.Value != null &&
                     this.Value.Equals(input.Value))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&

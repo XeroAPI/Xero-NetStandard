@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Employment
     /// </summary>
     [DataContract]
-    public partial class Employment :  IEquatable<Employment>, IValidatableObject
+    public partial class Employment : IEquatable<Employment>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Employment" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Employment() 
-        { 
+        public Employment()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique identifier for the payroll calendar of the employee
         /// </summary>
         /// <value>Xero unique identifier for the payroll calendar of the employee</value>
-        [DataMember(Name="payrollCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "payrollCalendarID", EmitDefaultValue = false)]
         public Guid? PayrollCalendarID { get; set; }
 
         /// <summary>
         /// Xero unique identifier for the payrun calendar for the employee (Deprecated in version 1.1.6)
         /// </summary>
         /// <value>Xero unique identifier for the payrun calendar for the employee (Deprecated in version 1.1.6)</value>
-        [DataMember(Name="payRunCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "payRunCalendarID", EmitDefaultValue = false)]
         public Guid? PayRunCalendarID { get; set; }
 
         /// <summary>
         /// Start date of the employment (YYYY-MM-DD)
         /// </summary>
         /// <value>Start date of the employment (YYYY-MM-DD)</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -64,14 +64,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Engagement type of the employee
         /// </summary>
         /// <value>Engagement type of the employee</value>
-        [DataMember(Name="engagementType", EmitDefaultValue=false)]
+        [DataMember(Name = "engagementType", EmitDefaultValue = false)]
         public string EngagementType { get; set; }
 
         /// <summary>
         /// End date for an employee with a fixed-term engagement type
         /// </summary>
         /// <value>End date for an employee with a fixed-term engagement type</value>
-        [DataMember(Name="fixedTermEndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedTermEndDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? FixedTermEndDate { get; set; }
 
@@ -91,7 +91,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -121,27 +121,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PayrollCalendarID == input.PayrollCalendarID ||
                     (this.PayrollCalendarID != null &&
                     this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
+                ) &&
                 (
                     this.PayRunCalendarID == input.PayRunCalendarID ||
                     (this.PayRunCalendarID != null &&
                     this.PayRunCalendarID.Equals(input.PayRunCalendarID))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EngagementType == input.EngagementType ||
                     (this.EngagementType != null &&
                     this.EngagementType.Equals(input.EngagementType))
-                ) && 
+                ) &&
                 (
                     this.FixedTermEndDate == input.FixedTermEndDate ||
                     (this.FixedTermEndDate != null &&

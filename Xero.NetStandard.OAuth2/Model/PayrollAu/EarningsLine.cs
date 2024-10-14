@@ -28,75 +28,75 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// EarningsLine
     /// </summary>
     [DataContract]
-    public partial class EarningsLine :  IEquatable<EarningsLine>, IValidatableObject
+    public partial class EarningsLine : IEquatable<EarningsLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets CalculationType
         /// </summary>
-        [DataMember(Name="CalculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "CalculationType", EmitDefaultValue = false)]
         public EarningsRateCalculationType CalculationType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EarningsLine" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EarningsLine() 
-        { 
+        public EarningsLine()
+        {
         }
-        
+
         /// <summary>
         /// Xero unique id for earnings rate
         /// </summary>
         /// <value>Xero unique id for earnings rate</value>
-        [DataMember(Name="EarningsRateID", EmitDefaultValue=false)]
+        [DataMember(Name = "EarningsRateID", EmitDefaultValue = false)]
         public Guid? EarningsRateID { get; set; }
 
         /// <summary>
         /// Annual salary for earnings line
         /// </summary>
         /// <value>Annual salary for earnings line</value>
-        [DataMember(Name="AnnualSalary", EmitDefaultValue=false)]
+        [DataMember(Name = "AnnualSalary", EmitDefaultValue = false)]
         public decimal? AnnualSalary { get; set; }
 
         /// <summary>
         /// number of units for earning line
         /// </summary>
         /// <value>number of units for earning line</value>
-        [DataMember(Name="NumberOfUnitsPerWeek", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnitsPerWeek", EmitDefaultValue = false)]
         public decimal? NumberOfUnitsPerWeek { get; set; }
 
         /// <summary>
         /// Rate per unit of the EarningsLine.
         /// </summary>
         /// <value>Rate per unit of the EarningsLine.</value>
-        [DataMember(Name="RatePerUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "RatePerUnit", EmitDefaultValue = false)]
         public decimal? RatePerUnit { get; set; }
 
         /// <summary>
         /// Normal number of units for EarningsLine. Applicable when RateType is \&quot;MULTIPLE\&quot;
         /// </summary>
         /// <value>Normal number of units for EarningsLine. Applicable when RateType is \&quot;MULTIPLE\&quot;</value>
-        [DataMember(Name="NormalNumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NormalNumberOfUnits", EmitDefaultValue = false)]
         public decimal? NormalNumberOfUnits { get; set; }
 
         /// <summary>
         /// Earnings rate amount
         /// </summary>
         /// <value>Earnings rate amount</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Earnings rate number of units.
         /// </summary>
         /// <value>Earnings rate number of units.</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
         /// Earnings rate amount. Only applicable if the EarningsRate RateType is Fixed
         /// </summary>
         /// <value>Earnings rate amount. Only applicable if the EarningsRate RateType is Fixed</value>
-        [DataMember(Name="FixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "FixedAmount", EmitDefaultValue = false)]
         public decimal? FixedAmount { get; set; }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -149,46 +149,46 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EarningsRateID == input.EarningsRateID ||
                     (this.EarningsRateID != null &&
                     this.EarningsRateID.Equals(input.EarningsRateID))
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)
-                ) && 
+                ) &&
                 (
                     this.AnnualSalary == input.AnnualSalary ||
                     (this.AnnualSalary != null &&
                     this.AnnualSalary.Equals(input.AnnualSalary))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnitsPerWeek == input.NumberOfUnitsPerWeek ||
                     (this.NumberOfUnitsPerWeek != null &&
                     this.NumberOfUnitsPerWeek.Equals(input.NumberOfUnitsPerWeek))
-                ) && 
+                ) &&
                 (
                     this.RatePerUnit == input.RatePerUnit ||
                     (this.RatePerUnit != null &&
                     this.RatePerUnit.Equals(input.RatePerUnit))
-                ) && 
+                ) &&
                 (
                     this.NormalNumberOfUnits == input.NormalNumberOfUnits ||
                     (this.NormalNumberOfUnits != null &&
                     this.NormalNumberOfUnits.Equals(input.NormalNumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&

@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Test
 
         public class Bool : Number
         {
-            public Bool(string propertyName, string input) : base(propertyName, input) {}
+            public Bool(string propertyName, string input) : base(propertyName, input) { }
         }
 
         public class Null : IJsonValue
@@ -99,9 +99,9 @@ namespace Xero.NetStandard.OAuth2.Test
                     Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
                 };
             }
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var output = await deserializer.Deserialize<TModel>(response);
 

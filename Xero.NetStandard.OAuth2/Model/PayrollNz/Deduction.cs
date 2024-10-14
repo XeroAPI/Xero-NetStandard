@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// Deduction
     /// </summary>
     [DataContract]
-    public partial class Deduction :  IEquatable<Deduction>, IValidatableObject
+    public partial class Deduction : IEquatable<Deduction>, IValidatableObject
     {
         /// <summary>
         /// Deduction Category type
@@ -67,49 +67,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Deduction Category type
         /// </summary>
         /// <value>Deduction Category type</value>
-        [DataMember(Name="deductionCategory", EmitDefaultValue=false)]
+        [DataMember(Name = "deductionCategory", EmitDefaultValue = false)]
         public DeductionCategoryEnum DeductionCategory { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Deduction" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Deduction() 
-        { 
+        public Deduction()
+        {
         }
-        
+
         /// <summary>
         /// The Xero identifier for Deduction
         /// </summary>
         /// <value>The Xero identifier for Deduction</value>
-        [DataMember(Name="deductionId", EmitDefaultValue=false)]
+        [DataMember(Name = "deductionId", EmitDefaultValue = false)]
         public Guid? DeductionId { get; set; }
 
         /// <summary>
         /// Name of the deduction
         /// </summary>
         /// <value>Name of the deduction</value>
-        [DataMember(Name="deductionName", EmitDefaultValue=false)]
+        [DataMember(Name = "deductionName", EmitDefaultValue = false)]
         public string DeductionName { get; set; }
 
         /// <summary>
         /// Xero identifier for Liability Account
         /// </summary>
         /// <value>Xero identifier for Liability Account</value>
-        [DataMember(Name="liabilityAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "liabilityAccountId", EmitDefaultValue = false)]
         public Guid? LiabilityAccountId { get; set; }
 
         /// <summary>
         /// Identifier of a record is active or not.
         /// </summary>
         /// <value>Identifier of a record is active or not.</value>
-        [DataMember(Name="currentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "currentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
         /// Standard amount of the deduction.
         /// </summary>
         /// <value>Standard amount of the deduction.</value>
-        [DataMember(Name="standardAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "standardAmount", EmitDefaultValue = false)]
         public decimal? StandardAmount { get; set; }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -159,31 +159,31 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DeductionId == input.DeductionId ||
                     (this.DeductionId != null &&
                     this.DeductionId.Equals(input.DeductionId))
-                ) && 
+                ) &&
                 (
                     this.DeductionName == input.DeductionName ||
                     (this.DeductionName != null &&
                     this.DeductionName.Equals(input.DeductionName))
-                ) && 
+                ) &&
                 (
                     this.DeductionCategory == input.DeductionCategory ||
                     this.DeductionCategory.Equals(input.DeductionCategory)
-                ) && 
+                ) &&
                 (
                     this.LiabilityAccountId == input.LiabilityAccountId ||
                     (this.LiabilityAccountId != null &&
                     this.LiabilityAccountId.Equals(input.LiabilityAccountId))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
                     this.CurrentRecord.Equals(input.CurrentRecord))
-                ) && 
+                ) &&
                 (
                     this.StandardAmount == input.StandardAmount ||
                     (this.StandardAmount != null &&

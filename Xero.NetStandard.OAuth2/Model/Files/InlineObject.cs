@@ -29,32 +29,32 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// InlineObject
     /// </summary>
     [DataContract]
-    public partial class InlineObject :  IEquatable<InlineObject>, IValidatableObject
+    public partial class InlineObject : IEquatable<InlineObject>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Body
         /// </summary>
-        [DataMember(Name="body", EmitDefaultValue=false)]
+        [DataMember(Name = "body", EmitDefaultValue = false)]
         public byte[] Body { get; set; }
 
         /// <summary>
         /// exact name of the file you are uploading
         /// </summary>
         /// <value>exact name of the file you are uploading</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Filename
         /// </summary>
-        [DataMember(Name="filename", EmitDefaultValue=false)]
+        [DataMember(Name = "filename", EmitDefaultValue = false)]
         public string Filename { get; set; }
 
         /// <summary>
         /// Gets or Sets MimeType
         /// </summary>
-        [DataMember(Name="mimeType", EmitDefaultValue=false)]
+        [DataMember(Name = "mimeType", EmitDefaultValue = false)]
         public string MimeType { get; set; }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -102,22 +102,22 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Body == input.Body ||
                     (this.Body != null &&
                     this.Body.Equals(input.Body))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Filename == input.Filename ||
                     (this.Filename != null &&
                     this.Filename.Equals(input.Filename))
-                ) && 
+                ) &&
                 (
                     this.MimeType == input.MimeType ||
                     (this.MimeType != null &&

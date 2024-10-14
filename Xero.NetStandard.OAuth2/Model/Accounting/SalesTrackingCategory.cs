@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// SalesTrackingCategory
     /// </summary>
     [DataContract]
-    public partial class SalesTrackingCategory :  IEquatable<SalesTrackingCategory>, IValidatableObject
+    public partial class SalesTrackingCategory : IEquatable<SalesTrackingCategory>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The default sales tracking category name for contacts
         /// </summary>
         /// <value>The default sales tracking category name for contacts</value>
-        [DataMember(Name="TrackingCategoryName", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingCategoryName", EmitDefaultValue = false)]
         public string TrackingCategoryName { get; set; }
 
         /// <summary>
         /// The default purchase tracking category name for contacts
         /// </summary>
         /// <value>The default purchase tracking category name for contacts</value>
-        [DataMember(Name="TrackingOptionName", EmitDefaultValue=false)]
+        [DataMember(Name = "TrackingOptionName", EmitDefaultValue = false)]
         public string TrackingOptionName { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TrackingCategoryName == input.TrackingCategoryName ||
                     (this.TrackingCategoryName != null &&
                     this.TrackingCategoryName.Equals(input.TrackingCategoryName))
-                ) && 
+                ) &&
                 (
                     this.TrackingOptionName == input.TrackingOptionName ||
                     (this.TrackingOptionName != null &&

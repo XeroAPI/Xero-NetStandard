@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Code used to identify the Leave Category
     /// </summary>
     /// <value>Code used to identify the Leave Category</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum LeaveCategoryCode
     {
         /// <summary>
