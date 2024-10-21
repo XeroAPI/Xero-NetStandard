@@ -81,7 +81,7 @@ jobs:
           XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
           job_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
           button_type: "primary"
-          package_version: ${{needs.publish.outputs.release_number}}
+          package_version: ${{needs.build.outputs.release_number}}
           repo_link: ${{github.server_url}}/${{github.repository}}
 
   notify-slack-on-failure:
@@ -104,5 +104,5 @@ jobs:
           XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
           job_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
           button_type: "danger"
-          package_version: ${{needs.publish.outputs.release_number}}
+          package_version: ${{needs.build.outputs.release_number}}
           repo_link: ${{github.server_url}}/${{github.repository}}
