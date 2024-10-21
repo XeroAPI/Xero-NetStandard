@@ -89,14 +89,14 @@ jobs:
     needs: build
     if: failure()
     steps:
-      - name: Checkout xero-node repo
+      - name: Checkout Xero-NetStandard repo
         uses: actions/checkout@v4
         with:
-          repository: XeroAPI/xero-node
-          path: xero-node
+          repository: XeroAPI/Xero-NetStandard
+          path: Xero-NetStandard
 
       - name: Send slack notification on failure
-        uses: ./xero-node/.github/actions/notify-slack
+        uses: ./Xero-NetStandard/.github/actions/notify-slack
         with:
           heading_text: "Publish job has failed !"
           alert_type: "alert"
