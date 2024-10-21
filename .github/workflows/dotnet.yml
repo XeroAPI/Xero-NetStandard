@@ -3,9 +3,6 @@ name: .NET
 on:
   release:
     types: [published]
-  pull_request:
-    branches:
-      - master
   
 jobs:
   build:
@@ -55,9 +52,7 @@ jobs:
       working-directory: Xero-NetStandard
 
     - name: Publish Package to Nuget.org
-      run: |
-       exit 1
-       dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
       working-directory: Xero-NetStandard
 
 
