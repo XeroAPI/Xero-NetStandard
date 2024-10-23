@@ -53,3 +53,4 @@ jobs:
               if: success() || failure()
               run: pkill -f prism
               working-directory: Xero-NetStandard
+              
