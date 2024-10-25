@@ -54,7 +54,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum REJECTED for value: REJECTED
         /// </summary>
         [EnumMember(Value = "REJECTED")]
-        REJECTED = 4
+        REJECTED = 4,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 5
 
     }
 

@@ -83,7 +83,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum SPENDTRANSFER for value: SPEND-TRANSFER
             /// </summary>
             [EnumMember(Value = "SPEND-TRANSFER")]
-            SPENDTRANSFER = 8
+            SPENDTRANSFER = 8,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 9
 
         }
 
@@ -121,7 +127,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum VOIDED for value: VOIDED
             /// </summary>
             [EnumMember(Value = "VOIDED")]
-            VOIDED = 3
+            VOIDED = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

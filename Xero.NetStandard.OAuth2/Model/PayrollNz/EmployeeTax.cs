@@ -70,7 +70,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum NotCurrentlyAKiwiSaverMember for value: NotCurrentlyAKiwiSaverMember
             /// </summary>
             [EnumMember(Value = "NotCurrentlyAKiwiSaverMember")]
-            NotCurrentlyAKiwiSaverMember = 5
+            NotCurrentlyAKiwiSaverMember = 5,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 6
 
         }
 

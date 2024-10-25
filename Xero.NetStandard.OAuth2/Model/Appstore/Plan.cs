@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             /// Enum PENDINGACTIVATION for value: PENDING_ACTIVATION
             /// </summary>
             [EnumMember(Value = "PENDING_ACTIVATION")]
-            PENDINGACTIVATION = 3
+            PENDINGACTIVATION = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

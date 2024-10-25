@@ -43,7 +43,13 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         /// Enum DEBIT for value: DEBIT
         /// </summary>
         [EnumMember(Value = "DEBIT")]
-        DEBIT = 2
+        DEBIT = 2,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 3
 
     }
 

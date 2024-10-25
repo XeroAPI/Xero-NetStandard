@@ -169,7 +169,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum WAGESPAYABLELIABILITY for value: WAGESPAYABLELIABILITY
         /// </summary>
         [EnumMember(Value = "WAGESPAYABLELIABILITY")]
-        WAGESPAYABLELIABILITY = 23
+        WAGESPAYABLELIABILITY = 23,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 24
 
     }
 

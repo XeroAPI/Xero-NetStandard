@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TRACKING for value: TRACKING
             /// </summary>
             [EnumMember(Value = "TRACKING")]
-            TRACKING = 2
+            TRACKING = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

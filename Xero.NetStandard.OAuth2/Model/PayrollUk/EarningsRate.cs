@@ -173,7 +173,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum TerminationPay for value: TerminationPay
             /// </summary>
             [EnumMember(Value = "TerminationPay")]
-            TerminationPay = 23
+            TerminationPay = 23,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 24
 
         }
 
@@ -206,7 +212,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum FixedAmount for value: FixedAmount
             /// </summary>
             [EnumMember(Value = "FixedAmount")]
-            FixedAmount = 3
+            FixedAmount = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

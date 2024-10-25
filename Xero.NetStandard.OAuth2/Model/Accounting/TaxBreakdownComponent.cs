@@ -65,7 +65,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum USSPECIAL for value: SYSGST/USSPECIAL
             /// </summary>
             [EnumMember(Value = "SYSGST/USSPECIAL")]
-            USSPECIAL = 5
+            USSPECIAL = 5,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 6
 
         }
 

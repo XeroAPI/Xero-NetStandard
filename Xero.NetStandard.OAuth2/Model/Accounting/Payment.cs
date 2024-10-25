@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum DELETED for value: DELETED
             /// </summary>
             [EnumMember(Value = "DELETED")]
-            DELETED = 2
+            DELETED = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -110,7 +116,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum APOVERPAYMENTPAYMENT for value: APOVERPAYMENTPAYMENT
             /// </summary>
             [EnumMember(Value = "APOVERPAYMENTPAYMENT")]
-            APOVERPAYMENTPAYMENT = 8
+            APOVERPAYMENTPAYMENT = 8,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 9
 
         }
 

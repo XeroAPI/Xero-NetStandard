@@ -145,7 +145,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Enum STCSL for value: STCSL
         /// </summary>
         [EnumMember(Value = "STCSL")]
-        STCSL = 19
+        STCSL = 19,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 20
 
     }
 

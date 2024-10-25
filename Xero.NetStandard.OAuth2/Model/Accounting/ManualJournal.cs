@@ -70,7 +70,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum ARCHIVED for value: ARCHIVED
             /// </summary>
             [EnumMember(Value = "ARCHIVED")]
-            ARCHIVED = 5
+            ARCHIVED = 5,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 6
 
         }
 

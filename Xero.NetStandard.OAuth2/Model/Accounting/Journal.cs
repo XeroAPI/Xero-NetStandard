@@ -185,7 +185,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum INTEGRATEDPAYROLLCN for value: INTEGRATEDPAYROLLCN
             /// </summary>
             [EnumMember(Value = "INTEGRATEDPAYROLLCN")]
-            INTEGRATEDPAYROLLCN = 25
+            INTEGRATEDPAYROLLCN = 25,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 26
 
         }
 

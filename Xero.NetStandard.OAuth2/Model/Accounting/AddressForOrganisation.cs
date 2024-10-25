@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum DELIVERY for value: DELIVERY
             /// </summary>
             [EnumMember(Value = "DELIVERY")]
-            DELIVERY = 3
+            DELIVERY = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

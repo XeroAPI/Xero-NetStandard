@@ -77,7 +77,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum OTHER for value: OTHER
             /// </summary>
             [EnumMember(Value = "OTHER")]
-            OTHER = 7
+            OTHER = 7,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 8
 
         }
 

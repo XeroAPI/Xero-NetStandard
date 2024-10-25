@@ -42,7 +42,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum POSTED for value: POSTED
         /// </summary>
         [EnumMember(Value = "POSTED")]
-        POSTED = 2
+        POSTED = 2,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 3
 
     }
 

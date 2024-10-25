@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum NOTALLOWED for value: NOT-ALLOWED
             /// </summary>
             [EnumMember(Value = "NOT-ALLOWED")]
-            NOTALLOWED = 2
+            NOTALLOWED = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

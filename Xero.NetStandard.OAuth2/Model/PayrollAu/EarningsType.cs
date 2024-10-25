@@ -114,7 +114,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum WORKERSCOMPENSATION for value: WORKERSCOMPENSATION
         /// </summary>
         [EnumMember(Value = "WORKERSCOMPENSATION")]
-        WORKERSCOMPENSATION = 14
+        WORKERSCOMPENSATION = 14,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 15
 
     }
 

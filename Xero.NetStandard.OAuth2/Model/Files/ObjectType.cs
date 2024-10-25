@@ -367,7 +367,13 @@ namespace Xero.NetStandard.OAuth2.Model.Files
         /// Enum SalesQuote for value: SalesQuote
         /// </summary>
         [EnumMember(Value = "SalesQuote")]
-        SalesQuote = 56
+        SalesQuote = 56,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 57
 
     }
 

@@ -161,7 +161,13 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             /// Enum FeedNotFoundOrAlreadyDeleted for value: feed-not-found-or-already-deleted
             /// </summary>
             [EnumMember(Value = "feed-not-found-or-already-deleted")]
-            FeedNotFoundOrAlreadyDeleted = 21
+            FeedNotFoundOrAlreadyDeleted = 21,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 22
 
         }
 

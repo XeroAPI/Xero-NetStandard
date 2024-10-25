@@ -58,7 +58,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum DELETED for value: DELETED
             /// </summary>
             [EnumMember(Value = "DELETED")]
-            DELETED = 3
+            DELETED = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -103,7 +109,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
-            Empty = 5
+            Empty = 5,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 6
 
         }
 
@@ -153,7 +165,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum REVENUE for value: REVENUE
             /// </summary>
             [EnumMember(Value = "REVENUE")]
-            REVENUE = 5
+            REVENUE = 5,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 6
 
         }
 
@@ -294,7 +312,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum Empty for value: 
             /// </summary>
             [EnumMember(Value = "")]
-            Empty = 21
+            Empty = 21,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 22
 
         }
 

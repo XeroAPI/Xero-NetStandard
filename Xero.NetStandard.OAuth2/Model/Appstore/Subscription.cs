@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             /// Enum PASTDUE for value: PAST_DUE
             /// </summary>
             [EnumMember(Value = "PAST_DUE")]
-            PASTDUE = 3
+            PASTDUE = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

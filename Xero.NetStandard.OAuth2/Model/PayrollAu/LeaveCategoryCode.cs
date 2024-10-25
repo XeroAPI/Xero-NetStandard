@@ -103,7 +103,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum DEFENCERESERVELEAVE for value: DEFENCERESERVELEAVE
         /// </summary>
         [EnumMember(Value = "DEFENCERESERVELEAVE")]
-        DEFENCERESERVELEAVE = 12
+        DEFENCERESERVELEAVE = 12,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 13
 
     }
 

@@ -70,7 +70,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum SufficientNoticeNotGiven for value: SufficientNoticeNotGiven
             /// </summary>
             [EnumMember(Value = "SufficientNoticeNotGiven")]
-            SufficientNoticeNotGiven = 6
+            SufficientNoticeNotGiven = 6,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 7
 
         }
 

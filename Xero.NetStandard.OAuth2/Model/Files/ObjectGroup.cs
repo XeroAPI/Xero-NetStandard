@@ -103,7 +103,13 @@ namespace Xero.NetStandard.OAuth2.Model.Files
         /// Enum Receipt for value: Receipt
         /// </summary>
         [EnumMember(Value = "Receipt")]
-        Receipt = 12
+        Receipt = 12,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 13
 
     }
 

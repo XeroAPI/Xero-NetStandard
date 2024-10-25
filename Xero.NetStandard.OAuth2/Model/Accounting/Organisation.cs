@@ -95,7 +95,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum USONRAMP for value: USONRAMP
             /// </summary>
             [EnumMember(Value = "USONRAMP")]
-            USONRAMP = 10
+            USONRAMP = 10,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 11
 
         }
 
@@ -188,7 +194,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 13
+            TRUST = 13,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 14
 
         }
 
@@ -261,7 +273,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum ACCRUALS for value: ACCRUALS
             /// </summary>
             [EnumMember(Value = "ACCRUALS")]
-            ACCRUALS = 8
+            ACCRUALS = 8,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 9
 
         }
 
@@ -366,7 +384,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum NONE for value: NONE
             /// </summary>
             [EnumMember(Value = "NONE")]
-            NONE = 15
+            NONE = 15,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 16
 
         }
 
@@ -464,7 +488,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 13
+            TRUST = 13,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 14
 
         }
 
@@ -599,7 +629,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum COMPREHENSIVE for value: COMPREHENSIVE
             /// </summary>
             [EnumMember(Value = "COMPREHENSIVE")]
-            COMPREHENSIVE = 20
+            COMPREHENSIVE = 20,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 21
 
         }
 
@@ -626,7 +662,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum PARTNER for value: PARTNER
             /// </summary>
             [EnumMember(Value = "PARTNER")]
-            PARTNER = 2
+            PARTNER = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

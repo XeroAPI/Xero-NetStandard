@@ -59,7 +59,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum DELETED for value: DELETED
             /// </summary>
             [EnumMember(Value = "DELETED")]
-            DELETED = 4
+            DELETED = 4,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 5
 
         }
 

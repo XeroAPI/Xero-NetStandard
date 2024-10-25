@@ -95,7 +95,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum UkOther for value: UkOther
             /// </summary>
             [EnumMember(Value = "UkOther")]
-            UkOther = 10
+            UkOther = 10,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 11
 
         }
 
@@ -122,7 +128,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum PercentageOfGross for value: PercentageOfGross
             /// </summary>
             [EnumMember(Value = "PercentageOfGross")]
-            PercentageOfGross = 2
+            PercentageOfGross = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

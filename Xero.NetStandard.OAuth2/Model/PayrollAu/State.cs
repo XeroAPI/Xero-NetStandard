@@ -79,7 +79,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum WA for value: WA
         /// </summary>
         [EnumMember(Value = "WA")]
-        WA = 8
+        WA = 8,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 9
 
     }
 

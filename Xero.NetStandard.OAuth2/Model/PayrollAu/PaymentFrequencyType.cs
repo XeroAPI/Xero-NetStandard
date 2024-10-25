@@ -72,7 +72,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum YEARLY for value: YEARLY
         /// </summary>
         [EnumMember(Value = "YEARLY")]
-        YEARLY = 7
+        YEARLY = 7,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 8
 
     }
 

@@ -71,7 +71,13 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             /// Enum FullDepreciation for value: FullDepreciation
             /// </summary>
             [EnumMember(Value = "FullDepreciation")]
-            FullDepreciation = 6
+            FullDepreciation = 6,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 7
 
         }
 
@@ -98,7 +104,13 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             /// Enum ActualDays for value: ActualDays
             /// </summary>
             [EnumMember(Value = "ActualDays")]
-            ActualDays = 2
+            ActualDays = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -131,7 +143,13 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             /// Enum None for value: None
             /// </summary>
             [EnumMember(Value = "None")]
-            None = 3
+            None = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

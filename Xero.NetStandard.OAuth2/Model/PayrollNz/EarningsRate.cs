@@ -125,7 +125,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum WithholdingIncome for value: WithholdingIncome
             /// </summary>
             [EnumMember(Value = "WithholdingIncome")]
-            WithholdingIncome = 15
+            WithholdingIncome = 15,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 16
 
         }
 
@@ -158,7 +164,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum FixedAmount for value: FixedAmount
             /// </summary>
             [EnumMember(Value = "FixedAmount")]
-            FixedAmount = 3
+            FixedAmount = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

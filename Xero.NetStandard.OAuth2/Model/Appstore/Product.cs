@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             /// Enum METERED for value: METERED
             /// </summary>
             [EnumMember(Value = "METERED")]
-            METERED = 3
+            METERED = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

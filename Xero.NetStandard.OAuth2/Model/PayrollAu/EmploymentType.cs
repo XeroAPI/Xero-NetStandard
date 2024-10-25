@@ -42,7 +42,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum CONTRACTOR for value: CONTRACTOR
         /// </summary>
         [EnumMember(Value = "CONTRACTOR")]
-        CONTRACTOR = 2
+        CONTRACTOR = 2,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 3
 
     }
 

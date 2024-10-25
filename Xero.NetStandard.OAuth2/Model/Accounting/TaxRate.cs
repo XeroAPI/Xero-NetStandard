@@ -59,7 +59,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum PENDING for value: PENDING
             /// </summary>
             [EnumMember(Value = "PENDING")]
-            PENDING = 4
+            PENDING = 4,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 5
 
         }
 
@@ -668,7 +674,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum BLINPUT3 for value: BLINPUT3
             /// </summary>
             [EnumMember(Value = "BLINPUT3")]
-            BLINPUT3 = 99
+            BLINPUT3 = 99,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 100
 
         }
 

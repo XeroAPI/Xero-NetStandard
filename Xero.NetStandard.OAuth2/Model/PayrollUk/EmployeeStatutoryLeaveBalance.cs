@@ -65,7 +65,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum Sharedparental for value: Sharedparental
             /// </summary>
             [EnumMember(Value = "Sharedparental")]
-            Sharedparental = 5
+            Sharedparental = 5,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 6
 
         }
 
@@ -86,7 +92,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum Hours for value: Hours
             /// </summary>
             [EnumMember(Value = "Hours")]
-            Hours = 1
+            Hours = 1,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 2
 
         }
 

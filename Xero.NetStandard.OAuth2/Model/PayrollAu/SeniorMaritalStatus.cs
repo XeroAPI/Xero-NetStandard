@@ -48,7 +48,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum SINGLE for value: SINGLE
         /// </summary>
         [EnumMember(Value = "SINGLE")]
-        SINGLE = 3
+        SINGLE = 3,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 4
 
     }
 

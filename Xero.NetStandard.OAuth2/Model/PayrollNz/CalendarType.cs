@@ -73,7 +73,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Enum TwiceMonthly for value: TwiceMonthly
         /// </summary>
         [EnumMember(Value = "TwiceMonthly")]
-        TwiceMonthly = 7
+        TwiceMonthly = 7,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 8
 
     }
 

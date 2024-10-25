@@ -84,7 +84,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum QUALIFICATIONS for value: QUALIFICATIONS
         /// </summary>
         [EnumMember(Value = "QUALIFICATIONS")]
-        QUALIFICATIONS = 9
+        QUALIFICATIONS = 9,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 10
 
     }
 
