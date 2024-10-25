@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BrandingTheme
     /// </summary>
     [DataContract]
-    public partial class BrandingTheme :  IEquatable<BrandingTheme>, IValidatableObject
+    public partial class BrandingTheme : IEquatable<BrandingTheme>, IValidatableObject
     {
         /// <summary>
         /// Always INVOICE
@@ -49,42 +49,42 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Always INVOICE
         /// </summary>
         /// <value>Always INVOICE</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
+        [DataMember(Name = "BrandingThemeID", EmitDefaultValue = false)]
         public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// Name of branding theme
         /// </summary>
         /// <value>Name of branding theme</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The location of the image file used as the logo on this branding theme
         /// </summary>
         /// <value>The location of the image file used as the logo on this branding theme</value>
-        [DataMember(Name="LogoUrl", EmitDefaultValue=false)]
+        [DataMember(Name = "LogoUrl", EmitDefaultValue = false)]
         public string LogoUrl { get; set; }
 
         /// <summary>
         /// Integer – ranked order of branding theme. The default branding theme has a value of 0
         /// </summary>
         /// <value>Integer – ranked order of branding theme. The default branding theme has a value of 0</value>
-        [DataMember(Name="SortOrder", EmitDefaultValue=false)]
+        [DataMember(Name = "SortOrder", EmitDefaultValue = false)]
         public int? SortOrder { get; set; }
 
         /// <summary>
         /// UTC timestamp of creation date of branding theme
         /// </summary>
         /// <value>UTC timestamp of creation date of branding theme</value>
-        [DataMember(Name="CreatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "CreatedDateUTC", EmitDefaultValue = false)]
         public DateTime? CreatedDateUTC { get; private set; }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -134,31 +134,31 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BrandingThemeID == input.BrandingThemeID ||
                     (this.BrandingThemeID != null &&
                     this.BrandingThemeID.Equals(input.BrandingThemeID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.LogoUrl == input.LogoUrl ||
                     (this.LogoUrl != null &&
                     this.LogoUrl.Equals(input.LogoUrl))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.SortOrder == input.SortOrder ||
                     (this.SortOrder != null &&
                     this.SortOrder.Equals(input.SortOrder))
-                ) && 
+                ) &&
                 (
                     this.CreatedDateUTC == input.CreatedDateUTC ||
                     (this.CreatedDateUTC != null &&

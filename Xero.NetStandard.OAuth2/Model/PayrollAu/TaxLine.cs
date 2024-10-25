@@ -28,47 +28,47 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// TaxLine
     /// </summary>
     [DataContract]
-    public partial class TaxLine :  IEquatable<TaxLine>, IValidatableObject
+    public partial class TaxLine : IEquatable<TaxLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets ManualTaxType
         /// </summary>
-        [DataMember(Name="ManualTaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "ManualTaxType", EmitDefaultValue = false)]
         public ManualTaxType ManualTaxType { get; set; }
-        
+
         /// <summary>
         /// Xero identifier for payslip tax line ID.
         /// </summary>
         /// <value>Xero identifier for payslip tax line ID.</value>
-        [DataMember(Name="PayslipTaxLineID", EmitDefaultValue=false)]
+        [DataMember(Name = "PayslipTaxLineID", EmitDefaultValue = false)]
         public Guid? PayslipTaxLineID { get; set; }
 
         /// <summary>
         /// The tax line amount
         /// </summary>
         /// <value>The tax line amount</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Name of the tax type.
         /// </summary>
         /// <value>Name of the tax type.</value>
-        [DataMember(Name="TaxTypeName", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxTypeName", EmitDefaultValue = false)]
         public string TaxTypeName { get; set; }
 
         /// <summary>
         /// Description of the tax line.
         /// </summary>
         /// <value>Description of the tax line.</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// The tax line liability account code. For posted pay run you should be able to see liability account code
         /// </summary>
         /// <value>The tax line liability account code. For posted pay run you should be able to see liability account code</value>
-        [DataMember(Name="LiabilityAccount", EmitDefaultValue=false)]
+        [DataMember(Name = "LiabilityAccount", EmitDefaultValue = false)]
         public string LiabilityAccount { get; set; }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -118,31 +118,31 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PayslipTaxLineID == input.PayslipTaxLineID ||
                     (this.PayslipTaxLineID != null &&
                     this.PayslipTaxLineID.Equals(input.PayslipTaxLineID))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.TaxTypeName == input.TaxTypeName ||
                     (this.TaxTypeName != null &&
                     this.TaxTypeName.Equals(input.TaxTypeName))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.ManualTaxType == input.ManualTaxType ||
                     this.ManualTaxType.Equals(input.ManualTaxType)
-                ) && 
+                ) &&
                 (
                     this.LiabilityAccount == input.LiabilityAccount ||
                     (this.LiabilityAccount != null &&

@@ -28,18 +28,18 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// The StartBalance plus all the Statement Line Amounts should be equal to the EndBalance Amount.
     /// </summary>
     [DataContract]
-    public partial class EndBalance :  IEquatable<EndBalance>, IValidatableObject
+    public partial class EndBalance : IEquatable<EndBalance>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets CreditDebitIndicator
         /// </summary>
-        [DataMember(Name="creditDebitIndicator", EmitDefaultValue=false)]
+        [DataMember(Name = "creditDebitIndicator", EmitDefaultValue = false)]
         public CreditDebitIndicator CreditDebitIndicator { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -85,12 +85,12 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.CreditDebitIndicator == input.CreditDebitIndicator ||
                     this.CreditDebitIndicator.Equals(input.CreditDebitIndicator)

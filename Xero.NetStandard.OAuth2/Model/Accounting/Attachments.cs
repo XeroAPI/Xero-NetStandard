@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Attachments
     /// </summary>
     [DataContract]
-    public partial class Attachments :  IEquatable<Attachments>, IValidatableObject
+    public partial class Attachments : IEquatable<Attachments>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Attachments
         /// </summary>
-        [DataMember(Name="Attachments", EmitDefaultValue=false)]
+        [DataMember(Name = "Attachments", EmitDefaultValue = false)]
         public List<Attachment> _Attachments { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Attachments == input._Attachments ||
                     this._Attachments != null &&

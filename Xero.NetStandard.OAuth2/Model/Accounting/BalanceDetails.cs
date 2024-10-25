@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// An array to specify multiple currency balances of an account
     /// </summary>
     [DataContract]
-    public partial class BalanceDetails :  IEquatable<BalanceDetails>, IValidatableObject
+    public partial class BalanceDetails : IEquatable<BalanceDetails>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The opening balances of the account. Debits are positive, credits are negative values
         /// </summary>
         /// <value>The opening balances of the account. Debits are positive, credits are negative values</value>
-        [DataMember(Name="Balance", EmitDefaultValue=false)]
+        [DataMember(Name = "Balance", EmitDefaultValue = false)]
         public double? Balance { get; set; }
 
         /// <summary>
         /// The currency of the balance (Not required for base currency)
         /// </summary>
         /// <value>The currency of the balance (Not required for base currency)</value>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public string CurrencyCode { get; set; }
 
         /// <summary>
         /// (Optional) Exchange rate to base currency when money is spent or received. If not specified, XE rate for the day is applied
         /// </summary>
         /// <value>(Optional) Exchange rate to base currency when money is spent or received. If not specified, XE rate for the day is applied</value>
-        [DataMember(Name="CurrencyRate", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyRate", EmitDefaultValue = false)]
         public decimal? CurrencyRate { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Balance == input.Balance ||
                     (this.Balance != null &&
                     this.Balance.Equals(input.Balance))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     (this.CurrencyCode != null &&
                     this.CurrencyCode.Equals(input.CurrencyCode))
-                ) && 
+                ) &&
                 (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&

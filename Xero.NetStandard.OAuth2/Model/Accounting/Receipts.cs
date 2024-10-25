@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Receipts
     /// </summary>
     [DataContract]
-    public partial class Receipts :  IEquatable<Receipts>, IValidatableObject
+    public partial class Receipts : IEquatable<Receipts>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Receipts
         /// </summary>
-        [DataMember(Name="Receipts", EmitDefaultValue=false)]
+        [DataMember(Name = "Receipts", EmitDefaultValue = false)]
         public List<Receipt> _Receipts { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Receipts == input._Receipts ||
                     this._Receipts != null &&

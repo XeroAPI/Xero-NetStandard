@@ -27,9 +27,9 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// <summary>
     /// Defines ProblemType
     /// </summary>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum ProblemType
     {
         /// <summary>

@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ContactGroups
     /// </summary>
     [DataContract]
-    public partial class ContactGroups :  IEquatable<ContactGroups>, IValidatableObject
+    public partial class ContactGroups : IEquatable<ContactGroups>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _ContactGroups
         /// </summary>
-        [DataMember(Name="ContactGroups", EmitDefaultValue=false)]
+        [DataMember(Name = "ContactGroups", EmitDefaultValue = false)]
         public List<ContactGroup> _ContactGroups { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._ContactGroups == input._ContactGroups ||
                     this._ContactGroups != null &&

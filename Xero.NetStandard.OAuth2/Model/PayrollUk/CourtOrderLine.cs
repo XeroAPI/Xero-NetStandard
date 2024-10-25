@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// CourtOrderLine
     /// </summary>
     [DataContract]
-    public partial class CourtOrderLine :  IEquatable<CourtOrderLine>, IValidatableObject
+    public partial class CourtOrderLine : IEquatable<CourtOrderLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll court order type
         /// </summary>
         /// <value>Xero identifier for payroll court order type</value>
-        [DataMember(Name="courtOrderTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "courtOrderTypeID", EmitDefaultValue = false)]
         public Guid? CourtOrderTypeID { get; set; }
 
         /// <summary>
         /// Amount
         /// </summary>
         /// <value>Amount</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public double? Amount { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.CourtOrderTypeID == input.CourtOrderTypeID ||
                     (this.CourtOrderTypeID != null &&
                     this.CourtOrderTypeID.Equals(input.CourtOrderTypeID))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&

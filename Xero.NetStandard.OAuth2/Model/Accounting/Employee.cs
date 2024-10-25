@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Employee
     /// </summary>
     [DataContract]
-    public partial class Employee :  IEquatable<Employee>, IValidatableObject
+    public partial class Employee : IEquatable<Employee>, IValidatableObject
     {
         /// <summary>
         /// Current status of an employee – see contact status types
@@ -67,54 +67,54 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Current status of an employee – see contact status types
         /// </summary>
         /// <value>Current status of an employee – see contact status types</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// The Xero identifier for an employee e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>The Xero identifier for an employee e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
-        [DataMember(Name="EmployeeID", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeID", EmitDefaultValue = false)]
         public Guid? EmployeeID { get; set; }
 
         /// <summary>
         /// First name of an employee (max length &#x3D; 255)
         /// </summary>
         /// <value>First name of an employee (max length &#x3D; 255)</value>
-        [DataMember(Name="FirstName", EmitDefaultValue=false)]
+        [DataMember(Name = "FirstName", EmitDefaultValue = false)]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Last name of an employee (max length &#x3D; 255)
         /// </summary>
         /// <value>Last name of an employee (max length &#x3D; 255)</value>
-        [DataMember(Name="LastName", EmitDefaultValue=false)]
+        [DataMember(Name = "LastName", EmitDefaultValue = false)]
         public string LastName { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalLink
         /// </summary>
-        [DataMember(Name="ExternalLink", EmitDefaultValue=false)]
+        [DataMember(Name = "ExternalLink", EmitDefaultValue = false)]
         public ExternalLink ExternalLink { get; set; }
 
         /// <summary>
         /// Gets or Sets UpdatedDateUTC
         /// </summary>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -166,41 +166,41 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EmployeeID == input.EmployeeID ||
                     (this.EmployeeID != null &&
                     this.EmployeeID.Equals(input.EmployeeID))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.FirstName == input.FirstName ||
                     (this.FirstName != null &&
                     this.FirstName.Equals(input.FirstName))
-                ) && 
+                ) &&
                 (
                     this.LastName == input.LastName ||
                     (this.LastName != null &&
                     this.LastName.Equals(input.LastName))
-                ) && 
+                ) &&
                 (
                     this.ExternalLink == input.ExternalLink ||
                     (this.ExternalLink != null &&
                     this.ExternalLink.Equals(input.ExternalLink))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
@@ -245,15 +245,15 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // FirstName (string) maxLength
-            if(this.FirstName != null && this.FirstName.Length > 255)
+            if (this.FirstName != null && this.FirstName.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstName, length must be less than 255.", new [] { "FirstName" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstName, length must be less than 255.", new[] { "FirstName" });
             }
 
             // LastName (string) maxLength
-            if(this.LastName != null && this.LastName.Length > 255)
+            if (this.LastName != null && this.LastName.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastName, length must be less than 255.", new [] { "LastName" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastName, length must be less than 255.", new[] { "LastName" });
             }
 
             yield break;

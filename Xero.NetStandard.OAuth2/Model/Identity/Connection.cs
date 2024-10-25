@@ -28,56 +28,56 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
     /// Connection
     /// </summary>
     [DataContract]
-    public partial class Connection :  IEquatable<Connection>, IValidatableObject
+    public partial class Connection : IEquatable<Connection>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Xero identifier of organisation
         /// </summary>
         /// <value>Xero identifier of organisation</value>
-        [DataMember(Name="tenantId", EmitDefaultValue=false)]
+        [DataMember(Name = "tenantId", EmitDefaultValue = false)]
         public Guid? TenantId { get; set; }
 
         /// <summary>
         /// Identifier shared across connections authorised at the same time
         /// </summary>
         /// <value>Identifier shared across connections authorised at the same time</value>
-        [DataMember(Name="authEventId", EmitDefaultValue=false)]
+        [DataMember(Name = "authEventId", EmitDefaultValue = false)]
         public Guid? AuthEventId { get; set; }
 
         /// <summary>
         /// Xero tenant type (i.e. ORGANISATION, PRACTICE)
         /// </summary>
         /// <value>Xero tenant type (i.e. ORGANISATION, PRACTICE)</value>
-        [DataMember(Name="tenantType", EmitDefaultValue=false)]
+        [DataMember(Name = "tenantType", EmitDefaultValue = false)]
         public string TenantType { get; set; }
 
         /// <summary>
         /// Xero tenant name
         /// </summary>
         /// <value>Xero tenant name</value>
-        [DataMember(Name="tenantName", EmitDefaultValue=false)]
+        [DataMember(Name = "tenantName", EmitDefaultValue = false)]
         public string TenantName { get; set; }
 
         /// <summary>
         /// The date when the user connected this tenant to your app
         /// </summary>
         /// <value>The date when the user connected this tenant to your app</value>
-        [DataMember(Name="createdDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "createdDateUtc", EmitDefaultValue = false)]
         public DateTime? CreatedDateUtc { get; set; }
 
         /// <summary>
         /// The date when the user most recently connected this tenant to your app. May differ to the created date if the user has disconnected and subsequently reconnected this tenant to your app.
         /// </summary>
         /// <value>The date when the user most recently connected this tenant to your app. May differ to the created date if the user has disconnected and subsequently reconnected this tenant to your app.</value>
-        [DataMember(Name="updatedDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedDateUtc", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUtc { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -128,37 +128,37 @@ namespace Xero.NetStandard.OAuth2.Model.Identity
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.TenantId == input.TenantId ||
                     (this.TenantId != null &&
                     this.TenantId.Equals(input.TenantId))
-                ) && 
+                ) &&
                 (
                     this.AuthEventId == input.AuthEventId ||
                     (this.AuthEventId != null &&
                     this.AuthEventId.Equals(input.AuthEventId))
-                ) && 
+                ) &&
                 (
                     this.TenantType == input.TenantType ||
                     (this.TenantType != null &&
                     this.TenantType.Equals(input.TenantType))
-                ) && 
+                ) &&
                 (
                     this.TenantName == input.TenantName ||
                     (this.TenantName != null &&
                     this.TenantName.Equals(input.TenantName))
-                ) && 
+                ) &&
                 (
                     this.CreatedDateUtc == input.CreatedDateUtc ||
                     (this.CreatedDateUtc != null &&
                     this.CreatedDateUtc.Equals(input.CreatedDateUtc))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUtc == input.UpdatedDateUtc ||
                     (this.UpdatedDateUtc != null &&

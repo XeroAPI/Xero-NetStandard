@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// Folder
     /// </summary>
     [DataContract]
-    public partial class Folder :  IEquatable<Folder>, IValidatableObject
+    public partial class Folder : IEquatable<Folder>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The name of the folder
         /// </summary>
         /// <value>The name of the folder</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The number of files in the folder
         /// </summary>
         /// <value>The number of files in the folder</value>
-        [DataMember(Name="FileCount", EmitDefaultValue=false)]
+        [DataMember(Name = "FileCount", EmitDefaultValue = false)]
         public int? FileCount { get; set; }
 
         /// <summary>
         /// The email address used to email files to the inbox. Only the inbox will have this element.
         /// </summary>
         /// <value>The email address used to email files to the inbox. Only the inbox will have this element.</value>
-        [DataMember(Name="Email", EmitDefaultValue=false)]
+        [DataMember(Name = "Email", EmitDefaultValue = false)]
         public string Email { get; set; }
 
         /// <summary>
         /// to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.
         /// </summary>
         /// <value>to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.</value>
-        [DataMember(Name="IsInbox", EmitDefaultValue=false)]
+        [DataMember(Name = "IsInbox", EmitDefaultValue = false)]
         public bool? IsInbox { get; set; }
 
         /// <summary>
         /// Xero unique identifier for a folder  Files
         /// </summary>
         /// <value>Xero unique identifier for a folder  Files</value>
-        [DataMember(Name="Id", EmitDefaultValue=false)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.FileCount == input.FileCount ||
                     (this.FileCount != null &&
                     this.FileCount.Equals(input.FileCount))
-                ) && 
+                ) &&
                 (
                     this.Email == input.Email ||
                     (this.Email != null &&
                     this.Email.Equals(input.Email))
-                ) && 
+                ) &&
                 (
                     this.IsInbox == input.IsInbox ||
                     (this.IsInbox != null &&
                     this.IsInbox.Equals(input.IsInbox))
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&

@@ -104,7 +104,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("20")]
         public async Task Amount_ValidInputs_Deserialises(string input)
         {
-            var jsonContent =  $@"{{
+            var jsonContent = $@"{{
                 ""Amount"": {input}
             }}";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
@@ -124,7 +124,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("20")]
         public async Task Percentage_ValidInputs_Deserialises(string input)
         {
-            var jsonContent =  $@"{{
+            var jsonContent = $@"{{
                 ""Percentage"": {input}
             }}";
             var response = new HttpResponseMessage(HttpStatusCode.OK)
@@ -144,7 +144,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("20")]
         public async Task NumberOfUnits_ValidInputs_Deserialises(string input)
         {
-            var jsonContent =  $@"{{
+            var jsonContent = $@"{{
                 ""NumberOfUnits"": {input}
             }}";
             var response = new HttpResponseMessage(HttpStatusCode.OK)

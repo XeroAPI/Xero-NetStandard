@@ -28,47 +28,47 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// DeductionLine
     /// </summary>
     [DataContract]
-    public partial class DeductionLine :  IEquatable<DeductionLine>, IValidatableObject
+    public partial class DeductionLine : IEquatable<DeductionLine>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets CalculationType
         /// </summary>
-        [DataMember(Name="CalculationType", EmitDefaultValue=false)]
+        [DataMember(Name = "CalculationType", EmitDefaultValue = false)]
         public DeductionTypeCalculationType CalculationType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DeductionLine" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public DeductionLine() 
-        { 
+        public DeductionLine()
+        {
         }
-        
+
         /// <summary>
         /// Xero deduction type identifier
         /// </summary>
         /// <value>Xero deduction type identifier</value>
-        [DataMember(Name="DeductionTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "DeductionTypeID", EmitDefaultValue = false)]
         public Guid? DeductionTypeID { get; set; }
 
         /// <summary>
         /// Deduction type amount
         /// </summary>
         /// <value>Deduction type amount</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The Percentage of the Deduction
         /// </summary>
         /// <value>The Percentage of the Deduction</value>
-        [DataMember(Name="Percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "Percentage", EmitDefaultValue = false)]
         public decimal? Percentage { get; set; }
 
         /// <summary>
         /// Deduction number of units
         /// </summary>
         /// <value>Deduction number of units</value>
-        [DataMember(Name="NumberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "NumberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -117,26 +117,26 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.DeductionTypeID == input.DeductionTypeID ||
                     (this.DeductionTypeID != null &&
                     this.DeductionTypeID.Equals(input.DeductionTypeID))
-                ) && 
+                ) &&
                 (
                     this.CalculationType == input.CalculationType ||
                     this.CalculationType.Equals(input.CalculationType)
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&
                     this.Percentage.Equals(input.Percentage))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&

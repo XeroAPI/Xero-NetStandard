@@ -28,12 +28,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeTax
     /// </summary>
     [DataContract]
-    public partial class EmployeeTax :  IEquatable<EmployeeTax>, IValidatableObject
+    public partial class EmployeeTax : IEquatable<EmployeeTax>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets TaxCode
         /// </summary>
-        [DataMember(Name="taxCode", EmitDefaultValue=false)]
+        [DataMember(Name = "taxCode", EmitDefaultValue = false)]
         public TaxCode TaxCode { get; set; }
         /// <summary>
         /// Contribution Option which can be &#39;MakeContributions&#39; &#39;OptOut&#39;, &#39;OnAContributionsHoliday&#39;, &#39;OnASavingsSuspension&#39;, &#39;NotCurrentlyAKiwiSaverMember&#39; for employees without a KiwiSaver membership
@@ -78,77 +78,77 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Contribution Option which can be &#39;MakeContributions&#39; &#39;OptOut&#39;, &#39;OnAContributionsHoliday&#39;, &#39;OnASavingsSuspension&#39;, &#39;NotCurrentlyAKiwiSaverMember&#39; for employees without a KiwiSaver membership
         /// </summary>
         /// <value>Contribution Option which can be &#39;MakeContributions&#39; &#39;OptOut&#39;, &#39;OnAContributionsHoliday&#39;, &#39;OnASavingsSuspension&#39;, &#39;NotCurrentlyAKiwiSaverMember&#39; for employees without a KiwiSaver membership</value>
-        [DataMember(Name="kiwiSaverContributions", EmitDefaultValue=false)]
+        [DataMember(Name = "kiwiSaverContributions", EmitDefaultValue = false)]
         public KiwiSaverContributionsEnum KiwiSaverContributions { get; set; }
-        
+
         /// <summary>
         /// The IRD Number.
         /// </summary>
         /// <value>The IRD Number.</value>
-        [DataMember(Name="irdNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "irdNumber", EmitDefaultValue = false)]
         public string IrdNumber { get; set; }
 
         /// <summary>
         /// Special tax rate percentage.
         /// </summary>
         /// <value>Special tax rate percentage.</value>
-        [DataMember(Name="specialTaxRatePercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "specialTaxRatePercentage", EmitDefaultValue = false)]
         public decimal? SpecialTaxRatePercentage { get; set; }
 
         /// <summary>
         /// Does the employee has a special student loan rate?
         /// </summary>
         /// <value>Does the employee has a special student loan rate?</value>
-        [DataMember(Name="hasSpecialStudentLoanRate", EmitDefaultValue=false)]
+        [DataMember(Name = "hasSpecialStudentLoanRate", EmitDefaultValue = false)]
         public bool? HasSpecialStudentLoanRate { get; set; }
 
         /// <summary>
         /// The employee student loan rate percentage.
         /// </summary>
         /// <value>The employee student loan rate percentage.</value>
-        [DataMember(Name="specialStudentLoanRatePercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "specialStudentLoanRatePercentage", EmitDefaultValue = false)]
         public decimal? SpecialStudentLoanRatePercentage { get; set; }
 
         /// <summary>
         /// The employee eligibility for KiwiSaver.
         /// </summary>
         /// <value>The employee eligibility for KiwiSaver.</value>
-        [DataMember(Name="isEligibleForKiwiSaver", EmitDefaultValue=false)]
+        [DataMember(Name = "isEligibleForKiwiSaver", EmitDefaultValue = false)]
         public bool? IsEligibleForKiwiSaver { get; set; }
 
         /// <summary>
         /// Employer superannuation contribution tax rate.
         /// </summary>
         /// <value>Employer superannuation contribution tax rate.</value>
-        [DataMember(Name="esctRatePercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "esctRatePercentage", EmitDefaultValue = false)]
         public decimal? EsctRatePercentage { get; set; }
 
         /// <summary>
         /// Employee Contribution percentage.
         /// </summary>
         /// <value>Employee Contribution percentage.</value>
-        [DataMember(Name="kiwiSaverEmployeeContributionRatePercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "kiwiSaverEmployeeContributionRatePercentage", EmitDefaultValue = false)]
         public decimal? KiwiSaverEmployeeContributionRatePercentage { get; set; }
 
         /// <summary>
         /// Employer Contribution percentage.
         /// </summary>
         /// <value>Employer Contribution percentage.</value>
-        [DataMember(Name="kiwiSaverEmployerContributionRatePercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "kiwiSaverEmployerContributionRatePercentage", EmitDefaultValue = false)]
         public decimal? KiwiSaverEmployerContributionRatePercentage { get; set; }
 
         /// <summary>
         /// Employer Contribution through Salary Sacrifice percentage.
         /// </summary>
         /// <value>Employer Contribution through Salary Sacrifice percentage.</value>
-        [DataMember(Name="kiwiSaverEmployerSalarySacrificeContributionRatePercentage", EmitDefaultValue=false)]
+        [DataMember(Name = "kiwiSaverEmployerSalarySacrificeContributionRatePercentage", EmitDefaultValue = false)]
         public decimal? KiwiSaverEmployerSalarySacrificeContributionRatePercentage { get; set; }
 
         /// <summary>
         /// Opt Out Date.
         /// </summary>
         /// <value>Opt Out Date.</value>
-        [DataMember(Name="kiwiSaverOptOutDate", EmitDefaultValue=false)]
+        [DataMember(Name = "kiwiSaverOptOutDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? KiwiSaverOptOutDate { get; set; }
 
@@ -156,7 +156,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Contribution holiday expiry date or end date.
         /// </summary>
         /// <value>Contribution holiday expiry date or end date.</value>
-        [DataMember(Name="kiwiSaverContributionHolidayEndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "kiwiSaverContributionHolidayEndDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? KiwiSaverContributionHolidayEndDate { get; set; }
 
@@ -164,21 +164,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Does the employee have a remaining student loan balance? Set a remaining balance if you have received a letter from IR.
         /// </summary>
         /// <value>Does the employee have a remaining student loan balance? Set a remaining balance if you have received a letter from IR.</value>
-        [DataMember(Name="hasStudentLoanBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "hasStudentLoanBalance", EmitDefaultValue = false)]
         public bool? HasStudentLoanBalance { get; set; }
 
         /// <summary>
         /// The employee&#39;s student loan balance shown on the letter from IR.
         /// </summary>
         /// <value>The employee&#39;s student loan balance shown on the letter from IR.</value>
-        [DataMember(Name="studentLoanBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "studentLoanBalance", EmitDefaultValue = false)]
         public decimal? StudentLoanBalance { get; set; }
 
         /// <summary>
         /// The date of the letter from IR.
         /// </summary>
         /// <value>The date of the letter from IR.</value>
-        [DataMember(Name="studentLoanAsAt", EmitDefaultValue=false)]
+        [DataMember(Name = "studentLoanAsAt", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StudentLoanAsAt { get; set; }
 
@@ -209,7 +209,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -239,80 +239,80 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.IrdNumber == input.IrdNumber ||
                     (this.IrdNumber != null &&
                     this.IrdNumber.Equals(input.IrdNumber))
-                ) && 
+                ) &&
                 (
                     this.TaxCode == input.TaxCode ||
                     this.TaxCode.Equals(input.TaxCode)
-                ) && 
+                ) &&
                 (
                     this.SpecialTaxRatePercentage == input.SpecialTaxRatePercentage ||
                     (this.SpecialTaxRatePercentage != null &&
                     this.SpecialTaxRatePercentage.Equals(input.SpecialTaxRatePercentage))
-                ) && 
+                ) &&
                 (
                     this.HasSpecialStudentLoanRate == input.HasSpecialStudentLoanRate ||
                     (this.HasSpecialStudentLoanRate != null &&
                     this.HasSpecialStudentLoanRate.Equals(input.HasSpecialStudentLoanRate))
-                ) && 
+                ) &&
                 (
                     this.SpecialStudentLoanRatePercentage == input.SpecialStudentLoanRatePercentage ||
                     (this.SpecialStudentLoanRatePercentage != null &&
                     this.SpecialStudentLoanRatePercentage.Equals(input.SpecialStudentLoanRatePercentage))
-                ) && 
+                ) &&
                 (
                     this.IsEligibleForKiwiSaver == input.IsEligibleForKiwiSaver ||
                     (this.IsEligibleForKiwiSaver != null &&
                     this.IsEligibleForKiwiSaver.Equals(input.IsEligibleForKiwiSaver))
-                ) && 
+                ) &&
                 (
                     this.EsctRatePercentage == input.EsctRatePercentage ||
                     (this.EsctRatePercentage != null &&
                     this.EsctRatePercentage.Equals(input.EsctRatePercentage))
-                ) && 
+                ) &&
                 (
                     this.KiwiSaverContributions == input.KiwiSaverContributions ||
                     this.KiwiSaverContributions.Equals(input.KiwiSaverContributions)
-                ) && 
+                ) &&
                 (
                     this.KiwiSaverEmployeeContributionRatePercentage == input.KiwiSaverEmployeeContributionRatePercentage ||
                     (this.KiwiSaverEmployeeContributionRatePercentage != null &&
                     this.KiwiSaverEmployeeContributionRatePercentage.Equals(input.KiwiSaverEmployeeContributionRatePercentage))
-                ) && 
+                ) &&
                 (
                     this.KiwiSaverEmployerContributionRatePercentage == input.KiwiSaverEmployerContributionRatePercentage ||
                     (this.KiwiSaverEmployerContributionRatePercentage != null &&
                     this.KiwiSaverEmployerContributionRatePercentage.Equals(input.KiwiSaverEmployerContributionRatePercentage))
-                ) && 
+                ) &&
                 (
                     this.KiwiSaverEmployerSalarySacrificeContributionRatePercentage == input.KiwiSaverEmployerSalarySacrificeContributionRatePercentage ||
                     (this.KiwiSaverEmployerSalarySacrificeContributionRatePercentage != null &&
                     this.KiwiSaverEmployerSalarySacrificeContributionRatePercentage.Equals(input.KiwiSaverEmployerSalarySacrificeContributionRatePercentage))
-                ) && 
+                ) &&
                 (
                     this.KiwiSaverOptOutDate == input.KiwiSaverOptOutDate ||
                     (this.KiwiSaverOptOutDate != null &&
                     this.KiwiSaverOptOutDate.Equals(input.KiwiSaverOptOutDate))
-                ) && 
+                ) &&
                 (
                     this.KiwiSaverContributionHolidayEndDate == input.KiwiSaverContributionHolidayEndDate ||
                     (this.KiwiSaverContributionHolidayEndDate != null &&
                     this.KiwiSaverContributionHolidayEndDate.Equals(input.KiwiSaverContributionHolidayEndDate))
-                ) && 
+                ) &&
                 (
                     this.HasStudentLoanBalance == input.HasStudentLoanBalance ||
                     (this.HasStudentLoanBalance != null &&
                     this.HasStudentLoanBalance.Equals(input.HasStudentLoanBalance))
-                ) && 
+                ) &&
                 (
                     this.StudentLoanBalance == input.StudentLoanBalance ||
                     (this.StudentLoanBalance != null &&
                     this.StudentLoanBalance.Equals(input.StudentLoanBalance))
-                ) && 
+                ) &&
                 (
                     this.StudentLoanAsAt == input.StudentLoanAsAt ||
                     (this.StudentLoanAsAt != null &&

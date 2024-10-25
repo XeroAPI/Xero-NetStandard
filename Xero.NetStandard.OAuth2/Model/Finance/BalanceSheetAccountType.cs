@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// BalanceSheetAccountType
     /// </summary>
     [DataContract]
-    public partial class BalanceSheetAccountType :  IEquatable<BalanceSheetAccountType>, IValidatableObject
+    public partial class BalanceSheetAccountType : IEquatable<BalanceSheetAccountType>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The type of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountTypes&#39;&gt;Account Types&lt;/a&gt;
         /// </summary>
         /// <value>The type of the account. See &lt;a href&#x3D;&#39;https://developer.xero.com/documentation/api/types#AccountTypes&#39;&gt;Account Types&lt;/a&gt;</value>
-        [DataMember(Name="accountType", EmitDefaultValue=false)]
+        [DataMember(Name = "accountType", EmitDefaultValue = false)]
         public string AccountType { get; set; }
 
         /// <summary>
         /// A list of all accounts of this type. Refer to the Account section below for each account element detail.
         /// </summary>
         /// <value>A list of all accounts of this type. Refer to the Account section below for each account element detail.</value>
-        [DataMember(Name="accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "accounts", EmitDefaultValue = false)]
         public List<BalanceSheetAccountDetail> Accounts { get; set; }
 
         /// <summary>
         /// Total value of all the accounts in this type
         /// </summary>
         /// <value>Total value of all the accounts in this type</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,18 +96,18 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountType == input.AccountType ||
                     (this.AccountType != null &&
                     this.AccountType.Equals(input.AccountType))
-                ) && 
+                ) &&
                 (
                     this.Accounts == input.Accounts ||
                     this.Accounts != null &&
                     input.Accounts != null &&
                     this.Accounts.SequenceEqual(input.Accounts)
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&

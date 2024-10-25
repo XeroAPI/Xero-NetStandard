@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// HistoryRecord
     /// </summary>
     [DataContract]
-    public partial class HistoryRecord :  IEquatable<HistoryRecord>, IValidatableObject
+    public partial class HistoryRecord : IEquatable<HistoryRecord>, IValidatableObject
     {
-        
+
         /// <summary>
         /// details
         /// </summary>
         /// <value>details</value>
-        [DataMember(Name="Details", EmitDefaultValue=false)]
+        [DataMember(Name = "Details", EmitDefaultValue = false)]
         public string Details { get; set; }
 
         /// <summary>
         /// Name of branding theme
         /// </summary>
         /// <value>Name of branding theme</value>
-        [DataMember(Name="Changes", EmitDefaultValue=false)]
+        [DataMember(Name = "Changes", EmitDefaultValue = false)]
         public string Changes { get; set; }
 
         /// <summary>
         /// has a value of 0
         /// </summary>
         /// <value>has a value of 0</value>
-        [DataMember(Name="User", EmitDefaultValue=false)]
+        [DataMember(Name = "User", EmitDefaultValue = false)]
         public string User { get; set; }
 
         /// <summary>
         /// UTC timestamp of creation date of branding theme
         /// </summary>
         /// <value>UTC timestamp of creation date of branding theme</value>
-        [DataMember(Name="DateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "DateUTC", EmitDefaultValue = false)]
         public DateTime? DateUTC { get; private set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Details == input.Details ||
                     (this.Details != null &&
                     this.Details.Equals(input.Details))
-                ) && 
+                ) &&
                 (
                     this.Changes == input.Changes ||
                     (this.Changes != null &&
                     this.Changes.Equals(input.Changes))
-                ) && 
+                ) &&
                 (
                     this.User == input.User ||
                     (this.User != null &&
                     this.User.Equals(input.User))
-                ) && 
+                ) &&
                 (
                     this.DateUTC == input.DateUTC ||
                     (this.DateUTC != null &&

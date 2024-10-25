@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Budget
     /// </summary>
     [DataContract]
-    public partial class Budget :  IEquatable<Budget>, IValidatableObject
+    public partial class Budget : IEquatable<Budget>, IValidatableObject
     {
         /// <summary>
         /// Type of Budget. OVERALL or TRACKING
@@ -55,40 +55,40 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Type of Budget. OVERALL or TRACKING
         /// </summary>
         /// <value>Type of Budget. OVERALL or TRACKING</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
-        
+
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="BudgetID", EmitDefaultValue=false)]
+        [DataMember(Name = "BudgetID", EmitDefaultValue = false)]
         public Guid? BudgetID { get; set; }
 
         /// <summary>
         /// The Budget description
         /// </summary>
         /// <value>The Budget description</value>
-        [DataMember(Name="Description", EmitDefaultValue=false)]
+        [DataMember(Name = "Description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// UTC timestamp of last update to budget
         /// </summary>
         /// <value>UTC timestamp of last update to budget</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Gets or Sets BudgetLines
         /// </summary>
-        [DataMember(Name="BudgetLines", EmitDefaultValue=false)]
+        [DataMember(Name = "BudgetLines", EmitDefaultValue = false)]
         public List<BudgetLine> BudgetLines { get; set; }
 
         /// <summary>
         /// Gets or Sets Tracking
         /// </summary>
-        [DataMember(Name="Tracking", EmitDefaultValue=false)]
+        [DataMember(Name = "Tracking", EmitDefaultValue = false)]
         public List<TrackingCategory> Tracking { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -138,32 +138,32 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BudgetID == input.BudgetID ||
                     (this.BudgetID != null &&
                     this.BudgetID.Equals(input.BudgetID))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.BudgetLines == input.BudgetLines ||
                     this.BudgetLines != null &&
                     input.BudgetLines != null &&
                     this.BudgetLines.SequenceEqual(input.BudgetLines)
-                ) && 
+                ) &&
                 (
                     this.Tracking == input.Tracking ||
                     this.Tracking != null &&
@@ -204,9 +204,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Description (string) maxLength
-            if(this.Description != null && this.Description.Length > 255)
+            if (this.Description != null && this.Description.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new [] { "Description" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, length must be less than 255.", new[] { "Description" });
             }
 
             yield break;

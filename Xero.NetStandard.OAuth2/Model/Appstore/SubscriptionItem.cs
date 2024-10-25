@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// SubscriptionItem
     /// </summary>
     [DataContract]
-    public partial class SubscriptionItem :  IEquatable<SubscriptionItem>, IValidatableObject
+    public partial class SubscriptionItem : IEquatable<SubscriptionItem>, IValidatableObject
     {
         /// <summary>
         /// Status of the subscription item. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. 
@@ -61,61 +61,61 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
         /// Status of the subscription item. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. 
         /// </summary>
         /// <value>Status of the subscription item. Available statuses are ACTIVE, CANCELED, and PENDING_ACTIVATION. </value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionItem" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public SubscriptionItem() 
-        { 
+        public SubscriptionItem()
+        {
         }
-        
+
         /// <summary>
         /// Date when the subscription to this product will end
         /// </summary>
         /// <value>Date when the subscription to this product will end</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// The unique identifier of the subscription item.
         /// </summary>
         /// <value>The unique identifier of the subscription item.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Price
         /// </summary>
-        [DataMember(Name="price", EmitDefaultValue=false)]
+        [DataMember(Name = "price", EmitDefaultValue = false)]
         public Price Price { get; set; }
 
         /// <summary>
         /// Gets or Sets Product
         /// </summary>
-        [DataMember(Name="product", EmitDefaultValue=false)]
+        [DataMember(Name = "product", EmitDefaultValue = false)]
         public Product Product { get; set; }
 
         /// <summary>
         /// The quantity of the item. For a fixed product, it is 1. For a per-seat product, it is a positive integer. For metered products, it is always null.
         /// </summary>
         /// <value>The quantity of the item. For a fixed product, it is 1. For a per-seat product, it is a positive integer. For metered products, it is always null.</value>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name = "quantity", EmitDefaultValue = false)]
         public int? Quantity { get; set; }
 
         /// <summary>
         /// Date the subscription started, or will start. Note: this could be in the future for downgrades or reduced number of seats that haven&#39;t taken effect yet. 
         /// </summary>
         /// <value>Date the subscription started, or will start. Note: this could be in the future for downgrades or reduced number of seats that haven&#39;t taken effect yet. </value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// If the subscription is a test subscription
         /// </summary>
         /// <value>If the subscription is a test subscription</value>
-        [DataMember(Name="testMode", EmitDefaultValue=false)]
+        [DataMember(Name = "testMode", EmitDefaultValue = false)]
         public bool? TestMode { get; set; }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -167,41 +167,41 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Price == input.Price ||
                     (this.Price != null &&
                     this.Price.Equals(input.Price))
-                ) && 
+                ) &&
                 (
                     this.Product == input.Product ||
                     (this.Product != null &&
                     this.Product.Equals(input.Product))
-                ) && 
+                ) &&
                 (
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.TestMode == input.TestMode ||
                     (this.TestMode != null &&

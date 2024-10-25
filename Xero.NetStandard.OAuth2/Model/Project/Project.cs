@@ -28,150 +28,150 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// Project
     /// </summary>
     [DataContract]
-    public partial class Project :  IEquatable<Project>, IValidatableObject
+    public partial class Project : IEquatable<Project>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="currencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "currencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public ProjectStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Project" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Project() 
-        { 
+        public Project()
+        {
         }
-        
+
         /// <summary>
         /// Identifier of the project.
         /// </summary>
         /// <value>Identifier of the project.</value>
-        [DataMember(Name="projectId", EmitDefaultValue=false)]
+        [DataMember(Name = "projectId", EmitDefaultValue = false)]
         public Guid? ProjectId { get; set; }
 
         /// <summary>
         /// Identifier of the contact this project was created for.
         /// </summary>
         /// <value>Identifier of the contact this project was created for.</value>
-        [DataMember(Name="contactId", EmitDefaultValue=false)]
+        [DataMember(Name = "contactId", EmitDefaultValue = false)]
         public Guid? ContactId { get; set; }
 
         /// <summary>
         /// Name of the project.
         /// </summary>
         /// <value>Name of the project.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// A total of minutes logged against all tasks on the Project.
         /// </summary>
         /// <value>A total of minutes logged against all tasks on the Project.</value>
-        [DataMember(Name="minutesLogged", EmitDefaultValue=false)]
+        [DataMember(Name = "minutesLogged", EmitDefaultValue = false)]
         public int? MinutesLogged { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalTaskAmount
         /// </summary>
-        [DataMember(Name="totalTaskAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "totalTaskAmount", EmitDefaultValue = false)]
         public Amount TotalTaskAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalExpenseAmount
         /// </summary>
-        [DataMember(Name="totalExpenseAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "totalExpenseAmount", EmitDefaultValue = false)]
         public Amount TotalExpenseAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets EstimateAmount
         /// </summary>
-        [DataMember(Name="estimateAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "estimateAmount", EmitDefaultValue = false)]
         public Amount EstimateAmount { get; set; }
 
         /// <summary>
         /// Minutes which have not been invoiced across all chargeable tasks in the project.
         /// </summary>
         /// <value>Minutes which have not been invoiced across all chargeable tasks in the project.</value>
-        [DataMember(Name="minutesToBeInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "minutesToBeInvoiced", EmitDefaultValue = false)]
         public int? MinutesToBeInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskAmountToBeInvoiced
         /// </summary>
-        [DataMember(Name="taskAmountToBeInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "taskAmountToBeInvoiced", EmitDefaultValue = false)]
         public Amount TaskAmountToBeInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets TaskAmountInvoiced
         /// </summary>
-        [DataMember(Name="taskAmountInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "taskAmountInvoiced", EmitDefaultValue = false)]
         public Amount TaskAmountInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpenseAmountToBeInvoiced
         /// </summary>
-        [DataMember(Name="expenseAmountToBeInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "expenseAmountToBeInvoiced", EmitDefaultValue = false)]
         public Amount ExpenseAmountToBeInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpenseAmountInvoiced
         /// </summary>
-        [DataMember(Name="expenseAmountInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "expenseAmountInvoiced", EmitDefaultValue = false)]
         public Amount ExpenseAmountInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets ProjectAmountInvoiced
         /// </summary>
-        [DataMember(Name="projectAmountInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "projectAmountInvoiced", EmitDefaultValue = false)]
         public Amount ProjectAmountInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets Deposit
         /// </summary>
-        [DataMember(Name="deposit", EmitDefaultValue=false)]
+        [DataMember(Name = "deposit", EmitDefaultValue = false)]
         public Amount Deposit { get; set; }
 
         /// <summary>
         /// Gets or Sets DepositApplied
         /// </summary>
-        [DataMember(Name="depositApplied", EmitDefaultValue=false)]
+        [DataMember(Name = "depositApplied", EmitDefaultValue = false)]
         public Amount DepositApplied { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditNoteAmount
         /// </summary>
-        [DataMember(Name="creditNoteAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "creditNoteAmount", EmitDefaultValue = false)]
         public Amount CreditNoteAmount { get; set; }
 
         /// <summary>
         /// Deadline for the project. UTC Date Time in ISO-8601 format.
         /// </summary>
         /// <value>Deadline for the project. UTC Date Time in ISO-8601 format.</value>
-        [DataMember(Name="deadlineUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "deadlineUtc", EmitDefaultValue = false)]
         public DateTime? DeadlineUtc { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalInvoiced
         /// </summary>
-        [DataMember(Name="totalInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "totalInvoiced", EmitDefaultValue = false)]
         public Amount TotalInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalToBeInvoiced
         /// </summary>
-        [DataMember(Name="totalToBeInvoiced", EmitDefaultValue=false)]
+        [DataMember(Name = "totalToBeInvoiced", EmitDefaultValue = false)]
         public Amount TotalToBeInvoiced { get; set; }
 
         /// <summary>
         /// Gets or Sets Estimate
         /// </summary>
-        [DataMember(Name="estimate", EmitDefaultValue=false)]
+        [DataMember(Name = "estimate", EmitDefaultValue = false)]
         public Amount Estimate { get; set; }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -237,111 +237,111 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ProjectId == input.ProjectId ||
                     (this.ProjectId != null &&
                     this.ProjectId.Equals(input.ProjectId))
-                ) && 
+                ) &&
                 (
                     this.ContactId == input.ContactId ||
                     (this.ContactId != null &&
                     this.ContactId.Equals(input.ContactId))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.MinutesLogged == input.MinutesLogged ||
                     (this.MinutesLogged != null &&
                     this.MinutesLogged.Equals(input.MinutesLogged))
-                ) && 
+                ) &&
                 (
                     this.TotalTaskAmount == input.TotalTaskAmount ||
                     (this.TotalTaskAmount != null &&
                     this.TotalTaskAmount.Equals(input.TotalTaskAmount))
-                ) && 
+                ) &&
                 (
                     this.TotalExpenseAmount == input.TotalExpenseAmount ||
                     (this.TotalExpenseAmount != null &&
                     this.TotalExpenseAmount.Equals(input.TotalExpenseAmount))
-                ) && 
+                ) &&
                 (
                     this.EstimateAmount == input.EstimateAmount ||
                     (this.EstimateAmount != null &&
                     this.EstimateAmount.Equals(input.EstimateAmount))
-                ) && 
+                ) &&
                 (
                     this.MinutesToBeInvoiced == input.MinutesToBeInvoiced ||
                     (this.MinutesToBeInvoiced != null &&
                     this.MinutesToBeInvoiced.Equals(input.MinutesToBeInvoiced))
-                ) && 
+                ) &&
                 (
                     this.TaskAmountToBeInvoiced == input.TaskAmountToBeInvoiced ||
                     (this.TaskAmountToBeInvoiced != null &&
                     this.TaskAmountToBeInvoiced.Equals(input.TaskAmountToBeInvoiced))
-                ) && 
+                ) &&
                 (
                     this.TaskAmountInvoiced == input.TaskAmountInvoiced ||
                     (this.TaskAmountInvoiced != null &&
                     this.TaskAmountInvoiced.Equals(input.TaskAmountInvoiced))
-                ) && 
+                ) &&
                 (
                     this.ExpenseAmountToBeInvoiced == input.ExpenseAmountToBeInvoiced ||
                     (this.ExpenseAmountToBeInvoiced != null &&
                     this.ExpenseAmountToBeInvoiced.Equals(input.ExpenseAmountToBeInvoiced))
-                ) && 
+                ) &&
                 (
                     this.ExpenseAmountInvoiced == input.ExpenseAmountInvoiced ||
                     (this.ExpenseAmountInvoiced != null &&
                     this.ExpenseAmountInvoiced.Equals(input.ExpenseAmountInvoiced))
-                ) && 
+                ) &&
                 (
                     this.ProjectAmountInvoiced == input.ProjectAmountInvoiced ||
                     (this.ProjectAmountInvoiced != null &&
                     this.ProjectAmountInvoiced.Equals(input.ProjectAmountInvoiced))
-                ) && 
+                ) &&
                 (
                     this.Deposit == input.Deposit ||
                     (this.Deposit != null &&
                     this.Deposit.Equals(input.Deposit))
-                ) && 
+                ) &&
                 (
                     this.DepositApplied == input.DepositApplied ||
                     (this.DepositApplied != null &&
                     this.DepositApplied.Equals(input.DepositApplied))
-                ) && 
+                ) &&
                 (
                     this.CreditNoteAmount == input.CreditNoteAmount ||
                     (this.CreditNoteAmount != null &&
                     this.CreditNoteAmount.Equals(input.CreditNoteAmount))
-                ) && 
+                ) &&
                 (
                     this.DeadlineUtc == input.DeadlineUtc ||
                     (this.DeadlineUtc != null &&
                     this.DeadlineUtc.Equals(input.DeadlineUtc))
-                ) && 
+                ) &&
                 (
                     this.TotalInvoiced == input.TotalInvoiced ||
                     (this.TotalInvoiced != null &&
                     this.TotalInvoiced.Equals(input.TotalInvoiced))
-                ) && 
+                ) &&
                 (
                     this.TotalToBeInvoiced == input.TotalToBeInvoiced ||
                     (this.TotalToBeInvoiced != null &&
                     this.TotalToBeInvoiced.Equals(input.TotalToBeInvoiced))
-                ) && 
+                ) &&
                 (
                     this.Estimate == input.Estimate ||
                     (this.Estimate != null &&
                     this.Estimate.Equals(input.Estimate))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)

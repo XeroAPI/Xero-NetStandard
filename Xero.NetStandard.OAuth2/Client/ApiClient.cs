@@ -47,23 +47,23 @@ namespace Xero.NetStandard.OAuth2.Client
                 }
             },
             DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-                        CheckAdditionalContent = false,
+            CheckAdditionalContent = false,
             Culture = CultureInfo.InvariantCulture,
             DateFormatHandling = DateFormatHandling.IsoDateFormat,
             DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK",
-        	DateParseHandling = DateParseHandling.DateTime,
+            DateParseHandling = DateParseHandling.DateTime,
             DefaultValueHandling = DefaultValueHandling.Include,
-        	FloatFormatHandling = FloatFormatHandling.String,
+            FloatFormatHandling = FloatFormatHandling.String,
             FloatParseHandling = FloatParseHandling.Double,
             Formatting = Formatting.None,
             MaxDepth = null,
             MetadataPropertyHandling = MetadataPropertyHandling.Default,
             MissingMemberHandling = MissingMemberHandling.Ignore,
-        	NullValueHandling = NullValueHandling.Include,
+            NullValueHandling = NullValueHandling.Include,
             ObjectCreationHandling = ObjectCreationHandling.Auto,
             PreserveReferencesHandling = PreserveReferencesHandling.None,
             ReferenceLoopHandling = ReferenceLoopHandling.Error,
-        	StringEscapeHandling = StringEscapeHandling.Default,
+            StringEscapeHandling = StringEscapeHandling.Default,
             TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
             TypeNameHandling = TypeNameHandling.None
         };
@@ -87,37 +87,38 @@ namespace Xero.NetStandard.OAuth2.Client
         public string Serialize(object obj)
         {
             String result = JsonConvert.SerializeObject(obj, _serializerSettings);
-            
+
             // when dealing with AU Payroll & Accounting API, we should convert DateTime object to Wcf Json Date String
-            if (obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.Accounting") || obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.PayrollAu") )
+            if (obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.Accounting") || obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.PayrollAu"))
             {
-              string dateTimePattern = @"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z";
+                string dateTimePattern = @"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z";
 
-              Regex rgx = new Regex(dateTimePattern);
-              Match match = rgx.Match(result);
-              
-              if (match.Success) {
-                int indexAdjust = 0;
-                foreach (Match m in rgx.Matches(result))
+                Regex rgx = new Regex(dateTimePattern);
+                Match match = rgx.Match(result);
+
+                if (match.Success)
                 {
-                  DateTime dateTime = DateTime.Parse(m.Value);
-                  DateTimeOffset dateTimeOffset   = new DateTimeOffset(dateTime);
-                  var unixDateTime = dateTimeOffset.ToUniversalTime().ToUnixTimeMilliseconds();
-                  var wcfJsonDateString = "/Date(" + unixDateTime + "+0000)/";
-                  result = result.Remove(m.Index + indexAdjust, m.Length).Insert(m.Index + indexAdjust, wcfJsonDateString);
-                  indexAdjust = indexAdjust + (wcfJsonDateString.Length - m.Value.Length);
+                    int indexAdjust = 0;
+                    foreach (Match m in rgx.Matches(result))
+                    {
+                        DateTime dateTime = DateTime.Parse(m.Value);
+                        DateTimeOffset dateTimeOffset = new DateTimeOffset(dateTime);
+                        var unixDateTime = dateTimeOffset.ToUniversalTime().ToUnixTimeMilliseconds();
+                        var wcfJsonDateString = "/Date(" + unixDateTime + "+0000)/";
+                        result = result.Remove(m.Index + indexAdjust, m.Length).Insert(m.Index + indexAdjust, wcfJsonDateString);
+                        indexAdjust = indexAdjust + (wcfJsonDateString.Length - m.Value.Length);
+                    }
                 }
-              }
 
-              return result;
+                return result;
             };
-            
+
             return result;
         }
 
         public async Task<T> Deserialize<T>(HttpResponseMessage response)
         {
-            var result = (T) await Deserialize(response, typeof(T));
+            var result = (T)await Deserialize(response, typeof(T));
             return result;
         }
 
@@ -171,7 +172,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 return ClientUtils.ConvertType(await response.Content.ReadAsStringAsync(), type);
             }
 
-            if(response.StatusCode < HttpStatusCode.OK || response.StatusCode >= HttpStatusCode.MultipleChoices)
+            if (response.StatusCode < HttpStatusCode.OK || response.StatusCode >= HttpStatusCode.MultipleChoices)
             {
                 throw new ApiException((int)response.StatusCode, await response.Content.ReadAsStringAsync());
             }
@@ -270,7 +271,8 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         public void Dispose()
         {
-            if(_disposeClient) {
+            if (_disposeClient)
+            {
                 _httpClient.Dispose();
             }
         }
@@ -431,17 +433,20 @@ namespace Xero.NetStandard.OAuth2.Client
 
         private async Task<ApiResponse<T>> ToApiResponse<T>(HttpResponseMessage response, object responseData, Uri uri, bool isSuccess = true)
         {
-            T result = (T) responseData;
+            T result = (T)responseData;
 
             object content;
 
-            if (isSuccess) {
+            if (isSuccess)
+            {
                 content = response.Content;
-            } else {
+            }
+            else
+            {
                 content = await response.Content.ReadAsStringAsync();
             }
 
-            
+
             var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result)
             {
                 ErrorText = response.ReasonPhrase,
@@ -469,13 +474,14 @@ namespace Xero.NetStandard.OAuth2.Client
 
             if (_httpClientHandler != null && response != null)
             {
-                try {
+                try
+                {
                     foreach (Cookie cookie in _httpClientHandler.CookieContainer.GetCookies(uri))
                     {
                         transformed.Cookies.Add(cookie);
                     }
                 }
-                catch (PlatformNotSupportedException) {}
+                catch (PlatformNotSupportedException) { }
             }
 
             return transformed;
@@ -499,7 +505,7 @@ namespace Xero.NetStandard.OAuth2.Client
 
             if (cookieContainer != null)
             {
-                if(_httpClientHandler == null) throw new InvalidOperationException("Request property `CookieContainer` not supported when the client is explicitly created without an HttpClientHandler, use the proper constructor.");
+                if (_httpClientHandler == null) throw new InvalidOperationException("Request property `CookieContainer` not supported when the client is explicitly created without an HttpClientHandler, use the proper constructor.");
                 foreach (var cookie in cookieContainer)
                 {
                     _httpClientHandler.CookieContainer.Add(cookie);
@@ -522,7 +528,7 @@ namespace Xero.NetStandard.OAuth2.Client
             // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
             if (typeof(T).Name == "Stream") // for binary response
             {
-                responseData = (T) (object) await response.Content.ReadAsStreamAsync();
+                responseData = (T)(object)await response.Content.ReadAsStreamAsync();
             }
 
             InterceptResponse(req, response);

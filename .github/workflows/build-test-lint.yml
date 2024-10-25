@@ -28,9 +28,9 @@ jobs:
                 dotnet list package --outdated
               working-directory: Xero-NetStandard
 
-            # - name: Validate Lint
-            #   run: dotnet format --verify-no-changes
-            #   working-directory: Xero-NetStandard
+            - name: Validate Lint
+              run: dotnet format --verify-no-changes
+              working-directory: Xero-NetStandard
 
             - name: Set up Node environment
               uses: actions/setup-node@v2

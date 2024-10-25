@@ -28,42 +28,42 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// BalanceSheetAccountDetail
     /// </summary>
     [DataContract]
-    public partial class BalanceSheetAccountDetail :  IEquatable<BalanceSheetAccountDetail>, IValidatableObject
+    public partial class BalanceSheetAccountDetail : IEquatable<BalanceSheetAccountDetail>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Accounting code
         /// </summary>
         /// <value>Accounting code</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
+        [DataMember(Name = "code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// ID of the account
         /// </summary>
         /// <value>ID of the account</value>
-        [DataMember(Name="accountID", EmitDefaultValue=false)]
+        [DataMember(Name = "accountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// Account name
         /// </summary>
         /// <value>Account name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Reporting code
         /// </summary>
         /// <value>Reporting code</value>
-        [DataMember(Name="reportingCode", EmitDefaultValue=false)]
+        [DataMember(Name = "reportingCode", EmitDefaultValue = false)]
         public string ReportingCode { get; set; }
 
         /// <summary>
         /// Total movement on this account
         /// </summary>
         /// <value>Total movement on this account</value>
-        [DataMember(Name="total", EmitDefaultValue=false)]
+        [DataMember(Name = "total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -112,27 +112,27 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.ReportingCode == input.ReportingCode ||
                     (this.ReportingCode != null &&
                     this.ReportingCode.Equals(input.ReportingCode))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&

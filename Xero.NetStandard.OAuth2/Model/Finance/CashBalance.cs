@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// CashBalance
     /// </summary>
     [DataContract]
-    public partial class CashBalance :  IEquatable<CashBalance>, IValidatableObject
+    public partial class CashBalance : IEquatable<CashBalance>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Opening balance of cash and cash equivalents
         /// </summary>
         /// <value>Opening balance of cash and cash equivalents</value>
-        [DataMember(Name="openingCashBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "openingCashBalance", EmitDefaultValue = false)]
         public decimal? OpeningCashBalance { get; set; }
 
         /// <summary>
         /// Closing balance of cash and cash equivalents
         /// </summary>
         /// <value>Closing balance of cash and cash equivalents</value>
-        [DataMember(Name="closingCashBalance", EmitDefaultValue=false)]
+        [DataMember(Name = "closingCashBalance", EmitDefaultValue = false)]
         public decimal? ClosingCashBalance { get; set; }
 
         /// <summary>
         /// Net movement of cash and cash equivalents for the period
         /// </summary>
         /// <value>Net movement of cash and cash equivalents for the period</value>
-        [DataMember(Name="netCashMovement", EmitDefaultValue=false)]
+        [DataMember(Name = "netCashMovement", EmitDefaultValue = false)]
         public decimal? NetCashMovement { get; private set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.OpeningCashBalance == input.OpeningCashBalance ||
                     (this.OpeningCashBalance != null &&
                     this.OpeningCashBalance.Equals(input.OpeningCashBalance))
-                ) && 
+                ) &&
                 (
                     this.ClosingCashBalance == input.ClosingCashBalance ||
                     (this.ClosingCashBalance != null &&
                     this.ClosingCashBalance.Equals(input.ClosingCashBalance))
-                ) && 
+                ) &&
                 (
                     this.NetCashMovement == input.NetCashMovement ||
                     (this.NetCashMovement != null &&

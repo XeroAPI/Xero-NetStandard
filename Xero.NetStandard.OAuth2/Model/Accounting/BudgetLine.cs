@@ -28,27 +28,27 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BudgetLine
     /// </summary>
     [DataContract]
-    public partial class BudgetLine :  IEquatable<BudgetLine>, IValidatableObject
+    public partial class BudgetLine : IEquatable<BudgetLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountID", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountID", EmitDefaultValue = false)]
         public Guid? AccountID { get; set; }
 
         /// <summary>
         /// See Accounts
         /// </summary>
         /// <value>See Accounts</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// Gets or Sets BudgetBalances
         /// </summary>
-        [DataMember(Name="BudgetBalances", EmitDefaultValue=false)]
+        [DataMember(Name = "BudgetBalances", EmitDefaultValue = false)]
         public List<BudgetBalance> BudgetBalances { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -95,17 +95,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.AccountID == input.AccountID ||
                     (this.AccountID != null &&
                     this.AccountID.Equals(input.AccountID))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.BudgetBalances == input.BudgetBalances ||
                     this.BudgetBalances != null &&

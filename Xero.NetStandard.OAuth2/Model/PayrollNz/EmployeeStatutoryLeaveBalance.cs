@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeStatutoryLeaveBalance
     /// </summary>
     [DataContract]
-    public partial class EmployeeStatutoryLeaveBalance :  IEquatable<EmployeeStatutoryLeaveBalance>, IValidatableObject
+    public partial class EmployeeStatutoryLeaveBalance : IEquatable<EmployeeStatutoryLeaveBalance>, IValidatableObject
     {
         /// <summary>
         /// The type of statutory leave
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The type of statutory leave
         /// </summary>
         /// <value>The type of statutory leave</value>
-        [DataMember(Name="leaveType", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveType", EmitDefaultValue = false)]
         public LeaveTypeEnum LeaveType { get; set; }
         /// <summary>
         /// The units will be \&quot;Hours\&quot;
@@ -94,14 +94,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The units will be \&quot;Hours\&quot;
         /// </summary>
         /// <value>The units will be \&quot;Hours\&quot;</value>
-        [DataMember(Name="units", EmitDefaultValue=false)]
+        [DataMember(Name = "units", EmitDefaultValue = false)]
         public UnitsEnum Units { get; set; }
-        
+
         /// <summary>
         /// The balance remaining for the corresponding leave type as of specified date.
         /// </summary>
         /// <value>The balance remaining for the corresponding leave type as of specified date.</value>
-        [DataMember(Name="balanceRemaining", EmitDefaultValue=false)]
+        [DataMember(Name = "balanceRemaining", EmitDefaultValue = false)]
         public decimal? BalanceRemaining { get; set; }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -148,16 +148,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveType == input.LeaveType ||
                     this.LeaveType.Equals(input.LeaveType)
-                ) && 
+                ) &&
                 (
                     this.BalanceRemaining == input.BalanceRemaining ||
                     (this.BalanceRemaining != null &&
                     this.BalanceRemaining.Equals(input.BalanceRemaining))
-                ) && 
+                ) &&
                 (
                     this.Units == input.Units ||
                     this.Units.Equals(input.Units)

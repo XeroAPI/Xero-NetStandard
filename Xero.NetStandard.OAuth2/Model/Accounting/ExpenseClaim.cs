@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ExpenseClaim
     /// </summary>
     [DataContract]
-    public partial class ExpenseClaim :  IEquatable<ExpenseClaim>, IValidatableObject
+    public partial class ExpenseClaim : IEquatable<ExpenseClaim>, IValidatableObject
     {
         /// <summary>
         /// Current status of an expense claim – see status types
@@ -73,82 +73,82 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Current status of an expense claim – see status types
         /// </summary>
         /// <value>Current status of an expense claim – see status types</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// Xero generated unique identifier for an expense claim
         /// </summary>
         /// <value>Xero generated unique identifier for an expense claim</value>
-        [DataMember(Name="ExpenseClaimID", EmitDefaultValue=false)]
+        [DataMember(Name = "ExpenseClaimID", EmitDefaultValue = false)]
         public Guid? ExpenseClaimID { get; set; }
 
         /// <summary>
         /// See Payments
         /// </summary>
         /// <value>See Payments</value>
-        [DataMember(Name="Payments", EmitDefaultValue=false)]
+        [DataMember(Name = "Payments", EmitDefaultValue = false)]
         public List<Payment> Payments { get; set; }
 
         /// <summary>
         /// Gets or Sets User
         /// </summary>
-        [DataMember(Name="User", EmitDefaultValue=false)]
+        [DataMember(Name = "User", EmitDefaultValue = false)]
         public User User { get; set; }
 
         /// <summary>
         /// Gets or Sets Receipts
         /// </summary>
-        [DataMember(Name="Receipts", EmitDefaultValue=false)]
+        [DataMember(Name = "Receipts", EmitDefaultValue = false)]
         public List<Receipt> Receipts { get; set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// The total of an expense claim being paid
         /// </summary>
         /// <value>The total of an expense claim being paid</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; private set; }
 
         /// <summary>
         /// The amount due to be paid for an expense claim
         /// </summary>
         /// <value>The amount due to be paid for an expense claim</value>
-        [DataMember(Name="AmountDue", EmitDefaultValue=false)]
+        [DataMember(Name = "AmountDue", EmitDefaultValue = false)]
         public decimal? AmountDue { get; private set; }
 
         /// <summary>
         /// The amount still to pay for an expense claim
         /// </summary>
         /// <value>The amount still to pay for an expense claim</value>
-        [DataMember(Name="AmountPaid", EmitDefaultValue=false)]
+        [DataMember(Name = "AmountPaid", EmitDefaultValue = false)]
         public decimal? AmountPaid { get; private set; }
 
         /// <summary>
         /// The date when the expense claim is due to be paid YYYY-MM-DD
         /// </summary>
         /// <value>The date when the expense claim is due to be paid YYYY-MM-DD</value>
-        [DataMember(Name="PaymentDueDate", EmitDefaultValue=false)]
+        [DataMember(Name = "PaymentDueDate", EmitDefaultValue = false)]
         public DateTime? PaymentDueDate { get; private set; }
 
         /// <summary>
         /// The date the expense claim will be reported in Xero YYYY-MM-DD
         /// </summary>
         /// <value>The date the expense claim will be reported in Xero YYYY-MM-DD</value>
-        [DataMember(Name="ReportingDate", EmitDefaultValue=false)]
+        [DataMember(Name = "ReportingDate", EmitDefaultValue = false)]
         public DateTime? ReportingDate { get; private set; }
 
         /// <summary>
         /// The Xero identifier for the Receipt e.g. e59a2c7f-1306-4078-a0f3-73537afcbba9
         /// </summary>
         /// <value>The Xero identifier for the Receipt e.g. e59a2c7f-1306-4078-a0f3-73537afcbba9</value>
-        [DataMember(Name="ReceiptID", EmitDefaultValue=false)]
+        [DataMember(Name = "ReceiptID", EmitDefaultValue = false)]
         public Guid? ReceiptID { get; set; }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -204,63 +204,63 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.ExpenseClaimID == input.ExpenseClaimID ||
                     (this.ExpenseClaimID != null &&
                     this.ExpenseClaimID.Equals(input.ExpenseClaimID))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.Payments == input.Payments ||
                     this.Payments != null &&
                     input.Payments != null &&
                     this.Payments.SequenceEqual(input.Payments)
-                ) && 
+                ) &&
                 (
                     this.User == input.User ||
                     (this.User != null &&
                     this.User.Equals(input.User))
-                ) && 
+                ) &&
                 (
                     this.Receipts == input.Receipts ||
                     this.Receipts != null &&
                     input.Receipts != null &&
                     this.Receipts.SequenceEqual(input.Receipts)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.AmountDue == input.AmountDue ||
                     (this.AmountDue != null &&
                     this.AmountDue.Equals(input.AmountDue))
-                ) && 
+                ) &&
                 (
                     this.AmountPaid == input.AmountPaid ||
                     (this.AmountPaid != null &&
                     this.AmountPaid.Equals(input.AmountPaid))
-                ) && 
+                ) &&
                 (
                     this.PaymentDueDate == input.PaymentDueDate ||
                     (this.PaymentDueDate != null &&
                     this.PaymentDueDate.Equals(input.PaymentDueDate))
-                ) && 
+                ) &&
                 (
                     this.ReportingDate == input.ReportingDate ||
                     (this.ReportingDate != null &&
                     this.ReportingDate.Equals(input.ReportingDate))
-                ) && 
+                ) &&
                 (
                     this.ReceiptID == input.ReceiptID ||
                     (this.ReceiptID != null &&

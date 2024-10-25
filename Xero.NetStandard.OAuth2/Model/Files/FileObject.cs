@@ -28,62 +28,62 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// FileObject
     /// </summary>
     [DataContract]
-    public partial class FileObject :  IEquatable<FileObject>, IValidatableObject
+    public partial class FileObject : IEquatable<FileObject>, IValidatableObject
     {
-        
+
         /// <summary>
         /// File Name
         /// </summary>
         /// <value>File Name</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// MimeType of the file (image/png, image/jpeg, application/pdf, etc..)
         /// </summary>
         /// <value>MimeType of the file (image/png, image/jpeg, application/pdf, etc..)</value>
-        [DataMember(Name="MimeType", EmitDefaultValue=false)]
+        [DataMember(Name = "MimeType", EmitDefaultValue = false)]
         public string MimeType { get; set; }
 
         /// <summary>
         /// Numeric value in bytes
         /// </summary>
         /// <value>Numeric value in bytes</value>
-        [DataMember(Name="Size", EmitDefaultValue=false)]
+        [DataMember(Name = "Size", EmitDefaultValue = false)]
         public int? Size { get; set; }
 
         /// <summary>
         /// Created date in UTC
         /// </summary>
         /// <value>Created date in UTC</value>
-        [DataMember(Name="CreatedDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "CreatedDateUtc", EmitDefaultValue = false)]
         public string CreatedDateUtc { get; set; }
 
         /// <summary>
         /// Updated date in UTC
         /// </summary>
         /// <value>Updated date in UTC</value>
-        [DataMember(Name="UpdatedDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUtc", EmitDefaultValue = false)]
         public string UpdatedDateUtc { get; set; }
 
         /// <summary>
         /// Gets or Sets User
         /// </summary>
-        [DataMember(Name="User", EmitDefaultValue=false)]
+        [DataMember(Name = "User", EmitDefaultValue = false)]
         public User User { get; set; }
 
         /// <summary>
         /// File object&#39;s UUID
         /// </summary>
         /// <value>File object&#39;s UUID</value>
-        [DataMember(Name="Id", EmitDefaultValue=false)]
+        [DataMember(Name = "Id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// Folder relation object&#39;s UUID
         /// </summary>
         /// <value>Folder relation object&#39;s UUID</value>
-        [DataMember(Name="FolderId", EmitDefaultValue=false)]
+        [DataMember(Name = "FolderId", EmitDefaultValue = false)]
         public Guid? FolderId { get; set; }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -135,42 +135,42 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.MimeType == input.MimeType ||
                     (this.MimeType != null &&
                     this.MimeType.Equals(input.MimeType))
-                ) && 
+                ) &&
                 (
                     this.Size == input.Size ||
                     (this.Size != null &&
                     this.Size.Equals(input.Size))
-                ) && 
+                ) &&
                 (
                     this.CreatedDateUtc == input.CreatedDateUtc ||
                     (this.CreatedDateUtc != null &&
                     this.CreatedDateUtc.Equals(input.CreatedDateUtc))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUtc == input.UpdatedDateUtc ||
                     (this.UpdatedDateUtc != null &&
                     this.UpdatedDateUtc.Equals(input.UpdatedDateUtc))
-                ) && 
+                ) &&
                 (
                     this.User == input.User ||
                     (this.User != null &&
                     this.User.Equals(input.User))
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.FolderId == input.FolderId ||
                     (this.FolderId != null &&

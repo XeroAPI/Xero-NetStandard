@@ -28,49 +28,49 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// SuperannuationLine
     /// </summary>
     [DataContract]
-    public partial class SuperannuationLine :  IEquatable<SuperannuationLine>, IValidatableObject
+    public partial class SuperannuationLine : IEquatable<SuperannuationLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for payroll superannuation type
         /// </summary>
         /// <value>Xero identifier for payroll superannuation type</value>
-        [DataMember(Name="superannuationTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "superannuationTypeID", EmitDefaultValue = false)]
         public Guid? SuperannuationTypeID { get; set; }
 
         /// <summary>
         /// Benefit display name
         /// </summary>
         /// <value>Benefit display name</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The amount of the superannuation line
         /// </summary>
         /// <value>The amount of the superannuation line</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Superannuation fixed amount
         /// </summary>
         /// <value>Superannuation fixed amount</value>
-        [DataMember(Name="fixedAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "fixedAmount", EmitDefaultValue = false)]
         public decimal? FixedAmount { get; set; }
 
         /// <summary>
         /// Superannuation rate percentage
         /// </summary>
         /// <value>Superannuation rate percentage</value>
-        [DataMember(Name="percentage", EmitDefaultValue=false)]
+        [DataMember(Name = "percentage", EmitDefaultValue = false)]
         public decimal? Percentage { get; set; }
 
         /// <summary>
         /// manual adjustment made
         /// </summary>
         /// <value>manual adjustment made</value>
-        [DataMember(Name="manualAdjustment", EmitDefaultValue=false)]
+        [DataMember(Name = "manualAdjustment", EmitDefaultValue = false)]
         public bool? ManualAdjustment { get; set; }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -120,32 +120,32 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.SuperannuationTypeID == input.SuperannuationTypeID ||
                     (this.SuperannuationTypeID != null &&
                     this.SuperannuationTypeID.Equals(input.SuperannuationTypeID))
-                ) && 
+                ) &&
                 (
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.FixedAmount == input.FixedAmount ||
                     (this.FixedAmount != null &&
                     this.FixedAmount.Equals(input.FixedAmount))
-                ) && 
+                ) &&
                 (
                     this.Percentage == input.Percentage ||
                     (this.Percentage != null &&
                     this.Percentage.Equals(input.Percentage))
-                ) && 
+                ) &&
                 (
                     this.ManualAdjustment == input.ManualAdjustment ||
                     (this.ManualAdjustment != null &&

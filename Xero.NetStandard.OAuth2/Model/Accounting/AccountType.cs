@@ -28,9 +28,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// See Account Types
     /// </summary>
     /// <value>See Account Types</value>
-    
+
     [JsonConverter(typeof(Client.CustomStringEnumConverter))]
-    
+
     public enum AccountType
     {
         /// <summary>

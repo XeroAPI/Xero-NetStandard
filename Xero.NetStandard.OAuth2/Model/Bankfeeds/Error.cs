@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
     /// On error, the API consumer will receive an HTTP response with a HTTP Status Code of 4xx or 5xx and a Content-Type of application/problem+json.
     /// </summary>
     [DataContract]
-    public partial class Error :  IEquatable<Error>, IValidatableObject
+    public partial class Error : IEquatable<Error>, IValidatableObject
     {
         /// <summary>
         /// Identifies the type of error.
@@ -169,28 +169,28 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
         /// Identifies the type of error.
         /// </summary>
         /// <value>Identifies the type of error.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
-        
+
         /// <summary>
         /// Human readable high level error description.
         /// </summary>
         /// <value>Human readable high level error description.</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
 
         /// <summary>
         /// The numeric HTTP Status Code, e.g. 404
         /// </summary>
         /// <value>The numeric HTTP Status Code, e.g. 404</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
+        [DataMember(Name = "status", EmitDefaultValue = false)]
         public int? Status { get; set; }
 
         /// <summary>
         /// Human readable detailed error description.
         /// </summary>
         /// <value>Human readable detailed error description.</value>
-        [DataMember(Name="detail", EmitDefaultValue=false)]
+        [DataMember(Name = "detail", EmitDefaultValue = false)]
         public string Detail { get; set; }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -238,22 +238,22 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
-                ) && 
+                ) &&
                 (
                     this.Detail == input.Detail ||
                     (this.Detail != null &&
                     this.Detail.Equals(input.Detail))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)

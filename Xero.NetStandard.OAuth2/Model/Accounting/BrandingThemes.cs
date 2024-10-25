@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BrandingThemes
     /// </summary>
     [DataContract]
-    public partial class BrandingThemes :  IEquatable<BrandingThemes>, IValidatableObject
+    public partial class BrandingThemes : IEquatable<BrandingThemes>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _BrandingThemes
         /// </summary>
-        [DataMember(Name="BrandingThemes", EmitDefaultValue=false)]
+        [DataMember(Name = "BrandingThemes", EmitDefaultValue = false)]
         public List<BrandingTheme> _BrandingThemes { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._BrandingThemes == input._BrandingThemes ||
                     this._BrandingThemes != null &&

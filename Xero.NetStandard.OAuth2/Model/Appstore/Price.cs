@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// Price
     /// </summary>
     [DataContract]
-    public partial class Price :  IEquatable<Price>, IValidatableObject
+    public partial class Price : IEquatable<Price>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Price" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Price() 
-        { 
+        public Price()
+        {
         }
-        
+
         /// <summary>
         /// The net (before tax) amount.
         /// </summary>
         /// <value>The net (before tax) amount.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The currency of the price.
         /// </summary>
         /// <value>The currency of the price.</value>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
+        [DataMember(Name = "currency", EmitDefaultValue = false)]
         public string Currency { get; set; }
 
         /// <summary>
         /// The unique identifier of the price.
         /// </summary>
         /// <value>The unique identifier of the price.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -103,17 +103,17 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.Currency == input.Currency ||
                     (this.Currency != null &&
                     this.Currency.Equals(input.Currency))
-                ) && 
+                ) &&
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&

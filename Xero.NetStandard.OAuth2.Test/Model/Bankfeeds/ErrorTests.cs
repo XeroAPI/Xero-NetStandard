@@ -76,17 +76,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             string jsonContent = $@"{{
                 ""Type"": ""{input}""
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Error>(response);
-            
+
             Assert.Equal(expected, actual.Type);
         }
 
@@ -99,18 +99,18 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             var jsonContent = $@"{{
                 ""Type"": null
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Error>(response);
 
-            Assert.Equal(0, (int) actual.Type);
+            Assert.Equal(0, (int)actual.Type);
         }
 
         /// <summary>
@@ -123,13 +123,13 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             {
                 Content = new StringContent("{}", Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<Error>(response);
 
-            Assert.Equal(0, (int) actual.Type);
+            Assert.Equal(0, (int)actual.Type);
         }
 
     }

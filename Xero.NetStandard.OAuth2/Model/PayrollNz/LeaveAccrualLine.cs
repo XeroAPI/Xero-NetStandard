@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// LeaveAccrualLine
     /// </summary>
     [DataContract]
-    public partial class LeaveAccrualLine :  IEquatable<LeaveAccrualLine>, IValidatableObject
+    public partial class LeaveAccrualLine : IEquatable<LeaveAccrualLine>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero identifier for the Leave type
         /// </summary>
         /// <value>Xero identifier for the Leave type</value>
-        [DataMember(Name="leaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// Leave accrual number of units
         /// </summary>
         /// <value>Leave accrual number of units</value>
-        [DataMember(Name="numberOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -88,12 +88,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&

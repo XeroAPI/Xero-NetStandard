@@ -58,14 +58,14 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
             string jsonContent = $@"{{
                 ""Amount"": {input}
             }}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<EndBalance>(response);
 
@@ -78,17 +78,17 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         public async Task CreditDebitIndicator_NotPresent_DeserialisesTo0()
         {
             string jsonContent = "{}";
-            
+
             var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
             };
-            
+
             response.EnsureSuccessStatusCode();
-            
+
             var deserializer = new CustomJsonCodec(new Configuration());
             var actual = await deserializer.Deserialize<EndBalance>(response);
-            
+
             Assert.Equal(0, (int)actual.CreditDebitIndicator);
         }
 

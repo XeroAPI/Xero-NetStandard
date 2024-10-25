@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// LinkedTransaction
     /// </summary>
     [DataContract]
-    public partial class LinkedTransaction :  IEquatable<LinkedTransaction>, IValidatableObject
+    public partial class LinkedTransaction : IEquatable<LinkedTransaction>, IValidatableObject
     {
         /// <summary>
         /// Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.
@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.
         /// </summary>
         /// <value>Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// This will always be BILLABLEEXPENSE. More types may be added in future.
@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// This will always be BILLABLEEXPENSE. More types may be added in future.
         /// </summary>
         /// <value>This will always be BILLABLEEXPENSE. More types may be added in future.</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// The Type of the source tranasction. This will be ACCPAY if the linked transaction was created from an invoice and SPEND if it was created from a bank transaction.
@@ -121,63 +121,63 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The Type of the source tranasction. This will be ACCPAY if the linked transaction was created from an invoice and SPEND if it was created from a bank transaction.
         /// </summary>
         /// <value>The Type of the source tranasction. This will be ACCPAY if the linked transaction was created from an invoice and SPEND if it was created from a bank transaction.</value>
-        [DataMember(Name="SourceTransactionTypeCode", EmitDefaultValue=false)]
+        [DataMember(Name = "SourceTransactionTypeCode", EmitDefaultValue = false)]
         public SourceTransactionTypeCodeEnum SourceTransactionTypeCode { get; set; }
-        
+
         /// <summary>
         /// Filter by the SourceTransactionID. Get all the linked transactions created from a particular ACCPAY invoice
         /// </summary>
         /// <value>Filter by the SourceTransactionID. Get all the linked transactions created from a particular ACCPAY invoice</value>
-        [DataMember(Name="SourceTransactionID", EmitDefaultValue=false)]
+        [DataMember(Name = "SourceTransactionID", EmitDefaultValue = false)]
         public Guid? SourceTransactionID { get; set; }
 
         /// <summary>
         /// The line item identifier from the source transaction.
         /// </summary>
         /// <value>The line item identifier from the source transaction.</value>
-        [DataMember(Name="SourceLineItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "SourceLineItemID", EmitDefaultValue = false)]
         public Guid? SourceLineItemID { get; set; }
 
         /// <summary>
         /// Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.
         /// </summary>
         /// <value>Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET /LinkedTransactions?ContactID&#x3D;4bb34b03-3378-4bb2-a0ed-6345abf3224e&amp;Status&#x3D;APPROVED.</value>
-        [DataMember(Name="ContactID", EmitDefaultValue=false)]
+        [DataMember(Name = "ContactID", EmitDefaultValue = false)]
         public Guid? ContactID { get; set; }
 
         /// <summary>
         /// Filter by the TargetTransactionID. Get all the linked transactions  allocated to a particular ACCREC invoice
         /// </summary>
         /// <value>Filter by the TargetTransactionID. Get all the linked transactions  allocated to a particular ACCREC invoice</value>
-        [DataMember(Name="TargetTransactionID", EmitDefaultValue=false)]
+        [DataMember(Name = "TargetTransactionID", EmitDefaultValue = false)]
         public Guid? TargetTransactionID { get; set; }
 
         /// <summary>
         /// The line item identifier from the target transaction. It is possible  to link multiple billable expenses to the same TargetLineItemID.
         /// </summary>
         /// <value>The line item identifier from the target transaction. It is possible  to link multiple billable expenses to the same TargetLineItemID.</value>
-        [DataMember(Name="TargetLineItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "TargetLineItemID", EmitDefaultValue = false)]
         public Guid? TargetLineItemID { get; set; }
 
         /// <summary>
         /// The Xero identifier for an Linked Transaction e.g./LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>The Xero identifier for an Linked Transaction e.g./LinkedTransactions/297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
-        [DataMember(Name="LinkedTransactionID", EmitDefaultValue=false)]
+        [DataMember(Name = "LinkedTransactionID", EmitDefaultValue = false)]
         public Guid? LinkedTransactionID { get; set; }
 
         /// <summary>
         /// The last modified date in UTC format
         /// </summary>
         /// <value>The last modified date in UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -232,54 +232,54 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.SourceTransactionID == input.SourceTransactionID ||
                     (this.SourceTransactionID != null &&
                     this.SourceTransactionID.Equals(input.SourceTransactionID))
-                ) && 
+                ) &&
                 (
                     this.SourceLineItemID == input.SourceLineItemID ||
                     (this.SourceLineItemID != null &&
                     this.SourceLineItemID.Equals(input.SourceLineItemID))
-                ) && 
+                ) &&
                 (
                     this.ContactID == input.ContactID ||
                     (this.ContactID != null &&
                     this.ContactID.Equals(input.ContactID))
-                ) && 
+                ) &&
                 (
                     this.TargetTransactionID == input.TargetTransactionID ||
                     (this.TargetTransactionID != null &&
                     this.TargetTransactionID.Equals(input.TargetTransactionID))
-                ) && 
+                ) &&
                 (
                     this.TargetLineItemID == input.TargetLineItemID ||
                     (this.TargetLineItemID != null &&
                     this.TargetLineItemID.Equals(input.TargetLineItemID))
-                ) && 
+                ) &&
                 (
                     this.LinkedTransactionID == input.LinkedTransactionID ||
                     (this.LinkedTransactionID != null &&
                     this.LinkedTransactionID.Equals(input.LinkedTransactionID))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.SourceTransactionTypeCode == input.SourceTransactionTypeCode ||
                     this.SourceTransactionTypeCode.Equals(input.SourceTransactionTypeCode)
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&

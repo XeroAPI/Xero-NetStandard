@@ -28,43 +28,43 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeLeave
     /// </summary>
     [DataContract]
-    public partial class EmployeeLeave :  IEquatable<EmployeeLeave>, IValidatableObject
+    public partial class EmployeeLeave : IEquatable<EmployeeLeave>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeLeave" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EmployeeLeave() 
-        {  
-          Periods = new List<LeavePeriod>(); 
+        public EmployeeLeave()
+        {
+            Periods = new List<LeavePeriod>();
         }
-        
+
         /// <summary>
         /// The Xero identifier for LeaveType
         /// </summary>
         /// <value>The Xero identifier for LeaveType</value>
-        [DataMember(Name="leaveID", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveID", EmitDefaultValue = false)]
         public Guid? LeaveID { get; set; }
 
         /// <summary>
         /// The Xero identifier for LeaveType
         /// </summary>
         /// <value>The Xero identifier for LeaveType</value>
-        [DataMember(Name="leaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "leaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// The description of the leave  (max length &#x3D; 50)
         /// </summary>
         /// <value>The description of the leave  (max length &#x3D; 50)</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Start date of the leave (YYYY-MM-DD)
         /// </summary>
         /// <value>Start date of the leave (YYYY-MM-DD)</value>
-        [DataMember(Name="startDate", EmitDefaultValue=false)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// End date of the leave (YYYY-MM-DD)
         /// </summary>
         /// <value>End date of the leave (YYYY-MM-DD)</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
@@ -80,14 +80,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// The leave period information. The StartDate, EndDate and NumberOfUnits needs to be specified when you do not want to calculate NumberOfUnits automatically. Using incorrect period StartDate and EndDate will result in automatic computation of the NumberOfUnits.
         /// </summary>
         /// <value>The leave period information. The StartDate, EndDate and NumberOfUnits needs to be specified when you do not want to calculate NumberOfUnits automatically. Using incorrect period StartDate and EndDate will result in automatic computation of the NumberOfUnits.</value>
-        [DataMember(Name="periods", EmitDefaultValue=false)]
+        [DataMember(Name = "periods", EmitDefaultValue = false)]
         public List<LeavePeriod> Periods { get; set; }
 
         /// <summary>
         /// UTC timestamp of last update to the leave type note
         /// </summary>
         /// <value>UTC timestamp of last update to the leave type note</value>
-        [DataMember(Name="updatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "updatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -138,38 +138,38 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.LeaveID == input.LeaveID ||
                     (this.LeaveID != null &&
                     this.LeaveID.Equals(input.LeaveID))
-                ) && 
+                ) &&
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
-                ) && 
+                ) &&
                 (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.Periods == input.Periods ||
                     this.Periods != null &&
                     input.Periods != null &&
                     this.Periods.SequenceEqual(input.Periods)
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&

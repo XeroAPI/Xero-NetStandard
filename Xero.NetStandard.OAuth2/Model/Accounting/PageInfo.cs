@@ -28,31 +28,31 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Pagination information
     /// </summary>
     [DataContract]
-    public partial class PageInfo :  IEquatable<PageInfo>, IValidatableObject
+    public partial class PageInfo : IEquatable<PageInfo>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name="Page", EmitDefaultValue=false)]
+        [DataMember(Name = "Page", EmitDefaultValue = false)]
         public int? Page { get; set; }
 
         /// <summary>
         /// Gets or Sets PageSize
         /// </summary>
-        [DataMember(Name="PageSize", EmitDefaultValue=false)]
+        [DataMember(Name = "PageSize", EmitDefaultValue = false)]
         public int? PageSize { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalPages
         /// </summary>
-        [DataMember(Name="TotalPages", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalPages", EmitDefaultValue = false)]
         public int? TotalPages { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalRows
         /// </summary>
-        [DataMember(Name="TotalRows", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalRows", EmitDefaultValue = false)]
         public int? TotalRows { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -100,22 +100,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Page == input.Page ||
                     (this.Page != null &&
                     this.Page.Equals(input.Page))
-                ) && 
+                ) &&
                 (
                     this.PageSize == input.PageSize ||
                     (this.PageSize != null &&
                     this.PageSize.Equals(input.PageSize))
-                ) && 
+                ) &&
                 (
                     this.TotalPages == input.TotalPages ||
                     (this.TotalPages != null &&
                     this.TotalPages.Equals(input.TotalPages))
-                ) && 
+                ) &&
                 (
                     this.TotalRows == input.TotalRows ||
                     (this.TotalRows != null &&

@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// BudgetBalance
     /// </summary>
     [DataContract]
-    public partial class BudgetBalance :  IEquatable<BudgetBalance>, IValidatableObject
+    public partial class BudgetBalance : IEquatable<BudgetBalance>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Period the amount applies to (e.g. “2019-08”)
         /// </summary>
         /// <value>Period the amount applies to (e.g. “2019-08”)</value>
-        [DataMember(Name="Period", EmitDefaultValue=false)]
+        [DataMember(Name = "Period", EmitDefaultValue = false)]
         public DateTime? Period { get; set; }
 
         /// <summary>
         /// LineItem Quantity
         /// </summary>
         /// <value>LineItem Quantity</value>
-        [DataMember(Name="Amount", EmitDefaultValue=false)]
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Budgeted amount
         /// </summary>
         /// <value>Budgeted amount</value>
-        [DataMember(Name="UnitAmount", EmitDefaultValue=false)]
+        [DataMember(Name = "UnitAmount", EmitDefaultValue = false)]
         public decimal? UnitAmount { get; set; }
 
         /// <summary>
         /// Any footnotes associated with this balance
         /// </summary>
         /// <value>Any footnotes associated with this balance</value>
-        [DataMember(Name="Notes", EmitDefaultValue=false)]
+        [DataMember(Name = "Notes", EmitDefaultValue = false)]
         public string Notes { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Period == input.Period ||
                     (this.Period != null &&
                     this.Period.Equals(input.Period))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.UnitAmount == input.UnitAmount ||
                     (this.UnitAmount != null &&
                     this.UnitAmount.Equals(input.UnitAmount))
-                ) && 
+                ) &&
                 (
                     this.Notes == input.Notes ||
                     (this.Notes != null &&
@@ -156,9 +156,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Notes (string) maxLength
-            if(this.Notes != null && this.Notes.Length > 255)
+            if (this.Notes != null && this.Notes.Length > 255)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Notes, length must be less than 255.", new [] { "Notes" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Notes, length must be less than 255.", new[] { "Notes" });
             }
 
             yield break;

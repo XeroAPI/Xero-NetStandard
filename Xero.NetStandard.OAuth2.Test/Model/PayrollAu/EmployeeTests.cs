@@ -72,7 +72,7 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Fact]
         public async Task Gender_NullInput_DeserialisesTo0()
         {
-            var jsonContent =  @"{
+            var jsonContent = @"{
                 ""Gender"": null
             }";
             var response = new HttpResponseMessage(HttpStatusCode.OK)

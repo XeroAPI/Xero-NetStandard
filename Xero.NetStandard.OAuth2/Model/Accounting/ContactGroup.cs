@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ContactGroup
     /// </summary>
     [DataContract]
-    public partial class ContactGroup :  IEquatable<ContactGroup>, IValidatableObject
+    public partial class ContactGroup : IEquatable<ContactGroup>, IValidatableObject
     {
         /// <summary>
         /// The Status of a contact group. To delete a contact group update the status to DELETED. Only contact groups with a status of ACTIVE are returned on GETs.
@@ -55,28 +55,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// The Status of a contact group. To delete a contact group update the status to DELETED. Only contact groups with a status of ACTIVE are returned on GETs.
         /// </summary>
         /// <value>The Status of a contact group. To delete a contact group update the status to DELETED. Only contact groups with a status of ACTIVE are returned on GETs.</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// The Name of the contact group. Required when creating a new contact  group
         /// </summary>
         /// <value>The Name of the contact group. Required when creating a new contact  group</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The Xero identifier for an contact group – specified as a string following the endpoint name. e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>The Xero identifier for an contact group – specified as a string following the endpoint name. e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
-        [DataMember(Name="ContactGroupID", EmitDefaultValue=false)]
+        [DataMember(Name = "ContactGroupID", EmitDefaultValue = false)]
         public Guid? ContactGroupID { get; set; }
 
         /// <summary>
         /// The ContactID and Name of Contacts in a contact group. Returned on GETs when the ContactGroupID is supplied in the URL.
         /// </summary>
         /// <value>The ContactID and Name of Contacts in a contact group. Returned on GETs when the ContactGroupID is supplied in the URL.</value>
-        [DataMember(Name="Contacts", EmitDefaultValue=false)]
+        [DataMember(Name = "Contacts", EmitDefaultValue = false)]
         public List<Contact> Contacts { get; set; }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -124,21 +124,21 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.ContactGroupID == input.ContactGroupID ||
                     (this.ContactGroupID != null &&
                     this.ContactGroupID.Equals(input.ContactGroupID))
-                ) && 
+                ) &&
                 (
                     this.Contacts == input.Contacts ||
                     this.Contacts != null &&

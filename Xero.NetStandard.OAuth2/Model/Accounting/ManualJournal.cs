@@ -28,12 +28,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// ManualJournal
     /// </summary>
     [DataContract]
-    public partial class ManualJournal :  IEquatable<ManualJournal>, IValidatableObject
+    public partial class ManualJournal : IEquatable<ManualJournal>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// See Manual Journal Status Codes
@@ -78,102 +78,102 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Manual Journal Status Codes
         /// </summary>
         /// <value>See Manual Journal Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualJournal" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ManualJournal() 
-        {  
-          JournalLines = new List<ManualJournalLine>();  
-          Warnings = new List<ValidationError>();  
-          ValidationErrors = new List<ValidationError>();  
-          Attachments = new List<Attachment>(); 
+        public ManualJournal()
+        {
+            JournalLines = new List<ManualJournalLine>();
+            Warnings = new List<ValidationError>();
+            ValidationErrors = new List<ValidationError>();
+            Attachments = new List<Attachment>();
         }
-        
+
         /// <summary>
         /// Description of journal being posted
         /// </summary>
         /// <value>Description of journal being posted</value>
-        [DataMember(Name="Narration", EmitDefaultValue=false)]
+        [DataMember(Name = "Narration", EmitDefaultValue = false)]
         public string Narration { get; set; }
 
         /// <summary>
         /// See JournalLines
         /// </summary>
         /// <value>See JournalLines</value>
-        [DataMember(Name="JournalLines", EmitDefaultValue=false)]
+        [DataMember(Name = "JournalLines", EmitDefaultValue = false)]
         public List<ManualJournalLine> JournalLines { get; set; }
 
         /// <summary>
         /// Date journal was posted – YYYY-MM-DD
         /// </summary>
         /// <value>Date journal was posted – YYYY-MM-DD</value>
-        [DataMember(Name="Date", EmitDefaultValue=false)]
+        [DataMember(Name = "Date", EmitDefaultValue = false)]
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// Url link to a source document – shown as “Go to [appName]” in the Xero app
         /// </summary>
         /// <value>Url link to a source document – shown as “Go to [appName]” in the Xero app</value>
-        [DataMember(Name="Url", EmitDefaultValue=false)]
+        [DataMember(Name = "Url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
         /// Boolean – default is true if not specified
         /// </summary>
         /// <value>Boolean – default is true if not specified</value>
-        [DataMember(Name="ShowOnCashBasisReports", EmitDefaultValue=false)]
+        [DataMember(Name = "ShowOnCashBasisReports", EmitDefaultValue = false)]
         public bool? ShowOnCashBasisReports { get; set; }
 
         /// <summary>
         /// Boolean to indicate if a manual journal has an attachment
         /// </summary>
         /// <value>Boolean to indicate if a manual journal has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// The Xero identifier for a Manual Journal
         /// </summary>
         /// <value>The Xero identifier for a Manual Journal</value>
-        [DataMember(Name="ManualJournalID", EmitDefaultValue=false)]
+        [DataMember(Name = "ManualJournalID", EmitDefaultValue = false)]
         public Guid? ManualJournalID { get; set; }
 
         /// <summary>
         /// A string to indicate if a invoice status
         /// </summary>
         /// <value>A string to indicate if a invoice status</value>
-        [DataMember(Name="StatusAttributeString", EmitDefaultValue=false)]
+        [DataMember(Name = "StatusAttributeString", EmitDefaultValue = false)]
         public string StatusAttributeString { get; set; }
 
         /// <summary>
         /// Displays array of warning messages from the API
         /// </summary>
         /// <value>Displays array of warning messages from the API</value>
-        [DataMember(Name="Warnings", EmitDefaultValue=false)]
+        [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public List<ValidationError> Warnings { get; set; }
 
         /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
-        [DataMember(Name="ValidationErrors", EmitDefaultValue=false)]
+        [DataMember(Name = "ValidationErrors", EmitDefaultValue = false)]
         public List<ValidationError> ValidationErrors { get; set; }
 
         /// <summary>
         /// Displays array of attachments from the API
         /// </summary>
         /// <value>Displays array of attachments from the API</value>
-        [DataMember(Name="Attachments", EmitDefaultValue=false)]
+        [DataMember(Name = "Attachments", EmitDefaultValue = false)]
         public List<Attachment> Attachments { get; set; }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -231,73 +231,73 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Narration == input.Narration ||
                     (this.Narration != null &&
                     this.Narration.Equals(input.Narration))
-                ) && 
+                ) &&
                 (
                     this.JournalLines == input.JournalLines ||
                     this.JournalLines != null &&
                     input.JournalLines != null &&
                     this.JournalLines.SequenceEqual(input.JournalLines)
-                ) && 
+                ) &&
                 (
                     this.Date == input.Date ||
                     (this.Date != null &&
                     this.Date.Equals(input.Date))
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) &&
                 (
                     this.ShowOnCashBasisReports == input.ShowOnCashBasisReports ||
                     (this.ShowOnCashBasisReports != null &&
                     this.ShowOnCashBasisReports.Equals(input.ShowOnCashBasisReports))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.ManualJournalID == input.ManualJournalID ||
                     (this.ManualJournalID != null &&
                     this.ManualJournalID.Equals(input.ManualJournalID))
-                ) && 
+                ) &&
                 (
                     this.StatusAttributeString == input.StatusAttributeString ||
                     (this.StatusAttributeString != null &&
                     this.StatusAttributeString.Equals(input.StatusAttributeString))
-                ) && 
+                ) &&
                 (
                     this.Warnings == input.Warnings ||
                     this.Warnings != null &&
                     input.Warnings != null &&
                     this.Warnings.SequenceEqual(input.Warnings)
-                ) && 
+                ) &&
                 (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
                     this.ValidationErrors.SequenceEqual(input.ValidationErrors)
-                ) && 
+                ) &&
                 (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&

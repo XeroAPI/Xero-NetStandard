@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// LineItemItem
     /// </summary>
     [DataContract]
-    public partial class LineItemItem :  IEquatable<LineItemItem>, IValidatableObject
+    public partial class LineItemItem : IEquatable<LineItemItem>, IValidatableObject
     {
-        
+
         /// <summary>
         /// User defined item code (max length &#x3D; 30)
         /// </summary>
         /// <value>User defined item code (max length &#x3D; 30)</value>
-        [DataMember(Name="Code", EmitDefaultValue=false)]
+        [DataMember(Name = "Code", EmitDefaultValue = false)]
         public string Code { get; set; }
 
         /// <summary>
         /// The name of the item (max length &#x3D; 50)
         /// </summary>
         /// <value>The name of the item (max length &#x3D; 50)</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The Xero identifier for an Item
         /// </summary>
         /// <value>The Xero identifier for an Item</value>
-        [DataMember(Name="ItemID", EmitDefaultValue=false)]
+        [DataMember(Name = "ItemID", EmitDefaultValue = false)]
         public Guid? ItemID { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Code == input.Code ||
                     (this.Code != null &&
                     this.Code.Equals(input.Code))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.ItemID == input.ItemID ||
                     (this.ItemID != null &&
@@ -141,15 +141,15 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Code (string) maxLength
-            if(this.Code != null && this.Code.Length > 30)
+            if (this.Code != null && this.Code.Length > 30)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 30.", new [] { "Code" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, length must be less than 30.", new[] { "Code" });
             }
 
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 50)
+            if (this.Name != null && this.Name.Length > 50)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 50.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 50.", new[] { "Name" });
             }
 
             yield break;

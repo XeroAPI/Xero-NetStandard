@@ -28,18 +28,18 @@ namespace Xero.NetStandard.OAuth2.Model.Project
     /// Amount
     /// </summary>
     [DataContract]
-    public partial class Amount :  IEquatable<Amount>, IValidatableObject
+    public partial class Amount : IEquatable<Amount>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
+        [DataMember(Name = "currency", EmitDefaultValue = false)]
         public CurrencyCode Currency { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name="value", EmitDefaultValue=false)]
+        [DataMember(Name = "value", EmitDefaultValue = false)]
         public decimal? Value { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -85,11 +85,11 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Currency == input.Currency ||
                     this.Currency.Equals(input.Currency)
-                ) && 
+                ) &&
                 (
                     this.Value == input.Value ||
                     (this.Value != null &&

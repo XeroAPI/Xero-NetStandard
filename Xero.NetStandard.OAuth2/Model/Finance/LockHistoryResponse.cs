@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// LockHistoryResponse
     /// </summary>
     [DataContract]
-    public partial class LockHistoryResponse :  IEquatable<LockHistoryResponse>, IValidatableObject
+    public partial class LockHistoryResponse : IEquatable<LockHistoryResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The requested Organisation to which the data pertains
         /// </summary>
         /// <value>The requested Organisation to which the data pertains</value>
-        [DataMember(Name="organisationId", EmitDefaultValue=false)]
+        [DataMember(Name = "organisationId", EmitDefaultValue = false)]
         public Guid? OrganisationId { get; set; }
 
         /// <summary>
         /// The end date of the report
         /// </summary>
         /// <value>The end date of the report</value>
-        [DataMember(Name="endDate", EmitDefaultValue=false)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets LockDates
         /// </summary>
-        [DataMember(Name="lockDates", EmitDefaultValue=false)]
+        [DataMember(Name = "lockDates", EmitDefaultValue = false)]
         public List<LockHistoryModel> LockDates { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,17 +96,17 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.OrganisationId == input.OrganisationId ||
                     (this.OrganisationId != null &&
                     this.OrganisationId.Equals(input.OrganisationId))
-                ) && 
+                ) &&
                 (
                     this.EndDate == input.EndDate ||
                     (this.EndDate != null &&
                     this.EndDate.Equals(input.EndDate))
-                ) && 
+                ) &&
                 (
                     this.LockDates == input.LockDates ||
                     this.LockDates != null &&

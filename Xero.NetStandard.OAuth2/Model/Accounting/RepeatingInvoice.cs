@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// RepeatingInvoice
     /// </summary>
     [DataContract]
-    public partial class RepeatingInvoice :  IEquatable<RepeatingInvoice>, IValidatableObject
+    public partial class RepeatingInvoice : IEquatable<RepeatingInvoice>, IValidatableObject
     {
         /// <summary>
         /// See Invoice Types
@@ -55,17 +55,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// See Invoice Types
         /// </summary>
         /// <value>See Invoice Types</value>
-        [DataMember(Name="Type", EmitDefaultValue=false)]
+        [DataMember(Name = "Type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
         /// <summary>
         /// Gets or Sets LineAmountTypes
         /// </summary>
-        [DataMember(Name="LineAmountTypes", EmitDefaultValue=false)]
+        [DataMember(Name = "LineAmountTypes", EmitDefaultValue = false)]
         public LineAmountTypes LineAmountTypes { get; set; }
         /// <summary>
         /// Gets or Sets CurrencyCode
         /// </summary>
-        [DataMember(Name="CurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
         public CurrencyCode CurrencyCode { get; set; }
         /// <summary>
         /// One of the following - DRAFT or AUTHORISED – See Invoice Status Codes
@@ -98,117 +98,117 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// One of the following - DRAFT or AUTHORISED – See Invoice Status Codes
         /// </summary>
         /// <value>One of the following - DRAFT or AUTHORISED – See Invoice Status Codes</value>
-        [DataMember(Name="Status", EmitDefaultValue=false)]
+        [DataMember(Name = "Status", EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
-        
+
         /// <summary>
         /// Gets or Sets Contact
         /// </summary>
-        [DataMember(Name="Contact", EmitDefaultValue=false)]
+        [DataMember(Name = "Contact", EmitDefaultValue = false)]
         public Contact Contact { get; set; }
 
         /// <summary>
         /// Gets or Sets Schedule
         /// </summary>
-        [DataMember(Name="Schedule", EmitDefaultValue=false)]
+        [DataMember(Name = "Schedule", EmitDefaultValue = false)]
         public Schedule Schedule { get; set; }
 
         /// <summary>
         /// See LineItems
         /// </summary>
         /// <value>See LineItems</value>
-        [DataMember(Name="LineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "LineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// ACCREC only – additional reference number
         /// </summary>
         /// <value>ACCREC only – additional reference number</value>
-        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        [DataMember(Name = "Reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// See BrandingThemes
         /// </summary>
         /// <value>See BrandingThemes</value>
-        [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
+        [DataMember(Name = "BrandingThemeID", EmitDefaultValue = false)]
         public Guid? BrandingThemeID { get; set; }
 
         /// <summary>
         /// Total of invoice excluding taxes
         /// </summary>
         /// <value>Total of invoice excluding taxes</value>
-        [DataMember(Name="SubTotal", EmitDefaultValue=false)]
+        [DataMember(Name = "SubTotal", EmitDefaultValue = false)]
         public decimal? SubTotal { get; set; }
 
         /// <summary>
         /// Total tax on invoice
         /// </summary>
         /// <value>Total tax on invoice</value>
-        [DataMember(Name="TotalTax", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalTax", EmitDefaultValue = false)]
         public decimal? TotalTax { get; set; }
 
         /// <summary>
         /// Total of Invoice tax inclusive (i.e. SubTotal + TotalTax)
         /// </summary>
         /// <value>Total of Invoice tax inclusive (i.e. SubTotal + TotalTax)</value>
-        [DataMember(Name="Total", EmitDefaultValue=false)]
+        [DataMember(Name = "Total", EmitDefaultValue = false)]
         public decimal? Total { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for repeating invoice template
         /// </summary>
         /// <value>Xero generated unique identifier for repeating invoice template</value>
-        [DataMember(Name="RepeatingInvoiceID", EmitDefaultValue=false)]
+        [DataMember(Name = "RepeatingInvoiceID", EmitDefaultValue = false)]
         public Guid? RepeatingInvoiceID { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for repeating invoice template
         /// </summary>
         /// <value>Xero generated unique identifier for repeating invoice template</value>
-        [DataMember(Name="ID", EmitDefaultValue=false)]
+        [DataMember(Name = "ID", EmitDefaultValue = false)]
         public Guid? ID { get; set; }
 
         /// <summary>
         /// Boolean to indicate if an invoice has an attachment
         /// </summary>
         /// <value>Boolean to indicate if an invoice has an attachment</value>
-        [DataMember(Name="HasAttachments", EmitDefaultValue=false)]
+        [DataMember(Name = "HasAttachments", EmitDefaultValue = false)]
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
         /// Displays array of attachments from the API
         /// </summary>
         /// <value>Displays array of attachments from the API</value>
-        [DataMember(Name="Attachments", EmitDefaultValue=false)]
+        [DataMember(Name = "Attachments", EmitDefaultValue = false)]
         public List<Attachment> Attachments { get; set; }
 
         /// <summary>
         /// Boolean to indicate whether the invoice has been approved for sending
         /// </summary>
         /// <value>Boolean to indicate whether the invoice has been approved for sending</value>
-        [DataMember(Name="ApprovedForSending", EmitDefaultValue=false)]
+        [DataMember(Name = "ApprovedForSending", EmitDefaultValue = false)]
         public bool? ApprovedForSending { get; set; }
 
         /// <summary>
         /// Boolean to indicate whether a copy is sent to sender&#39;s email
         /// </summary>
         /// <value>Boolean to indicate whether a copy is sent to sender&#39;s email</value>
-        [DataMember(Name="SendCopy", EmitDefaultValue=false)]
+        [DataMember(Name = "SendCopy", EmitDefaultValue = false)]
         public bool? SendCopy { get; set; }
 
         /// <summary>
         /// Boolean to indicate whether the invoice in the Xero app displays as \&quot;sent\&quot;
         /// </summary>
         /// <value>Boolean to indicate whether the invoice in the Xero app displays as \&quot;sent\&quot;</value>
-        [DataMember(Name="MarkAsSent", EmitDefaultValue=false)]
+        [DataMember(Name = "MarkAsSent", EmitDefaultValue = false)]
         public bool? MarkAsSent { get; set; }
 
         /// <summary>
         /// Boolean to indicate whether to include PDF attachment
         /// </summary>
         /// <value>Boolean to indicate whether to include PDF attachment</value>
-        [DataMember(Name="IncludePDF", EmitDefaultValue=false)]
+        [DataMember(Name = "IncludePDF", EmitDefaultValue = false)]
         public bool? IncludePDF { get; set; }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -272,100 +272,100 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.Contact == input.Contact ||
                     (this.Contact != null &&
                     this.Contact.Equals(input.Contact))
-                ) && 
+                ) &&
                 (
                     this.Schedule == input.Schedule ||
                     (this.Schedule != null &&
                     this.Schedule.Equals(input.Schedule))
-                ) && 
+                ) &&
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
+                ) &&
                 (
                     this.LineAmountTypes == input.LineAmountTypes ||
                     this.LineAmountTypes.Equals(input.LineAmountTypes)
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.BrandingThemeID == input.BrandingThemeID ||
                     (this.BrandingThemeID != null &&
                     this.BrandingThemeID.Equals(input.BrandingThemeID))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
-                ) && 
+                ) &&
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
-                ) && 
+                ) &&
                 (
                     this.SubTotal == input.SubTotal ||
                     (this.SubTotal != null &&
                     this.SubTotal.Equals(input.SubTotal))
-                ) && 
+                ) &&
                 (
                     this.TotalTax == input.TotalTax ||
                     (this.TotalTax != null &&
                     this.TotalTax.Equals(input.TotalTax))
-                ) && 
+                ) &&
                 (
                     this.Total == input.Total ||
                     (this.Total != null &&
                     this.Total.Equals(input.Total))
-                ) && 
+                ) &&
                 (
                     this.RepeatingInvoiceID == input.RepeatingInvoiceID ||
                     (this.RepeatingInvoiceID != null &&
                     this.RepeatingInvoiceID.Equals(input.RepeatingInvoiceID))
-                ) && 
+                ) &&
                 (
                     this.ID == input.ID ||
                     (this.ID != null &&
                     this.ID.Equals(input.ID))
-                ) && 
+                ) &&
                 (
                     this.HasAttachments == input.HasAttachments ||
                     (this.HasAttachments != null &&
                     this.HasAttachments.Equals(input.HasAttachments))
-                ) && 
+                ) &&
                 (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&
                     input.Attachments != null &&
                     this.Attachments.SequenceEqual(input.Attachments)
-                ) && 
+                ) &&
                 (
                     this.ApprovedForSending == input.ApprovedForSending ||
                     (this.ApprovedForSending != null &&
                     this.ApprovedForSending.Equals(input.ApprovedForSending))
-                ) && 
+                ) &&
                 (
                     this.SendCopy == input.SendCopy ||
                     (this.SendCopy != null &&
                     this.SendCopy.Equals(input.SendCopy))
-                ) && 
+                ) &&
                 (
                     this.MarkAsSent == input.MarkAsSent ||
                     (this.MarkAsSent != null &&
                     this.MarkAsSent.Equals(input.MarkAsSent))
-                ) && 
+                ) &&
                 (
                     this.IncludePDF == input.IncludePDF ||
                     (this.IncludePDF != null &&

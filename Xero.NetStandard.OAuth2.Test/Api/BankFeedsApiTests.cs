@@ -45,7 +45,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
         }
 
         // Methods are async but may not require it in specific cases
-        #pragma warning disable CS1998 // This async method lacks 'await' operators
+#pragma warning disable CS1998 // This async method lacks 'await' operators
         public async Task InitializeAsync()
         {
             var directory = Directory.GetCurrentDirectory();
@@ -59,7 +59,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
         {
             // Cleanup when everything is done.
         }
-        #pragma warning restore CS1998 // This async method lacks 'await' operators
+#pragma warning restore CS1998 // This async method lacks 'await' operators
 
         /// <summary>
         /// Test an instance of BankFeedsApi
@@ -71,7 +71,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             //Assert.IsType(typeof(BankFeedsApi), instance, "instance is a BankFeedsApi");
         }
 
-        
+
         /// <summary>
         /// Test CreateFeedConnections
         /// </summary>
@@ -82,7 +82,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             var response = await instance.CreateFeedConnectionsAsync(accessToken, xeroTenantId, feedConnections);
             Assert.IsType<FeedConnections>(response);
         }
-        
+
         /// <summary>
         /// Test CreateStatements
         /// </summary>
@@ -94,7 +94,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             var response = await instance.CreateStatementsAsync(accessToken, xeroTenantId, statements, idempotencyKey);
             Assert.IsType<Statements>(response);
         }
-        
+
         /// <summary>
         /// Test DeleteFeedConnections
         /// </summary>
@@ -105,7 +105,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             var response = await instance.DeleteFeedConnectionsAsync(accessToken, xeroTenantId, feedConnections);
             Assert.IsType<FeedConnections>(response);
         }
-        
+
         /// <summary>
         /// Test GetFeedConnection
         /// </summary>
@@ -116,7 +116,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             var response = await instance.GetFeedConnectionAsync(accessToken, xeroTenantId, id);
             Assert.IsType<FeedConnection>(response);
         }
-        
+
         /// <summary>
         /// Test GetFeedConnections
         /// </summary>
@@ -128,7 +128,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             var response = await instance.GetFeedConnectionsAsync(accessToken, xeroTenantId, page, pageSize);
             Assert.IsType<FeedConnections>(response);
         }
-        
+
         /// <summary>
         /// Test GetStatement
         /// </summary>
@@ -139,7 +139,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             var response = await instance.GetStatementAsync(accessToken, xeroTenantId, statementId);
             Assert.IsType<Statement>(response);
         }
-        
+
         /// <summary>
         /// Test GetStatements
         /// </summary>
@@ -153,7 +153,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Bankfeeds
             var response = await instance.GetStatementsAsync(accessToken, xeroTenantId, page, pageSize, xeroApplicationId, xeroUserId);
             Assert.IsType<Statements>(response);
         }
-        
+
     }
 
 }

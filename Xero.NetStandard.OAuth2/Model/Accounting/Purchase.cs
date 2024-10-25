@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     /// Purchase
     /// </summary>
     [DataContract]
-    public partial class Purchase :  IEquatable<Purchase>, IValidatableObject
+    public partial class Purchase : IEquatable<Purchase>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Unit Price of the item. By default UnitPrice is rounded to two decimal places. You can use 4 decimal places by adding the unitdp&#x3D;4 querystring parameter to your request.
         /// </summary>
         /// <value>Unit Price of the item. By default UnitPrice is rounded to two decimal places. You can use 4 decimal places by adding the unitdp&#x3D;4 querystring parameter to your request.</value>
-        [DataMember(Name="UnitPrice", EmitDefaultValue=false)]
+        [DataMember(Name = "UnitPrice", EmitDefaultValue = false)]
         public decimal? UnitPrice { get; set; }
 
         /// <summary>
         /// Default account code to be used for purchased/sale. Not applicable to the purchase details of tracked items
         /// </summary>
         /// <value>Default account code to be used for purchased/sale. Not applicable to the purchase details of tracked items</value>
-        [DataMember(Name="AccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "AccountCode", EmitDefaultValue = false)]
         public string AccountCode { get; set; }
 
         /// <summary>
         /// Cost of goods sold account. Only applicable to the purchase details of tracked items.
         /// </summary>
         /// <value>Cost of goods sold account. Only applicable to the purchase details of tracked items.</value>
-        [DataMember(Name="COGSAccountCode", EmitDefaultValue=false)]
+        [DataMember(Name = "COGSAccountCode", EmitDefaultValue = false)]
         public string COGSAccountCode { get; set; }
 
         /// <summary>
         /// The tax type from TaxRates
         /// </summary>
         /// <value>The tax type from TaxRates</value>
-        [DataMember(Name="TaxType", EmitDefaultValue=false)]
+        [DataMember(Name = "TaxType", EmitDefaultValue = false)]
         public string TaxType { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.UnitPrice == input.UnitPrice ||
                     (this.UnitPrice != null &&
                     this.UnitPrice.Equals(input.UnitPrice))
-                ) && 
+                ) &&
                 (
                     this.AccountCode == input.AccountCode ||
                     (this.AccountCode != null &&
                     this.AccountCode.Equals(input.AccountCode))
-                ) && 
+                ) &&
                 (
                     this.COGSAccountCode == input.COGSAccountCode ||
                     (this.COGSAccountCode != null &&
                     this.COGSAccountCode.Equals(input.COGSAccountCode))
-                ) && 
+                ) &&
                 (
                     this.TaxType == input.TaxType ||
                     (this.TaxType != null &&

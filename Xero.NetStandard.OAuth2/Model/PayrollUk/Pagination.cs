@@ -28,31 +28,31 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// Pagination
     /// </summary>
     [DataContract]
-    public partial class Pagination :  IEquatable<Pagination>, IValidatableObject
+    public partial class Pagination : IEquatable<Pagination>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name="page", EmitDefaultValue=false)]
+        [DataMember(Name = "page", EmitDefaultValue = false)]
         public int? Page { get; set; }
 
         /// <summary>
         /// Gets or Sets PageSize
         /// </summary>
-        [DataMember(Name="pageSize", EmitDefaultValue=false)]
+        [DataMember(Name = "pageSize", EmitDefaultValue = false)]
         public int? PageSize { get; set; }
 
         /// <summary>
         /// Gets or Sets PageCount
         /// </summary>
-        [DataMember(Name="pageCount", EmitDefaultValue=false)]
+        [DataMember(Name = "pageCount", EmitDefaultValue = false)]
         public int? PageCount { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemCount
         /// </summary>
-        [DataMember(Name="itemCount", EmitDefaultValue=false)]
+        [DataMember(Name = "itemCount", EmitDefaultValue = false)]
         public int? ItemCount { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -100,22 +100,22 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Page == input.Page ||
                     (this.Page != null &&
                     this.Page.Equals(input.Page))
-                ) && 
+                ) &&
                 (
                     this.PageSize == input.PageSize ||
                     (this.PageSize != null &&
                     this.PageSize.Equals(input.PageSize))
-                ) && 
+                ) &&
                 (
                     this.PageCount == input.PageCount ||
                     (this.PageCount != null &&
                     this.PageCount.Equals(input.PageCount))
-                ) && 
+                ) &&
                 (
                     this.ItemCount == input.ItemCount ||
                     (this.ItemCount != null &&

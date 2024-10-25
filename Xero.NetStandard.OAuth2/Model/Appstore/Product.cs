@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     /// Product
     /// </summary>
     [DataContract]
-    public partial class Product :  IEquatable<Product>, IValidatableObject
+    public partial class Product : IEquatable<Product>, IValidatableObject
     {
         /// <summary>
         /// The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product 
@@ -61,35 +61,35 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
         /// The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product 
         /// </summary>
         /// <value>The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product </value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum Type { get; set; }
-        
+
         /// <summary>
         /// The unique identifier for the product
         /// </summary>
         /// <value>The unique identifier for the product</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name = "id", EmitDefaultValue = false)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// The name of the product
         /// </summary>
         /// <value>The name of the product</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The unit of the per seat product. e.g. \&quot;user\&quot;, \&quot;organisation\&quot;, \&quot;SMS\&quot;, etc
         /// </summary>
         /// <value>The unit of the per seat product. e.g. \&quot;user\&quot;, \&quot;organisation\&quot;, \&quot;SMS\&quot;, etc</value>
-        [DataMember(Name="seatUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "seatUnit", EmitDefaultValue = false)]
         public string SeatUnit { get; set; }
 
         /// <summary>
         /// The unit of the usage product. e.g. \&quot;user\&quot;, \&quot;minutes\&quot;, \&quot;SMS\&quot;, etc
         /// </summary>
         /// <value>The unit of the usage product. e.g. \&quot;user\&quot;, \&quot;minutes\&quot;, \&quot;SMS\&quot;, etc</value>
-        [DataMember(Name="usageUnit", EmitDefaultValue=false)]
+        [DataMember(Name = "usageUnit", EmitDefaultValue = false)]
         public string UsageUnit { get; set; }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -138,26 +138,26 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
+                ) &&
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.SeatUnit == input.SeatUnit ||
                     (this.SeatUnit != null &&
                     this.SeatUnit.Equals(input.SeatUnit))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
-                ) && 
+                ) &&
                 (
                     this.UsageUnit == input.UsageUnit ||
                     (this.UsageUnit != null &&

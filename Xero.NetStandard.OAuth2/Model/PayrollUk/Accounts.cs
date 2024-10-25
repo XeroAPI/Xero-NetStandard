@@ -28,13 +28,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
     /// Accounts
     /// </summary>
     [DataContract]
-    public partial class Accounts :  IEquatable<Accounts>, IValidatableObject
+    public partial class Accounts : IEquatable<Accounts>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets _Accounts
         /// </summary>
-        [DataMember(Name="accounts", EmitDefaultValue=false)]
+        [DataMember(Name = "accounts", EmitDefaultValue = false)]
         public List<Account> _Accounts { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -79,7 +79,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this._Accounts == input._Accounts ||
                     this._Accounts != null &&

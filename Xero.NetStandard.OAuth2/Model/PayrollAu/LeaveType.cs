@@ -28,82 +28,82 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// LeaveType
     /// </summary>
     [DataContract]
-    public partial class LeaveType :  IEquatable<LeaveType>, IValidatableObject
+    public partial class LeaveType : IEquatable<LeaveType>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets LeaveCategoryCode
         /// </summary>
-        [DataMember(Name="LeaveCategoryCode", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveCategoryCode", EmitDefaultValue = false)]
         public LeaveCategoryCode LeaveCategoryCode { get; set; }
-        
+
         /// <summary>
         /// Name of the earnings rate (max length &#x3D; 100)
         /// </summary>
         /// <value>Name of the earnings rate (max length &#x3D; 100)</value>
-        [DataMember(Name="Name", EmitDefaultValue=false)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The type of units by which leave entitlements are normally tracked. These are typically the same as the type of units used for the employee’s ordinary earnings rate
         /// </summary>
         /// <value>The type of units by which leave entitlements are normally tracked. These are typically the same as the type of units used for the employee’s ordinary earnings rate</value>
-        [DataMember(Name="TypeOfUnits", EmitDefaultValue=false)]
+        [DataMember(Name = "TypeOfUnits", EmitDefaultValue = false)]
         public string TypeOfUnits { get; set; }
 
         /// <summary>
         /// Xero identifier
         /// </summary>
         /// <value>Xero identifier</value>
-        [DataMember(Name="LeaveTypeID", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveTypeID", EmitDefaultValue = false)]
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
         /// The number of units the employee is entitled to each year
         /// </summary>
         /// <value>The number of units the employee is entitled to each year</value>
-        [DataMember(Name="NormalEntitlement", EmitDefaultValue=false)]
+        [DataMember(Name = "NormalEntitlement", EmitDefaultValue = false)]
         public double? NormalEntitlement { get; set; }
 
         /// <summary>
         /// Enter an amount here if your organisation pays an additional percentage on top of ordinary earnings when your employees take leave (typically 17.5%)
         /// </summary>
         /// <value>Enter an amount here if your organisation pays an additional percentage on top of ordinary earnings when your employees take leave (typically 17.5%)</value>
-        [DataMember(Name="LeaveLoadingRate", EmitDefaultValue=false)]
+        [DataMember(Name = "LeaveLoadingRate", EmitDefaultValue = false)]
         public double? LeaveLoadingRate { get; set; }
 
         /// <summary>
         /// Last modified timestamp
         /// </summary>
         /// <value>Last modified timestamp</value>
-        [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
+        [DataMember(Name = "UpdatedDateUTC", EmitDefaultValue = false)]
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
         /// Set this to indicate that an employee will be paid when taking this type of leave
         /// </summary>
         /// <value>Set this to indicate that an employee will be paid when taking this type of leave</value>
-        [DataMember(Name="IsPaidLeave", EmitDefaultValue=false)]
+        [DataMember(Name = "IsPaidLeave", EmitDefaultValue = false)]
         public bool? IsPaidLeave { get; set; }
 
         /// <summary>
         /// Set this if you want a balance for this leave type to be shown on your employee’s payslips
         /// </summary>
         /// <value>Set this if you want a balance for this leave type to be shown on your employee’s payslips</value>
-        [DataMember(Name="ShowOnPayslip", EmitDefaultValue=false)]
+        [DataMember(Name = "ShowOnPayslip", EmitDefaultValue = false)]
         public bool? ShowOnPayslip { get; set; }
 
         /// <summary>
         /// Is the current record
         /// </summary>
         /// <value>Is the current record</value>
-        [DataMember(Name="CurrentRecord", EmitDefaultValue=false)]
+        [DataMember(Name = "CurrentRecord", EmitDefaultValue = false)]
         public bool? CurrentRecord { get; set; }
 
         /// <summary>
         /// Set this to indicate that the leave type is exempt from superannuation guarantee contribution
         /// </summary>
         /// <value>Set this to indicate that the leave type is exempt from superannuation guarantee contribution</value>
-        [DataMember(Name="SGCExempt", EmitDefaultValue=false)]
+        [DataMember(Name = "SGCExempt", EmitDefaultValue = false)]
         public bool? SGCExempt { get; set; }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -158,56 +158,56 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
+                ) &&
                 (
                     this.TypeOfUnits == input.TypeOfUnits ||
                     (this.TypeOfUnits != null &&
                     this.TypeOfUnits.Equals(input.TypeOfUnits))
-                ) && 
+                ) &&
                 (
                     this.LeaveTypeID == input.LeaveTypeID ||
                     (this.LeaveTypeID != null &&
                     this.LeaveTypeID.Equals(input.LeaveTypeID))
-                ) && 
+                ) &&
                 (
                     this.NormalEntitlement == input.NormalEntitlement ||
                     (this.NormalEntitlement != null &&
                     this.NormalEntitlement.Equals(input.NormalEntitlement))
-                ) && 
+                ) &&
                 (
                     this.LeaveLoadingRate == input.LeaveLoadingRate ||
                     (this.LeaveLoadingRate != null &&
                     this.LeaveLoadingRate.Equals(input.LeaveLoadingRate))
-                ) && 
+                ) &&
                 (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
-                ) && 
+                ) &&
                 (
                     this.IsPaidLeave == input.IsPaidLeave ||
                     (this.IsPaidLeave != null &&
                     this.IsPaidLeave.Equals(input.IsPaidLeave))
-                ) && 
+                ) &&
                 (
                     this.ShowOnPayslip == input.ShowOnPayslip ||
                     (this.ShowOnPayslip != null &&
                     this.ShowOnPayslip.Equals(input.ShowOnPayslip))
-                ) && 
+                ) &&
                 (
                     this.CurrentRecord == input.CurrentRecord ||
                     (this.CurrentRecord != null &&
                     this.CurrentRecord.Equals(input.CurrentRecord))
-                ) && 
+                ) &&
                 (
                     this.LeaveCategoryCode == input.LeaveCategoryCode ||
                     this.LeaveCategoryCode.Equals(input.LeaveCategoryCode)
-                ) && 
+                ) &&
                 (
                     this.SGCExempt == input.SGCExempt ||
                     (this.SGCExempt != null &&
@@ -257,9 +257,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 100)
+            if (this.Name != null && this.Name.Length > 100)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new[] { "Name" });
             }
 
             yield break;

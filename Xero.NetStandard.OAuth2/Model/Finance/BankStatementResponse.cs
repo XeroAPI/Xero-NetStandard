@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// BankStatementResponse
     /// </summary>
     [DataContract]
-    public partial class BankStatementResponse :  IEquatable<BankStatementResponse>, IValidatableObject
+    public partial class BankStatementResponse : IEquatable<BankStatementResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets StatementLines
         /// </summary>
-        [DataMember(Name="statementLines", EmitDefaultValue=false)]
+        [DataMember(Name = "statementLines", EmitDefaultValue = false)]
         public StatementLinesResponse StatementLines { get; set; }
 
         /// <summary>
         /// Gets or Sets CurrentStatement
         /// </summary>
-        [DataMember(Name="currentStatement", EmitDefaultValue=false)]
+        [DataMember(Name = "currentStatement", EmitDefaultValue = false)]
         public CurrentStatementResponse CurrentStatement { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatementLines == input.StatementLines ||
                     (this.StatementLines != null &&
                     this.StatementLines.Equals(input.StatementLines))
-                ) && 
+                ) &&
                 (
                     this.CurrentStatement == input.CurrentStatement ||
                     (this.CurrentStatement != null &&

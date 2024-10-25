@@ -28,35 +28,35 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// BankStatementAccountingResponse
     /// </summary>
     [DataContract]
-    public partial class BankStatementAccountingResponse :  IEquatable<BankStatementAccountingResponse>, IValidatableObject
+    public partial class BankStatementAccountingResponse : IEquatable<BankStatementAccountingResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of bank account
         /// </summary>
         /// <value>Xero Identifier of bank account</value>
-        [DataMember(Name="bankAccountId", EmitDefaultValue=false)]
+        [DataMember(Name = "bankAccountId", EmitDefaultValue = false)]
         public Guid? BankAccountId { get; set; }
 
         /// <summary>
         /// Name of bank account
         /// </summary>
         /// <value>Name of bank account</value>
-        [DataMember(Name="bankAccountName", EmitDefaultValue=false)]
+        [DataMember(Name = "bankAccountName", EmitDefaultValue = false)]
         public string BankAccountName { get; set; }
 
         /// <summary>
         /// Currency code of the bank account
         /// </summary>
         /// <value>Currency code of the bank account</value>
-        [DataMember(Name="bankAccountCurrencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "bankAccountCurrencyCode", EmitDefaultValue = false)]
         public string BankAccountCurrencyCode { get; set; }
 
         /// <summary>
         /// List of bank statements and linked accounting data for the requested period
         /// </summary>
         /// <value>List of bank statements and linked accounting data for the requested period</value>
-        [DataMember(Name="statements", EmitDefaultValue=false)]
+        [DataMember(Name = "statements", EmitDefaultValue = false)]
         public List<StatementResponse> Statements { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -104,22 +104,22 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.BankAccountId == input.BankAccountId ||
                     (this.BankAccountId != null &&
                     this.BankAccountId.Equals(input.BankAccountId))
-                ) && 
+                ) &&
                 (
                     this.BankAccountName == input.BankAccountName ||
                     (this.BankAccountName != null &&
                     this.BankAccountName.Equals(input.BankAccountName))
-                ) && 
+                ) &&
                 (
                     this.BankAccountCurrencyCode == input.BankAccountCurrencyCode ||
                     (this.BankAccountCurrencyCode != null &&
                     this.BankAccountCurrencyCode.Equals(input.BankAccountCurrencyCode))
-                ) && 
+                ) &&
                 (
                     this.Statements == input.Statements ||
                     this.Statements != null &&

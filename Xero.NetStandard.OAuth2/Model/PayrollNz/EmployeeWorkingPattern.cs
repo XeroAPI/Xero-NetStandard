@@ -28,28 +28,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// EmployeeWorkingPattern
     /// </summary>
     [DataContract]
-    public partial class EmployeeWorkingPattern :  IEquatable<EmployeeWorkingPattern>, IValidatableObject
+    public partial class EmployeeWorkingPattern : IEquatable<EmployeeWorkingPattern>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeWorkingPattern" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EmployeeWorkingPattern() 
-        { 
+        public EmployeeWorkingPattern()
+        {
         }
-        
+
         /// <summary>
         /// The Xero identifier for for Employee working pattern
         /// </summary>
         /// <value>The Xero identifier for for Employee working pattern</value>
-        [DataMember(Name="payeeWorkingPatternID", EmitDefaultValue=false)]
+        [DataMember(Name = "payeeWorkingPatternID", EmitDefaultValue = false)]
         public Guid? PayeeWorkingPatternID { get; set; }
 
         /// <summary>
         /// The effective date of the corresponding salary and wages
         /// </summary>
         /// <value>The effective date of the corresponding salary and wages</value>
-        [DataMember(Name="effectiveFrom", EmitDefaultValue=false)]
+        [DataMember(Name = "effectiveFrom", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? EffectiveFrom { get; set; }
 
@@ -66,7 +66,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -96,12 +96,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PayeeWorkingPatternID == input.PayeeWorkingPatternID ||
                     (this.PayeeWorkingPatternID != null &&
                     this.PayeeWorkingPatternID.Equals(input.PayeeWorkingPatternID))
-                ) && 
+                ) &&
                 (
                     this.EffectiveFrom == input.EffectiveFrom ||
                     (this.EffectiveFrom != null &&

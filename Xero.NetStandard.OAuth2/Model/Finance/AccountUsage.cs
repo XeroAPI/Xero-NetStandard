@@ -28,98 +28,98 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// AccountUsage
     /// </summary>
     [DataContract]
-    public partial class AccountUsage :  IEquatable<AccountUsage>, IValidatableObject
+    public partial class AccountUsage : IEquatable<AccountUsage>, IValidatableObject
     {
-        
+
         /// <summary>
         /// The month this usage item contains data for
         /// </summary>
         /// <value>The month this usage item contains data for</value>
-        [DataMember(Name="month", EmitDefaultValue=false)]
+        [DataMember(Name = "month", EmitDefaultValue = false)]
         public string Month { get; set; }
 
         /// <summary>
         /// The account this usage item contains data for
         /// </summary>
         /// <value>The account this usage item contains data for</value>
-        [DataMember(Name="accountId", EmitDefaultValue=false)]
+        [DataMember(Name = "accountId", EmitDefaultValue = false)]
         public Guid? AccountId { get; set; }
 
         /// <summary>
         /// The currency code this usage item contains data for
         /// </summary>
         /// <value>The currency code this usage item contains data for</value>
-        [DataMember(Name="currencyCode", EmitDefaultValue=false)]
+        [DataMember(Name = "currencyCode", EmitDefaultValue = false)]
         public string CurrencyCode { get; set; }
 
         /// <summary>
         /// Total received
         /// </summary>
         /// <value>Total received</value>
-        [DataMember(Name="totalReceived", EmitDefaultValue=false)]
+        [DataMember(Name = "totalReceived", EmitDefaultValue = false)]
         public decimal? TotalReceived { get; set; }
 
         /// <summary>
         /// Count of received
         /// </summary>
         /// <value>Count of received</value>
-        [DataMember(Name="countReceived", EmitDefaultValue=false)]
+        [DataMember(Name = "countReceived", EmitDefaultValue = false)]
         public int? CountReceived { get; set; }
 
         /// <summary>
         /// Total paid
         /// </summary>
         /// <value>Total paid</value>
-        [DataMember(Name="totalPaid", EmitDefaultValue=false)]
+        [DataMember(Name = "totalPaid", EmitDefaultValue = false)]
         public decimal? TotalPaid { get; set; }
 
         /// <summary>
         /// Count of paid
         /// </summary>
         /// <value>Count of paid</value>
-        [DataMember(Name="countPaid", EmitDefaultValue=false)]
+        [DataMember(Name = "countPaid", EmitDefaultValue = false)]
         public int? CountPaid { get; set; }
 
         /// <summary>
         /// Total value of manual journals
         /// </summary>
         /// <value>Total value of manual journals</value>
-        [DataMember(Name="totalManualJournal", EmitDefaultValue=false)]
+        [DataMember(Name = "totalManualJournal", EmitDefaultValue = false)]
         public decimal? TotalManualJournal { get; set; }
 
         /// <summary>
         /// Count of manual journals
         /// </summary>
         /// <value>Count of manual journals</value>
-        [DataMember(Name="countManualJournal", EmitDefaultValue=false)]
+        [DataMember(Name = "countManualJournal", EmitDefaultValue = false)]
         public int? CountManualJournal { get; set; }
 
         /// <summary>
         /// The name of the account
         /// </summary>
         /// <value>The name of the account</value>
-        [DataMember(Name="accountName", EmitDefaultValue=false)]
+        [DataMember(Name = "accountName", EmitDefaultValue = false)]
         public string AccountName { get; set; }
 
         /// <summary>
         /// Shown if set
         /// </summary>
         /// <value>Shown if set</value>
-        [DataMember(Name="reportingCode", EmitDefaultValue=false)]
+        [DataMember(Name = "reportingCode", EmitDefaultValue = false)]
         public string ReportingCode { get; set; }
 
         /// <summary>
         /// Shown if set
         /// </summary>
         /// <value>Shown if set</value>
-        [DataMember(Name="reportingCodeName", EmitDefaultValue=false)]
+        [DataMember(Name = "reportingCodeName", EmitDefaultValue = false)]
         public string ReportingCodeName { get; set; }
 
         /// <summary>
         /// Last modified date UTC format
         /// </summary>
         /// <value>Last modified date UTC format</value>
-        [DataMember(Name="reportCodeUpdatedDateUtc", EmitDefaultValue=false)]
+        [DataMember(Name = "reportCodeUpdatedDateUtc", EmitDefaultValue = false)]
         public DateTime? ReportCodeUpdatedDateUtc { get; set; }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -176,67 +176,67 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.Month == input.Month ||
                     (this.Month != null &&
                     this.Month.Equals(input.Month))
-                ) && 
+                ) &&
                 (
                     this.AccountId == input.AccountId ||
                     (this.AccountId != null &&
                     this.AccountId.Equals(input.AccountId))
-                ) && 
+                ) &&
                 (
                     this.CurrencyCode == input.CurrencyCode ||
                     (this.CurrencyCode != null &&
                     this.CurrencyCode.Equals(input.CurrencyCode))
-                ) && 
+                ) &&
                 (
                     this.TotalReceived == input.TotalReceived ||
                     (this.TotalReceived != null &&
                     this.TotalReceived.Equals(input.TotalReceived))
-                ) && 
+                ) &&
                 (
                     this.CountReceived == input.CountReceived ||
                     (this.CountReceived != null &&
                     this.CountReceived.Equals(input.CountReceived))
-                ) && 
+                ) &&
                 (
                     this.TotalPaid == input.TotalPaid ||
                     (this.TotalPaid != null &&
                     this.TotalPaid.Equals(input.TotalPaid))
-                ) && 
+                ) &&
                 (
                     this.CountPaid == input.CountPaid ||
                     (this.CountPaid != null &&
                     this.CountPaid.Equals(input.CountPaid))
-                ) && 
+                ) &&
                 (
                     this.TotalManualJournal == input.TotalManualJournal ||
                     (this.TotalManualJournal != null &&
                     this.TotalManualJournal.Equals(input.TotalManualJournal))
-                ) && 
+                ) &&
                 (
                     this.CountManualJournal == input.CountManualJournal ||
                     (this.CountManualJournal != null &&
                     this.CountManualJournal.Equals(input.CountManualJournal))
-                ) && 
+                ) &&
                 (
                     this.AccountName == input.AccountName ||
                     (this.AccountName != null &&
                     this.AccountName.Equals(input.AccountName))
-                ) && 
+                ) &&
                 (
                     this.ReportingCode == input.ReportingCode ||
                     (this.ReportingCode != null &&
                     this.ReportingCode.Equals(input.ReportingCode))
-                ) && 
+                ) &&
                 (
                     this.ReportingCodeName == input.ReportingCodeName ||
                     (this.ReportingCodeName != null &&
                     this.ReportingCodeName.Equals(input.ReportingCodeName))
-                ) && 
+                ) &&
                 (
                     this.ReportCodeUpdatedDateUtc == input.ReportCodeUpdatedDateUtc ||
                     (this.ReportCodeUpdatedDateUtc != null &&

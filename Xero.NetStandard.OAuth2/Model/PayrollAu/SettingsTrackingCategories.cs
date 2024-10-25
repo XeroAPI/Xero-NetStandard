@@ -28,19 +28,19 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
     /// Tracking categories for Employees and Timesheets
     /// </summary>
     [DataContract]
-    public partial class SettingsTrackingCategories :  IEquatable<SettingsTrackingCategories>, IValidatableObject
+    public partial class SettingsTrackingCategories : IEquatable<SettingsTrackingCategories>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets EmployeeGroups
         /// </summary>
-        [DataMember(Name="EmployeeGroups", EmitDefaultValue=false)]
+        [DataMember(Name = "EmployeeGroups", EmitDefaultValue = false)]
         public SettingsTrackingCategoriesEmployeeGroups EmployeeGroups { get; set; }
 
         /// <summary>
         /// Gets or Sets TimesheetCategories
         /// </summary>
-        [DataMember(Name="TimesheetCategories", EmitDefaultValue=false)]
+        [DataMember(Name = "TimesheetCategories", EmitDefaultValue = false)]
         public SettingsTrackingCategoriesTimesheetCategories TimesheetCategories { get; set; }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -86,12 +86,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.EmployeeGroups == input.EmployeeGroups ||
                     (this.EmployeeGroups != null &&
                     this.EmployeeGroups.Equals(input.EmployeeGroups))
-                ) && 
+                ) &&
                 (
                     this.TimesheetCategories == input.TimesheetCategories ||
                     (this.TimesheetCategories != null &&

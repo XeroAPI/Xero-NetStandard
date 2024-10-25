@@ -28,7 +28,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     /// PayRun
     /// </summary>
     [DataContract]
-    public partial class PayRun :  IEquatable<PayRun>, IValidatableObject
+    public partial class PayRun : IEquatable<PayRun>, IValidatableObject
     {
         /// <summary>
         /// Pay run status
@@ -55,7 +55,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Pay run status
         /// </summary>
         /// <value>Pay run status</value>
-        [DataMember(Name="payRunStatus", EmitDefaultValue=false)]
+        [DataMember(Name = "payRunStatus", EmitDefaultValue = false)]
         public PayRunStatusEnum PayRunStatus { get; set; }
         /// <summary>
         /// Pay run type
@@ -88,33 +88,33 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Pay run type
         /// </summary>
         /// <value>Pay run type</value>
-        [DataMember(Name="payRunType", EmitDefaultValue=false)]
+        [DataMember(Name = "payRunType", EmitDefaultValue = false)]
         public PayRunTypeEnum PayRunType { get; set; }
         /// <summary>
         /// Gets or Sets CalendarType
         /// </summary>
-        [DataMember(Name="calendarType", EmitDefaultValue=false)]
+        [DataMember(Name = "calendarType", EmitDefaultValue = false)]
         public CalendarType CalendarType { get; set; }
-        
+
         /// <summary>
         /// Xero unique identifier for the pay run
         /// </summary>
         /// <value>Xero unique identifier for the pay run</value>
-        [DataMember(Name="payRunID", EmitDefaultValue=false)]
+        [DataMember(Name = "payRunID", EmitDefaultValue = false)]
         public Guid? PayRunID { get; set; }
 
         /// <summary>
         /// Xero unique identifier for the payroll calendar
         /// </summary>
         /// <value>Xero unique identifier for the payroll calendar</value>
-        [DataMember(Name="payrollCalendarID", EmitDefaultValue=false)]
+        [DataMember(Name = "payrollCalendarID", EmitDefaultValue = false)]
         public Guid? PayrollCalendarID { get; set; }
 
         /// <summary>
         /// Period start date of the payroll calendar
         /// </summary>
         /// <value>Period start date of the payroll calendar</value>
-        [DataMember(Name="periodStartDate", EmitDefaultValue=false)]
+        [DataMember(Name = "periodStartDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PeriodStartDate { get; set; }
 
@@ -122,7 +122,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Period end date of the payroll calendar
         /// </summary>
         /// <value>Period end date of the payroll calendar</value>
-        [DataMember(Name="periodEndDate", EmitDefaultValue=false)]
+        [DataMember(Name = "periodEndDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PeriodEndDate { get; set; }
 
@@ -130,7 +130,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Payment date of the pay run
         /// </summary>
         /// <value>Payment date of the pay run</value>
-        [DataMember(Name="paymentDate", EmitDefaultValue=false)]
+        [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PaymentDate { get; set; }
 
@@ -138,28 +138,28 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Total cost of the pay run
         /// </summary>
         /// <value>Total cost of the pay run</value>
-        [DataMember(Name="totalCost", EmitDefaultValue=false)]
+        [DataMember(Name = "totalCost", EmitDefaultValue = false)]
         public decimal? TotalCost { get; set; }
 
         /// <summary>
         /// Total pay of the pay run
         /// </summary>
         /// <value>Total pay of the pay run</value>
-        [DataMember(Name="totalPay", EmitDefaultValue=false)]
+        [DataMember(Name = "totalPay", EmitDefaultValue = false)]
         public decimal? TotalPay { get; set; }
 
         /// <summary>
         /// Posted date time of the pay run
         /// </summary>
         /// <value>Posted date time of the pay run</value>
-        [DataMember(Name="postedDateTime", EmitDefaultValue=false)]
+        [DataMember(Name = "postedDateTime", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PostedDateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets PaySlips
         /// </summary>
-        [DataMember(Name="paySlips", EmitDefaultValue=false)]
+        [DataMember(Name = "paySlips", EmitDefaultValue = false)]
         public List<PaySlip> PaySlips { get; set; }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -215,59 +215,59 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.PayRunID == input.PayRunID ||
                     (this.PayRunID != null &&
                     this.PayRunID.Equals(input.PayRunID))
-                ) && 
+                ) &&
                 (
                     this.PayrollCalendarID == input.PayrollCalendarID ||
                     (this.PayrollCalendarID != null &&
                     this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
+                ) &&
                 (
                     this.PeriodStartDate == input.PeriodStartDate ||
                     (this.PeriodStartDate != null &&
                     this.PeriodStartDate.Equals(input.PeriodStartDate))
-                ) && 
+                ) &&
                 (
                     this.PeriodEndDate == input.PeriodEndDate ||
                     (this.PeriodEndDate != null &&
                     this.PeriodEndDate.Equals(input.PeriodEndDate))
-                ) && 
+                ) &&
                 (
                     this.PaymentDate == input.PaymentDate ||
                     (this.PaymentDate != null &&
                     this.PaymentDate.Equals(input.PaymentDate))
-                ) && 
+                ) &&
                 (
                     this.TotalCost == input.TotalCost ||
                     (this.TotalCost != null &&
                     this.TotalCost.Equals(input.TotalCost))
-                ) && 
+                ) &&
                 (
                     this.TotalPay == input.TotalPay ||
                     (this.TotalPay != null &&
                     this.TotalPay.Equals(input.TotalPay))
-                ) && 
+                ) &&
                 (
                     this.PayRunStatus == input.PayRunStatus ||
                     this.PayRunStatus.Equals(input.PayRunStatus)
-                ) && 
+                ) &&
                 (
                     this.PayRunType == input.PayRunType ||
                     this.PayRunType.Equals(input.PayRunType)
-                ) && 
+                ) &&
                 (
                     this.CalendarType == input.CalendarType ||
                     this.CalendarType.Equals(input.CalendarType)
-                ) && 
+                ) &&
                 (
                     this.PostedDateTime == input.PostedDateTime ||
                     (this.PostedDateTime != null &&
                     this.PostedDateTime.Equals(input.PostedDateTime))
-                ) && 
+                ) &&
                 (
                     this.PaySlips == input.PaySlips ||
                     this.PaySlips != null &&

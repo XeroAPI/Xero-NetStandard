@@ -28,21 +28,21 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
     /// StatementLineResponse
     /// </summary>
     [DataContract]
-    public partial class StatementLineResponse :  IEquatable<StatementLineResponse>, IValidatableObject
+    public partial class StatementLineResponse : IEquatable<StatementLineResponse>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Xero Identifier of statement line
         /// </summary>
         /// <value>Xero Identifier of statement line</value>
-        [DataMember(Name="statementLineId", EmitDefaultValue=false)]
+        [DataMember(Name = "statementLineId", EmitDefaultValue = false)]
         public Guid? StatementLineId { get; set; }
 
         /// <summary>
         /// Date of when statement line was posted
         /// </summary>
         /// <value>Date of when statement line was posted</value>
-        [DataMember(Name="postedDate", EmitDefaultValue=false)]
+        [DataMember(Name = "postedDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? PostedDate { get; set; }
 
@@ -50,42 +50,42 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Payee description of statement line
         /// </summary>
         /// <value>Payee description of statement line</value>
-        [DataMember(Name="payee", EmitDefaultValue=false)]
+        [DataMember(Name = "payee", EmitDefaultValue = false)]
         public string Payee { get; set; }
 
         /// <summary>
         /// Reference description of statement line
         /// </summary>
         /// <value>Reference description of statement line</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name = "reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Notes description of statement line
         /// </summary>
         /// <value>Notes description of statement line</value>
-        [DataMember(Name="notes", EmitDefaultValue=false)]
+        [DataMember(Name = "notes", EmitDefaultValue = false)]
         public string Notes { get; set; }
 
         /// <summary>
         /// Cheque number of statement line
         /// </summary>
         /// <value>Cheque number of statement line</value>
-        [DataMember(Name="chequeNo", EmitDefaultValue=false)]
+        [DataMember(Name = "chequeNo", EmitDefaultValue = false)]
         public string ChequeNo { get; set; }
 
         /// <summary>
         /// Amount of statement line
         /// </summary>
         /// <value>Amount of statement line</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Transaction date of statement line
         /// </summary>
         /// <value>Transaction date of statement line</value>
-        [DataMember(Name="transactionDate", EmitDefaultValue=false)]
+        [DataMember(Name = "transactionDate", EmitDefaultValue = false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? TransactionDate { get; set; }
 
@@ -93,42 +93,42 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Type of statement line
         /// </summary>
         /// <value>Type of statement line</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name = "type", EmitDefaultValue = false)]
         public string Type { get; set; }
 
         /// <summary>
         /// Boolean to show if statement line is reconciled
         /// </summary>
         /// <value>Boolean to show if statement line is reconciled</value>
-        [DataMember(Name="isReconciled", EmitDefaultValue=false)]
+        [DataMember(Name = "isReconciled", EmitDefaultValue = false)]
         public bool? IsReconciled { get; set; }
 
         /// <summary>
         /// Boolean to show if statement line is duplicate
         /// </summary>
         /// <value>Boolean to show if statement line is duplicate</value>
-        [DataMember(Name="isDuplicate", EmitDefaultValue=false)]
+        [DataMember(Name = "isDuplicate", EmitDefaultValue = false)]
         public bool? IsDuplicate { get; set; }
 
         /// <summary>
         /// Boolean to show if statement line is deleted
         /// </summary>
         /// <value>Boolean to show if statement line is deleted</value>
-        [DataMember(Name="isDeleted", EmitDefaultValue=false)]
+        [DataMember(Name = "isDeleted", EmitDefaultValue = false)]
         public bool? IsDeleted { get; set; }
 
         /// <summary>
         /// List of payments associated with reconciled statement lines
         /// </summary>
         /// <value>List of payments associated with reconciled statement lines</value>
-        [DataMember(Name="payments", EmitDefaultValue=false)]
+        [DataMember(Name = "payments", EmitDefaultValue = false)]
         public List<PaymentResponse> Payments { get; set; }
 
         /// <summary>
         /// List of bank transactions associated with reconciled statement lines
         /// </summary>
         /// <value>List of bank transactions associated with reconciled statement lines</value>
-        [DataMember(Name="bankTransactions", EmitDefaultValue=false)]
+        [DataMember(Name = "bankTransactions", EmitDefaultValue = false)]
         public List<BankTransactionResponse> BankTransactions { get; set; }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -186,73 +186,73 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.StatementLineId == input.StatementLineId ||
                     (this.StatementLineId != null &&
                     this.StatementLineId.Equals(input.StatementLineId))
-                ) && 
+                ) &&
                 (
                     this.PostedDate == input.PostedDate ||
                     (this.PostedDate != null &&
                     this.PostedDate.Equals(input.PostedDate))
-                ) && 
+                ) &&
                 (
                     this.Payee == input.Payee ||
                     (this.Payee != null &&
                     this.Payee.Equals(input.Payee))
-                ) && 
+                ) &&
                 (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
-                ) && 
+                ) &&
                 (
                     this.Notes == input.Notes ||
                     (this.Notes != null &&
                     this.Notes.Equals(input.Notes))
-                ) && 
+                ) &&
                 (
                     this.ChequeNo == input.ChequeNo ||
                     (this.ChequeNo != null &&
                     this.ChequeNo.Equals(input.ChequeNo))
-                ) && 
+                ) &&
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
+                ) &&
                 (
                     this.TransactionDate == input.TransactionDate ||
                     (this.TransactionDate != null &&
                     this.TransactionDate.Equals(input.TransactionDate))
-                ) && 
+                ) &&
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
+                ) &&
                 (
                     this.IsReconciled == input.IsReconciled ||
                     (this.IsReconciled != null &&
                     this.IsReconciled.Equals(input.IsReconciled))
-                ) && 
+                ) &&
                 (
                     this.IsDuplicate == input.IsDuplicate ||
                     (this.IsDuplicate != null &&
                     this.IsDuplicate.Equals(input.IsDuplicate))
-                ) && 
+                ) &&
                 (
                     this.IsDeleted == input.IsDeleted ||
                     (this.IsDeleted != null &&
                     this.IsDeleted.Equals(input.IsDeleted))
-                ) && 
+                ) &&
                 (
                     this.Payments == input.Payments ||
                     this.Payments != null &&
                     input.Payments != null &&
                     this.Payments.SequenceEqual(input.Payments)
-                ) && 
+                ) &&
                 (
                     this.BankTransactions == input.BankTransactions ||
                     this.BankTransactions != null &&

@@ -28,31 +28,31 @@ namespace Xero.NetStandard.OAuth2.Model.Files
     /// Files
     /// </summary>
     [DataContract]
-    public partial class Files :  IEquatable<Files>, IValidatableObject
+    public partial class Files : IEquatable<Files>, IValidatableObject
     {
-        
+
         /// <summary>
         /// Gets or Sets TotalCount
         /// </summary>
-        [DataMember(Name="TotalCount", EmitDefaultValue=false)]
+        [DataMember(Name = "TotalCount", EmitDefaultValue = false)]
         public int? TotalCount { get; set; }
 
         /// <summary>
         /// Gets or Sets Page
         /// </summary>
-        [DataMember(Name="Page", EmitDefaultValue=false)]
+        [DataMember(Name = "Page", EmitDefaultValue = false)]
         public int? Page { get; set; }
 
         /// <summary>
         /// Gets or Sets PerPage
         /// </summary>
-        [DataMember(Name="PerPage", EmitDefaultValue=false)]
+        [DataMember(Name = "PerPage", EmitDefaultValue = false)]
         public int? PerPage { get; set; }
 
         /// <summary>
         /// Gets or Sets Items
         /// </summary>
-        [DataMember(Name="Items", EmitDefaultValue=false)]
+        [DataMember(Name = "Items", EmitDefaultValue = false)]
         public List<FileObject> Items { get; set; }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -100,22 +100,22 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.TotalCount == input.TotalCount ||
                     (this.TotalCount != null &&
                     this.TotalCount.Equals(input.TotalCount))
-                ) && 
+                ) &&
                 (
                     this.Page == input.Page ||
                     (this.Page != null &&
                     this.Page.Equals(input.Page))
-                ) && 
+                ) &&
                 (
                     this.PerPage == input.PerPage ||
                     (this.PerPage != null &&
                     this.PerPage.Equals(input.PerPage))
-                ) && 
+                ) &&
                 (
                     this.Items == input.Items ||
                     this.Items != null &&
