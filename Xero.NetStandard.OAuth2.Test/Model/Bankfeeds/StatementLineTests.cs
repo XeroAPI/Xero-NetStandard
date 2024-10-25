@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -49,9 +50,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void Amount_ValidInputs_Deserialises(string input)
+        public async Task Amount_ValidInputs_Deserialises(string input)
         {
-            JsonDoc.Assert<StatementLine, decimal?>(
+            await JsonDoc.Assert<StatementLine, decimal?>(
                 input: new JsonDoc.Number(nameof(StatementLine.Amount), input),
                 toProperty: (x) => x.Amount,
                 shouldBe: 20m

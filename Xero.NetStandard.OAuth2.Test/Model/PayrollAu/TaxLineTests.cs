@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -43,9 +44,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void AmountTest(string input)
+        public async Task AmountTest(string input)
         {
-            JsonDoc.Assert<TaxLine, decimal?>(
+            await JsonDoc.Assert<TaxLine, decimal?>(
                 input: new JsonDoc.Number(nameof(TaxLine.Amount), input),
                 toProperty: x => x.Amount,
                 shouldBe: 20
@@ -60,9 +61,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("PAYGMANUAL", ManualTaxType.PAYGMANUAL)]
         [InlineData("SCHEDULE5MANUAL", ManualTaxType.SCHEDULE5MANUAL)]
         [InlineData("SCHEDULE5STSLMANUAL", ManualTaxType.SCHEDULE5STSLMANUAL)]
-        public void ManualTaxTypeTest(string input, ManualTaxType expected)
+        public async Task ManualTaxTypeTest(string input, ManualTaxType expected)
         {
-            JsonDoc.Assert<TaxLine, ManualTaxType>(
+            await JsonDoc.Assert<TaxLine, ManualTaxType>(
                 input: new JsonDoc.String(nameof(TaxLine.ManualTaxType), input),
                 toProperty: x => x.ManualTaxType,
                 shouldBe: expected

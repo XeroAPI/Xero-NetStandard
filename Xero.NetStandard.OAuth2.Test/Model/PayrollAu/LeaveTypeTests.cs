@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -43,9 +44,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void NormalEntitlementTest(string input)
+        public async Task NormalEntitlementTest(string input)
         {
-            JsonDoc.Assert<LeaveType, double?>(
+            await JsonDoc.Assert<LeaveType, double?>(
                 input: new JsonDoc.Number(nameof(LeaveType.NormalEntitlement), input),
                 toProperty: x => x.NormalEntitlement,
                 shouldBe: 20
@@ -57,9 +58,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void LeaveLoadingRateTest(string input)
+        public async Task LeaveLoadingRateTest(string input)
         {
-            JsonDoc.Assert<LeaveType, double?>(
+            await JsonDoc.Assert<LeaveType, double?>(
                 input: new JsonDoc.Number(nameof(LeaveType.LeaveLoadingRate), input),
                 toProperty: x => x.LeaveLoadingRate,
                 shouldBe: 20

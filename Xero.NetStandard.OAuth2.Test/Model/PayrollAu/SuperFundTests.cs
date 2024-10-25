@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -43,9 +44,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("REGULATED", SuperFundType.REGULATED)]
         [InlineData("SMSF", SuperFundType.SMSF)]
-        public void TypeTest(string input, SuperFundType expected)
+        public async Task TypeTest(string input, SuperFundType expected)
         {
-            JsonDoc.Assert<SuperFund, SuperFundType>(
+            await JsonDoc.Assert<SuperFund, SuperFundType>(
                 input: new JsonDoc.String(nameof(SuperFund.Type), input),
                 toProperty: x => x.Type,
                 shouldBe: expected
