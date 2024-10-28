@@ -7276,7 +7276,6 @@ namespace Example
             var accountID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body, idempotencyKey);
@@ -7419,7 +7418,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -7436,7 +7435,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -7488,7 +7487,6 @@ namespace Example
             var bankTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body, idempotencyKey);
@@ -7631,7 +7629,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -7648,7 +7646,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -8354,7 +8352,6 @@ namespace Example
             var bankTransferID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body, idempotencyKey);
@@ -8497,7 +8494,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -8514,7 +8511,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -9401,7 +9398,6 @@ namespace Example
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey);
@@ -9544,7 +9540,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -9561,7 +9557,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -10673,7 +10669,6 @@ namespace Example
             var fileName = "xero-dev.jpg";
             var includeOnline = true;
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body, includeOnline, idempotencyKey);
@@ -10816,7 +10811,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -10833,7 +10828,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -12092,7 +12087,6 @@ namespace Example
             var fileName = "xero-dev.jpg";
             var includeOnline = true;
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body, includeOnline, idempotencyKey);
@@ -12235,7 +12229,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -12252,7 +12246,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -13373,7 +13367,6 @@ namespace Example
             var manualJournalID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body, idempotencyKey);
@@ -13516,7 +13509,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -13533,7 +13526,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -15645,7 +15638,6 @@ namespace Example
             var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreatePurchaseOrderAttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, body, idempotencyKey);
@@ -15788,7 +15780,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -15805,7 +15797,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -16272,7 +16264,6 @@ namespace Example
             var quoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateQuoteAttachmentByFileNameAsync(accessToken, xeroTenantId, quoteID, fileName, body, idempotencyKey);
@@ -16415,7 +16406,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -16432,7 +16423,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -17125,7 +17116,6 @@ namespace Example
             var receiptID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body, idempotencyKey);
@@ -17268,7 +17258,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -17285,7 +17275,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -17536,7 +17526,6 @@ namespace Example
             var repeatingInvoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.CreateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body, idempotencyKey);
@@ -17679,7 +17668,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -17696,7 +17685,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -41887,7 +41876,6 @@ namespace Example
             var accountID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateAccountAttachmentByFileNameAsync(accessToken, xeroTenantId, accountID, fileName, body, idempotencyKey);
@@ -42030,7 +42018,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -42047,7 +42035,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -42409,7 +42397,6 @@ namespace Example
             var bankTransactionID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateBankTransactionAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransactionID, fileName, body, idempotencyKey);
@@ -42552,7 +42539,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -42569,7 +42556,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -42621,7 +42608,6 @@ namespace Example
             var bankTransferID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateBankTransferAttachmentByFileNameAsync(accessToken, xeroTenantId, bankTransferID, fileName, body, idempotencyKey);
@@ -42764,7 +42750,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -42781,7 +42767,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -43034,7 +43020,6 @@ namespace Example
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey);
@@ -43177,7 +43162,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -43194,7 +43179,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -43702,7 +43687,6 @@ namespace Example
             var creditNoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateCreditNoteAttachmentByFileNameAsync(accessToken, xeroTenantId, creditNoteID, fileName, body, idempotencyKey);
@@ -43845,7 +43829,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -43862,7 +43846,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -44361,7 +44345,6 @@ namespace Example
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, invoiceID, fileName, body, idempotencyKey);
@@ -44504,7 +44487,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -44521,7 +44504,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -45217,7 +45200,6 @@ namespace Example
             var manualJournalID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateManualJournalAttachmentByFileNameAsync(accessToken, xeroTenantId, manualJournalID, fileName, body, idempotencyKey);
@@ -45360,7 +45342,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -45377,7 +45359,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -47859,7 +47841,6 @@ namespace Example
             var purchaseOrderID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdatePurchaseOrderAttachmentByFileNameAsync(accessToken, xeroTenantId, purchaseOrderID, fileName, body, idempotencyKey);
@@ -48002,7 +47983,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -48019,7 +48000,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -48279,7 +48260,6 @@ namespace Example
             var quoteID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateQuoteAttachmentByFileNameAsync(accessToken, xeroTenantId, quoteID, fileName, body, idempotencyKey);
@@ -48422,7 +48402,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -48439,7 +48419,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -48727,7 +48707,6 @@ namespace Example
             var receiptID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateReceiptAttachmentByFileNameAsync(accessToken, xeroTenantId, receiptID, fileName, body, idempotencyKey);
@@ -48870,7 +48849,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -48887,7 +48866,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
@@ -49171,7 +49150,6 @@ namespace Example
             var repeatingInvoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
             var idempotencyKey = "KEY_VALUE";
-            byte[] body = System.IO.File.ReadAllBytes(fileName);
             
             try {
                 var result = await apiInstance.UpdateRepeatingInvoiceAttachmentByFileNameAsync(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body, idempotencyKey);
@@ -49314,7 +49292,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     <div class="json-schema-view">
       <div class="primitive">
         <span class="type">
-        byte[]
+        File
         </span>
         <div class="inner description marked">
           Byte array of file in body of request
@@ -49331,7 +49309,7 @@ This allows you to safely retry requests without the risk of duplicate processin
     "application/octet-stream" : {
       "schema" : {
         "type" : "string",
-        "format" : "byte"
+        "format" : "binary"
       }
     }
   },
