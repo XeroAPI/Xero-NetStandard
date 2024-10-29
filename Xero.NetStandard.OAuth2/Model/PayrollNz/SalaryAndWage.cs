@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum History for value: History
             /// </summary>
             [EnumMember(Value = "History")]
-            History = 3
+            History = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -80,7 +86,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum Hourly for value: Hourly
             /// </summary>
             [EnumMember(Value = "Hourly")]
-            Hourly = 2
+            Hourly = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -107,7 +119,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum RegularWeek for value: RegularWeek
             /// </summary>
             [EnumMember(Value = "RegularWeek")]
-            RegularWeek = 2
+            RegularWeek = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

@@ -1470,7 +1470,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum ZW for value: ZW
         /// </summary>
         [EnumMember(Value = "ZW")]
-        ZW = 240
+        ZW = 240,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 241
 
     }
 

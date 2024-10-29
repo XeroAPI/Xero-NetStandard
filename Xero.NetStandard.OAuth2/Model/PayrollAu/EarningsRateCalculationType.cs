@@ -48,7 +48,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum ANNUALSALARY for value: ANNUALSALARY
         /// </summary>
         [EnumMember(Value = "ANNUALSALARY")]
-        ANNUALSALARY = 3
+        ANNUALSALARY = 3,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 4
 
     }
 

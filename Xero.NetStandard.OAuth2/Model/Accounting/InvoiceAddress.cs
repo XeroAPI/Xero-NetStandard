@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TO for value: TO
             /// </summary>
             [EnumMember(Value = "TO")]
-            TO = 2
+            TO = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

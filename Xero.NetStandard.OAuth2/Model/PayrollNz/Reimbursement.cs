@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum GSTInclusive for value: GSTInclusive
             /// </summary>
             [EnumMember(Value = "GSTInclusive")]
-            GSTInclusive = 3
+            GSTInclusive = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -86,7 +92,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum RatePerUnit for value: RatePerUnit
             /// </summary>
             [EnumMember(Value = "RatePerUnit")]
-            RatePerUnit = 3
+            RatePerUnit = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -113,7 +125,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum Km for value: km
             /// </summary>
             [EnumMember(Value = "km")]
-            Km = 2
+            Km = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

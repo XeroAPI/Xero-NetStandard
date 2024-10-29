@@ -49,7 +49,13 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         /// Enum NONCHARGEABLE for value: NON_CHARGEABLE
         /// </summary>
         [EnumMember(Value = "NON_CHARGEABLE")]
-        NONCHARGEABLE = 3
+        NONCHARGEABLE = 3,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 4
 
     }
 

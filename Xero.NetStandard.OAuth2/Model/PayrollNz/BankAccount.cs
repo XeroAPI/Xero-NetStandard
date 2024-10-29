@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum Balance for value: Balance
             /// </summary>
             [EnumMember(Value = "Balance")]
-            Balance = 2
+            Balance = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

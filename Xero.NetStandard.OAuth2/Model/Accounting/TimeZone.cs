@@ -877,7 +877,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum YUKONSTANDARDTIME for value: YUKONSTANDARDTIME
         /// </summary>
         [EnumMember(Value = "YUKONSTANDARDTIME")]
-        YUKONSTANDARDTIME = 141
+        YUKONSTANDARDTIME = 141,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 142
 
     }
 

@@ -139,7 +139,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum PAYG for value: PAYG
         /// </summary>
         [EnumMember(Value = "PAYG")]
-        PAYG = 18
+        PAYG = 18,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 19
 
     }
 

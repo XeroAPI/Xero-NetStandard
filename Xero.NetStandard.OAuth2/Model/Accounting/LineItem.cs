@@ -65,7 +65,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum NOTAPPLICABLE for value: NOT_APPLICABLE
             /// </summary>
             [EnumMember(Value = "NOT_APPLICABLE")]
-            NOTAPPLICABLE = 5
+            NOTAPPLICABLE = 5,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 6
 
         }
 

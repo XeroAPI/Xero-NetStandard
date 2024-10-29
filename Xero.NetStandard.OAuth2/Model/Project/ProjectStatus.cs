@@ -43,7 +43,13 @@ namespace Xero.NetStandard.OAuth2.Model.Project
         /// Enum CLOSED for value: CLOSED
         /// </summary>
         [EnumMember(Value = "CLOSED")]
-        CLOSED = 2
+        CLOSED = 2,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 3
 
     }
 

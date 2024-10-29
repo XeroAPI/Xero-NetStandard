@@ -48,7 +48,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum STATUTORY for value: STATUTORY
         /// </summary>
         [EnumMember(Value = "STATUTORY")]
-        STATUTORY = 3
+        STATUTORY = 3,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 4
 
     }
 

@@ -49,7 +49,13 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// Enum DISPOSED for value: DISPOSED
         /// </summary>
         [EnumMember(Value = "DISPOSED")]
-        DISPOSED = 3
+        DISPOSED = 3,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 4
 
     }
 

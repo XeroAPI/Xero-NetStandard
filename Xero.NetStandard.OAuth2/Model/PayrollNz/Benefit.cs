@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum Other for value: Other
             /// </summary>
             [EnumMember(Value = "Other")]
-            Other = 3
+            Other = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -80,7 +86,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum PercentageOfTaxableEarnings for value: PercentageOfTaxableEarnings
             /// </summary>
             [EnumMember(Value = "PercentageOfTaxableEarnings")]
-            PercentageOfTaxableEarnings = 2
+            PercentageOfTaxableEarnings = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

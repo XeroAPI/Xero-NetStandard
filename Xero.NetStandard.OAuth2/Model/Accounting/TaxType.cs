@@ -769,7 +769,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum BLINPUT3Y24 for value: BLINPUT3Y24
         /// </summary>
         [EnumMember(Value = "BLINPUT3Y24")]
-        BLINPUT3Y24 = 123
+        BLINPUT3Y24 = 123,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 124
 
     }
 

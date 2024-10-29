@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum ACCREC for value: ACCREC
             /// </summary>
             [EnumMember(Value = "ACCREC")]
-            ACCREC = 2
+            ACCREC = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -90,7 +96,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum DELETED for value: DELETED
             /// </summary>
             [EnumMember(Value = "DELETED")]
-            DELETED = 3
+            DELETED = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             /// Enum CREDITCARD for value: CREDITCARD
             /// </summary>
             [EnumMember(Value = "CREDITCARD")]
-            CREDITCARD = 2
+            CREDITCARD = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -84,7 +90,13 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             /// Enum REJECTED for value: REJECTED
             /// </summary>
             [EnumMember(Value = "REJECTED")]
-            REJECTED = 2
+            REJECTED = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 

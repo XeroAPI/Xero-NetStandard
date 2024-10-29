@@ -1039,7 +1039,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// Enum ZWD for value: ZWD
         /// </summary>
         [EnumMember(Value = "ZWD")]
-        ZWD = 168
+        ZWD = 168,
+
+        /// <summary>
+        /// Enum EMPTY_CURRENCY for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        EMPTY_CURRENCY = 169
 
     }
 

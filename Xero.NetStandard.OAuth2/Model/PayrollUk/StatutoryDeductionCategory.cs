@@ -115,7 +115,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Enum USChildSupport for value: USChildSupport
         /// </summary>
         [EnumMember(Value = "USChildSupport")]
-        USChildSupport = 14
+        USChildSupport = 14,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 15
 
     }
 

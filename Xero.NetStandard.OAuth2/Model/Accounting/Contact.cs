@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum GDPRREQUEST for value: GDPRREQUEST
             /// </summary>
             [EnumMember(Value = "GDPRREQUEST")]
-            GDPRREQUEST = 3
+            GDPRREQUEST = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -86,7 +92,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum NONE for value: NONE
             /// </summary>
             [EnumMember(Value = "NONE")]
-            NONE = 3
+            NONE = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -119,7 +131,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum NONE for value: NONE
             /// </summary>
             [EnumMember(Value = "NONE")]
-            NONE = 3
+            NONE = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

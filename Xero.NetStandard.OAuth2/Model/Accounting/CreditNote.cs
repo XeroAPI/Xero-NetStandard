@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum ACCRECCREDIT for value: ACCRECCREDIT
             /// </summary>
             [EnumMember(Value = "ACCRECCREDIT")]
-            ACCRECCREDIT = 2
+            ACCRECCREDIT = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -98,7 +104,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum VOIDED for value: VOIDED
             /// </summary>
             [EnumMember(Value = "VOIDED")]
-            VOIDED = 6
+            VOIDED = 6,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 7
 
         }
 

@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Bankfeeds
             /// Enum DELIVERED for value: DELIVERED
             /// </summary>
             [EnumMember(Value = "DELIVERED")]
-            DELIVERED = 3
+            DELIVERED = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

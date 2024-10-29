@@ -59,7 +59,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum Requested for value: Requested
             /// </summary>
             [EnumMember(Value = "Requested")]
-            Requested = 4
+            Requested = 4,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 5
 
         }
 

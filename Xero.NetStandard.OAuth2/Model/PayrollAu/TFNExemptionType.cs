@@ -54,7 +54,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum UNDER18 for value: UNDER18
         /// </summary>
         [EnumMember(Value = "UNDER18")]
-        UNDER18 = 4
+        UNDER18 = 4,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 5
 
     }
 

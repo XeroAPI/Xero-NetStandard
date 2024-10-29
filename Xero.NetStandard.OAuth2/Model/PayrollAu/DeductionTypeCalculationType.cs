@@ -48,7 +48,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum POSTTAX for value: POSTTAX
         /// </summary>
         [EnumMember(Value = "POSTTAX")]
-        POSTTAX = 3
+        POSTTAX = 3,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 4
 
     }
 

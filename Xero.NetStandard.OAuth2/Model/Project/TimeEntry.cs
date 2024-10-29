@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Project
             /// Enum INVOICED for value: INVOICED
             /// </summary>
             [EnumMember(Value = "INVOICED")]
-            INVOICED = 3
+            INVOICED = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

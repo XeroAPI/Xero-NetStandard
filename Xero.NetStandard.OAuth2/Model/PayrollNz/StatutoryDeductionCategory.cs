@@ -97,7 +97,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// Enum KiwiSaver for value: KiwiSaver
         /// </summary>
         [EnumMember(Value = "KiwiSaver")]
-        KiwiSaver = 11
+        KiwiSaver = 11,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 12
 
     }
 

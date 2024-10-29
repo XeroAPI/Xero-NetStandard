@@ -42,7 +42,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum SMSF for value: SMSF
         /// </summary>
         [EnumMember(Value = "SMSF")]
-        SMSF = 2
+        SMSF = 2,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 3
 
     }
 

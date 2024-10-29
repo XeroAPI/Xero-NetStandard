@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum Posted for value: Posted
             /// </summary>
             [EnumMember(Value = "Posted")]
-            Posted = 2
+            Posted = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -80,7 +86,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum EarlierYearUpdate for value: EarlierYearUpdate
             /// </summary>
             [EnumMember(Value = "EarlierYearUpdate")]
-            EarlierYearUpdate = 3
+            EarlierYearUpdate = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -131,7 +143,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum Quarterly for value: Quarterly
             /// </summary>
             [EnumMember(Value = "Quarterly")]
-            Quarterly = 6
+            Quarterly = 6,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 7
 
         }
 

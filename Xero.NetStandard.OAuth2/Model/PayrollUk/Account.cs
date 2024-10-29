@@ -77,7 +77,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum WAGESEXPENSE for value: WAGESEXPENSE
             /// </summary>
             [EnumMember(Value = "WAGESEXPENSE")]
-            WAGESEXPENSE = 7
+            WAGESEXPENSE = 7,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 8
 
         }
 

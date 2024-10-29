@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum AROVERPAYMENT for value: AROVERPAYMENT
             /// </summary>
             [EnumMember(Value = "AROVERPAYMENT")]
-            AROVERPAYMENT = 3
+            AROVERPAYMENT = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 
@@ -86,7 +92,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum VOIDED for value: VOIDED
             /// </summary>
             [EnumMember(Value = "VOIDED")]
-            VOIDED = 3
+            VOIDED = 3,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 4
 
         }
 

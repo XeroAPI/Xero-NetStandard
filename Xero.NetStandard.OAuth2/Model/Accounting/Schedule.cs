@@ -47,7 +47,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum MONTHLY for value: MONTHLY
             /// </summary>
             [EnumMember(Value = "MONTHLY")]
-            MONTHLY = 2
+            MONTHLY = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
 
         }
 
@@ -98,7 +104,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum OFFOLLOWINGMONTH for value: OFFOLLOWINGMONTH
             /// </summary>
             [EnumMember(Value = "OFFOLLOWINGMONTH")]
-            OFFOLLOWINGMONTH = 6
+            OFFOLLOWINGMONTH = 6,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 7
 
         }
 

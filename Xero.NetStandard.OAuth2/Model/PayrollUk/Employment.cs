@@ -113,7 +113,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum Z for value: Z
             /// </summary>
             [EnumMember(Value = "Z")]
-            Z = 13
+            Z = 13,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 14
 
         }
 

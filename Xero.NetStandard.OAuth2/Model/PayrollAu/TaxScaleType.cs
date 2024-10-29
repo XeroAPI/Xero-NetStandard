@@ -66,7 +66,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum FOREIGN for value: FOREIGN
         /// </summary>
         [EnumMember(Value = "FOREIGN")]
-        FOREIGN = 6
+        FOREIGN = 6,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 7
 
     }
 

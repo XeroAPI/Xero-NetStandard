@@ -66,7 +66,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum SCHEDULE4MANUAL for value: SCHEDULE4MANUAL
         /// </summary>
         [EnumMember(Value = "SCHEDULE4MANUAL")]
-        SCHEDULE4MANUAL = 6
+        SCHEDULE4MANUAL = 6,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 7
 
     }
 

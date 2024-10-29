@@ -43,7 +43,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum CASHEDOUT for value: CASHED_OUT
         /// </summary>
         [EnumMember(Value = "CASHED_OUT")]
-        CASHEDOUT = 2
+        CASHEDOUT = 2,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 3
 
     }
 

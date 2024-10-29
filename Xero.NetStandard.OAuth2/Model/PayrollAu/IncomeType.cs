@@ -60,7 +60,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Enum LABOURHIRE for value: LABOURHIRE
         /// </summary>
         [EnumMember(Value = "LABOURHIRE")]
-        LABOURHIRE = 5
+        LABOURHIRE = 5,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 6
 
     }
 

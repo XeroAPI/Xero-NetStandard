@@ -96,7 +96,13 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// Enum RateLimitError for value: rate-limit-error
         /// </summary>
         [EnumMember(Value = "rate-limit-error")]
-        RateLimitError = 11
+        RateLimitError = 11,
+
+        /// <summary>
+        /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+        /// </summary>
+        [EnumMember(Value = "unknown_default_open_api")]
+        UnknownDefaultOpenApi = 12
 
     }
 
