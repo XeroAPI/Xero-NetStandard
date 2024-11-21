@@ -154,7 +154,7 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         /// </summary>
         /// <value>Effective life of the asset in years (e.g. 5)</value>
         [DataMember(Name="effectiveLifeYears", EmitDefaultValue=false)]
-        public int? EffectiveLifeYears { get; set; }
+        public decimal? EffectiveLifeYears { get; set; }
 
         /// <summary>
         /// Unique Xero identifier for the depreciable object
