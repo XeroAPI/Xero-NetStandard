@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -45,9 +46,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("EMPLOYERADDITIONAL", SuperannuationContributionType.EMPLOYERADDITIONAL)]
         [InlineData("SALARYSACRIFICE", SuperannuationContributionType.SALARYSACRIFICE)]
         [InlineData("SGC", SuperannuationContributionType.SGC)]
-        public void ContributionTypeTest(string input, SuperannuationContributionType expected)
+        public async Task ContributionTypeTest(string input, SuperannuationContributionType expected)
         {
-            JsonDoc.Assert<SuperannuationLine, SuperannuationContributionType>(
+            await JsonDoc.Assert<SuperannuationLine, SuperannuationContributionType>(
                 input: new JsonDoc.String(nameof(SuperannuationLine.ContributionType), input),
                 toProperty: x => x.ContributionType,
                 shouldBe: expected
@@ -60,9 +61,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("FIXEDAMOUNT", SuperannuationCalculationType.FIXEDAMOUNT)]
         [InlineData("PERCENTAGEOFEARNINGS", SuperannuationCalculationType.PERCENTAGEOFEARNINGS)]
         [InlineData("STATUTORY", SuperannuationCalculationType.STATUTORY)]
-        public void CalculationTypeTest(string input, SuperannuationCalculationType expected)
+        public async Task CalculationTypeTest(string input, SuperannuationCalculationType expected)
         {
-            JsonDoc.Assert<SuperannuationLine, SuperannuationCalculationType>(
+            await JsonDoc.Assert<SuperannuationLine, SuperannuationCalculationType>(
                 input: new JsonDoc.String(nameof(SuperannuationLine.CalculationType), input),
                 toProperty: x => x.CalculationType,
                 shouldBe: expected
@@ -74,9 +75,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void MinimumMonthlyEarningsTest(string input)
+        public async Task MinimumMonthlyEarningsTest(string input)
         {
-            JsonDoc.Assert<SuperannuationLine, decimal?>(
+            await JsonDoc.Assert<SuperannuationLine, decimal?>(
                 input: new JsonDoc.Number(nameof(SuperannuationLine.MinimumMonthlyEarnings), input),
                 toProperty: x => x.MinimumMonthlyEarnings,
                 shouldBe: 20
@@ -88,9 +89,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void PercentageTest(string input)
+        public async Task PercentageTest(string input)
         {
-            JsonDoc.Assert<SuperannuationLine, decimal?>(
+            await JsonDoc.Assert<SuperannuationLine, decimal?>(
                 input: new JsonDoc.Number(nameof(SuperannuationLine.Percentage), input),
                 toProperty: x => x.Percentage,
                 shouldBe: 20
@@ -102,9 +103,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void AmountTest(string input)
+        public async Task AmountTest(string input)
         {
-            JsonDoc.Assert<SuperannuationLine, decimal?>(
+            await JsonDoc.Assert<SuperannuationLine, decimal?>(
                 input: new JsonDoc.Number(nameof(SuperannuationLine.Amount), input),
                 toProperty: x => x.Amount,
                 shouldBe: 20
