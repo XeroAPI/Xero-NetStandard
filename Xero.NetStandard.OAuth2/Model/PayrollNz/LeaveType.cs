@@ -81,6 +81,20 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public bool? IsActive { get; set; }
 
         /// <summary>
+        /// The type of units to be paid for the leave type
+        /// </summary>
+        /// <value>The type of units to be paid for the leave type</value>
+        [DataMember(Name="typeOfUnits", EmitDefaultValue=false)]
+        public string TypeOfUnits { get; set; }
+
+        /// <summary>
+        /// The type of units to be accrued for the leave type
+        /// </summary>
+        /// <value>The type of units to be accrued for the leave type</value>
+        [DataMember(Name="typeOfUnitsToAccrue", EmitDefaultValue=false)]
+        public string TypeOfUnitsToAccrue { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -94,6 +108,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  ShowOnPayslip: ").Append(ShowOnPayslip).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  TypeOfUnits: ").Append(TypeOfUnits).Append("\n");
+            sb.Append("  TypeOfUnitsToAccrue: ").Append(TypeOfUnitsToAccrue).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -157,6 +173,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.IsActive == input.IsActive ||
                     (this.IsActive != null &&
                     this.IsActive.Equals(input.IsActive))
+                ) && 
+                (
+                    this.TypeOfUnits == input.TypeOfUnits ||
+                    (this.TypeOfUnits != null &&
+                    this.TypeOfUnits.Equals(input.TypeOfUnits))
+                ) && 
+                (
+                    this.TypeOfUnitsToAccrue == input.TypeOfUnitsToAccrue ||
+                    (this.TypeOfUnitsToAccrue != null &&
+                    this.TypeOfUnitsToAccrue.Equals(input.TypeOfUnitsToAccrue))
                 );
         }
 
@@ -181,6 +207,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.IsActive != null)
                     hashCode = hashCode * 59 + this.IsActive.GetHashCode();
+                if (this.TypeOfUnits != null)
+                    hashCode = hashCode * 59 + this.TypeOfUnits.GetHashCode();
+                if (this.TypeOfUnitsToAccrue != null)
+                    hashCode = hashCode * 59 + this.TypeOfUnitsToAccrue.GetHashCode();
                 return hashCode;
             }
         }

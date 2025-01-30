@@ -39,13 +39,6 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         public decimal? DirectBankFeed { get; set; }
 
         /// <summary>
-        /// No longer in use.
-        /// </summary>
-        /// <value>No longer in use.</value>
-        [DataMember(Name="indirectBankFeed", EmitDefaultValue=false)]
-        public decimal? IndirectBankFeed { get; set; }
-
-        /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.</value>
@@ -67,13 +60,6 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         public decimal? DirectBankFeedPos { get; set; }
 
         /// <summary>
-        /// No longer in use.
-        /// </summary>
-        /// <value>No longer in use.</value>
-        [DataMember(Name="indirectBankFeedPos", EmitDefaultValue=false)]
-        public decimal? IndirectBankFeedPos { get; set; }
-
-        /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.
         /// </summary>
         /// <value>Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.</value>
@@ -93,13 +79,6 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         /// <value>Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.</value>
         [DataMember(Name="directBankFeedNeg", EmitDefaultValue=false)]
         public decimal? DirectBankFeedNeg { get; set; }
-
-        /// <summary>
-        /// No longer in use.
-        /// </summary>
-        /// <value>No longer in use.</value>
-        [DataMember(Name="indirectBankFeedNeg", EmitDefaultValue=false)]
-        public decimal? IndirectBankFeedNeg { get; set; }
 
         /// <summary>
         /// Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.
@@ -145,15 +124,12 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
             var sb = new StringBuilder();
             sb.Append("class DataSourceResponse {\n");
             sb.Append("  DirectBankFeed: ").Append(DirectBankFeed).Append("\n");
-            sb.Append("  IndirectBankFeed: ").Append(IndirectBankFeed).Append("\n");
             sb.Append("  FileUpload: ").Append(FileUpload).Append("\n");
             sb.Append("  Manual: ").Append(Manual).Append("\n");
             sb.Append("  DirectBankFeedPos: ").Append(DirectBankFeedPos).Append("\n");
-            sb.Append("  IndirectBankFeedPos: ").Append(IndirectBankFeedPos).Append("\n");
             sb.Append("  FileUploadPos: ").Append(FileUploadPos).Append("\n");
             sb.Append("  ManualPos: ").Append(ManualPos).Append("\n");
             sb.Append("  DirectBankFeedNeg: ").Append(DirectBankFeedNeg).Append("\n");
-            sb.Append("  IndirectBankFeedNeg: ").Append(IndirectBankFeedNeg).Append("\n");
             sb.Append("  FileUploadNeg: ").Append(FileUploadNeg).Append("\n");
             sb.Append("  ManualNeg: ").Append(ManualNeg).Append("\n");
             sb.Append("  OtherPos: ").Append(OtherPos).Append("\n");
@@ -199,11 +175,6 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     this.DirectBankFeed.Equals(input.DirectBankFeed))
                 ) && 
                 (
-                    this.IndirectBankFeed == input.IndirectBankFeed ||
-                    (this.IndirectBankFeed != null &&
-                    this.IndirectBankFeed.Equals(input.IndirectBankFeed))
-                ) && 
-                (
                     this.FileUpload == input.FileUpload ||
                     (this.FileUpload != null &&
                     this.FileUpload.Equals(input.FileUpload))
@@ -219,11 +190,6 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     this.DirectBankFeedPos.Equals(input.DirectBankFeedPos))
                 ) && 
                 (
-                    this.IndirectBankFeedPos == input.IndirectBankFeedPos ||
-                    (this.IndirectBankFeedPos != null &&
-                    this.IndirectBankFeedPos.Equals(input.IndirectBankFeedPos))
-                ) && 
-                (
                     this.FileUploadPos == input.FileUploadPos ||
                     (this.FileUploadPos != null &&
                     this.FileUploadPos.Equals(input.FileUploadPos))
@@ -237,11 +203,6 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                     this.DirectBankFeedNeg == input.DirectBankFeedNeg ||
                     (this.DirectBankFeedNeg != null &&
                     this.DirectBankFeedNeg.Equals(input.DirectBankFeedNeg))
-                ) && 
-                (
-                    this.IndirectBankFeedNeg == input.IndirectBankFeedNeg ||
-                    (this.IndirectBankFeedNeg != null &&
-                    this.IndirectBankFeedNeg.Equals(input.IndirectBankFeedNeg))
                 ) && 
                 (
                     this.FileUploadNeg == input.FileUploadNeg ||
@@ -281,24 +242,18 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
                 int hashCode = 41;
                 if (this.DirectBankFeed != null)
                     hashCode = hashCode * 59 + this.DirectBankFeed.GetHashCode();
-                if (this.IndirectBankFeed != null)
-                    hashCode = hashCode * 59 + this.IndirectBankFeed.GetHashCode();
                 if (this.FileUpload != null)
                     hashCode = hashCode * 59 + this.FileUpload.GetHashCode();
                 if (this.Manual != null)
                     hashCode = hashCode * 59 + this.Manual.GetHashCode();
                 if (this.DirectBankFeedPos != null)
                     hashCode = hashCode * 59 + this.DirectBankFeedPos.GetHashCode();
-                if (this.IndirectBankFeedPos != null)
-                    hashCode = hashCode * 59 + this.IndirectBankFeedPos.GetHashCode();
                 if (this.FileUploadPos != null)
                     hashCode = hashCode * 59 + this.FileUploadPos.GetHashCode();
                 if (this.ManualPos != null)
                     hashCode = hashCode * 59 + this.ManualPos.GetHashCode();
                 if (this.DirectBankFeedNeg != null)
                     hashCode = hashCode * 59 + this.DirectBankFeedNeg.GetHashCode();
-                if (this.IndirectBankFeedNeg != null)
-                    hashCode = hashCode * 59 + this.IndirectBankFeedNeg.GetHashCode();
                 if (this.FileUploadNeg != null)
                     hashCode = hashCode * 59 + this.FileUploadNeg.GetHashCode();
                 if (this.ManualNeg != null)

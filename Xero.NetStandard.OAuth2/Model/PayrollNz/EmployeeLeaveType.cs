@@ -78,25 +78,46 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
-        /// The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;
+        /// Deprecated use UnitsAccruedAnnually
         /// </summary>
-        /// <value>The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;</value>
+        /// <value>Deprecated use UnitsAccruedAnnually</value>
         [DataMember(Name="hoursAccruedAnnually", EmitDefaultValue=false)]
         public decimal? HoursAccruedAnnually { get; set; }
 
         /// <summary>
-        /// The maximum number of hours that can be accrued for the leave
+        /// The number of units accrued for the leave annually. This is 0 when the ScheduleOfAccrual chosen is \&quot;NoAccruals\&quot;
         /// </summary>
-        /// <value>The maximum number of hours that can be accrued for the leave</value>
+        /// <value>The number of units accrued for the leave annually. This is 0 when the ScheduleOfAccrual chosen is \&quot;NoAccruals\&quot;</value>
+        [DataMember(Name="UnitsAccruedAnnually", EmitDefaultValue=false)]
+        public decimal? UnitsAccruedAnnually { get; set; }
+
+        /// <summary>
+        /// The type of units accrued for the leave annually
+        /// </summary>
+        /// <value>The type of units accrued for the leave annually</value>
+        [DataMember(Name="typeOfUnitsToAccrue", EmitDefaultValue=false)]
+        public string TypeOfUnitsToAccrue { get; set; }
+
+        /// <summary>
+        /// The maximum number of units that can be accrued for the leave
+        /// </summary>
+        /// <value>The maximum number of units that can be accrued for the leave</value>
         [DataMember(Name="maximumToAccrue", EmitDefaultValue=false)]
         public decimal? MaximumToAccrue { get; set; }
 
         /// <summary>
-        /// The initial number of hours assigned when the leave was added to the employee
+        /// The initial number of units assigned when the leave was added to the employee
         /// </summary>
-        /// <value>The initial number of hours assigned when the leave was added to the employee</value>
+        /// <value>The initial number of units assigned when the leave was added to the employee</value>
         [DataMember(Name="openingBalance", EmitDefaultValue=false)]
         public decimal? OpeningBalance { get; set; }
+
+        /// <summary>
+        /// The type of units for the opening balance
+        /// </summary>
+        /// <value>The type of units for the opening balance</value>
+        [DataMember(Name="openingBalanceTypeOfUnits", EmitDefaultValue=false)]
+        public string OpeningBalanceTypeOfUnits { get; set; }
 
         /// <summary>
         /// The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;
@@ -152,8 +173,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  LeaveTypeID: ").Append(LeaveTypeID).Append("\n");
             sb.Append("  ScheduleOfAccrual: ").Append(ScheduleOfAccrual).Append("\n");
             sb.Append("  HoursAccruedAnnually: ").Append(HoursAccruedAnnually).Append("\n");
+            sb.Append("  UnitsAccruedAnnually: ").Append(UnitsAccruedAnnually).Append("\n");
+            sb.Append("  TypeOfUnitsToAccrue: ").Append(TypeOfUnitsToAccrue).Append("\n");
             sb.Append("  MaximumToAccrue: ").Append(MaximumToAccrue).Append("\n");
             sb.Append("  OpeningBalance: ").Append(OpeningBalance).Append("\n");
+            sb.Append("  OpeningBalanceTypeOfUnits: ").Append(OpeningBalanceTypeOfUnits).Append("\n");
             sb.Append("  RateAccruedHourly: ").Append(RateAccruedHourly).Append("\n");
             sb.Append("  PercentageOfGrossEarnings: ").Append(PercentageOfGrossEarnings).Append("\n");
             sb.Append("  IncludeHolidayPayEveryPay: ").Append(IncludeHolidayPayEveryPay).Append("\n");
@@ -209,6 +233,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.HoursAccruedAnnually.Equals(input.HoursAccruedAnnually))
                 ) && 
                 (
+                    this.UnitsAccruedAnnually == input.UnitsAccruedAnnually ||
+                    (this.UnitsAccruedAnnually != null &&
+                    this.UnitsAccruedAnnually.Equals(input.UnitsAccruedAnnually))
+                ) && 
+                (
+                    this.TypeOfUnitsToAccrue == input.TypeOfUnitsToAccrue ||
+                    (this.TypeOfUnitsToAccrue != null &&
+                    this.TypeOfUnitsToAccrue.Equals(input.TypeOfUnitsToAccrue))
+                ) && 
+                (
                     this.MaximumToAccrue == input.MaximumToAccrue ||
                     (this.MaximumToAccrue != null &&
                     this.MaximumToAccrue.Equals(input.MaximumToAccrue))
@@ -217,6 +251,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.OpeningBalance == input.OpeningBalance ||
                     (this.OpeningBalance != null &&
                     this.OpeningBalance.Equals(input.OpeningBalance))
+                ) && 
+                (
+                    this.OpeningBalanceTypeOfUnits == input.OpeningBalanceTypeOfUnits ||
+                    (this.OpeningBalanceTypeOfUnits != null &&
+                    this.OpeningBalanceTypeOfUnits.Equals(input.OpeningBalanceTypeOfUnits))
                 ) && 
                 (
                     this.RateAccruedHourly == input.RateAccruedHourly ||
@@ -264,10 +303,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                 hashCode = hashCode * 59 + this.ScheduleOfAccrual.GetHashCode();
                 if (this.HoursAccruedAnnually != null)
                     hashCode = hashCode * 59 + this.HoursAccruedAnnually.GetHashCode();
+                if (this.UnitsAccruedAnnually != null)
+                    hashCode = hashCode * 59 + this.UnitsAccruedAnnually.GetHashCode();
+                if (this.TypeOfUnitsToAccrue != null)
+                    hashCode = hashCode * 59 + this.TypeOfUnitsToAccrue.GetHashCode();
                 if (this.MaximumToAccrue != null)
                     hashCode = hashCode * 59 + this.MaximumToAccrue.GetHashCode();
                 if (this.OpeningBalance != null)
                     hashCode = hashCode * 59 + this.OpeningBalance.GetHashCode();
+                if (this.OpeningBalanceTypeOfUnits != null)
+                    hashCode = hashCode * 59 + this.OpeningBalanceTypeOfUnits.GetHashCode();
                 if (this.RateAccruedHourly != null)
                     hashCode = hashCode * 59 + this.RateAccruedHourly.GetHashCode();
                 if (this.PercentageOfGrossEarnings != null)
