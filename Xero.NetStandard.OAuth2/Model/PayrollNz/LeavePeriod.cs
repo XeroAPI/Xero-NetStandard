@@ -31,9 +31,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     public partial class LeavePeriod :  IEquatable<LeavePeriod>, IValidatableObject
     {
         /// <summary>
-        /// Period Status
+        /// Status of leave
         /// </summary>
-        /// <value>Period Status</value>
+        /// <value>Status of leave</value>
         [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum PeriodStatusEnum
         {
@@ -47,14 +47,20 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             /// Enum Completed for value: Completed
             /// </summary>
             [EnumMember(Value = "Completed")]
-            Completed = 2
+            Completed = 2,
+
+            /// <summary>
+            /// Enum Estimated for value: Estimated
+            /// </summary>
+            [EnumMember(Value = "Estimated")]
+            Estimated = 3
 
         }
 
         /// <summary>
-        /// Period Status
+        /// Status of leave
         /// </summary>
-        /// <value>Period Status</value>
+        /// <value>Status of leave</value>
         [DataMember(Name="periodStatus", EmitDefaultValue=false)]
         public PeriodStatusEnum PeriodStatus { get; set; }
         
@@ -82,6 +88,27 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public decimal? NumberOfUnits { get; set; }
 
         /// <summary>
+        /// The number of units taken for the leave
+        /// </summary>
+        /// <value>The number of units taken for the leave</value>
+        [DataMember(Name="numberOfUnitsTaken", EmitDefaultValue=false)]
+        public double? NumberOfUnitsTaken { get; set; }
+
+        /// <summary>
+        /// The type of units paid for the leave
+        /// </summary>
+        /// <value>The type of units paid for the leave</value>
+        [DataMember(Name="typeOfUnits", EmitDefaultValue=false)]
+        public string TypeOfUnits { get; set; }
+
+        /// <summary>
+        /// The type of units taken for the leave
+        /// </summary>
+        /// <value>The type of units taken for the leave</value>
+        [DataMember(Name="typeOfUnitsTaken", EmitDefaultValue=false)]
+        public string TypeOfUnitsTaken { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -92,6 +119,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  PeriodStartDate: ").Append(PeriodStartDate).Append("\n");
             sb.Append("  PeriodEndDate: ").Append(PeriodEndDate).Append("\n");
             sb.Append("  NumberOfUnits: ").Append(NumberOfUnits).Append("\n");
+            sb.Append("  NumberOfUnitsTaken: ").Append(NumberOfUnitsTaken).Append("\n");
+            sb.Append("  TypeOfUnits: ").Append(TypeOfUnits).Append("\n");
+            sb.Append("  TypeOfUnitsTaken: ").Append(TypeOfUnitsTaken).Append("\n");
             sb.Append("  PeriodStatus: ").Append(PeriodStatus).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -143,6 +173,21 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
                 ) && 
                 (
+                    this.NumberOfUnitsTaken == input.NumberOfUnitsTaken ||
+                    (this.NumberOfUnitsTaken != null &&
+                    this.NumberOfUnitsTaken.Equals(input.NumberOfUnitsTaken))
+                ) && 
+                (
+                    this.TypeOfUnits == input.TypeOfUnits ||
+                    (this.TypeOfUnits != null &&
+                    this.TypeOfUnits.Equals(input.TypeOfUnits))
+                ) && 
+                (
+                    this.TypeOfUnitsTaken == input.TypeOfUnitsTaken ||
+                    (this.TypeOfUnitsTaken != null &&
+                    this.TypeOfUnitsTaken.Equals(input.TypeOfUnitsTaken))
+                ) && 
+                (
                     this.PeriodStatus == input.PeriodStatus ||
                     this.PeriodStatus.Equals(input.PeriodStatus)
                 );
@@ -163,6 +208,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.PeriodEndDate.GetHashCode();
                 if (this.NumberOfUnits != null)
                     hashCode = hashCode * 59 + this.NumberOfUnits.GetHashCode();
+                if (this.NumberOfUnitsTaken != null)
+                    hashCode = hashCode * 59 + this.NumberOfUnitsTaken.GetHashCode();
+                if (this.TypeOfUnits != null)
+                    hashCode = hashCode * 59 + this.TypeOfUnits.GetHashCode();
+                if (this.TypeOfUnitsTaken != null)
+                    hashCode = hashCode * 59 + this.TypeOfUnitsTaken.GetHashCode();
                 hashCode = hashCode * 59 + this.PeriodStatus.GetHashCode();
                 return hashCode;
             }
