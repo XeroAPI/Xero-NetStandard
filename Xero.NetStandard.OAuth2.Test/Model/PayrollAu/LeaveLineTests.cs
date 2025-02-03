@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -45,9 +46,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("ENTERRATEINPAYTEMPLATE", LeaveLineCalculationType.ENTERRATEINPAYTEMPLATE)]
         [InlineData("FIXEDAMOUNTEACHPERIOD", LeaveLineCalculationType.FIXEDAMOUNTEACHPERIOD)]
         [InlineData("NOCALCULATIONREQUIRED", LeaveLineCalculationType.NOCALCULATIONREQUIRED)]
-        public void CalculationTypeTest(string input, LeaveLineCalculationType expected)
+        public async Task CalculationTypeTest(string input, LeaveLineCalculationType expected)
         {
-            JsonDoc.Assert<LeaveLine, LeaveLineCalculationType>(
+            await JsonDoc.Assert<LeaveLine, LeaveLineCalculationType>(
                 input: new JsonDoc.String(nameof(LeaveLine.CalculationType), input),
                 toProperty: x => x.CalculationType,
                 shouldBe: expected
@@ -59,9 +60,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("NOTPAIDOUT", EntitlementFinalPayPayoutType.NOTPAIDOUT)]
         [InlineData("PAIDOUT", EntitlementFinalPayPayoutType.PAIDOUT)]
-        public void EntitlementFinalPayPayoutTypeTest(string input, EntitlementFinalPayPayoutType expected)
+        public async Task EntitlementFinalPayPayoutTypeTest(string input, EntitlementFinalPayPayoutType expected)
         {
-            JsonDoc.Assert<LeaveLine, EntitlementFinalPayPayoutType>(
+           await JsonDoc.Assert<LeaveLine, EntitlementFinalPayPayoutType>(
                 input: new JsonDoc.String(nameof(LeaveLine.EntitlementFinalPayPayoutType), input),
                 toProperty: x => x.EntitlementFinalPayPayoutType,
                 shouldBe: expected
@@ -73,9 +74,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("O", EmploymentTerminationPaymentType.O)]
         [InlineData("R", EmploymentTerminationPaymentType.R)]
-        public void EmploymentTerminationPaymentTypeTest(string input, EmploymentTerminationPaymentType expected)
+        public async Task EmploymentTerminationPaymentTypeTest(string input, EmploymentTerminationPaymentType expected)
         {
-            JsonDoc.Assert<LeaveLine, EmploymentTerminationPaymentType>(
+            await JsonDoc.Assert<LeaveLine, EmploymentTerminationPaymentType>(
                 input: new JsonDoc.String(nameof(LeaveLine.EmploymentTerminationPaymentType), input),
                 toProperty: x => x.EmploymentTerminationPaymentType,
                 shouldBe: expected

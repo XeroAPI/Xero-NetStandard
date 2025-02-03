@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -41,9 +42,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'DaysInPayrollYear'
         /// </summary>
         [Fact]
-        public void DaysInPayrollYearTest()
+        public async Task DaysInPayrollYearTest()
         {
-            JsonDoc.Assert<Settings, int?>(
+            await JsonDoc.Assert<Settings, int?>(
                 input: new JsonDoc.Number(nameof(Settings.DaysInPayrollYear), "20"),
                 toProperty: x => x.DaysInPayrollYear,
                 shouldBe: 20

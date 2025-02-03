@@ -401,8 +401,7 @@ namespace Xero.NetStandard.OAuth2.Client
                     if (options.PathParameters.ContainsKey("FileName"))
                     {
                         contentType = contentType ?? "application/octet-stream";
-                        var stream = new MemoryStream(options.Data as byte[]);
-                        var streamContent = new StreamContent(stream);
+                        var streamContent = new StreamContent(options.Data as Stream);
                         streamContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                         request.Content = streamContent;
                     }
@@ -643,6 +642,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
+        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
@@ -656,6 +656,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
+        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
@@ -669,6 +670,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
+        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
@@ -682,6 +684,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
+        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
@@ -695,6 +698,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
+        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
@@ -708,6 +712,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
+        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>
@@ -721,6 +726,7 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
+        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <returns>A Task containing ApiResponse</returns>

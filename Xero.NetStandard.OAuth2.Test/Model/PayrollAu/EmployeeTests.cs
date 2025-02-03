@@ -103,9 +103,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("ACTIVE", EmployeeStatus.ACTIVE)]
         [InlineData("TERMINATED", EmployeeStatus.TERMINATED)]
-        public void StatusTest(string input, EmployeeStatus expected)
+        public async Task StatusTest(string input, EmployeeStatus expected)
         {
-            JsonDoc.Assert<Employee, EmployeeStatus>(
+            await JsonDoc.Assert<Employee, EmployeeStatus>(
                 input: new JsonDoc.String(nameof(Employee.Status), input),
                 toProperty: x => x.Status,
                 shouldBe: expected

@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -50,9 +51,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("NONE", DeductionType.DeductionCategoryEnum.NONE)]
         [InlineData("UNIONFEES", DeductionType.DeductionCategoryEnum.UNIONFEES)]
         [InlineData("WORKPLACEGIVING", DeductionType.DeductionCategoryEnum.WORKPLACEGIVING)]
-        public void DeductionCategory_ValidInputs_Deserialises(string input, DeductionType.DeductionCategoryEnum expected)
+        public async Task DeductionCategory_ValidInputs_Deserialises(string input, DeductionType.DeductionCategoryEnum expected)
         {
-            JsonDoc.Assert<DeductionType, DeductionType.DeductionCategoryEnum>(
+            await JsonDoc.Assert<DeductionType, DeductionType.DeductionCategoryEnum>(
                 input: new JsonDoc.String(nameof(DeductionType.DeductionCategory), input),
                 toProperty: (x) => x.DeductionCategory,
                 shouldBe: expected

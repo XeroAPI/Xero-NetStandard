@@ -53,9 +53,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [Theory]
         [InlineData("BANK", FeedConnection.AccountTypeEnum.BANK)]
         [InlineData("CREDITCARD", FeedConnection.AccountTypeEnum.CREDITCARD)]
-        public void AccountType_ValidInputs_Deserialises(string input, FeedConnection.AccountTypeEnum expected)
+        public async Task AccountType_ValidInputs_Deserialises(string input, FeedConnection.AccountTypeEnum expected)
         {
-            JsonDoc.Assert<FeedConnection, FeedConnection.AccountTypeEnum>(
+            await JsonDoc.Assert<FeedConnection, FeedConnection.AccountTypeEnum>(
                 input: new JsonDoc.String(nameof(FeedConnection.AccountType), input),
                 toProperty: (x) => x.AccountType,
                 shouldBe: expected
@@ -68,9 +68,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         [Theory]
         [InlineData("PENDING", FeedConnection.StatusEnum.PENDING)]
         [InlineData("REJECTED", FeedConnection.StatusEnum.REJECTED)]
-        public void Status_ValidInputs_Deserialises(string input, FeedConnection.StatusEnum expected)
+        public async Task Status_ValidInputs_Deserialises(string input, FeedConnection.StatusEnum expected)
         {
-            JsonDoc.Assert<FeedConnection, FeedConnection.StatusEnum>(
+            await JsonDoc.Assert<FeedConnection, FeedConnection.StatusEnum>(
                 input: new JsonDoc.String(nameof(FeedConnection.Status), input),
                 toProperty: (x) => x.Status,
                 shouldBe: expected
