@@ -23,10 +23,32 @@ jobs:
               run: dotnet build
               working-directory: Xero-NetStandard
 
+            - name: Check for Outdated Packages
+              run: |
+                dotnet list package --outdated
+              working-directory: Xero-NetStandard
+
             # - name: Validate Lint
             #   run: dotnet format --verify-no-changes
             #   working-directory: Xero-NetStandard
 
-            # - name: Run Test
-            #   run: dotnet test
-            #   working-directory: Xero-NetStandard
+            - name: Set up Node environment
+              uses: actions/setup-node@v2
+              with:
+                node-version: 20
+
+            - name: Install Prism
+              run: npm install -g @stoplight/prism-cli
+
+            - name: Start PRISM Server
+              run: ./start-prism.sh & sleep 15
+              working-directory: Xero-NetStandard/Xero.NetStandard.OAuth2.Test/util
+
+            - name: Run Test
+              run: dotnet test
+              working-directory: Xero-NetStandard
+
+            - name: Stop PRISM
+              if: success() || failure()
+              run: pkill -f prism
+              working-directory: Xero-NetStandard

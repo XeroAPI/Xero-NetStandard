@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -43,9 +44,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("DRAFT", PayRunStatus.DRAFT)]
         [InlineData("POSTED", PayRunStatus.POSTED)]
-        public void PayRunStatusTest(string input, PayRunStatus expected)
+        public async Task PayRunStatusTest(string input, PayRunStatus expected)
         {
-            JsonDoc.Assert<PayRun, PayRunStatus>(
+            await JsonDoc.Assert<PayRun, PayRunStatus>(
                 input: new JsonDoc.String(nameof(PayRun.PayRunStatus), input),
                 toProperty: x => x.PayRunStatus,
                 shouldBe: expected
@@ -57,9 +58,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void WagesTest(string input)
+        public async Task WagesTest(string input)
         {
-            JsonDoc.Assert<PayRun, decimal?>(
+            await JsonDoc.Assert<PayRun, decimal?>(
                 input: new JsonDoc.Number(nameof(PayRun.Wages), input),
                 toProperty: x => x.Wages,
                 shouldBe: 20
@@ -71,9 +72,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void DeductionsTest(string input)
+        public async Task DeductionsTest(string input)
         {
-            JsonDoc.Assert<PayRun, decimal?>(
+            await JsonDoc.Assert<PayRun, decimal?>(
                 input: new JsonDoc.Number(nameof(PayRun.Deductions), input),
                 toProperty: x => x.Deductions,
                 shouldBe: 20
@@ -85,9 +86,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void TaxTest(string input)
+        public async Task TaxTest(string input)
         {
-            JsonDoc.Assert<PayRun, decimal?>(
+            await JsonDoc.Assert<PayRun, decimal?>(
                 input: new JsonDoc.Number(nameof(PayRun.Tax), input),
                 toProperty: x => x.Tax,
                 shouldBe: 20
@@ -99,9 +100,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void SuperTest(string input)
+        public async Task SuperTest(string input)
         {
-            JsonDoc.Assert<PayRun, decimal?>(
+            await JsonDoc.Assert<PayRun, decimal?>(
                 input: new JsonDoc.Number(nameof(PayRun.Super), input),
                 toProperty: x => x.Super,
                 shouldBe: 20
@@ -113,9 +114,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void ReimbursementTest(string input)
+        public async Task ReimbursementTest(string input)
         {
-            JsonDoc.Assert<PayRun, decimal?>(
+            await JsonDoc.Assert<PayRun, decimal?>(
                 input: new JsonDoc.Number(nameof(PayRun.Reimbursement), input),
                 toProperty: x => x.Reimbursement,
                 shouldBe: 20
@@ -127,9 +128,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void NetPayTest(string input)
+        public async Task NetPayTest(string input)
         {
-            JsonDoc.Assert<PayRun, decimal?>(
+            await JsonDoc.Assert<PayRun, decimal?>(
                 input: new JsonDoc.Number(nameof(PayRun.NetPay), input),
                 toProperty: x => x.NetPay,
                 shouldBe: 20

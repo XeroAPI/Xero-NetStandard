@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -45,9 +46,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("PROCESSED", TimesheetStatus.PROCESSED)]
         [InlineData("REJECTED", TimesheetStatus.REJECTED)]
         [InlineData("REQUESTED", TimesheetStatus.REQUESTED)]
-        public void StatusTest(string input, TimesheetStatus expected)
+        public async Task StatusTest(string input, TimesheetStatus expected)
         {
-            JsonDoc.Assert<Timesheet, TimesheetStatus>(
+            await JsonDoc.Assert<Timesheet, TimesheetStatus>(
                 input: new JsonDoc.String(nameof(Timesheet.Status), input),
                 toProperty: x => x.Status,
                 shouldBe: expected
@@ -59,9 +60,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void HoursTest(string input)
+        public async Task HoursTest(string input)
         {
-            JsonDoc.Assert<Timesheet, decimal?>(
+            await JsonDoc.Assert<Timesheet, decimal?>(
                 input: new JsonDoc.Number(nameof(Timesheet.Hours), input),
                 toProperty: x => x.Hours,
                 shouldBe: 20

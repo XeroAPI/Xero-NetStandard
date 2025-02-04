@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -46,9 +47,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("CASUAL", EmploymentBasis.CASUAL)]
         [InlineData("LABOURHIRE", EmploymentBasis.LABOURHIRE)]
         [InlineData("SUPERINCOMESTREAM", EmploymentBasis.SUPERINCOMESTREAM)]
-        public void EmploymentBasis_ValidInputs_Deserialises(string input, EmploymentBasis expected)
+        public async Task EmploymentBasis_ValidInputs_Deserialises(string input, EmploymentBasis expected)
         {
-            JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
+            await JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
                 input: new JsonDoc.String(nameof(TaxDeclaration.EmploymentBasis), input),
                 toProperty: (t) => t.EmploymentBasis,
                 shouldBe: expected
@@ -58,9 +59,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'EmploymentBasis' deserialises from null to 0
         /// </summary>
         [Fact]
-        public void EmploymentBasis_NullInput_DeserialisesTo0()
+        public async Task EmploymentBasis_NullInput_DeserialisesTo0()
         {
-            JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
+            await JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
                 input: new JsonDoc.Null(nameof(TaxDeclaration.EmploymentBasis)),
                 toProperty: (t) => t.EmploymentBasis,
                 shouldBe: 0
@@ -70,9 +71,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'EmploymentBasis' deserialises to 0 when not present
         /// </summary>
         [Fact]
-        public void EmploymentBasis_NotPresentInInput_DeserialisesTo0()
+        public async Task EmploymentBasis_NotPresentInInput_DeserialisesTo0()
         {
-            JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
+            await JsonDoc.Assert<TaxDeclaration, EmploymentBasis>(
                 input: new JsonDoc.NotPresent(nameof(TaxDeclaration.EmploymentBasis)),
                 toProperty: (t) => t.EmploymentBasis,
                 shouldBe: 0
@@ -86,9 +87,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("PENDING", TFNExemptionType.PENDING)]
         [InlineData("PENSIONER", TFNExemptionType.PENSIONER)]
         [InlineData("UNDER18", TFNExemptionType.UNDER18)]
-        public void TFNExemptionType_ValidInputs_Deserialises(string input, TFNExemptionType expected)
+        public async Task TFNExemptionType_ValidInputs_Deserialises(string input, TFNExemptionType expected)
         {
-            JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
+            await JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
                 input: new JsonDoc.String(nameof(TaxDeclaration.TFNExemptionType), input),
                 toProperty: (declaration) => declaration.TFNExemptionType,
                 shouldBe: expected
@@ -98,9 +99,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'TFNExemptionType' deserialises from null to 0
         /// </summary>
         [Fact]
-        public void TFNExemptionType_NullInput_DeserialisesTo0()
+        public async Task TFNExemptionType_NullInput_DeserialisesTo0()
         {
-            JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
+            await JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
                 input: new JsonDoc.Null(nameof(TaxDeclaration.TFNExemptionType)),
                 toProperty: (declaration) => declaration.TFNExemptionType,
                 shouldBe: 0
@@ -110,9 +111,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'TFNExemptionType' deserialises to 0 when not present
         /// </summary>
         [Fact]
-        public void TFNExemptionType_NotPresentInInput_DeserialisesTo0()
+        public async Task TFNExemptionType_NotPresentInInput_DeserialisesTo0()
         {
-            JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
+            await JsonDoc.Assert<TaxDeclaration, TFNExemptionType>(
                 input: new JsonDoc.NotPresent(nameof(TaxDeclaration.TFNExemptionType)),
                 toProperty: (declaration) => declaration.TFNExemptionType,
                 shouldBe: 0
@@ -124,9 +125,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("true", true)]
         [InlineData("false", false)]
-        public void AustralianResidentForTaxPurposesTest(string input, bool expected)
+        public async Task AustralianResidentForTaxPurposesTest(string input, bool expected)
         {
-            JsonDoc.Assert<TaxDeclaration, bool?>(
+            await JsonDoc.Assert<TaxDeclaration, bool?>(
                 input: new JsonDoc.Bool(
                     nameof(TaxDeclaration.AustralianResidentForTaxPurposes),
                     input),
@@ -141,9 +142,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("AUSTRALIANRESIDENT", ResidencyStatus.AUSTRALIANRESIDENT)]
         [InlineData("FOREIGNRESIDENT", ResidencyStatus.FOREIGNRESIDENT)]
         [InlineData("WORKINGHOLIDAYMAKER", ResidencyStatus.WORKINGHOLIDAYMAKER)]
-        public void ResidencyStatus_ValidInputs_Deserialises(string input, ResidencyStatus expected)
+        public async Task ResidencyStatus_ValidInputs_Deserialises(string input, ResidencyStatus expected)
         {
-            JsonDoc.Assert<TaxDeclaration, ResidencyStatus>(
+            await JsonDoc.Assert<TaxDeclaration, ResidencyStatus>(
                 input: new JsonDoc.String(nameof(TaxDeclaration.ResidencyStatus), input),
                 toProperty: x => x.ResidencyStatus,
                 shouldBe: expected
@@ -155,9 +156,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void TaxOffsetEstimatedAmountTest(string input)
+        public async Task TaxOffsetEstimatedAmountTest(string input)
         {
-            JsonDoc.Assert<TaxDeclaration, decimal?>(
+            await JsonDoc.Assert<TaxDeclaration, decimal?>(
                 input: new JsonDoc.Number(nameof(TaxDeclaration.TaxOffsetEstimatedAmount), input),
                 toProperty: (declaration) => declaration.TaxOffsetEstimatedAmount,
                 shouldBe: 20
@@ -169,9 +170,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void UpwardVariationTaxWithholdingAmountTest(string input)
+        public async Task UpwardVariationTaxWithholdingAmountTest(string input)
         {
-            JsonDoc.Assert<TaxDeclaration, decimal?>(
+            await JsonDoc.Assert<TaxDeclaration, decimal?>(
                 input: new JsonDoc.Number(nameof(TaxDeclaration.UpwardVariationTaxWithholdingAmount), input),
                 toProperty: x => x.UpwardVariationTaxWithholdingAmount,
                 shouldBe: 20
@@ -183,9 +184,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [Theory]
         [InlineData("20.00")]
         [InlineData("20")]
-        public void ApprovedWithholdingVariationPercentageTest(string input)
+        public async Task ApprovedWithholdingVariationPercentageTest(string input)
         {
-            JsonDoc.Assert<TaxDeclaration, decimal?>(
+            await JsonDoc.Assert<TaxDeclaration, decimal?>(
                 input: new JsonDoc.Number(nameof(TaxDeclaration.ApprovedWithholdingVariationPercentage), input),
                 toProperty: x => x.ApprovedWithholdingVariationPercentage,
                 shouldBe: 20
@@ -195,9 +196,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         /// Test the property 'UpdatedDateUTC'
         /// </summary>
         [Fact]
-        public void UpdatedDateUTCTest()
+        public async Task UpdatedDateUTCTest()
         {
-            JsonDoc.Assert<TaxDeclaration, DateTime?>(
+            await JsonDoc.Assert<TaxDeclaration, DateTime?>(
                 input: new JsonDoc.String(
                     nameof(TaxDeclaration.UpdatedDateUTC),
                     "/Date(1535481994000+0000)/"),

@@ -17,6 +17,7 @@ The Xero-NetStandard SDK makes it easy for developers to access Xero's APIs in t
 - [API Clients](#api-clients)
 - [Helper Methods](#helper-methods)
 - [Usage Examples](#usage-examples)
+- [Running Test(s) in Local](#running-tests-in-local)
 - [SDK conventions](#sdk-conventions)
 - [Contributing](#contributing)
 
@@ -796,6 +797,16 @@ await FilesApi.DeleteFileAssociationAsync(accessToken, xeroTenantId, fileIdGuid,
 ```
 
 ---
+## Running Test(s) in Local
+For Running Test cases PRISM Mock Server needs to be started in the local machine.
+Steps to Run Test(s)
+* Install PRISM from npm using the command:  **npm install -g @stoplight/prism-cli**
+* Verify Installation: **prism --version**
+* Navigate to **Xero-NetStandard--> Xero.NetStandard.OAuth2.Test--> util** folder in the terminal
+* Execute the script **./start-prism.sh**
+* This will start the PRISM Server in Local
+* Run **dotnet test** to run the dotnet test cases.
+
 ## SDK conventions
 
 ## Security (state check & Jwt validation)

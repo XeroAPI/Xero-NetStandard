@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.PayrollAu;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
 {
@@ -47,9 +48,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.PayrollAu
         [InlineData("MONTHLY", CalendarType.MONTHLY)]
         [InlineData("QUARTERLY", CalendarType.QUARTERLY)]
         [InlineData("WEEKLY", CalendarType.WEEKLY)]
-        public void CalendarTypeTest(string input, CalendarType expected)
+        public async Task CalendarTypeTest(string input, CalendarType expected)
         {
-            JsonDoc.Assert<PayrollCalendar, CalendarType>(
+            await JsonDoc.Assert<PayrollCalendar, CalendarType>(
                 input: new JsonDoc.String(nameof(PayrollCalendar.CalendarType), input),
                 toProperty: x => x.CalendarType,
                 shouldBe: expected
