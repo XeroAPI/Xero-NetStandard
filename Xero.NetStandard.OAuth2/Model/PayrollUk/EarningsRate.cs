@@ -173,7 +173,19 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum TerminationPay for value: TerminationPay
             /// </summary>
             [EnumMember(Value = "TerminationPay")]
-            TerminationPay = 23
+            TerminationPay = 23,
+
+            /// <summary>
+            /// Enum StatutoryNeonatalCarePay for value: StatutoryNeonatalCarePay
+            /// </summary>
+            [EnumMember(Value = "StatutoryNeonatalCarePay")]
+            StatutoryNeonatalCarePay = 24,
+
+            /// <summary>
+            /// Enum StatutoryNeonatalCarePayNonPensionable for value: StatutoryNeonatalCarePayNonPensionable
+            /// </summary>
+            [EnumMember(Value = "StatutoryNeonatalCarePayNonPensionable")]
+            StatutoryNeonatalCarePayNonPensionable = 25
 
         }
 
