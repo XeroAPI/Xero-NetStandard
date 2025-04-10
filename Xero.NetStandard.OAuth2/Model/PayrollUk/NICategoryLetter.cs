@@ -52,88 +52,88 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         C = 3,
 
         /// <summary>
-        /// Enum D for value: D
-        /// </summary>
-        [EnumMember(Value = "D")]
-        D = 4,
-
-        /// <summary>
-        /// Enum E for value: E
-        /// </summary>
-        [EnumMember(Value = "E")]
-        E = 5,
-
-        /// <summary>
         /// Enum F for value: F
         /// </summary>
         [EnumMember(Value = "F")]
-        F = 6,
+        F = 4,
 
         /// <summary>
         /// Enum H for value: H
         /// </summary>
         [EnumMember(Value = "H")]
-        H = 7,
+        H = 5,
 
         /// <summary>
         /// Enum I for value: I
         /// </summary>
         [EnumMember(Value = "I")]
-        I = 8,
+        I = 6,
 
         /// <summary>
         /// Enum J for value: J
         /// </summary>
         [EnumMember(Value = "J")]
-        J = 9,
-
-        /// <summary>
-        /// Enum K for value: K
-        /// </summary>
-        [EnumMember(Value = "K")]
-        K = 10,
+        J = 7,
 
         /// <summary>
         /// Enum L for value: L
         /// </summary>
         [EnumMember(Value = "L")]
-        L = 11,
+        L = 8,
 
         /// <summary>
         /// Enum M for value: M
         /// </summary>
         [EnumMember(Value = "M")]
-        M = 12,
-
-        /// <summary>
-        /// Enum N for value: N
-        /// </summary>
-        [EnumMember(Value = "N")]
-        N = 13,
+        M = 9,
 
         /// <summary>
         /// Enum S for value: S
         /// </summary>
         [EnumMember(Value = "S")]
-        S = 14,
+        S = 10,
 
         /// <summary>
         /// Enum V for value: V
         /// </summary>
         [EnumMember(Value = "V")]
-        V = 15,
+        V = 11,
 
         /// <summary>
         /// Enum X for value: X
         /// </summary>
         [EnumMember(Value = "X")]
-        X = 16,
+        X = 12,
 
         /// <summary>
         /// Enum Z for value: Z
         /// </summary>
         [EnumMember(Value = "Z")]
-        Z = 17
+        Z = 13,
+
+        /// <summary>
+        /// Enum D for value: D
+        /// </summary>
+        [EnumMember(Value = "D")]
+        D = 14,
+
+        /// <summary>
+        /// Enum E for value: E
+        /// </summary>
+        [EnumMember(Value = "E")]
+        E = 15,
+
+        /// <summary>
+        /// Enum K for value: K
+        /// </summary>
+        [EnumMember(Value = "K")]
+        K = 16,
+
+        /// <summary>
+        /// Enum N for value: N
+        /// </summary>
+        [EnumMember(Value = "N")]
+        N = 17
 
     }
 
