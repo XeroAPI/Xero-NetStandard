@@ -7,19 +7,95 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+
+    outputs:
+      release_number: ${{steps.get_latest_release_number.outputs.release_tag}}
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
-    - uses: actions/checkout@v2
+
+    - name: checkout dotnet repo
+      uses: actions/checkout@v4
+      with:
+        repository: XeroAPI/Xero-NetStandard
+        path: Xero-NetStandard
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: Xero-NetStandard
+
+    - name: Fetch Latest release number
+      id: get_latest_release_number
+      run: |
+        latest_version=$(gh release view --json tagName --jq '.tagName')
+        echo "Latest release version is - $latest_version"
+        echo "::set-output name=release_tag::$latest_version"
+      working-directory: Xero-NetStandard
+      env:
+       GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
     - name: Build
       run: dotnet build --no-restore
+      working-directory: Xero-NetStandard
+
     - name: Create Package for Nuget.org\
       run: dotnet pack
+      working-directory: Xero-NetStandard
+
     - name: Publish Package to Nuget.org
       run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+      working-directory: Xero-NetStandard
+
+
+  notify-slack-on-success:
+    runs-on: ubuntu-latest
+    needs: build
+    if: success()
+    steps:
+      - name: Checkout Xero-NetStandard repo
+        uses: actions/checkout@v4
+        with:
+          repository: XeroAPI/Xero-NetStandard
+          path: Xero-NetStandard
+
+      - name: Send slack notification on success
+        uses: ./Xero-NetStandard/.github/actions/notify-slack
+        with:
+          heading_text: "Publish job has succeeded !"
+          alert_type: "thumbsup"
+          job_status: "Success"
+          XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
+          job_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          button_type: "primary"
+          package_version: ${{needs.build.outputs.release_number}}
+          repo_link: ${{github.server_url}}/${{github.repository}}
+
+  notify-slack-on-failure:
+    runs-on: ubuntu-latest
+    needs: build
+    if: failure()
+    steps:
+      - name: Checkout Xero-NetStandard repo
+        uses: actions/checkout@v4
+        with:
+          repository: XeroAPI/Xero-NetStandard
+          path: Xero-NetStandard
+
+      - name: Send slack notification on failure
+        uses: ./Xero-NetStandard/.github/actions/notify-slack
+        with:
+          heading_text: "Publish job has failed !"
+          alert_type: "alert"
+          job_status: "Failed"
+          XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
+          job_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          button_type: "danger"
+          package_version: ${{needs.build.outputs.release_number}}
+          repo_link: ${{github.server_url}}/${{github.repository}}
