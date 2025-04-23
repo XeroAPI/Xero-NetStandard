@@ -599,7 +599,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum COMPREHENSIVE for value: COMPREHENSIVE
             /// </summary>
             [EnumMember(Value = "COMPREHENSIVE")]
-            COMPREHENSIVE = 20
+            COMPREHENSIVE = 20,
+
+            /// <summary>
+            /// Enum SIMPLE for value: SIMPLE
+            /// </summary>
+            [EnumMember(Value = "SIMPLE")]
+            SIMPLE = 21
 
         }
 
