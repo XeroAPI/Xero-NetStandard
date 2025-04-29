@@ -69,9 +69,9 @@ namespace Xero.NetStandard.OAuth2.Model.Finance
         public DateTime? ImportedDateTimeUtc { get; set; }
 
         /// <summary>
-        /// Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, indirect bank feed, file upload, or manual keying).
+        /// Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, file upload, or manual keying).
         /// </summary>
-        /// <value>Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, indirect bank feed, file upload, or manual keying).</value>
+        /// <value>Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, file upload, or manual keying).</value>
         [DataMember(Name="importSourceType", EmitDefaultValue=false)]
         public string ImportSourceType { get; set; }
 

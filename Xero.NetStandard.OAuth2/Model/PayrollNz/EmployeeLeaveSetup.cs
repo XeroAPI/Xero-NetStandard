@@ -60,18 +60,32 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public decimal? NegativeAnnualLeaveBalancePaidAmount { get; set; }
 
         /// <summary>
-        /// Number of hours accrued annually for sick leave. Multiply the number of days they&#39;re entitled to by the hours worked per day
+        /// Deprecated use SickLeaveToAccrueAnnually
         /// </summary>
-        /// <value>Number of hours accrued annually for sick leave. Multiply the number of days they&#39;re entitled to by the hours worked per day</value>
+        /// <value>Deprecated use SickLeaveToAccrueAnnually</value>
         [DataMember(Name="sickLeaveHoursToAccrueAnnually", EmitDefaultValue=false)]
         public decimal? SickLeaveHoursToAccrueAnnually { get; set; }
 
         /// <summary>
-        /// Maximum number of hours accrued annually for sick leave. Multiply the maximum days they can accrue by the hours worked per day
+        /// Deprecated use SickLeaveMaximumToAccrue
         /// </summary>
-        /// <value>Maximum number of hours accrued annually for sick leave. Multiply the maximum days they can accrue by the hours worked per day</value>
+        /// <value>Deprecated use SickLeaveMaximumToAccrue</value>
         [DataMember(Name="sickLeaveMaximumHoursToAccrue", EmitDefaultValue=false)]
         public decimal? SickLeaveMaximumHoursToAccrue { get; set; }
+
+        /// <summary>
+        /// Number of units accrued annually for sick leave. The type of units is determined by the property \&quot;TypeOfUnitsToAccrue\&quot; on the \&quot;Sick Leave\&quot; leave type
+        /// </summary>
+        /// <value>Number of units accrued annually for sick leave. The type of units is determined by the property \&quot;TypeOfUnitsToAccrue\&quot; on the \&quot;Sick Leave\&quot; leave type</value>
+        [DataMember(Name="SickLeaveToAccrueAnnually", EmitDefaultValue=false)]
+        public decimal? SickLeaveToAccrueAnnually { get; set; }
+
+        /// <summary>
+        /// Maximum number of units accrued annually for sick leave. The type of units is determined by the property \&quot;TypeOfUnitsToAccrue\&quot; on the \&quot;Sick Leave\&quot; leave type
+        /// </summary>
+        /// <value>Maximum number of units accrued annually for sick leave. The type of units is determined by the property \&quot;TypeOfUnitsToAccrue\&quot; on the \&quot;Sick Leave\&quot; leave type</value>
+        [DataMember(Name="SickLeaveMaximumToAccrue", EmitDefaultValue=false)]
+        public decimal? SickLeaveMaximumToAccrue { get; set; }
 
         /// <summary>
         /// Initial sick leave balance. This will be positive unless they&#39;ve taken sick leave in advance
@@ -88,12 +102,20 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public string SickLeaveScheduleOfAccrual { get; set; }
 
         /// <summary>
-        /// If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave
+        /// If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave. When null the Employee&#39;s start date is used as the anniversary date
         /// </summary>
-        /// <value>If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave</value>
+        /// <value>If Sick Leave Schedule of Accrual is \&quot;OnAnniversaryDate\&quot;, this is the date when entitled to Sick Leave. When null the Employee&#39;s start date is used as the anniversary date</value>
         [DataMember(Name="SickLeaveAnniversaryDate", EmitDefaultValue=false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? SickLeaveAnniversaryDate { get; set; }
+
+        /// <summary>
+        /// The first date the employee will accrue Annual Leave. When null the Employee&#39;s start date is used as the anniversary date
+        /// </summary>
+        /// <value>The first date the employee will accrue Annual Leave. When null the Employee&#39;s start date is used as the anniversary date</value>
+        [DataMember(Name="AnnualLeaveAnniversaryDate", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? AnnualLeaveAnniversaryDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,9 +131,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  NegativeAnnualLeaveBalancePaidAmount: ").Append(NegativeAnnualLeaveBalancePaidAmount).Append("\n");
             sb.Append("  SickLeaveHoursToAccrueAnnually: ").Append(SickLeaveHoursToAccrueAnnually).Append("\n");
             sb.Append("  SickLeaveMaximumHoursToAccrue: ").Append(SickLeaveMaximumHoursToAccrue).Append("\n");
+            sb.Append("  SickLeaveToAccrueAnnually: ").Append(SickLeaveToAccrueAnnually).Append("\n");
+            sb.Append("  SickLeaveMaximumToAccrue: ").Append(SickLeaveMaximumToAccrue).Append("\n");
             sb.Append("  SickLeaveOpeningBalance: ").Append(SickLeaveOpeningBalance).Append("\n");
             sb.Append("  SickLeaveScheduleOfAccrual: ").Append(SickLeaveScheduleOfAccrual).Append("\n");
             sb.Append("  SickLeaveAnniversaryDate: ").Append(SickLeaveAnniversaryDate).Append("\n");
+            sb.Append("  AnnualLeaveAnniversaryDate: ").Append(AnnualLeaveAnniversaryDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -177,6 +202,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.SickLeaveMaximumHoursToAccrue.Equals(input.SickLeaveMaximumHoursToAccrue))
                 ) && 
                 (
+                    this.SickLeaveToAccrueAnnually == input.SickLeaveToAccrueAnnually ||
+                    (this.SickLeaveToAccrueAnnually != null &&
+                    this.SickLeaveToAccrueAnnually.Equals(input.SickLeaveToAccrueAnnually))
+                ) && 
+                (
+                    this.SickLeaveMaximumToAccrue == input.SickLeaveMaximumToAccrue ||
+                    (this.SickLeaveMaximumToAccrue != null &&
+                    this.SickLeaveMaximumToAccrue.Equals(input.SickLeaveMaximumToAccrue))
+                ) && 
+                (
                     this.SickLeaveOpeningBalance == input.SickLeaveOpeningBalance ||
                     (this.SickLeaveOpeningBalance != null &&
                     this.SickLeaveOpeningBalance.Equals(input.SickLeaveOpeningBalance))
@@ -190,6 +225,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.SickLeaveAnniversaryDate == input.SickLeaveAnniversaryDate ||
                     (this.SickLeaveAnniversaryDate != null &&
                     this.SickLeaveAnniversaryDate.Equals(input.SickLeaveAnniversaryDate))
+                ) && 
+                (
+                    this.AnnualLeaveAnniversaryDate == input.AnnualLeaveAnniversaryDate ||
+                    (this.AnnualLeaveAnniversaryDate != null &&
+                    this.AnnualLeaveAnniversaryDate.Equals(input.AnnualLeaveAnniversaryDate))
                 );
         }
 
@@ -214,12 +254,18 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.SickLeaveHoursToAccrueAnnually.GetHashCode();
                 if (this.SickLeaveMaximumHoursToAccrue != null)
                     hashCode = hashCode * 59 + this.SickLeaveMaximumHoursToAccrue.GetHashCode();
+                if (this.SickLeaveToAccrueAnnually != null)
+                    hashCode = hashCode * 59 + this.SickLeaveToAccrueAnnually.GetHashCode();
+                if (this.SickLeaveMaximumToAccrue != null)
+                    hashCode = hashCode * 59 + this.SickLeaveMaximumToAccrue.GetHashCode();
                 if (this.SickLeaveOpeningBalance != null)
                     hashCode = hashCode * 59 + this.SickLeaveOpeningBalance.GetHashCode();
                 if (this.SickLeaveScheduleOfAccrual != null)
                     hashCode = hashCode * 59 + this.SickLeaveScheduleOfAccrual.GetHashCode();
                 if (this.SickLeaveAnniversaryDate != null)
                     hashCode = hashCode * 59 + this.SickLeaveAnniversaryDate.GetHashCode();
+                if (this.AnnualLeaveAnniversaryDate != null)
+                    hashCode = hashCode * 59 + this.AnnualLeaveAnniversaryDate.GetHashCode();
                 return hashCode;
             }
         }
