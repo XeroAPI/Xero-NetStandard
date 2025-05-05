@@ -20,6 +20,7 @@ using Xero.NetStandard.OAuth2.Model.Bankfeeds;
 using Xero.NetStandard.OAuth2.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
 {
@@ -47,9 +48,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'Page' deserialises from a valid int
         /// </summary>
         [Fact]
-        public void Page_ValidInteger_Deserialises()
+        public async Task Page_ValidInteger_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Number(nameof(Pagination.Page), "20"),
                 toProperty: (t) => t.Page,
                 shouldBe: 20
@@ -59,9 +60,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'Page' deserialises from null
         /// </summary>
         [Fact]
-        public void Page_Null_Deserialises()
+        public async Task Page_Null_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Null(nameof(Pagination.Page)),
                 toProperty: (t) => t.Page,
                 shouldBe: null
@@ -71,9 +72,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'PageSize' deserialises from a valid int
         /// </summary>
         [Fact]
-        public void PageSize_ValidInteger_Deserialises()
+        public async Task PageSize_ValidInteger_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Number(nameof(Pagination.PageSize), "20"),
                 toProperty: (t) => t.PageSize,
                 shouldBe: 20
@@ -83,9 +84,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'PageSize' deserialises from null
         /// </summary>
         [Fact]
-        public void PageSize_Null_Deserialises()
+        public async Task PageSize_Null_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Null(nameof(Pagination.PageSize)),
                 toProperty: (t) => t.PageSize,
                 shouldBe: null
@@ -95,9 +96,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'PageCount' deserialises from a valid int
         /// </summary>
         [Fact]
-        public void PageCount_ValidInteger_Deserialises()
+        public async Task PageCount_ValidInteger_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Number(nameof(Pagination.PageCount), "20"),
                 toProperty: (t) => t.PageCount,
                 shouldBe: 20
@@ -107,9 +108,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'PageCount' deserialises from null
         /// </summary>
         [Fact]
-        public void PageCount_Null_Deserialises()
+        public async Task PageCount_Null_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Null(nameof(Pagination.PageCount)),
                 toProperty: (t) => t.PageCount,
                 shouldBe: null
@@ -119,9 +120,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'ItemCount' deserialises from a valid int
         /// </summary>
         [Fact]
-        public void ItemCount_ValidInteger_Deserialises()
+        public async Task ItemCount_ValidInteger_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Number(nameof(Pagination.ItemCount), "20"),
                 toProperty: (t) => t.ItemCount,
                 shouldBe: 20
@@ -131,9 +132,9 @@ namespace Xero.NetStandard.OAuth2.Test.Model.Bankfeeds
         /// Test the property 'ItemCount' deserialises from null
         /// </summary>
         [Fact]
-        public void ItemCount_Null_Deserialises()
+        public async Task ItemCount_Null_Deserialises()
         {
-            JsonDoc.Assert<Pagination, int?>(
+            await JsonDoc.Assert<Pagination, int?>(
                 input: new JsonDoc.Null(nameof(Pagination.ItemCount)),
                 toProperty: (t) => t.ItemCount,
                 shouldBe: null

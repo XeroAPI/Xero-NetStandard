@@ -7,19 +7,35 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
-    - uses: actions/checkout@v2
+
+    - name: checkout dotnet repo
+      uses: actions/checkout@v4
+      with:
+        repository: XeroAPI/Xero-NetStandard
+        path: Xero-NetStandard
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: Xero-NetStandard
+
     - name: Build
       run: dotnet build --no-restore
+      working-directory: Xero-NetStandard
+
     - name: Create Package for Nuget.org\
       run: dotnet pack
+      working-directory: Xero-NetStandard
+
     - name: Publish Package to Nuget.org
       run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json

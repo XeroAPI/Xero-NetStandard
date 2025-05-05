@@ -1779,7 +1779,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (isChargeable != null)
             {
-              requestOptions.QueryParameters.Add("isChargeable", isChargeable.ToString());
+              requestOptions.QueryParameters.Add("isChargeable", isChargeable.ToString().ToLower());
             }
 
 
