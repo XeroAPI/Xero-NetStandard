@@ -31,9 +31,9 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
     public partial class Product :  IEquatable<Product>, IValidatableObject
     {
         /// <summary>
-        /// The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product * SIMPLE: Customers are charged on a fixed amount for each billing period with an optional add-on feature 
+        /// The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product 
         /// </summary>
-        /// <value>The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product * SIMPLE: Customers are charged on a fixed amount for each billing period with an optional add-on feature </value>
+        /// <value>The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product </value>
         [JsonConverter(typeof(Client.CustomStringEnumConverter))]
         public enum TypeEnum
         {
@@ -53,20 +53,14 @@ namespace Xero.NetStandard.OAuth2.Model.Appstore
             /// Enum METERED for value: METERED
             /// </summary>
             [EnumMember(Value = "METERED")]
-            METERED = 3,
-
-            /// <summary>
-            /// Enum SIMPLE for value: SIMPLE
-            /// </summary>
-            [EnumMember(Value = "SIMPLE")]
-            SIMPLE = 4
+            METERED = 3
 
         }
 
         /// <summary>
-        /// The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product * SIMPLE: Customers are charged on a fixed amount for each billing period with an optional add-on feature 
+        /// The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product 
         /// </summary>
-        /// <value>The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product * SIMPLE: Customers are charged on a fixed amount for each billing period with an optional add-on feature </value>
+        /// <value>The pricing model of the product: * FIXED: Customers are charged a fixed amount for each billing period * PER_SEAT: Customers are charged based on the number of units they purchase * METERED: Customers are charged per use of this product </value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum Type { get; set; }
         
