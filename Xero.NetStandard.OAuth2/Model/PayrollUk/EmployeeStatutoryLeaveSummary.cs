@@ -65,7 +65,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum Sharedparental for value: Sharedparental
             /// </summary>
             [EnumMember(Value = "Sharedparental")]
-            Sharedparental = 5
+            Sharedparental = 5,
+
+            /// <summary>
+            /// Enum Bereavement for value: Bereavement
+            /// </summary>
+            [EnumMember(Value = "Bereavement")]
+            Bereavement = 6
 
         }
 
