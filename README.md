@@ -361,7 +361,7 @@ If you are implementing subscriptions to participate in Xero's App Store you wil
 
   <ItemGroup>
     <PackageReference Include="DotNetEnv" Version="2.1.1" />
-    <PackageReference Include="IdentityModel" Version="4.0.0" />
+    <PackageReference Include="Duende.IdentityModel" Version="7.0.0" />
     <PackageReference Include="Xero.NetStandard.OAuth2" Version="3.19.0" />
     <PackageReference Include="Xero.NetStandard.OAuth2Client" Version="1.5.0" />
   </ItemGroup>
