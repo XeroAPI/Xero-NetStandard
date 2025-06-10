@@ -75,7 +75,7 @@ jobs:
 
       - name: Install octokit dependencies
         run: npm i
-        working-directory: ${{ github.workspace }}/.github/octokit
+        working-directory: Xero-NetStandard/.github/octokit
 
       - name: Get github app access token
         id: get_access_token
@@ -86,7 +86,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-              const { getAccessToken } = await import('${{ github.workspace }}/.github/octokit/index.js')
+              const { getAccessToken } = await import('${{ github.workspace }}/Xero-NetStandard/.github/octokit/index.js')
               const token = await getAccessToken()
               return token
 
@@ -105,7 +105,7 @@ jobs:
                   "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
                   "environment": "test",
                   "sdk_type": "node",
-                  "cab_key": ${{ github.event.inputs.cab_id }}
+                  "cab_key": "${{ github.event.inputs.cab_id }}"
                   }
                 }'
 
