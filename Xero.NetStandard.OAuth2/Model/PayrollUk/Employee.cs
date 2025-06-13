@@ -58,12 +58,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         [DataMember(Name="gender", EmitDefaultValue=false)]
         public GenderEnum Gender { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Employee" /> class.
+        /// Gets or Sets NiCategory
         /// </summary>
-        [JsonConstructorAttribute]
-        public Employee() 
-        { 
-        }
+        [DataMember(Name="niCategory", EmitDefaultValue=false)]
+        public NICategoryLetter NiCategory { get; set; }
         
         /// <summary>
         /// Xero unique identifier for the employee
@@ -159,6 +157,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         public DateTime? CreatedDateUTC { get; set; }
 
         /// <summary>
+        /// The employee&#39;s NI categories
+        /// </summary>
+        /// <value>The employee&#39;s NI categories</value>
+        [DataMember(Name="niCategories", EmitDefaultValue=false)]
+        public List<NICategory> NiCategories { get; set; }
+
+        /// <summary>
         /// National insurance number of the employee
         /// </summary>
         /// <value>National insurance number of the employee</value>
@@ -194,6 +199,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("  PayrollCalendarID: ").Append(PayrollCalendarID).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  CreatedDateUTC: ").Append(CreatedDateUTC).Append("\n");
+            sb.Append("  NiCategory: ").Append(NiCategory).Append("\n");
+            sb.Append("  NiCategories: ").Append(NiCategories).Append("\n");
             sb.Append("  NationalInsuranceNumber: ").Append(NationalInsuranceNumber).Append("\n");
             sb.Append("  IsOffPayrollWorker: ").Append(IsOffPayrollWorker).Append("\n");
             sb.Append("}\n");
@@ -300,6 +307,16 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                     this.CreatedDateUTC.Equals(input.CreatedDateUTC))
                 ) && 
                 (
+                    this.NiCategory == input.NiCategory ||
+                    this.NiCategory.Equals(input.NiCategory)
+                ) && 
+                (
+                    this.NiCategories == input.NiCategories ||
+                    this.NiCategories != null &&
+                    input.NiCategories != null &&
+                    this.NiCategories.SequenceEqual(input.NiCategories)
+                ) && 
+                (
                     this.NationalInsuranceNumber == input.NationalInsuranceNumber ||
                     (this.NationalInsuranceNumber != null &&
                     this.NationalInsuranceNumber.Equals(input.NationalInsuranceNumber))
@@ -347,6 +364,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.CreatedDateUTC != null)
                     hashCode = hashCode * 59 + this.CreatedDateUTC.GetHashCode();
+                hashCode = hashCode * 59 + this.NiCategory.GetHashCode();
+                if (this.NiCategories != null)
+                    hashCode = hashCode * 59 + this.NiCategories.GetHashCode();
                 if (this.NationalInsuranceNumber != null)
                     hashCode = hashCode * 59 + this.NationalInsuranceNumber.GetHashCode();
                 if (this.IsOffPayrollWorker != null)

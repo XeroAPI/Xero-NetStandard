@@ -25,45 +25,53 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.PayrollUk
 {
     /// <summary>
-    /// Employment
+    /// NICategory
     /// </summary>
     [DataContract]
-    public partial class Employment :  IEquatable<Employment>, IValidatableObject
+    public partial class NICategory :  IEquatable<NICategory>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets NiCategory
+        /// Gets or Sets _NiCategory
         /// </summary>
         [DataMember(Name="niCategory", EmitDefaultValue=false)]
-        public NICategoryLetter NiCategory { get; set; }
+        public NICategoryLetter _NiCategory { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NICategory" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public NICategory() 
+        { 
+        }
         
         /// <summary>
-        /// Xero unique identifier for the payroll calendar of the employee
+        /// The start date of the NI category (YYYY-MM-DD)
         /// </summary>
-        /// <value>Xero unique identifier for the payroll calendar of the employee</value>
-        [DataMember(Name="payrollCalendarID", EmitDefaultValue=false)]
-        public Guid? PayrollCalendarID { get; set; }
-
-        /// <summary>
-        /// Start date of the employment (YYYY-MM-DD)
-        /// </summary>
-        /// <value>Start date of the employment (YYYY-MM-DD)</value>
+        /// <value>The start date of the NI category (YYYY-MM-DD)</value>
         [DataMember(Name="startDate", EmitDefaultValue=false)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
-        /// The employment number of the employee
+        /// Xero unique identifier for the NI category
         /// </summary>
-        /// <value>The employment number of the employee</value>
-        [DataMember(Name="employeeNumber", EmitDefaultValue=false)]
-        public string EmployeeNumber { get; set; }
+        /// <value>Xero unique identifier for the NI category</value>
+        [DataMember(Name="niCategoryID", EmitDefaultValue=false)]
+        public decimal? NiCategoryID { get; set; }
 
         /// <summary>
-        /// The employee&#39;s NI categories
+        /// The date in which the employee was first employed as a civilian (YYYY-MM-DD)
         /// </summary>
-        /// <value>The employee&#39;s NI categories</value>
-        [DataMember(Name="niCategories", EmitDefaultValue=false)]
-        public List<NICategory> NiCategories { get; set; }
+        /// <value>The date in which the employee was first employed as a civilian (YYYY-MM-DD)</value>
+        [DataMember(Name="dateFirstEmployedAsCivilian", EmitDefaultValue=false)]
+        [JsonConverter(typeof(OpenAPIDateConverter))]
+        public DateTime? DateFirstEmployedAsCivilian { get; set; }
+
+        /// <summary>
+        /// The workplace postcode
+        /// </summary>
+        /// <value>The workplace postcode</value>
+        [DataMember(Name="workplacePostcode", EmitDefaultValue=false)]
+        public string WorkplacePostcode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,12 +80,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Employment {\n");
-            sb.Append("  PayrollCalendarID: ").Append(PayrollCalendarID).Append("\n");
+            sb.Append("class NICategory {\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
-            sb.Append("  EmployeeNumber: ").Append(EmployeeNumber).Append("\n");
-            sb.Append("  NiCategory: ").Append(NiCategory).Append("\n");
-            sb.Append("  NiCategories: ").Append(NiCategories).Append("\n");
+            sb.Append("  _NiCategory: ").Append(_NiCategory).Append("\n");
+            sb.Append("  NiCategoryID: ").Append(NiCategoryID).Append("\n");
+            sb.Append("  DateFirstEmployedAsCivilian: ").Append(DateFirstEmployedAsCivilian).Append("\n");
+            sb.Append("  WorkplacePostcode: ").Append(WorkplacePostcode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,44 +106,43 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Employment);
+            return this.Equals(input as NICategory);
         }
 
         /// <summary>
-        /// Returns true if Employment instances are equal
+        /// Returns true if NICategory instances are equal
         /// </summary>
-        /// <param name="input">Instance of Employment to be compared</param>
+        /// <param name="input">Instance of NICategory to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Employment input)
+        public bool Equals(NICategory input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.PayrollCalendarID == input.PayrollCalendarID ||
-                    (this.PayrollCalendarID != null &&
-                    this.PayrollCalendarID.Equals(input.PayrollCalendarID))
-                ) && 
-                (
                     this.StartDate == input.StartDate ||
                     (this.StartDate != null &&
                     this.StartDate.Equals(input.StartDate))
                 ) && 
                 (
-                    this.EmployeeNumber == input.EmployeeNumber ||
-                    (this.EmployeeNumber != null &&
-                    this.EmployeeNumber.Equals(input.EmployeeNumber))
+                    this._NiCategory == input._NiCategory ||
+                    this._NiCategory.Equals(input._NiCategory)
                 ) && 
                 (
-                    this.NiCategory == input.NiCategory ||
-                    this.NiCategory.Equals(input.NiCategory)
+                    this.NiCategoryID == input.NiCategoryID ||
+                    (this.NiCategoryID != null &&
+                    this.NiCategoryID.Equals(input.NiCategoryID))
                 ) && 
                 (
-                    this.NiCategories == input.NiCategories ||
-                    this.NiCategories != null &&
-                    input.NiCategories != null &&
-                    this.NiCategories.SequenceEqual(input.NiCategories)
+                    this.DateFirstEmployedAsCivilian == input.DateFirstEmployedAsCivilian ||
+                    (this.DateFirstEmployedAsCivilian != null &&
+                    this.DateFirstEmployedAsCivilian.Equals(input.DateFirstEmployedAsCivilian))
+                ) && 
+                (
+                    this.WorkplacePostcode == input.WorkplacePostcode ||
+                    (this.WorkplacePostcode != null &&
+                    this.WorkplacePostcode.Equals(input.WorkplacePostcode))
                 );
         }
 
@@ -148,15 +155,15 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.PayrollCalendarID != null)
-                    hashCode = hashCode * 59 + this.PayrollCalendarID.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
-                if (this.EmployeeNumber != null)
-                    hashCode = hashCode * 59 + this.EmployeeNumber.GetHashCode();
-                hashCode = hashCode * 59 + this.NiCategory.GetHashCode();
-                if (this.NiCategories != null)
-                    hashCode = hashCode * 59 + this.NiCategories.GetHashCode();
+                hashCode = hashCode * 59 + this._NiCategory.GetHashCode();
+                if (this.NiCategoryID != null)
+                    hashCode = hashCode * 59 + this.NiCategoryID.GetHashCode();
+                if (this.DateFirstEmployedAsCivilian != null)
+                    hashCode = hashCode * 59 + this.DateFirstEmployedAsCivilian.GetHashCode();
+                if (this.WorkplacePostcode != null)
+                    hashCode = hashCode * 59 + this.WorkplacePostcode.GetHashCode();
                 return hashCode;
             }
         }
