@@ -27,35 +27,35 @@ jobs:
         repository: XeroAPI/Xero-NetStandard
         path: Xero-NetStandard
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: Xero-NetStandard
+    # - name: Setup .NET
+    #   uses: actions/setup-dotnet@v4
+    #   with:
+    #     dotnet-version: 8.0.x
+    # - name: Restore dependencies
+    #   run: dotnet restore
+    #   working-directory: Xero-NetStandard
 
-    - name: Fetch Latest release number
-      id: get_latest_release_number
-      run: |
-        latest_version=$(gh release view --json tagName --jq '.tagName')
-        echo "Latest release version is - $latest_version"
-        echo "::set-output name=release_tag::$latest_version"
-      working-directory: Xero-NetStandard
-      env:
-       GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    # - name: Fetch Latest release number
+    #   id: get_latest_release_number
+    #   run: |
+    #     latest_version=$(gh release view --json tagName --jq '.tagName')
+    #     echo "Latest release version is - $latest_version"
+    #     echo "::set-output name=release_tag::$latest_version"
+    #   working-directory: Xero-NetStandard
+    #   env:
+    #    GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - name: Build
-      run: dotnet build --no-restore
-      working-directory: Xero-NetStandard
+    # - name: Build
+    #   run: dotnet build --no-restore
+    #   working-directory: Xero-NetStandard
 
-    - name: Create Package for Nuget.org\
-      run: dotnet pack
-      working-directory: Xero-NetStandard
+    # - name: Create Package for Nuget.org\
+    #   run: dotnet pack
+    #   working-directory: Xero-NetStandard
 
-    - name: Publish Package to Nuget.org
-      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
-      working-directory: Xero-NetStandard
+    # - name: Publish Package to Nuget.org
+    #   run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+    #   working-directory: Xero-NetStandard
 
 
   notify-codegen-repo:
@@ -104,7 +104,7 @@ jobs:
                   "deployer": "xero-codegen-bot",
                   "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
                   "environment": "test",
-                  "sdk_type": "node",
+                  "sdk_type": "dotnet",
                   "cab_key": "${{ github.event.inputs.cab_id }}"
                   }
                 }'
