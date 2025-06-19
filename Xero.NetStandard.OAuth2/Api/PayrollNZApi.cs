@@ -6227,7 +6227,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (activeOnly != null)
             {
-              requestOptions.QueryParameters.Add("ActiveOnly", activeOnly.ToString().ToLower());
+              requestOptions.QueryParameters.Add("ActiveOnly", activeOnly.ToString());
             }
 
             if (xeroTenantId != null)

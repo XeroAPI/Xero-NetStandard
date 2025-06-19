@@ -77,7 +77,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum UNKNOWN for value: UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWN = 7
+            UNKNOWN = 7,
+
+            /// <summary>
+            /// Enum REMOVED for value: REMOVED
+            /// </summary>
+            [EnumMember(Value = "REMOVED")]
+            REMOVED = 8
 
         }
 
