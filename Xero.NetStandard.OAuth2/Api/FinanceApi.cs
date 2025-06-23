@@ -953,7 +953,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (summaryOnly != null)
             {
-              requestOptions.QueryParameters.Add("SummaryOnly", summaryOnly.ToString());
+              requestOptions.QueryParameters.Add("SummaryOnly", summaryOnly.ToString().ToLower());
             }
 
             if (xeroTenantId != null)
@@ -1340,7 +1340,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (includeManualJournals != null)
             {
-              requestOptions.QueryParameters.Add("includeManualJournals", includeManualJournals.ToString());
+              requestOptions.QueryParameters.Add("includeManualJournals", includeManualJournals.ToString().ToLower());
             }
 
 
@@ -1458,7 +1458,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (includeManualJournals != null)
             {
-              requestOptions.QueryParameters.Add("includeManualJournals", includeManualJournals.ToString());
+              requestOptions.QueryParameters.Add("includeManualJournals", includeManualJournals.ToString().ToLower());
             }
 
 

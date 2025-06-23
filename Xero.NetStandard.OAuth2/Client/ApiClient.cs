@@ -401,8 +401,7 @@ namespace Xero.NetStandard.OAuth2.Client
                     if (options.PathParameters.ContainsKey("FileName"))
                     {
                         contentType = contentType ?? "application/octet-stream";
-                        var stream = new MemoryStream(options.Data as byte[]);
-                        var streamContent = new StreamContent(stream);
+                        var streamContent = new StreamContent(options.Data as Stream);
                         streamContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                         request.Content = streamContent;
                     }
