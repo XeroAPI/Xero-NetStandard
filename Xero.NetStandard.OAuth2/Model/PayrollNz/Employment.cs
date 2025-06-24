@@ -30,13 +30,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     [DataContract]
     public partial class Employment :  IEquatable<Employment>, IValidatableObject
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Employment" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        public Employment() 
-        { 
-        }
         
         /// <summary>
         /// Xero unique identifier for the payroll calendar of the employee

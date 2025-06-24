@@ -76,13 +76,9 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreateEmployeeTest()
         {
-            List<Employee> employees = new List<Employee> { new Employee()
-            {
-                FirstName = "Adam",
-                LastName = "Adamson",
-                DateOfBirth = new DateTime(2000, 10, 10)
-            }};
-            var response = await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employees);
+            List<Employee> employee =
+                new List<Employee> { new Employee() };
+            var response = await instance.CreateEmployeeAsync(accessToken, xeroTenantId, employee);
             Assert.IsType<Employees>(response);
         }
         
@@ -115,10 +111,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreatePayRunTest()
         {
-            List<PayRun> payRun = new List<PayRun> { new PayRun()
-            {
-                PayrollCalendarID = Guid.Parse("00000000-0000-0000-0000-000000000000")
-            }};
+            List<PayRun> payRun = new List<PayRun> { new PayRun() };
             var response = await instance.CreatePayRunAsync(accessToken, xeroTenantId, payRun);
             Assert.IsType<PayRuns>(response);
         }
@@ -140,10 +133,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreateSuperfundTest()
         {
-            List<SuperFund> superFund = new List<SuperFund> { new SuperFund()
-            {
-                Type = SuperFundType.REGULATED
-            }};
+            List<SuperFund> superFund = new List<SuperFund> { new SuperFund() };
             var response = await instance.CreateSuperfundAsync(accessToken, xeroTenantId, superFund);
             Assert.IsType<SuperFunds>(response);
         }
@@ -154,14 +144,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         [Fact]
         public async Task CreateTimesheetTest()
         {
-            var startDate = new DateTime(2020, 10, 23);
-            var endDate = new DateTime(2020, 10, 30);
-            List<Timesheet> timesheet = new List<Timesheet> { new Timesheet()
-            {
-                EmployeeID = Guid.Parse("00000000-0000-0000-0000-000000000000"),
-                StartDate = startDate,
-                EndDate = endDate,
-            }};
+            List<Timesheet> timesheet = new List<Timesheet> { new Timesheet() };
             var response = await instance.CreateTimesheetAsync(accessToken, xeroTenantId, timesheet);
             Assert.IsType<Timesheets>(response);
         }
@@ -370,12 +353,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         public async Task UpdateEmployeeTest()
         {
             Guid employeeId = AutoFaker.Generate<Guid>();
-            List<Employee> employee = new List<Employee> { new Employee()
-            {
-                FirstName = "Adam",
-                LastName = "Adamson",
-                DateOfBirth = new DateTime(2000, 10, 10)
-            }};
+            List<Employee> employee = new List<Employee> { new Employee() };
             string idempotencyKey = AutoFaker.Generate<string>();
             var response = await instance.UpdateEmployeeAsync(accessToken, xeroTenantId, employeeId, employee, idempotencyKey);
             Assert.IsType<Employees>(response);
@@ -401,10 +379,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         {
             Guid payRunID = AutoFaker.Generate<Guid>();
             string idempotencyKey = AutoFaker.Generate<string>();
-            List<PayRun> payRun = new List<PayRun> { new PayRun()
-            {
-                PayrollCalendarID = Guid.Parse("00000000-0000-0000-0000-000000000000")
-            }};
+            List<PayRun> payRun = new List<PayRun> { new PayRun() };
             var response = await instance.UpdatePayRunAsync(accessToken, xeroTenantId, payRunID, payRun, idempotencyKey);
             Assert.IsType<PayRuns>(response);
         }
@@ -430,10 +405,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         {
             Guid superFundID = AutoFaker.Generate<Guid>();
             string idempotencyKey = AutoFaker.Generate<string>();
-            List<SuperFund> superFund = new List<SuperFund> { new SuperFund()
-            {
-                Type = SuperFundType.REGULATED
-            }};
+            List<SuperFund> superFund = new List<SuperFund> { new SuperFund() };
             var response = await instance.UpdateSuperfundAsync(accessToken, xeroTenantId, superFundID, superFund, idempotencyKey);
             Assert.IsType<SuperFunds>(response);
         }
@@ -446,14 +418,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.PayrollAu
         {
             Guid timesheetID = AutoFaker.Generate<Guid>();
             string idempotencyKey = AutoFaker.Generate<string>();
-            var startDate = new DateTime(2020, 10, 23);
-            var endDate = new DateTime(2020, 10, 30);
-            List<Timesheet> timesheet = new List<Timesheet> { new Timesheet()
-            {
-                EmployeeID = Guid.Parse("00000000-0000-0000-0000-000000000000"),
-                StartDate = startDate,
-                EndDate = endDate,
-            }};
+            List<Timesheet> timesheet = new List<Timesheet> { new Timesheet() };
             var response = await instance.UpdateTimesheetAsync(accessToken, xeroTenantId, timesheetID, timesheet, idempotencyKey);
             Assert.IsType<Timesheets>(response);
         }

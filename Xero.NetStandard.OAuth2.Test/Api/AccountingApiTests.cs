@@ -144,34 +144,10 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       BankTransactions bankTransactions = new BankTransactions();
-      bankTransactions._BankTransactions = new List<BankTransaction>
-      {
-        new BankTransaction()
-        {
-          Type = BankTransaction.TypeEnum.SPEND,
-          Contact = new Contact()
-          {
-            ContactID = Guid.NewGuid()
-          },
-          LineItems = new List<LineItem>()
-          {
-            new LineItem()
-            {
-              Description = "Foobar",
-              Quantity = 1,
-              UnitAmount = 20,
-              AccountCode = "000"
-            }
-          },
-          BankAccount = new Account()
-          {
-            Code = "000"
-          }
-        }
-      };
+      bankTransactions._BankTransactions = new List<BankTransaction> { new BankTransaction() };
       string idempotencyKey = AutoFaker.Generate<string>();
-      bool? summarizeErrors = false;
-      var response = await instance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors, null, idempotencyKey );
+      bool? summarizeErrors = AutoFaker.Generate<bool?>();
+      var response = await instance.CreateBankTransactionsAsync(accessToken, xeroTenantId, bankTransactions, summarizeErrors, null, idempotencyKey ).ConfigureAwait(false);
       Assert.IsType<BankTransactions>(response);
     }
 
@@ -184,49 +160,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       BankTransfers bankTransfers = new BankTransfers();
-      bankTransfers._BankTransfers = new List<BankTransfer>
-      {
-        new BankTransfer()
-        {
-          FromBankAccount = new Account()
-          {
-            Code = "090",
-            Name = "My Savings",
-            AccountID = Guid.NewGuid(),
-            Type = AccountType.BANK,
-            BankAccountNumber = "123455",
-            Status = Account.StatusEnum.ACTIVE,
-            BankAccountType = Account.BankAccountTypeEnum.BANK,
-            CurrencyCode = CurrencyCode.AFN,
-            TaxType = "NONE",
-            EnablePaymentsToAccount = false,
-            ShowInExpenseClaims = false,
-            Class = Account.ClassEnum.ASSET,
-            ReportingCode = "ASS"
-          },
-          ToBankAccount = new Account()
-          {
-            Code = "088",
-            Name = "Business Wells Fargo",
-            AccountID = Guid.NewGuid(),
-            Type = AccountType.BANK,
-            BankAccountNumber = "123455",
-            Status = Account.StatusEnum.ACTIVE,
-            BankAccountType = Account.BankAccountTypeEnum.BANK,
-            CurrencyCode = CurrencyCode.AFN,
-            TaxType = "NONE",
-            EnablePaymentsToAccount = false,
-            ShowInExpenseClaims = false,
-            Class = Account.ClassEnum.ASSET,
-            ReportingCode = "ASS"
-          },
-          Amount = 50,
-          FromIsReconciled = true,
-          ToIsReconciled = true,
-          Reference = "SUB 098801"
-        }
-      };
-      var response = await instance.CreateBankTransferAsync(accessToken, xeroTenantId, bankTransfers);
+      bankTransfers._BankTransfers = new List<BankTransfer>() { new BankTransfer() };
+      var response = await instance.CreateBankTransferAsync(accessToken, xeroTenantId, bankTransfers).ConfigureAwait(false);
       Assert.IsType<BankTransfers>(response);
     }
 
@@ -268,63 +203,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       BatchPayments batchPayments = new BatchPayments();
-      batchPayments._BatchPayments = new List<BatchPayment>
-      {
-        new BatchPayment()
-        {
-          Account = new Account()
-          {
-            Code = "088",
-            Name = "Business Wells Fargo",
-            AccountID = Guid.NewGuid(),
-            Type = AccountType.BANK,
-            BankAccountNumber = "123455",
-            Status = Account.StatusEnum.ACTIVE,
-            BankAccountType = Account.BankAccountTypeEnum.BANK,
-            CurrencyCode = CurrencyCode.AFN,
-            TaxType = "NONE",
-            EnablePaymentsToAccount = false,
-            ShowInExpenseClaims = false,
-            Class = Account.ClassEnum.ASSET,
-            ReportingCode = "ASS"
-          },
-          Reference = "SUB 098801",
-          Date = DateTime.Now,
-          Payments = new List<Payment>()
-          {
-            new Payment()
-            {
-              Account = new Account()
-              {
-                Code = "088",
-                Name = "Business Wells Fargo",
-                AccountID = Guid.NewGuid(),
-                Type = AccountType.BANK,
-                BankAccountNumber = "123455",
-                Status = Account.StatusEnum.ACTIVE,
-                BankAccountType = Account.BankAccountTypeEnum.BANK,
-                CurrencyCode = CurrencyCode.AFN,
-                TaxType = "NONE",
-                EnablePaymentsToAccount = false,
-                ShowInExpenseClaims = false,
-                Class = Account.ClassEnum.ASSET,
-                ReportingCode = "ASS"
-              },
-              Date = DateTime.Now,
-              Amount = 100,
-              Invoice = new Invoice()
-              {
-                InvoiceID = Guid.NewGuid(),
-                LineItems = new List<LineItem>(),
-                Contact = new Contact(),
-                Type = Invoice.TypeEnum.ACCPAY,
-              }
-            }
-          }
-        }
-      };
-      bool? summarizeErrors = false;
-      var response = await instance.CreateBatchPaymentAsync(accessToken, xeroTenantId, batchPayments, summarizeErrors);
+      bool? summarizeErrors = AutoFaker.Generate<bool?>();
+      var response = await instance.CreateBatchPaymentAsync(accessToken, xeroTenantId, batchPayments, summarizeErrors).ConfigureAwait(false);
       Assert.IsType<BatchPayments>(response);
     }
 
@@ -639,40 +519,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       ManualJournals manualJournals = new ManualJournals();
-      manualJournals._ManualJournals = new List<ManualJournal>
-      {
-        new ManualJournal()
-        {
-          Narration = "Journal Desc",
-          JournalLines = new List<ManualJournalLine>()
-          {
-            new ManualJournalLine()
-            {
-              LineAmount = 100,
-              AccountCode = "400",
-              Description = "Journal Description",
-            },
-            {
-              new ManualJournalLine()
-              {
-                LineAmount = -100,
-                AccountCode = "400",
-                Description = "Journal Description",
-                Tracking = new List<TrackingCategory>()
-                {
-                  new TrackingCategory()
-                  {
-                    Name = "Tracking",
-                    Option = "Region"
-                  }
-                }
-              }
-            }
-          },
-          Date = DateTime.Now,
-        },
-      };
-      var response = await instance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals);
+      manualJournals._ManualJournals = new List<ManualJournal> { new ManualJournal() };
+      var response = await instance.CreateManualJournalsAsync(accessToken, xeroTenantId, manualJournals).ConfigureAwait(false);
       Assert.IsType<ManualJournals>(response);
     }
 
@@ -1031,11 +879,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string xeroTenantId = AutoFaker.Generate<string>();
       Guid paymentID = AutoFaker.Generate<Guid>();
       Payments payments = new Payments();
-      PaymentDelete paymentDelete = new PaymentDelete()
-      {
-        Status = "DELETED",
-      };
-      var response = await instance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, paymentDelete);
+      PaymentDelete paymentDelete = new PaymentDelete();
+      var response = await instance.DeletePaymentAsync(accessToken, xeroTenantId, paymentID, paymentDelete).ConfigureAwait(false);
       Assert.IsType<Payments>(response);
     }
 
@@ -1454,8 +1299,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
     {
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
-      Guid contactID = Guid.NewGuid();
-      var response = await instance.GetContactCISSettingsAsync(accessToken, xeroTenantId, contactID);
+      Guid contactID = AutoFaker.Generate<Guid>();
+      var response = await instance.GetContactCISSettingsAsync(accessToken, xeroTenantId, contactID).ConfigureAwait(false);
       Assert.IsType<CISSettings>(response);
     }
 
@@ -1708,8 +1553,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       Guid invoiceID = AutoFaker.Generate<Guid>();
-      var response = await instance.GetInvoiceAsync(accessToken, xeroTenantId, invoiceID);
-      Assert.IsType<List<Invoice>>(response._Invoices);
+      var response = await instance.GetInvoiceAsync(accessToken, xeroTenantId, invoiceID).ConfigureAwait(false);
+      Assert.IsType<Invoices>(response);
     }
 
     /// <summary>
@@ -1881,7 +1726,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
     {
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
-      var response = await instance.GetJournalByNumberAsync(accessToken, xeroTenantId, 100);
+      Guid journalID = AutoFaker.Generate<Guid>();
+      var response = await instance.GetJournalAsync(accessToken, xeroTenantId, journalID).ConfigureAwait(false);
       Assert.IsType<Journals>(response);
     }
 
@@ -2215,7 +2061,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
-      string status = "SUBMITTED";
+      string status = AutoFaker.Generate<string>();
       string dateFrom = AutoFaker.Generate<string>();
       string dateTo = AutoFaker.Generate<string>();
       string order = AutoFaker.Generate<string>();
@@ -2245,11 +2091,16 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
     {
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
-      Guid? contactID = Guid.NewGuid();
-      string status = "DRAFT";
-      int? page = 1;
+      DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
+      DateTime? dateFrom = AutoFaker.Generate<DateTime?>();
+      DateTime? dateTo = AutoFaker.Generate<DateTime?>();
+      DateTime? expiryDateFrom = AutoFaker.Generate<DateTime?>();
+      DateTime? expiryDateTo = AutoFaker.Generate<DateTime?>();
+      Guid? contactID = AutoFaker.Generate<Guid?>();
+      string status = AutoFaker.Generate<string>();
+      int? page = AutoFaker.Generate<int?>();
       string order = AutoFaker.Generate<string>();
-      var response = await instance.GetQuotesAsync(accessToken, xeroTenantId, null, null, null, null, null, contactID, status, page, order, "QU-0001");
+      var response = await instance.GetQuotesAsync(accessToken, xeroTenantId, ifModifiedSince, dateFrom, dateTo, expiryDateFrom, expiryDateTo, contactID, status, page, order).ConfigureAwait(false);
       Assert.IsType<Quotes>(response);
     }
 
@@ -2433,7 +2284,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       DateTime? date = AutoFaker.Generate<DateTime?>();
       DateTime? fromDate = AutoFaker.Generate<DateTime?>();
       DateTime? toDate = AutoFaker.Generate<DateTime?>();
-      var response = await instance.GetReportAgedPayablesByContactAsync(accessToken, xeroTenantId, contactId, null, null, null);
+      var response = await instance.GetReportAgedPayablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2449,7 +2300,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       DateTime? date = AutoFaker.Generate<DateTime?>();
       DateTime? fromDate = AutoFaker.Generate<DateTime?>();
       DateTime? toDate = AutoFaker.Generate<DateTime?>();
-      var response = await instance.GetReportAgedReceivablesByContactAsync(accessToken, xeroTenantId, contactId, null, null, null);
+      var response = await instance.GetReportAgedReceivablesByContactAsync(accessToken, xeroTenantId, contactId, date, fromDate, toDate).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2462,13 +2313,13 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       DateTime date = AutoFaker.Generate<DateTime>();
-      int? periods = 3;
-      string timeframe = "MONTH";
+      int? periods = AutoFaker.Generate<int?>();
+      string timeframe = AutoFaker.Generate<string>();
       string trackingOptionID1 = AutoFaker.Generate<string>();
       string trackingOptionID2 = AutoFaker.Generate<string>();
-      bool? standardLayout = false;
-      bool? paymentsOnly = false;
-      var response = await instance.GetReportBalanceSheetAsync(accessToken, xeroTenantId, null, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly);
+      bool? standardLayout = AutoFaker.Generate<bool?>();
+      bool? paymentsOnly = AutoFaker.Generate<bool?>();
+      var response = await instance.GetReportBalanceSheetAsync(accessToken, xeroTenantId, date, periods, timeframe, trackingOptionID1, trackingOptionID2, standardLayout, paymentsOnly).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2482,7 +2333,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string xeroTenantId = AutoFaker.Generate<string>();
       DateTime? fromDate = AutoFaker.Generate<DateTime?>();
       DateTime? toDate = AutoFaker.Generate<DateTime?>();
-      var response = await instance.GetReportBankSummaryAsync(accessToken, xeroTenantId, null);
+      var response = await instance.GetReportBankSummaryAsync(accessToken, xeroTenantId, fromDate).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2497,7 +2348,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       DateTime? date = AutoFaker.Generate<DateTime?>();
       int? period = AutoFaker.Generate<int?>();
       int? timeframe = AutoFaker.Generate<int?>();
-      var response = await instance.GetReportBudgetSummaryAsync(accessToken, xeroTenantId, null, period, timeframe);
+      var response = await instance.GetReportBudgetSummaryAsync(accessToken, xeroTenantId, date, period, timeframe).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2510,7 +2361,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       DateTime? date = AutoFaker.Generate<DateTime?>();
-      var response = await instance.GetReportExecutiveSummaryAsync(accessToken, xeroTenantId);
+      var response = await instance.GetReportExecutiveSummaryAsync(accessToken, xeroTenantId, date).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2525,14 +2376,14 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       DateTime? fromDate = AutoFaker.Generate<DateTime?>();
       DateTime? toDate = AutoFaker.Generate<DateTime?>();
       int? periods = AutoFaker.Generate<int?>();
-      string timeframe = "MONTH";
+      string timeframe = AutoFaker.Generate<string>();
       string trackingCategoryID = AutoFaker.Generate<string>();
       string trackingCategoryID2 = AutoFaker.Generate<string>();
       string trackingOptionID = AutoFaker.Generate<string>();
       string trackingOptionID2 = AutoFaker.Generate<string>();
       bool? standardLayout = AutoFaker.Generate<bool?>();
       bool? paymentsOnly = AutoFaker.Generate<bool?>();
-      var response = await instance.GetReportProfitAndLossAsync(accessToken, xeroTenantId, null, null, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly);
+      var response = await instance.GetReportProfitAndLossAsync(accessToken, xeroTenantId, fromDate, toDate, periods, timeframe, trackingCategoryID, trackingCategoryID2, trackingOptionID, trackingOptionID2, standardLayout, paymentsOnly).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2559,7 +2410,7 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string xeroTenantId = AutoFaker.Generate<string>();
       DateTime? date = AutoFaker.Generate<DateTime?>();
       bool? paymentsOnly = AutoFaker.Generate<bool?>();
-      var response = await instance.GetReportTrialBalanceAsync(accessToken, xeroTenantId, null, paymentsOnly);
+      var response = await instance.GetReportTrialBalanceAsync(accessToken, xeroTenantId, date, paymentsOnly).ConfigureAwait(false);
       Assert.IsType<ReportWithRows>(response);
     }
 
@@ -2745,17 +2596,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       // TODO uncomment below to test the method and replace null with proper value
       string xeroTenantId = AutoFaker.Generate<string>();
       Guid contactGroupID = AutoFaker.Generate<Guid>();
-      ContactGroups contactGroups = new ContactGroups()
-      {
-        _ContactGroups = new List<ContactGroup>()
-        {
-          new ContactGroup()
-          {
-            Name = "Suppliers"
-          }
-        }
-      };
-      var response = await instance.UpdateContactGroupAsync(accessToken, xeroTenantId, contactGroupID, contactGroups);
+      ContactGroups contactGroups = new ContactGroups();
+      var response = await instance.UpdateContactGroupAsync(accessToken, xeroTenantId, contactGroupID, contactGroups).ConfigureAwait(false);
       Assert.IsType<ContactGroups>(response);
     }
 
