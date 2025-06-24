@@ -580,7 +580,6 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
-        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
@@ -596,7 +595,6 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
-        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
@@ -612,7 +610,6 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
-        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
@@ -628,7 +625,6 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
-        /// <param name="cancellationToken">The Cancellation Token.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
         /// <param name="cancellationToken">Token that enables callers to cancel the request.</param>
