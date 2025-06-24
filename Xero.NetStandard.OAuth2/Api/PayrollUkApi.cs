@@ -6323,7 +6323,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (activeOnly != null)
             {
-              requestOptions.QueryParameters.Add("ActiveOnly", activeOnly.ToString().ToLower());
+              requestOptions.QueryParameters.Add("ActiveOnly", activeOnly.ToString());
             }
 
             if (xeroTenantId != null)
@@ -7163,7 +7163,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
             if (activeOnly != null)
             {
-              requestOptions.QueryParameters.Add("activeOnly", activeOnly.ToString().ToLower());
+              requestOptions.QueryParameters.Add("activeOnly", activeOnly.ToString());
             }
 
             if (xeroTenantId != null)
