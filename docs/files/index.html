@@ -1171,7 +1171,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Files"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Files"><strong>VSN: </strong>11.2.0</li>
+              <li class="nav-header" data-group="Files"><strong>VSN: </strong>12.0.0</li>
               <li class="nav-header" data-group="Files"><a href="#api-Files">Methods</a></li>
               <li data-group="Files" data-name="createFileAssociation" class="">
                 <a href="#api-Files-createFileAssociation">createFileAssociation</a>
@@ -2795,10 +2795,11 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var pagesize = 50;
             var page = 2;
-            var sort = "CreatedDateUTC DESC";
+            var sort = "CreatedDateUTC";
+            var direction = "ASC";
             
             try {
-                var result = await apiInstance.GetFilesAsync(accessToken, xeroTenantId, pagesize, page, sort);
+                var result = await apiInstance.GetFilesAsync(accessToken, xeroTenantId, pagesize, page, sort, direction);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -2914,6 +2915,26 @@ number of records to skip for pagination
 
                     <div class="inner description marked">
 values to sort by
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">direction</td>
+<td>
+
+
+    <div id="d2e199_getFiles_direction">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+sort direction
                     </div>
             </div>
         </div>

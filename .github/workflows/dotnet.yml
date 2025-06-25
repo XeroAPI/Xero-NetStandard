@@ -42,7 +42,7 @@ jobs:
       working-directory: Xero-NetStandard
 
     - name: Publish Package to Nuget.org
-      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{ github.event.release.name }}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{steps.get_latest_release_number.outputs.release_tag}}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
       working-directory: Xero-NetStandard
 
 

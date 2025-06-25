@@ -71,7 +71,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             /// Enum Bereavement for value: Bereavement
             /// </summary>
             [EnumMember(Value = "Bereavement")]
-            Bereavement = 6
+            Bereavement = 6,
+
+            /// <summary>
+            /// Enum NeonatalCare for value: NeonatalCare
+            /// </summary>
+            [EnumMember(Value = "NeonatalCare")]
+            NeonatalCare = 7
 
         }
 
