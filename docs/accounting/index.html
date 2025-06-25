@@ -9397,7 +9397,8 @@ namespace Example
             var xeroTenantId = "YOUR_XERO_TENANT_ID";
             var contactID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var fileName = "xero-dev.jpg";
-            var idempotencyKey = "KEY_VALUE";            
+            var idempotencyKey = "KEY_VALUE";
+            
             try {
                 var result = await apiInstance.CreateContactAttachmentByFileNameAsync(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey);
                 Console.WriteLine(result);
