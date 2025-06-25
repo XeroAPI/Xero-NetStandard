@@ -36,7 +36,7 @@ jobs:
               run: npm install -g @stoplight/prism-cli
 
             - name: Start PRISM Server
-              run: ./start-prism.sh & sleep 15
+              run: ./start-prism.sh feature/prism-changes & sleep 15
               working-directory: Xero-NetStandard/Xero.NetStandard.OAuth2.Test/util
 
             - name: Run Test
