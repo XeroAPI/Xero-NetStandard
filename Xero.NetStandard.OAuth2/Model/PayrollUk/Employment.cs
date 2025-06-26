@@ -35,6 +35,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// </summary>
         [DataMember(Name="niCategory", EmitDefaultValue=false)]
         public NICategoryLetter NiCategory { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Employment" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public Employment() 
+        {  
+          NiCategories = new List<NICategory>(); 
+        }
         
         /// <summary>
         /// Xero unique identifier for the payroll calendar of the employee
