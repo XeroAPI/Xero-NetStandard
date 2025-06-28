@@ -62,6 +62,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// </summary>
         [DataMember(Name="niCategory", EmitDefaultValue=false)]
         public NICategoryLetter NiCategory { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Employee" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public Employee() 
+        {  
+          NiCategories = new List<NICategory>(); 
+        }
         
         /// <summary>
         /// Xero unique identifier for the employee
