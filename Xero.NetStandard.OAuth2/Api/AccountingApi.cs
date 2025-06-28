@@ -4153,8 +4153,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Allows you to retrieve a specific attachment from a specific manual journal using a unique attachment Id
@@ -4169,8 +4169,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachment for a specific manual journal
         /// </summary>
@@ -19881,10 +19881,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<byte[]> localVarResponse = await GetManualJournalAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetManualJournalAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -19899,8 +19899,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<byte[]>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -19954,7 +19954,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<byte[]>("/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
