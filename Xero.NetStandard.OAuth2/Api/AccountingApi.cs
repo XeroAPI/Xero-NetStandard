@@ -74,7 +74,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an attachment on a specific account
@@ -91,7 +91,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates an attachment for a specific bank transaction by filename
         /// </summary>
@@ -107,7 +107,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an attachment for a specific bank transaction by filename
@@ -124,7 +124,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a history record for a specific bank transactions
         /// </summary>
@@ -233,7 +233,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -250,7 +250,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a history record for a specific bank transfer
         /// </summary>
@@ -390,7 +390,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -407,7 +407,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a contact group
         /// </summary>
@@ -579,7 +579,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an attachment for a specific credit note
@@ -597,7 +597,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves history records of a specific credit note
         /// </summary>
@@ -798,7 +798,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an attachment for a specific invoice or purchase bill by filename
@@ -816,7 +816,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a history record for a specific invoice
         /// </summary>
@@ -989,7 +989,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a specific attachment for a specific manual journal by file name
@@ -1006,7 +1006,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a history record for a specific manual journal
         /// </summary>
@@ -1332,7 +1332,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates attachment for a specific purchase order
@@ -1349,7 +1349,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a history record for a specific purchase orders
         /// </summary>
@@ -1427,7 +1427,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates attachment for a specific quote
@@ -1444,7 +1444,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a history record for a specific quote
         /// </summary>
@@ -1553,7 +1553,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an attachment on a specific expense claim receipts by file name
@@ -1570,7 +1570,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a history record for a specific receipt
         /// </summary>
@@ -1617,7 +1617,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> CreateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> CreateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates an attachment from a specific repeating invoices by file name
@@ -1634,7 +1634,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> CreateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Creates a  history record for a specific repeating invoice
         /// </summary>
@@ -4153,8 +4153,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of System.IO.Stream</returns>
-        System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Allows you to retrieve a specific attachment from a specific manual journal using a unique attachment Id
@@ -4169,8 +4169,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieves attachment for a specific manual journal
         /// </summary>
@@ -6053,7 +6053,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates attachment on a specific account by filename
@@ -6070,7 +6070,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a single spent or received money transaction
         /// </summary>
@@ -6119,7 +6119,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific attachment from a specific bank transaction by filename
@@ -6136,7 +6136,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// 
         /// </summary>
@@ -6152,7 +6152,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -6169,7 +6169,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific contact in a Xero organisation
         /// </summary>
@@ -6216,7 +6216,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -6233,7 +6233,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific contact group
         /// </summary>
@@ -6313,7 +6313,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates attachments on a specific credit note by file name
@@ -6330,7 +6330,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific expense claims
         /// </summary>
@@ -6410,7 +6410,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates an attachment from a specific invoices or purchase bill by filename
@@ -6427,7 +6427,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific item
         /// </summary>
@@ -6538,7 +6538,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific attachment from a specific manual journal by file name
@@ -6555,7 +6555,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates or creates one or more spent or received money transaction
         /// </summary>
@@ -6920,7 +6920,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific attachment for a specific purchase order by filename
@@ -6937,7 +6937,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific quote
         /// </summary>
@@ -6984,7 +6984,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific attachment from a specific quote by filename
@@ -7001,7 +7001,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates a specific draft expense claim receipts
         /// </summary>
@@ -7050,7 +7050,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific attachment on a specific expense claim receipts by file name
@@ -7067,7 +7067,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Deletes a specific repeating invoice template
         /// </summary>
@@ -7114,7 +7114,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        System.Threading.Tasks.Task<Attachments> UpdateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<Attachments> UpdateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a specific attachment from a specific repeating invoices by file name
@@ -7131,7 +7131,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Attachments>> UpdateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default);
         /// <summary>
         /// Updates tax rates
         /// </summary>
@@ -7440,7 +7440,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateAccountAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -7459,7 +7459,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7539,7 +7539,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateBankTransactionAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -7558,7 +7558,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -7916,7 +7916,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateBankTransferAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -7935,7 +7935,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -8379,7 +8379,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateContactAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -8398,7 +8398,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -8934,7 +8934,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateCreditNoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, fileName, body, includeOnline, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -8954,7 +8954,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -9584,7 +9584,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, fileName, body, includeOnline, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -9604,7 +9604,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, bool? includeOnline = null, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -10163,7 +10163,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateManualJournalAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -10182,7 +10182,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -11172,7 +11172,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -11191,7 +11191,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -11453,7 +11453,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateQuoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -11472,7 +11472,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -11830,7 +11830,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateReceiptAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -11849,7 +11849,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -12020,7 +12020,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> CreateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> CreateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await CreateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -12039,7 +12039,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> CreateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -19881,10 +19881,10 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of System.IO.Stream</returns>
-        public async System.Threading.Tasks.Task<System.IO.Stream> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> GetManualJournalAttachmentByIdAsync (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
-             Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream> localVarResponse = await GetManualJournalAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType, cancellationToken);
+             Xero.NetStandard.OAuth2.Client.ApiResponse<byte[]> localVarResponse = await GetManualJournalAttachmentByIdAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, attachmentID, contentType, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -19899,8 +19899,8 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="attachmentID">Unique identifier for Attachment object</param>
         /// <param name="contentType">The mime type of the attachment file you are retrieving i.e image/jpg, application/pdf</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
-        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<System.IO.Stream>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<byte[]>> GetManualJournalAttachmentByIdAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, Guid attachmentID, string contentType, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -19954,7 +19954,7 @@ namespace Xero.NetStandard.OAuth2.Api
 
       
 
-            var response = await this.AsynchronousClient.GetAsync<System.IO.Stream>("/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
+            var response = await this.AsynchronousClient.GetAsync<byte[]>("/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}", requestOptions, this.Configuration, cancellationToken);
 
             if (this.ExceptionFactory != null)
             {
@@ -25957,7 +25957,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateAccountAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateAccountAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, accountID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -25976,7 +25976,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateAccountAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid accountID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -26160,7 +26160,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateBankTransactionAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateBankTransactionAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransactionID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -26179,7 +26179,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateBankTransactionAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransactionID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -26259,7 +26259,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateBankTransferAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateBankTransferAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, bankTransferID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -26278,7 +26278,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateBankTransferAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid bankTransferID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -26449,7 +26449,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateContactAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateContactAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, contactID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -26468,7 +26468,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateContactAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid contactID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -26743,7 +26743,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateCreditNoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateCreditNoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, creditNoteID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -26762,7 +26762,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateCreditNoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid creditNoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -27037,7 +27037,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, invoiceID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -27056,7 +27056,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid invoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -27422,7 +27422,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateManualJournalAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateManualJournalAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, manualJournalID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -27441,7 +27441,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateManualJournalAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid manualJournalID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -28574,7 +28574,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdatePurchaseOrderAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, purchaseOrderID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -28593,7 +28593,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdatePurchaseOrderAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid purchaseOrderID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -28764,7 +28764,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateQuoteAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateQuoteAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, quoteID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -28783,7 +28783,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateQuoteAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid quoteID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -28967,7 +28967,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateReceiptAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateReceiptAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, receiptID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -28986,7 +28986,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateReceiptAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid receiptID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
@@ -29157,7 +29157,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of Attachments</returns>
-        public async System.Threading.Tasks.Task<Attachments> UpdateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Attachments> UpdateRepeatingInvoiceAttachmentByFileNameAsync (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
              Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments> localVarResponse = await UpdateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo(accessToken, xeroTenantId, repeatingInvoiceID, fileName, body, idempotencyKey, cancellationToken);
              return localVarResponse.Data;
@@ -29176,7 +29176,7 @@ namespace Xero.NetStandard.OAuth2.Api
         /// <param name="idempotencyKey">This allows you to safely retry requests without the risk of duplicate processing. 128 character max. (optional)</param>
         /// <param name="cancellationToken">Cancellation token enables cancellation between threads. Defaults to CancellationToken.None</param>
         /// <returns>Task of ApiResponse (Attachments)</returns>
-        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, System.IO.Stream body, string idempotencyKey = null, CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Xero.NetStandard.OAuth2.Client.ApiResponse<Attachments>> UpdateRepeatingInvoiceAttachmentByFileNameAsyncWithHttpInfo (string accessToken, string xeroTenantId, Guid repeatingInvoiceID, string fileName, byte[] body, string idempotencyKey = null, CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'xeroTenantId' is set
             if (xeroTenantId == null)
