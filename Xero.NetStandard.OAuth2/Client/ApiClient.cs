@@ -426,8 +426,15 @@ namespace Xero.NetStandard.OAuth2.Client
             return request;
         }
 
-        partial void InterceptRequest(HttpRequestMessage req);
-        partial void InterceptResponse(HttpRequestMessage req, HttpResponseMessage response);
+        protected virtual void InterceptRequest(HttpRequestMessage req)
+        {
+
+        }
+
+        protected virtual void InterceptResponse(HttpRequestMessage req, HttpResponseMessage response)
+        {
+
+        }
 
         private async Task<ApiResponse<T>> ToApiResponse<T>(HttpResponseMessage response, object responseData, Uri uri, bool isSuccess = true)
         {
