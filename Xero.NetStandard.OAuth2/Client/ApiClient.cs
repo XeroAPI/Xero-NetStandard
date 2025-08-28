@@ -426,8 +426,24 @@ namespace Xero.NetStandard.OAuth2.Client
             return request;
         }
 
-        partial void InterceptRequest(HttpRequestMessage req);
-        partial void InterceptResponse(HttpRequestMessage req, HttpResponseMessage response);
+        /// <summary>
+        /// Intercepts the request before it is sent. Override to add custom logic.
+        /// </summary>
+        /// <param name="req">The HTTP request message.</param>
+        protected virtual void InterceptRequest(HttpRequestMessage req)
+        {
+
+        }
+
+        /// <summary>
+        /// Intercepts the response after it is received. Override to add custom logic.
+        /// </summary>
+        /// <param name="req">The HTTP request message.</param>
+        /// <param name="response">The HTTP response message.</param>
+        protected virtual void InterceptResponse(HttpRequestMessage req, HttpResponseMessage response)
+        {
+
+        }
 
         private async Task<ApiResponse<T>> ToApiResponse<T>(HttpResponseMessage response, object responseData, Uri uri, bool isSuccess = true)
         {
