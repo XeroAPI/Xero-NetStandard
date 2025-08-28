@@ -434,7 +434,7 @@ namespace Xero.NetStandard.OAuth2.Client
         {
 
         }
-        
+
         /// <summary>
         /// Intercepts the response after it is received. Override to add custom logic.
         /// </summary>
