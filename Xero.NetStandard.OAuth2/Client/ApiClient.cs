@@ -426,11 +426,20 @@ namespace Xero.NetStandard.OAuth2.Client
             return request;
         }
 
+        /// <summary>
+        /// Intercepts the request before it is sent. Override to add custom logic.
+        /// </summary>
+        /// <param name="req">The HTTP request message.</param>
         protected virtual void InterceptRequest(HttpRequestMessage req)
         {
 
         }
-
+        
+        /// <summary>
+        /// Intercepts the response after it is received. Override to add custom logic.
+        /// </summary>
+        /// <param name="req">The HTTP request message.</param>
+        /// <param name="response">The HTTP response message.</param>
         protected virtual void InterceptResponse(HttpRequestMessage req, HttpResponseMessage response)
         {
 
