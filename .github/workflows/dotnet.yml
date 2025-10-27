@@ -57,6 +57,10 @@ jobs:
       run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{steps.get_latest_release_number.outputs.release_tag}}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
       working-directory: Xero-NetStandard
 
+    - name: Publish OAuth2Client Package to Nuget.org
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Release/Xero.NetStandard.OAuth2Client.*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+      working-directory: Xero-NetStandard
+
 
   notify-codegen-repo:
     needs: build
