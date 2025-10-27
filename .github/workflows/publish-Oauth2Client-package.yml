@@ -1,0 +1,97 @@
+name: Publish OAuth2Client Package
+on:
+  workflow_dispatch:
+    inputs:
+      cab_id:
+        description: "CAB id for the change/release"
+        required: true
+        type: string
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    environment: prod
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+
+    - name: checkout dotnet repo
+      uses: actions/checkout@v4
+      with:
+        repository: XeroAPI/Xero-NetStandard
+        path: Xero-NetStandard
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: Xero-NetStandard
+
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: Xero-NetStandard
+
+    - name: Create OAuth2Client Package for Nuget.org
+      run: dotnet pack ./Xero.NetStandard.OAuth2Client/Xero.NetStandard.OAuth2Client.csproj
+      working-directory: Xero-NetStandard
+
+    - name: Publish OAuth2Client Package to Nuget.org
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Release/Xero.NetStandard.OAuth2Client.*.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+      working-directory: Xero-NetStandard
+
+  notify-slack-on-success:
+    runs-on: ubuntu-latest
+    needs: build
+    if: success()
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Xero-NetStandard repo
+        uses: actions/checkout@v4
+        with:
+          repository: XeroAPI/Xero-NetStandard
+          path: Xero-NetStandard
+
+      - name: Send slack notification on success
+        uses: ./Xero-NetStandard/.github/actions/notify-slack
+        with:
+          heading_text: "OAuth2Client Package publish job has succeeded !"
+          alert_type: "thumbsup"
+          job_status: "Success"
+          XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
+          job_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          button_type: "primary"
+          package_version: "OAuth2Client"
+          repo_link: ${{github.server_url}}/${{github.repository}}
+
+  notify-slack-on-failure:
+    runs-on: ubuntu-latest
+    needs: build
+    if: failure()
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Xero-NetStandard repo
+        uses: actions/checkout@v4
+        with:
+          repository: XeroAPI/Xero-NetStandard
+          path: Xero-NetStandard
+
+      - name: Send slack notification on failure
+        uses: ./Xero-NetStandard/.github/actions/notify-slack
+        with:
+          heading_text: "OAuth2Client Package publish job has failed !"
+          alert_type: "alert"
+          job_status: "Failed"
+          XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
+          job_url: "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          button_type: "danger"
+          package_version: "OAuth2Client"
+          repo_link: ${{github.server_url}}/${{github.repository}}
