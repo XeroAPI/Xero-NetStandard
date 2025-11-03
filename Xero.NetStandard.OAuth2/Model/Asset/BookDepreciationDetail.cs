@@ -82,6 +82,41 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
         public decimal? CurrentAccumDepreciationAmount { get; set; }
 
         /// <summary>
+        /// (New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its business use.
+        /// </summary>
+        /// <value>(New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its business use.</value>
+        [DataMember(Name="businessUseCapitalGain", EmitDefaultValue=false)]
+        public decimal? BusinessUseCapitalGain { get; set; }
+
+        /// <summary>
+        /// (New Zealand Orgs Only) Represents the gain or loss from the disposal of the business use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s business use.
+        /// </summary>
+        /// <value>(New Zealand Orgs Only) Represents the gain or loss from the disposal of the business use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s business use.</value>
+        [DataMember(Name="businessUseCurrentGainLoss", EmitDefaultValue=false)]
+        public decimal? BusinessUseCurrentGainLoss { get; set; }
+
+        /// <summary>
+        /// (New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its private (non-business) use.
+        /// </summary>
+        /// <value>(New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its private (non-business) use.</value>
+        [DataMember(Name="privateUseCapitalGain", EmitDefaultValue=false)]
+        public decimal? PrivateUseCapitalGain { get; set; }
+
+        /// <summary>
+        /// (New Zealand Orgs Only) Represents the gain or loss from the disposal of the private use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s private use.
+        /// </summary>
+        /// <value>(New Zealand Orgs Only) Represents the gain or loss from the disposal of the private use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s private use.</value>
+        [DataMember(Name="privateUseCurrentGainLoss", EmitDefaultValue=false)]
+        public decimal? PrivateUseCurrentGainLoss { get; set; }
+
+        /// <summary>
+        /// (New Zealand Orgs Only) The Investment Boost deduction percentage.
+        /// </summary>
+        /// <value>(New Zealand Orgs Only) The Investment Boost deduction percentage.</value>
+        [DataMember(Name="initialDeductionPercentage", EmitDefaultValue=false)]
+        public decimal? InitialDeductionPercentage { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -96,6 +131,11 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
             sb.Append("  ResidualValue: ").Append(ResidualValue).Append("\n");
             sb.Append("  PriorAccumDepreciationAmount: ").Append(PriorAccumDepreciationAmount).Append("\n");
             sb.Append("  CurrentAccumDepreciationAmount: ").Append(CurrentAccumDepreciationAmount).Append("\n");
+            sb.Append("  BusinessUseCapitalGain: ").Append(BusinessUseCapitalGain).Append("\n");
+            sb.Append("  BusinessUseCurrentGainLoss: ").Append(BusinessUseCurrentGainLoss).Append("\n");
+            sb.Append("  PrivateUseCapitalGain: ").Append(PrivateUseCapitalGain).Append("\n");
+            sb.Append("  PrivateUseCurrentGainLoss: ").Append(PrivateUseCurrentGainLoss).Append("\n");
+            sb.Append("  InitialDeductionPercentage: ").Append(InitialDeductionPercentage).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -164,6 +204,31 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
                     this.CurrentAccumDepreciationAmount == input.CurrentAccumDepreciationAmount ||
                     (this.CurrentAccumDepreciationAmount != null &&
                     this.CurrentAccumDepreciationAmount.Equals(input.CurrentAccumDepreciationAmount))
+                ) && 
+                (
+                    this.BusinessUseCapitalGain == input.BusinessUseCapitalGain ||
+                    (this.BusinessUseCapitalGain != null &&
+                    this.BusinessUseCapitalGain.Equals(input.BusinessUseCapitalGain))
+                ) && 
+                (
+                    this.BusinessUseCurrentGainLoss == input.BusinessUseCurrentGainLoss ||
+                    (this.BusinessUseCurrentGainLoss != null &&
+                    this.BusinessUseCurrentGainLoss.Equals(input.BusinessUseCurrentGainLoss))
+                ) && 
+                (
+                    this.PrivateUseCapitalGain == input.PrivateUseCapitalGain ||
+                    (this.PrivateUseCapitalGain != null &&
+                    this.PrivateUseCapitalGain.Equals(input.PrivateUseCapitalGain))
+                ) && 
+                (
+                    this.PrivateUseCurrentGainLoss == input.PrivateUseCurrentGainLoss ||
+                    (this.PrivateUseCurrentGainLoss != null &&
+                    this.PrivateUseCurrentGainLoss.Equals(input.PrivateUseCurrentGainLoss))
+                ) && 
+                (
+                    this.InitialDeductionPercentage == input.InitialDeductionPercentage ||
+                    (this.InitialDeductionPercentage != null &&
+                    this.InitialDeductionPercentage.Equals(input.InitialDeductionPercentage))
                 );
         }
 
@@ -190,6 +255,16 @@ namespace Xero.NetStandard.OAuth2.Model.Asset
                     hashCode = hashCode * 59 + this.PriorAccumDepreciationAmount.GetHashCode();
                 if (this.CurrentAccumDepreciationAmount != null)
                     hashCode = hashCode * 59 + this.CurrentAccumDepreciationAmount.GetHashCode();
+                if (this.BusinessUseCapitalGain != null)
+                    hashCode = hashCode * 59 + this.BusinessUseCapitalGain.GetHashCode();
+                if (this.BusinessUseCurrentGainLoss != null)
+                    hashCode = hashCode * 59 + this.BusinessUseCurrentGainLoss.GetHashCode();
+                if (this.PrivateUseCapitalGain != null)
+                    hashCode = hashCode * 59 + this.PrivateUseCapitalGain.GetHashCode();
+                if (this.PrivateUseCurrentGainLoss != null)
+                    hashCode = hashCode * 59 + this.PrivateUseCurrentGainLoss.GetHashCode();
+                if (this.InitialDeductionPercentage != null)
+                    hashCode = hashCode * 59 + this.InitialDeductionPercentage.GetHashCode();
                 return hashCode;
             }
         }

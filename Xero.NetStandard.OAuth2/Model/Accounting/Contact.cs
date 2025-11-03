@@ -64,6 +64,45 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         [DataMember(Name="ContactStatus", EmitDefaultValue=false)]
         public ContactStatusEnum ContactStatus { get; set; }
         /// <summary>
+        /// Identifier of the regional type of tax number, such as US, UK, or other regional tax identifiers
+        /// </summary>
+        /// <value>Identifier of the regional type of tax number, such as US, UK, or other regional tax identifiers</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum TaxNumberTypeEnum
+        {
+            /// <summary>
+            /// Enum SSN for value: SSN
+            /// </summary>
+            [EnumMember(Value = "SSN")]
+            SSN = 1,
+
+            /// <summary>
+            /// Enum EIN for value: EIN
+            /// </summary>
+            [EnumMember(Value = "EIN")]
+            EIN = 2,
+
+            /// <summary>
+            /// Enum ITIN for value: ITIN
+            /// </summary>
+            [EnumMember(Value = "ITIN")]
+            ITIN = 3,
+
+            /// <summary>
+            /// Enum ATIN for value: ATIN
+            /// </summary>
+            [EnumMember(Value = "ATIN")]
+            ATIN = 4
+
+        }
+
+        /// <summary>
+        /// Identifier of the regional type of tax number, such as US, UK, or other regional tax identifiers
+        /// </summary>
+        /// <value>Identifier of the regional type of tax number, such as US, UK, or other regional tax identifiers</value>
+        [DataMember(Name="TaxNumberType", EmitDefaultValue=false)]
+        public TaxNumberTypeEnum TaxNumberType { get; set; }
+        /// <summary>
         /// The default sales line amount type for a contact. Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.
         /// </summary>
         /// <value>The default sales line amount type for a contact. Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.</value>
@@ -418,6 +457,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  ContactPersons: ").Append(ContactPersons).Append("\n");
             sb.Append("  BankAccountDetails: ").Append(BankAccountDetails).Append("\n");
             sb.Append("  TaxNumber: ").Append(TaxNumber).Append("\n");
+            sb.Append("  TaxNumberType: ").Append(TaxNumberType).Append("\n");
             sb.Append("  AccountsReceivableTaxType: ").Append(AccountsReceivableTaxType).Append("\n");
             sb.Append("  AccountsPayableTaxType: ").Append(AccountsPayableTaxType).Append("\n");
             sb.Append("  Addresses: ").Append(Addresses).Append("\n");
@@ -545,6 +585,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.TaxNumber == input.TaxNumber ||
                     (this.TaxNumber != null &&
                     this.TaxNumber.Equals(input.TaxNumber))
+                ) && 
+                (
+                    this.TaxNumberType == input.TaxNumberType ||
+                    this.TaxNumberType.Equals(input.TaxNumberType)
                 ) && 
                 (
                     this.AccountsReceivableTaxType == input.AccountsReceivableTaxType ||
@@ -731,6 +775,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.BankAccountDetails.GetHashCode();
                 if (this.TaxNumber != null)
                     hashCode = hashCode * 59 + this.TaxNumber.GetHashCode();
+                hashCode = hashCode * 59 + this.TaxNumberType.GetHashCode();
                 if (this.AccountsReceivableTaxType != null)
                     hashCode = hashCode * 59 + this.AccountsReceivableTaxType.GetHashCode();
                 if (this.AccountsPayableTaxType != null)
