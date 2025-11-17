@@ -41,7 +41,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         [JsonConstructorAttribute]
         public Employment() 
         {  
-          NiCategories = new List<NICategory>(); 
+          NiCategories = new List<NICategory>();  
+          Contracts = new List<Contracts>(); 
         }
         
         /// <summary>
@@ -74,6 +75,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         public List<NICategory> NiCategories { get; set; }
 
         /// <summary>
+        /// The employee&#39;s contracts
+        /// </summary>
+        /// <value>The employee&#39;s contracts</value>
+        [DataMember(Name="contracts", EmitDefaultValue=false)]
+        public List<Contracts> Contracts { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -86,6 +94,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
             sb.Append("  EmployeeNumber: ").Append(EmployeeNumber).Append("\n");
             sb.Append("  NiCategory: ").Append(NiCategory).Append("\n");
             sb.Append("  NiCategories: ").Append(NiCategories).Append("\n");
+            sb.Append("  Contracts: ").Append(Contracts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,6 +153,12 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                     this.NiCategories != null &&
                     input.NiCategories != null &&
                     this.NiCategories.SequenceEqual(input.NiCategories)
+                ) && 
+                (
+                    this.Contracts == input.Contracts ||
+                    this.Contracts != null &&
+                    input.Contracts != null &&
+                    this.Contracts.SequenceEqual(input.Contracts)
                 );
         }
 
@@ -165,6 +180,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
                 hashCode = hashCode * 59 + this.NiCategory.GetHashCode();
                 if (this.NiCategories != null)
                     hashCode = hashCode * 59 + this.NiCategories.GetHashCode();
+                if (this.Contracts != null)
+                    hashCode = hashCode * 59 + this.Contracts.GetHashCode();
                 return hashCode;
             }
         }
