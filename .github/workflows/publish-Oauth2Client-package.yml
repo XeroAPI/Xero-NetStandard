@@ -19,8 +19,6 @@ jobs:
     outputs:
       # Used to conditionally run publish steps and notifications
       client_version: ${{steps.calc_version.outputs.version}}
-      
-
     permissions:
       contents: write
       pull-requests: write
@@ -134,11 +132,20 @@ jobs:
       run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Release/Xero.NetStandard.OAuth2Client.${{steps.calc_version.outputs.version}}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
       working-directory: Xero-NetStandard
 
-    - name: Create client tag
+    - name: Commit, Push and Tag
       if: steps.calc_version.outputs.should_publish == 'true'
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Commit the version bump
+        git add ./Xero.NetStandard.OAuth2Client/Xero.NetStandard.OAuth2Client.csproj
+        git commit -m "Bump OAuth2Client version to ${{steps.calc_version.outputs.version}}"
+        
+        # Push the commit to master
+        git push origin HEAD:master
+        
+        # Create and push the tag
         git tag "client-${{steps.calc_version.outputs.version}}"
         git push origin "client-${{steps.calc_version.outputs.version}}"
       working-directory: Xero-NetStandard
