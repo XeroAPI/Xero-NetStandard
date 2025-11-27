@@ -8,7 +8,7 @@ on:
         type: string
   push:
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+'  # Triggers on main SDK version tags
+      - '[0-9]+.[0-9]+.[0-9]+'  # Triggers on main SDK version tags to check if Client SDK needs update
   
 jobs:
   check-and-publish:
@@ -17,6 +17,7 @@ jobs:
     environment: prod
 
     outputs:
+      # Used to conditionally run publish steps and notifications
       client_version: ${{steps.calc_version.outputs.version}}
       should_publish: ${{steps.calc_version.outputs.should_publish}}
 
@@ -51,15 +52,42 @@ jobs:
         LAST_VERSION=${LAST_CLIENT_TAG#client-}
         echo "Last OAuth2Client version: $LAST_VERSION (tag: $LAST_CLIENT_TAG)"
         
+        # Determine Bump Type from Main SDK tags
+        BUMP_TYPE="patch"
+        if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+          CURRENT_MAIN_TAG=$GITHUB_REF_NAME
+          # Find previous main tag (exclude current)
+          PREV_MAIN_TAG=$(git tag -l '[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | grep -v "^$CURRENT_MAIN_TAG$" | head -n 1)
+          
+          if [ ! -z "$PREV_MAIN_TAG" ]; then
+            echo "Main SDK Bump: $PREV_MAIN_TAG -> $CURRENT_MAIN_TAG"
+            IFS='.' read -r m1 m2 m3 <<< "$CURRENT_MAIN_TAG"
+            IFS='.' read -r p1 p2 p3 <<< "$PREV_MAIN_TAG"
+            
+            if [ "$m1" != "$p1" ]; then
+              BUMP_TYPE="major"
+            elif [ "$m2" != "$p2" ]; then
+              BUMP_TYPE="minor"
+            fi
+          fi
+        fi
+        echo "Detected bump type: $BUMP_TYPE"
+        
         # Check if OAuth2Client files changed since last client tag
         if git diff --name-only $LAST_CLIENT_TAG HEAD | grep -q 'Xero.NetStandard.OAuth2Client/'; then
           echo "OAuth2Client files have changed since $LAST_CLIENT_TAG"
           
-          # Increment patch version
-          IFS='.' read -r major minor patch <<< "$LAST_VERSION"
-          NEW_VERSION="${major}.${minor}.$((patch + 1))"
+          # Increment version based on bump type
+          IFS='.' read -r c1 c2 c3 <<< "$LAST_VERSION"
+          if [ "$BUMP_TYPE" == "major" ]; then
+            NEW_VERSION="$((c1 + 1)).0.0"
+          elif [ "$BUMP_TYPE" == "minor" ]; then
+            NEW_VERSION="${c1}.$((c2 + 1)).0"
+          else
+            NEW_VERSION="${c1}.${c2}.$((c3 + 1))"
+          fi
           
-          echo "Incrementing version: $LAST_VERSION -> $NEW_VERSION"
+          echo "Incrementing version ($BUMP_TYPE): $LAST_VERSION -> $NEW_VERSION"
           echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "should_publish=true" >> $GITHUB_OUTPUT
         else
