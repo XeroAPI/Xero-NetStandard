@@ -6,9 +6,6 @@ on:
         description: "CAB id for the change/release"
         required: true
         type: string
-  push:
-    tags:
-      - '[0-9]+.[0-9]+.[0-9]+'  # Triggers on main SDK version tags to check if Client SDK needs update
   
 jobs:
   check-and-publish:
