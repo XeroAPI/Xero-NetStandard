@@ -1,4 +1,4 @@
-name: Publish & Release SDK
+name: Publish OAuth2 Package
 on:
   workflow_dispatch:
     inputs:
