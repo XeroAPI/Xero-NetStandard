@@ -1,4 +1,4 @@
-name: Publish & Release SDK
+name: Publish OAuth2 Package
 on:
   workflow_dispatch:
     inputs:
@@ -49,14 +49,13 @@ jobs:
       run: dotnet build --no-restore
       working-directory: Xero-NetStandard
 
-    - name: Create Package for Nuget.org\
+    - name: Create OAuth2 Package for Nuget.org
       run: dotnet pack
       working-directory: Xero-NetStandard
 
-    - name: Publish Package to Nuget.org
+    - name: Publish OAuth2 Package to Nuget.org
       run: dotnet nuget push ./Xero.NetStandard.OAuth2/bin/Release/Xero.NetStandard.OAuth2.${{steps.get_latest_release_number.outputs.release_tag}}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
       working-directory: Xero-NetStandard
-
 
   notify-codegen-repo:
     needs: build
@@ -125,7 +124,7 @@ jobs:
       - name: Send slack notification on success
         uses: ./Xero-NetStandard/.github/actions/notify-slack
         with:
-          heading_text: "Publish job has succeeded !"
+          heading_text: "OAuth2 Package publish job has succeeded !"
           alert_type: "thumbsup"
           job_status: "Success"
           XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
@@ -150,7 +149,7 @@ jobs:
       - name: Send slack notification on failure
         uses: ./Xero-NetStandard/.github/actions/notify-slack
         with:
-          heading_text: "Publish job has failed !"
+          heading_text: "OAuth2 Package publish job has failed !"
           alert_type: "alert"
           job_status: "Failed"
           XERO_SLACK_WEBHOOK_URL: ${{secrets.XERO_SLACK_WEBHOOK_URL}}
