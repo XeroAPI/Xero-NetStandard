@@ -2080,7 +2080,8 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string order = AutoFaker.Generate<string>();
       int? page = AutoFaker.Generate<int?>();
       int? unitdp = AutoFaker.Generate<int?>();
-      var response = await instance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp);
+      List<string> references = AutoFaker.Generate<List<string>>();
+      var response = await instance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, references, unitdp);
       Assert.IsType<Overpayments>(response);
     }
 
