@@ -4357,6 +4357,11 @@ ul.nav-tabs {
       "example" : false,
       "default" : false
     },
+    "Reference" : {
+      "type" : "string",
+      "description" : "An optional description for Overpayment",
+      "example" : "Ref for payment"
+    },
     "Attachments" : {
       "type" : "array",
       "description" : "See Attachments",
@@ -6345,7 +6350,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Accounting"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>12.4.0</li>
+              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>12.5.0</li>
               <li class="nav-header" data-group="Accounting"><a href="#api-Accounting">Methods</a></li>
               <li data-group="Accounting" data-name="createAccount" class="">
                 <a href="#api-Accounting-createAccount">createAccount</a>
@@ -29502,7 +29507,7 @@ namespace Example
             var where = "Status==\"DRAFT\"";
             var order = "InvoiceNumber ASC";
             var iDs = new List&lt;Guid&gt;{Guid.Parse("00000000-0000-0000-0000-000000000000")};
-            var invoiceNumbers = new List&lt;string&gt;{&quotINV-001&quot,&quotINV-002&quot};
+            var invoiceNumbers = new List&lt;string&gt;{&quot;INV-001&quot;,&quot;INV-002&quot;};
             var contactIDs = new List&lt;Guid&gt;{Guid.Parse(&quot00000000-0000-0000-0000-000000000000&quot)};
             var statuses = new List&lt;string&gt;{&quotDRAFT&quot,&quotSUBMITTED&quot};
             var page = 1;
@@ -32926,9 +32931,10 @@ namespace Example
             var page = 1;
             var unitdp = 4;
             var pageSize = 100;
+            var references = new List&lt;string&gt;{&quot;Ref1&quot;,&quot;Ref2&quot;}
             
             try {
-                var result = await apiInstance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize);
+                var result = await apiInstance.GetOverpaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, references);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -33107,6 +33113,26 @@ e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal place
 
                     <div class="inner description marked">
 Number of records to retrieve per page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">References</td>
+<td>
+
+
+    <div id="d2e199_getOverpayments_references">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    array[String]
+                </span>
+
+                    <div class="inner description marked">
+Filter by a comma-separated list of References
                     </div>
             </div>
         </div>

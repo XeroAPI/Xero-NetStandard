@@ -205,6 +205,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
+        /// An optional description for Overpayment
+        /// </summary>
+        /// <value>An optional description for Overpayment</value>
+        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        public string Reference { get; set; }
+
+        /// <summary>
         /// See Attachments
         /// </summary>
         /// <value>See Attachments</value>
@@ -237,6 +244,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  AppliedAmount: ").Append(AppliedAmount).Append("\n");
             sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -362,6 +370,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.HasAttachments.Equals(input.HasAttachments))
                 ) && 
                 (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
+                ) && 
+                (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&
                     input.Attachments != null &&
@@ -410,6 +423,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Payments.GetHashCode();
                 if (this.HasAttachments != null)
                     hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
+                if (this.Reference != null)
+                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.Attachments != null)
                     hashCode = hashCode * 59 + this.Attachments.GetHashCode();
                 return hashCode;
