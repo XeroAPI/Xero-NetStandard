@@ -89,7 +89,7 @@ namespace Xero.NetStandard.OAuth2.Client
             String result = JsonConvert.SerializeObject(obj, _serializerSettings);
             
             // when dealing with AU Payroll & Accounting API, we should convert DateTime object to Wcf Json Date String
-            if (obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.Accounting") || obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.PayrollAu") )
+            if (obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.Accounting") || obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.PayrollAu") || obj.GetType().FullName.Contains(@"Xero.NetStandard.OAuth2.Model.PayrollAuV2"))
             {
               string dateTimePattern = @"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z";
 
