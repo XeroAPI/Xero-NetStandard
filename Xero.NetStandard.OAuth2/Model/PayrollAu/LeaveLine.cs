@@ -61,6 +61,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public bool? IncludeSuperannuationGuaranteeContribution { get; set; }
 
         /// <summary>
+        /// Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on superannuation settings
+        /// </summary>
+        /// <value>Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on superannuation settings</value>
+        [DataMember(Name="IsQualifyingEarnings", EmitDefaultValue=false)]
+        public bool? IsQualifyingEarnings { get; set; }
+
+        /// <summary>
         /// Number of units for leave line.
         /// </summary>
         /// <value>Number of units for leave line.</value>
@@ -94,6 +101,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  EntitlementFinalPayPayoutType: ").Append(EntitlementFinalPayPayoutType).Append("\n");
             sb.Append("  EmploymentTerminationPaymentType: ").Append(EmploymentTerminationPaymentType).Append("\n");
             sb.Append("  IncludeSuperannuationGuaranteeContribution: ").Append(IncludeSuperannuationGuaranteeContribution).Append("\n");
+            sb.Append("  IsQualifyingEarnings: ").Append(IsQualifyingEarnings).Append("\n");
             sb.Append("  NumberOfUnits: ").Append(NumberOfUnits).Append("\n");
             sb.Append("  AnnualNumberOfUnits: ").Append(AnnualNumberOfUnits).Append("\n");
             sb.Append("  FullTimeNumberOfUnitsPerPeriod: ").Append(FullTimeNumberOfUnitsPerPeriod).Append("\n");
@@ -154,6 +162,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.IncludeSuperannuationGuaranteeContribution.Equals(input.IncludeSuperannuationGuaranteeContribution))
                 ) && 
                 (
+                    this.IsQualifyingEarnings == input.IsQualifyingEarnings ||
+                    (this.IsQualifyingEarnings != null &&
+                    this.IsQualifyingEarnings.Equals(input.IsQualifyingEarnings))
+                ) && 
+                (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
@@ -186,6 +199,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 hashCode = hashCode * 59 + this.EmploymentTerminationPaymentType.GetHashCode();
                 if (this.IncludeSuperannuationGuaranteeContribution != null)
                     hashCode = hashCode * 59 + this.IncludeSuperannuationGuaranteeContribution.GetHashCode();
+                if (this.IsQualifyingEarnings != null)
+                    hashCode = hashCode * 59 + this.IsQualifyingEarnings.GetHashCode();
                 if (this.NumberOfUnits != null)
                     hashCode = hashCode * 59 + this.NumberOfUnits.GetHashCode();
                 if (this.AnnualNumberOfUnits != null)
