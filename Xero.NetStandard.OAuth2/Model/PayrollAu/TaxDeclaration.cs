@@ -167,6 +167,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// Optional Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations
+        /// </summary>
+        /// <value>Optional Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations</value>
+        [DataMember(Name="IncludeLeaveLoadingInQualifyingEarnings", EmitDefaultValue=false)]
+        public bool? IncludeLeaveLoadingInQualifyingEarnings { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -195,6 +202,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  HasStudentStartupLoan: ").Append(HasStudentStartupLoan).Append("\n");
             sb.Append("  HasLoanOrStudentDebt: ").Append(HasLoanOrStudentDebt).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  IncludeLeaveLoadingInQualifyingEarnings: ").Append(IncludeLeaveLoadingInQualifyingEarnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -327,6 +335,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
+                ) && 
+                (
+                    this.IncludeLeaveLoadingInQualifyingEarnings == input.IncludeLeaveLoadingInQualifyingEarnings ||
+                    (this.IncludeLeaveLoadingInQualifyingEarnings != null &&
+                    this.IncludeLeaveLoadingInQualifyingEarnings.Equals(input.IncludeLeaveLoadingInQualifyingEarnings))
                 );
         }
 
@@ -375,6 +388,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.HasLoanOrStudentDebt.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.IncludeLeaveLoadingInQualifyingEarnings != null)
+                    hashCode = hashCode * 59 + this.IncludeLeaveLoadingInQualifyingEarnings.GetHashCode();
                 return hashCode;
             }
         }
