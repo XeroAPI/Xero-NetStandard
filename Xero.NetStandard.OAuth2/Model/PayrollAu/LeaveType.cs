@@ -107,6 +107,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public bool? SGCExempt { get; set; }
 
         /// <summary>
+        /// Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on earnings type and superannuation settings
+        /// </summary>
+        /// <value>Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on earnings type and superannuation settings</value>
+        [DataMember(Name="IsQualifyingEarnings", EmitDefaultValue=false)]
+        public bool? IsQualifyingEarnings { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -125,6 +132,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  CurrentRecord: ").Append(CurrentRecord).Append("\n");
             sb.Append("  LeaveCategoryCode: ").Append(LeaveCategoryCode).Append("\n");
             sb.Append("  SGCExempt: ").Append(SGCExempt).Append("\n");
+            sb.Append("  IsQualifyingEarnings: ").Append(IsQualifyingEarnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -212,6 +220,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.SGCExempt == input.SGCExempt ||
                     (this.SGCExempt != null &&
                     this.SGCExempt.Equals(input.SGCExempt))
+                ) && 
+                (
+                    this.IsQualifyingEarnings == input.IsQualifyingEarnings ||
+                    (this.IsQualifyingEarnings != null &&
+                    this.IsQualifyingEarnings.Equals(input.IsQualifyingEarnings))
                 );
         }
 
@@ -245,6 +258,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 hashCode = hashCode * 59 + this.LeaveCategoryCode.GetHashCode();
                 if (this.SGCExempt != null)
                     hashCode = hashCode * 59 + this.SGCExempt.GetHashCode();
+                if (this.IsQualifyingEarnings != null)
+                    hashCode = hashCode * 59 + this.IsQualifyingEarnings.GetHashCode();
                 return hashCode;
             }
         }

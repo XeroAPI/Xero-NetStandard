@@ -73,7 +73,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// Gets or Sets LeaveLines
         /// </summary>
         [DataMember(Name="LeaveLines", EmitDefaultValue=false)]
-        public List<LeaveLine> LeaveLines { get; set; }
+        public List<OpeningBalanceLeaveLine> LeaveLines { get; set; }
 
         /// <summary>
         /// Gets or Sets PaidLeaveEarningsLines

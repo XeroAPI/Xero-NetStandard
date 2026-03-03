@@ -154,7 +154,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         {  
           BankAccounts = new List<BankAccount>();  
           LeaveBalances = new List<LeaveBalance>();  
-          LeaveLines = new List<LeaveLine>();  
           SuperMemberships = new List<SuperMembership>();  
           ValidationErrors = new List<ValidationError>(); 
         }
@@ -336,12 +335,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public List<LeaveBalance> LeaveBalances { get; set; }
 
         /// <summary>
-        /// Gets or Sets LeaveLines
-        /// </summary>
-        [DataMember(Name="LeaveLines", EmitDefaultValue=false)]
-        public List<LeaveLine> LeaveLines { get; set; }
-
-        /// <summary>
         /// Gets or Sets SuperMemberships
         /// </summary>
         [DataMember(Name="SuperMemberships", EmitDefaultValue=false)]
@@ -400,7 +393,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  CountryOfResidence: ").Append(CountryOfResidence).Append("\n");
             sb.Append("  IsSTP2Qualified: ").Append(IsSTP2Qualified).Append("\n");
             sb.Append("  LeaveBalances: ").Append(LeaveBalances).Append("\n");
-            sb.Append("  LeaveLines: ").Append(LeaveLines).Append("\n");
             sb.Append("  SuperMemberships: ").Append(SuperMemberships).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
@@ -592,12 +584,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.LeaveBalances.SequenceEqual(input.LeaveBalances)
                 ) && 
                 (
-                    this.LeaveLines == input.LeaveLines ||
-                    this.LeaveLines != null &&
-                    input.LeaveLines != null &&
-                    this.LeaveLines.SequenceEqual(input.LeaveLines)
-                ) && 
-                (
                     this.SuperMemberships == input.SuperMemberships ||
                     this.SuperMemberships != null &&
                     input.SuperMemberships != null &&
@@ -686,8 +672,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.IsSTP2Qualified.GetHashCode();
                 if (this.LeaveBalances != null)
                     hashCode = hashCode * 59 + this.LeaveBalances.GetHashCode();
-                if (this.LeaveLines != null)
-                    hashCode = hashCode * 59 + this.LeaveLines.GetHashCode();
                 if (this.SuperMemberships != null)
                     hashCode = hashCode * 59 + this.SuperMemberships.GetHashCode();
                 hashCode = hashCode * 59 + this.Status.GetHashCode();
