@@ -12,6 +12,7 @@ namespace Xero.NetStandard.OAuth2.Client
         string BuildLoginUri();
         string BuildLoginUri(string state);
         string BuildLoginUri(string state, string scope);
+        string BuildLoginUri(string state, string scope, string acrValues);
         string BuildLoginUriPkce(string codeVerifier);
         string BuildLoginUriPkce(string codeVerifier, string state);
         string BuildLoginUriPkce(string codeVerifier, string state, string scope);
