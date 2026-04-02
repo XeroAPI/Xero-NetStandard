@@ -4758,6 +4758,11 @@ ul.nav-tabs {
       "description" : "Returns Invoice number field. Reference field isn't available.",
       "readOnly" : true
     },
+    "InvoiceNumber" : {
+      "type" : "string",
+      "description" : "Returns Invoice number for prepayment receive document only.",
+      "readOnly" : true
+    },
     "UpdatedDateUTC" : {
       "type" : "string",
       "description" : "UTC timestamp of last update to the prepayment",
@@ -6351,7 +6356,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Accounting"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>13.0.0</li>
+              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>14.0.0</li>
               <li class="nav-header" data-group="Accounting"><a href="#api-Accounting">Methods</a></li>
               <li data-group="Accounting" data-name="createAccount" class="">
                 <a href="#api-Accounting-createAccount">createAccount</a>
@@ -34035,9 +34040,10 @@ namespace Example
             var page = 1;
             var unitdp = 4;
             var pageSize = 100;
+            var invoiceNumbers = new List&lt;string&gt;{&quot;INV-001&quot;,&quot;INV-002&quot;}
             
             try {
-                var result = await apiInstance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize);
+                var result = await apiInstance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, invoiceNumbers);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -34216,6 +34222,26 @@ e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal place
 
                     <div class="inner description marked">
 Number of records to retrieve per page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">InvoiceNumbers</td>
+<td>
+
+
+    <div id="d2e199_getPrepayments_invoiceNumbers">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    array[String]
+                </span>
+
+                    <div class="inner description marked">
+Filter by a comma-separated list of InvoiceNumbers
                     </div>
             </div>
         </div>

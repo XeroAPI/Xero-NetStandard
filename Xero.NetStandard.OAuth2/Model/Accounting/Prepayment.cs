@@ -162,6 +162,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string Reference { get; private set; }
 
         /// <summary>
+        /// Returns Invoice number for prepayment receive document only.
+        /// </summary>
+        /// <value>Returns Invoice number for prepayment receive document only.</value>
+        [DataMember(Name="InvoiceNumber", EmitDefaultValue=false)]
+        public string InvoiceNumber { get; private set; }
+
+        /// <summary>
         /// UTC timestamp of last update to the prepayment
         /// </summary>
         /// <value>UTC timestamp of last update to the prepayment</value>
@@ -242,6 +249,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  TotalTax: ").Append(TotalTax).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
+            sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  PrepaymentID: ").Append(PrepaymentID).Append("\n");
@@ -335,6 +343,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Reference.Equals(input.Reference))
                 ) && 
                 (
+                    this.InvoiceNumber == input.InvoiceNumber ||
+                    (this.InvoiceNumber != null &&
+                    this.InvoiceNumber.Equals(input.InvoiceNumber))
+                ) && 
+                (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
@@ -414,6 +427,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Total.GetHashCode();
                 if (this.Reference != null)
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
+                if (this.InvoiceNumber != null)
+                    hashCode = hashCode * 59 + this.InvoiceNumber.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
