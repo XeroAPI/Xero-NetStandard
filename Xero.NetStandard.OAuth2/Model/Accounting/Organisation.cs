@@ -119,76 +119,124 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             ACCOUNTINGPRACTICE = 1,
 
             /// <summary>
+            /// Enum CCORPORATIONLLC for value: CCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "CCORPORATIONLLC")]
+            CCORPORATIONLLC = 2,
+
+            /// <summary>
             /// Enum COMPANY for value: COMPANY
             /// </summary>
             [EnumMember(Value = "COMPANY")]
-            COMPANY = 2,
+            COMPANY = 3,
 
             /// <summary>
             /// Enum CHARITY for value: CHARITY
             /// </summary>
             [EnumMember(Value = "CHARITY")]
-            CHARITY = 3,
+            CHARITY = 4,
 
             /// <summary>
             /// Enum CLUBORSOCIETY for value: CLUB_OR_SOCIETY
             /// </summary>
             [EnumMember(Value = "CLUB_OR_SOCIETY")]
-            CLUBORSOCIETY = 4,
+            CLUBORSOCIETY = 5,
 
             /// <summary>
             /// Enum INDIVIDUAL for value: INDIVIDUAL
             /// </summary>
             [EnumMember(Value = "INDIVIDUAL")]
-            INDIVIDUAL = 5,
+            INDIVIDUAL = 6,
+
+            /// <summary>
+            /// Enum LLC for value: LLC
+            /// </summary>
+            [EnumMember(Value = "LLC")]
+            LLC = 7,
 
             /// <summary>
             /// Enum LOOKTHROUGHCOMPANY for value: LOOK_THROUGH_COMPANY
             /// </summary>
             [EnumMember(Value = "LOOK_THROUGH_COMPANY")]
-            LOOKTHROUGHCOMPANY = 6,
+            LOOKTHROUGHCOMPANY = 8,
 
             /// <summary>
             /// Enum NOTFORPROFIT for value: NOT_FOR_PROFIT
             /// </summary>
             [EnumMember(Value = "NOT_FOR_PROFIT")]
-            NOTFORPROFIT = 7,
+            NOTFORPROFIT = 9,
+
+            /// <summary>
+            /// Enum NOTLLC for value: NOTLLC
+            /// </summary>
+            [EnumMember(Value = "NOTLLC")]
+            NOTLLC = 10,
 
             /// <summary>
             /// Enum PARTNERSHIP for value: PARTNERSHIP
             /// </summary>
             [EnumMember(Value = "PARTNERSHIP")]
-            PARTNERSHIP = 8,
+            PARTNERSHIP = 11,
+
+            /// <summary>
+            /// Enum PARTNERSHIPLLC for value: PARTNERSHIPLLC
+            /// </summary>
+            [EnumMember(Value = "PARTNERSHIPLLC")]
+            PARTNERSHIPLLC = 12,
+
+            /// <summary>
+            /// Enum PERSONAL for value: PERSONAL
+            /// </summary>
+            [EnumMember(Value = "PERSONAL")]
+            PERSONAL = 13,
 
             /// <summary>
             /// Enum SCORPORATION for value: S_CORPORATION
             /// </summary>
             [EnumMember(Value = "S_CORPORATION")]
-            SCORPORATION = 9,
+            SCORPORATION = 14,
+
+            /// <summary>
+            /// Enum SCORPORATIONLLC for value: SCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "SCORPORATIONLLC")]
+            SCORPORATIONLLC = 15,
 
             /// <summary>
             /// Enum SELFMANAGEDSUPERANNUATIONFUND for value: SELF_MANAGED_SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SELF_MANAGED_SUPERANNUATION_FUND")]
-            SELFMANAGEDSUPERANNUATIONFUND = 10,
+            SELFMANAGEDSUPERANNUATIONFUND = 16,
+
+            /// <summary>
+            /// Enum SINGLEMEMBERLLC for value: SINGLEMEMBERLLC
+            /// </summary>
+            [EnumMember(Value = "SINGLEMEMBERLLC")]
+            SINGLEMEMBERLLC = 17,
 
             /// <summary>
             /// Enum SOLETRADER for value: SOLE_TRADER
             /// </summary>
             [EnumMember(Value = "SOLE_TRADER")]
-            SOLETRADER = 11,
+            SOLETRADER = 18,
 
             /// <summary>
             /// Enum SUPERANNUATIONFUND for value: SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SUPERANNUATION_FUND")]
-            SUPERANNUATIONFUND = 12,
+            SUPERANNUATIONFUND = 19,
 
             /// <summary>
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 13
+            TRUST = 20,
+
+            /// <summary>
+            /// Enum UNSPECIFIED for value: UNSPECIFIED
+            /// </summary>
+            [EnumMember(Value = "UNSPECIFIED")]
+            UNSPECIFIED = 21
 
         }
 
@@ -395,76 +443,124 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             ACCOUNTINGPRACTICE = 1,
 
             /// <summary>
+            /// Enum CCORPORATIONLLC for value: CCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "CCORPORATIONLLC")]
+            CCORPORATIONLLC = 2,
+
+            /// <summary>
             /// Enum COMPANY for value: COMPANY
             /// </summary>
             [EnumMember(Value = "COMPANY")]
-            COMPANY = 2,
+            COMPANY = 3,
 
             /// <summary>
             /// Enum CHARITY for value: CHARITY
             /// </summary>
             [EnumMember(Value = "CHARITY")]
-            CHARITY = 3,
+            CHARITY = 4,
 
             /// <summary>
             /// Enum CLUBORSOCIETY for value: CLUB_OR_SOCIETY
             /// </summary>
             [EnumMember(Value = "CLUB_OR_SOCIETY")]
-            CLUBORSOCIETY = 4,
+            CLUBORSOCIETY = 5,
 
             /// <summary>
             /// Enum INDIVIDUAL for value: INDIVIDUAL
             /// </summary>
             [EnumMember(Value = "INDIVIDUAL")]
-            INDIVIDUAL = 5,
+            INDIVIDUAL = 6,
+
+            /// <summary>
+            /// Enum LLC for value: LLC
+            /// </summary>
+            [EnumMember(Value = "LLC")]
+            LLC = 7,
 
             /// <summary>
             /// Enum LOOKTHROUGHCOMPANY for value: LOOK_THROUGH_COMPANY
             /// </summary>
             [EnumMember(Value = "LOOK_THROUGH_COMPANY")]
-            LOOKTHROUGHCOMPANY = 6,
+            LOOKTHROUGHCOMPANY = 8,
 
             /// <summary>
             /// Enum NOTFORPROFIT for value: NOT_FOR_PROFIT
             /// </summary>
             [EnumMember(Value = "NOT_FOR_PROFIT")]
-            NOTFORPROFIT = 7,
+            NOTFORPROFIT = 9,
+
+            /// <summary>
+            /// Enum NOTLLC for value: NOTLLC
+            /// </summary>
+            [EnumMember(Value = "NOTLLC")]
+            NOTLLC = 10,
 
             /// <summary>
             /// Enum PARTNERSHIP for value: PARTNERSHIP
             /// </summary>
             [EnumMember(Value = "PARTNERSHIP")]
-            PARTNERSHIP = 8,
+            PARTNERSHIP = 11,
+
+            /// <summary>
+            /// Enum PARTNERSHIPLLC for value: PARTNERSHIPLLC
+            /// </summary>
+            [EnumMember(Value = "PARTNERSHIPLLC")]
+            PARTNERSHIPLLC = 12,
+
+            /// <summary>
+            /// Enum PERSONAL for value: PERSONAL
+            /// </summary>
+            [EnumMember(Value = "PERSONAL")]
+            PERSONAL = 13,
 
             /// <summary>
             /// Enum SCORPORATION for value: S_CORPORATION
             /// </summary>
             [EnumMember(Value = "S_CORPORATION")]
-            SCORPORATION = 9,
+            SCORPORATION = 14,
+
+            /// <summary>
+            /// Enum SCORPORATIONLLC for value: SCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "SCORPORATIONLLC")]
+            SCORPORATIONLLC = 15,
 
             /// <summary>
             /// Enum SELFMANAGEDSUPERANNUATIONFUND for value: SELF_MANAGED_SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SELF_MANAGED_SUPERANNUATION_FUND")]
-            SELFMANAGEDSUPERANNUATIONFUND = 10,
+            SELFMANAGEDSUPERANNUATIONFUND = 16,
+
+            /// <summary>
+            /// Enum SINGLEMEMBERLLC for value: SINGLEMEMBERLLC
+            /// </summary>
+            [EnumMember(Value = "SINGLEMEMBERLLC")]
+            SINGLEMEMBERLLC = 17,
 
             /// <summary>
             /// Enum SOLETRADER for value: SOLE_TRADER
             /// </summary>
             [EnumMember(Value = "SOLE_TRADER")]
-            SOLETRADER = 11,
+            SOLETRADER = 18,
 
             /// <summary>
             /// Enum SUPERANNUATIONFUND for value: SUPERANNUATION_FUND
             /// </summary>
             [EnumMember(Value = "SUPERANNUATION_FUND")]
-            SUPERANNUATIONFUND = 12,
+            SUPERANNUATIONFUND = 19,
 
             /// <summary>
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 13
+            TRUST = 20,
+
+            /// <summary>
+            /// Enum UNSPECIFIED for value: UNSPECIFIED
+            /// </summary>
+            [EnumMember(Value = "UNSPECIFIED")]
+            UNSPECIFIED = 21
 
         }
 
