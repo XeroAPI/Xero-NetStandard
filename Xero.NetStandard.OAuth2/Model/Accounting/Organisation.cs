@@ -230,7 +230,53 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
+<<<<<<< Updated upstream
             TRUST = 20,
+=======
+            TRUST = 13,
+
+            /// <summary>
+            /// Enum PERSONAL for value: PERSONAL
+            /// </summary>
+            [EnumMember(Value = "PERSONAL")]
+            PERSONAL = 14,
+
+            /// <summary>
+            /// Enum SINGLEMEMBERLLC for value: SINGLEMEMBERLLC
+            /// </summary>
+            [EnumMember(Value = "SINGLEMEMBERLLC")]
+            SINGLEMEMBERLLC = 15,
+
+            /// <summary>
+            /// Enum CCORPORATIONLLC for value: CCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "CCORPORATIONLLC")]
+            CCORPORATIONLLC = 16,
+
+            /// <summary>
+            /// Enum PARTNERSHIPLLC for value: PARTNERSHIPLLC
+            /// </summary>
+            [EnumMember(Value = "PARTNERSHIPLLC")]
+            PARTNERSHIPLLC = 17,
+
+            /// <summary>
+            /// Enum SCORPORATIONLLC for value: SCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "SCORPORATIONLLC")]
+            SCORPORATIONLLC = 18,
+
+            /// <summary>
+            /// Enum LLC for value: LLC
+            /// </summary>
+            [EnumMember(Value = "LLC")]
+            LLC = 19,
+
+            /// <summary>
+            /// Enum NOTLLC for value: NOTLLC
+            /// </summary>
+            [EnumMember(Value = "NOTLLC")]
+            NOTLLC = 20,
+>>>>>>> Stashed changes
 
             /// <summary>
             /// Enum UNSPECIFIED for value: UNSPECIFIED
@@ -554,7 +600,53 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
+<<<<<<< Updated upstream
             TRUST = 20,
+=======
+            TRUST = 13,
+
+            /// <summary>
+            /// Enum PERSONAL for value: PERSONAL
+            /// </summary>
+            [EnumMember(Value = "PERSONAL")]
+            PERSONAL = 14,
+
+            /// <summary>
+            /// Enum SINGLEMEMBERLLC for value: SINGLEMEMBERLLC
+            /// </summary>
+            [EnumMember(Value = "SINGLEMEMBERLLC")]
+            SINGLEMEMBERLLC = 15,
+
+            /// <summary>
+            /// Enum CCORPORATIONLLC for value: CCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "CCORPORATIONLLC")]
+            CCORPORATIONLLC = 16,
+
+            /// <summary>
+            /// Enum PARTNERSHIPLLC for value: PARTNERSHIPLLC
+            /// </summary>
+            [EnumMember(Value = "PARTNERSHIPLLC")]
+            PARTNERSHIPLLC = 17,
+
+            /// <summary>
+            /// Enum SCORPORATIONLLC for value: SCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "SCORPORATIONLLC")]
+            SCORPORATIONLLC = 18,
+
+            /// <summary>
+            /// Enum LLC for value: LLC
+            /// </summary>
+            [EnumMember(Value = "LLC")]
+            LLC = 19,
+
+            /// <summary>
+            /// Enum NOTLLC for value: NOTLLC
+            /// </summary>
+            [EnumMember(Value = "NOTLLC")]
+            NOTLLC = 20,
+>>>>>>> Stashed changes
 
             /// <summary>
             /// Enum UNSPECIFIED for value: UNSPECIFIED
