@@ -63,6 +63,20 @@ namespace Xero.NetStandard.OAuth2.Model.Files
         public int? Size { get; set; }
 
         /// <summary>
+        /// The date the file was created (UTC). Note- The CreatedDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
+        /// </summary>
+        /// <value>The date the file was created (UTC). Note- The CreatedDateUtc element is only returned when using /Associations/{ObjectId} endpoint.</value>
+        [DataMember(Name="CreatedDateUtc", EmitDefaultValue=false)]
+        public DateTime? CreatedDateUtc { get; set; }
+
+        /// <summary>
+        /// The date the file was associated with the object (UTC). Note- The AssociationDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
+        /// </summary>
+        /// <value>The date the file was associated with the object (UTC). Note- The AssociationDateUtc element is only returned when using /Associations/{ObjectId} endpoint.</value>
+        [DataMember(Name="AssociationDateUtc", EmitDefaultValue=false)]
+        public DateTime? AssociationDateUtc { get; set; }
+
+        /// <summary>
         /// The unique identifier of the file
         /// </summary>
         /// <value>The unique identifier of the file</value>
@@ -87,6 +101,8 @@ namespace Xero.NetStandard.OAuth2.Model.Files
             sb.Append("  SendWithObject: ").Append(SendWithObject).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Size: ").Append(Size).Append("\n");
+            sb.Append("  CreatedDateUtc: ").Append(CreatedDateUtc).Append("\n");
+            sb.Append("  AssociationDateUtc: ").Append(AssociationDateUtc).Append("\n");
             sb.Append("  FileId: ").Append(FileId).Append("\n");
             sb.Append("  ObjectId: ").Append(ObjectId).Append("\n");
             sb.Append("  ObjectGroup: ").Append(ObjectGroup).Append("\n");
@@ -141,6 +157,16 @@ namespace Xero.NetStandard.OAuth2.Model.Files
                     this.Size.Equals(input.Size))
                 ) && 
                 (
+                    this.CreatedDateUtc == input.CreatedDateUtc ||
+                    (this.CreatedDateUtc != null &&
+                    this.CreatedDateUtc.Equals(input.CreatedDateUtc))
+                ) && 
+                (
+                    this.AssociationDateUtc == input.AssociationDateUtc ||
+                    (this.AssociationDateUtc != null &&
+                    this.AssociationDateUtc.Equals(input.AssociationDateUtc))
+                ) && 
+                (
                     this.FileId == input.FileId ||
                     (this.FileId != null &&
                     this.FileId.Equals(input.FileId))
@@ -175,6 +201,10 @@ namespace Xero.NetStandard.OAuth2.Model.Files
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Size != null)
                     hashCode = hashCode * 59 + this.Size.GetHashCode();
+                if (this.CreatedDateUtc != null)
+                    hashCode = hashCode * 59 + this.CreatedDateUtc.GetHashCode();
+                if (this.AssociationDateUtc != null)
+                    hashCode = hashCode * 59 + this.AssociationDateUtc.GetHashCode();
                 if (this.FileId != null)
                     hashCode = hashCode * 59 + this.FileId.GetHashCode();
                 if (this.ObjectId != null)
