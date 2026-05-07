@@ -183,6 +183,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public Guid? PrepaymentID { get; set; }
 
         /// <summary>
+        /// The unique identifier of the branding template applied to a receive prepayment
+        /// </summary>
+        /// <value>The unique identifier of the branding template applied to a receive prepayment</value>
+        [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
+        public Guid? BrandingThemeID { get; private set; }
+
+        /// <summary>
         /// The currency rate for a multicurrency prepayment. If no rate is specified, the XE.com day rate is used
         /// </summary>
         /// <value>The currency rate for a multicurrency prepayment. If no rate is specified, the XE.com day rate is used</value>
@@ -253,6 +260,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  PrepaymentID: ").Append(PrepaymentID).Append("\n");
+            sb.Append("  BrandingThemeID: ").Append(BrandingThemeID).Append("\n");
             sb.Append("  CurrencyRate: ").Append(CurrencyRate).Append("\n");
             sb.Append("  RemainingCredit: ").Append(RemainingCredit).Append("\n");
             sb.Append("  Allocations: ").Append(Allocations).Append("\n");
@@ -362,6 +370,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.PrepaymentID.Equals(input.PrepaymentID))
                 ) && 
                 (
+                    this.BrandingThemeID == input.BrandingThemeID ||
+                    (this.BrandingThemeID != null &&
+                    this.BrandingThemeID.Equals(input.BrandingThemeID))
+                ) && 
+                (
                     this.CurrencyRate == input.CurrencyRate ||
                     (this.CurrencyRate != null &&
                     this.CurrencyRate.Equals(input.CurrencyRate))
@@ -434,6 +447,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.PrepaymentID != null)
                     hashCode = hashCode * 59 + this.PrepaymentID.GetHashCode();
+                if (this.BrandingThemeID != null)
+                    hashCode = hashCode * 59 + this.BrandingThemeID.GetHashCode();
                 if (this.CurrencyRate != null)
                     hashCode = hashCode * 59 + this.CurrencyRate.GetHashCode();
                 if (this.RemainingCredit != null)
