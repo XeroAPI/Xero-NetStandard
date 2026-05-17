@@ -30,6 +30,14 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
     [DataContract]
     public partial class EmployeePayTemplate :  IEquatable<EmployeePayTemplate>, IValidatableObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeePayTemplate" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public EmployeePayTemplate() 
+        {  
+          EarningTemplates = new List<EarningsTemplate>(); 
+        }
         
         /// <summary>
         /// Unique identifier for the employee

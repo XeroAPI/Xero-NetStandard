@@ -701,7 +701,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum SIMPLE for value: SIMPLE
             /// </summary>
             [EnumMember(Value = "SIMPLE")]
-            SIMPLE = 21
+            SIMPLE = 21,
+
+            /// <summary>
+            /// Enum BASICLITE for value: BASICLITE
+            /// </summary>
+            [EnumMember(Value = "BASICLITE")]
+            BASICLITE = 22
 
         }
 
