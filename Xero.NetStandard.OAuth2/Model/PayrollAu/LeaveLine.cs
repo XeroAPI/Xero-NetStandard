@@ -45,6 +45,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         [DataMember(Name="EmploymentTerminationPaymentType", EmitDefaultValue=false)]
         public EmploymentTerminationPaymentType EmploymentTerminationPaymentType { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LeaveLine" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public LeaveLine() 
+        { 
+        }
         
         /// <summary>
         /// Xero leave type identifier
@@ -61,9 +68,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public bool? IncludeSuperannuationGuaranteeContribution { get; set; }
 
         /// <summary>
-        /// Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on superannuation settings
+        /// Boolean to determine if the leave line is considered as qualifying earnings for superannuation guarantee calculations
         /// </summary>
-        /// <value>Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on superannuation settings</value>
+        /// <value>Boolean to determine if the leave line is considered as qualifying earnings for superannuation guarantee calculations</value>
         [DataMember(Name="IsQualifyingEarnings", EmitDefaultValue=false)]
         public bool? IsQualifyingEarnings { get; set; }
 

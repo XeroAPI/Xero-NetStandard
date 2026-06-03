@@ -35,6 +35,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         [DataMember(Name="LeaveCategoryCode", EmitDefaultValue=false)]
         public LeaveCategoryCode LeaveCategoryCode { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LeaveType" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public LeaveType() 
+        { 
+        }
         
         /// <summary>
         /// Name of the earnings rate (max length &#x3D; 100)
@@ -107,9 +114,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public bool? SGCExempt { get; set; }
 
         /// <summary>
-        /// Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on earnings type and superannuation settings
+        /// Boolean to determine if the leave type is considered as qualifying earnings for superannuation guarantee calculations
         /// </summary>
-        /// <value>Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on earnings type and superannuation settings</value>
+        /// <value>Boolean to determine if the leave type is considered as qualifying earnings for superannuation guarantee calculations</value>
         [DataMember(Name="IsQualifyingEarnings", EmitDefaultValue=false)]
         public bool? IsQualifyingEarnings { get; set; }
 

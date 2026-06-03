@@ -167,9 +167,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
-        /// Optional Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations
+        /// Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations. Required when IncludeLeaveLoadingInSGC is specified in the payload
         /// </summary>
-        /// <value>Optional Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations</value>
+        /// <value>Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations. Required when IncludeLeaveLoadingInSGC is specified in the payload</value>
         [DataMember(Name="IncludeLeaveLoadingInQualifyingEarnings", EmitDefaultValue=false)]
         public bool? IncludeLeaveLoadingInQualifyingEarnings { get; set; }
 
