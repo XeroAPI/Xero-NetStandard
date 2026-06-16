@@ -53,7 +53,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum DELETED for value: DELETED
             /// </summary>
             [EnumMember(Value = "DELETED")]
-            DELETED = 3
+            DELETED = 3,
+
+            /// <summary>
+            /// Enum UNKNOWN for value: Empty string
+            /// </summary>
+            [EnumMember(Value = "")]
+            UNKNOWN = 4            
 
         }
 
