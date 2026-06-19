@@ -112,7 +112,7 @@ jobs:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Update csproj version
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: |
         NEW_VERSION="${{steps.calc_version.outputs.version}}"
         sed -i "s/<Version>.*<\/Version>/<Version>$NEW_VERSION<\/Version>/" \
@@ -121,33 +121,33 @@ jobs:
       working-directory: Xero-NetStandard
 
     - name: Setup .NET
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
         
     - name: Restore dependencies
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: dotnet restore
       working-directory: Xero-NetStandard
 
     - name: Build
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: dotnet build --no-restore
       working-directory: Xero-NetStandard
 
     - name: Create OAuth2Client Package for Nuget.org
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: dotnet pack ./Xero.NetStandard.OAuth2Client/Xero.NetStandard.OAuth2Client.csproj
       working-directory: Xero-NetStandard
 
     - name: Publish OAuth2Client Package to Nuget.org
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Release/Xero.NetStandard.OAuth2Client.${{steps.calc_version.outputs.version}}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
       working-directory: Xero-NetStandard
 
     - name: Commit, Push and Tag
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
