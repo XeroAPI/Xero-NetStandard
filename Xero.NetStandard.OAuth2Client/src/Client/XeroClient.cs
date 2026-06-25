@@ -316,9 +316,32 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <param name="xeroToken"></param>
         /// <param name="xeroTenant"></param>
         /// <returns>List of Tenants attached to accesstoken</returns>
+        [Obsolete("This method is being removed. Switch to using DeleteConnectionAsync using the connectionId guid")]
         public async Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant)
         {
             using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, $"{xeroConfiguration.XeroApiBaseUri}/connections" + "/" + xeroTenant.id))
+            {
+                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
+
+                var result = await _httpClient.SendAsync(requestMessage);
+                if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    return;
+                }
+
+                throw new HttpRequestException(await result.Content.ReadAsStringAsync());
+            }
+        }
+
+        /// <summary>
+        /// Delete the connection given the accesstoken and xero tenant id
+        /// </summary>
+        /// <param name="xeroToken"></param>
+        /// <param name="connectionId"></param>
+        /// <returns>Delete a connection using its connection id</returns>
+        public async Task DeleteConnectionAsync(IXeroToken xeroToken, Guid connectionId)
+        {
+            using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, $"{xeroConfiguration.XeroApiBaseUri}/connections" + "/" + connectionId))
             {
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
 

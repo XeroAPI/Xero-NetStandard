@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xero.NetStandard.OAuth2.Config;
@@ -22,6 +23,7 @@ namespace Xero.NetStandard.OAuth2.Client
         Task<IXeroToken> GetCurrentValidTokenAsync(IXeroToken xeroToken);
         Task<List<Tenant>> GetConnectionsAsync(IXeroToken xeroToken);
         Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant);
+        Task DeleteConnectionAsync(IXeroToken xeroToken, Guid connectionId);
         Task RevokeAccessTokenAsync(IXeroToken xeroToken);
     }
 }
