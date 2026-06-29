@@ -12,7 +12,7 @@
     <PackageTags>xero;api;sdk;oauth2;oauth2.0</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="IdentityModel" Version="7.0.0" />
+    <PackageReference Include="Duende.IdentityModel" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.0" />
     <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
