@@ -499,20 +499,6 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
     }
 
     /// <summary>
-    /// Test CreateEmployees
-    /// </summary>
-    [Fact]
-    public async Task CreateEmployeesTest()
-    {
-      // TODO uncomment below to test the method and replace null with proper value
-      string xeroTenantId = AutoFaker.Generate<string>();
-      Employees employees = new Employees();
-      employees._Employees = new List<Employee> { new Employee() };
-      var response = await instance.CreateEmployeesAsync(accessToken, xeroTenantId, employees);
-      Assert.IsType<Employees>(response);
-    }
-
-    /// <summary>
     /// Test CreateExpenseClaimHistory
     /// </summary>
     [Fact]
@@ -1628,34 +1614,6 @@ namespace Xero.NetStandard.OAuth2.Test.Api.Accounting
       string order = AutoFaker.Generate<string>();
       var response = await instance.GetCurrenciesAsync(accessToken, xeroTenantId, where, order);
       Assert.IsType<Currencies>(response);
-    }
-
-    /// <summary>
-    /// Test GetEmployee
-    /// </summary>
-    [Fact]
-    public async Task GetEmployeeTest()
-    {
-      // TODO uncomment below to test the method and replace null with proper value
-      string xeroTenantId = AutoFaker.Generate<string>();
-      Guid employeeID = AutoFaker.Generate<Guid>();
-      var response = await instance.GetEmployeeAsync(accessToken, xeroTenantId, employeeID);
-      Assert.IsType<Employees>(response);
-    }
-
-    /// <summary>
-    /// Test GetEmployees
-    /// </summary>
-    [Fact]
-    public async Task GetEmployeesTest()
-    {
-      // TODO uncomment below to test the method and replace null with proper value
-      string xeroTenantId = AutoFaker.Generate<string>();
-      DateTime? ifModifiedSince = AutoFaker.Generate<DateTime?>();
-      string where = AutoFaker.Generate<string>();
-      string order = AutoFaker.Generate<string>();
-      var response = await instance.GetEmployeesAsync(accessToken, xeroTenantId, ifModifiedSince, where, order);
-      Assert.IsType<Employees>(response);
     }
 
     /// <summary>

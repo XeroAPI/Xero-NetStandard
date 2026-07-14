@@ -25,35 +25,17 @@ using OpenAPIDateConverter = Xero.NetStandard.OAuth2.Client.OpenAPIDateConverter
 namespace Xero.NetStandard.OAuth2.Model.Accounting
 {
     /// <summary>
-    /// Pagination information
+    /// BankTransfersDelete
     /// </summary>
     [DataContract]
-    public partial class PageInfo :  IEquatable<PageInfo>, IValidatableObject
+    public partial class BankTransfersDelete :  IEquatable<BankTransfersDelete>, IValidatableObject
     {
         
         /// <summary>
-        /// Gets or Sets Page
+        /// Gets or Sets BankTransfers
         /// </summary>
-        [DataMember(Name="Page", EmitDefaultValue=false)]
-        public int? Page { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PageSize
-        /// </summary>
-        [DataMember(Name="PageSize", EmitDefaultValue=false)]
-        public int? PageSize { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalPages
-        /// </summary>
-        [DataMember(Name="TotalPages", EmitDefaultValue=false)]
-        public int? TotalPages { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalRows
-        /// </summary>
-        [DataMember(Name="TotalRows", EmitDefaultValue=false)]
-        public int? TotalRows { get; set; }
+        [DataMember(Name="BankTransfers", EmitDefaultValue=false)]
+        public List<BankTransferDelete> BankTransfers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,11 +44,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class PageInfo {\n");
-            sb.Append("  Page: ").Append(Page).Append("\n");
-            sb.Append("  PageSize: ").Append(PageSize).Append("\n");
-            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
-            sb.Append("  TotalRows: ").Append(TotalRows).Append("\n");
+            sb.Append("class BankTransfersDelete {\n");
+            sb.Append("  BankTransfers: ").Append(BankTransfers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -87,39 +66,25 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PageInfo);
+            return this.Equals(input as BankTransfersDelete);
         }
 
         /// <summary>
-        /// Returns true if PageInfo instances are equal
+        /// Returns true if BankTransfersDelete instances are equal
         /// </summary>
-        /// <param name="input">Instance of PageInfo to be compared</param>
+        /// <param name="input">Instance of BankTransfersDelete to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PageInfo input)
+        public bool Equals(BankTransfersDelete input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Page == input.Page ||
-                    (this.Page != null &&
-                    this.Page.Equals(input.Page))
-                ) && 
-                (
-                    this.PageSize == input.PageSize ||
-                    (this.PageSize != null &&
-                    this.PageSize.Equals(input.PageSize))
-                ) && 
-                (
-                    this.TotalPages == input.TotalPages ||
-                    (this.TotalPages != null &&
-                    this.TotalPages.Equals(input.TotalPages))
-                ) && 
-                (
-                    this.TotalRows == input.TotalRows ||
-                    (this.TotalRows != null &&
-                    this.TotalRows.Equals(input.TotalRows))
+                    this.BankTransfers == input.BankTransfers ||
+                    this.BankTransfers != null &&
+                    input.BankTransfers != null &&
+                    this.BankTransfers.SequenceEqual(input.BankTransfers)
                 );
         }
 
@@ -132,14 +97,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Page != null)
-                    hashCode = hashCode * 59 + this.Page.GetHashCode();
-                if (this.PageSize != null)
-                    hashCode = hashCode * 59 + this.PageSize.GetHashCode();
-                if (this.TotalPages != null)
-                    hashCode = hashCode * 59 + this.TotalPages.GetHashCode();
-                if (this.TotalRows != null)
-                    hashCode = hashCode * 59 + this.TotalRows.GetHashCode();
+                if (this.BankTransfers != null)
+                    hashCode = hashCode * 59 + this.BankTransfers.GetHashCode();
                 return hashCode;
             }
         }

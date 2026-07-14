@@ -188,7 +188,55 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 13
+            TRUST = 13,
+
+            /// <summary>
+            /// Enum PERSONAL for value: PERSONAL
+            /// </summary>
+            [EnumMember(Value = "PERSONAL")]
+            PERSONAL = 14,
+
+            /// <summary>
+            /// Enum SINGLEMEMBERLLC for value: SINGLEMEMBERLLC
+            /// </summary>
+            [EnumMember(Value = "SINGLEMEMBERLLC")]
+            SINGLEMEMBERLLC = 15,
+
+            /// <summary>
+            /// Enum CCORPORATIONLLC for value: CCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "CCORPORATIONLLC")]
+            CCORPORATIONLLC = 16,
+
+            /// <summary>
+            /// Enum PARTNERSHIPLLC for value: PARTNERSHIPLLC
+            /// </summary>
+            [EnumMember(Value = "PARTNERSHIPLLC")]
+            PARTNERSHIPLLC = 17,
+
+            /// <summary>
+            /// Enum SCORPORATIONLLC for value: SCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "SCORPORATIONLLC")]
+            SCORPORATIONLLC = 18,
+
+            /// <summary>
+            /// Enum LLC for value: LLC
+            /// </summary>
+            [EnumMember(Value = "LLC")]
+            LLC = 19,
+
+            /// <summary>
+            /// Enum NOTLLC for value: NOTLLC
+            /// </summary>
+            [EnumMember(Value = "NOTLLC")]
+            NOTLLC = 20,
+
+            /// <summary>
+            /// Enum UNSPECIFIED for value: UNSPECIFIED
+            /// </summary>
+            [EnumMember(Value = "UNSPECIFIED")]
+            UNSPECIFIED = 21
 
         }
 
@@ -464,7 +512,55 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum TRUST for value: TRUST
             /// </summary>
             [EnumMember(Value = "TRUST")]
-            TRUST = 13
+            TRUST = 13,
+
+            /// <summary>
+            /// Enum PERSONAL for value: PERSONAL
+            /// </summary>
+            [EnumMember(Value = "PERSONAL")]
+            PERSONAL = 14,
+
+            /// <summary>
+            /// Enum SINGLEMEMBERLLC for value: SINGLEMEMBERLLC
+            /// </summary>
+            [EnumMember(Value = "SINGLEMEMBERLLC")]
+            SINGLEMEMBERLLC = 15,
+
+            /// <summary>
+            /// Enum CCORPORATIONLLC for value: CCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "CCORPORATIONLLC")]
+            CCORPORATIONLLC = 16,
+
+            /// <summary>
+            /// Enum PARTNERSHIPLLC for value: PARTNERSHIPLLC
+            /// </summary>
+            [EnumMember(Value = "PARTNERSHIPLLC")]
+            PARTNERSHIPLLC = 17,
+
+            /// <summary>
+            /// Enum SCORPORATIONLLC for value: SCORPORATIONLLC
+            /// </summary>
+            [EnumMember(Value = "SCORPORATIONLLC")]
+            SCORPORATIONLLC = 18,
+
+            /// <summary>
+            /// Enum LLC for value: LLC
+            /// </summary>
+            [EnumMember(Value = "LLC")]
+            LLC = 19,
+
+            /// <summary>
+            /// Enum NOTLLC for value: NOTLLC
+            /// </summary>
+            [EnumMember(Value = "NOTLLC")]
+            NOTLLC = 20,
+
+            /// <summary>
+            /// Enum UNSPECIFIED for value: UNSPECIFIED
+            /// </summary>
+            [EnumMember(Value = "UNSPECIFIED")]
+            UNSPECIFIED = 21
 
         }
 
@@ -605,7 +701,19 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             /// Enum SIMPLE for value: SIMPLE
             /// </summary>
             [EnumMember(Value = "SIMPLE")]
-            SIMPLE = 21
+            SIMPLE = 21,
+
+            /// <summary>
+            /// Enum BASICLITE for value: BASICLITE
+            /// </summary>
+            [EnumMember(Value = "BASICLITE")]
+            BASICLITE = 22,
+
+            /// <summary>
+            /// Enum ULTRA for value: ULTRA
+            /// </summary>
+            [EnumMember(Value = "ULTRA")]
+            ULTRA = 23
 
         }
 

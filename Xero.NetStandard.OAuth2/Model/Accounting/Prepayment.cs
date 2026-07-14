@@ -162,6 +162,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public string Reference { get; private set; }
 
         /// <summary>
+        /// Returns Invoice number for prepayment receive document only.
+        /// </summary>
+        /// <value>Returns Invoice number for prepayment receive document only.</value>
+        [DataMember(Name="InvoiceNumber", EmitDefaultValue=false)]
+        public string InvoiceNumber { get; private set; }
+
+        /// <summary>
         /// UTC timestamp of last update to the prepayment
         /// </summary>
         /// <value>UTC timestamp of last update to the prepayment</value>
@@ -169,11 +176,25 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// UTC ISO-8601 formatted timestamp of last update to the prepayment
+        /// </summary>
+        /// <value>UTC ISO-8601 formatted timestamp of last update to the prepayment</value>
+        [DataMember(Name="UpdatedDateUTCString", EmitDefaultValue=false)]
+        public string UpdatedDateUTCString { get; private set; }
+
+        /// <summary>
         /// Xero generated unique identifier
         /// </summary>
         /// <value>Xero generated unique identifier</value>
         [DataMember(Name="PrepaymentID", EmitDefaultValue=false)]
         public Guid? PrepaymentID { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the branding template applied to a receive prepayment
+        /// </summary>
+        /// <value>The unique identifier of the branding template applied to a receive prepayment</value>
+        [DataMember(Name="BrandingThemeID", EmitDefaultValue=false)]
+        public Guid? BrandingThemeID { get; private set; }
 
         /// <summary>
         /// The currency rate for a multicurrency prepayment. If no rate is specified, the XE.com day rate is used
@@ -242,9 +263,12 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  TotalTax: ").Append(TotalTax).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
+            sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  UpdatedDateUTCString: ").Append(UpdatedDateUTCString).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  PrepaymentID: ").Append(PrepaymentID).Append("\n");
+            sb.Append("  BrandingThemeID: ").Append(BrandingThemeID).Append("\n");
             sb.Append("  CurrencyRate: ").Append(CurrencyRate).Append("\n");
             sb.Append("  RemainingCredit: ").Append(RemainingCredit).Append("\n");
             sb.Append("  Allocations: ").Append(Allocations).Append("\n");
@@ -335,9 +359,19 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Reference.Equals(input.Reference))
                 ) && 
                 (
+                    this.InvoiceNumber == input.InvoiceNumber ||
+                    (this.InvoiceNumber != null &&
+                    this.InvoiceNumber.Equals(input.InvoiceNumber))
+                ) && 
+                (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
+                ) && 
+                (
+                    this.UpdatedDateUTCString == input.UpdatedDateUTCString ||
+                    (this.UpdatedDateUTCString != null &&
+                    this.UpdatedDateUTCString.Equals(input.UpdatedDateUTCString))
                 ) && 
                 (
                     this.CurrencyCode == input.CurrencyCode ||
@@ -347,6 +381,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.PrepaymentID == input.PrepaymentID ||
                     (this.PrepaymentID != null &&
                     this.PrepaymentID.Equals(input.PrepaymentID))
+                ) && 
+                (
+                    this.BrandingThemeID == input.BrandingThemeID ||
+                    (this.BrandingThemeID != null &&
+                    this.BrandingThemeID.Equals(input.BrandingThemeID))
                 ) && 
                 (
                     this.CurrencyRate == input.CurrencyRate ||
@@ -414,11 +453,17 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Total.GetHashCode();
                 if (this.Reference != null)
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
+                if (this.InvoiceNumber != null)
+                    hashCode = hashCode * 59 + this.InvoiceNumber.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.UpdatedDateUTCString != null)
+                    hashCode = hashCode * 59 + this.UpdatedDateUTCString.GetHashCode();
                 hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.PrepaymentID != null)
                     hashCode = hashCode * 59 + this.PrepaymentID.GetHashCode();
+                if (this.BrandingThemeID != null)
+                    hashCode = hashCode * 59 + this.BrandingThemeID.GetHashCode();
                 if (this.CurrencyRate != null)
                     hashCode = hashCode * 59 + this.CurrencyRate.GetHashCode();
                 if (this.RemainingCredit != null)

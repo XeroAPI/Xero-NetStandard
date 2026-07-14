@@ -45,6 +45,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         [DataMember(Name="EmploymentTerminationPaymentType", EmitDefaultValue=false)]
         public EmploymentTerminationPaymentType EmploymentTerminationPaymentType { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LeaveLine" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public LeaveLine() 
+        { 
+        }
         
         /// <summary>
         /// Xero leave type identifier
@@ -59,6 +66,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// <value>amount of leave line</value>
         [DataMember(Name="IncludeSuperannuationGuaranteeContribution", EmitDefaultValue=false)]
         public bool? IncludeSuperannuationGuaranteeContribution { get; set; }
+
+        /// <summary>
+        /// Boolean to determine if the leave line is considered as qualifying earnings for superannuation guarantee calculations
+        /// </summary>
+        /// <value>Boolean to determine if the leave line is considered as qualifying earnings for superannuation guarantee calculations</value>
+        [DataMember(Name="IsQualifyingEarnings", EmitDefaultValue=false)]
+        public bool? IsQualifyingEarnings { get; set; }
 
         /// <summary>
         /// Number of units for leave line.
@@ -94,6 +108,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  EntitlementFinalPayPayoutType: ").Append(EntitlementFinalPayPayoutType).Append("\n");
             sb.Append("  EmploymentTerminationPaymentType: ").Append(EmploymentTerminationPaymentType).Append("\n");
             sb.Append("  IncludeSuperannuationGuaranteeContribution: ").Append(IncludeSuperannuationGuaranteeContribution).Append("\n");
+            sb.Append("  IsQualifyingEarnings: ").Append(IsQualifyingEarnings).Append("\n");
             sb.Append("  NumberOfUnits: ").Append(NumberOfUnits).Append("\n");
             sb.Append("  AnnualNumberOfUnits: ").Append(AnnualNumberOfUnits).Append("\n");
             sb.Append("  FullTimeNumberOfUnitsPerPeriod: ").Append(FullTimeNumberOfUnitsPerPeriod).Append("\n");
@@ -154,6 +169,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.IncludeSuperannuationGuaranteeContribution.Equals(input.IncludeSuperannuationGuaranteeContribution))
                 ) && 
                 (
+                    this.IsQualifyingEarnings == input.IsQualifyingEarnings ||
+                    (this.IsQualifyingEarnings != null &&
+                    this.IsQualifyingEarnings.Equals(input.IsQualifyingEarnings))
+                ) && 
+                (
                     this.NumberOfUnits == input.NumberOfUnits ||
                     (this.NumberOfUnits != null &&
                     this.NumberOfUnits.Equals(input.NumberOfUnits))
@@ -186,6 +206,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 hashCode = hashCode * 59 + this.EmploymentTerminationPaymentType.GetHashCode();
                 if (this.IncludeSuperannuationGuaranteeContribution != null)
                     hashCode = hashCode * 59 + this.IncludeSuperannuationGuaranteeContribution.GetHashCode();
+                if (this.IsQualifyingEarnings != null)
+                    hashCode = hashCode * 59 + this.IsQualifyingEarnings.GetHashCode();
                 if (this.NumberOfUnits != null)
                     hashCode = hashCode * 59 + this.NumberOfUnits.GetHashCode();
                 if (this.AnnualNumberOfUnits != null)

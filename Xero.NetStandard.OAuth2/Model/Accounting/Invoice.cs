@@ -358,11 +358,18 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? AmountCredited { get; private set; }
 
         /// <summary>
-        /// Last modified date UTC format
+        /// UTC timestamp of last update to the invoice
         /// </summary>
-        /// <value>Last modified date UTC format</value>
+        /// <value>UTC timestamp of last update to the invoice</value>
         [DataMember(Name="UpdatedDateUTC", EmitDefaultValue=false)]
         public DateTime? UpdatedDateUTC { get; private set; }
+
+        /// <summary>
+        /// UTC ISO-8601 formatted timestamp of last update to the invoice
+        /// </summary>
+        /// <value>UTC ISO-8601 formatted timestamp of last update to the invoice</value>
+        [DataMember(Name="UpdatedDateUTCString", EmitDefaultValue=false)]
+        public string UpdatedDateUTCString { get; private set; }
 
         /// <summary>
         /// Details of credit notes that have been applied to an invoice
@@ -455,6 +462,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  FullyPaidOnDate: ").Append(FullyPaidOnDate).Append("\n");
             sb.Append("  AmountCredited: ").Append(AmountCredited).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  UpdatedDateUTCString: ").Append(UpdatedDateUTCString).Append("\n");
             sb.Append("  CreditNotes: ").Append(CreditNotes).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("  HasErrors: ").Append(HasErrors).Append("\n");
@@ -667,6 +675,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
+                    this.UpdatedDateUTCString == input.UpdatedDateUTCString ||
+                    (this.UpdatedDateUTCString != null &&
+                    this.UpdatedDateUTCString.Equals(input.UpdatedDateUTCString))
+                ) && 
+                (
                     this.CreditNotes == input.CreditNotes ||
                     this.CreditNotes != null &&
                     input.CreditNotes != null &&
@@ -781,6 +794,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.AmountCredited.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.UpdatedDateUTCString != null)
+                    hashCode = hashCode * 59 + this.UpdatedDateUTCString.GetHashCode();
                 if (this.CreditNotes != null)
                     hashCode = hashCode * 59 + this.CreditNotes.GetHashCode();
                 if (this.Attachments != null)

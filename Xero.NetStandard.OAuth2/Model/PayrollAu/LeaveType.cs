@@ -35,6 +35,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         [DataMember(Name="LeaveCategoryCode", EmitDefaultValue=false)]
         public LeaveCategoryCode LeaveCategoryCode { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LeaveType" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public LeaveType() 
+        { 
+        }
         
         /// <summary>
         /// Name of the earnings rate (max length &#x3D; 100)
@@ -107,6 +114,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         public bool? SGCExempt { get; set; }
 
         /// <summary>
+        /// Boolean to determine if the leave type is considered as qualifying earnings for superannuation guarantee calculations
+        /// </summary>
+        /// <value>Boolean to determine if the leave type is considered as qualifying earnings for superannuation guarantee calculations</value>
+        [DataMember(Name="IsQualifyingEarnings", EmitDefaultValue=false)]
+        public bool? IsQualifyingEarnings { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -125,6 +139,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  CurrentRecord: ").Append(CurrentRecord).Append("\n");
             sb.Append("  LeaveCategoryCode: ").Append(LeaveCategoryCode).Append("\n");
             sb.Append("  SGCExempt: ").Append(SGCExempt).Append("\n");
+            sb.Append("  IsQualifyingEarnings: ").Append(IsQualifyingEarnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -212,6 +227,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.SGCExempt == input.SGCExempt ||
                     (this.SGCExempt != null &&
                     this.SGCExempt.Equals(input.SGCExempt))
+                ) && 
+                (
+                    this.IsQualifyingEarnings == input.IsQualifyingEarnings ||
+                    (this.IsQualifyingEarnings != null &&
+                    this.IsQualifyingEarnings.Equals(input.IsQualifyingEarnings))
                 );
         }
 
@@ -245,6 +265,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                 hashCode = hashCode * 59 + this.LeaveCategoryCode.GetHashCode();
                 if (this.SGCExempt != null)
                     hashCode = hashCode * 59 + this.SGCExempt.GetHashCode();
+                if (this.IsQualifyingEarnings != null)
+                    hashCode = hashCode * 59 + this.IsQualifyingEarnings.GetHashCode();
                 return hashCode;
             }
         }

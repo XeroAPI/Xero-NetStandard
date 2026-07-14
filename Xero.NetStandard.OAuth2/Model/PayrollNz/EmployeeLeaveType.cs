@@ -78,17 +78,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public Guid? LeaveTypeID { get; set; }
 
         /// <summary>
-        /// Deprecated use UnitsAccruedAnnually
-        /// </summary>
-        /// <value>Deprecated use UnitsAccruedAnnually</value>
-        [DataMember(Name="hoursAccruedAnnually", EmitDefaultValue=false)]
-        public decimal? HoursAccruedAnnually { get; set; }
-
-        /// <summary>
         /// The number of units accrued for the leave annually. This is 0 when the ScheduleOfAccrual chosen is \&quot;NoAccruals\&quot;
         /// </summary>
         /// <value>The number of units accrued for the leave annually. This is 0 when the ScheduleOfAccrual chosen is \&quot;NoAccruals\&quot;</value>
-        [DataMember(Name="UnitsAccruedAnnually", EmitDefaultValue=false)]
+        [DataMember(Name="unitsAccruedAnnually", EmitDefaultValue=false)]
         public decimal? UnitsAccruedAnnually { get; set; }
 
         /// <summary>
@@ -120,9 +113,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public string OpeningBalanceTypeOfUnits { get; set; }
 
         /// <summary>
-        /// The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;
+        /// not supported in Payroll NZ
         /// </summary>
-        /// <value>The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is \&quot;OnHourWorked\&quot;</value>
+        /// <value>not supported in Payroll NZ</value>
         [DataMember(Name="rateAccruedHourly", EmitDefaultValue=false)]
         public decimal? RateAccruedHourly { get; set; }
 
@@ -172,7 +165,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("class EmployeeLeaveType {\n");
             sb.Append("  LeaveTypeID: ").Append(LeaveTypeID).Append("\n");
             sb.Append("  ScheduleOfAccrual: ").Append(ScheduleOfAccrual).Append("\n");
-            sb.Append("  HoursAccruedAnnually: ").Append(HoursAccruedAnnually).Append("\n");
             sb.Append("  UnitsAccruedAnnually: ").Append(UnitsAccruedAnnually).Append("\n");
             sb.Append("  TypeOfUnitsToAccrue: ").Append(TypeOfUnitsToAccrue).Append("\n");
             sb.Append("  MaximumToAccrue: ").Append(MaximumToAccrue).Append("\n");
@@ -226,11 +218,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                 (
                     this.ScheduleOfAccrual == input.ScheduleOfAccrual ||
                     this.ScheduleOfAccrual.Equals(input.ScheduleOfAccrual)
-                ) && 
-                (
-                    this.HoursAccruedAnnually == input.HoursAccruedAnnually ||
-                    (this.HoursAccruedAnnually != null &&
-                    this.HoursAccruedAnnually.Equals(input.HoursAccruedAnnually))
                 ) && 
                 (
                     this.UnitsAccruedAnnually == input.UnitsAccruedAnnually ||
@@ -301,8 +288,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                 if (this.LeaveTypeID != null)
                     hashCode = hashCode * 59 + this.LeaveTypeID.GetHashCode();
                 hashCode = hashCode * 59 + this.ScheduleOfAccrual.GetHashCode();
-                if (this.HoursAccruedAnnually != null)
-                    hashCode = hashCode * 59 + this.HoursAccruedAnnually.GetHashCode();
                 if (this.UnitsAccruedAnnually != null)
                     hashCode = hashCode * 59 + this.UnitsAccruedAnnually.GetHashCode();
                 if (this.TypeOfUnitsToAccrue != null)

@@ -60,20 +60,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public decimal? NegativeAnnualLeaveBalancePaidAmount { get; set; }
 
         /// <summary>
-        /// Deprecated use SickLeaveToAccrueAnnually
-        /// </summary>
-        /// <value>Deprecated use SickLeaveToAccrueAnnually</value>
-        [DataMember(Name="sickLeaveHoursToAccrueAnnually", EmitDefaultValue=false)]
-        public decimal? SickLeaveHoursToAccrueAnnually { get; set; }
-
-        /// <summary>
-        /// Deprecated use SickLeaveMaximumToAccrue
-        /// </summary>
-        /// <value>Deprecated use SickLeaveMaximumToAccrue</value>
-        [DataMember(Name="sickLeaveMaximumHoursToAccrue", EmitDefaultValue=false)]
-        public decimal? SickLeaveMaximumHoursToAccrue { get; set; }
-
-        /// <summary>
         /// Number of units accrued annually for sick leave. The type of units is determined by the property \&quot;TypeOfUnitsToAccrue\&quot; on the \&quot;Sick Leave\&quot; leave type
         /// </summary>
         /// <value>Number of units accrued annually for sick leave. The type of units is determined by the property \&quot;TypeOfUnitsToAccrue\&quot; on the \&quot;Sick Leave\&quot; leave type</value>
@@ -129,8 +115,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  HolidayPayOpeningBalance: ").Append(HolidayPayOpeningBalance).Append("\n");
             sb.Append("  AnnualLeaveOpeningBalance: ").Append(AnnualLeaveOpeningBalance).Append("\n");
             sb.Append("  NegativeAnnualLeaveBalancePaidAmount: ").Append(NegativeAnnualLeaveBalancePaidAmount).Append("\n");
-            sb.Append("  SickLeaveHoursToAccrueAnnually: ").Append(SickLeaveHoursToAccrueAnnually).Append("\n");
-            sb.Append("  SickLeaveMaximumHoursToAccrue: ").Append(SickLeaveMaximumHoursToAccrue).Append("\n");
             sb.Append("  SickLeaveToAccrueAnnually: ").Append(SickLeaveToAccrueAnnually).Append("\n");
             sb.Append("  SickLeaveMaximumToAccrue: ").Append(SickLeaveMaximumToAccrue).Append("\n");
             sb.Append("  SickLeaveOpeningBalance: ").Append(SickLeaveOpeningBalance).Append("\n");
@@ -192,16 +176,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.NegativeAnnualLeaveBalancePaidAmount.Equals(input.NegativeAnnualLeaveBalancePaidAmount))
                 ) && 
                 (
-                    this.SickLeaveHoursToAccrueAnnually == input.SickLeaveHoursToAccrueAnnually ||
-                    (this.SickLeaveHoursToAccrueAnnually != null &&
-                    this.SickLeaveHoursToAccrueAnnually.Equals(input.SickLeaveHoursToAccrueAnnually))
-                ) && 
-                (
-                    this.SickLeaveMaximumHoursToAccrue == input.SickLeaveMaximumHoursToAccrue ||
-                    (this.SickLeaveMaximumHoursToAccrue != null &&
-                    this.SickLeaveMaximumHoursToAccrue.Equals(input.SickLeaveMaximumHoursToAccrue))
-                ) && 
-                (
                     this.SickLeaveToAccrueAnnually == input.SickLeaveToAccrueAnnually ||
                     (this.SickLeaveToAccrueAnnually != null &&
                     this.SickLeaveToAccrueAnnually.Equals(input.SickLeaveToAccrueAnnually))
@@ -250,10 +224,6 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.AnnualLeaveOpeningBalance.GetHashCode();
                 if (this.NegativeAnnualLeaveBalancePaidAmount != null)
                     hashCode = hashCode * 59 + this.NegativeAnnualLeaveBalancePaidAmount.GetHashCode();
-                if (this.SickLeaveHoursToAccrueAnnually != null)
-                    hashCode = hashCode * 59 + this.SickLeaveHoursToAccrueAnnually.GetHashCode();
-                if (this.SickLeaveMaximumHoursToAccrue != null)
-                    hashCode = hashCode * 59 + this.SickLeaveMaximumHoursToAccrue.GetHashCode();
                 if (this.SickLeaveToAccrueAnnually != null)
                     hashCode = hashCode * 59 + this.SickLeaveToAccrueAnnually.GetHashCode();
                 if (this.SickLeaveMaximumToAccrue != null)

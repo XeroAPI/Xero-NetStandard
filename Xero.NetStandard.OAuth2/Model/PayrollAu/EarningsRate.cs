@@ -55,6 +55,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// </summary>
         [DataMember(Name="AllowanceCategory", EmitDefaultValue=false)]
         public AllowanceCategory AllowanceCategory { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EarningsRate" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public EarningsRate() 
+        { 
+        }
         
         /// <summary>
         /// Name of the earnings rate (max length &#x3D; 100)
@@ -97,6 +104,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
         /// <value>Boolean to determine if the earnings rate is reportable or exempt from W1</value>
         [DataMember(Name="IsReportableAsW1", EmitDefaultValue=false)]
         public bool? IsReportableAsW1 { get; set; }
+
+        /// <summary>
+        /// Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations
+        /// </summary>
+        /// <value>Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations</value>
+        [DataMember(Name="IsQualifyingEarnings", EmitDefaultValue=false)]
+        public bool? IsQualifyingEarnings { get; set; }
 
         /// <summary>
         /// Boolean to determine if the allowance earnings rate contributes towards annual leave rate. Only applicable if EarningsType is ALLOWANCE and RateType is RATEPERUNIT
@@ -175,6 +189,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
             sb.Append("  IsExemptFromTax: ").Append(IsExemptFromTax).Append("\n");
             sb.Append("  IsExemptFromSuper: ").Append(IsExemptFromSuper).Append("\n");
             sb.Append("  IsReportableAsW1: ").Append(IsReportableAsW1).Append("\n");
+            sb.Append("  IsQualifyingEarnings: ").Append(IsQualifyingEarnings).Append("\n");
             sb.Append("  AllowanceContributesToAnnualLeaveRate: ").Append(AllowanceContributesToAnnualLeaveRate).Append("\n");
             sb.Append("  AllowanceContributesToOvertimeRate: ").Append(AllowanceContributesToOvertimeRate).Append("\n");
             sb.Append("  EarningsType: ").Append(EarningsType).Append("\n");
@@ -252,6 +267,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     this.IsReportableAsW1 == input.IsReportableAsW1 ||
                     (this.IsReportableAsW1 != null &&
                     this.IsReportableAsW1.Equals(input.IsReportableAsW1))
+                ) && 
+                (
+                    this.IsQualifyingEarnings == input.IsQualifyingEarnings ||
+                    (this.IsQualifyingEarnings != null &&
+                    this.IsQualifyingEarnings.Equals(input.IsQualifyingEarnings))
                 ) && 
                 (
                     this.AllowanceContributesToAnnualLeaveRate == input.AllowanceContributesToAnnualLeaveRate ||
@@ -341,6 +361,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollAu
                     hashCode = hashCode * 59 + this.IsExemptFromSuper.GetHashCode();
                 if (this.IsReportableAsW1 != null)
                     hashCode = hashCode * 59 + this.IsReportableAsW1.GetHashCode();
+                if (this.IsQualifyingEarnings != null)
+                    hashCode = hashCode * 59 + this.IsQualifyingEarnings.GetHashCode();
                 if (this.AllowanceContributesToAnnualLeaveRate != null)
                     hashCode = hashCode * 59 + this.AllowanceContributesToAnnualLeaveRate.GetHashCode();
                 if (this.AllowanceContributesToOvertimeRate != null)

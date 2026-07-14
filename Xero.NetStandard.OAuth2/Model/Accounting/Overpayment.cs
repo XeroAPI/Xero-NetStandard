@@ -156,6 +156,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// UTC ISO-8601 formatted timestamp of last update to the overpayment
+        /// </summary>
+        /// <value>UTC ISO-8601 formatted timestamp of last update to the overpayment</value>
+        [DataMember(Name="UpdatedDateUTCString", EmitDefaultValue=false)]
+        public string UpdatedDateUTCString { get; private set; }
+
+        /// <summary>
         /// Xero generated unique identifier
         /// </summary>
         /// <value>Xero generated unique identifier</value>
@@ -205,6 +212,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public bool? HasAttachments { get; private set; }
 
         /// <summary>
+        /// An optional description for Overpayment
+        /// </summary>
+        /// <value>An optional description for Overpayment</value>
+        [DataMember(Name="Reference", EmitDefaultValue=false)]
+        public string Reference { get; set; }
+
+        /// <summary>
         /// See Attachments
         /// </summary>
         /// <value>See Attachments</value>
@@ -229,6 +243,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  TotalTax: ").Append(TotalTax).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  UpdatedDateUTCString: ").Append(UpdatedDateUTCString).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  OverpaymentID: ").Append(OverpaymentID).Append("\n");
             sb.Append("  CurrencyRate: ").Append(CurrencyRate).Append("\n");
@@ -237,6 +252,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  AppliedAmount: ").Append(AppliedAmount).Append("\n");
             sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -321,6 +337,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
+                    this.UpdatedDateUTCString == input.UpdatedDateUTCString ||
+                    (this.UpdatedDateUTCString != null &&
+                    this.UpdatedDateUTCString.Equals(input.UpdatedDateUTCString))
+                ) && 
+                (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
                 ) && 
@@ -362,6 +383,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.HasAttachments.Equals(input.HasAttachments))
                 ) && 
                 (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
+                ) && 
+                (
                     this.Attachments == input.Attachments ||
                     this.Attachments != null &&
                     input.Attachments != null &&
@@ -395,6 +421,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Total.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.UpdatedDateUTCString != null)
+                    hashCode = hashCode * 59 + this.UpdatedDateUTCString.GetHashCode();
                 hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.OverpaymentID != null)
                     hashCode = hashCode * 59 + this.OverpaymentID.GetHashCode();
@@ -410,6 +438,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Payments.GetHashCode();
                 if (this.HasAttachments != null)
                     hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
+                if (this.Reference != null)
+                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.Attachments != null)
                     hashCode = hashCode * 59 + this.Attachments.GetHashCode();
                 return hashCode;
