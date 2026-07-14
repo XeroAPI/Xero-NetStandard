@@ -189,6 +189,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// UTC ISO-8601 formatted timestamp of last update to the credit note
+        /// </summary>
+        /// <value>UTC ISO-8601 formatted timestamp of last update to the credit note</value>
+        [DataMember(Name="UpdatedDateUTCString", EmitDefaultValue=false)]
+        public string UpdatedDateUTCString { get; private set; }
+
+        /// <summary>
         /// Date when credit note was fully paid(UTC format)
         /// </summary>
         /// <value>Date when credit note was fully paid(UTC format)</value>
@@ -328,6 +335,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  CISDeduction: ").Append(CISDeduction).Append("\n");
             sb.Append("  CISRate: ").Append(CISRate).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  UpdatedDateUTCString: ").Append(UpdatedDateUTCString).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  FullyPaidOnDate: ").Append(FullyPaidOnDate).Append("\n");
             sb.Append("  CreditNoteID: ").Append(CreditNoteID).Append("\n");
@@ -442,6 +450,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
+                ) && 
+                (
+                    this.UpdatedDateUTCString == input.UpdatedDateUTCString ||
+                    (this.UpdatedDateUTCString != null &&
+                    this.UpdatedDateUTCString.Equals(input.UpdatedDateUTCString))
                 ) && 
                 (
                     this.CurrencyCode == input.CurrencyCode ||
@@ -571,6 +584,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.CISRate.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.UpdatedDateUTCString != null)
+                    hashCode = hashCode * 59 + this.UpdatedDateUTCString.GetHashCode();
                 hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.FullyPaidOnDate != null)
                     hashCode = hashCode * 59 + this.FullyPaidOnDate.GetHashCode();

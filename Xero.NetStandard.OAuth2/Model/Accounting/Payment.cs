@@ -228,6 +228,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// UTC ISO-8601 formatted timestamp of last update to the payment
+        /// </summary>
+        /// <value>UTC ISO-8601 formatted timestamp of last update to the payment</value>
+        [DataMember(Name="UpdatedDateUTCString", EmitDefaultValue=false)]
+        public string UpdatedDateUTCString { get; private set; }
+
+        /// <summary>
         /// The Xero identifier for an Payment e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9
         /// </summary>
         /// <value>The Xero identifier for an Payment e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9</value>
@@ -323,6 +330,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  PaymentType: ").Append(PaymentType).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  UpdatedDateUTCString: ").Append(UpdatedDateUTCString).Append("\n");
             sb.Append("  PaymentID: ").Append(PaymentID).Append("\n");
             sb.Append("  BatchPaymentID: ").Append(BatchPaymentID).Append("\n");
             sb.Append("  BankAccountNumber: ").Append(BankAccountNumber).Append("\n");
@@ -456,6 +464,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
+                    this.UpdatedDateUTCString == input.UpdatedDateUTCString ||
+                    (this.UpdatedDateUTCString != null &&
+                    this.UpdatedDateUTCString.Equals(input.UpdatedDateUTCString))
+                ) && 
+                (
                     this.PaymentID == input.PaymentID ||
                     (this.PaymentID != null &&
                     this.PaymentID.Equals(input.PaymentID))
@@ -552,6 +565,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 hashCode = hashCode * 59 + this.PaymentType.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.UpdatedDateUTCString != null)
+                    hashCode = hashCode * 59 + this.UpdatedDateUTCString.GetHashCode();
                 if (this.PaymentID != null)
                     hashCode = hashCode * 59 + this.PaymentID.GetHashCode();
                 if (this.BatchPaymentID != null)
