@@ -31,11 +31,40 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     public partial class BankTransfer :  IEquatable<BankTransfer>, IValidatableObject
     {
         /// <summary>
+        /// AUTHORISED or DELETED (read-only). New bank transfers will have a status of AUTHORISED.
+        /// </summary>
+        /// <value>AUTHORISED or DELETED (read-only). New bank transfers will have a status of AUTHORISED.</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum AUTHORISED for value: AUTHORISED
+            /// </summary>
+            [EnumMember(Value = "AUTHORISED")]
+            AUTHORISED = 1,
+
+            /// <summary>
+            /// Enum DELETED for value: DELETED
+            /// </summary>
+            [EnumMember(Value = "DELETED")]
+            DELETED = 2
+
+        }
+
+        /// <summary>
+        /// AUTHORISED or DELETED (read-only). New bank transfers will have a status of AUTHORISED.
+        /// </summary>
+        /// <value>AUTHORISED or DELETED (read-only). New bank transfers will have a status of AUTHORISED.</value>
+        [DataMember(Name="Status", EmitDefaultValue=false)]
+        public StatusEnum Status { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="BankTransfer" /> class.
         /// </summary>
         [JsonConstructorAttribute]
         public BankTransfer() 
         {  
+          FromTracking = new List<TrackingReference>();  
+          ToTracking = new List<TrackingReference>();  
           ValidationErrors = new List<ValidationError>(); 
         }
         
@@ -129,6 +158,20 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? CreatedDateUTC { get; private set; }
 
         /// <summary>
+        /// Optional Tracking Category for the source account – see Tracking. A bank transfer can have a maximum of 2 tracking categories per account.
+        /// </summary>
+        /// <value>Optional Tracking Category for the source account – see Tracking. A bank transfer can have a maximum of 2 tracking categories per account.</value>
+        [DataMember(Name="FromTracking", EmitDefaultValue=false)]
+        public List<TrackingReference> FromTracking { get; set; }
+
+        /// <summary>
+        /// Optional Tracking Category for the destination account – see Tracking. A bank transfer can have a maximum of 2 tracking categories per account.
+        /// </summary>
+        /// <value>Optional Tracking Category for the destination account – see Tracking. A bank transfer can have a maximum of 2 tracking categories per account.</value>
+        [DataMember(Name="ToTracking", EmitDefaultValue=false)]
+        public List<TrackingReference> ToTracking { get; set; }
+
+        /// <summary>
         /// Displays array of validation error messages from the API
         /// </summary>
         /// <value>Displays array of validation error messages from the API</value>
@@ -156,6 +199,9 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  CreatedDateUTC: ").Append(CreatedDateUTC).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  FromTracking: ").Append(FromTracking).Append("\n");
+            sb.Append("  ToTracking: ").Append(ToTracking).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -257,6 +303,22 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.CreatedDateUTC.Equals(input.CreatedDateUTC))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    this.Status.Equals(input.Status)
+                ) && 
+                (
+                    this.FromTracking == input.FromTracking ||
+                    this.FromTracking != null &&
+                    input.FromTracking != null &&
+                    this.FromTracking.SequenceEqual(input.FromTracking)
+                ) && 
+                (
+                    this.ToTracking == input.ToTracking ||
+                    this.ToTracking != null &&
+                    input.ToTracking != null &&
+                    this.ToTracking.SequenceEqual(input.ToTracking)
+                ) && 
+                (
                     this.ValidationErrors == input.ValidationErrors ||
                     this.ValidationErrors != null &&
                     input.ValidationErrors != null &&
@@ -299,6 +361,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
                 if (this.CreatedDateUTC != null)
                     hashCode = hashCode * 59 + this.CreatedDateUTC.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.FromTracking != null)
+                    hashCode = hashCode * 59 + this.FromTracking.GetHashCode();
+                if (this.ToTracking != null)
+                    hashCode = hashCode * 59 + this.ToTracking.GetHashCode();
                 if (this.ValidationErrors != null)
                     hashCode = hashCode * 59 + this.ValidationErrors.GetHashCode();
                 return hashCode;

@@ -176,6 +176,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// UTC ISO-8601 formatted timestamp of last update to the prepayment
+        /// </summary>
+        /// <value>UTC ISO-8601 formatted timestamp of last update to the prepayment</value>
+        [DataMember(Name="UpdatedDateUTCString", EmitDefaultValue=false)]
+        public string UpdatedDateUTCString { get; private set; }
+
+        /// <summary>
         /// Xero generated unique identifier
         /// </summary>
         /// <value>Xero generated unique identifier</value>
@@ -258,6 +265,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  UpdatedDateUTCString: ").Append(UpdatedDateUTCString).Append("\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  PrepaymentID: ").Append(PrepaymentID).Append("\n");
             sb.Append("  BrandingThemeID: ").Append(BrandingThemeID).Append("\n");
@@ -361,6 +369,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
+                    this.UpdatedDateUTCString == input.UpdatedDateUTCString ||
+                    (this.UpdatedDateUTCString != null &&
+                    this.UpdatedDateUTCString.Equals(input.UpdatedDateUTCString))
+                ) && 
+                (
                     this.CurrencyCode == input.CurrencyCode ||
                     this.CurrencyCode.Equals(input.CurrencyCode)
                 ) && 
@@ -444,6 +457,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.InvoiceNumber.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.UpdatedDateUTCString != null)
+                    hashCode = hashCode * 59 + this.UpdatedDateUTCString.GetHashCode();
                 hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.PrepaymentID != null)
                     hashCode = hashCode * 59 + this.PrepaymentID.GetHashCode();
