@@ -62,12 +62,40 @@ jobs:
       if: steps.check_changes.outputs.has_changes == 'true'
       run: |
         LAST_CLIENT_TAG="${{ steps.check_changes.outputs.last_client_tag }}"
+        PACKAGE_ID="xero.netstandard.oauth2client"
+        NUGET_INDEX_URL="https://api.nuget.org/v3-flatcontainer/${PACKAGE_ID}/index.json"
+
+        version_exists_on_nuget() {
+          local candidate_version="$1"
+          # NuGet package IDs are case-insensitive and returned versions are lowercase.
+          echo "$NUGET_VERSIONS" | grep -qi "\"${candidate_version,,}\""
+        }
+
+        bump_patch() {
+          local version="$1"
+          IFS='.' read -r v1 v2 v3 <<< "$version"
+          echo "${v1}.${v2}.$((v3 + 1))"
+        }
+
+        NUGET_VERSIONS=$(curl -fsSL "$NUGET_INDEX_URL" || true)
+        if [ -z "$NUGET_VERSIONS" ]; then
+          echo "Warning: Could not fetch published versions from NuGet. Proceeding with tag-based versioning only."
+        fi
         
         if [ -z "$LAST_CLIENT_TAG" ]; then
           # No previous client tag, start with version from csproj
           CURRENT_VERSION=$(grep '<Version>' ./Xero.NetStandard.OAuth2Client/Xero.NetStandard.OAuth2Client.csproj | sed 's/.*<Version>\(.*\)<\/Version>.*/\1/')
-          echo "No previous client tag found, using csproj version: $CURRENT_VERSION"
-          echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          NEW_VERSION="$CURRENT_VERSION"
+
+          if [ ! -z "$NUGET_VERSIONS" ]; then
+            while version_exists_on_nuget "$NEW_VERSION"; do
+              echo "Version $NEW_VERSION already exists on NuGet. Incrementing patch version."
+              NEW_VERSION=$(bump_patch "$NEW_VERSION")
+            done
+          fi
+
+          echo "No previous client tag found, selected version: $NEW_VERSION"
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
           exit 0
         fi
         
@@ -104,6 +132,13 @@ jobs:
         else
           NEW_VERSION="${c1}.${c2}.$((c3 + 1))"
         fi
+
+        if [ ! -z "$NUGET_VERSIONS" ]; then
+          while version_exists_on_nuget "$NEW_VERSION"; do
+            echo "Version $NEW_VERSION already exists on NuGet. Incrementing patch version."
+            NEW_VERSION=$(bump_patch "$NEW_VERSION")
+          done
+        fi
         
         echo "Incrementing version ($BUMP_TYPE): $LAST_VERSION -> $NEW_VERSION"
         echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -112,7 +147,7 @@ jobs:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Update csproj version
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: |
         NEW_VERSION="${{steps.calc_version.outputs.version}}"
         sed -i "s/<Version>.*<\/Version>/<Version>$NEW_VERSION<\/Version>/" \
@@ -121,33 +156,33 @@ jobs:
       working-directory: Xero-NetStandard
 
     - name: Setup .NET
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
         
     - name: Restore dependencies
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: dotnet restore
       working-directory: Xero-NetStandard
 
     - name: Build
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: dotnet build --no-restore
       working-directory: Xero-NetStandard
 
     - name: Create OAuth2Client Package for Nuget.org
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: dotnet pack ./Xero.NetStandard.OAuth2Client/Xero.NetStandard.OAuth2Client.csproj
       working-directory: Xero-NetStandard
 
     - name: Publish OAuth2Client Package to Nuget.org
-      if: steps.calc_version.outputs.should_publish == 'true'
-      run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Release/Xero.NetStandard.OAuth2Client.${{steps.calc_version.outputs.version}}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
+      if: steps.check_changes.outputs.has_changes == 'true'
+      run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Release/Xero.NetStandard.OAuth2Client.${{steps.calc_version.outputs.version}}.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
       working-directory: Xero-NetStandard
 
     - name: Commit, Push and Tag
-      if: steps.calc_version.outputs.should_publish == 'true'
+      if: steps.check_changes.outputs.has_changes == 'true'
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
