@@ -35,7 +35,7 @@ jobs:
       id: check_changes
       run: |
         # Get last client tag
-        LAST_CLIENT_TAG=$(git tag -l 'client-*' --sort=-v:refname | head -n 1)
+        LAST_CLIENT_TAG=$(git tag -l 'OAuthClient-*' --sort=-v:refname | head -n 1)
         echo "Found last client tag: $LAST_CLIENT_TAG"
         echo "last_client_tag=$LAST_CLIENT_TAG" >> $GITHUB_OUTPUT
 
