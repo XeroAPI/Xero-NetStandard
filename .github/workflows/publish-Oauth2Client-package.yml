@@ -35,7 +35,7 @@ jobs:
       id: check_changes
       run: |
         # Get last client tag
-        LAST_CLIENT_TAG=$(git tag -l 'client-*' --sort=-v:refname | head -n 1)
+        LAST_CLIENT_TAG=$(git tag -l 'OAuthClient-*' --sort=-v:refname | head -n 1)
         echo "Found last client tag: $LAST_CLIENT_TAG"
         echo "last_client_tag=$LAST_CLIENT_TAG" >> $GITHUB_OUTPUT
 
@@ -71,7 +71,7 @@ jobs:
           exit 0
         fi
         
-        LAST_VERSION=${LAST_CLIENT_TAG#client-}
+        LAST_VERSION=${LAST_CLIENT_TAG#OAuthClient-v}
         echo "Last OAuth2Client version: $LAST_VERSION (tag: $LAST_CLIENT_TAG)"
         
         # Determine Bump Type from Main SDK tags
@@ -160,8 +160,8 @@ jobs:
         git push origin HEAD:master
         
         # Create and push the tag
-        git tag "client-${{steps.calc_version.outputs.version}}"
-        git push origin "client-${{steps.calc_version.outputs.version}}"
+        git tag "OAuthClient-v${{steps.calc_version.outputs.version}}"
+        git push origin "OAuthClient-v${{steps.calc_version.outputs.version}}"
       working-directory: Xero-NetStandard
       env:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
