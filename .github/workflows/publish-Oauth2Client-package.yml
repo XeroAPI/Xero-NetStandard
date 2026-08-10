@@ -165,15 +165,13 @@ jobs:
         VERSION="${{steps.calc_version.outputs.version}}"
         BRANCH="bump-oauth2client-v${VERSION}"
 
-        # master is a protected branch (requires PR + status checks), so the
-        # version bump has to land via PR rather than a direct push.
+        # Open a PR for the version bump; master requires one.
         git checkout -b "$BRANCH"
         git add ./Xero.NetStandard.OAuth2Client/Xero.NetStandard.OAuth2Client.csproj
         git commit -m "Bump OAuth2Client version to ${VERSION}"
         git push origin "$BRANCH"
 
-        # Tags aren't covered by the branch protection rule, so this can still
-        # be pushed directly and keeps "Check for changes" working next run.
+        # Push the tag directly.
         git tag "OAuthClient-v${VERSION}"
         git push origin "OAuthClient-v${VERSION}"
 
@@ -187,8 +185,7 @@ jobs:
 
         {
           echo "## OAuth2Client version bump"
-          echo "Package \`${VERSION}\` was published to nuget.org."
-          echo "\`master\` is protected, so the version bump commit still needs to be merged:"
+          echo "Package \`${VERSION}\` was published to nuget.org. Merge the version bump PR:"
           echo ""
           echo "**➡️ [$PR_URL]($PR_URL)**"
         } >> "$GITHUB_STEP_SUMMARY"
