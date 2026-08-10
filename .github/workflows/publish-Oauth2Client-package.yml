@@ -17,6 +17,7 @@ jobs:
       # Used to conditionally run publish steps and notifications
       client_version: ${{steps.calc_version.outputs.version}}
       should_publish: ${{steps.check_changes.outputs.has_changes}}
+      version_bump_pr_url: ${{steps.commit_tag_and_pr.outputs.pr_url}}
 
     permissions:
       contents: write
@@ -154,22 +155,40 @@ jobs:
       run: dotnet nuget push ./Xero.NetStandard.OAuth2Client/bin/Release/Xero.NetStandard.OAuth2Client.${{steps.calc_version.outputs.version}}.nupkg --api-key ${{ steps.nuget_login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       working-directory: Xero-NetStandard
 
-    - name: Commit, Push and Tag
+    - name: Commit, Tag and Open PR
       if: steps.check_changes.outputs.has_changes == 'true'
+      id: commit_tag_and_pr
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        
-        # Commit the version bump
+
+        VERSION="${{steps.calc_version.outputs.version}}"
+        BRANCH="bump-oauth2client-v${VERSION}"
+
+        # Open a PR for the version bump; master requires one.
+        git checkout -b "$BRANCH"
         git add ./Xero.NetStandard.OAuth2Client/Xero.NetStandard.OAuth2Client.csproj
-        git commit -m "Bump OAuth2Client version to ${{steps.calc_version.outputs.version}}"
-        
-        # Push the commit to master
-        git push origin HEAD:master
-        
-        # Create and push the tag
-        git tag "OAuthClient-v${{steps.calc_version.outputs.version}}"
-        git push origin "OAuthClient-v${{steps.calc_version.outputs.version}}"
+        git commit -m "Bump OAuth2Client version to ${VERSION}"
+        git push origin "$BRANCH"
+
+        # Push the tag directly.
+        git tag "OAuthClient-v${VERSION}"
+        git push origin "OAuthClient-v${VERSION}"
+
+        PR_URL=$(gh pr create \
+          --base master \
+          --head "$BRANCH" \
+          --title "Bump OAuth2Client version to ${VERSION}" \
+          --body "Automated version bump for OAuth2Client \`${VERSION}\`, already published to nuget.org by this workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}")
+
+        echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+        {
+          echo "## OAuth2Client version bump"
+          echo "Package \`${VERSION}\` was published to nuget.org. Merge the version bump PR:"
+          echo ""
+          echo "**➡️ [$PR_URL]($PR_URL)**"
+        } >> "$GITHUB_STEP_SUMMARY"
       working-directory: Xero-NetStandard
       env:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
