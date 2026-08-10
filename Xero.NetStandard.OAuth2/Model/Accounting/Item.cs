@@ -115,11 +115,25 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? TotalCostPool { get; set; }
 
         /// <summary>
-        /// The quantity of the item on hand
+        /// The quantity of the item on hand. This will be 0 if &#x60;QuantityOnBackOrder&#x60; is greater than 0.
         /// </summary>
-        /// <value>The quantity of the item on hand</value>
+        /// <value>The quantity of the item on hand. This will be 0 if &#x60;QuantityOnBackOrder&#x60; is greater than 0.</value>
         [DataMember(Name="QuantityOnHand", EmitDefaultValue=false)]
         public decimal? QuantityOnHand { get; set; }
+
+        /// <summary>
+        /// The quantity of the item available. This is equal to &#x60;QuantityOnHand&#x60; - &#x60;QuantityOnBackOrder&#x60;. This value will be negative if &#x60;QuantityOnBackOrder&#x60; is greater than 0.
+        /// </summary>
+        /// <value>The quantity of the item available. This is equal to &#x60;QuantityOnHand&#x60; - &#x60;QuantityOnBackOrder&#x60;. This value will be negative if &#x60;QuantityOnBackOrder&#x60; is greater than 0.</value>
+        [DataMember(Name="QuantityAvailable", EmitDefaultValue=false)]
+        public double? QuantityAvailable { get; private set; }
+
+        /// <summary>
+        /// The quantity of the item on backorder. This will be 0 if &#x60;QuantityOnHand&#x60; is greater than 0.
+        /// </summary>
+        /// <value>The quantity of the item on backorder. This will be 0 if &#x60;QuantityOnHand&#x60; is greater than 0.</value>
+        [DataMember(Name="QuantityOnBackOrder", EmitDefaultValue=false)]
+        public double? QuantityOnBackOrder { get; private set; }
 
         /// <summary>
         /// Last modified date in UTC format
@@ -169,6 +183,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  IsTrackedAsInventory: ").Append(IsTrackedAsInventory).Append("\n");
             sb.Append("  TotalCostPool: ").Append(TotalCostPool).Append("\n");
             sb.Append("  QuantityOnHand: ").Append(QuantityOnHand).Append("\n");
+            sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
+            sb.Append("  QuantityOnBackOrder: ").Append(QuantityOnBackOrder).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
             sb.Append("  ItemID: ").Append(ItemID).Append("\n");
             sb.Append("  StatusAttributeString: ").Append(StatusAttributeString).Append("\n");
@@ -268,6 +284,16 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.QuantityOnHand.Equals(input.QuantityOnHand))
                 ) && 
                 (
+                    this.QuantityAvailable == input.QuantityAvailable ||
+                    (this.QuantityAvailable != null &&
+                    this.QuantityAvailable.Equals(input.QuantityAvailable))
+                ) && 
+                (
+                    this.QuantityOnBackOrder == input.QuantityOnBackOrder ||
+                    (this.QuantityOnBackOrder != null &&
+                    this.QuantityOnBackOrder.Equals(input.QuantityOnBackOrder))
+                ) && 
+                (
                     this.UpdatedDateUTC == input.UpdatedDateUTC ||
                     (this.UpdatedDateUTC != null &&
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
@@ -323,6 +349,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.TotalCostPool.GetHashCode();
                 if (this.QuantityOnHand != null)
                     hashCode = hashCode * 59 + this.QuantityOnHand.GetHashCode();
+                if (this.QuantityAvailable != null)
+                    hashCode = hashCode * 59 + this.QuantityAvailable.GetHashCode();
+                if (this.QuantityOnBackOrder != null)
+                    hashCode = hashCode * 59 + this.QuantityOnBackOrder.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
                 if (this.ItemID != null)

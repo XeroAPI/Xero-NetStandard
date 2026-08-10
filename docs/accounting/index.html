@@ -3519,9 +3519,21 @@ ul.nav-tabs {
     },
     "QuantityOnHand" : {
       "type" : "number",
-      "description" : "The quantity of the item on hand",
+      "description" : "The quantity of the item on hand. This will be 0 if `QuantityOnBackOrder` is greater than 0.",
       "format" : "double",
       "x-is-money" : true
+    },
+    "QuantityAvailable" : {
+      "type" : "number",
+      "description" : "The quantity of the item available. This is equal to `QuantityOnHand` - `QuantityOnBackOrder`. This value will be negative if `QuantityOnBackOrder` is greater than 0.",
+      "format" : "double",
+      "readOnly" : true
+    },
+    "QuantityOnBackOrder" : {
+      "type" : "number",
+      "description" : "The quantity of the item on backorder. This will be 0 if `QuantityOnHand` is greater than 0.",
+      "format" : "double",
+      "readOnly" : true
     },
     "UpdatedDateUTC" : {
       "type" : "string",
@@ -6495,7 +6507,7 @@ ul.nav-tabs {
           <nav id="scrollingNav">
             <ul class="sidenav nav nav-list">
               <li class="nav-header" data-group="Accounting"><strong>SDK: </strong><span id='sdk-name'></span></li>
-              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>18.0.0</li>
+              <li class="nav-header" data-group="Accounting"><strong>VSN: </strong>18.1.0</li>
               <li class="nav-header" data-group="Accounting"><a href="#api-Accounting">Methods</a></li>
               <li data-group="Accounting" data-name="createAccount" class="">
                 <a href="#api-Accounting-createAccount">createAccount</a>
@@ -12489,6 +12501,7 @@ namespace Example
             var summarizeErrors = true;
             var unitdp = 4;
             var idempotencyKey = "KEY_VALUE";
+            var allowBackorders = true;
             var dateValue = new DateTime(2020, 10, 10);
             var dueDateValue = new DateTime(2020, 10, 10);
 
@@ -12525,7 +12538,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey);
+                var result = await apiInstance.CreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey, allowBackorders);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -12692,6 +12705,26 @@ If false return 200 OK and mix of successfully created objects and any with vali
 
                     <div class="inner description marked">
 e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">allowBackorders</td>
+<td>
+
+
+    <div id="d2e199_createInvoices_allowBackorders">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Boolean
+                </span>
+
+                    <div class="inner description marked">
+Allows an invoice to be created even when one or more line items contain tracked inventory where the invoice quantity would cause the available quantity to go negative
                     </div>
             </div>
         </div>
@@ -22659,9 +22692,10 @@ namespace Example
             var page = 1;
             var unitdp = 4;
             var pageSize = 100;
+            var references = new List&lt;string&gt;{&quot;Ref1&quot;,&quot;Ref2&quot;}
             
             try {
-                var result = await apiInstance.GetBankTransactionsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize);
+                var result = await apiInstance.GetBankTransactionsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, references);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -22840,6 +22874,26 @@ e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal place
 
                     <div class="inner description marked">
 Number of records to retrieve per page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">References</td>
+<td>
+
+
+    <div id="d2e199_getBankTransactions_references">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    array[String]
+                </span>
+
+                    <div class="inner description marked">
+Filter by a comma-separated list of References
                     </div>
             </div>
         </div>
@@ -34087,9 +34141,10 @@ namespace Example
             var unitdp = 4;
             var pageSize = 100;
             var invoiceNumbers = new List&lt;string&gt;{&quot;INV-001&quot;,&quot;INV-002&quot;}
+            var references = new List&lt;string&gt;{&quot;Ref1&quot;,&quot;Ref2&quot;}
             
             try {
-                var result = await apiInstance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, invoiceNumbers);
+                var result = await apiInstance.GetPrepaymentsAsync(accessToken, xeroTenantId, ifModifiedSince, where, order, page, unitdp, pageSize, invoiceNumbers, references);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -34227,7 +34282,7 @@ Order by an any element
                 </span>
 
                     <div class="inner description marked">
-e.g. page=1 – Up to 100 prepayments will be returned in a single API call with line items shown for each overpayment
+e.g. page=1 – Up to 100 prepayments will be returned in a single API call with line items shown for each prepayment
                     </div>
             </div>
         </div>
@@ -34288,6 +34343,26 @@ Number of records to retrieve per page
 
                     <div class="inner description marked">
 Filter by a comma-separated list of InvoiceNumbers
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">References</td>
+<td>
+
+
+    <div id="d2e199_getPrepayments_references">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    array[String]
+                </span>
+
+                    <div class="inner description marked">
+Filter by a comma-separated list of References
                     </div>
             </div>
         </div>
@@ -44235,6 +44310,7 @@ namespace Example
             var invoiceID = Guid.Parse("00000000-0000-0000-0000-000000000000");
             var unitdp = 4;
             var idempotencyKey = "KEY_VALUE";
+            var allowBackorders = true;
 
             var invoice = new Invoice();
             invoice.Reference = "I am Iron man";
@@ -44245,7 +44321,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices, unitdp, idempotencyKey);
+                var result = await apiInstance.UpdateInvoiceAsync(accessToken, xeroTenantId, invoiceID, invoices, unitdp, idempotencyKey, allowBackorders);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -44413,6 +44489,26 @@ This allows you to safely retry requests without the risk of duplicate processin
 
                     <div class="inner description marked">
 e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">allowBackorders</td>
+<td>
+
+
+    <div id="d2e199_updateInvoice_allowBackorders">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Boolean
+                </span>
+
+                    <div class="inner description marked">
+Allows an invoice to be created even when one or more line items contain tracked inventory where the invoice quantity would cause the available quantity to go negative
                     </div>
             </div>
         </div>
@@ -46232,6 +46328,7 @@ namespace Example
             var summarizeErrors = true;
             var unitdp = 4;
             var idempotencyKey = "KEY_VALUE";
+            var allowBackorders = true;
             var dateValue = new DateTime(2020, 10, 10);
             var dueDateValue = new DateTime(2020, 10, 10);
 
@@ -46261,7 +46358,7 @@ namespace Example
             invoices._Invoices = invoicesList;
             
             try {
-                var result = await apiInstance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey);
+                var result = await apiInstance.UpdateOrCreateInvoicesAsync(accessToken, xeroTenantId, invoices, summarizeErrors, unitdp, idempotencyKey, allowBackorders);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -46427,6 +46524,26 @@ If false return 200 OK and mix of successfully created objects and any with vali
 
                     <div class="inner description marked">
 e.g. unitdp=4 – (Unit Decimal Places) You can opt in to use four decimal places for unit amounts
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                    <tr><td style="width:150px;">allowBackorders</td>
+<td>
+
+
+    <div id="d2e199_updateOrCreateInvoices_allowBackorders">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Boolean
+                </span>
+
+                    <div class="inner description marked">
+Allows an invoice to be created even when one or more line items contain tracked inventory where the invoice quantity would cause the available quantity to go negative
                     </div>
             </div>
         </div>
