@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using Xero.NetStandard.OAuth2.Models;
-using IdentityModel.Client;
+using Duende.IdentityModel.Client;
 using Newtonsoft.Json;
 using Xero.NetStandard.OAuth2.Config;
 using Xero.NetStandard.OAuth2.Token;
