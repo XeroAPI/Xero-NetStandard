@@ -62,17 +62,25 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
         public string BuildLoginUri(string state, string scope)
         {
+            return BuildLoginUri(state, scope, xeroConfiguration.AcrValues);
+        }
+
+        /// <summary>
+        /// Builds a XeroLogin URL for code flow, allows state, scope and acrValues to be passed in.
+        /// </summary>
+        /// <returns>A valid initial redirect URI for Xero OAuth 2.0 authorisation flow.</returns>
+        public string BuildLoginUri(string state, string scope, string acrValues)
+        { 
             var url = _xeroAuthorizeUri.CreateAuthorizeUrl(
                 clientId: xeroConfiguration.ClientId,
                 responseType: "code",
                 redirectUri: xeroConfiguration.CallbackUri.AbsoluteUri,
                 state: state,
-                scope: scope
+                scope: scope,
+                acrValues: acrValues
             );
             return url;
         }
-
-
 
         /// <summary>
         /// Builds a XeroLogin URL for PKCE flow with codeVerifier input
