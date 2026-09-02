@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -133,8 +134,9 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Refreshes your current token
         /// </summary>
         /// <param name="xeroToken"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IXeroToken> RefreshAccessTokenAsync(IXeroToken xeroToken)
+        public async Task<IXeroToken> RefreshAccessTokenAsync(IXeroToken xeroToken, CancellationToken cancellationToken = default)
         {
             if (xeroToken == null)
             {
@@ -147,7 +149,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 RefreshToken = xeroToken.RefreshToken
-            });
+            }, cancellationToken);
 
             if (response.IsError)
             {
@@ -165,8 +167,10 @@ namespace Xero.NetStandard.OAuth2.Client
         /// <summary>
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
+        /// <param name="fetchTenants"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IXeroToken> RequestClientCredentialsTokenAsync(bool fetchTenants=true)
+        public async Task<IXeroToken> RequestClientCredentialsTokenAsync(bool fetchTenants = true, CancellationToken cancellationToken = default)
         {
 
             var response = await _httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
@@ -175,7 +179,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 Scope = xeroConfiguration.Scope
-            });
+            }, cancellationToken);
 
             if (response.IsError)
             {
@@ -188,7 +192,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn)
             };
             if(fetchTenants){
-                xeroToken.Tenants = await GetConnectionsAsync(xeroToken);
+                xeroToken.Tenants = await GetConnectionsAsync(xeroToken, cancellationToken);
             }
             return xeroToken;
 
@@ -198,8 +202,9 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Requests a fully formed IXeroToken with list of tenants filled
         /// </summary>
         /// <param name="code">Code returned from callback</param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IXeroToken> RequestAccessTokenAsync(string code)
+        public async Task<IXeroToken> RequestAccessTokenAsync(string code, CancellationToken cancellationToken = default)
         {
             var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
             {
@@ -213,7 +218,7 @@ namespace Xero.NetStandard.OAuth2.Client
                     {
                         { "scope", xeroConfiguration.Scope}
                     }
-            });
+            }, cancellationToken);
 
             if (response.IsError)
             {
@@ -227,7 +232,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 ExpiresAtUtc = DateTime.UtcNow.AddSeconds(response.ExpiresIn),
                 IdToken = response.IdentityToken,
             };
-            xeroToken.Tenants = await GetConnectionsAsync(xeroToken);
+            xeroToken.Tenants = await GetConnectionsAsync(xeroToken, cancellationToken);
             return xeroToken;
 
         }
@@ -238,9 +243,9 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="code">code from callback</param>
         /// <param name="codeVerifier">codeVerifier used for initial request</param>
-        /// <param name="xeroToken"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IXeroToken> RequestAccessTokenPkceAsync(string code, string codeVerifier)
+        public async Task<IXeroToken> RequestAccessTokenPkceAsync(string code, string codeVerifier, CancellationToken cancellationToken = default)
         {
 
             var response = await _httpClient.RequestAuthorizationCodeTokenAsync(new AuthorizationCodeTokenRequest
@@ -256,7 +261,7 @@ namespace Xero.NetStandard.OAuth2.Client
                         { "scope", xeroConfiguration.Scope}
                     },
                 CodeVerifier = codeVerifier
-            });
+            }, cancellationToken);
 
             if (response.IsError)
             {
@@ -277,12 +282,13 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Convenience method to refresh token for you if it is expired
         /// </summary>
         /// <param name="xeroToken">your current XeroToken</param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IXeroToken> GetCurrentValidTokenAsync(IXeroToken xeroToken)
+        public async Task<IXeroToken> GetCurrentValidTokenAsync(IXeroToken xeroToken, CancellationToken cancellationToken = default)
         {
             if (DateTime.UtcNow > xeroToken.ExpiresAtUtc)
             {
-                return await RefreshAccessTokenAsync(xeroToken);
+                return await RefreshAccessTokenAsync(xeroToken, cancellationToken);
             }
 
             return xeroToken;
@@ -291,14 +297,15 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Get's a list of Tokens given the accesstoken
         /// </summary>
         /// <param name="xeroToken"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns>List of Tenants attached to accesstoken</returns>
-        public async Task<List<Tenant>> GetConnectionsAsync(IXeroToken xeroToken)
+        public async Task<List<Tenant>> GetConnectionsAsync(IXeroToken xeroToken, CancellationToken cancellationToken = default)
         {
             using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"{xeroConfiguration.XeroApiBaseUri}/connections"))
             {
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
 
-                var result = await _httpClient.SendAsync(requestMessage);
+                var result = await _httpClient.SendAsync(requestMessage, cancellationToken);
                 var json = await result.Content.ReadAsStringAsync();
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -315,14 +322,15 @@ namespace Xero.NetStandard.OAuth2.Client
         /// </summary>
         /// <param name="xeroToken"></param>
         /// <param name="xeroTenant"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns>List of Tenants attached to accesstoken</returns>
-        public async Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant)
+        public async Task DeleteConnectionAsync(IXeroToken xeroToken, Tenant xeroTenant, CancellationToken cancellationToken = default)
         {
             using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, $"{xeroConfiguration.XeroApiBaseUri}/connections" + "/" + xeroTenant.id))
             {
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", xeroToken.AccessToken);
 
-                var result = await _httpClient.SendAsync(requestMessage);
+                var result = await _httpClient.SendAsync(requestMessage, cancellationToken);
                 if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
                 {
                     return;
@@ -336,8 +344,9 @@ namespace Xero.NetStandard.OAuth2.Client
         /// Revokes the current token - immediate disconnect all orgs and stops the user authorisation
         /// </summary>
         /// <param name="xeroToken"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task RevokeAccessTokenAsync(IXeroToken xeroToken)
+        public async Task RevokeAccessTokenAsync(IXeroToken xeroToken, CancellationToken cancellationToken = default)
         {
             if (xeroToken == null)
             {
@@ -349,7 +358,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 ClientId = xeroConfiguration.ClientId,
                 ClientSecret = xeroConfiguration.ClientSecret,
                 Token = xeroToken.RefreshToken
-            });
+            }, cancellationToken);
 
             if (response.IsError)
             {
