@@ -149,10 +149,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 RefreshToken = xeroToken.RefreshToken
             });
 
-            if (response.IsError)
-            {
-                throw new Exception(response.Error);
-            }
+            ThrowIfError(response);
 
             xeroToken.AccessToken = response.AccessToken;
             xeroToken.RefreshToken = response.RefreshToken;
@@ -177,10 +174,7 @@ namespace Xero.NetStandard.OAuth2.Client
                 Scope = xeroConfiguration.Scope
             });
 
-            if (response.IsError)
-            {
-                throw new Exception(response.Error);
-            }
+            ThrowIfError(response);
 
             var xeroToken = new XeroOAuth2Token()
             {
@@ -215,10 +209,7 @@ namespace Xero.NetStandard.OAuth2.Client
                     }
             });
 
-            if (response.IsError)
-            {
-                throw new Exception(response.Error);
-            }
+            ThrowIfError(response);
 
             var xeroToken = new XeroOAuth2Token()
             {
@@ -258,11 +249,8 @@ namespace Xero.NetStandard.OAuth2.Client
                 CodeVerifier = codeVerifier
             });
 
-            if (response.IsError)
-            {
-                throw new Exception(response.Error);
-            }
-            
+            ThrowIfError(response);
+
             return new XeroOAuth2Token()
             {
                 AccessToken = response.AccessToken,
@@ -351,12 +339,23 @@ namespace Xero.NetStandard.OAuth2.Client
                 Token = xeroToken.RefreshToken
             });
 
+            ThrowIfError(response);
+        }
+
+        private static void ThrowIfError(TokenResponse response)
+        {
             if (response.IsError)
             {
-                throw new Exception(response.Error);
+                throw new XeroTokenException(response, response.ErrorDescription);
             }
+        }
 
-            return;
+        private static void ThrowIfError(TokenRevocationResponse response)
+        {
+            if (response.IsError)
+            {
+                throw new XeroTokenException(response);
+            }
         }
     }
 }
