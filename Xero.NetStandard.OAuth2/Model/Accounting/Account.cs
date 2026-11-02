@@ -390,6 +390,13 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public DateTime? UpdatedDateUTC { get; private set; }
 
         /// <summary>
+        /// Created date UTC format. Only returned by GET Accounts and GET Accounts/{AccountID}, not on POST or PUT responses
+        /// </summary>
+        /// <value>Created date UTC format. Only returned by GET Accounts and GET Accounts/{AccountID}, not on POST or PUT responses</value>
+        [DataMember(Name="CreatedDateUTC", EmitDefaultValue=false)]
+        public DateTime? CreatedDateUTC { get; private set; }
+
+        /// <summary>
         /// Boolean – describes whether the account is shown in the watchlist widget on the dashboard
         /// </summary>
         /// <value>Boolean – describes whether the account is shown in the watchlist widget on the dashboard</value>
@@ -429,6 +436,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  ReportingCodeName: ").Append(ReportingCodeName).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
+            sb.Append("  CreatedDateUTC: ").Append(CreatedDateUTC).Append("\n");
             sb.Append("  AddToWatchlist: ").Append(AddToWatchlist).Append("\n");
             sb.Append("  ValidationErrors: ").Append(ValidationErrors).Append("\n");
             sb.Append("}\n");
@@ -550,6 +558,11 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.UpdatedDateUTC.Equals(input.UpdatedDateUTC))
                 ) && 
                 (
+                    this.CreatedDateUTC == input.CreatedDateUTC ||
+                    (this.CreatedDateUTC != null &&
+                    this.CreatedDateUTC.Equals(input.CreatedDateUTC))
+                ) && 
+                (
                     this.AddToWatchlist == input.AddToWatchlist ||
                     (this.AddToWatchlist != null &&
                     this.AddToWatchlist.Equals(input.AddToWatchlist))
@@ -601,6 +614,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.HasAttachments.GetHashCode();
                 if (this.UpdatedDateUTC != null)
                     hashCode = hashCode * 59 + this.UpdatedDateUTC.GetHashCode();
+                if (this.CreatedDateUTC != null)
+                    hashCode = hashCode * 59 + this.CreatedDateUTC.GetHashCode();
                 if (this.AddToWatchlist != null)
                     hashCode = hashCode * 59 + this.AddToWatchlist.GetHashCode();
                 if (this.ValidationErrors != null)

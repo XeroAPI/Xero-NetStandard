@@ -80,6 +80,57 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         /// <value>Contribution Option which can be &#39;MakeContributions&#39; &#39;OptOut&#39;, &#39;OnAContributionsHoliday&#39;, &#39;OnASavingsSuspension&#39;, &#39;NotCurrentlyAKiwiSaverMember&#39; for employees without a KiwiSaver membership</value>
         [DataMember(Name="kiwiSaverContributions", EmitDefaultValue=false)]
         public KiwiSaverContributionsEnum KiwiSaverContributions { get; set; }
+        /// <summary>
+        /// KiwiSaver eligibility. Required in POST requests for all tax codes except WT and NSW.
+        /// </summary>
+        /// <value>KiwiSaver eligibility. Required in POST requests for all tax codes except WT and NSW.</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum KiwiSaverStatusEnum
+        {
+            /// <summary>
+            /// Enum ActiveKiwiSaverMember for value: ActiveKiwiSaverMember
+            /// </summary>
+            [EnumMember(Value = "ActiveKiwiSaverMember")]
+            ActiveKiwiSaverMember = 1,
+
+            /// <summary>
+            /// Enum AutomaticallyEnrolledIntoKiwiSaver for value: AutomaticallyEnrolledIntoKiwiSaver
+            /// </summary>
+            [EnumMember(Value = "AutomaticallyEnrolledIntoKiwiSaver")]
+            AutomaticallyEnrolledIntoKiwiSaver = 2,
+
+            /// <summary>
+            /// Enum EmployedForLessThan28Days for value: EmployedForLessThan28Days
+            /// </summary>
+            [EnumMember(Value = "EmployedForLessThan28Days")]
+            EmployedForLessThan28Days = 3,
+
+            /// <summary>
+            /// Enum NotRequiredToBeAutomaticallyEnrolled for value: NotRequiredToBeAutomaticallyEnrolled
+            /// </summary>
+            [EnumMember(Value = "NotRequiredToBeAutomaticallyEnrolled")]
+            NotRequiredToBeAutomaticallyEnrolled = 4,
+
+            /// <summary>
+            /// Enum OptedIntoKiwiSaver for value: OptedIntoKiwiSaver
+            /// </summary>
+            [EnumMember(Value = "OptedIntoKiwiSaver")]
+            OptedIntoKiwiSaver = 5,
+
+            /// <summary>
+            /// Enum NotEligibleForKiwiSaver for value: NotEligibleForKiwiSaver
+            /// </summary>
+            [EnumMember(Value = "NotEligibleForKiwiSaver")]
+            NotEligibleForKiwiSaver = 6
+
+        }
+
+        /// <summary>
+        /// KiwiSaver eligibility. Required in POST requests for all tax codes except WT and NSW.
+        /// </summary>
+        /// <value>KiwiSaver eligibility. Required in POST requests for all tax codes except WT and NSW.</value>
+        [DataMember(Name="kiwiSaverStatus", EmitDefaultValue=false)]
+        public KiwiSaverStatusEnum KiwiSaverStatus { get; set; }
         
         /// <summary>
         /// The IRD Number.
@@ -96,9 +147,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public decimal? SpecialTaxRatePercentage { get; set; }
 
         /// <summary>
-        /// Does the employee has a special student loan rate?
+        /// Does the employee have a special student loan rate?
         /// </summary>
-        /// <value>Does the employee has a special student loan rate?</value>
+        /// <value>Does the employee have a special student loan rate?</value>
         [DataMember(Name="hasSpecialStudentLoanRate", EmitDefaultValue=false)]
         public bool? HasSpecialStudentLoanRate { get; set; }
 
@@ -110,9 +161,9 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public decimal? SpecialStudentLoanRatePercentage { get; set; }
 
         /// <summary>
-        /// The employee eligibility for KiwiSaver.
+        /// The employee eligibility for KiwiSaver. Deprecated, replaced by kiwiSaverStatus. Omit this field from POST requests.
         /// </summary>
-        /// <value>The employee eligibility for KiwiSaver.</value>
+        /// <value>The employee eligibility for KiwiSaver. Deprecated, replaced by kiwiSaverStatus. Omit this field from POST requests.</value>
         [DataMember(Name="isEligibleForKiwiSaver", EmitDefaultValue=false)]
         public bool? IsEligibleForKiwiSaver { get; set; }
 
@@ -183,6 +234,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
         public DateTime? StudentLoanAsAt { get; set; }
 
         /// <summary>
+        /// Is the employee registered for GST? Required in POST requests when taxCode is WT.
+        /// </summary>
+        /// <value>Is the employee registered for GST? Required in POST requests when taxCode is WT.</value>
+        [DataMember(Name="registeredForGST", EmitDefaultValue=false)]
+        public bool? RegisteredForGST { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -198,6 +256,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  IsEligibleForKiwiSaver: ").Append(IsEligibleForKiwiSaver).Append("\n");
             sb.Append("  EsctRatePercentage: ").Append(EsctRatePercentage).Append("\n");
             sb.Append("  KiwiSaverContributions: ").Append(KiwiSaverContributions).Append("\n");
+            sb.Append("  KiwiSaverStatus: ").Append(KiwiSaverStatus).Append("\n");
             sb.Append("  KiwiSaverEmployeeContributionRatePercentage: ").Append(KiwiSaverEmployeeContributionRatePercentage).Append("\n");
             sb.Append("  KiwiSaverEmployerContributionRatePercentage: ").Append(KiwiSaverEmployerContributionRatePercentage).Append("\n");
             sb.Append("  KiwiSaverEmployerSalarySacrificeContributionRatePercentage: ").Append(KiwiSaverEmployerSalarySacrificeContributionRatePercentage).Append("\n");
@@ -206,6 +265,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
             sb.Append("  HasStudentLoanBalance: ").Append(HasStudentLoanBalance).Append("\n");
             sb.Append("  StudentLoanBalance: ").Append(StudentLoanBalance).Append("\n");
             sb.Append("  StudentLoanAsAt: ").Append(StudentLoanAsAt).Append("\n");
+            sb.Append("  RegisteredForGST: ").Append(RegisteredForGST).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -279,6 +339,10 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.KiwiSaverContributions.Equals(input.KiwiSaverContributions)
                 ) && 
                 (
+                    this.KiwiSaverStatus == input.KiwiSaverStatus ||
+                    this.KiwiSaverStatus.Equals(input.KiwiSaverStatus)
+                ) && 
+                (
                     this.KiwiSaverEmployeeContributionRatePercentage == input.KiwiSaverEmployeeContributionRatePercentage ||
                     (this.KiwiSaverEmployeeContributionRatePercentage != null &&
                     this.KiwiSaverEmployeeContributionRatePercentage.Equals(input.KiwiSaverEmployeeContributionRatePercentage))
@@ -317,6 +381,11 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     this.StudentLoanAsAt == input.StudentLoanAsAt ||
                     (this.StudentLoanAsAt != null &&
                     this.StudentLoanAsAt.Equals(input.StudentLoanAsAt))
+                ) && 
+                (
+                    this.RegisteredForGST == input.RegisteredForGST ||
+                    (this.RegisteredForGST != null &&
+                    this.RegisteredForGST.Equals(input.RegisteredForGST))
                 );
         }
 
@@ -343,6 +412,7 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                 if (this.EsctRatePercentage != null)
                     hashCode = hashCode * 59 + this.EsctRatePercentage.GetHashCode();
                 hashCode = hashCode * 59 + this.KiwiSaverContributions.GetHashCode();
+                hashCode = hashCode * 59 + this.KiwiSaverStatus.GetHashCode();
                 if (this.KiwiSaverEmployeeContributionRatePercentage != null)
                     hashCode = hashCode * 59 + this.KiwiSaverEmployeeContributionRatePercentage.GetHashCode();
                 if (this.KiwiSaverEmployerContributionRatePercentage != null)
@@ -359,6 +429,8 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollNz
                     hashCode = hashCode * 59 + this.StudentLoanBalance.GetHashCode();
                 if (this.StudentLoanAsAt != null)
                     hashCode = hashCode * 59 + this.StudentLoanAsAt.GetHashCode();
+                if (this.RegisteredForGST != null)
+                    hashCode = hashCode * 59 + this.RegisteredForGST.GetHashCode();
                 return hashCode;
             }
         }
