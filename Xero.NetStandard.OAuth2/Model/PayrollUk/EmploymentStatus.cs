@@ -49,7 +49,13 @@ namespace Xero.NetStandard.OAuth2.Model.PayrollUk
         /// Enum Unspecified for value: Unspecified
         /// </summary>
         [EnumMember(Value = "Unspecified")]
-        Unspecified = 3
+        Unspecified = 3,
+
+        /// <summary>
+        /// Enum OffPayrollWorker for value: OffPayrollWorker
+        /// </summary>
+        [EnumMember(Value = "OffPayrollWorker")]
+        OffPayrollWorker = 4
 
     }
 

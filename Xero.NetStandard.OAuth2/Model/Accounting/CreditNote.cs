@@ -228,7 +228,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// </summary>
         /// <value>Boolean to set whether the credit note in the Xero app should be marked as “sent”. This can be set only on credit notes that have been approved</value>
         [DataMember(Name="SentToContact", EmitDefaultValue=false)]
-        public bool? SentToContact { get; private set; }
+        public bool? SentToContact { get; set; }
 
         /// <summary>
         /// The currency rate for a multicurrency invoice. If no rate is specified, the XE.com day rate is used

@@ -253,25 +253,25 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? CISRate { get; private set; }
 
         /// <summary>
-        /// Total of invoice excluding taxes
+        /// Total of invoice excluding taxes. Calculated automatically by Xero from the invoice&#39;s line items. Only for ACCPAY and ACCREC invoices, where this opt-in capability is enabled for your organisation, can SubTotal be supplied on write – on a SUBMITTED or AUTHORISED invoice supplied together with TotalTax and Total, it is validated against the calculated line item totals (see RoundingAmount); it is ignored in all other cases. This write behaviour, and the returned value reflecting it, only applies to the Create and Update endpoints (POST/PUT) and to retrieving a single invoice by ID (GET by ID) – it does not apply when listing invoices (GET) 
         /// </summary>
-        /// <value>Total of invoice excluding taxes</value>
+        /// <value>Total of invoice excluding taxes. Calculated automatically by Xero from the invoice&#39;s line items. Only for ACCPAY and ACCREC invoices, where this opt-in capability is enabled for your organisation, can SubTotal be supplied on write – on a SUBMITTED or AUTHORISED invoice supplied together with TotalTax and Total, it is validated against the calculated line item totals (see RoundingAmount); it is ignored in all other cases. This write behaviour, and the returned value reflecting it, only applies to the Create and Update endpoints (POST/PUT) and to retrieving a single invoice by ID (GET by ID) – it does not apply when listing invoices (GET) </value>
         [DataMember(Name="SubTotal", EmitDefaultValue=false)]
-        public decimal? SubTotal { get; private set; }
+        public decimal? SubTotal { get; set; }
 
         /// <summary>
-        /// Total tax on invoice
+        /// Total tax on invoice. Calculated automatically by Xero from the invoice&#39;s line items. Only for ACCPAY and ACCREC invoices, where this opt-in capability is enabled for your organisation, can TotalTax be supplied on write – on a SUBMITTED or AUTHORISED invoice supplied together with SubTotal and Total, it is validated against the calculated line item totals (see RoundingAmount); it is ignored in all other cases. This write behaviour, and the returned value reflecting it, only applies to the Create and Update endpoints (POST/PUT) and to retrieving a single invoice by ID (GET by ID) – it does not apply when listing invoices (GET) 
         /// </summary>
-        /// <value>Total tax on invoice</value>
+        /// <value>Total tax on invoice. Calculated automatically by Xero from the invoice&#39;s line items. Only for ACCPAY and ACCREC invoices, where this opt-in capability is enabled for your organisation, can TotalTax be supplied on write – on a SUBMITTED or AUTHORISED invoice supplied together with SubTotal and Total, it is validated against the calculated line item totals (see RoundingAmount); it is ignored in all other cases. This write behaviour, and the returned value reflecting it, only applies to the Create and Update endpoints (POST/PUT) and to retrieving a single invoice by ID (GET by ID) – it does not apply when listing invoices (GET) </value>
         [DataMember(Name="TotalTax", EmitDefaultValue=false)]
-        public decimal? TotalTax { get; private set; }
+        public decimal? TotalTax { get; set; }
 
         /// <summary>
-        /// Total of Invoice tax inclusive (i.e. SubTotal + TotalTax). This will be ignored if it doesn’t equal the sum of the LineAmounts
+        /// Total of Invoice tax inclusive (i.e. SubTotal + TotalTax + RoundingAmount). Calculated automatically by Xero from the invoice&#39;s line items. Only for ACCPAY and ACCREC invoices, where this opt-in capability is enabled for your organisation, can Total be supplied on write – on a SUBMITTED or AUTHORISED invoice supplied together with SubTotal and TotalTax, it is validated against the calculated line item totals plus RoundingAmount; in all other cases this will be ignored if it does not equal the sum of the LineAmounts. This write behaviour, and the returned value reflecting it, only applies to the Create and Update endpoints (POST/PUT) and to retrieving a single invoice by ID (GET by ID) – it does not apply when listing invoices (GET) 
         /// </summary>
-        /// <value>Total of Invoice tax inclusive (i.e. SubTotal + TotalTax). This will be ignored if it doesn’t equal the sum of the LineAmounts</value>
+        /// <value>Total of Invoice tax inclusive (i.e. SubTotal + TotalTax + RoundingAmount). Calculated automatically by Xero from the invoice&#39;s line items. Only for ACCPAY and ACCREC invoices, where this opt-in capability is enabled for your organisation, can Total be supplied on write – on a SUBMITTED or AUTHORISED invoice supplied together with SubTotal and TotalTax, it is validated against the calculated line item totals plus RoundingAmount; in all other cases this will be ignored if it does not equal the sum of the LineAmounts. This write behaviour, and the returned value reflecting it, only applies to the Create and Update endpoints (POST/PUT) and to retrieving a single invoice by ID (GET by ID) – it does not apply when listing invoices (GET) </value>
         [DataMember(Name="Total", EmitDefaultValue=false)]
-        public decimal? Total { get; private set; }
+        public decimal? Total { get; set; }
 
         /// <summary>
         /// Total of discounts applied on the invoice line items
@@ -279,6 +279,20 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <value>Total of discounts applied on the invoice line items</value>
         [DataMember(Name="TotalDiscount", EmitDefaultValue=false)]
         public decimal? TotalDiscount { get; private set; }
+
+        /// <summary>
+        /// An optional rounding adjustment added to SubTotal + TotalTax to give Total (i.e. Total &#x3D; SubTotal + TotalTax + RoundingAmount). Only applies to ACCPAY and ACCREC invoices, and only if this opt-in capability has been enabled for your organisation. Not validated while the invoice is DRAFT. For SUBMITTED and AUTHORISED invoices, RoundingAmount is only applied when SubTotal, TotalTax and Total are all supplied together, and must be between -0.10 and 0.10 – values outside this range are rejected with a validation error (on DRAFT invoices, an out-of-range value is ignored instead). This field is only settable and only returned via the Create and Update endpoints (POST/PUT) and when retrieving a single invoice by ID (GET by ID) – it is not returned when listing invoices (GET) 
+        /// </summary>
+        /// <value>An optional rounding adjustment added to SubTotal + TotalTax to give Total (i.e. Total &#x3D; SubTotal + TotalTax + RoundingAmount). Only applies to ACCPAY and ACCREC invoices, and only if this opt-in capability has been enabled for your organisation. Not validated while the invoice is DRAFT. For SUBMITTED and AUTHORISED invoices, RoundingAmount is only applied when SubTotal, TotalTax and Total are all supplied together, and must be between -0.10 and 0.10 – values outside this range are rejected with a validation error (on DRAFT invoices, an out-of-range value is ignored instead). This field is only settable and only returned via the Create and Update endpoints (POST/PUT) and when retrieving a single invoice by ID (GET by ID) – it is not returned when listing invoices (GET) </value>
+        [DataMember(Name="RoundingAmount", EmitDefaultValue=false)]
+        public decimal? RoundingAmount { get; set; }
+
+        /// <summary>
+        /// The total amount as originally entered for the invoice, before any RoundingAmount adjustment is applied. Only applies to ACCPAY and ACCREC invoices, and only if this opt-in capability has been enabled for your organisation. Can only be set while the invoice is DRAFT; once the invoice is no longer DRAFT this reflects Total. This field is only settable and only returned via the Create and Update endpoints (POST/PUT) and when retrieving a single invoice by ID (GET by ID) – it is not returned when listing invoices (GET) 
+        /// </summary>
+        /// <value>The total amount as originally entered for the invoice, before any RoundingAmount adjustment is applied. Only applies to ACCPAY and ACCREC invoices, and only if this opt-in capability has been enabled for your organisation. Can only be set while the invoice is DRAFT; once the invoice is no longer DRAFT this reflects Total. This field is only settable and only returned via the Create and Update endpoints (POST/PUT) and when retrieving a single invoice by ID (GET by ID) – it is not returned when listing invoices (GET) </value>
+        [DataMember(Name="EnteredTotal", EmitDefaultValue=false)]
+        public decimal? EnteredTotal { get; set; }
 
         /// <summary>
         /// Xero generated unique identifier for invoice
@@ -450,6 +464,8 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("  TotalTax: ").Append(TotalTax).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
             sb.Append("  TotalDiscount: ").Append(TotalDiscount).Append("\n");
+            sb.Append("  RoundingAmount: ").Append(RoundingAmount).Append("\n");
+            sb.Append("  EnteredTotal: ").Append(EnteredTotal).Append("\n");
             sb.Append("  InvoiceID: ").Append(InvoiceID).Append("\n");
             sb.Append("  RepeatingInvoiceID: ").Append(RepeatingInvoiceID).Append("\n");
             sb.Append("  HasAttachments: ").Append(HasAttachments).Append("\n");
@@ -612,6 +628,16 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.TotalDiscount.Equals(input.TotalDiscount))
                 ) && 
                 (
+                    this.RoundingAmount == input.RoundingAmount ||
+                    (this.RoundingAmount != null &&
+                    this.RoundingAmount.Equals(input.RoundingAmount))
+                ) && 
+                (
+                    this.EnteredTotal == input.EnteredTotal ||
+                    (this.EnteredTotal != null &&
+                    this.EnteredTotal.Equals(input.EnteredTotal))
+                ) && 
+                (
                     this.InvoiceID == input.InvoiceID ||
                     (this.InvoiceID != null &&
                     this.InvoiceID.Equals(input.InvoiceID))
@@ -770,6 +796,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Total.GetHashCode();
                 if (this.TotalDiscount != null)
                     hashCode = hashCode * 59 + this.TotalDiscount.GetHashCode();
+                if (this.RoundingAmount != null)
+                    hashCode = hashCode * 59 + this.RoundingAmount.GetHashCode();
+                if (this.EnteredTotal != null)
+                    hashCode = hashCode * 59 + this.EnteredTotal.GetHashCode();
                 if (this.InvoiceID != null)
                     hashCode = hashCode * 59 + this.InvoiceID.GetHashCode();
                 if (this.RepeatingInvoiceID != null)
