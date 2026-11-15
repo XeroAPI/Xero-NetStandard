@@ -31,6 +31,33 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
     public partial class Budget :  IEquatable<Budget>, IValidatableObject
     {
         /// <summary>
+        /// The tool used to create the budget
+        /// </summary>
+        /// <value>The tool used to create the budget</value>
+        [JsonConverter(typeof(Client.CustomStringEnumConverter))]
+        public enum CreatedInEnum
+        {
+            /// <summary>
+            /// Enum XEROANALYTICS for value: XERO_ANALYTICS
+            /// </summary>
+            [EnumMember(Value = "XERO_ANALYTICS")]
+            XEROANALYTICS = 1,
+
+            /// <summary>
+            /// Enum BUDGETSMANAGER for value: BUDGETS_MANAGER
+            /// </summary>
+            [EnumMember(Value = "BUDGETS_MANAGER")]
+            BUDGETSMANAGER = 2
+
+        }
+
+        /// <summary>
+        /// The tool used to create the budget
+        /// </summary>
+        /// <value>The tool used to create the budget</value>
+        [DataMember(Name="CreatedIn", EmitDefaultValue=false)]
+        public CreatedInEnum CreatedIn { get; set; }
+        /// <summary>
         /// Type of Budget. OVERALL or TRACKING
         /// </summary>
         /// <value>Type of Budget. OVERALL or TRACKING</value>
@@ -100,6 +127,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             var sb = new StringBuilder();
             sb.Append("class Budget {\n");
             sb.Append("  BudgetID: ").Append(BudgetID).Append("\n");
+            sb.Append("  CreatedIn: ").Append(CreatedIn).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  UpdatedDateUTC: ").Append(UpdatedDateUTC).Append("\n");
@@ -145,6 +173,10 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.BudgetID.Equals(input.BudgetID))
                 ) && 
                 (
+                    this.CreatedIn == input.CreatedIn ||
+                    this.CreatedIn.Equals(input.CreatedIn)
+                ) && 
+                (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
                 ) && 
@@ -183,6 +215,7 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                 int hashCode = 41;
                 if (this.BudgetID != null)
                     hashCode = hashCode * 59 + this.BudgetID.GetHashCode();
+                hashCode = hashCode * 59 + this.CreatedIn.GetHashCode();
                 hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();

@@ -46,20 +46,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         public decimal? Amount { get; set; }
 
         /// <summary>
-        /// Budgeted amount
-        /// </summary>
-        /// <value>Budgeted amount</value>
-        [DataMember(Name="UnitAmount", EmitDefaultValue=false)]
-        public decimal? UnitAmount { get; set; }
-
-        /// <summary>
-        /// Any footnotes associated with this balance
-        /// </summary>
-        /// <value>Any footnotes associated with this balance</value>
-        [DataMember(Name="Notes", EmitDefaultValue=false)]
-        public string Notes { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -69,8 +55,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
             sb.Append("class BudgetBalance {\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
-            sb.Append("  UnitAmount: ").Append(UnitAmount).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -114,16 +98,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
-                (
-                    this.UnitAmount == input.UnitAmount ||
-                    (this.UnitAmount != null &&
-                    this.UnitAmount.Equals(input.UnitAmount))
-                ) && 
-                (
-                    this.Notes == input.Notes ||
-                    (this.Notes != null &&
-                    this.Notes.Equals(input.Notes))
                 );
         }
 
@@ -140,10 +114,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
                     hashCode = hashCode * 59 + this.Period.GetHashCode();
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
-                if (this.UnitAmount != null)
-                    hashCode = hashCode * 59 + this.UnitAmount.GetHashCode();
-                if (this.Notes != null)
-                    hashCode = hashCode * 59 + this.Notes.GetHashCode();
                 return hashCode;
             }
         }
@@ -155,12 +125,6 @@ namespace Xero.NetStandard.OAuth2.Model.Accounting
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Notes (string) maxLength
-            if(this.Notes != null && this.Notes.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Notes, length must be less than 255.", new [] { "Notes" });
-            }
-
             yield break;
         }
     }
