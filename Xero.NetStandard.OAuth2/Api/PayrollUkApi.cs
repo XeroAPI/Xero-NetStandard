@@ -2086,6 +2086,28 @@ namespace Xero.NetStandard.OAuth2.Api
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="PayrollUkApi"/> class
+        /// using an externally managed HttpClient, e.g. one created by IHttpClientFactory
+        /// (services.AddHttpClient&lt;PayrollUkApi&gt;()) so that resilience, logging or other
+        /// DelegatingHandlers apply to Xero API calls.
+        /// The caller owns the HttpClient; it is not disposed by this class.
+        /// </summary>
+        /// <param name="httpClient">An instance of HttpClient.</param>
+        /// <param name="configuration">An optional instance of Configuration. Defaults to this API's base path.</param>
+        /// <returns></returns>
+        public PayrollUkApi(System.Net.Http.HttpClient httpClient, Xero.NetStandard.OAuth2.Client.Configuration configuration = null)
+        {
+            if (httpClient == null) throw new ArgumentNullException("httpClient");
+
+            this.Configuration = Xero.NetStandard.OAuth2.Client.Configuration.MergeConfigurations(
+                Xero.NetStandard.OAuth2.Client.GlobalConfiguration.Instance,
+                configuration ?? new Xero.NetStandard.OAuth2.Client.Configuration { BasePath = "https://api.xero.com/payroll.xro/2.0" }
+            );
+            this.AsynchronousClient = new Xero.NetStandard.OAuth2.Client.ApiClient(httpClient, this.Configuration.BasePath);
+            this.ExceptionFactory = Xero.NetStandard.OAuth2.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AccountingApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
