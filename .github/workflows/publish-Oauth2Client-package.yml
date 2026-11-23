@@ -1,11 +1,6 @@
 name: Publish OAuth2Client Package
 on:
   workflow_dispatch:
-    inputs:
-      cab_id:
-        description: "CAB id for the change/release"
-        required: true
-        type: string
   
 jobs:
   check-and-publish:
