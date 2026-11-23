@@ -1,11 +1,6 @@
 name: Publish OAuth2 Package
 on:
   workflow_dispatch:
-    inputs:
-      cab_id:
-        description: "CAB id for the change/release"
-        required: true
-        type: string
   
 jobs:
   build:
@@ -110,8 +105,7 @@ jobs:
                   "deployer": "xero-codegen-bot",
                   "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
                   "environment": "prod",
-                  "sdk_type": "dotnet",
-                  "cab_key": "${{ github.event.inputs.cab_id }}"
+                  "sdk_type": "dotnet"
                   }
                 }'
 
