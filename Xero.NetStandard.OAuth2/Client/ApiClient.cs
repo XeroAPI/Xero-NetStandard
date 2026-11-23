@@ -266,6 +266,40 @@ namespace Xero.NetStandard.OAuth2.Client
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ApiClient" /> using an externally managed <see cref="HttpClient" />,
+        /// defaulting to the global configurations' base url.
+        /// Use this to supply an <see cref="HttpClient" /> from <c>IHttpClientFactory</c>, e.g. to add resilience or logging handlers.
+        /// The caller owns the <see cref="HttpClient" />; it is not disposed by <see cref="Dispose" />.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public ApiClient(HttpClient client) :
+                 this(client, Xero.NetStandard.OAuth2.Client.GlobalConfiguration.Instance.BasePath)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiClient" /> using an externally managed <see cref="HttpClient" />.
+        /// Use this to supply an <see cref="HttpClient" /> from <c>IHttpClientFactory</c>, e.g. to add resilience or logging handlers.
+        /// The caller owns the <see cref="HttpClient" />; it is not disposed by <see cref="Dispose" />.
+        /// Per-request cookies (<see cref="RequestOptions.Cookies" />) are not supported with this constructor.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public ApiClient(HttpClient client, string basePath)
+        {
+            if (client == null) throw new ArgumentNullException(nameof(client));
+            if (string.IsNullOrEmpty(basePath)) throw new ArgumentException("basePath cannot be empty");
+
+            _httpClientHandler = null;
+            _httpClient = client;
+            _disposeClient = false;
+            _baseUrl = basePath;
+        }
+
+        /// <summary>
         /// Disposes resources if they were created by us
         /// </summary>
         public void Dispose()
