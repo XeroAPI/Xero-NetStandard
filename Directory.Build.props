@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
+    <NuGetAuditMode>all</NuGetAuditMode>
     <WarningsAsErrors>NU1901,NU1902,NU1903,NU1904,NU1905</WarningsAsErrors>
   </PropertyGroup>
 </Project>
